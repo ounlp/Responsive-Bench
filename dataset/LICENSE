@@ -1,0 +1,43 @@
+Responsive-Bench Data License
+=============================
+
+The Responsive-Bench data (the contents of dataset/, stress_test/, and
+human_study/ in this repository) is made available under the Open Data Commons
+Attribution License (ODC-By) v1.0:
+
+    https://opendatacommons.org/licenses/by/1-0/
+
+You are free to share, create, and adapt the data, provided that you attribute
+it as described below and keep this notice with any public use or
+redistribution of the data or of works produced from it.
+
+Attribution
+-----------
+
+Responsive-Bench is derived from the Sketch2Code dataset, which is itself
+licensed under ODC-By v1.0:
+
+    Ryan Li, Yanzhe Zhang, and Diyi Yang. Sketch2Code: Evaluating
+    Vision-Language Models for Interactive Web Design Prototyping. NAACL 2025.
+    https://huggingface.co/datasets/SALT-NLP/Sketch2Code
+
+Sketch2Code pairs its sketches with webpages from the Design2Code benchmark:
+
+    Chenglei Si, Yanzhe Zhang, Ryan Li, Zhengyuan Yang, Ruibo Liu, and Diyi
+    Yang. Design2Code: Benchmarking Multimodal Code Generation for Automated
+    Front-End Engineering. arXiv:2403.03163, 2024.
+
+Material reused from Sketch2Code / Design2Code:
+  - dataset/sketches/*-d-v2.png   desktop sketches
+  - dataset/source_html/          original reference HTML
+  - rick.jpg                      placeholder image
+
+Material added by Responsive-Bench:
+  - dataset/sketches/*-m-v2.png   mobile sketches
+  - dataset/references/, dataset/layout_similarity_study/
+                                  augmented and reconstructed HTML
+  - dataset/metadata/             per-sample metadata
+  - stress_test/                  non-responsive stress-test pages
+  - human_study/                  pseudonymized human ratings
+
+When using Responsive-Bench, please cite both Responsive-Bench and Sketch2Code.

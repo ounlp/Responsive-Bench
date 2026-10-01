@@ -1,0 +1,72 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small boxed logo on the left and a classic three-line menu icon on the right, implying a collapsed navigation that must open on tap.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the hamburger should reveal the site navigation, likely as an off-canvas panel or full-screen menu. It should also support closing via the same trigger, an explicit close control, or tapping outside if an overlay is used.",
+      "ambiguities": "The sketch does not show whether the menu opens as a drawer, dropdown, or full-screen takeover."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "Because the mobile sketch includes a hamburger-triggered hidden navigation, opening that navigation implies keyboard focus must move into the revealed menu and return to the trigger when closed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move to the first actionable item or close control; when it closes, focus should return to the hamburger button. If the menu behaves like an overlay/drawer, focus containment may be needed while open.",
+      "ambiguities": "Depends on whether the opened menu is implemented as a simple disclosure panel or a modal-like overlay."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal top navigation with multiple grouped labels and a large content area beneath that resembles category-driven navigation or submenu structure, suggesting expandable top-level nav items.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Desktop nav items may reveal submenus or mega menus on hover or click. If multiple categories are present, only one submenu may be open at a time, and keyboard access should mirror pointer behavior.",
+      "ambiguities": "The sketch does not explicitly draw open submenu panels under the nav, so this is inferred from the grouped nav layout rather than directly shown."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "desktop",
+      "visual_evidence": "If the desktop top navigation contains expandable submenu behavior, keyboard users will need managed focus through top-level items and revealed submenu links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Focus should move logically through nav triggers and submenu items; if submenus open on focus/click, they should close predictably on blur, Escape, or moving away. Programmatic state updates may be needed for accessible disclosure behavior.",
+      "ambiguities": "Only applicable if the desktop nav is implemented with interactive submenus rather than plain links."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven article page with relatively light JavaScript needs. The clearest required interaction is the mobile collapsed navigation via hamburger. Desktop appears to use a fuller horizontal navigation that may expose dropdown or mega-menu behavior, though that is somewhat inferred rather than explicitly drawn. No forms, tabs, accordions, modals, infinite loading, or toast-like feedback are visibly indicated in either viewport."
+}

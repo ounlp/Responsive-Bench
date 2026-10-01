@@ -1,0 +1,53 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top bar with a small boxed control at the top-right, consistent with a collapsed mobile navigation trigger rather than visible inline nav links.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the trigger should open and close the hidden navigation panel/menu for small screens.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, full-screen overlay, or slide-out drawer."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "Because the mobile sketch implies a hamburger-triggered hidden navigation, keyboard and focus handling is required when the menu opens and closes.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Focus should move to the opened menu or first actionable item, remain usable within the revealed nav, and return to the trigger when closed.",
+      "ambiguities": "Exact focus behavior depends on whether the menu is implemented as an overlay, drawer, or simple disclosure."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": []
+  },
+  "sketch_notes": "The sketches imply very low JavaScript complexity overall. The desktop layout appears largely static, with visible navigation and content blocks but no clear evidence of tabs, accordions, forms, modals, or dynamic loading. The only strong interactive requirement is the mobile collapsed navigation trigger, which in turn implies basic focus handling for accessibility when the menu is opened and closed."
+}

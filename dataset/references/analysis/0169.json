@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a simple authentication form layout with two text-entry fields stacked near the center/right area and one or more action buttons beneath, consistent with email/phone and password inputs plus submit/create-account actions.",
+      "confidence": "HIGH",
+      "behavior_notes": "Inputs should support submission, required-field checks, likely invalid-state handling, and error feedback if credentials are missing or malformed. Focus should move naturally through fields to the primary submit action.",
+      "ambiguities": "The sketch does not explicitly show inline errors, password visibility toggle, or whether validation is only on submit versus also on blur."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation"
+    ],
+    "desktop": [
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very low-JS login/share gate page rather than a rich application shell: the dominant interactive requirement in both mobile and desktop is form handling for a compact authentication flow with submit behavior and validation states. No clear evidence appears for menus, tabs, accordions, overlays, sticky navigation, search, or dynamic loading; the cross-viewport difference is mainly spatial arrangement and sizing, not interaction model."
+}

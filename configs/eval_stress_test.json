@@ -1,0 +1,46 @@
+{
+  "$schema": "./eval.schema.json",
+  "eval_id": "eval_test_adversarial",
+  "run_id": "test_adversarial",
+  "dataset_root": "dataset",
+  "ids": null,
+  "metrics": [
+    "llm_judge_screenshots",
+    "accessibility",
+    "accessible_landmarks",
+    "accessible_hamburger_menu",
+    "accessible_active_nav_item",
+    "accessible_no_keyboard_trap",
+    "accessible_form_labels"
+  ],
+  "viewport": {
+    "width": 375,
+    "height": 688
+  },
+  "playwright": {
+    "headless": true,
+    "timeout_ms": 30000
+  },
+  "judge": {
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "temperature": 0.0,
+    "max_tokens": 5000,
+    "prompt": "llm_judge/sketch_free_v1",
+    "include_sketches": false
+  },
+  "output": {
+    "overwrite": true
+  },
+  "concurrency": {
+    "max_workers": 8
+  },
+  "caching": {
+    "skip_if_metrics_exist": false
+  },
+  "logging": {
+    "level": "INFO",
+    "console": true,
+    "file": true
+  }
+}

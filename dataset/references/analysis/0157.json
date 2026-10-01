@@ -1,0 +1,44 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a persistent full-width top header bar spanning the page, visually separated from the scrolling content below, which strongly implies a fixed or sticky navigation/header region.",
+      "confidence": "HIGH",
+      "behavior_notes": "Header should remain visible while scrolling and preserve access to branding and top-level navigation/actions.",
+      "ambiguities": "It is unclear whether only the top bar is sticky or whether any secondary navigation within the content area also remains fixed."
+    }
+  ],
+  "applicable_criteria": [
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "These sketches mostly depict long-form documentation/article layouts with images, tables, and text blocks rather than explicit interactive widgets. The only clearly implied JavaScript behavior from the drawings themselves is a sticky desktop header/navigation bar. The mobile sketch appears to be a straightforward scrolling article without visible menu, search, accordion, tabs, modal triggers, or load-more affordances. Cross-viewport differences therefore seem minimal in the sketch evidence, aside from the desktop header being visually prominent enough to suggest sticky behavior."
+}

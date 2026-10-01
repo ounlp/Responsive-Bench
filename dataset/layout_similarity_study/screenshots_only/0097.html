@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Reviews (Text) — Media Resources</title>
+  <style>
+    :root{
+      --bg:#dcdcdc;
+      --panel:#efefef;
+      --white:#ffffff;
+      --nav:#0b3768;
+      --nav-dark:#082d56;
+      --blue:#0a2cff;
+      --link:#0b3b73;
+      --text:#333;
+      --border:#d8d8d8;
+      --button:#5f8fc4;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.2;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .skip-link{position:absolute;transform:translateY(-100%);left:8px;top:8px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:1160px;
+      margin:12px auto 0;
+      padding:0 14px 24px;
+    }
+
+    header.site-header{
+      background:var(--nav);
+      color:#fff;
+      padding:8px 6px 0;
+      border:1px solid #17385f;
+    }
+    .header-top{
+      display:grid;
+      grid-template-columns:162px 190px 1fr auto;
+      gap:18px;
+      align-items:start;
+      padding:0 0 10px;
+    }
+    .logo-box{
+      width:162px;
+      height:92px;
+      background:linear-gradient(180deg,#1200ff,#0a2cff);
+      display:block;
+    }
+    .site-name{
+      font-size:31px;
+      font-weight:700;
+      line-height:1.05;
+      padding-top:4px;
+    }
+    .search-wrap{
+      display:flex;
+      justify-content:center;
+      padding-top:0;
+    }
+    .search-form{
+      display:flex;
+      width:410px;
+      max-width:100%;
+    }
+    .search-form label{
+      position:absolute;
+      width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;
+    }
+    .search-form input{
+      flex:1;
+      height:34px;
+      border:1px solid #cfcfcf;
+      padding:0 12px;
+      font-size:14px;
+    }
+    .search-form button{
+      width:36px;
+      height:34px;
+      border:1px solid #cfcfcf;
+      border-left:none;
+      background:#fff;
+      color:#222;
+      font-size:14px;
+      cursor:pointer;
+    }
+    .auth-links{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      padding-top:0;
+    }
+    .auth-links a{
+      display:inline-block;
+      background:#fff;
+      color:#222;
+      padding:8px 12px;
+      border:1px solid #d7d7d7;
+      min-width:77px;
+      text-align:center;
+      font-size:14px;
+    }
+    .auth-links a.login{
+      background:var(--nav-dark);
+      color:#fff;
+      border-color:#17385f;
+    }
+    .browse-row{
+      display:flex;
+      align-items:center;
+    }
+    .browse-btn{
+      display:inline-block;
+      background:var(--nav-dark);
+      color:#fff;
+      padding:10px 14px;
+      border:1px solid #17385f;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:minmax(0, 2.15fr) minmax(280px, 1fr);
+      gap:28px;
+      margin-top:22px;
+      align-items:start;
+    }
+
+    .card, .sidebar-panel{
+      background:var(--panel);
+      border-radius:4px;
+      padding:18px 16px;
+      margin-bottom:22px;
+    }
+    h1{
+      margin:4px 0 18px;
+      font-size:31px;
+      font-weight:500;
+      color:#333;
+    }
+    h2{
+      margin:4px 0 12px;
+      font-size:32px;
+      font-weight:500;
+      line-height:1.05;
+    }
+    .subhead{
+      font-size:18px;
+      margin:0 0 10px;
+    }
+    .publine{
+      font-size:26px;
+      line-height:1.05;
+      margin:0 0 10px;
+      max-width:700px;
+    }
+    .availability-box{
+      background:#fff;
+      border:1px solid #ececec;
+      border-radius:4px;
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin:10px 0 18px;
+    }
+    .availability-link{
+      font-size:15px;
+      color:#003b73;
+      word-break:break-all;
+    }
+    .download-btn{
+      background:var(--button);
+      color:#fff;
+      padding:10px 18px;
+      display:inline-block;
+      font-size:14px;
+      min-width:88px;
+      text-align:center;
+    }
+    .tags{
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+    .tag{
+      background:var(--nav-dark);
+      color:#fff;
+      padding:4px 6px;
+      font-size:12px;
+      font-weight:700;
+      display:inline-block;
+    }
+
+    .info-box{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:4px;
+      overflow:hidden;
+    }
+    .info-section{
+      padding:10px 14px 14px;
+      border-top:1px solid var(--border);
+    }
+    .info-section:first-child{border-top:none}
+    .info-title{
+      font-size:18px;
+      margin:0 0 6px;
+      font-weight:400;
+    }
+    .info-section ul{
+      margin:0 0 0 24px;
+      padding:0;
+    }
+    .info-section li{
+      margin:2px 0;
+      color:#333;
+    }
+    .collections-line{
+      border-top:1px solid #cfcfcf;
+      padding:18px 0;
+      font-size:18px;
+    }
+    .collections-line:first-of-type{
+      margin-top:18px;
+    }
+    .login-box{
+      background:#fff;
+      border-radius:4px;
+      padding:24px 16px;
+      margin-top:22px;
+      font-size:17px;
+    }
+
+    .copyright-box{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:4px;
+      overflow:hidden;
+    }
+    .copyright-row{
+      border-top:1px solid var(--border);
+      padding:8px 14px 10px;
+      min-height:46px;
+    }
+    .copyright-row:first-child{border-top:none}
+    .copyright-label{
+      font-size:17px;
+      margin-bottom:2px;
+    }
+    .copyright-text{
+      font-size:14px;
+    }
+
+    .sidebar-panel h2{
+      font-size:17px;
+      line-height:1.05;
+      margin:4px 0 12px;
+      font-weight:400;
+    }
+    .related-list{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+    }
+    .related-item{
+      background:#fff;
+      border:1px solid #e8e8e8;
+      border-radius:4px;
+      padding:14px 14px 12px;
+      display:grid;
+      grid-template-columns:46px 1fr 80px;
+      gap:10px;
+      align-items:start;
+    }
+    .thumb{
+      width:46px;
+      height:26px;
+      background:#1200ff;
+      display:block;
+      margin-top:2px;
+    }
+    .related-title{
+      font-size:14px;
+      line-height:1.35;
+      margin:0 0 8px;
+      color:#003b73;
+    }
+    .related-author{
+      font-size:13px;
+      line-height:1.45;
+      color:#003b73;
+    }
+    .related-meta{
+      font-size:13px;
+      line-height:1.45;
+      color:#333;
+    }
+
+    footer{
+      max-width:1160px;
+      margin:28px auto 22px;
+      padding:0 14px;
+      font-size:14px;
+      color:#333;
+    }
+
+    .nav-toggle { display: none; }
+
+    @media (max-width: 900px){
+      .page{padding:0 10px 24px}
+      .header-top{
+        grid-template-columns:66px 1fr auto;
+        grid-template-areas:
+          "logo title auth"
+          "browse search search";
+        gap:10px 14px;
+      }
+      .logo-box{grid-area:logo;width:66px;height:38px}
+      .site-name{grid-area:title;font-size:24px;padding-top:2px}
+      .auth-links{grid-area:auth;flex-direction:column;gap:10px}
+      .search-wrap{grid-area:search;justify-content:flex-start}
+      .search-form{width:280px}
+      .browse-row{grid-area:browse}
+      .content-grid{
+        grid-template-columns:minmax(0, 1.9fr) minmax(140px, .9fr);
+        gap:22px;
+      }
+      h1{font-size:25px}
+      h2{font-size:26px}
+      .publine{font-size:22px}
+      .related-item{
+        grid-template-columns:34px 1fr 54px;
+        gap:8px;
+      }
+      .thumb{width:34px;height:12px}
+      .related-title,.related-author,.related-meta{font-size:12px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 520px){
+      .page{
+        padding:0 15px 24px;
+        margin-top:6px;
+      }
+      header.site-header{
+        background:transparent;
+        border:none;
+        padding:0;
+      }
+      .header-top{
+        background:var(--panel);
+        border-radius:4px;
+        padding:12px 14px 14px;
+        grid-template-columns:1fr auto;
+        grid-template-areas:
+          "title auth"
+          "search search";
+        gap:12px;
+      }
+      .logo-box{display:none}
+      .browse-row{display:none}
+      .site-name{
+        font-size:17px;
+        line-height:1.05;
+        color:#003b73;
+        font-weight:400;
+      }
+      .auth-links a{
+        min-width:64px;
+        padding:6px 10px;
+        font-size:12px;
+      }
+      .search-form{
+        width:100%;
+      }
+      .search-form input,
+      .search-form button{
+        height:28px;
+        font-size:11px;
+      }
+      .search-form button{
+        width:auto;
+        padding:0 10px;
+        border-left:1px solid #cfcfcf;
+      }
+      .search-form button .search-icon{display:none}
+      .search-form button .search-text{display:inline}
+      .content-grid{
+        grid-template-columns:1fr;
+        gap:0;
+        margin-top:10px;
+      }
+      .main-column{order:1}
+      .sidebar-column{order:2}
+      .card, .sidebar-panel{
+        padding:16px 14px;
+        margin-bottom:16px;
+      }
+      h1{
+        font-size:18px;
+        margin-bottom:14px;
+      }
+      h2{
+        font-size:18px;
+        line-height:1.05;
+      }
+      .publine{
+        font-size:17px;
+        line-height:1.0;
+      }
+      .subhead{
+        font-size:12px;
+      }
+      .availability-box{
+        padding:10px;
+        gap:8px;
+      }
+      .availability-link{
+        font-size:10px;
+      }
+      .download-btn{
+        padding:8px 10px;
+        font-size:12px;
+        min-width:74px;
+      }
+      .tag{
+        font-size:9px;
+        padding:4px 5px;
+      }
+      .info-title{
+        font-size:14px;
+      }
+      .info-section{
+        padding:8px 10px 10px;
+      }
+      .info-section li,
+      .info-section p{
+        font-size:10px;
+      }
+      .collections-line{
+        font-size:12px;
+        padding:16px 0;
+      }
+      .login-box{
+        font-size:12px;
+        padding:18px 14px;
+      }
+      .copyright-label{
+        font-size:14px;
+      }
+      .copyright-text{
+        font-size:10px;
+      }
+      .sidebar-panel h2{
+        font-size:11px;
+      }
+      .related-list{
+        gap:12px;
+      }
+      .related-item{
+        grid-template-columns:34px 1fr;
+        gap:8px;
+        padding:12px 10px;
+      }
+      .thumb{
+        width:34px;
+        height:12px;
+      }
+      .related-main{
+        min-width:0;
+      }
+      .related-title,
+      .related-author,
+      .related-meta{
+        font-size:9px;
+        line-height:1.35;
+      }
+      .related-meta{
+        grid-column:1 / -1;
+        margin-top:4px;
+      }
+      footer{
+        padding:0 15px;
+        margin-top:18px;
+        font-size:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="page" style="margin-top:0; padding-top:0; padding-bottom:0;">
+      <div class="header-top">
+        <img src="rick.jpg" alt="" class="logo-box">
+        <div class="site-name">Media<br>Resources</div>
+        <div class="search-wrap">
+          <form class="search-form" action="#" method="get">
+            <label for="site-search">Search</label>
+            <input id="site-search" name="search" type="text" placeholder="Search">
+            <button type="submit"><span class="search-icon">□</span><span class="search-text" style="display:none;">Submit</span></button>
+          </form>
+        </div>
+        <div class="auth-links">
+          <a href="#">Register</a>
+          <a href="#" class="login">Log in</a>
+        </div>
+      </div>
+      <nav aria-label="Main" class="browse-row">
+        <a href="#" class="browse-btn">Browse Titles By... ▼</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page">
+    <div class="content-grid">
+      <main id="main-content" class="main-column">
+        <section class="card" aria-labelledby="page-title">
+          <h1 id="page-title">Book Reviews (Text)</h1>
+          <p class="publine">Originally published in Springfielder Volume: 36 Number: 3 in 1972, p. 224-248.</p>
+          <p class="subhead">This text is available in the following places:</p>
+          <div class="availability-box">
+            <a href="#" class="availability-link">http://www.ctsfw.net/media/pdfs/SprBookReview36-3... □</a>
+            <a href="#" class="download-btn">Download</a>
+          </div>
+          <div class="tags">
+            <a href="#" class="tag">Religion--Book reviews.</a>
+            <a href="#" class="tag">Theology--Book reviews.</a>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="details-heading">
+          <h2 id="details-heading">Detailed Information about Book Reviews (Text)</h2>
+          <div class="info-box">
+            <div class="info-section">
+              <h3 class="info-title">Authors</h3>
+              <ul>
+                <li><a href="#">Raymond Frederick Surburg</a></li>
+                <li><a href="#">David P. Scaer</a></li>
+                <li><a href="#">Eugene F. Klug</a></li>
+                <li><a href="#">Harold Herman Buls</a></li>
+              </ul>
+            </div>
+            <div class="info-section">
+              <h3 class="info-title">Editors</h3>
+              <p>There are no editors for this item.</p>
+            </div>
+            <div class="info-section">
+              <h3 class="info-title">Translators</h3>
+              <p>There are no translators for this item.</p>
+            </div>
+            <div class="info-section">
+              <h3 class="info-title">Compilers</h3>
+              <p>There are no compilers for this item.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="collections-heading">
+          <h2 id="collections-heading">Collections</h2>
+          <div class="collections-line">This Item is in 0 Public Collections</div>
+          <div class="collections-line">This item is in 0 Private Collections</div>
+          <div class="login-box"><a href="#">Log in</a> to manage and create your own collections.</div>
+        </section>
+
+        <section class="card" aria-labelledby="copyright-heading">
+          <h2 id="copyright-heading">Copyright Information</h2>
+          <div class="copyright-box">
+            <div class="copyright-row">
+              <div class="copyright-label">Copyright Status:</div>
+              <div class="copyright-text">&amp;copy 1972. Concordia Theological Seminary.</div>
+            </div>
+            <div class="copyright-row">
+              <div class="copyright-label">Copyright Holder:</div>
+            </div>
+            <div class="copyright-row">
+              <div class="copyright-label">Copyright Date:</div>
+            </div>
+            <div class="copyright-row">
+              <div class="copyright-label">Copyright Renewed On:</div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside class="sidebar-column" aria-label="Related materials">
+        <section class="sidebar-panel" aria-labelledby="related-heading">
+          <h2 id="related-heading">Other materials from Springfielder Volume: 36 Number: 3 in 1972</h2>
+          <div class="related-list">
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">And the Word was made flesh and dwelt am...</a></p>
+                <div class="related-author">by <a href="#">John D. Fritz</a></div>
+              </div>
+              <div class="related-meta">2380 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">The Law Gospel Debate in the Missouri Sy...</a></p>
+                <div class="related-author">by <a href="#">Rev. Dr. David P. Scaer</a></div>
+              </div>
+              <div class="related-meta">2517 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">Current Lutheran Beliefs and Misbeliefs ...</a></p>
+                <div class="related-author">by <a href="#">Rev. Dr. Raymond Frederick Surburg</a></div>
+              </div>
+              <div class="related-meta">1644 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">Abortion: A Moment for Conscientious Ref...</a></p>
+                <div class="related-author">by <a href="#">Rev. Dr. David P. Scaer</a></div>
+              </div>
+              <div class="related-meta">2371 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">Leuenberg Concord: Three Responses</a></p>
+                <div class="related-author">by <a href="#">Hans-Lutz Poetsch Gerhard Rost Rev. Dr. Eugene F. Klug</a></div>
+              </div>
+              <div class="related-meta">2749 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">History A Proof for the Christian Faith</a></p>
+                <div class="related-author">by <a href="#">Henry P. Hamann Jr.</a></div>
+              </div>
+              <div class="related-meta">2369 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">The Outside Limits of Lutheran Confessio...</a></p>
+                <div class="related-author">by <a href="#">Rev. Dr. Horace D. Hummel</a></div>
+              </div>
+              <div class="related-meta">2370 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">The Policy of an Editor</a></p>
+                <div class="related-author">by <a href="#">Rev. Dr. David P. Scaer</a></div>
+              </div>
+              <div class="related-meta">1950 Views<br>Available in:<br>⇔</div>
+            </article>
+
+            <article class="related-item">
+              <img src="rick.jpg" alt="" class="thumb">
+              <div class="related-main">
+                <p class="related-title"><a href="#">Springfielder Book Review 36-3</a></p>
+                <div class="related-author">by <a href="#">Rev. Dr. Raymond Frederick Surburg Rev. Dr. David P. Scaer Rev. Dr. Eugene F. Klug Rev. Dr. Harold Herman Buls Rev. Dr. Otto F. Stahlke Rev. Dr. John Franklin Johnson Rev. Dr. Henry J. Eggold Jr.</a></div>
+              </div>
+              <div class="related-meta">1358 Views<br>Available in:<br>⇔</div>
+            </article>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <footer>
+    © 2023 - Concordia Theological Seminary, Fort Wayne, IN
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured exactly one h1 and sequential heading hierarchy; added alt attributes to all images; ensured search input has associated label; ensured interactive elements have descriptive text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added unique aria-labels for navigation and aside landmark; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator styling only.
+-->

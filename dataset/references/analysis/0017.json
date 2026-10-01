@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a largely static document-style content page with headings, paragraphs, bullet lists, and a data table. There are no visible controls such as menus, tabs, accordions, search, forms, modal triggers, load-more affordances, or sticky navigation indicators. Any JavaScript on the final page would therefore be optional or implementation-specific rather than implied by the sketches themselves."
+}

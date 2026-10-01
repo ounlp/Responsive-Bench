@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a largely static article/detail page with a hero image, long-form text, a few boxed callout/button-like elements, and a footer area with links/icons. There is no clear visual evidence of navigation drawers, dropdowns, tabs, accordions, search, modal overlays, sticky elements, infinite loading, or other explicit JavaScript-driven widgets. The boxed elements in the body appear consistent with simple links or buttons rather than richer JS components, and the footer icons/links likewise do not imply custom scripted behavior from the sketches alone."
+}

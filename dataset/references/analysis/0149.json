@@ -1,0 +1,53 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small boxed icon with horizontal lines in the top-right of the header, a conventional hamburger/menu trigger. The desktop sketch does not show this control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close a navigation panel or menu containing site links. The trigger should expose expanded/collapsed state and likely overlay or push content on small screens.",
+      "ambiguities": "The sketch does not show whether the opened menu is a dropdown, full-screen overlay, slide-out drawer, or inline expansion, nor what links it contains."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "Because the mobile sketch explicitly includes a hamburger menu trigger, implementing that disclosure/menu interaction implies programmatic focus handling when the menu opens and closes.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Focus should move predictably to the opened menu or first actionable item, remain usable by keyboard/switch users, and return to the menu button when closed. Escape/close behavior may also be needed depending on menu presentation.",
+      "ambiguities": "If the mobile menu is only a simple inline expansion, focus handling can be lighter; if it is an overlay/drawer, stronger focus control is required."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": []
+  },
+  "sketch_notes": "These sketches imply a largely static article/detail page with minimal JavaScript. The only clear interactive requirement is a mobile-only navigation toggle in the header; the desktop version appears to present content without visible interactive widgets, forms, tabs, accordions, or loading mechanisms. Cross-viewport complexity is therefore low, with JS concentrated on responsive navigation behavior and its associated accessibility/focus handling on mobile."
+}

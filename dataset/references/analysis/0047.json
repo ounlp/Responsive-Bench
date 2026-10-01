@@ -1,0 +1,74 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "In the mobile sketch, a small boxed three-line icon appears at the right end of the horizontal bar directly beneath the hero image, indicating a collapsed navigation trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel. Because it is the only visible nav affordance on mobile, the menu likely overlays or expands below the bar.",
+      "ambiguities": "The sketch does not show whether the menu slides in, drops down, or opens full-screen, nor whether nested items exist inside it."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "In the desktop sketch, the horizontal navigation bar under the hero contains multiple segmented nav items, suggesting a standard desktop menu with potentially expandable sections.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "One or more top-level nav items may reveal submenus on hover or click, especially given the segmented desktop nav treatment and the reference structure showing nested navigation.",
+      "ambiguities": "No submenu is explicitly drawn in the sketch, so the presence of dropdowns is inferred from the desktop nav structure and supporting HTML rather than directly visible."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a distinct navigation bar immediately below a large hero image at the top of a long article-like page, a common layout where the nav remains accessible during scrolling through lengthy content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The navigation bar should likely remain fixed or become fixed after scroll so users can access navigation while reading long text sections.",
+      "ambiguities": "The sketch does not explicitly depict a stuck state, so this is implied by the long-scroll layout rather than directly shown."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show large inline images within article content, and the page structure strongly suggests image-focused content where tapping/clicking images may open an enlarged view. The reference HTML also includes an overlay construct for gallery imagery.",
+      "confidence": "LOW",
+      "behavior_notes": "Images may open in a lightbox/modal overlay with enlarged media and dismissal controls.",
+      "ambiguities": "The sketch itself does not explicitly show an overlay trigger, zoom icon, or modal state, so this remains speculative."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "sticky_nav",
+      "modal_dialog"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven article page with relatively light but important navigation behavior differences across viewports: mobile clearly requires a hamburger-based collapsed nav, while desktop uses a horizontal nav that may support dropdowns. The long reading layout on both viewports suggests sticky navigation as a likely enhancement for usability. Other interactions are minimal from the sketches alone; there are no clearly drawn forms, tabs, accordions, counters, or load-more controls. Possible image lightbox behavior is only weakly implied by the repeated large media blocks and supporting reference HTML."
+}

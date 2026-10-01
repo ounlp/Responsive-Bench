@@ -1,0 +1,76 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show an email/input field paired with a submit button for notification/signup, and each also includes at least one additional standalone button likely tied to form submission or gated access. The mobile sketch shows a full-width input followed by a full-width button; the desktop sketch shows a horizontal input-plus-button control.",
+      "confidence": "HIGH",
+      "behavior_notes": "The input should validate before submission, especially for email format if this is a notify/signup field. Submission should handle empty state, invalid format, success, and failure. Focus should move to the invalid field or confirmation state as appropriate.",
+      "ambiguities": "The sketch does not explicitly label the field as email versus generic text input, but the reference context strongly suggests a newsletter/notification form."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "A prominent isolated button appears in the upper-right area in both mobile and desktop sketches, visually separated from the main content and form. In an opening-soon/password-page layout, this strongly implies a trigger for an overlay such as 'Enter using password' rather than inline navigation.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Clicking/tapping the top-right button should open a modal overlay with a password form or access panel. The modal should trap focus while open, support Escape and close button dismissal, restore focus to the trigger on close, and prevent background interaction.",
+      "ambiguities": "The sketch only shows a button, not the overlay itself, so this could theoretically be a normal link. The reference HTML makes modal behavior much more likely."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The combination of a likely modal trigger plus form controls implies programmatic focus handling. Even without the modal explicitly drawn, the isolated trigger and form-centric layout suggest interactions where focus state matters.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If the top-right button opens a modal, focus should move into the dialog and return to the trigger on close. Form errors should receive focus or be associated accessibly. Keyboard navigation order should remain logical across the stacked mobile layout and the inline desktop form.",
+      "ambiguities": "If the top-right button is only a normal link and no overlay exists, focus management needs would be limited to standard form/error handling."
+    },
+    {
+      "pattern_id": "toast_notification",
+      "present_in": "both",
+      "visual_evidence": "The page appears to center around a single notify/signup action. Such a minimal landing page commonly confirms submission inline or via a temporary status message after the user presses the CTA.",
+      "confidence": "LOW",
+      "behavior_notes": "After successful submission, a temporary confirmation message could appear near the form or as a toast. If used, it should be announced accessibly and not steal focus unnecessarily.",
+      "ambiguities": "The sketch does not explicitly depict a toast or status area; confirmation could instead be inline text replacement or a full page refresh."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "M1",
+    "M2",
+    "M3",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "S2",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "F4",
+    "K4",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation",
+      "modal_dialog",
+      "focus_management",
+      "toast_notification"
+    ],
+    "desktop": [
+      "form_validation",
+      "modal_dialog",
+      "focus_management",
+      "toast_notification"
+    ]
+  },
+  "sketch_notes": "These sketches imply a relatively simple, form-driven landing page rather than a content-heavy application. The main JavaScript needs are centered on the notification/signup form in both viewports, with the desktop version mainly changing the form layout from stacked to inline. The only other strong implied interaction is the isolated top-right button, which likely opens a password-access modal based on the page type and reference HTML; if implemented that way, accessible focus management becomes essential. No evidence suggests navigation menus, tabs, accordions, search, or infinite-loading behaviors."
+}

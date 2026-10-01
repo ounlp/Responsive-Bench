@@ -1,0 +1,66 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "A small isolated control/link appears in the top-right corner of both sketches, visually separated from the main centered content, which strongly suggests a secondary action such as opening a password/login overlay rather than inline navigation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Trigger should open an overlay dialog for gated access or login, move focus into the dialog, trap focus while open, and restore focus to the trigger on close.",
+      "ambiguities": "The sketch does not explicitly label the control, so it could be a login link or another secondary overlay action; modal size and exact close affordance are not shown."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a prominent single-line input field near the bottom center paired with a nearby action area, indicating an email/password style submission form that requires input handling before submit.",
+      "confidence": "HIGH",
+      "behavior_notes": "Validate required input on submit, surface inline errors for empty/invalid values, preserve entered value after failed submission, and provide success/error feedback after submission.",
+      "ambiguities": "The exact field purpose is unclear from the sketch alone—could be email signup, password entry, or another single-field form—but validation is still implied."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The combination of a likely modal trigger plus a central form implies components that need managed keyboard focus, especially when opening overlays and moving between trigger, input, and submit controls.",
+      "confidence": "HIGH",
+      "behavior_notes": "Programmatically place focus into opened overlays, maintain logical focus order through form controls, return focus on close, and ensure no hidden/offscreen content receives focus.",
+      "ambiguities": "If the top-right control were not a modal trigger, focus management would still be needed for form error handling but would be less extensive."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "modal_dialog",
+      "form_validation",
+      "focus_management"
+    ],
+    "desktop": [
+      "modal_dialog",
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "Both mobile and desktop sketches depict a very simple password/announcement-style landing page with centered static content, one primary single-field form, and a separate top-right secondary action that most likely opens a login/password modal. No evidence suggests navigation menus, tabs, accordions, sticky behavior, dynamic lists, or scrolling-driven loading. The main cross-viewport difference is only layout density; the implied JavaScript complexity remains low and centers on modal behavior, form submission/validation, and accessible focus handling."
+}

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biography of an American Bondman, By His Daughter — LibriVox</title>
+  <style>
+    :root{
+      --text:#333;
+      --muted:#6b6b6b;
+      --link:#1f6d8a;
+      --light-blue:#d8edf6;
+      --header-blue:#cfe8f2;
+      --green:#6faa43;
+      --green-light:#edf7d8;
+      --border:#e6dfd2;
+      --panel:#fffdfa;
+      --footer:#8b9298;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.45;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%; display:block}
+    .skip-link{position:absolute; transform:translateY(-100%); left:0; top:0; background:#fff; color:#000; padding:10px 14px; z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    .top-links{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      padding:10px 0 18px;
+      font-size:15px;
+      color:#111;
+    }
+    .top-links a{color:#111}
+    .top-links .sep{color:#666}
+
+    .masthead{
+      display:grid;
+      grid-template-columns: 1fr 285px;
+      gap:30px;
+      align-items:start;
+      margin-top:8px;
+    }
+    .brand img{
+      width:180px;
+      height:100px;
+      object-fit:cover;
+      background:#1400ff;
+    }
+    .tagline{
+      margin-top:8px;
+      font-size:17px;
+      max-width:360px;
+      line-height:1.05;
+    }
+    .search-area{
+      padding-top:34px;
+    }
+    .search-area label{
+      position:absolute;
+      left:-9999px;
+    }
+    .search-area input{
+      width:100%;
+      height:35px;
+      border:1px solid #cfcfcf;
+      border-radius:4px;
+      padding:6px 10px;
+      font-size:15px;
+    }
+    .advanced{
+      display:inline-block;
+      margin-top:6px;
+      font-size:14px;
+    }
+
+    .catalog{
+      margin-top:28px;
+    }
+    .catalog h2{
+      margin:0 0 2px;
+      font-size:14px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .catalog-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      background:var(--header-blue);
+      margin-top:0;
+    }
+    .catalog-grid div{
+      text-align:center;
+      padding:12px 10px;
+      color:#2b6f88;
+      font-size:16px;
+      border-right:1px solid #fff;
+    }
+    .catalog-grid div:last-child{border-right:none}
+
+    .content{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:29px;
+      margin-top:44px;
+      align-items:start;
+    }
+
+    aside .promo-row{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-bottom:14px;
+    }
+    .promo{
+      padding:8px 10px;
+      font-weight:700;
+      font-size:14px;
+      line-height:1.1;
+      border-radius:2px;
+    }
+    .promo.green{background:var(--green-light); color:#5d9d35}
+    .promo.blue{background:var(--light-blue); color:#2b6f88}
+
+    .notice{
+      border:1px solid var(--border);
+      background:#fffdf8;
+      padding:12px 12px;
+      border-radius:4px;
+      font-size:15px;
+      line-height:1.45;
+      margin-bottom:18px;
+    }
+
+    .side-section{
+      margin-bottom:26px;
+    }
+    .side-section h2{
+      margin:0 0 10px;
+      font-size:16px;
+      font-weight:700;
+      border-top:1px solid #ddd;
+      padding-top:10px;
+    }
+    .side-section:first-of-type h2{
+      border-top:none;
+      padding-top:0;
+    }
+    .download-list{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:11px 12px;
+      align-items:center;
+      font-size:15px;
+    }
+    .btn{
+      display:inline-block;
+      background:var(--green);
+      color:#fff;
+      font-weight:700;
+      padding:8px 16px;
+      border-radius:2px;
+      min-width:80px;
+      text-align:center;
+    }
+    .btn:hover{color:#fff; text-decoration:none}
+    .details{
+      display:grid;
+      grid-template-columns:auto 1fr;
+      gap:6px 14px;
+      font-size:15px;
+      line-height:1.1;
+    }
+    .links-list a{
+      display:block;
+      margin:6px 0;
+      font-size:15px;
+    }
+
+    .book-card{
+      border:1px solid var(--border);
+      border-radius:4px;
+      background:#fff;
+      padding:16px 18px;
+      display:grid;
+      grid-template-columns:1fr 175px;
+      gap:18px;
+      align-items:start;
+    }
+    .book-card h1{
+      margin:0 0 6px;
+      font-size:20px;
+      line-height:1.05;
+      color:#3a3a3a;
+    }
+    .author-line{
+      margin-bottom:14px;
+      font-size:14px;
+    }
+    .author-line a{
+      font-size:16px;
+    }
+    .author-line em{
+      font-style:italic;
+      color:#444;
+      font-size:12px;
+    }
+    .summary{
+      font-size:16px;
+      line-height:1.45;
+      margin-bottom:12px;
+      max-width:560px;
+    }
+    .meta{
+      font-size:16px;
+      line-height:1.5;
+    }
+    .meta strong{font-weight:700}
+    .cover-wrap{
+      text-align:center;
+      padding-top:2px;
+    }
+    .cover-wrap img{
+      width:175px;
+      height:100px;
+      object-fit:cover;
+      background:#1400ff;
+      margin:0 auto 8px;
+    }
+    .cover-wrap a{
+      display:block;
+      margin:4px 0;
+      font-size:14px;
+    }
+
+    .tracks{
+      margin-top:25px;
+    }
+    .tracks-header{
+      display:grid;
+      grid-template-columns:60px 1.6fr 1fr 140px;
+      background:var(--header-blue);
+      color:#2b6f88;
+      font-weight:700;
+      text-transform:uppercase;
+      font-size:12px;
+      border-radius:3px;
+      overflow:hidden;
+    }
+    .tracks-header div{
+      padding:12px 10px;
+    }
+    .track-row{
+      display:grid;
+      grid-template-columns:60px 1.6fr 1fr 140px;
+      margin-top:6px;
+      background:#f8f8f6;
+      border-radius:3px;
+      overflow:hidden;
+      min-height:70px;
+      align-items:stretch;
+    }
+    .track-row .num{
+      background:var(--header-blue);
+      display:flex;
+      align-items:center;
+      padding:0 10px;
+      font-size:16px;
+    }
+    .track-row .chapter,
+    .track-row .reader,
+    .track-row .time{
+      display:flex;
+      align-items:flex-start;
+      padding:16px 10px;
+      font-size:16px;
+    }
+    .track-row .chapter a,
+    .track-row .reader a{
+      font-weight:700;
+      color:#2b6f88;
+    }
+
+    footer{
+      margin-top:60px;
+      background:var(--footer);
+      min-height:120px;
+    }
+    .footer-inner{
+      max-width:1000px;
+      margin:0 auto;
+      padding:22px 20px 40px;
+    }
+    .footer-inner img{
+      width:88px;
+      height:48px;
+      object-fit:cover;
+      background:#1400ff;
+    }
+
+    .nav-toggle { display: none; }
+
+    @media (max-width: 900px){
+      .page{max-width:768px}
+      .masthead{
+        grid-template-columns:1fr 285px;
+      }
+      .content{
+        grid-template-columns:1fr;
+      }
+      aside .promo-row{
+        grid-template-columns:1fr 1fr;
+      }
+      .sidebar-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:16px;
+      }
+      .sidebar-grid .notice{
+        grid-column:1 / -1;
+      }
+      .sidebar-grid .links-block{
+        grid-column:1 / 2;
+      }
+      .book-card{
+        margin-top:8px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        padding:0 20px;
+      }
+      .topbar-mobile{
+        display:grid;
+        grid-template-columns:1fr auto;
+        align-items:start;
+        gap:0;
+        margin-top:14px;
+      }
+      .masthead{
+        display:block;
+        margin-top:0;
+      }
+      .search-area{
+        padding-top:0;
+        max-width:235px;
+      }
+      .top-links{
+        display:none;
+      }
+      .nav-toggle{
+        display:none;
+      }
+      #mobile-nav{
+        display:block !important;
+      }
+      .mobile-links{
+        border-left:1px solid #eee;
+        background:#fff;
+      }
+      .mobile-links a{
+        display:block;
+        padding:8px 20px;
+        color:#111;
+        font-size:16px;
+        border-bottom:1px solid #eee;
+      }
+      .brand{
+        margin-top:10px;
+        text-align:center;
+      }
+      .brand img{
+        width:212px;
+        height:102px;
+        margin:0 auto;
+      }
+      .tagline{
+        max-width:none;
+        text-align:center;
+        font-size:16px;
+        line-height:1.2;
+      }
+      .catalog{
+        display:none;
+      }
+      .content{
+        margin-top:30px;
+        display:flex;
+        flex-direction:column;
+      }
+      main{
+        order:1;
+      }
+      aside{
+        order:2;
+      }
+      .sidebar-grid{
+        display:block;
+      }
+      aside .promo-row,
+      .notice{
+        display:none;
+      }
+      .book-card{
+        grid-template-columns:1fr;
+        padding:18px 16px;
+      }
+      .book-top{
+        display:grid;
+        grid-template-columns:1fr 175px;
+        gap:14px;
+        align-items:start;
+      }
+      .book-card h1{
+        font-size:18px;
+        line-height:0.95;
+      }
+      .author-line{
+        margin-bottom:0;
+      }
+      .author-line a{
+        font-size:17px;
+        line-height:1.2;
+      }
+      .author-line em{
+        display:inline;
+        font-size:12px;
+      }
+      .summary{
+        margin-top:14px;
+        font-size:16px;
+      }
+      .cover-wrap{
+        padding-top:0;
+      }
+      .cover-wrap img{
+        width:175px;
+        height:100px;
+      }
+      .tracks-header,
+      .track-row{
+        grid-template-columns:60px 1.2fr .8fr 75px;
+      }
+      .track-row .chapter,
+      .track-row .reader,
+      .track-row .time{
+        font-size:15px;
+      }
+      .track-row .chapter a,
+      .track-row .reader a{
+        display:inline-block;
+      }
+      .side-section h2{
+        font-size:16px;
+      }
+      .download-list{
+        grid-template-columns:1fr auto;
+      }
+      footer{
+        margin-top:50px;
+        min-height:106px;
+      }
+      .footer-inner{
+        padding-top:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <div class="topbar-mobile">
+      <div class="search-area">
+        <form>
+          <label for="site-search">Search by Author, Title or Reader</label>
+          <input id="site-search" type="search" value="Search by Author, Title or Reader" aria-label="Search by Author, Title or Reader">
+        </form>
+        <a href="#" class="advanced">Advanced search</a>
+      </div>
+
+      <nav id="mobile-nav" aria-label="Main" class="mobile-links">
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <a href="#">Forum</a>
+        <a href="#">Help</a>
+      </nav>
+    </div>
+
+    <header>
+      <nav aria-label="Main" class="top-links">
+        <a href="#">About</a><span class="sep">|</span>
+        <a href="#">Contact</a><span class="sep">|</span>
+        <a href="#">Forum</a><span class="sep">|</span>
+        <a href="#">Help</a>
+      </nav>
+
+      <div class="masthead">
+        <div class="brand">
+          <img src="rick.jpg" alt="LibriVox logo">
+          <div class="tagline">Acoustical liberation of books in the public domain</div>
+        </div>
+
+        <div class="search-area desktop-search">
+          <form>
+            <label for="site-search-desktop">Search by Author, Title or Reader</label>
+            <input id="site-search-desktop" type="search" value="Search by Author, Title or Reader" aria-label="Search by Author, Title or Reader">
+          </form>
+          <a href="#" class="advanced">Advanced search</a>
+        </div>
+      </div>
+
+      <section class="catalog" aria-label="Browse the catalog">
+        <h2>Browse the catalog</h2>
+        <div class="catalog-grid">
+          <div>Author</div>
+          <div>Title</div>
+          <div>Genre/Subject</div>
+          <div>Language</div>
+        </div>
+      </section>
+    </header>
+
+    <div class="content">
+      <aside aria-label="Book information sidebar">
+        <div class="sidebar-grid">
+          <div class="promo-row">
+            <div class="promo green">Donate to LibriVox</div>
+            <div class="promo blue">Thank a reader</div>
+          </div>
+
+          <div class="notice">
+            LibriVox recordings are Public Domain in the USA. If you are not in the USA, please verify the copyright status of these works in your own country before downloading, otherwise you may be violating copyright laws.
+          </div>
+
+          <section class="side-section">
+            <h2>Listen/Download ( <a href="#">help?</a> )</h2>
+            <div class="download-list">
+              <div>Whole book (zip file)</div><a href="#" class="btn">Download</a>
+              <div>Subscribe by iTunes</div><a href="#" class="btn">iTunes</a>
+              <div>RSS Feed</div><a href="#" class="btn">RSS</a>
+              <div>Download torrent</div><a href="#" class="btn">Torrent</a>
+            </div>
+          </section>
+
+          <section class="side-section">
+            <h2>Production details</h2>
+            <div class="details">
+              <div>Running Time:</div><div>02:32:05</div>
+              <div>Zip file size:</div><div>71MB</div>
+              <div>Catalog date:</div><div>2018-09-12</div>
+              <div>Read by:</div><div><a href="#">Jim Locke</a></div>
+              <div>Book Coordinator:</div><div><a href="#">Jim Locke</a></div>
+              <div>Meta Coordinator:</div><div><a href="#">DaveC</a></div>
+              <div>Proof Listener:</div><div><a href="#">DaveC</a></div>
+            </div>
+          </section>
+
+          <section class="side-section links-block">
+            <h2>Links</h2>
+            <div class="links-list">
+              <a href="#">Internet Archive Page</a>
+              <a href="#">Online text</a>
+              <a href="#">Wikipedia - Josephine Brown</a>
+              <a href="#">M4B Audiobook (70MB)</a>
+            </div>
+          </section>
+        </div>
+      </aside>
+
+      <main id="main-content">
+        <article class="book-card">
+          <div>
+            <div class="book-top">
+              <div>
+                <h1>Biography of an American Bondman, By His Daughter</h1>
+                <div class="author-line">
+                  <a href="#">Josephine Brown</a> <em>(1839 - 1874)</em>
+                </div>
+              </div>
+              <div class="cover-wrap mobile-cover" style="display:none;"></div>
+            </div>
+
+            <p class="summary">
+              Josephine Brown's Biography of an American Bondsman faithfully follows the trajectory of her father's life as previously explored in his own narratives. She distills and summarizes the major revelatory moments of his autobiography while she also incorporates new anecdotal information and offers her own perspective on Brown's life.
+            </p>
+
+            <div class="meta">
+              <div><strong>Genre(s):</strong> Biography &amp; Autobiography</div>
+              <div><strong>Language:</strong> English</div>
+            </div>
+          </div>
+
+          <div class="cover-wrap">
+            <img src="rick.jpg" alt="Book cover art for Biography of an American Bondman, By His Daughter">
+            <a href="#">Download cover art</a>
+            <a href="#">Download CD case insert</a>
+          </div>
+        </article>
+
+        <section class="tracks" aria-label="Track listing">
+          <div class="tracks-header">
+            <div>Section</div>
+            <div>Chapter</div>
+            <div>Reader</div>
+            <div>Time</div>
+          </div>
+
+          <div class="track-row">
+            <div class="num">01</div>
+            <div class="chapter"><a href="#">Chapters 1 and 2</a></div>
+            <div class="reader"><a href="#">Jim Locke</a></div>
+            <div class="time">00:14:18</div>
+          </div>
+
+          <div class="track-row">
+            <div class="num">02</div>
+            <div class="chapter"><a href="#">Chapters 3 and 4</a></div>
+            <div class="reader"><a href="#">Jim Locke</a></div>
+            <div class="time">00:07:04</div>
+          </div>
+
+          <div class="track-row">
+            <div class="num">03</div>
+            <div class="chapter"><a href="#">Chapters 5 and 6</a></div>
+            <div class="reader"><a href="#">Jim Locke</a></div>
+            <div class="time">00:09:26</div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <img src="rick.jpg" alt="">
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential headings; added alt text to all images with decorative footer image marked alt=""; ensured search inputs have associated labels; ensured links have descriptive text; set html lang="en"
+[B] ARIA fixes: used aria-label on navigation and aside landmarks; avoided redundant role attributes on semantic elements; ensured no tabindex values greater than 0 remain
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only
+-->

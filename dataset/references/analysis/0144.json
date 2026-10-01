@@ -1,0 +1,95 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a small header/navigation treatment at the very top, visually separated from the long article body beneath it. The page is clearly a long scrolling article/detail layout, which strongly implies the top navigation/header should persist while scrolling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain fixed or become fixed after scroll, preserving access to site navigation/branding while reading long content. On desktop it may stay minimal; on mobile it likely compresses to a compact sticky bar.",
+      "ambiguities": "The sketch does not explicitly show a transformed sticky state versus initial state, so it is unclear whether the header is always fixed or only becomes sticky after scrolling."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Near the bottom of both sketches there is a labeled single-line input area separated from article content, visually resembling a search field or comment input. The reference layout also strongly suggests a top search affordance in this template family.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Input should accept text and submit a query or filter action. If implemented in the header on smaller screens, it may expand/collapse before accepting input. Standard focus, submit, and possibly clear behavior are needed.",
+      "ambiguities": "The sketch is too abstract to determine whether this is site search, comment entry, or subscription input; however it clearly implies an interactive text field with submit behavior."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "both",
+      "visual_evidence": "The article body contains repeated grouped text blocks followed by compact two-column lists and additional grouped sections, suggesting collapsible archive/metadata sections rather than all content being permanently expanded. The reference HTML includes archive sections rendered as collapsible details widgets, which aligns with the sketch structure.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Section headers should toggle visibility of nested content such as archive groups or metadata blocks. Expanded/collapsed state should be reflected visually and accessibly.",
+      "ambiguities": "The sketch does not explicitly draw chevrons or plus/minus icons, so some grouped sections could also be static content rather than disclosures."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Several content groupings appear truncated into short visible sets followed by more repeated items lower down, especially in the archive/list-like portions. This implies progressive disclosure of additional entries rather than showing the full list at once.",
+      "confidence": "LOW",
+      "behavior_notes": "A 'show more' or 'load more' control could reveal additional archive items or related posts in-place. If content is already present, this may simply expand hidden items rather than fetch new data.",
+      "ambiguities": "Could be plain long static content instead of progressive disclosure; the sketch does not explicitly label a button."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "mobile",
+      "visual_evidence": "Mobile sketch shows two small boxed controls/buttons beneath a content block, which suggests actions such as share, image expand, or utility actions that commonly open overlays on small screens where space is constrained.",
+      "confidence": "LOW",
+      "behavior_notes": "If these controls trigger secondary actions, a modal or bottom-sheet style overlay may be needed for share options, enlarged media, or auxiliary details. Focus should move into the overlay and return to the trigger on close.",
+      "ambiguities": "The boxes may simply be inline buttons or thumbnails rather than modal triggers; no overlay is explicitly drawn."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The combination of a sticky header, interactive text input, and likely collapsible sections implies components that need managed keyboard focus. Desktop especially requires clear keyboard traversal across header, article actions, disclosures, and footer input.",
+      "confidence": "HIGH",
+      "behavior_notes": "Programmatic focus handling is needed for any expanding search UI, accordion disclosures, and any overlay/action menu behavior. Focus order should remain logical through long-form content.",
+      "ambiguities": "This is inferred from the interactive components rather than directly drawn as a separate element."
+    }
+  ],
+  "applicable_criteria": [
+    "F2",
+    "D1",
+    "D4",
+    "M1",
+    "M2",
+    "S1",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "M3",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "search_input",
+      "accordion",
+      "focus_management",
+      "modal_dialog",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "accordion",
+      "search_input",
+      "focus_management",
+      "load_more"
+    ]
+  },
+  "sketch_notes": "These sketches imply a relatively simple article/detail page with long-scroll reading behavior and a few supporting interactive utilities rather than a highly app-like interface. The strongest cross-viewport needs are sticky header behavior, an interactive text input likely used for search or comments, and collapsible/archive-style disclosures. Mobile likely compresses secondary actions into smaller controls that may open overlays, while desktop appears more linear and content-forward with fewer overt action affordances."
+}

@@ -1,0 +1,56 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a header bar with a distinct boxed field/control on the right side, consistent with a search box in the reference layout.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and search submission. On desktop it likely includes a visible submit affordance; on mobile the compact header suggests submit may occur via keyboard action or a smaller control.",
+      "ambiguities": "The sketches do not show whether results are live/autocomplete or only submitted on enter/button press."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The search field is an input-based control that implies submit behavior and basic handling of empty or malformed queries.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Should validate/sanitize submitted input, handle empty submissions gracefully, and provide clear focus and error handling if submission is blocked.",
+      "ambiguities": "No explicit error state is drawn, so validation may be minimal rather than visibly surfaced."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "form_validation"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a largely static informational page with very low JavaScript complexity. Across both viewports, the only clearly interactive element is the header search control; the rest reads as static text, tables, links, and separators rather than expandable, tabbed, modal, or scroll-reactive UI. Mobile and desktop differ mainly in density and header sizing, not in interaction model."
+}

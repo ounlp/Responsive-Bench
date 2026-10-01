@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a static resume-style document with a heading, a small cluster of links/contact items near the top right, and a long vertical sequence of content sections separated by headings and timeline styling. There are no visible controls such as hamburger icons, menus, tabs, accordions, form fields, modal triggers, load-more affordances, or sticky navigation indicators. The implied interaction is limited to ordinary hyperlink navigation, which is outside the provided JavaScript pattern taxonomy, so no JavaScript-specific interaction patterns can be inferred confidently from these sketches."
+}

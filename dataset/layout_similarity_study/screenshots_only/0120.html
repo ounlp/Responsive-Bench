@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How To Restrict Users From Viewing The Reports For Which The Users Doesn't Have Any Access. (Doc ID 2248281.1) — My Oracle Support</title>
+  <style>
+    :root{
+      --text:#4a4a4a;
+      --dark:#3f3f3f;
+      --bar:#858581;
+      --line:#b9b9b9;
+      --red:#ff0a00;
+      --footer:#d9dcdf;
+      --blue:#1200ff;
+      --white:#fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+    }
+    .skip-link{position:absolute;left:12px;top:0;transform:translateY(-100%);background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:1048px;
+      margin:0 auto;
+      padding:53px 0 12px;
+    }
+    .content{
+      width:798px;
+      margin-left:134px;
+    }
+    .hero{
+      width:100%;
+      height:357px;
+      display:flex;
+      margin-bottom:16px;
+    }
+    .hero .blue{background:var(--blue);flex:1}
+    .hero .red{background:var(--red);width:161px}
+    h1{
+      font-size:23px;
+      line-height:1.12;
+      margin:0 0 14px;
+      font-weight:700;
+      color:#55585c;
+      max-width:760px;
+    }
+    .updated{
+      font-size:17px;
+      font-weight:700;
+      margin:0 0 16px;
+      color:#3f3f3f;
+    }
+    .section-bar{
+      background:var(--bar);
+      color:#fff;
+      font-weight:700;
+      font-size:18px;
+      line-height:1;
+      padding:8px 8px 9px;
+      margin:0 0 14px;
+      text-transform:uppercase;
+      letter-spacing:.2px;
+    }
+    .applies-text,
+    .body-copy{
+      font-size:17px;
+      line-height:1.08;
+      font-weight:700;
+      color:#3f3f3f;
+    }
+    .applies-text{margin:0 0 16px}
+    .body-copy p{
+      margin:0 0 18px;
+    }
+    .subhead{
+      font-size:17px;
+      font-weight:700;
+      margin:33px 0 0;
+      color:#3f3f3f;
+      text-transform:uppercase;
+    }
+    .underline{
+      font-size:17px;
+      font-weight:700;
+      margin:0 0 14px;
+      color:#3f3f3f;
+      line-height:1;
+    }
+    ol{
+      margin:8px 0 42px 42px;
+      padding-left:18px;
+    }
+    ol li{
+      padding-left:6px;
+      margin-bottom:0;
+    }
+    .cta-area{
+      margin-top:27px;
+    }
+    .cta-row{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      margin:0 0 16px 4px;
+    }
+    .cta-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:79px;
+      height:40px;
+      background:var(--red);
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:16px;
+      border:2px solid #111;
+      box-shadow:0 1px 0 rgba(0,0,0,.35);
+    }
+    .cta-text{
+      font-size:17px;
+      font-weight:700;
+      line-height:1.05;
+      color:#55585c;
+      max-width:560px;
+    }
+    .doc-nav{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      margin-top:20px;
+      padding:8px 0 8px 8px;
+    }
+    .doc-nav h2{
+      margin:0 0 2px;
+      font-size:17px;
+      font-weight:700;
+      color:#3f3f3f;
+    }
+    .doc-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .doc-nav li{
+      margin:0 0 4px;
+      font-size:17px;
+      font-weight:700;
+      line-height:1;
+    }
+    .doc-nav a{
+      color:#4f4f4f;
+      text-decoration:none;
+    }
+    .promo{
+      color:#ff0000;
+      font-size:17px;
+      line-height:1.05;
+      margin:33px 0 18px;
+      max-width:760px;
+    }
+    footer{
+      background:var(--footer);
+      padding:18px 20px 16px;
+      margin-top:0;
+    }
+    .footer-copy{
+      font-size:16px;
+      line-height:1.05;
+      color:#4f4f4f;
+      margin:0 0 8px;
+      max-width:740px;
+    }
+    .footer-links{
+      border-top:1px solid #b7b7b7;
+      padding-top:8px;
+      font-size:15px;
+      color:#4f4f4f;
+      line-height:1.1;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:0;
+    }
+    .footer-links a{
+      color:#4f4f4f;
+      text-decoration:none;
+    }
+    .social{
+      display:inline-block;
+      width:16px;
+      height:16px;
+      background:var(--blue);
+      vertical-align:middle;
+      margin:0 6px;
+    }
+
+    @media (max-width: 900px){
+      .page{padding-top:53px}
+      .content{
+        width:auto;
+        margin:0 82px;
+      }
+      .hero{
+        height:213px;
+      }
+      .hero .red{width:96px}
+      h1{
+        font-size:22px;
+        max-width:520px;
+      }
+      .cta-text{max-width:360px}
+      .promo{max-width:520px}
+      .footer-copy{max-width:520px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        padding-top:45px;
+        padding-bottom:0;
+      }
+      .content{
+        margin:0 37px;
+      }
+      .hero{
+        height:94px;
+        margin-bottom:14px;
+      }
+      .hero .red{width:40px}
+      h1{
+        font-size:20px;
+        line-height:1.03;
+        max-width:260px;
+        margin-bottom:12px;
+      }
+      .updated{
+        font-size:17px;
+        line-height:1.05;
+        max-width:220px;
+        margin-bottom:14px;
+      }
+      .section-bar{
+        font-size:18px;
+        padding:7px 8px 8px;
+        margin-bottom:12px;
+      }
+      .applies-text,
+      .body-copy,
+      .subhead,
+      .underline,
+      .doc-nav h2,
+      .doc-nav li,
+      .promo{
+        font-size:17px;
+      }
+      .body-copy{
+        line-height:1.02;
+      }
+      .body-copy p{margin-bottom:18px}
+      .subhead{margin-top:28px}
+      ol{
+        margin:8px 0 38px 18px;
+        padding-left:20px;
+      }
+      .cta-row{
+        display:grid;
+        grid-template-columns:72px 1fr;
+        gap:18px;
+        align-items:center;
+        margin:0 0 26px 4px;
+      }
+      .cta-btn{
+        min-width:69px;
+        height:34px;
+        font-size:14px;
+      }
+      .cta-text{
+        max-width:100%;
+        font-size:17px;
+        line-height:1;
+      }
+      .doc-nav{
+        margin-top:18px;
+        padding-left:0;
+      }
+      .promo{
+        margin:28px 0 14px;
+        max-width:260px;
+      }
+      footer{
+        padding:18px 18px 14px;
+      }
+      .footer-copy{
+        font-size:16px;
+        max-width:100%;
+      }
+      .footer-links{
+        font-size:15px;
+      }
+      .social{
+        width:15px;
+        height:15px;
+        margin:0 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content">
+    <div class="page">
+      <div class="content">
+        <img src="rick.jpg" alt="" hidden>
+        <div class="hero" aria-hidden="true">
+          <div class="blue"></div>
+          <div class="red"></div>
+        </div>
+
+        <h1>How To Restrict Users From Viewing The Reports For Which The Users Doesn't Have Any Access. (Doc ID 2248281.1)</h1>
+
+        <p class="updated">Last updated on SEPTEMBER 24, 2023</p>
+
+        <section aria-label="Applies to">
+          <h2 class="section-bar">APPLIES TO:</h2>
+          <p class="applies-text">Oracle Fusion General Ledger Cloud Service - Version 11.1.11.1.0 and later<br>Information in this document applies to any platform.</p>
+        </section>
+
+        <section aria-label="Symptoms">
+          <h2 class="section-bar">SYMPTOMS</h2>
+
+          <h3 class="subhead">ACTUAL BEHAVIOR</h3>
+          <p class="underline">--------------</p>
+
+          <div class="body-copy">
+            <p>All users having the same roles and responsibility should be able to access and view requests submitted by users having same responsibility.</p>
+
+            <p>Apparently everyone can see every person's output jobs.</p>
+
+            <h3 class="subhead">EXPECTED BEHAVIOR</h3>
+            <p class="underline">-------------------</p>
+
+            <p>Restricted Secured by privileged level security.</p>
+
+            <h3 class="subhead">STEPS</h3>
+            <p class="underline">----------------</p>
+
+            <p>The issue can be reproduced at will with the following steps:</p>
+
+            <p>If two (2) users (u1, u2) are sharing the same role as RoleX.</p>
+
+            <ol>
+              <li>If any report is run by u1, can u2 see any and all output of any ESS job by u1?</li>
+            </ol>
+
+            <p>AP Role example Only AP Management should see what others in that role can see.</p>
+
+            <p>GL Manager should not.</p>
+          </div>
+        </section>
+
+        <section aria-label="Changes">
+          <h2 class="section-bar">CHANGES</h2>
+        </section>
+
+        <section aria-label="Cause" class="cta-area">
+          <h2 class="section-bar">CAUSE</h2>
+
+          <div class="cta-row">
+            <a href="#" class="cta-btn">Sign In</a>
+            <p class="cta-text">To view full details, sign in with your My Oracle Support account.</p>
+          </div>
+
+          <div class="cta-row">
+            <a href="#" class="cta-btn">Register</a>
+            <p class="cta-text">Don't have a My Oracle Support account? Click to get started!</p>
+          </div>
+        </section>
+
+        <nav class="doc-nav" aria-label="In this Document">
+          <h2>In this Document</h2>
+          <ul>
+            <li><a href="#">Symptoms</a></li>
+            <li><a href="#">Changes</a></li>
+            <li><a href="#">Cause</a></li>
+            <li><a href="#">Solution</a></li>
+            <li><a href="#">References</a></li>
+          </ul>
+        </nav>
+
+        <p class="promo">My Oracle Support provides customers with access to over a million knowledge articles and a vibrant support community of peers and Oracle experts.</p>
+
+        <footer>
+          <p class="footer-copy">Oracle offers a comprehensive and fully integrated stack of cloud applications and platform services. For more information about Oracle (NYSE:ORCL), visit oracle.com .</p>
+          <div class="footer-links">
+            <span>� Oracle | </span>
+            <a href="#">Contact and Chat</a><span> | </span>
+            <a href="#">Support</a><span> | </span>
+            <a href="#">Communities</a><span> | </span>
+            <a href="#">Connect with us</a>
+            <span> | </span>
+            <span class="social" aria-hidden="true"></span><span> | </span>
+            <span class="social" aria-hidden="true"></span><span> | </span>
+            <span class="social" aria-hidden="true"></span><span> | </span>
+            <a href="#">Legal Notices</a><span> | </span>
+            <a href="#">Terms of Use</a>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic main, section, nav, and footer landmarks; ensured exactly one h1; used sequential h2/h3 headings; added alt attributes to img element; ensured html lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: used aria-label on navigation region; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator styling only.
+-->

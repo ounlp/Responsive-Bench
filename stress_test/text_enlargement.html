@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adversarial Zoom Cutoff</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .box {
+      border: 1px solid #999;
+      padding: 12px;
+      background: #fafafa;
+    }
+
+    /* Adversarial: text becomes clipped vertically when zoom increases */
+    .v-cutoff {
+      height: 90px;          /* fixed height makes zoom-induced overflow likely */
+      overflow: hidden;      /* clips overflow instead of expanding */
+    }
+
+    /* Adversarial: text becomes clipped horizontally when zoom increases */
+    .h-cutoff {
+      white-space: nowrap;   /* forces a single line */
+      overflow: hidden;      /* hides overflow */
+      text-overflow: clip;   /* hard cutoff, no ellipsis */
+    }
+
+    /* Adversarial: combined clipping plus tight line height */
+    .tight {
+      line-height: 1.05;     /* increases chance of cramped overlap */
+    }
+
+    /* Make the cutoff more dramatic at larger viewports too */
+    @media (min-width: 768px) {
+      .v-cutoff { height: 72px; }
+    }
+
+    h1 { margin: 0 0 12px 0; font-size: 22px; }
+    h2 { margin: 0 0 8px 0; font-size: 18px; }
+    p  { margin: 0; }
+    .muted { color: #444; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Zoom Adversarial Page</h1>
+    <div class="muted">
+      This layout is responsive, but when the page is zoomed (e.g., 150%), text will overflow and be clipped.
+    </div>
+
+    <div class="grid">
+      <section class="box v-cutoff">
+        <h2>Vertical cutoff on zoom</h2>
+        <p class="tight">
+          This paragraph is intentionally long so that at normal size it almost fits.
+          When zoom increases, it will overflow the fixed-height container and get clipped.
+          The content continues beyond the visible area and should be flagged as cutoff.
+        </p>
+      </section>
+
+      <section class="box h-cutoff">
+        <h2>Horizontal cutoff on zoom</h2>
+        <p class="tight">
+          ThisIsAnIntentionallyVeryLongUnbrokenStringWithoutSpaces
+        </p>
+      </section>
+
+      <section class="box v-cutoff h-cutoff">
+        <h2>Combined cutoff on zoom</h2>
+        <p class="tight">
+          VeryLongContentWithoutSpacesWillOverflowHorizontally
+        </p>
+      </section>
+
+      <section class="box">
+        <h2>Control box (should remain readable)</h2>
+        <p>
+          This section is normal and exists as a control. The other boxes are the adversarial ones.
+        </p>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

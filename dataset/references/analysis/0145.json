@@ -1,0 +1,104 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent long horizontal field near the top that reads as a search bar/header input, positioned in the primary utility area before the gallery content.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and search submission; likely also supports live suggestions/results because of its prominence and placement in the header utility area.",
+      "ambiguities": "Sketch does not clarify whether results appear inline, in a dropdown, or only after submit."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "Desktop sketch shows multiple compact controls/icons grouped in the top-right utility/navigation area, which strongly suggests expandable menus or account/theme/navigation submenus rather than simple static labels.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Desktop top-level nav/utility items should reveal submenu panels on click or hover, with dismiss-on-outside-click and keyboard access.",
+      "ambiguities": "Exact triggers and submenu contents are not explicit in the sketch; some icons could instead be standalone buttons."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses the top area into stacked utility/header lines without room for a full desktop navigation set, implying a collapsed mobile navigation control even if the hamburger icon itself is not clearly drawn.",
+      "confidence": "LOW",
+      "behavior_notes": "Mobile should likely use a toggle to reveal hidden site navigation/categories/utility links in an overlay or slide-down panel.",
+      "ambiguities": "No explicit hamburger icon is visible; this is inferred from responsive constraints rather than directly drawn."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include small boxed controls near the top content area that look like filter/sort/view selectors rather than plain buttons, especially the grouped small boxes adjacent to the waveform/header region.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "These controls likely switch platform, sort order, or gallery view mode and may be implemented as custom-styled selects or segmented picker widgets.",
+      "ambiguities": "Could also be simple buttons/toggles instead of true comboboxes; labels are not legible."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The repeated grid of image thumbnails in both sketches strongly implies click-to-enlarge screenshot viewing, which commonly requires a lightbox/modal overlay for full-size media.",
+      "confidence": "HIGH",
+      "behavior_notes": "Clicking a thumbnail should open an overlay/lightbox with enlarged image, close controls, backdrop dismissal, and likely previous/next navigation between screenshots.",
+      "ambiguities": "Sketch does not explicitly show the open state, so whether it is a modal lightbox or dedicated detail page is not certain."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long screenshot galleries extending well beyond the initial viewport, with additional footer-like content below; this suggests progressive loading or a manual 'load more' mechanism may be needed for performance/usability.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Gallery may initially render a subset of screenshots and reveal more on demand via button or pagination-like continuation behavior.",
+      "ambiguities": "Could also be a fully server-rendered long page with no incremental loading."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any implementation of the inferred modal image viewer, dropdowns, mobile nav, and custom controls would require managed focus states across both viewports.",
+      "confidence": "HIGH",
+      "behavior_notes": "Programmatic focus should move into opened overlays/menus, return to trigger on close, and support keyboard navigation across interactive gallery and header controls.",
+      "ambiguities": "This is implied by the other interactive components rather than directly visible as a standalone widget."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "F4",
+    "D4",
+    "M1",
+    "M2",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "D1",
+    "D2",
+    "D3",
+    "M3",
+    "S1",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "hamburger_menu",
+      "modal_dialog",
+      "custom_select",
+      "load_more",
+      "focus_management"
+    ],
+    "desktop": [
+      "search_input",
+      "dropdown_menu",
+      "modal_dialog",
+      "custom_select",
+      "load_more",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches primarily imply a screenshot-gallery page with header utilities and a dense grid of clickable media. The strongest JavaScript needs are search behavior, image lightbox/modal behavior, and the keyboard/focus handling that supports those interactions. Desktop appears to expose more direct utility/navigation controls that may open dropdowns, while mobile likely collapses navigation into a hidden menu due to reduced space. Incremental gallery loading and filter/sort selectors are plausible secondary behaviors inferred from the long media grid and compact boxed controls near the top."
+}

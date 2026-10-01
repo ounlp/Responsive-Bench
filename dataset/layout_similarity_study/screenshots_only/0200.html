@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free email vs Paid email — Work Together</title>
+  <style>
+    :root{
+      --blue:#1f6fb2;
+      --orange:#ff6a00;
+      --dark:#2d2d2d;
+      --light:#f5f5f5;
+      --border:#e6e6e6;
+      --text:#222;
+      --muted:#8a8a8a;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Georgia, "Times New Roman", serif;
+      background:#efefef;
+      color:var(--text);
+      line-height:1.5;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site{
+      max-width:988px;
+      margin:24px auto;
+      background:#fff;
+      box-shadow:0 2px 12px rgba(0,0,0,.15);
+    }
+    .site-header{
+      padding:22px 24px 18px;
+      background:#fff;
+    }
+    .branding-title{
+      margin:0;
+      font-size:32px;
+      line-height:1.1;
+      color:var(--blue);
+      font-weight:700;
+      letter-spacing:.2px;
+      text-transform:uppercase;
+    }
+    .tagline{
+      margin:10px 0 0;
+      color:var(--orange);
+      font-size:16px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    .nav-wrap{
+      background:var(--dark);
+      border-bottom:5px solid var(--orange);
+      position:relative;
+    }
+    .nav-toggle { display: none; }
+    .main-nav ul,
+    .mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .main-nav ul{
+      display:flex;
+    }
+    .main-nav a{
+      display:block;
+      color:#fff;
+      font-weight:700;
+      font-size:14px;
+      padding:10px 16px;
+      text-transform:uppercase;
+      border-right:1px solid rgba(255,255,255,.08);
+    }
+    .main-nav a:hover,
+    .mobile-nav a:hover{
+      background:#3a3a3a;
+    }
+
+    .mobile-nav{
+      background:var(--dark);
+    }
+    .mobile-nav a{
+      display:block;
+      color:#fff;
+      font-weight:700;
+      font-size:14px;
+      padding:12px 16px;
+      text-transform:uppercase;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+
+    .content{
+      padding:18px 24px 0;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:32px;
+      line-height:1.15;
+      color:#111;
+      font-weight:700;
+    }
+    .meta{
+      display:flex;
+      gap:28px;
+      color:var(--muted);
+      font-size:16px;
+      padding:0 0 10px;
+      border-bottom:1px dotted var(--border);
+      margin-bottom:18px;
+    }
+
+    .page-content-box{
+      border:1px solid var(--border);
+      margin-bottom:18px;
+    }
+    .page-content-box h2{
+      margin:0;
+      background:var(--dark);
+      color:#fff;
+      font-size:16px;
+      line-height:1.2;
+      padding:8px 10px;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .page-content-box ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .page-content-box li{
+      border-top:1px solid var(--border);
+    }
+    .page-content-box a{
+      display:block;
+      padding:6px 10px;
+      color:var(--orange);
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .intro{
+      font-size:18px;
+      margin:0 0 16px;
+    }
+
+    .hero-image{
+      width:100%;
+      height:530px;
+      background:#1400ff;
+      margin:0 0 18px;
+    }
+
+    .article-section{
+      margin-bottom:18px;
+    }
+    .article-section h2{
+      margin:0 0 10px;
+      font-size:28px;
+      line-height:1.2;
+      color:#111;
+      font-weight:700;
+    }
+    .article-section p{
+      margin:0;
+      font-size:18px;
+    }
+
+    .post-nav{
+      display:flex;
+      justify-content:space-between;
+      gap:24px;
+      padding:28px 0 22px;
+      border-bottom:1px solid var(--border);
+      margin-top:8px;
+    }
+    .post-nav .prev,
+    .post-nav .next{
+      width:48%;
+    }
+    .post-nav .next{
+      text-align:right;
+    }
+    .post-nav .label{
+      display:block;
+      font-weight:700;
+      text-transform:uppercase;
+      font-size:16px;
+      line-height:1.2;
+      color:#111;
+    }
+    .post-nav .title{
+      display:block;
+      font-size:16px;
+      color:#333;
+      line-height:1.3;
+    }
+
+    .site-footer{
+      background:var(--dark);
+      color:#8f8f8f;
+      padding:12px 24px;
+      margin-top:48px;
+      font-size:14px;
+    }
+
+    @media (max-width: 768px) {
+      .site{
+        margin:0;
+        max-width:none;
+        box-shadow:none;
+      }
+      .site-header{
+        padding:14px 16px 12px;
+        text-align:center;
+      }
+      .branding-title{
+        font-size:28px;
+      }
+      .tagline{
+        font-size:14px;
+      }
+      .nav-toggle {
+        display: block;
+        margin-left:auto;
+        background:none;
+        border:0;
+        color:#fff;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size:14px;
+        font-weight:700;
+        text-transform:uppercase;
+        padding:8px 12px;
+      }
+      .nav-toggle .menu-text{
+        margin-right:0;
+      }
+      .main-nav{
+        display:none;
+      }
+      .content{
+        padding:16px 16px 0;
+      }
+      h1{
+        font-size:34px;
+      }
+      .meta{
+        display:block;
+        gap:0;
+        font-size:16px;
+        line-height:1.45;
+      }
+      .hero-image{
+        height:158px;
+      }
+      .article-section h2{
+        font-size:28px;
+      }
+      .article-section p,
+      .intro{
+        font-size:17px;
+      }
+      .post-nav{
+        flex-direction:column;
+        gap:18px;
+        text-align:center;
+      }
+      .post-nav .prev,
+      .post-nav .next{
+        width:100%;
+        text-align:center;
+      }
+      .site-footer{
+        text-align:center;
+        margin-top:38px;
+        padding:12px 16px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px){
+      .site{
+        margin:0;
+        max-width:none;
+        box-shadow:none;
+      }
+      .site-header{
+        padding:18px 20px 16px;
+      }
+      .branding-title{
+        font-size:34px;
+      }
+      .content{
+        padding:18px 20px 0;
+      }
+      .hero-image{
+        height:392px;
+      }
+      .site-footer{
+        margin-top:44px;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="site">
+    <header class="site-header">
+      <p class="branding-title">WORK TOGETHER</p>
+      <p class="tagline">SHAREPOINT AND OFFICE 365 ARCHITECT</p>
+    </header>
+
+    <div class="nav-wrap">
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span class="menu-text">MENU</span>
+      </button>
+
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">CONSULTANCY</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Main mobile" hidden>
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">CONSULTANCY</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li><a href="#">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <main id="main-content" class="content">
+      <article>
+        <h1>Free email vs Paid email</h1>
+
+        <div class="meta" aria-label="Article details">
+          <span>Arjan Cornelissen</span>
+          <span>2017-06-21</span>
+          <span>office-365</span>
+        </div>
+
+        <section class="page-content-box" aria-label="Page content links">
+          <h2>PAGE CONTENT</h2>
+          <ul>
+            <li><a href="#free-email">Free email</a></li>
+            <li><a href="#paid-email">Paid email</a></li>
+            <li><a href="#branding">Branding</a></li>
+            <li><a href="#privacy">Privacy</a></li>
+          </ul>
+        </section>
+
+        <p class="intro">Since I started my own company I am more aware of the impact of a domain name for your company. Not only for your website but also for your email address.</p>
+
+        <img src="rick.jpg" alt="" class="hero-image">
+
+        <section id="free-email" class="article-section">
+          <h2>Free email</h2>
+          <p>So let’s start with what I mean by free email. These are the providers where you just can register and get an email address for ‘free’.</p>
+        </section>
+
+        <section id="paid-email" class="article-section">
+          <h2>Paid email</h2>
+          <p>These are the providers where you pay some amount of money to host your email, usually you get this with your hosting provider or you can go with another party to host it like Office 365, Gmail for Business.</p>
+        </section>
+
+        <section id="branding" class="article-section">
+          <h2>Branding</h2>
+          <p>The most important part of your company is how your customers can reach you, this can be done by visiting your website, send an email or by phone. My feeling with a company that uses a free email address gives themselves not enough credit for how they brand themselves to the outside world.</p>
+        </section>
+
+        <section id="privacy" class="article-section">
+          <h2>Privacy</h2>
+          <p>When you use a free email provider, privacy is usually the first one that will be sacrificed. Most users do not know this because they do not read the agreements before signing up for the account.</p>
+        </section>
+
+        <section class="article-section">
+          <h2>Costs</h2>
+          <p>The costs of an email address can be just hard cash or with your privacy. When you choose for a paid email provider the cost can be from a few Euro’s/Dollars per month to around 10 Euro’s/Dollars depending on the provider or options of the email provider.</p>
+        </section>
+
+        <section class="article-section">
+          <h2>Accessibility</h2>
+          <p>Nowadays we have at least 2 devices if not more where we check our email on. This can give some challenges with some of the hosting companies because they have their own system and synching that to your phone, tablet and computer can sometimes a challenging task.</p>
+        </section>
+
+        <section class="article-section">
+          <h2>Compatibility</h2>
+          <p>Not everybody thinks about this one, because email is email, right? Well the email part is not the problem here, but when you run a business you also make appointments and invite other people for those appointments.</p>
+        </section>
+
+        <section class="article-section">
+          <h2>Conclusion</h2>
+          <p>Selecting your email provider is not as easy as it might see. The choice between free and paid is very easy in my opinion.</p>
+        </section>
+
+        <nav class="post-nav" aria-label="Post navigation">
+          <div class="prev">
+            <a href="#">
+              <span class="label">« PREVIOUS</span>
+              <span class="title">Benefits of the cloud</span>
+            </a>
+          </div>
+          <div class="next">
+            <a href="#">
+              <span class="label">NEXT »</span>
+              <span class="title">Become administrator of your free Yammer networks</span>
+            </a>
+          </div>
+        </nav>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      © 2023 Work Together.
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured one h1 with sequential h2 headings; added alt attributes to image; ensured interactive elements have descriptive labels; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on landmark elements; provided unique aria-labels for multiple nav regions; added aria-label to supporting sections/navigation where needed; removed any tabindex values greater than 0 via JS safeguard.
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, aria-controls, focus handling, and Escape close; implemented tab order cleanup/focus indicator baseline.
+-->

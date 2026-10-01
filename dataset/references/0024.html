@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>We Have Some Exciting News! — DisplayCabinets2Go</title>
+  <style>
+    body {
+      font: 500 18px/1.5 'Open Sans', sans-serif;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .btn-primary {
+      font: 18px/1.43 'Open Sans', sans-serif;
+      color: #fff;
+      background: #343a40;
+      border: 1px solid #343a40;
+      border-radius: 4px;
+      display: inline-block;
+      padding: 6px 12px;
+      margin-bottom: 0;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active {
+      background-color: #343a40;
+      border-color: #343a40;
+    }
+
+    .skip-link {
+      position: absolute;
+      transform: translateY(-100%);
+      left: 0;
+      top: 0;
+      background: #fff;
+      color: #000;
+      padding: 8px 12px;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    @media(min-width:576px) {
+      .body-wrap {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100%;
+        max-width: 788px;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    @media (max-width:575px) {
+      .body-wrap {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content">
+    <div class="body-wrap">
+      <header>
+        <img alt="DisplayCabinets2Go logo" height="50" id="site-logo" src="rick.jpg" style="width: 200px; margin-bottom: 30px; max-width: 100%; height: auto;" width="200">
+        <h1>We Have Some Exciting News!</h1>
+      </header>
+
+      <div>
+        <div class="content-wrap">
+          <p><strong class="site-name">DisplayCabinets2Go</strong> has joined the Displays2go family!</p>
+          <p>Displays2go has all of the same industry-leading products you'd find on this site, and much more! We will continue to put you first with our responsive and dedicated customer service.</p>
+        </div>
+      </div>
+
+      <div class="row" id="product-link-wrap" style="display: none; clear: both; margin-top: 20px;">
+        <p>It looks like you were trying to view a product. Great news!</p>
+        <p>
+          <a class="btn-primary" href="#" id="product-link">View this Product on Displays2go.com</a>
+        </p>
+      </div>
+
+      <div>
+        <p>Get to your favorite items right away by browsing a similar selection of products on Displays2go.com.</p>
+        <p>
+          <a class="btn-primary" id="category-link" href="https://www.displays2go.com/">Shop this Category on Displays2go.com</a>
+        </p>
+      </div>
+
+      <div>
+        <p>Need more information?</p>
+        <p>
+          <a class="btn-primary" id="faq-link" href="https://www.displays2go.com/FAQ">FAQs</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: updated title to page-purpose format; added skip link as first body child; added main landmark with id="main-content"; wrapped top branding and heading in a header landmark; ensured exactly one descriptive h1; improved image alt text; added valid href attributes to all links; preserved existing classes and IDs.
+[B] ARIA fixes: ensured html lang="en"; avoided redundant landmark roles; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 global focus indicator styles and JS cleanup for positive tabindex values only.
+-->

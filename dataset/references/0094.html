@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Automatic Software Installation in AD — Softros LAN Messenger</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to deploy LAN messenger MSI installation file automatically via Domain Active Directory GPO. Step-by-step guide.">
+  <style>
+   /* HARD LINK WWW. MESSENGER. */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'),
+       url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-300.woff') format('woff') /* Modern Browsers */
+}
+
+/* source-sans-pro-regular - latin-ext_latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+       url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-regular.woff') format('woff') /* Modern Browsers */
+}
+
+/* source-sans-pro-600 - latin-ext_latin */
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-600.eot'); /* IE9 Compat Modes */
+  src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+       url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('//www.softros.com/css/fonts/source-sans-pro-v11-latin-ext_latin-600.woff') format('woff') /* Modern Browsers */
+}
+
+@font-face {
+    font-family: SoftrosWeb;
+	font-display: swap;
+	src: url(https://www.softros.com/css/fonts/SoftrosWeb.eot);
+    src: url(https://www.softros.com/css/fonts/SoftrosWeb.eot#iefix) format('embedded-opentype'),
+		 url(https://www.softros.com/css/fonts/SoftrosWeb.woff);
+}
+
+/* Common */
+	html, body {height:100%; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent;}
+
+	body {font-family: Segoe UI, Source Sans Pro, Roboto, San Francisco, sans-serif;
+		  font-size: 16px;}
+
+	a img {border: 0}
+
+	.content {max-width: 1350px;
+			 margin-left: auto;
+			 margin-right: auto;
+			 padding-right: 50px;
+			 padding-left: 50px;
+			 clear: both;
+	}
+	body.narrow .content {max-width: 1280px;}
+	
+	h1 {font-weight: 300;
+		color: #585858;
+		font-size: 48px;
+		transition: all 200ms ease-out;}
+	
+	h5, h6 {font-size: 18px;}
+	h6 {font-weight: normal}
+	
+	h5{ margin: 0 0 16px 0; font-weight: 600;}
+	h6{ margin: 0}
+	h6 + p {margin-top: 0}
+	
+	a {color: #f22808; text-decoration: none;}
+	
+	/* arrow links */
+	#products a:hover,
+	.arrow-link:hover {text-decoration: underline}
+
+	#products nav a:after,
+	.arrow-link:after { content: "〉";
+						font-family: SoftrosWeb;
+						display: inline-block;
+						vertical-align:middle;
+						line-height: 20px;
+						font-size: 20px;
+						padding-left: 4px;
+						color: #f22808;
+	}
+
+	/* spinning arrow */
+	.tooltiplink:after,
+	.instructions a:after,
+	div.old a.help:after,
+	#renew a.help:after,
+	#perUser a:after,
+	#nts-custom a:after{
+		content: "🞃";
+		color: gray;
+		font-size: 14px;
+		font-family: SoftrosWeb;
+		margin-left: 5px;
+		display:inline-block;
+		transition: all 200ms ease-out;
+	}
+
+	a.tooltiplink.dropped:after,
+	.instructions .dropped a:after,
+	div.old a.dropped:after,
+	#renew a.dropped:after,
+	#perUser a.dropped:after,
+	#nts-custom a.dropped:after{
+		transform: rotate(-180deg) translate(0, -4px);
+	}
+ 
+	ul { list-style: none;
+		 margin: 0 0 10px 0
+	}
+
+	ul:not(.features-list):not(.dropdown-list) li::before {content: "■";
+									   color: #f99085;
+									   margin: 0 5px 0 -19px;
+									   position: absolute; /*chrome justify fix*/
+	}
+
+	.Win {font-family: SoftrosWeb}
+	
+	ul.features-list>li {margin: 0 0 25px 0;
+						 display: inline-block}
+	
+	ul.features-list li h5 {font-size: 18px; margin: 0; text-align: left; hyphens: none;}	
+	
+	/* mobile view */
+
+	@media all and (max-width: 880px)
+	{
+		h1 {font-size: 32px;}
+		ul:not(.features-list):not(.dropdown-list),ol {padding-left: 20px}
+	}
+	
+/* Page types */
+
+	.left-box {background-color: #efefef;
+				 width: 270px;
+				 padding: 16px 32px 16px 32px; /* p has 16px margin */
+				 float: left;
+				 margin-right: 45px;
+	}
+	.with-left-box {float:left;
+				   width: calc(100% - 270px - 2*32px - 45px);
+				   min-width: 380px;
+	}
+	
+	
+	body.narrow .longread {max-width: 1080px}
+	.longread table {margin:-10px 0 16px 0}
+	
+/* Primary menu */
+
+	#header {padding-top: 26px;
+			 padding-bottom: 26px}
+
+	#logo{margin-left: -7px}
+	#menu {padding-top: 7px;
+		   float: right;}
+
+	#menu a, #menu span.a, #menu button.a {	text-decoration: none;
+							color: #364a44;
+							font-size: 18px;
+							display: inline-block;
+							padding: 10px 20px 10px 20px;
+							white-space: nowrap;}
+	
+	#menu span.a, #menu button.a {cursor: default;
+				  user-select:none;
+				  -moz-user-select:none;
+	}
+	#menu a:hover, #menu button.a:hover {	color: #f22808;
+					text-shadow: 0 0 2px white}
+
+	.menu_item {display: inline-block; position: relative;}
+	.menu_item:hover {background: #efefef}
+
+	.menu_item div,
+	.menu_item ul {visibility: hidden;
+					position: absolute;
+					background: #efefef;
+					box-shadow: 0 7px 7px -7px;
+					transition: all 0.1s ease;
+					opacity: 0;
+					top:70px;
+					z-index: 10;
+	}
+
+	.menu_item:hover div,
+	.menu_item:hover ul {	visibility: visible;
+							opacity: 1;
+							top:77px}
+
+	.menu_item:last-child div,
+	.menu_item:last-child ul {margin-left: -18px} /* Company submenu */
+
+/* secondary menu */
+
+	#menu2{
+		background-image: url("");
+		background-color: #364a44;
+		background-size: 1264px 61px;
+		background-position: top center;
+		background-repeat: no-repeat;
+		height: 61px;
+		margin-bottom: 30px
+	}
+
+	#menu2 h2, #menu2 a {font-weight: normal;
+						 color: white;
+						 display:inline;
+						 line-height: 61px;
+	}
+
+	#menu2 h2 {font-size: 24px;		
+			   margin: 0 30px 0 0;
+			   cursor: default}
+	#menu2 a {text-decoration: none;
+			  font-size: 18px;
+			  margin: 0 30px 0 30px;}
+
+	#menu2 a:hover{text-decoration: underline}
+
+	#menu2, #menu2 a, #menu h2 {transition: all 0.2s ease-out}
+	
+/* language bar */
+
+	#menu2 nav > div {float: right;
+					  font-size: 38px;
+					  line-height: 61px;
+					  color: lightgray;
+					  cursor: pointer;
+					  user-select:none;
+					  font-family: SoftrosWeb;
+					  -moz-user-select:none;
+	}
+	#menu2 nav > div >div {font-family: Segoe UI, Open Sans, sans-serif;} /* return normal font */
+	#menu2 nav > div:hover,#menu2 nav > div.clicked {color: white}
+	#menu2 div div {display:none;
+					position: absolute;
+					z-index: 9;
+					background-color: white;
+					width:100%;
+					max-width: 500px; /* content itself is narrow */
+					left:0;
+					/*margin-top: 4px;*/
+					padding: 20px;
+					padding-left: calc(50% - 500px / 2);
+					padding-right: calc(50% - 500px / 2);
+					column-count: 3;
+					column-gap: 50px;
+					box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+					cursor:auto;
+	}
+	#menu2 div div a {display: inline-block;
+					  font-size: 18px;
+					  color: gray;
+					  margin: 20px;
+					  line-height:initial;
+					  text-align: center;
+					  transition: none;
+	}
+	#menu2 div div a:hover{text-decoration: none;
+						   color: black;
+	}
+
+/* quick info */
+	.quick{
+		margin-top: 60px;
+		background-color: #efefef;
+		font-size: 14px;
+		padding: 18px;
+		text-align: center;
+		
+	}
+	.quick h4{font-weight: normal;
+			  font-size: 16px;
+			  margin: 0 0 16px 0
+	}
+	.quick h6{font-weight: bold;
+			  font-size: 14px;
+			  margin-top: 14px;
+	}
+	.quick h6.inline{display: inline}
+	.quick img {vertical-align: baseline;
+			   margin: 0 2px -2px 0}
+
+	.quick br+img{margin-top: 13px}
+
+/* footer */
+
+	/* used to place footer at the bottom */
+	#wrapper {min-height: 100%;
+			  position: relative}
+
+	/* footer cannot clear floating, so we do it via second from the end div */
+	#wrapper>main:nth-last-child(2)::after,
+	#wrapper>div:nth-last-child(2)::after {content: " ";
+											clear: both;
+											display: block;
+											height: 208px}
+
+	#footer {background-image: url("");
+			 background-color: #364a44;
+			 background-size: 1264px 411px;
+			 background-position: top center;
+			 background-repeat: no-repeat;
+			 color: #d6d6d6;
+			 font-size: 13px;
+			 line-height: 35px;
+			 min-height: 168px;
+			 position: absolute;
+			 width: 100%;
+			 bottom: 0;
+	}
+
+	#footer div.content {position: relative; min-height: 168px}
+	#footer span {position: absolute; display: block; bottom: 30px; right: 50px}
+	#footer nav {position: absolute; padding: 30px 0 30px 0; bottom:0px}
+	#footer a {color: #d6d6d6; text-decoration: none; display:block}
+	#footer a:hover {text-decoration: underline}
+
+/* forms */
+
+	.message {color: #f22808}
+	button, input, select, textarea {
+		font-family: Segoe UI, Open Sans, sans-serif;
+		font-size: 16px;
+		border: 1px solid lightgray;
+		padding: 2px;
+		box-sizing: content-box;
+		transition: all 200ms ease-out;
+		transition-property: background, border-color;
+		outline: none;
+	}
+	select:-moz-focusring {
+		color: transparent;
+		text-shadow: 0 0 0 #000;
+	}
+	
+	button:focus,
+	input:focus,
+	select:focus,
+	textarea:focus{
+		border-color: #f22808;
+	}
+
+	button,
+	[type=submit] {
+		padding: 6px 11px;
+		background-color: #efefef;
+	}
+	
+	button:not([disabled]),
+	[type=submit]:not([disabled]) {
+		padding: 5px 10px;
+		border: 2px solid #02d5a8;
+		cursor: pointer;
+	}
+	
+	button:hover:not([disabled]),
+	[type=submit]:hover:not([disabled])
+	{
+		background-color: lightgray;
+	}
+
+	#fileField {background: white; max-width: 95%}
+	#fileField::-ms-value{
+		background: white;
+		border: none
+	}
+
+	/* for some reason Chrome want this to be separate form IE */
+	#fileField::-ms-browse
+	{
+		border: 1px solid lightgray;
+		padding: 5px 10px;
+	}
+
+	#fileField::-webkit-file-upload-button
+	{
+		border: 1px solid lightgray;
+		padding: 8px 13px;
+		background-color: #efefef;
+		font-family: Segoe UI, Open Sans, sans-serif;
+		font-size: 16px;
+		outline: none;
+	}
+	#fileField::-webkit-file-upload-button:active
+	{
+		border-color: #f22808;
+	}
+	
+/* uploaded license file info */
+	table#licinfo{margin: 0 auto 15px auto}
+	#licinfo td:first-child {text-align: right}
+	#licinfo td {padding: 3px;
+				border-top: 1px lightgray solid}
+	#licinfo tr:first-child td {border-top: none}	
+
+
+/* mobile view */
+	
+	#sandwitch {display: none}
+	@media all and (max-width: 880px)
+	{
+		#menu2 {background-image: none;
+				height:inherit}
+		#menu2 h2, #menu2 a {display: block;
+							line-height: 40px;
+							transition: none}
+		
+		/* globe  */
+		#menu2 nav > div{position: absolute;
+						 font-size: 24px;
+						 color: black;
+						 top:24px;
+						 right:60px;
+		}
+
+				/*	we need to switch 100% width between .clicked/not clicked states because
+					absolute positioned layer covers sandwitch button. In addition we cannot
+					change width of the sub-div because it is positioned inside parent */
+		#menu2 nav > div.clicked { left:0;
+								   width:calc(100% - 60px);
+								   text-align:right;
+								   padding-right:60px;
+		}
+
+		#menu2 nav > div:hover , #menu2 nav > div.clicked {color:black}
+		#menu2 div div {padding:0;
+						max-width:100%;
+						column-count: 1;
+						top:60px;
+		}
+		#menu2 div div a {display:block;}
+		
+		/* main menu */
+		
+		#logo {margin-left: 0}
+		#menu {padding: 0}
+		.menu_item:last-child div,
+		.menu_item:last-child ul {margin-left: 0}  /* Company submenu */
+		#menu {	display: none;
+				position: absolute;
+				top: 107px;
+				height: calc(100% - 107px);
+				width: 100%;
+				background-color: #efefef;
+				overflow:auto;
+		}
+		#menu span:active,
+		#menu button.a:active {color:#f22808;}
+		#menu span,
+		#menu button.a {display: block;
+					text-align: left;
+					line-height: 50px;
+		}
+		#menu span.a,
+		#menu button.a {cursor: pointer;}
+		
+		#menu .menu_item div,
+		#menu .menu_item ul { position: inherit;
+							   padding-left: 30px;
+							   box-shadow: none;
+							   visibility: visible;
+							   opacity: 1;
+							   transition: none;
+							   display: none;
+
+		}
+		.menu_item:hover div,
+		.menu_item:hover ul {display:none}
+
+		#sandwitch{display: block;
+				   font-size: 38px;
+				   float:right;
+				   cursor:pointer;
+				   font-family: SoftrosWeb;
+				   margin: 5px 20px 0 0;
+		}
+
+		/* other */
+		#footer nav {left: 20px}
+		#footer span {right: 20px; bottom: 0; font-size: 11px}
+
+		.content {padding-left: 20px; padding-right: 20px}
+		#header {padding-left: 0; padding-right: 0}
+		
+		.left-box, .with-left-box {float: none;
+									width:inherit;}
+		.left-box {margin: 0 0 20px 0;}
+		.with-left-box {min-width:inherit}
+		
+		.quick {max-width: 400px; margin-left: auto; margin-right: auto}
+	}
+	
+	
+/* SCREEN SHOTS */
+
+	#screenshots{display:none;
+				 position: fixed;
+				 background-color: white;
+				 height: 100%;
+				 width: 100%;
+				 top:0; left:0;
+				 z-index: 15;
+				 text-align: center;
+				 line-height: 100%;
+	}
+	#screenshots img {	position:absolute;
+						margin:auto;
+						top:0;
+						left:0;
+						right:0;
+						bottom:0;
+						max-width: calc( 100% - 20px );
+						
+	}
+	#screenshots a.arr {font-size:250px;
+					  position: absolute;
+					  color:white;
+					  text-shadow: 0 0 20px gray;
+					  transition: all 350ms ease-out;
+					  font-family:SoftrosWeb;
+					  z-index:2;
+	}
+
+	.shots-link img {transform: translateZ(0)} /* NTS */
+	
+	#screenshots a.arr:hover{text-shadow: 0 0 20px black }
+	#previous {left: 50px}
+
+	#next { right: 50px}
+
+	#x {position: absolute;
+		top:20%;
+		right: 50px;
+		text-shadow:none;
+		color:black;
+		font-size: 70px;
+		line-height: 70px;
+		cursor:pointer;
+		text-shadow: 0 0 3px white;
+		color:gray;
+	}
+	#x:hover{color:black}
+
+	#x, #screenshots img {user-select: none;
+						 -moz-user-select:none;}
+	
+/* SCREEN SHOTS mobile view */
+
+	@media all and (max-width: 880px)
+	{
+		#screenshots a.arr {font-size: 100px; bottom: 10px; height: 100px; text-shadow: 0 0 20px black}
+		
+		#previous {left: 10px}
+		#next {right: 10px}
+		#x{right: 10px; top:30px}
+	}
+	
+/* download button for messenger and ts */
+
+	#download {margin-top: 40px;
+			   margin-bottom: 40px;
+			   text-align: center;
+			   font-size: 18px
+	}
+	#download a {border: 1px #f22808 solid;
+				 border-radius: 25px;
+				 padding: 7px 15px 7px 15px;
+				 margin: 0 2px 2px 15px;
+				 display: inline-block;
+				 box-shadow: 2px 2px lightgray;
+				 transition: all 0.1s ease;
+				 vertical-align:middle;
+				 text-shadow: 0 1px lightgray;
+	}
+	#download a:hover{
+				box-shadow: 0px 0px lightgray;
+				margin: 2px 0 0 17px;	
+	}
+	#download a:active{
+		background-color: lightgray;
+	}
+	
+
+/* yellow bage */	
+.offerBanner,
+p#warning {padding: 20px;
+			font-weight: 600;
+			text-align: center;
+			background-color: #fc0;
+			margin-top: 30px;
+			margin-bottom: 30px;
+			font-size: 18px;
+			color:black
+}
+
+.offerBanner{
+	display: none;
+}
+
+.closeBanner {
+	display: block;
+	float: right;
+	border-radius: 15px;
+	width: 30px;
+	height: 30px;
+	line-height: 22px;
+	font-size: 34px;
+	margin: -3px 33px 0 15px;
+	color: black;
+	background: rgba(255,255,255,0.6);
+	
+}
+.closeBanner:hover{
+	background: white;
+	color:#f22808;
+	transition: all 200ms ease-out;
+}
+
+
+
+#content {max-width: 1080px;
+		 margin-left: auto;
+		 margin-right: auto;
+		 padding-right: 50px;
+		 padding-left: 50px;
+}
+
+#content a {color: #9b3228}
+#content a:hover {text-decoration: underline}
+#content strong {font-weight: 600}
+
+h1,h2{font-size: 36px;
+	  font-weight: 300;
+	  color: #585858;
+	  margin-bottom: 10px
+}
+h1 small {display: block;
+		  font-size: 22px
+}
+
+h2 {font-size: 30px;}
+
+h6 {font-size: 16px;
+	font-weight: bold;
+	color: #585858;
+	margin: 16px 0 8px 0;
+}
+
+.shot {text-align: center;
+		color:gray;
+		margin: 20px 0
+}
+
+img.inline-icon {margin-left: 4px; vertical-align: bottom}
+img.large-icon {vertical-align:text-bottom;}
+img.icon {vertical-align: middle}
+img.win {vertical-align: middle; padding-bottom: 2px}
+
+ul.icons li:before {display: none}
+ul.icons img.icon {margin: 0 6px 0 -23px }
+ul.icons img.large-icon {margin: 2px 6px 2px -31px }
+
+ul.dashed {padding-left: 20px}
+ul.dashed li:before{content: '-'; color: #f99085; margin-left: -11px}
+p+ul.dashed{margin-top: -12px}
+
+
+ol li {margin-top: 10px}
+
+.notonline{display: none}
+
+/* tables */
+table {width: 100%;
+	   margin-bottom: 50px;
+	   border-collapse: collapse;
+}
+th, td {border-bottom: 1px #dbdbdb solid;
+		font-weight: normal;
+		margin:0;
+		padding: 10px 15px 10px 0;
+		line-height:20px;
+		text-align: left;
+}
+th {color:black; padding-top:0}
+td{color:#707070; vertical-align: top;}
+td span {margin-left: 22px;
+		 text-indent: -22px; /* table parameters description list */
+		 color: #707070;
+		 display: block}
+td span em {
+	display: inline-block;
+	text-indent: 0;
+}
+
+td img {vertical-align: bottom; margin-left: 5px}
+
+#menu2 a:hover h2 span{text-decoration: underline}
+#menu2 a {margin: 0}
+#menu2 a h2 {cursor: inherit}
+#menu2 h2 span {display: inline-block}
+
+/* Search bar */
+#menu2 form { float: right;
+			  position: relative;
+			  display: none;
+			  margin-top: 16px
+}
+
+#menu2 form span{position: absolute;
+				 left: 10px;
+				 top:3px;
+				 color: lightgrey;
+}
+
+#menu2 input[type='submit']{position: absolute;
+							right: 1px;
+							background:transparent;
+							color: white;
+							width:27px;
+							height:27px;
+							padding: 0;
+							border: 0;
+							top:1px;
+							font-family: SoftrosWeb;
+							transition: all 0.2s ease-out;
+}
+#menu2 input[type='text']{padding-right: 30px;
+		   width: 150px;
+		   height: 23px;
+		   transition: all 0.2s ease-out;
+		   background: transparent;
+}
+#menu2 input[type='text']:focus{border: white 1px solid}
+
+/* setting */
+
+a.folder {
+	display: block;
+	padding: 7px 20px;
+	background-image: url("/help/arrow-right.png");
+	background-position: left center;
+	background-repeat: no-repeat;
+	color:#00749e;
+}
+div.folded {
+	display: none;
+	margin-left: 20px;
+}
+
+.example
+{
+	display: block;
+	margin: 5px;
+}
+.nobr {white-space: nowrap}
+
+h6.also {margin-top: 40px}
+
+/* tooltips */
+
+.tooltip {display: none}
+.tooltip{background-color:#f0f0f0;
+		 border:1px darkgray solid;
+		 padding:10px;
+		 position:absolute;
+		 display:none;
+		 width: 380px;
+		 max-width: calc(100% - 60px);
+		 text-align: justify;
+		 hyphens: auto;
+		 z-index:1;
+}
+.tooltiplink:after{margin-left: 0}
+#content .tooltiplink {color:black;
+			 border-bottom: 1px dashed black}
+#content .tooltiplink:hover {text-decoration: none}	
+#content td .tooltiplink {color: #707070; border-bottom-color: #707070}
+
+/* video player */
+video
+{
+	width: 100%
+}
+
+/* mobile view */
+@media all and (max-width: 880px)
+{
+	#menu2 nav {
+		overflow: hidden;
+		padding-bottom: 20px;
+	} /* floating search box */
+	
+	#content {padding:0 10px
+	}
+	
+	.shot img {max-width: 100%}
+	
+	ul.icons {padding-left: 30px}
+	
+	h5+div p {margin-left: -30px} /* notes section */
+	
+	/* tables */
+	
+	#content td {display: block;
+				 color: black;
+				 border: none;
+	}
+	#content td span {color: black}
+	
+	#content td:last-child,
+	#content td:nth-last-child(2) {
+		 background: #efefef; 
+		border: 1px solid lightgray;
+		padding: 5px ;
+	}
+	
+	
+	#content td:last-child{border-top: 0;
+						   padding-top: 0}
+	#content td:nth-last-child(2) {border-bottom: 0;
+								   margin-top: 5px;								  
+								   font-weight: 600;								   
+	}
+	
+	#content td:first-child {margin-top: 10px}
+	#content td strong {color: #505050}
+	
+	#content th {display: none}
+	
+	td span em {overflow-wrap: break-word;
+				word-break: break-all;
+	}
+	#content table {margin-bottom: 30px;
+					margin-top: -16px}
+}
+
+
+/* loaded by JS in case system does not have Segoe UI */
+body {color: #3f3f3f}
+
+#menu a, #menu span.a, #menu button.a {line-height: 25px;}
+
+.menu_item:last-child div,
+.menu_item:last-child ul {margin-left: -17px;}
+
+/* Required accessibility additions */
+.skip-link {
+  position: absolute;
+  transform: translateY(-100%);
+  left: 0;
+  top: 0;
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  z-index: 1000;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+:focus-visible {
+  outline: 3px solid #005FCC;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+.nav-toggle { display: none; }
+@media (max-width: 768px) { .nav-toggle { display: block; } }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#menu button.a {
+  background: transparent;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 220px;
+}
+.dropdown-list li::before {
+  content: none !important;
+}
+.dropdown-list a {
+  display: block;
+  padding: 10px 20px;
+}
+.dropdown-list[hidden] {
+  display: none !important;
+}
+.menu_item.has-dropdown:hover > .dropdown-list {
+  display: block;
+}
+
+.shot button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+#modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 19;
+}
+#modal-screenshot {
+  position: fixed;
+  inset: 5%;
+  background: #fff;
+  z-index: 20;
+  padding: 20px;
+  overflow: auto;
+}
+#modal-screenshot img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 16px;
+}
+#modal-close-screenshot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+  </style>
+</head>
+<body class="narrow">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="wrapper">
+    <header class="content" id="header">
+      <a id="logo" href="/" aria-label="Softros home">
+        <img alt="Softros logo" height="50" src="rick.jpg" width="183">
+      </a>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <nav id="menu" aria-label="Main navigation">
+        <ul class="dropdown-list" style="display:inline; padding:0; margin:0;">
+          <li class="menu_item has-dropdown">
+            <button
+              class="a"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="dropdown-products">
+              Products <span aria-hidden="true">&#9660;</span>
+            </button>
+            <ul id="dropdown-products" class="submenu dropdown-list" role="list" hidden>
+              <li><a href="/products/lan-messenger/">Softros LAN Messenger</a></li>
+              <li><a href="/products/network-time-system/">Network Time System</a></li>
+              <li><a href="/products/logonexpert/">LogonExpert</a></li>
+            </ul>
+          </li>
+          <li class="menu_item has-dropdown">
+            <button
+              class="a"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="dropdown-store">
+              Store <span aria-hidden="true">&#9660;</span>
+            </button>
+            <ul id="dropdown-store" class="submenu dropdown-list" role="list" hidden>
+              <li><a href="/store/lan-messenger/">Softros LAN Messenger</a></li>
+              <li><a href="/store/network-time-system/">Network Time System</a></li>
+              <li><a href="/store/logonexpert/">LogonExpert</a></li>
+            </ul>
+          </li>
+          <li class="menu_item has-dropdown">
+            <button
+              class="a"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="dropdown-downloads">
+              Downloads <span aria-hidden="true">&#9660;</span>
+            </button>
+            <ul id="dropdown-downloads" class="submenu dropdown-list" role="list" hidden>
+              <li><a href="/downloads/lan-messenger/">Softros LAN Messenger</a></li>
+              <li><a href="/downloads/network-time-system/">Network Time System</a></li>
+              <li><a href="/downloads/logonexpert/">LogonExpert</a></li>
+            </ul>
+          </li>
+          <li class="menu_item">
+            <a href="/support/">Support</a>
+          </li>
+          <li class="menu_item has-dropdown">
+            <button
+              class="a"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="dropdown-company">
+              Company <span aria-hidden="true">&#9660;</span>
+            </button>
+            <ul id="dropdown-company" class="submenu dropdown-list" role="list" hidden>
+              <li><a href="/company/about/">About Us</a></li>
+              <li><a href="/company/resellers/">Resellers</a></li>
+              <li><a href="/company/policies/">Our Policies</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <nav id="mobile-nav" aria-label="Main" hidden>
+        <ul class="dropdown-list">
+          <li><a href="/products/lan-messenger/">Softros LAN Messenger</a></li>
+          <li><a href="/products/network-time-system/">Network Time System</a></li>
+          <li><a href="/products/logonexpert/">LogonExpert</a></li>
+          <li><a href="/store/">Store</a></li>
+          <li><a href="/downloads/">Downloads</a></li>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/company/about/">About Us</a></li>
+          <li><a href="/company/resellers/">Resellers</a></li>
+          <li><a href="/company/policies/">Our Policies</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="menu2">
+      <nav class="content" aria-label="Help navigation">
+        <a href="/help/">
+          <h2>
+            <span>Softros LAN Messenger</span>
+            <span>Online Help</span>
+          </h2>
+        </a>
+        <form action="/help/search/" method="get" name="queryform" style="display: block;">
+          <label for="help-search" class="sr-only">Search help topics</label>
+          <span aria-hidden="true" style="display: block;">Search Help Topics</span>
+          <input id="help-search" name="keys" style="background: transparent;" type="text">
+          <input aria-label="Submit help search" style="color: white;" type="submit" value="🔎">
+        </form>
+      </nav>
+    </div>
+
+    <main id="main-content">
+      <div id="content">
+        <h1>
+          Automatic Software Installation in AD
+          <small>Using Group Policy to deploy Softros LAN Messenger in a Windows Server 2019 domain</small>
+        </h1>
+        <p>
+          A Windows Active Directory (AD) domain allows you to automatically install software applications across the network.
+          To deploy Softros LAN Messenger to all domain computers, follow these steps on the domain controller.
+        </p>
+        <ol>
+          <li>
+            <a class="external" target="_blank" rel="noopener noreferrer" href="/downloads/lan-messenger/">Download Softros LAN Messenger MSI installer</a>
+            the installation file
+            <strong>SoftrosLANMessengerSetup.msi</strong>,
+            and then put it into a network location all domain users have read access to.
+            <div class="shot">
+              <button type="button" class="modal-trigger" aria-haspopup="dialog" data-modal-image="rick.jpg" data-modal-alt="Screenshot showing the installation file location" data-modal-caption="Locating the installation file">
+                <img alt="Screenshot showing the installation file location" height="478" src="rick.jpg" width="476">
+              </button>
+              <br>
+              <span>Locating the installation file</span>
+            </div>
+          </li>
+          <li>
+            Click the
+            <strong>Start</strong>
+            button, and then navigate to
+            <strong>Windows Administrative Tools</strong>
+            ➜
+            <strong>Group Policy Management</strong>.
+            <div class="shot">
+              <button type="button" class="modal-trigger" aria-haspopup="dialog" data-modal-image="rick.jpg" data-modal-alt="Screenshot showing how to open Group Policy Management" data-modal-caption="Opening Group Policy Management">
+                <img alt="Screenshot showing how to open Group Policy Management" height="263" src="rick.jpg" width="693">
+              </button>
+              <br>
+              <span>
+                Opening
+                <strong>Group Policy Management</strong>
+              </span>
+            </div>
+          </li>
+          <li>
+            In the left-hand pane of the
+            <strong>Group Policy Management</strong>
+            window, navigate to your domain, right-click it,
+            and then click
+            <strong>Create a GPO in this domain, and Link it here</strong>.
+            <div class="shot">
+              <button type="button" class="modal-trigger" aria-haspopup="dialog" data-modal-image="rick.jpg" data-modal-alt="Screenshot showing the domain context menu in Group Policy Management" data-modal-caption="Context menu of a domain">
+                <img alt="Screenshot showing the domain context menu in Group Policy Management" height="346" src="rick.jpg" width="469">
+              </button>
+              <br>
+              <span>Context menu of a domain</span>
+            </div>
+          </li>
+          <li>
+            In the
+            <strong>New GPO</strong>
+            dialog box, enter a name for the new Group Policy Object (GPO), and then click
+            <strong>OK</strong>.
+            <div class="shot">
+              <button type="button" class="modal-trigger" aria-haspopup="dialog" data-modal-image="rick.jpg" data-modal-alt="Screenshot showing the New GPO dialog box" data-modal-caption="Adding a new GPO">
+                <img alt="Screenshot showing the New GPO dialog box" height="196" src="rick.jpg" width="405">
+              </button>
+              <br>
+              <span>Adding a new GPO</span>
+            </div>
+          </li>
+        </ol>
+        <p>
+          The configuration of the new GPO is finished. Once the deployment of the GPO in the domain is complete,
+          Softros <a href="/products/lan-messenger/">LAN Messenger</a> will be automatically installed after each
+          computer is restarted.
+        </p>
+        <h2 class="also">You may also be interested in:</h2>
+        <ul>
+          <li><a href="/help/automatic-update/">Automatic Update</a></li>
+          <li><a href="/help/custom-settings-deployment/">Automatic Deployment of Custom Settings</a></li>
+          <li><a href="/help/automation-troubleshooting/">Automation Troubleshooting</a></li>
+        </ul>
+      </div>
+    </main>
+
+    <footer id="footer">
+      <div class="content">
+        <nav aria-label="Footer navigation">
+          <a href="/privacy-policy/">Privacy Policy</a>
+          <a href="/contact/">Contact Us</a>
+          <a href="/company/about/">About Us</a>
+        </nav>
+        <span>
+          <a href="/">© Softros Systems. 2023</a>
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  <div
+    id="modal-screenshot"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title-screenshot"
+    hidden>
+    <h2 id="modal-title-screenshot">Screenshot preview</h2>
+    <img id="modal-image" src="" alt="">
+    <p id="modal-caption"></p>
+    <button id="modal-close-screenshot" aria-label="Close screenshot preview">&#x2715;</button>
+  </div>
+  <div id="modal-backdrop" hidden aria-hidden="true"></div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        const firstFocusable = nav.querySelector('a, button');
+        if (firstFocusable) firstFocusable.focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    const dropdownButtons = document.querySelectorAll('.has-dropdown > button[aria-controls]');
+
+    function closeAllDropdowns(exceptButton = null) {
+      dropdownButtons.forEach(button => {
+        if (button !== exceptButton) {
+          button.setAttribute('aria-expanded', 'false');
+          const menu = document.getElementById(button.getAttribute('aria-controls'));
+          if (menu) menu.hidden = true;
+        }
+      });
+    }
+
+    dropdownButtons.forEach(button => {
+      const menu = document.getElementById(button.getAttribute('aria-controls'));
+      const items = () => menu ? Array.from(menu.querySelectorAll('a')) : [];
+
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        closeAllDropdowns(button);
+        button.setAttribute('aria-expanded', String(!expanded));
+        if (menu) menu.hidden = expanded;
+      });
+
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          closeAllDropdowns(button);
+          button.setAttribute('aria-expanded', 'true');
+          if (menu) menu.hidden = false;
+          const firstItem = items()[0];
+          if (firstItem) firstItem.focus();
+        } else if (e.key === 'Escape') {
+          button.setAttribute('aria-expanded', 'false');
+          if (menu) menu.hidden = true;
+          button.focus();
+        }
+      });
+
+      if (menu) {
+        menu.addEventListener('keydown', (e) => {
+          const menuItems = items();
+          const currentIndex = menuItems.indexOf(document.activeElement);
+
+          if (e.key === 'Escape') {
+            button.setAttribute('aria-expanded', 'false');
+            menu.hidden = true;
+            button.focus();
+          } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % menuItems.length;
+            if (menuItems[nextIndex]) menuItems[nextIndex].focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prevIndex = currentIndex <= 0 ? menuItems.length - 1 : currentIndex - 1;
+            if (menuItems[prevIndex]) menuItems[prevIndex].focus();
+          } else if (e.key === 'Tab' && currentIndex === menuItems.length - 1 && !e.shiftKey) {
+            button.setAttribute('aria-expanded', 'false');
+            menu.hidden = true;
+          }
+        });
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.has-dropdown')) {
+        closeAllDropdowns();
+      }
+    });
+
+    const modal = document.getElementById('modal-screenshot');
+    const backdrop = document.getElementById('modal-backdrop');
+    const modalImage = document.getElementById('modal-image');
+    const modalCaption = document.getElementById('modal-caption');
+    const modalClose = document.getElementById('modal-close-screenshot');
+    const modalTriggers = document.querySelectorAll('.modal-trigger');
+
+    function openModal(modal, trigger) {
+      modal.hidden = false;
+      document.getElementById('modal-backdrop').hidden = false;
+      document.body.setAttribute('aria-hidden', 'true');
+      modal.removeAttribute('aria-hidden');
+      const focusable = modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length) focusable[0].focus();
+
+      modal._trap = (e) => {
+        if (e.key !== 'Tab') return;
+        const currentFocusable = modal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = currentFocusable[0], last = currentFocusable[currentFocusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      };
+      modal._esc = (e) => { if (e.key === 'Escape') closeModal(modal, trigger); };
+      modal.addEventListener('keydown', modal._trap);
+      document.addEventListener('keydown', modal._esc);
+      modal._trigger = trigger;
+    }
+
+    function closeModal(modal, trigger) {
+      modal.hidden = true;
+      document.getElementById('modal-backdrop').hidden = true;
+      document.body.removeAttribute('aria-hidden');
+      modal.removeEventListener('keydown', modal._trap);
+      document.removeEventListener('keydown', modal._esc);
+      (modal._trigger || trigger).focus();
+    }
+
+    modalTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        modalImage.src = trigger.getAttribute('data-modal-image');
+        modalImage.alt = trigger.getAttribute('data-modal-alt');
+        modalCaption.textContent = trigger.getAttribute('data-modal-caption');
+        openModal(modal, trigger);
+      });
+    });
+
+    modalClose.addEventListener('click', () => closeModal(modal, modal._trigger));
+    backdrop.addEventListener('click', () => closeModal(modal, modal._trigger));
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link; converted header/content/footer wrappers to semantic header/main/footer; added id="main-content" to main; corrected heading hierarchy to one h1 and changed "You may also be interested in" to h2; added alt text to all images; added labels for search input; ensured all links/buttons have descriptive accessible names; preserved html lang="en".
+[B] ARIA fixes: added unique aria-labels to multiple nav regions; avoided redundant role attributes on semantic landmarks; added aria-expanded/aria-haspopup/aria-controls for dropdowns and hamburger; added dialog ARIA attributes for modal; ensured no positive tabindex remains via JS.
+[C] JS patterns added: implemented C-N1 hamburger menu; implemented C-N2 dropdown menus with keyboard support and outside-click/Escape handling; implemented C-M1/M2 modal dialog with focus trap, Escape close, backdrop close, and focus return; implemented C-K1/K3 global focus indicator and positive tabindex cleanup.
+-->

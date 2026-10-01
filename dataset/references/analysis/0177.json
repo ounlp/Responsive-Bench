@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a long single-column content page ending with a distinct centered button-like rectangle near the footer area, matching the reference page's 'Back to top of page' control.",
+      "confidence": "HIGH",
+      "behavior_notes": "A button or link should scroll the viewport back to the top of the page. It may be always visible near the footer or additionally appear after scrolling if enhanced.",
+      "ambiguities": "The sketch does not show whether the control is persistent, only footer-based, or conditionally revealed after scroll."
+    }
+  ],
+  "applicable_criteria": [
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static informational marketing page with hero imagery, rows of simple navigation/action buttons, long text content, and footer links. No menus, forms, tabs, accordions, overlays, or dynamic loading behaviors are visibly indicated. The only clear JavaScript-worthy interaction implied by the layout and reinforced by the reference HTML is a back-to-top control on this long page; otherwise the page can largely be implemented with standard links and static layout in both mobile and desktop views."
+}

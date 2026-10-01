@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Edwin</title>
+  <style>
+    :root{
+      --bg:#f8f8f6;
+      --text:#1f1f1f;
+      --orange:#ff8a00;
+      --blue:#1400ff;
+      --muted:#d9d9d9;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: "Trebuchet MS", "Gill Sans", "Avenir Next", sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      min-height:100vh;
+      line-height:1.45;
+    }
+
+    .skip-link{
+      position:absolute;
+      transform:translateY(-100%);
+      left:1rem;
+      top:0;
+      background:#fff;
+      color:#000;
+      padding:.75rem 1rem;
+      z-index:1000;
+      text-decoration:none;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:underline;
+    }
+
+    .site-header{
+      position:relative;
+      padding:24px 38px 0;
+      min-height:90px;
+    }
+
+    .desktop-nav ul,
+    .mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .desktop-nav ul{
+      display:flex;
+      gap:32px;
+      align-items:center;
+    }
+
+    .desktop-nav a,
+    .mobile-nav a{
+      text-decoration:none;
+      color:#2a2a2a;
+      font-size:18px;
+      letter-spacing:.01em;
+    }
+
+    .desktop-nav li:first-child a{
+      font-weight:700;
+    }
+
+    .nav-toggle{
+      display:none;
+      position:absolute;
+      right:42px;
+      top:22px;
+      border:0;
+      background:transparent;
+      color:var(--orange);
+      font-size:28px;
+      line-height:1;
+      padding:6px 8px;
+      cursor:pointer;
+    }
+
+    .mobile-nav{
+      position:absolute;
+      right:24px;
+      top:64px;
+      background:var(--bg);
+      padding:10px 0;
+      min-width:180px;
+      z-index:20;
+    }
+
+    .mobile-nav li{
+      margin:0;
+    }
+
+    .mobile-nav a{
+      display:block;
+      padding:10px 14px;
+      font-size:20px;
+    }
+
+    .mobile-nav li:first-child a{
+      font-weight:700;
+    }
+
+    .page{
+      position:relative;
+      min-height:calc(100vh - 90px);
+      padding:40px 0 60px;
+      overflow:hidden;
+    }
+
+    .blue-block{
+      position:absolute;
+      background:var(--blue);
+    }
+
+    .blue-top{
+      width:116px;
+      height:62px;
+      top:-26px;
+      right:70px;
+    }
+
+    .blue-left{
+      width:318px;
+      height:179px;
+      left:40px;
+      top:248px;
+    }
+
+    .content{
+      position:relative;
+      z-index:2;
+      width:min(100%, 980px);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap:56px;
+      align-items:start;
+      padding:70px 40px 0;
+    }
+
+    .spacer{
+      min-height:420px;
+    }
+
+    .intro{
+      max-width:700px;
+      padding-top:18px;
+    }
+
+    h1{
+      margin:0 0 28px;
+      font-size:18px;
+      font-weight:400;
+      color:var(--orange);
+    }
+
+    h1 em{
+      font-style:italic;
+    }
+
+    .intro p{
+      margin:0 0 10px;
+      font-size:18px;
+      font-weight:600;
+      line-height:1.35;
+      letter-spacing:.005em;
+    }
+
+    .intro strong.orange{
+      color:var(--orange);
+      font-weight:700;
+    }
+
+    .floating-dot{
+      position:fixed;
+      right:24px;
+      bottom:18px;
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:var(--muted);
+    }
+
+    footer{
+      display:none;
+    }
+
+    @media (max-width: 1024px){
+      .site-header{
+        padding:0;
+        min-height:0;
+      }
+
+      .desktop-nav{
+        display:none;
+      }
+
+      .nav-toggle{
+        display:block;
+      }
+
+      .blue-top{
+        width:106px;
+        height:58px;
+        top:4px;
+        left:331px;
+        right:auto;
+      }
+
+      .blue-left{
+        width:202px;
+        height:112px;
+        left:0;
+        top:492px;
+      }
+
+      .content{
+        width:100%;
+        grid-template-columns: 240px 1fr;
+        gap:56px;
+        padding:96px 40px 0;
+        margin:0;
+      }
+
+      .spacer{
+        min-height:420px;
+      }
+
+      .intro{
+        max-width:390px;
+        padding-top:26px;
+      }
+
+      .intro p{
+        font-size:17px;
+      }
+
+      h1{
+        font-size:18px;
+        margin-bottom:28px;
+      }
+
+      .floating-dot{
+        display:none;
+      }
+    }
+
+    @media (max-width: 768px){
+      .nav-toggle { display: block; }
+
+      .page{
+        padding-top:0;
+      }
+
+      .blue-top{
+        width:107px;
+        height:67px;
+        top:3px;
+        left:134px;
+      }
+
+      .blue-left{
+        position:relative;
+        width:360px;
+        height:203px;
+        left:8px;
+        top:auto;
+        margin:135px 0 0;
+      }
+
+      .content{
+        display:block;
+        padding:0 0 0;
+      }
+
+      .spacer{
+        min-height:0;
+      }
+
+      .intro{
+        max-width:none;
+        padding:18px 58px 0;
+      }
+
+      h1{
+        font-size:17px;
+        margin:0 0 28px;
+      }
+
+      .intro p{
+        font-size:17px;
+        line-height:1.55;
+        margin-bottom:8px;
+      }
+
+      .nav-toggle{
+        right:18px;
+        top:16px;
+      }
+
+      .mobile-nav{
+        right:10px;
+        top:56px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="desktop-nav" aria-label="Main">
+      <ul>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">DESIGN</a></li>
+        <li><a href="#">FINE ART</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </nav>
+
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+
+    <nav id="mobile-nav" aria-label="Main" hidden class="mobile-nav">
+      <ul>
+        <li><a href="#">ABOUT</a></li>
+        <li><a href="#">DESIGN</a></li>
+        <li><a href="#">FINE ART</a></li>
+        <li><a href="#">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="page">
+    <div class="blue-block blue-top" aria-hidden="true"></div>
+    <div class="blue-block blue-left" aria-hidden="true"></div>
+
+    <div class="content">
+      <div class="spacer" aria-hidden="true"></div>
+
+      <section class="intro" aria-label="About Edwin">
+        <h1><em>Bonjour</em> , I'm Edwin!</h1>
+
+        <p>Born in Tahiti, I grew up in Strasbourg, France. Midway through art school, I landed in Calgary, Canada, and I've been frozen to that land ever since.</p>
+
+        <p>I'm currently a graphic design instructor at Reeves College in Calgary, where I spend my time teaching the mechanics of the Adobe CC while sharing my enthusiasm and passion for everything creative and typography-related to aspiring designers.</p>
+
+        <p>Previously, I have held the positions of <strong>Art Director</strong> at TAG Advertising, <strong>Creative Director</strong> at nonfiction studios, where I shared and applied my knowledge of print, motion and web design, corporate communication and info-based design for large industrial companies and worthy local not-for-profit organizations.</p>
+
+        <p>I am a visual mechanic. A typographical noodle chef. <strong class="orange">orange</strong> .</p>
+
+        <p>I don’t quit until it’s perfectly done. <a href="#">I'd love to hear from you</a> !</p>
+      </section>
+    </div>
+  </main>
+
+  <div class="floating-dot" aria-hidden="true"></div>
+
+  <footer></footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, nav, main, footer; ensured one h1; set html lang="en"; provided descriptive link text; no form fields or images were visible so none added.
+[B] ARIA fixes: used aria-label on multiple nav regions; avoided redundant landmark roles; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented hamburger menu toggle with aria-expanded, aria-controls, focus management, and Escape close; implemented tabindex cleanup; included focus-visible styling.
+-->

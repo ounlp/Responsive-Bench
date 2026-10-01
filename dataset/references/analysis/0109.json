@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a distinct top horizontal header/navigation band separated from the page content, suggesting a persistent site header that remains available while long-form content scrolls beneath it.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should remain fixed or persistently accessible during scroll. If it changes size or style on scroll, that behavior is not explicit but a fixed position is strongly implied by the isolated top bar treatment.",
+      "ambiguities": "The sketch does not explicitly show scroll states, so it is unclear whether the header is always fixed, becomes sticky after scrolling, or is simply a static top section."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "At the top of the mobile sketch there are small separated marks aligned across the header area rather than a full horizontal nav list, implying a compact mobile navigation trigger instead of exposed navigation links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile nav toggle should open and close a hidden navigation panel or drawer. The trigger should update expanded/collapsed state and expose the site navigation in a compact overlay or slide-in panel.",
+      "ambiguities": "The sketch is highly abstract and does not explicitly draw a classic three-line icon or the opened menu state, so the exact menu presentation (drawer, dropdown, fullscreen overlay) is unclear."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven page with low JavaScript complexity. The main interactive requirement is navigation behavior: a persistent/sticky header across both viewports and a collapsed mobile navigation control on the mobile layout. No clear evidence appears for forms, tabs, accordions, modals, dynamic loading, or notifications. The desktop sketch suggests exposed navigation within a stable header, while the mobile sketch suggests that navigation is condensed behind a toggle."
+}

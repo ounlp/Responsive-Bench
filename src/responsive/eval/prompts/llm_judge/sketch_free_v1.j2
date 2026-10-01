@@ -1,0 +1,307 @@
+You are an expert responsive web design evaluator.
+
+Task:
+You will be given screenshots of the same generated webpage at three viewport sizes:
+- Mobile (375px width)
+- Tablet (768px width)
+- Desktop (1280px width)
+
+Each screenshot shows the full rendered height and width of the page, but the region that is
+visible to a user without scrolling is marked by a semi-transparent red border. Treat everything
+inside the red border as the visible viewport. Content that falls outside the red border is
+below the fold or to the right of the viewport edge and requires scrolling to reach. When
+evaluating clipping, overflow, or truncation, assess whether content is cut off at the red
+border boundary — not at the edge of the screenshot image itself. Content that extends beyond
+the red border horizontally indicates a layout failure; content that extends below the red
+border vertically is normal scrollable content and should not be penalized.
+
+---
+
+Scoring mindset:
+
+Do not begin from a score of 5 and subtract. Begin from a score of 1 and increase only when
+the evidence clearly supports it. For each dimension, your first task is to actively search
+for failures — overflow, clipping, distortion, misalignment, crowding, incorrect reflow. List
+every failure you observe before assigning a score. Only after identifying all failures should
+you consult the rubric to determine which score those failures warrant.
+
+A failure observed in any single viewport is not mitigated by good performance in the other
+viewports. Score the worst observed case, not the average across viewports.
+
+Score 5 is a strict zero-failure gate. It should only be assigned when you have actively
+confirmed the complete absence of all failure conditions described for that dimension across
+all three viewports. If you can identify any exception, deviation, or borderline case — no
+matter how minor — the score is 4 at most.
+
+Score 3 is not a neutral or passing score. It means the dimension has a clear, visible failure
+that any observer would notice — a meaningful problem that degrades the user experience at one
+or more viewport sizes.
+
+Scores of 1 and 2 should be common in a typical sample of generated webpages. Scores of 4 and
+5 should only be assigned after actively confirming the absence of all failure conditions.
+
+---
+
+Evaluation procedure:
+
+For each dimension:
+1. Actively search for failures across all three screenshots.
+2. List every failure observed in the failures_observed field before assigning a score.
+3. Identify the worst failure across all viewports.
+4. Consult the rubric and assign the score that matches the worst observed failure.
+5. Write a rationale grounded in specific visual evidence from the screenshots.
+
+---
+
+Dimensions:
+1) Fluid Layout & Container Adaptation: The page layout and its major sections (headers, content
+areas, sidebars, footers) should resize to fill the available viewport width at each screen
+size. Containers must not clip their internal content, produce horizontal scrollbars, or leave
+conspicuous blank columns beside fixed-width blocks. Judge this by looking at the overall page
+structure across all three screenshots and checking whether sections fill the red-bordered
+viewport cleanly, whether any content is cut off at the right edge of the red border, and
+whether any section remains rigidly fixed in a way that leaves dead space beside it or forces
+horizontal scrolling. When text, a heading, or a list item ends abruptly mid-word or
+mid-sentence at the right edge of the red border without punctuation or a natural line break,
+treat this as container overflow or viewport clipping — not as screenshot cropping. Each
+viewport in which this failure appears counts as a separate failure instance; failures across
+multiple viewports do not average out.
+
+2) Flexible Grid Reflow: Multi-column layouts on the desktop screenshot (card grids, feature
+rows, article lists, sidebar-plus-content layouts) should reduce their column count on smaller
+viewports so that content stacks into fewer columns or a single column rather than remaining
+side-by-side and becoming too narrow to read. Judge this by identifying every area that
+displays multiple items in a row on desktop, then checking in the tablet and mobile screenshots
+whether those columns have reduced and stacked logically, whether content order is preserved,
+and whether every cell remains wide enough to be comfortably readable. If no multi-column
+layout is visible in the desktop screenshot — meaning all content already appears in a single
+column at desktop width — first confirm that the desktop screenshot does not contain any
+side-by-side content areas, card rows, or sidebar-plus-content arrangements within the red
+border that could constitute a multi-column layout. Only if genuinely no such areas exist,
+assign a score of 5 and note in the rationale that no multi-column layout was present
+to evaluate.
+
+3) Responsive Media: Images and videos must scale proportionally within their containers and
+within the red-bordered viewport across all three viewports, without overflowing the container
+boundary or the right edge of the red border, showing a visibly incorrect aspect ratio
+(stretched or squashed), or being cropped so severely that the primary subject of the image is
+obscured. Judge this by inspecting every visible image and video in all three screenshots —
+including media below the red border, since media below the fold is still part of the page's
+responsive behavior — and checking whether the media fits inside its container and within the
+red border horizontally, whether the aspect ratio looks visually correct, and whether any
+meaningful portion of the subject is cut off by the container edge. An image or video that
+maintains a correct aspect ratio but still extends horizontally beyond the right edge of the
+red border is a responsive media failure. Correct proportions do not offset overflow; both
+conditions must be satisfied independently. If no images or videos are visible anywhere in any
+screenshot, assign a score of 5 and note in the rationale that no media was present to
+evaluate.
+
+4) Intentional Content Visibility: Secondary and auxiliary content (sidebars, supplementary
+navigation panels, decorative banners, non-essential widgets, and similar supporting elements)
+should be hidden, collapsed, or visually subordinated on smaller viewports so that primary
+content remains the dominant visible element. Primary content is whatever the page exists to
+communicate: the main article body, hero message, primary call to action, or product detail.
+Judge this by identifying what the primary content is on desktop, then checking whether
+secondary elements on mobile and tablet are taking up space within the red-bordered viewport
+that competes with or buries that primary content. Pay particular attention to what occupies
+the viewport on first load — the area inside the red border — since that is what the user sees
+before any scrolling.
+
+5) Proper Alignment and Spacing: Elements should maintain consistent horizontal alignment and
+balanced whitespace between them across all three viewports, without elements touching or
+overlapping unintentionally, and without large unexpected gaps appearing between adjacent
+sections. Judge this by scanning each screenshot — including content below the red border —
+for elements that share a visual column or row and checking whether their edges align, whether
+padding and margins appear visually even within similar components, and whether any two
+adjacent sections are either crowded together or separated by a gap that is clearly
+inconsistent with the surrounding rhythm of the layout.
+
+---
+
+Scoring (5-point Likert scale):
+| Score | Label |
+|---:|---|
+| 1 | Strongly disagree |
+| 2 | Disagree |
+| 3 | Neutral |
+| 4 | Agree |
+| 5 | Strongly agree |
+
+---
+
+Rubric guidance by dimension (use these to pick 1-5):
+
+- Fluid Layout & Container Adaptation
+  - 1: Any of the following is sufficient for a score of 1: text, a heading, or any element is
+    truncated mid-word or mid-sentence at the right edge of the red border in any screenshot; a
+    horizontal scrollbar is visible within the red-bordered viewport; a primary element such as
+    a heading, main content block, or primary navigation is clipped or incomplete at the red
+    border boundary. If the same class of failure appears across two or more viewport screenshots,
+    the score is 1 regardless of how well other sections appear. A correct layout in one viewport
+    does not offset a failure in another.
+  - 2: Overflow or clipping failures are visible in exactly one viewport screenshot and affect
+    a secondary or supplementary element rather than a primary heading or main content block.
+    Or two or more sections across the page show obvious rigid behavior — dead space flanking
+    them or sections that do not grow to fill the available width — without producing visible
+    truncation or a horizontal scrollbar.
+  - 3: The majority of the page fills each viewport correctly, but one clearly visible section
+    either overflows past the right edge of the red border, is clipped there, or leaves a
+    noticeable blank column beside it at one or more screen sizes. This is a problem score —
+    the failure is visible and degrades the user experience.
+  - 4: Nearly all sections fill their viewport and resize cleanly across all three screenshots.
+    At most one minor area shows slightly rigid sizing, but it does not produce overflow,
+    clipping, or a distracting blank column. Actively confirm no truncation or scrollbar exists
+    before assigning this score.
+  - 5: Zero failures. Every major section fills its viewport width fluidly in all three
+    screenshots. No content is clipped or truncated at the right edge of the red border, no
+    horizontal scrollbar appears, and no section leaves a conspicuous blank column beside it at
+    any screen size. Assign only after actively confirming the complete absence of all failure
+    conditions.
+
+- Flexible Grid Reflow
+  - 1: One or more multi-column areas retain their desktop column count on tablet or mobile,
+    making columns too narrow to read, causing items to overlap horizontally, or squeezing cells
+    to the point of illegibility. A single instance of this failure in any viewport is sufficient
+    for a score of 1.
+  - 2: Some multi-column areas reflow correctly, but at least one prominent grid or card row
+    does not reduce its column count on smaller viewports, resulting in cells that are clearly
+    cramped or hard to read, without reaching the point of overlap or complete illegibility.
+  - 3: Most multi-column areas reflow to fewer columns, but one noticeable case does not — for
+    example, two equal-width columns that remain side by side on mobile when each has become too
+    narrow for its content. This is a problem score — the failure is visible and affects
+    readability.
+  - 4: Multi-column layouts reduce their column count logically across all three viewports and
+    all content stays comfortably readable. At most one minor inconsistency exists that does not
+    materially affect readability. Actively confirm no cramped or illegible cells exist before
+    assigning this score.
+  - 5: Zero failures. Every multi-column area transitions cleanly to fewer columns and then to
+    a single column as the viewport narrows. Content order is preserved, no cell is too narrow
+    to read, and no horizontal overlapping occurs in any screenshot. Assign only after actively
+    confirming the complete absence of all failure conditions.
+
+- Responsive Media
+  - 1: Any of the following is sufficient for a score of 1, independently: (a) one or more
+    images or videos extend horizontally beyond the right edge of the red border in any
+    screenshot, regardless of whether the aspect ratio appears correct — a proportionally scaled
+    image that overflows the viewport boundary is still a score 1; (b) one or more images or
+    videos display a visibly incorrect aspect ratio (stretched or squashed); (c) one or more
+    images or videos are cropped so severely that the primary subject is obscured. A correct
+    aspect ratio does not offset overflow, and the absence of cropping does not offset
+    distortion. A single instance of any of these conditions in any screenshot is sufficient.
+  - 2: No image or video overflows the right edge of the red border, and no image or video
+    displays a severely incorrect aspect ratio or subject-obscuring crop. However, at least one
+    prominent image or video has a noticeably wrong aspect ratio that falls short of severe
+    distortion, is wider than its immediate container without crossing the red border boundary,
+    or is cropped in a way that hides a meaningful but non-central portion of the subject on
+    tablet or mobile.
+  - 3: The majority of media scales correctly and fits within the red border, but one noticeable
+    image or video shows an obviously incorrect aspect ratio, overflows its container without
+    crossing the red border, or is cropped in a way that cuts off a meaningful part of the
+    subject. This is a problem score — the failure is clearly visible.
+  - 4: Nearly all images and videos scale proportionally, fit inside their containers, and
+    remain within the red border across all three viewports. At most one minor cropping or
+    sizing issue exists that does not distort the subject, obscure meaningful content, or
+    produce overflow. Actively confirm no overflow past the red border exists before assigning
+    this score.
+  - 5: Zero failures. Every visible image and video fits cleanly inside its container and within
+    the red border in all three screenshots. Aspect ratios are visually correct, no media
+    overflows its container boundary or the red border, and no subject is cropped in a way that
+    obscures meaningful content. Assign only after actively confirming the complete absence of
+    all failure conditions.
+
+- Intentional Content Visibility
+  - 1: Clearly secondary elements (sidebars, auxiliary navigation panels, decorative sections)
+    remain fully displayed within the red-bordered viewport on mobile and occupy screen space
+    comparable to or greater than the primary content, making the primary content hard to locate
+    or access. A single instance of this in any viewport is sufficient for a score of 1.
+  - 2: Some secondary content is reduced on smaller viewports, but at least one clearly
+    non-primary element remains prominently visible within the red-bordered viewport on mobile
+    or tablet and noticeably competes with the primary content for screen space.
+  - 3: Primary content is accessible on all viewports, but at least one identifiable secondary
+    element remains fully visible within the red-bordered viewport on mobile or tablet when it
+    could reasonably be collapsed or hidden without losing important functionality. This is a
+    problem score — the secondary element is clearly present and takes up space that the primary
+    content should dominate.
+  - 4: Most secondary content is collapsed, hidden, or clearly visually subordinated on mobile
+    and tablet. The primary content is the dominant element within the red-bordered viewport.
+    At most one minor secondary element remains that does not materially compete with the
+    primary content. Actively confirm no competing secondary element is prominent before
+    assigning this score.
+  - 5: Zero failures. On all three viewports the primary content is the clear dominant element
+    within the red-bordered viewport. Secondary and auxiliary content is collapsed, hidden, or
+    visually reduced on mobile and tablet, and no secondary element occupies space that
+    meaningfully competes with the primary content. Assign only after actively confirming the
+    complete absence of all failure conditions.
+
+- Proper Alignment and Spacing
+  - 1: Multiple sections across the full rendered page show elements that touch or overlap
+    unintentionally, or have dramatically inconsistent margins, or large unexpected gaps appear
+    between adjacent sections — making the layout look visually broken in more than one area
+    across the screenshots. A single viewport with multiple such failures is sufficient for a
+    score of 1.
+  - 2: Noticeable spacing or alignment problems appear in two or more sections: elements crowd
+    each other, margin sizes are visibly uneven between similar components, or an unexpected gap
+    between adjacent sections disrupts the visual rhythm.
+  - 3: Most sections appear well-spaced and consistently aligned, but one area shows a clear
+    problem — such as elements touching at one viewport, an inconsistent left-edge alignment
+    within a column, or padding that disappears asymmetrically at one screen size. This is a
+    problem score — the failure is clearly visible and affects the visual coherence of the
+    layout.
+  - 4: Consistent alignment and balanced spacing appear throughout all three screenshots. At
+    most one minor inconsistency exists — such as a slightly uneven margin between two items —
+    that does not disrupt the overall visual rhythm of the layout. Actively confirm no crowding,
+    overlap, or large unexpected gaps exist before assigning this score.
+  - 5: Zero failures. Alignment and spacing are consistent and balanced across all three
+    viewports and across the full rendered page. No elements touch or overlap unintentionally,
+    no large unexpected gaps appear between adjacent sections, and padding and margins appear
+    visually even within similar components. Assign only after actively confirming the complete
+    absence of all failure conditions.
+
+---
+
+Output requirements:
+- Respond with exactly one JSON object.
+- All scores must be integers from 1 to 5.
+- The failures_observed field must be completed before the score field is determined. List
+  every visible failure you found during your active search, or write "none observed" if no
+  failures were found. This field must reflect a genuine search, not a post-hoc justification
+  of the score.
+- Each rationale must be one paragraph grounded in specific screenshot evidence (what you see
+  on mobile vs tablet vs desktop), referencing the red border where relevant to justify
+  clipping or visibility judgments.
+- Do not mention policies, hidden reasoning, or speculation about the underlying HTML/CSS.
+
+Output format (strict JSON):
+{
+  "scores": {
+    "fluid_layout_and_container_adaptation": {
+      "failures_observed": "<list every visible failure before scoring, or 'none observed'>",
+      "score": <1-5>,
+      "rationale": "<one paragraph>"
+    },
+    "flexible_grid_reflow": {
+      "failures_observed": "<list every visible failure before scoring, or 'none observed'>",
+      "score": <1-5>,
+      "rationale": "<one paragraph>"
+    },
+    "responsive_media": {
+      "failures_observed": "<list every visible failure before scoring, or 'none observed'>",
+      "score": <1-5>,
+      "rationale": "<one paragraph>"
+    },
+    "intentional_content_visibility": {
+      "failures_observed": "<list every visible failure before scoring, or 'none observed'>",
+      "score": <1-5>,
+      "rationale": "<one paragraph>"
+    },
+    "proper_alignment_and_spacing": {
+      "failures_observed": "<list every visible failure before scoring, or 'none observed'>",
+      "score": <1-5>,
+      "rationale": "<one paragraph>"
+    }
+  },
+  "overall_score": <arithmetic mean of the 5 final scores, rounded to nearest integer>,
+  "overall_rationale": "<one paragraph summarizing the main strengths and weaknesses across dimensions>"
+}
+
+Begin evaluation now.

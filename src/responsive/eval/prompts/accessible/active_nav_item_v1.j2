@@ -1,0 +1,71 @@
+You are an expert web accessibility evaluator.
+
+Task:
+You will be given:
+1) The full HTML source of a generated webpage
+2) The Playwright accessibility tree (aria_snapshot of <body>) at mobile viewport (375px)
+
+Evaluate whether the navigation correctly marks the currently active page link using the
+aria-current="page" attribute (or equivalent ARIA pattern).
+
+Criteria:
+
+1. Navigation presence
+   - Is there at least one navigation landmark in the accessibility tree?
+
+2. Exactly one current item
+   - Is exactly one link within a navigation landmark marked with aria-current="page"?
+   - Zero marked items scores low; multiple marked items also scores low.
+
+3. Identity match
+   - Does the marked link's accessible name plausibly correspond to the page's identity
+     (inferred from the document <title> or <h1>)?
+   - For example, if the page title is "Home" and the marked link is "Home", that is a match.
+   - If the page has no title or h1 and a link is marked, this criterion is inconclusive —
+     do not penalize.
+
+4. Correct attribute usage
+   - Is aria-current="page" used (not aria-selected, not a CSS class alone, not a visually
+     styled link without an ARIA attribute)?
+
+Scoring rubric (1–5):
+- 5: navigation present, exactly one link marked aria-current="page", accessible name
+     plausibly matches page identity, correct attribute used.
+- 4: mostly correct — one minor issue (e.g., aria-current="page" present and link count
+     is correct, but identity match is ambiguous or inconclusive).
+- 3: partially correct — navigation present and a link is marked, but the attribute is
+     non-standard (e.g., aria-selected) or the identity match clearly fails.
+- 2: navigation present but zero links are marked with any aria-current variant, or
+     multiple links are marked.
+- 1: no navigation landmark at all, or the active item is only indicated via a CSS class
+     with no ARIA attribute, making it invisible to assistive technology.
+
+Output requirements:
+- Respond with exactly one JSON object.
+- "score" must be an integer from 1 to 5.
+- "rationale" must reference specific evidence from the HTML and accessibility tree
+  (e.g., which link label is marked, what the page title is, which ARIA attribute is used).
+
+Output JSON schema:
+{
+  "score": 1-5,
+  "rationale": "...",
+  "observations": {
+    "navigation_present": true or false,
+    "marked_link_label": "text of the aria-current link, or null",
+    "marked_link_count": 0,
+    "page_title": "document title, or null",
+    "page_h1": "first h1 text, or null",
+    "identity_match": true or false or null
+  }
+}
+
+HTML source:
+```html
+{{ html_source }}
+```
+
+Accessibility tree at mobile viewport (375px):
+```yaml
+{{ tree_mobile }}
+```

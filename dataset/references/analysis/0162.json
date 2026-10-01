@@ -1,0 +1,93 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header area with a row of small circular utility icons rather than a full expanded navigation, implying at least one icon opens the site navigation in an overlay or off-canvas panel.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target should open and close the primary navigation panel on mobile. Because the navigation is condensed into icons, focus should move into the opened menu and return to the trigger when closed.",
+      "ambiguities": "The sketch does not explicitly draw the hamburger glyph or the opened panel state, so the exact trigger icon and whether the menu is drawer, sheet, or full-screen overlay is unclear."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "both",
+      "visual_evidence": "The desktop sketch includes a horizontal top navigation bar with multiple segmented items, which strongly implies expandable categories or submenu behavior. The mobile sketch’s condensed navigation also suggests nested navigation may need expandable sections once opened.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level navigation items with children should reveal submenus on hover/click for desktop and likely disclosure-style expansion inside the mobile menu. Active/open state should be visually indicated.",
+      "ambiguities": "The sketch does not explicitly show submenu panels, so some top-level items may be simple links rather than dropdown triggers."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a distinct rectangular field in the left sidebar near the top, visually consistent with a search box.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept input and submit search queries. At minimum it needs input handling and submit behavior; live suggestions are not required by the sketch.",
+      "ambiguities": "No explicit submit button is drawn, so submission could be via Enter key or an embedded icon/button."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a boxed panel in the lower left sidebar that resembles a newsletter/signup or contact capture area with text lines and a small input/button arrangement.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If this is an email/signup form, required-field validation and error/success handling are needed before submission. Inline feedback should be shown for invalid or missing values.",
+      "ambiguities": "The sketch is low fidelity and the panel could be informational rather than a form, though the field/button-like shapes strongly suggest form interaction."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show compact utility/icon areas in the header where cart/account/status indicators typically live; the desktop sketch also has small header utility blocks above the main nav. This implies at least one count/status element such as cart quantity that updates dynamically.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Cart or similar status text/count should update after relevant actions without full page reload and should be announced accessibly if changed dynamically.",
+      "ambiguities": "The exact live-updating element is not labeled in the sketch; it is inferred from common ecommerce header patterns and the icon cluster."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long, vertically scrollable pages with substantial content extending well below the fold, which commonly implies a back-to-top affordance for usability.",
+      "confidence": "LOW",
+      "behavior_notes": "A button can appear after scrolling and return the user to the top smoothly or instantly. It should be keyboard accessible and not obstruct content.",
+      "ambiguities": "No explicit back-to-top control is drawn in the sketches; this is inferred from the long-page layout rather than directly depicted."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "D3",
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F4",
+    "D1",
+    "D2",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "dropdown_menu",
+      "live_region",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "search_input",
+      "form_validation",
+      "live_region",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly standard ecommerce-style homepage with modest JavaScript needs rather than heavy application behavior. Mobile interaction complexity centers on condensed header navigation that likely expands into a menu with nested items, while desktop relies more on exposed navigation, sidebar search, and a probable signup/search form. Product grids and hero imagery appear static in the sketches, with no clear evidence of tabs, accordions, modals, or infinite loading; the strongest cross-viewport dynamic requirement beyond navigation is a likely live-updating utility status such as cart count."
+}

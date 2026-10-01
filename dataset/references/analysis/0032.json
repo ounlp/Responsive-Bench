@@ -1,0 +1,84 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal row of top navigation items beneath the hero/header area, suggesting primary nav links that may expose deeper site sections. The grouped nav structure implies possible submenu behavior on hover or click.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented as a multi-level site nav, top-level items would reveal submenus on hover and click/focus, with active-state indication for the current section.",
+      "ambiguities": "The sketch does not explicitly draw submenu panels or carets, so these may also be simple links rather than dropdowns."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop layout has a clearly separated horizontal navigation strip near the top, spanning the page width, which is a common pattern for a nav bar intended to remain available while reading long article content below.",
+      "confidence": "LOW",
+      "behavior_notes": "If sticky, the nav bar should pin to the top after scroll and preserve access to section/site navigation while the long content body is read.",
+      "ambiguities": "No explicit fixed-position cue is drawn; this is inferred from the long-scroll article layout rather than directly shown."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically scrolling content pages with substantial article text, making a return-to-top affordance a likely implied interaction for usability even though no explicit button is drawn.",
+      "confidence": "LOW",
+      "behavior_notes": "A button would appear after the user scrolls down and return them smoothly to the top/header area when activated.",
+      "ambiguities": "The control is not explicitly sketched, so this is a usability inference rather than a directly depicted component."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include clusters of small square social/media-style icons in the lower profile/contact card area. These commonly trigger share dialogs, enlarged media, or contact overlays rather than simple inline changes.",
+      "confidence": "LOW",
+      "behavior_notes": "If icons open overlays such as share/contact/media dialogs, the modal should trap focus, support escape/close actions, and return focus to the triggering icon.",
+      "ambiguities": "The icons may simply be outbound links with no JS at all; the sketch does not specify overlay behavior."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any interactive overlay or disclosure behavior implied by navigation and icon-triggered panels would require managed keyboard focus. This is especially relevant if desktop nav uses dropdowns or if social/contact actions open dialogs.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Programmatic focus should move into opened menus/dialogs and return to the trigger on close; hidden panels should be removed from tab order.",
+      "ambiguities": "This depends on whether the inferred dropdown/modal behaviors are actually implemented."
+    }
+  ],
+  "applicable_criteria": [
+    "N2",
+    "N3",
+    "S1",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "modal_dialog",
+      "focus_management",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "sticky_nav",
+      "focus_management",
+      "modal_dialog",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches primarily depict a content-heavy informational page with image blocks, navigation rows, article text, and a footer/profile card with social icons. Very little explicit JavaScript is drawn; most of the page could be implemented statically. The strongest implied JS needs come from desktop navigation behavior and any overlay/share interactions attached to icon clusters. Mobile appears especially light on explicit interaction patterns, with no clearly drawn hamburger, forms, tabs, or accordions."
+}

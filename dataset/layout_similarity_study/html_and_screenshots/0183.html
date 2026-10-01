@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Space Toy — Janet Hansen</title>
+  <meta name="keywords" content="LED wall art, soft sculpture, textile art, abstract geometric art">
+  <meta name="description" content="Space Toy by Janet Hansen, a soft sculpture with LEDs, custom control hardware and software, with image gallery and video section.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="">
+  <style>
+    html, body, div, header, footer, main, section, article, nav, aside, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, span, a, strong, em, img, iframe, details, br, hr, sub, sup, time, pre, code, blockquote, q, cite, address, summary, form, label, fieldset, legend, input, textarea, select, option, button, table, caption, thead, tbody, tfoot, th, tr, td, figure, figcaption, video, audio, canvas {margin:0;padding:0;border:0;text-decoration:none}
+    header, footer, section, nav, article, aside, main, details, summary, figure, figcaption {display:block}
+    ul, ol {list-style:none}
+    input, textarea, select, option, button, label, legend {font-family:inherit;color:inherit;font-size:inherit;font-weight:inherit}
+    button {cursor:pointer;background:none;line-height:inherit}
+    button::-moz-focus-inner {border:0;padding:0}
+    address, cite {font-style:normal}
+    table {border-collapse:separate;border-spacing:0;word-wrap:break-word}
+    html {text-size-adjust:100%;-webkit-text-size-adjust:100%;-moz-text-size-adjust:100%;-ms-text-size-adjust:100%;font-size:20px}
+    body {min-width:300px;max-width:1200px;background:#fff;font-family:'Poppins', sans-serif;color:#555;line-height:1;margin:0 auto}
+    h1, h2, h3, h4, h5, h6 {padding:0 0 1em;letter-spacing:.1em;line-height:1.2;text-transform:uppercase;font-weight:normal}
+    h1 {font-size:1.2em}
+    h1:first-child {display:table;padding:.4em .6em;background:#555;font-size:.9em;color:#fff;margin:0 0 2em}
+    h2 {font-size:1em}
+    h3 {font-size:.9em}
+    h4 {font-size:.8em}
+    a {color:#e552e5}
+    a:hover, a:focus {color:#de26de}
+    p {padding:0 0 1rem;font-size:.8em;line-height:1.4}
+    p a {font-weight:bold;word-wrap:break-word}
+    sup, sub {font-size:.6em}
+    img {display:block;max-width:100%;height:auto}
+    hr {display:block;width:auto;height:1px;background-color:#888;margin:0 0 1em}
+    textarea {-webkit-appearance:none;-webkit-overflow-scrolling:touch}
+    input[type="search"], input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="date"] {-webkit-appearance:textfield;-moz-appearance:textfield;appearance:textfield;-webkit-appearance:none}
+    input[type="number"] {-webkit-appearance:textfield;-moz-appearance:textfield}
+    input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {-moz-appearance:none;-webkit-appearance:none}
+    input[type="button"], input[type="submit"] {-webkit-appearance:none}
+    input::-webkit-search-decoration, input::-webkit-search-cancel-button, input::-webkit-search-results-button, input::-webkit-search-results-decoration {display:none}
+    input::-ms-clear {display:none}
+    :focus::-webkit-input-placeholder {opacity:0;transition:opacity 0.2s 0.2s ease}
+    :focus::-moz-placeholder {opacity:0;transition:opacity 0.2s 0.2s ease}
+    :focus::input-placeholder {opacity:0;transition:opacity 0.2s 0.2s ease}
+    ::-webkit-input-placeholder {color:#888}
+    ::-moz-placeholder {color:#888;opacity:1}
+    :-ms-input-placeholder {color:#888}
+    ::input-placeholder {color:#888}
+    input, textarea, select, fieldset, legend, label, button {display:block}
+    label {display:table;border-collapse:separate;padding:0 0 .5em;font-size:.8em;letter-spacing:.1em;text-transform:uppercase}
+    fieldset {min-width:inherit;padding:0 0 .5em}
+    legend {padding:0 0 1em;font-size:.8em;letter-spacing:.1em;text-transform:uppercase}
+    input, textarea, select {box-sizing:border-box;max-width:100%;padding:.3em .4em;background-color:#fff;border:1px solid #888;border-radius:0;font-size:.8em;margin:0 0 1.2em;text-overflow:ellipsis;transition:background-color .2s, color .2s, border-color .2s}
+    textarea {overflow:auto}
+    input:focus, textarea:focus, select:focus {border-color:#e552e5}
+    .button, button, input[type="button"], input[type="submit"], .tags li a {background-color:#e552e5;padding:.625em .8em;border-radius:0;font-size:.8em;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin:0 0 1em;cursor:pointer}
+    .button:hover, button:hover, input[type="button"]:hover, input[type="submit"]:hover, .button:focus, button:focus, input[type="button"]:focus, input[type="submit"]:focus, .tags li a:hover, .tags li a:focus {background-color:#de26de;color:#fff}
+    a, a:before, a:after, button, button:before, button:after, label {transition:color .2s, background-color .2s, border-color .2s}
+    .social-links {display:table;padding:0 0 1em;overflow:hidden}
+    .social-links li {float:left;margin:0 .6em 0 0}
+    header.site {position:relative;z-index:1000}
+    header.site:after {display:block;clear:both;content:""}
+    header.site > a {display:block;float:left;padding:.5em;font-size:1em;letter-spacing:.3em;text-transform:uppercase;color:#555;margin:0 0 0 .2rem}
+    header.site > a span {display:table;padding:.416666666666em .6em .3333333333333em .8em;background-color:#555;text-align:center;font-size:.6em;letter-spacing:.2em;color:#fff;margin:.5em auto 0;transition:background-color .2s}
+    header.site > a:hover span, header.site > a:focus span {background-color:#e552e5}
+    @media (min-width:500px) {
+      header.site > a {padding:1.2em .5em 1em;margin-left:.5rem}
+      header.site > a span {display:inline-block;vertical-align:top;margin:0}
+    }
+    .main-menu-toggle {display:block;float:right;width:1em;height:1em;padding:0;background-color:transparent;border:1px solid #888;border-color:transparent;border-radius:0;font-size:2em;color:#fff;position:relative;margin:.4em .2rem 0 0;overflow:hidden;transition:opacity .2s}
+    .main-menu-toggle:before {display:block;height:200%;content:""}
+    .main-menu-toggle:after {display:block;width:1em;height:1em;background:url(images/icon-sprite.svg) no-repeat center;background-size:auto 100%;position:absolute;top:0;bottom:0;left:0;right:0;font-size:1.5rem;margin:auto;content:""}
+    .main-menu-toggle:hover, .main-menu-toggle:focus {opacity:.7}
+    .main-menu-toggle.open {border-color:#888}
+    @media (min-width:500px) {.main-menu-toggle {margin-right:.5rem}}
+    @media (min-width:900px) {.main-menu-toggle {display:none}}
+    .main-menu {visibility:hidden;height:0;clear:both;position:relative;transition:visibility 0s .2s, height .2s;overflow:hidden}
+    .main-menu:after {display:block;clear:both;content:""}
+    .main-menu.open {visibility:visible;height:auto;transition-delay:0s, 0s}
+    .main-menu a {display:block;padding:.6em .6em;background:#555;border-bottom:1px solid #888;font-size:.8em;text-transform:uppercase;line-height:1.2;letter-spacing:.3em;color:#fff;cursor:pointer}
+    .main-menu a:hover, .main-menu a:focus {background-color:#646464}
+    @media (min-width:900px) {
+      .main-menu {visibility:visible;clear:none;float:right;height:auto;padding:.5em 0 0}
+      .main-menu li {float:left}
+      .main-menu a {padding:1em .8em;background-color:transparent;border:none;color:#555}
+      .main-menu a:hover, .main-menu a:focus {background-color:transparent;color:#e552e5}
+      .main-menu li.active a {color:#e552e5}
+    }
+    @media (min-width:1000px) {.main-menu a {padding-left:1.5em;padding-right:1.5em}}
+    main {clear:both;padding:2rem .5rem}
+    main:after {display:block;clear:both;content:""}
+    @media (min-width:800px) {main {padding-left:1rem;padding-right:1rem}}
+    footer.site {display:flex;flex-flow:column;gap:.5em;padding:1em .5em;font-size:.6em;letter-spacing:.05em;text-align:center;text-transform:uppercase}
+    footer.site ul {display:flex;flex-wrap:wrap;justify-content:center;gap:0em 1em}
+    footer.site a {display:block;padding:.5em}
+    #video-player {clear:both !important;max-width:800px;margin:1em auto .5em !important}
+    .item {}
+    .image-gallery {max-width:500px;margin:0 auto 1em;overflow:hidden}
+    .image-gallery ul {margin:0 0 0 -.5em}
+    .image-gallery li {box-sizing:border-box;float:left;width:20%;padding:0 0 .5em .5em}
+    .image-gallery button {display:block;border:1px solid #888;border-color:transparent;position:relative;width:100%;margin:0;padding:0;background:none;color:inherit}
+    .image-gallery button:before {display:block;padding:100% 0 0;content:""}
+    .image-gallery button:hover {border-color:#e552e5}
+    .image-gallery img {display:block;width:auto;max-height:100%;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto}
+    .image-gallery .main-image {clear:both;position:relative;margin:0 0 .5em}
+    .image-gallery .main-image::before {display:block;padding:100% 0 0;content:""}
+    .image-gallery .main-image img {width:auto;max-height:100%;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto}
+    .image-gallery .main-image + ul li:only-child {display:none}
+    .image-gallery .active button {border-color:#e552e5;pointer-events:none}
+    @media (min-width:800px) {.image-gallery {float:right;width:50%;padding-left:1em}}
+    @font-face {
+      font-family: 'Poppins';
+      font-style: italic;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/poppins/v20/pxiGyp8kv8JHgFVrJJLedw.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/poppins/v20/pxiEyp8kv8JHgFVrFJA.ttf) format('truetype');
+    }
+    @font-face {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7V1s.ttf) format('truetype');
+    }
+
+    .skip-link {position:absolute;left:.5rem;top:0;transform:translateY(-100%);background:#fff;color:#000;padding:.5rem .75rem;z-index:2000}
+    .skip-link:focus {transform:translateY(0)}
+    :focus-visible {outline:3px solid #005FCC;outline-offset:2px;border-radius:2px}
+    :focus:not(:focus-visible) {outline:none}
+    .sr-only {position:absolute !important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site">
+    <a href="/" aria-label="Janet Hansen home">
+      Janet Hansen
+      <span>artist</span>
+    </a>
+    <button
+      class="main-menu-toggle"
+      id="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu">
+      Menu
+    </button>
+    <nav aria-label="Main">
+      <ul class="main-menu" id="mobile-nav">
+        <li class="active"><a href="#" aria-current="page">Portfolio</a></li>
+        <li><a href="#">Bio</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Shop</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="item">
+      <h1>Space Toy</h1>
+
+      <figure class="image-gallery" aria-label="Space Toy image gallery">
+        <div class="main-image">
+          <img id="gallery-main-image" alt="Space Toy soft sculpture illuminated in blue light" height="400" src="rick.jpg" width="533">
+        </div>
+        <ul>
+          <li class="active">
+            <button type="button" data-full-src="rick.jpg" data-full-alt="Space Toy soft sculpture illuminated in blue light" aria-label="Show image 1 of Space Toy">
+              <img alt="Thumbnail of Space Toy illuminated in blue light" height="75" loading="lazy" src="rick.jpg" width="100">
+            </button>
+          </li>
+          <li>
+            <button type="button" data-full-src="rick.jpg" data-full-alt="Space Toy viewed from the back" aria-label="Show image 2 of Space Toy">
+              <img alt="Thumbnail of Space Toy viewed from the back" height="75" loading="lazy" src="rick.jpg" width="100">
+            </button>
+          </li>
+          <li>
+            <button type="button" data-full-src="rick.jpg" data-full-alt="Space Toy shown from a diagonal angle" aria-label="Show image 3 of Space Toy">
+              <img alt="Thumbnail of Space Toy shown from a diagonal angle" height="100" loading="lazy" src="rick.jpg" width="99">
+            </button>
+          </li>
+          <li>
+            <button type="button" data-full-src="rick.jpg" data-full-alt="Space Toy with glowing lights detail" aria-label="Show image 4 of Space Toy">
+              <img alt="Thumbnail of Space Toy with glowing lights detail" height="75" loading="lazy" src="rick.jpg" width="100">
+            </button>
+          </li>
+        </ul>
+      </figure>
+
+      <p>
+        White velvet and faux fur soft sculpture, with internal plastic armature and polyfill stuffing<br>
+        Illuminated by a variety of single-color LEDs<br>
+        Custom control hardware and software<br>
+        12" x 8" x 4"
+      </p>
+
+      <p>2005</p>
+
+      <hr>
+
+      <p>
+        Imagine a found object, of alien origin. Its shape resembles a creature, but it is also soft, cuddly, and blinking in a variety of complicated patterns.
+      </p>
+
+      <hr>
+
+      <h2>Video</h2>
+
+      <p>The clip below shows some of the animation patterns.</p>
+
+      <div id="video-player" aria-label="Video player error message" style="width: 100%; height: 360px; background:#000; overflow:hidden; position:relative;">
+        <div style="top:50%;left:50%;position:absolute;transform:translate(-50%,-50%);color:#fff;font:14px/1.35 Arial,Helvetica,sans-serif;text-align:start;">
+          This video file cannot be played.<br>
+          (Error&nbsp;Code:&nbsp;102630)
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="#" aria-current="page">Portfolio</a></li>
+        <li><a href="#">Bio</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Shop</a></li>
+      </ul>
+    </nav>
+    <div>&copy; 2023 Janet Hansen</div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    function syncMenuState() {
+      if (window.innerWidth >= 900) {
+        nav.hidden = false;
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      } else {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        nav.hidden = !expanded;
+        nav.classList.toggle('open', expanded);
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      nav.classList.toggle('open', !expanded);
+      toggle.classList.toggle('open', !expanded);
+      if (!expanded) {
+        const firstLink = nav.querySelector('a, button');
+        if (firstLink) firstLink.focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && window.innerWidth < 900 && nav.hidden === false) {
+        nav.hidden = true;
+        nav.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    window.addEventListener('resize', syncMenuState);
+    syncMenuState();
+
+    const gallery = document.querySelector('.image-gallery');
+    if (gallery) {
+      const mainImage = document.getElementById('gallery-main-image');
+      const thumbs = gallery.querySelectorAll('button[data-full-src]');
+
+      thumbs.forEach((button) => {
+        button.addEventListener('click', () => {
+          thumbs.forEach(btn => {
+            btn.parentElement.classList.remove('active');
+            btn.removeAttribute('aria-current');
+          });
+          button.parentElement.classList.add('active');
+          button.setAttribute('aria-current', 'true');
+          mainImage.src = button.getAttribute('data-full-src');
+          mainImage.alt = button.getAttribute('data-full-alt');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: updated title to page-specific format; added skip link and main-content id; ensured semantic header/nav/main/footer landmarks; corrected heading hierarchy to one h1 and sequential h2; added meaningful alt text to all images; converted non-functional anchors to real links or buttons; ensured interactive controls have descriptive labels; preserved html lang="en".
+[B] ARIA fixes: added unique aria-labels to multiple navigation regions (Main, Footer); added aria-current for current page links; added aria-label/aria-controls/aria-expanded to mobile menu button; removed need for redundant role attributes; no positive tabindex values retained.
+[C] JS patterns added: implemented hamburger menu toggle with aria-expanded, aria-label, hidden state, focus movement, Escape close, and responsive sync; implemented image gallery thumbnail interaction to update main image; added global positive tabindex cleanup.
+-->

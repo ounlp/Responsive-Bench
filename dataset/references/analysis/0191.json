@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top navigation bar with a clear menu icon/button at the top right, implying hidden navigation that must be revealed on tap.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close a collapsed navigation panel or drawer containing the site links/search actions not shown inline on mobile.",
+      "ambiguities": "The sketch does not clarify whether the menu opens as a dropdown below the header, a full-screen overlay, or an off-canvas drawer."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a prominent search field in the header area; on desktop it is centered in the top bar, and on mobile search is implied as part of the compact header/navigation experience.",
+      "confidence": "HIGH",
+      "behavior_notes": "The search control should accept text and trigger a search action on submit; it may also need to integrate with the mobile nav if space is constrained.",
+      "ambiguities": "The sketches do not indicate whether search is submit-only or enhanced with live suggestions/autocomplete."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show long lists of repeated content cards/questions followed by pagination-like controls near the bottom, implying additional content retrieval beyond the initially visible items.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A next-page or load-more interaction should fetch and render additional question items, potentially replacing or appending the current list depending on pagination design.",
+      "ambiguities": "The sketches do not make clear whether this is classic pagination, a single 'Next' action, or true append-style load more."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The presence of a search form with an input and action control implies submit handling and at least minimal validation/state management for empty or malformed submissions.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The form should manage submit behavior, preserve entered value, and optionally prevent empty submissions or normalize input before searching.",
+      "ambiguities": "No explicit error states are drawn, so required-field enforcement may be minimal."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "load_more",
+      "form_validation"
+    ],
+    "desktop": [
+      "search_input",
+      "load_more",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly simple content-listing experience with the main JavaScript concentrated in responsive navigation, search submission, and list continuation/pagination. Mobile has the clearest extra requirement because the header collapses into a hamburger-triggered menu, while desktop exposes navigation and search directly. The repeated cards and bottom controls suggest dynamic page/list transitions, but there is no strong evidence for richer widgets like tabs, accordions, modals, dropdown submenus, or sticky behavior."
+}

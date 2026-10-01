@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Thanksgiving! — PRO Fitness</title>
+  <style>
+    :root{
+      --text:#22252b;
+      --muted:#666;
+      --cookie:#79bdd1;
+      --blue:#1400ff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.65;
+    }
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:12px;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      z-index:1000;
+      text-decoration:none;
+      border:2px solid #000;
+    }
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:1280px;
+      margin:0 auto;
+      padding:0 84px 36px;
+    }
+
+    header{
+      text-align:center;
+      padding-top:18px;
+    }
+    .site-name{
+      font-size:38px;
+      font-weight:500;
+      line-height:1.15;
+      margin:0;
+      letter-spacing:.5px;
+    }
+    h1{
+      font-size:57px;
+      font-weight:600;
+      line-height:1.12;
+      margin:0;
+    }
+    .hero-space{height:118px}
+
+    .section-title-main{
+      text-align:center;
+      font-size:46px;
+      line-height:1.15;
+      font-weight:600;
+      margin:0 0 34px;
+    }
+
+    .hours-block{
+      max-width:730px;
+      margin:0 auto 108px;
+    }
+    .hours-block h2{
+      font-size:34px;
+      font-weight:500;
+      margin:0 0 18px;
+    }
+    .hours-block ul{
+      margin:0;
+      padding-left:36px;
+      color:var(--muted);
+      font-size:18px;
+    }
+    .hours-block li{
+      margin:6px 0;
+    }
+    .hours-block strong{
+      font-weight:700;
+    }
+
+    .feature-image{
+      width:100%;
+      height:556px;
+      background:var(--blue);
+      display:block;
+      margin:0 auto 26px;
+      object-fit:cover;
+    }
+
+    .center-subtitle{
+      text-align:center;
+      font-size:25px;
+      font-weight:600;
+      margin:0 0 34px;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns: minmax(0,1.9fr) minmax(260px,0.9fr);
+      gap:72px;
+      align-items:start;
+    }
+
+    .content-grid section h2,
+    .content-grid aside h2{
+      font-size:31px;
+      font-weight:500;
+      margin:0 0 18px;
+    }
+
+    .notes{
+      color:var(--muted);
+      font-size:18px;
+    }
+    .notes p{
+      margin:0 0 10px;
+    }
+    .notes strong{
+      color:#555;
+      font-weight:700;
+    }
+
+    .hours-side{
+      color:var(--muted);
+      font-size:18px;
+    }
+    .hours-side p{
+      margin:0 0 6px;
+    }
+    .hours-side .label{
+      font-weight:700;
+      color:#555;
+      margin-bottom:2px;
+    }
+    .hours-side em{
+      font-style:italic;
+      display:block;
+      margin:0 0 2px;
+    }
+
+    footer{
+      margin-top:108px;
+      padding-bottom:0;
+    }
+    .copyright{
+      color:#666;
+      font-size:16px;
+      margin:0;
+    }
+    .powered{
+      display:none;
+      color:#666;
+      font-size:16px;
+      text-align:center;
+      margin:18px 0 0;
+    }
+
+    .cookie-banner{
+      position:fixed;
+      right:22px;
+      bottom:24px;
+      width:403px;
+      background:var(--cookie);
+      color:#1f2a30;
+      padding:24px 24px 28px;
+      border-radius:8px;
+      box-shadow:0 4px 14px rgba(0,0,0,.22);
+      z-index:999;
+    }
+    .cookie-banner h2{
+      font-size:18px;
+      font-weight:500;
+      margin:0 0 10px;
+      color:#111;
+    }
+    .cookie-banner p{
+      margin:0 0 22px;
+      font-size:16px;
+      line-height:1.8;
+    }
+    .cookie-banner button{
+      width:100%;
+      border:0;
+      background:#000;
+      color:#fff;
+      font-size:18px;
+      padding:12px 16px;
+      cursor:pointer;
+    }
+
+    @media (max-width: 1024px){
+      .page{
+        padding:0 22px 28px;
+      }
+      .site-name{font-size:34px}
+      h1{font-size:44px}
+      .hero-space{height:92px}
+      .section-title-main{
+        font-size:34px;
+        margin-bottom:28px;
+      }
+      .hours-block{
+        max-width:none;
+        margin:0 0 92px;
+      }
+      .hours-block h2{font-size:31px}
+      .hours-block ul{font-size:17px}
+      .feature-image{
+        height:333px;
+        margin-bottom:48px;
+      }
+      .center-subtitle{
+        margin-bottom:28px;
+      }
+      .content-grid{
+        grid-template-columns:1fr;
+        gap:28px;
+      }
+      footer{
+        margin-top:72px;
+      }
+      .copyright{
+        text-align:center;
+      }
+      .powered{
+        display:block;
+      }
+      .cookie-banner{
+        width:372px;
+        right:22px;
+        bottom:18px;
+      }
+    }
+
+    @media (max-width: 768px){
+      .page{
+        padding:0 19px 0;
+      }
+      header{
+        padding-top:14px;
+      }
+      .site-name{
+        font-size:28px;
+        line-height:1.2;
+      }
+      h1{
+        font-size:28px;
+        line-height:1.2;
+      }
+      .hero-space{height:66px}
+      .section-title-main{
+        font-size:28px;
+        line-height:1.2;
+        margin-bottom:28px;
+      }
+      .hours-block{
+        margin-bottom:58px;
+      }
+      .hours-block h2{
+        font-size:24px;
+        margin-bottom:10px;
+      }
+      .hours-block ul{
+        font-size:16px;
+        padding-left:30px;
+      }
+      .hours-block li{
+        margin:2px 0;
+      }
+      .feature-image{
+        height:132px;
+        margin-bottom:42px;
+      }
+      .center-subtitle{
+        font-size:22px;
+        margin-bottom:24px;
+      }
+      .content-grid section h2,
+      .content-grid aside h2{
+        font-size:24px;
+        margin-bottom:14px;
+      }
+      .notes,
+      .hours-side{
+        font-size:16px;
+      }
+      footer{
+        margin-top:0;
+        padding-bottom:0;
+      }
+      .copyright,
+      .powered{
+        display:none;
+      }
+      .cookie-banner{
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:0;
+        width:100%;
+        border-radius:0;
+        padding:18px 20px 16px;
+        box-shadow:none;
+      }
+      .cookie-banner h2{
+        font-size:18px;
+        margin-bottom:10px;
+      }
+      .cookie-banner p{
+        font-size:16px;
+        line-height:1.75;
+        margin-bottom:16px;
+      }
+      .cookie-banner button{
+        font-size:16px;
+        padding:10px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <p class="site-name">PRO Fitness</p>
+      <h1>Happy Thanksgiving!</h1>
+    </header>
+
+    <main id="main-content">
+      <div class="hero-space" aria-hidden="true"></div>
+
+      <section aria-labelledby="thanksgiving-week-hours">
+        <h2 id="thanksgiving-week-hours" class="section-title-main">Thanksgiving Week Hours</h2>
+
+        <div class="hours-block">
+          <h2>Hours</h2>
+          <ul>
+            <li>Monday, November 20, 2023 5am - 10pm</li>
+            <li>Tuesday, November 21, 2023 5am - 10pm</li>
+            <li><strong>Wednesday, November 22, 2023 5am - 5pm (no pm little pros)</strong></li>
+            <li><strong>Thursday, November 23, 2023 Closed for Thanksgiving</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <img src="rick.jpg" alt="" class="feature-image" />
+
+      <p class="center-subtitle">Little Pros</p>
+
+      <div class="content-grid">
+        <section aria-labelledby="little-pros-heading">
+          <h2 id="little-pros-heading">Little Pros</h2>
+          <div class="notes">
+            <p><strong>Notes</strong></p>
+            <p>If there are no children in the Kid’s Club 30 minutes prior to closing time the Kid’s club will close.</p>
+            <p>Even though the gym maybe open most major holidays the Kid’s Club will be closed on major holidays.</p>
+            <p><strong>On Site Policy</strong> - Kid’s Club is for the use of parents and guardians and their children.</p>
+            <p><strong>Ages of Children Served</strong> - 12 weeks to 12 years old</p>
+            <br />
+            <p><strong>Illness</strong> - If your child has had a fever or illness in the last 24 hours please do not bring them to the Kid’s Club.</p>
+            <p><strong>Diapering and Potty Training</strong> - If your child is in the potty training stage, please assist them using the Kid’s Club restroom prior to leaving them in our care.</p>
+            <p><strong>Snacks and Drinks</strong> - For the safety of small children and the cleanliness of the Kid’s Club we ask that snacks be limited to items such as dry cereal and dry crackers.</p>
+            <p><strong>Behavior Policy</strong> - When a child misbehaves, staff will warn the child that the behavior is not acceptable and that the child should stop or he or she will be placed in a time out.</p>
+            <p><strong>Reminder - During time of inclement weather the Kid’s Club will be closed in accordance with Columbia Public Schools in the morning.</strong> Check this website for evening update.</p>
+          </div>
+        </section>
+
+        <aside aria-label="Little Pros standard hours">
+          <h2>Hours</h2>
+          <div class="hours-side">
+            <p class="label">Standard Hours</p>
+            <p><em>Monday - Thursday</em></p>
+            <p>9:00 a.m. to 11:30 a.m.</p>
+            <p>4:30 p.m. to 8:00 p.m.</p>
+            <p><em>Friday</em></p>
+            <p>9:00 a.m. to 11:30 a.m.</p>
+            <p>4:30 p.m. to 7:30 p.m.</p>
+            <p><em>Saturday</em></p>
+            <p>9:00 a.m. to 12:00 p.m.</p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <p class="copyright">Copyright © 2023 PRO Fitness - All Rights Reserved.</p>
+      <p class="powered">Powered by</p>
+    </footer>
+  </div>
+
+  <div class="cookie-banner" id="cookie-banner" aria-label="Cookie notice">
+    <h2>This website uses cookies.</h2>
+    <p>We use cookies to analyze website traffic and optimize your website experience. By accepting our use of cookies, your data will be aggregated with all other user data.</p>
+    <button type="button" id="cookie-accept">Accept</button>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const cookieAccept = document.getElementById('cookie-accept');
+    const cookieBanner = document.getElementById('cookie-banner');
+
+    cookieAccept.addEventListener('click', () => {
+      cookieBanner.hidden = true;
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, main, footer, and aside landmarks; added skip link and main-content id; ensured one h1 with sequential heading structure; added alt attributes to image; ensured button has descriptive text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added aria-label to aside landmark; removed positive tabindex values via JS baseline.
+[C] JS patterns added: implemented tab order cleanup/focus indicator baseline (C-K1/K3); implemented visible cookie notice dismiss button behavior conservatively as implied by screenshot.
+-->

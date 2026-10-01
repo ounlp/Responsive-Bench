@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to know you are using classic vi — Aristotle Pagaltzis</title>
+  <style>
+    :root {
+      --bg: #1c1c1c;
+      --panel: #1d1d1d;
+      --panel-dark: #000000;
+      --border: #b8b8b8;
+      --border-soft: #4a4a4a;
+      --text: #ececec;
+      --muted: #a8a8a8;
+      --link: #9f9f9f;
+      --focus: #005FCC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: .75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page {
+      width: min(100%, 812px);
+      margin: 44px auto 0;
+      padding: 0 0 40px;
+    }
+
+    .top-nav {
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 70px 70px 70px 65px;
+      min-height: 66px;
+      margin-bottom: 28px;
+    }
+
+    .top-nav a {
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: 1px solid var(--border);
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+      font-size: 2.1rem;
+      line-height: 1;
+    }
+
+    .top-nav a:first-child {
+      border-left: 0;
+      justify-content: flex-start;
+      padding-left: 1rem;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+
+    .top-nav .brand {
+      color: transparent;
+    }
+
+    .post {
+      border: 1px solid var(--border);
+      background: var(--panel);
+    }
+
+    .post-header {
+      padding: 18px 28px 28px;
+      border-bottom: 1px solid #333;
+    }
+
+    h1 {
+      margin: 0;
+      text-align: right;
+      font-size: 2.2rem;
+      line-height: 1.15;
+      font-weight: 700;
+      color: #f0f0f0;
+    }
+
+    .date {
+      margin-top: 6px;
+      text-align: right;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .code-block {
+      background: var(--panel-dark);
+      color: #f5f5f5;
+      border-bottom: 1px solid var(--border-soft);
+      padding: 10px 28px 8px;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1rem;
+      line-height: 1.15;
+      font-weight: 700;
+      white-space: pre-line;
+    }
+
+    .content {
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      line-height: 1.45;
+      font-weight: 700;
+      color: #e3e3e3;
+    }
+
+    .content p {
+      margin: 0;
+      padding: 14px 28px;
+    }
+
+    .content p + p {
+      padding-top: 10px;
+    }
+
+    .content .band {
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .post-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 42px 28px 30px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .pager {
+      display: flex;
+      gap: 34px;
+      flex-wrap: wrap;
+    }
+
+    .pager a,
+    .copyright a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .pager a:hover,
+    .copyright a:hover,
+    .top-nav a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: calc(100% - 88px);
+        margin-top: 44px;
+      }
+
+      .top-nav {
+        grid-template-columns: 1fr 70px 70px 70px 65px;
+      }
+
+      h1 {
+        font-size: 2.05rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        width: calc(100% - 44px);
+      }
+
+      .top-nav {
+        min-height: 66px;
+        grid-template-columns: 1fr 70px 70px 70px 65px;
+      }
+
+      .post-header {
+        padding: 18px 28px 34px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .post-footer {
+        padding-top: 36px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        width: 100%;
+        margin-top: 0;
+        padding-bottom: 24px;
+      }
+
+      .top-nav {
+        margin-bottom: 18px;
+        border-left: 0;
+        border-right: 0;
+        grid-template-columns: 1fr 70px 70px 70px 65px;
+      }
+
+      .post {
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .post-header {
+        padding: 22px 12px 30px;
+      }
+
+      h1 {
+        font-size: 1.9rem;
+        line-height: 1.1;
+      }
+
+      .date {
+        font-size: 0.9rem;
+        margin-top: 2px;
+      }
+
+      .code-block {
+        padding: 8px 0 8px 0;
+        font-size: 0.95rem;
+      }
+
+      .content p {
+        padding: 10px 0;
+        font-size: 0.95rem;
+        line-height: 1.25;
+      }
+
+      .post-footer {
+        padding: 28px 0 18px;
+        font-size: 0.9rem;
+        gap: 12px;
+      }
+
+      .pager {
+        gap: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <nav aria-label="Main" class="top-nav">
+        <a href="#" class="brand" aria-label="Home">Home</a>
+        <a href="#" aria-label="Tilde navigation">~</a>
+        <a href="#" aria-label="Asterisk navigation">*</a>
+        <a href="#" aria-label="Hash exclamation navigation">#!</a>
+        <a href="#" aria-label="Question navigation">?</a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <article class="post">
+        <header class="post-header" aria-label="Article header">
+          <h1>How to know you are using classic vi</h1>
+          <div class="date">Wednesday, 19 Sep 2007</div>
+        </header>
+
+        <div class="code-block">:version
+Version 3.7, 6/7/85.</div>
+
+        <div class="content">
+          <p class="band">Yes. 1985.</p>
+          <p class="band">On a contemporary computer, it will probably look like this:</p>
+        </div>
+
+        <div class="code-block">:version
+Version 4.0 (gritter) 12/25/06</div>
+
+        <div class="content">
+          <p>(The given date will vary.) This is Gunnar Ritter’s lightly modernised fork – but still the classic vi.</p>
+          <p>Any other response means you are using a clone.</p>
+        </div>
+
+        <footer class="post-footer" aria-label="Article footer">
+          <nav aria-label="Post pagination" class="pager">
+            <a href="#">← Older</a>
+            <a href="#">Newer →</a>
+          </nav>
+          <div class="copyright"><a href="#">©2001–2023&nbsp;&nbsp;Aristotle Pagaltzis</a></div>
+        </footer>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, nav, main, article, and footer landmarks; ensured exactly one h1; added lang="en"; ensured all links have descriptive accessible labels.
+[B] ARIA fixes: used aria-label on multiple nav regions and nested article header/footer labels; avoided redundant landmark roles; removed positive tabindex via JS baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

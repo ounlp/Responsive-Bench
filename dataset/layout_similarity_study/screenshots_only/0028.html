@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthcare Reform: Cost, Quality and Access — Anti Essays</title>
+  <style>
+    :root{
+      --bg:#f4f5ff;
+      --white:#ffffff;
+      --text:#5f6673;
+      --muted:#9aa3b2;
+      --teal:#009a97;
+      --coral:#ff5a5f;
+      --navy:#4a4a78;
+      --line:#e6e8ef;
+      --shadow:0 2px 10px rgba(0,0,0,.08);
+      --footer:#f2f3ff;
+      --blue:#1a12ff;
+      --cta:#00958f;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .page-wrap{max-width:980px;margin:0 auto}
+
+    header{
+      background:var(--bg);
+      padding:54px 0 46px;
+    }
+
+    .search-bar{
+      margin:0 28px;
+      display:flex;
+      align-items:stretch;
+      background:#fff;
+      border:1px solid #dddfe8;
+      height:46px;
+    }
+    .search-bar label{
+      position:absolute;
+      width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+    }
+    .search-bar input{
+      flex:1;
+      border:0;
+      padding:0 14px;
+      font-size:14px;
+      color:#5d6288;
+      background:#fff;
+    }
+    .search-bar button{
+      width:46px;
+      border:0;
+      background:var(--navy);
+      color:#fff;
+      cursor:pointer;
+      font-size:0;
+    }
+
+    .breadcrumb-wrap{
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      padding:10px 0 12px;
+    }
+    .breadcrumb{
+      margin:0 28px;
+      font-size:12px;
+      color:#a0a8b7;
+    }
+    .breadcrumb a:first-child{color:#ff5a5f}
+    .breadcrumb .sep{padding:0 8px;color:#c8ced8}
+
+    main{
+      padding:0 0 0;
+    }
+
+    .card{
+      background:#fff;
+      margin:16px 28px 0;
+      border:1px solid #dfe3ea;
+      box-shadow:var(--shadow);
+      padding:48px 56px 70px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      color:var(--teal);
+      font-size:22px;
+      line-height:1.3;
+      font-weight:700;
+    }
+
+    .meta{
+      font-size:14px;
+      color:#666d79;
+      margin-bottom:48px;
+    }
+    .meta .dot{padding:0 12px;color:#b8bec8}
+
+    .essay-intro{
+      max-width:760px;
+      margin:0 auto 56px;
+      text-align:left;
+      color:#5f6673;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:18px;
+      line-height:1.85;
+    }
+    .essay-intro .intro-title{
+      text-align:center;
+      margin-bottom:6px;
+    }
+    .essay-intro .fade{
+      color:#d8d8d8;
+    }
+
+    .btn{
+      display:inline-block;
+      background:var(--coral);
+      color:#fff;
+      padding:8px 15px;
+      font-size:14px;
+      line-height:1;
+      border:0;
+      cursor:pointer;
+    }
+
+    .center{text-align:center}
+
+    .related-heading{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      color:#c8ccd3;
+      font-size:20px;
+      margin:34px 0 42px;
+    }
+    .related-heading::before,
+    .related-heading::after{
+      content:"";
+      display:block;
+      width:250px;
+      max-width:32%;
+      border-top:1px solid #d9dde5;
+    }
+
+    .related-list{
+      display:grid;
+      gap:46px;
+    }
+
+    .related-item h2{
+      margin:0 0 4px;
+      color:var(--teal);
+      font-size:18px;
+      line-height:1.35;
+      font-weight:700;
+    }
+    .related-item .item-meta{
+      font-size:13px;
+      color:#8a909b;
+      margin-bottom:14px;
+    }
+    .related-item p{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:17px;
+      color:#cfcfcf;
+      line-height:1.75;
+    }
+    .related-item .btn-wrap{
+      text-align:center;
+      margin-top:-18px;
+      position:relative;
+      z-index:1;
+    }
+
+    .more-section{
+      padding:56px 56px 42px;
+      margin:0 28px;
+      background:#fff;
+      border-left:1px solid transparent;
+      border-right:1px solid transparent;
+    }
+    .more-section h2{
+      margin:0 0 18px;
+      font-size:14px;
+      color:#6f7682;
+      font-weight:400;
+    }
+    .more-links{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .more-links li{
+      padding:10px 0 12px;
+      border-bottom:1px solid #e7ebf2;
+    }
+    .more-links a{
+      display:block;
+      color:var(--teal);
+      font-weight:700;
+      font-size:14px;
+      margin-bottom:2px;
+    }
+    .more-links .small{
+      font-size:12px;
+      color:#7f8793;
+    }
+
+    footer{
+      margin-top:0;
+      background:var(--footer);
+      border-top:1px solid #bfc4cf;
+      padding:22px 0 18px;
+    }
+    .footer-inner{
+      margin:0 28px;
+    }
+    .footer-nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:28px;
+      font-size:14px;
+      font-weight:700;
+      color:#6d7380;
+      margin-bottom:22px;
+    }
+    .copyright{
+      display:flex;
+      align-items:flex-end;
+      gap:0;
+      color:#6d7380;
+      font-size:14px;
+    }
+    .logo-block{
+      width:49px;
+      height:49px;
+      background:var(--blue);
+      margin-right:0;
+      flex:0 0 auto;
+    }
+    .copyright p{
+      margin:0 0 10px 0;
+    }
+
+    .sticky-cta{
+      display:none;
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      background:var(--cta);
+      padding:10px 16px 14px;
+      z-index:50;
+    }
+    .sticky-cta a{
+      display:block;
+      max-width:174px;
+      margin:0 auto;
+      text-align:center;
+      color:#fff;
+      border:2px solid #d8f4ef;
+      border-radius:999px;
+      padding:10px 18px;
+      font-size:14px;
+      background:transparent;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (min-width: 769px) {
+      .nav-toggle { display: none; }
+    }
+
+    @media (max-width: 900px){
+      .page-wrap{max-width:100%}
+      .card{
+        margin:0;
+        border-left:1px solid #dfe3ea;
+        border-right:1px solid #dfe3ea;
+        padding:54px 62px 90px;
+      }
+      .more-section{
+        display:none;
+      }
+      .footer-inner{margin:0 12px}
+      .search-bar{margin:0 12px}
+      .breadcrumb{margin:0 12px}
+    }
+
+    @media (max-width: 480px){
+      header{
+        padding:92px 0 16px;
+        min-height:92px;
+      }
+      .search-bar{
+        display:none;
+      }
+      .breadcrumb-wrap{
+        padding:8px 0 10px;
+      }
+      .breadcrumb{
+        margin:0 4px;
+        font-size:12px;
+        line-height:1.4;
+      }
+      .card{
+        margin:0 1px;
+        padding:18px 8px 72px;
+      }
+      h1{
+        font-size:18px;
+        margin-bottom:8px;
+      }
+      .meta{
+        margin-bottom:54px;
+      }
+      .essay-intro{
+        font-size:17px;
+        line-height:1.8;
+        margin-bottom:54px;
+      }
+      .related-heading{
+        margin:28px 0 44px;
+        font-size:18px;
+      }
+      .related-heading::before,
+      .related-heading::after{
+        width:46px;
+        max-width:22%;
+      }
+      .related-list{
+        gap:54px;
+      }
+      .related-item h2{
+        font-size:17px;
+      }
+      .related-item p{
+        font-size:17px;
+        line-height:1.75;
+      }
+      .footer-inner{
+        margin:0 6px;
+      }
+      .footer-nav{
+        flex-direction:column;
+        gap:12px;
+        margin-bottom:18px;
+        font-size:13px;
+      }
+      .copyright{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .logo-block{
+        width:42px;
+        height:44px;
+        margin-top:6px;
+      }
+      .copyright p{
+        margin:0;
+        order:2;
+      }
+      .sticky-cta{
+        display:block;
+      }
+      body{
+        padding-bottom:72px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="page-wrap">
+      <form class="search-bar" novalidate>
+        <label for="site-search">Search essays</label>
+        <input id="site-search" name="search" type="text" value="Search over 500,000 essays..." aria-label="Search over 500,000 essays..." />
+        <button type="submit" aria-label="Search">Search</button>
+      </form>
+    </div>
+  </header>
+
+  <div class="breadcrumb-wrap">
+    <div class="page-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="#">Home Page</a><span class="sep">&gt;</span><span>Healthcare Reform: Cost, Quality And Access</span>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="page-wrap">
+      <article class="card">
+        <h1>Healthcare Reform: Cost, Quality and Access</h1>
+        <div class="meta">753 Words <span class="dot">•</span> 4 Pages</div>
+
+        <section aria-label="Essay preview" class="essay-intro">
+          <p class="intro-title">Healthcare Reform: Cost, Quality and Access</p>
+          <p>
+            Healthcare reforms are polices set by the government that describes future ideas and changes based on economic and social advances to create an improved healthcare system that benefits the society as a whole. The topics of cost, quality, and access have become a concern to many as the issues continue to grow.
+          </p>
+          <div class="center">
+            <a href="#" class="btn">Show More</a>
+          </div>
+          <p class="fade">…</p>
+        </section>
+
+        <section aria-label="Related essays">
+          <div class="related-heading">Related</div>
+
+          <div class="related-list">
+            <article class="related-item">
+              <h2><a href="#">Long Patient Wait Time</a></h2>
+              <div class="item-meta">1511 Words | 7 Pages</div>
+              <p>
+                They argue that introducing private health care will lessen the burden on the publicly funded system as many well off citizens would simply choose to pay out of pocket or through private insurers for services rather than rely on the public system. They argue that the government cannot do it efficiently. …
+              </p>
+              <div class="btn-wrap"><a href="#" class="btn">Read More</a></div>
+            </article>
+
+            <article class="related-item">
+              <h2><a href="#">Hcs 449 Health Care Industry Research Paper</a></h2>
+              <div class="item-meta">1199 Words | 5 Pages</div>
+              <p>
+                Health Care Industry 1 Health Care Industry HCS/449 Donna Hawley Health Care Industry The health care industry is the fastest growing industry. As the years go by, more and more breakthroughs will be shaped. …
+              </p>
+              <div class="btn-wrap"><a href="#" class="btn">Read More</a></div>
+            </article>
+
+            <article class="related-item">
+              <h2><a href="#">Indemnity Versus Managed Care</a></h2>
+              <div class="item-meta">458 Words | 2 Pages</div>
+              <p>
+                As a result of the rise in healthcare spending, the economy is growing rapidly thus, having elevated healthcare costs. Furthermore, in healthcare there are two types of plans, that all insurance plans are based on. …
+              </p>
+              <div class="btn-wrap"><a href="#" class="btn">Read More</a></div>
+            </article>
+
+            <article class="related-item">
+              <h2><a href="#">Future Direction Of Health Care</a></h2>
+              <div class="item-meta">1392 Words | 6 Pages</div>
+              <p>
+                By adopting a pay for performance stance on impacting the preventative side of health care, a substantial savings in rising health care costs may be met. Challenges for putting into practice a pay for performance system is it is very difficult to get everyone on board with quality standards. …
+              </p>
+              <div class="btn-wrap"><a href="#" class="btn">Read More</a></div>
+            </article>
+          </div>
+        </section>
+      </article>
+
+      <section class="more-section" aria-label="More about Healthcare Reform: Cost, Quality and Access">
+        <h2>More about Healthcare Reform: Cost, Quality and Access</h2>
+        <ul class="more-links">
+          <li>
+            <a href="#">Long Patient Wait Time</a>
+            <div class="small">1511 Words | 7 Pages</div>
+          </li>
+          <li>
+            <a href="#">Hcs 449 Health Care Industry Research Paper</a>
+            <div class="small">1199 Words | 5 Pages</div>
+          </li>
+          <li>
+            <a href="#">Indemnity Versus Managed Care</a>
+            <div class="small">458 Words | 2 Pages</div>
+          </li>
+          <li>
+            <a href="#">Future Direction Of Health Care</a>
+            <div class="small">1392 Words | 6 Pages</div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="page-wrap">
+      <div class="footer-inner">
+        <nav aria-label="Footer">
+          <div class="footer-nav">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Copyright</a>
+          </div>
+        </nav>
+        <div class="copyright">
+          <div class="logo-block" aria-hidden="true"></div>
+          <p>© 2023 Anti Essays. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-cta">
+    <a href="#">Open Document</a>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const searchInput = document.getElementById('site-search');
+    if (searchInput) {
+      const defaultText = 'Search over 500,000 essays...';
+      searchInput.addEventListener('focus', () => {
+        if (searchInput.value === defaultText) searchInput.value = '';
+      });
+      searchInput.addEventListener('blur', () => {
+        if (!searchInput.value.trim()) searchInput.value = defaultText;
+      });
+    }
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured one h1 with sequential h2 headings; added labels for search form input; ensured descriptive link/button text; set html lang="en".
+[B] ARIA fixes: used unique aria-labels for breadcrumb and footer navigation; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator support; added minimal search field focus/blur behavior implied by visible search field.
+-->

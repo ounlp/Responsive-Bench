@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Comfortable iPod Shuffle of Routine — Tom Morgan's blog</title>
+  <style>
+    :root{
+      --text:#3f3a37;
+      --heading:#111;
+      --accent:#1ea6cf;
+      --date:#c9a79b;
+      --bg:#ffffff;
+      --blue:#1400ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+    body{
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.45;
+    }
+
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 16px 0 48px;
+    }
+
+    .hero{
+      width: 340px;
+      height: 188px;
+      background: var(--blue);
+      margin: 18px auto 0;
+      display:block;
+    }
+
+    .blog-intro{
+      text-align:center;
+      margin: 2px 0 28px;
+      font-size: 18px;
+      color:#2f2a28;
+    }
+
+    .blog-intro a,
+    .post-nav a,
+    .archive-link{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    main{
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1{
+      margin: 0 0 34px;
+      color:var(--heading);
+      font-size: 46px;
+      line-height: .95;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .date{
+      color:var(--date);
+      font-size: 18px;
+      font-weight:700;
+      margin: 0 0 34px;
+    }
+
+    .date::before{
+      content:"— ";
+    }
+
+    p{
+      font-size: 22px;
+      margin: 0 0 22px;
+      font-weight: 700;
+    }
+
+    .inline-image{
+      width: 100%;
+      height: 270px;
+      background: var(--blue);
+      display:block;
+      margin: 14px 0 14px;
+    }
+
+    .post-nav{
+      margin: 42px 0 44px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 18px;
+      font-size: 18px;
+      font-weight:700;
+    }
+
+    .post-nav .prev,
+    .post-nav .next{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+      flex:1;
+    }
+
+    .post-nav .next{
+      justify-content:flex-end;
+      text-align:right;
+    }
+
+    .square{
+      width:18px;
+      height:18px;
+      border:3px solid var(--accent);
+      flex:0 0 18px;
+    }
+
+    .archive-wrap{
+      text-align:center;
+      margin-top: 18px;
+    }
+
+    .archive-link{
+      font-size: 18px;
+      font-weight:700;
+    }
+
+    img{
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+    .nav-toggle { display: none; }
+
+    @media (max-width: 700px){
+      .page{
+        padding-top: 16px;
+      }
+      .hero{
+        width: calc(100% - 20px);
+        height: 175px;
+        margin-top: 0;
+      }
+      .blog-intro{
+        font-size: 17px;
+        margin-bottom: 22px;
+      }
+      main{
+        max-width: 100%;
+        padding: 0 10px;
+      }
+      h1{
+        font-size: 34px;
+        margin-bottom: 28px;
+      }
+      .date{
+        font-size: 17px;
+        margin-bottom: 28px;
+      }
+      p{
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+      .inline-image{
+        height: 155px;
+        margin: 10px 0 12px;
+      }
+      .post-nav{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+        margin-top: 34px;
+      }
+      .post-nav .next{
+        justify-content:flex-start;
+        text-align:left;
+      }
+      .archive-wrap{
+        margin-top: 28px;
+      }
+    }
+
+    @media (min-width: 701px) and (max-width: 1100px){
+      .page{max-width: 760px;}
+      .hero{
+        width: 330px;
+        height: 184px;
+      }
+      main{
+        max-width: 560px;
+      }
+      h1{
+        font-size: 54px;
+      }
+      p{
+        font-size: 21px;
+      }
+      .inline-image{
+        height: 252px;
+      }
+    }
+
+    @media (min-width: 1101px){
+      .page{max-width: 900px;}
+      .hero{
+        width: 340px;
+        height: 188px;
+      }
+      main{
+        max-width: 520px;
+      }
+      .inline-image{
+        height: 270px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="page">
+      <div class="hero" aria-hidden="true">
+        <img src="rick.jpg" alt="" />
+      </div>
+      <p class="blog-intro">This is <a href="#">Tom Morgan</a>'s blog</p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article aria-labelledby="post-title">
+      <h1 id="post-title">The Comfortable iPod Shuffle of Routine</h1>
+
+      <p class="date">2nd July 2017</p>
+
+      <p>In 2008 when I left Orange they bought me a 2nd generation iPod Shuffle. Since then it's been my mp3 player of choice.</p>
+
+      <p>It clips over a belt or the edge of a pocket and so unlike a phone you can play, pause, skip tracks and control volume right there with physical buttons. Buttons that give a nice little click when used.</p>
+
+      <div class="inline-image">
+        <img src="rick.jpg" alt="Illustration within the article" />
+      </div>
+
+      <p>At one point or another I started listening almost exclusively to podcasts on it. Even while running.</p>
+
+      <p>Back then iTunes was the main way to subscribe to podcasts and I was using it anyway with the iPod so that was fine. I used my personal (not work) laptop that I wasn’t on every day so I tended to only refresh the feeds and download new episodes once a week.</p>
+
+      <p>There’d usually be quite a few so they’d take a while to download. Then I’d drag them from iTunes into the iPod (after removing the ones from the previous week that I've now listened to).</p>
+
+      <p>Then I'd have to drag them into the order I wanted to listen to them in. The lack of screen on the iPod Shuffle means there's no real way pick specific tracks so it's best to line them up beforehand in iTunes.</p>
+
+      <p>This is what I’ve done for years now. Like some old man going through the same old daily rituals without questioning them.</p>
+
+      <p>Recently it’s been showing its age somewhat. Battery life is dwindling and it sometimes forgets where I left off listening, meaning it’ll start an episode from the beginning even though I’ve listened to half of it already.</p>
+
+      <p>So the other day I installed a podcast app on my phone and started using that. Whoooosh!</p>
+
+      <p>Now you might be thinking. So what?</p>
+
+      <p>When I think of this I wonder whether it’s because I’m getting older (the phrase “set it my ways” pops to mind) or I wonder whether actually, despite my love of new technologies and my excitement about these kind of continual improvements, I’m actually much more a creature of habit than I think.</p>
+
+      <p>Routine, in life, is a wonderful way not to have to think or make decisions on a day to day basis. That can be a great relief, considering we are living under an tyranny of huge, and often needless, choice right now.</p>
+
+      <p>But those of us in the business of change could do well to remember how powerful the comfort of routine can be. How persuading people to leave that comfort and join us in the future is about more than just pointing out how much better something is.</p>
+
+      <p>It’s also worth remembering that we can be just as susceptible to the comfortable power of routine as anyone else.</p>
+
+      <nav aria-label="Post navigation" class="post-nav">
+        <div class="prev">
+          <span class="square" aria-hidden="true"></span>
+          <a href="#">It's not a knockout</a>
+        </div>
+        <div class="next">
+          <a href="#">Knowledge Entropy, Castles Made of Sand</a>
+          <span class="square" aria-hidden="true"></span>
+        </div>
+      </nav>
+
+      <div class="archive-wrap">
+        <a class="archive-link" href="#">Archive</a>
+      </div>
+    </article>
+  </main>
+
+  <footer></footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, main, footer, and nav landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential structure; added alt attributes to all images; set html lang="en"; ensured links have descriptive text.
+[B] ARIA fixes: used unique aria-label on post navigation; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

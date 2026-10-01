@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Timeline — Personal Site</title>
+  <style>
+    :root{
+      --bg:#efefef;
+      --card:#ffffff;
+      --text:#3f3f3f;
+      --muted:#7a7a7a;
+      --link:#11aef7;
+      --timeline:#18b7ff;
+      --border:#d8d8d8;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+    }
+
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.42;
+    }
+
+    .skip-link{
+      position:absolute;
+      transform:translateY(-100%);
+      left:1rem;
+      top:0;
+      background:#fff;
+      color:#000;
+      padding:.75rem 1rem;
+      z-index:1000;
+      text-decoration:none;
+      border:1px solid #000;
+    }
+
+    .skip-link:focus{
+      transform:translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{
+      color:var(--link);
+      text-decoration:none;
+    }
+
+    a:hover,
+    a:focus{
+      text-decoration:underline;
+    }
+
+    .page{
+      max-width: 960px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:8px;
+      box-shadow:0 1px 4px rgba(0,0,0,.08);
+      padding:34px 34px 30px;
+    }
+
+    header{
+      display:grid;
+      grid-template-columns: 1fr 260px;
+      gap:20px;
+      align-items:start;
+      margin-bottom:18px;
+    }
+
+    h1{
+      margin:0;
+      font-size:56px;
+      line-height:.92;
+      letter-spacing:-1px;
+      font-weight:700;
+      color:#333;
+    }
+
+    .social-nav{
+      text-align:right;
+      padding-top:2px;
+    }
+
+    .social-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .social-nav li{
+      margin:0 0 4px 0;
+      font-size:18px;
+      line-height:1.15;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:8px;
+      padding-left:16px;
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:6px;
+      bottom:2px;
+      border-left:1px dotted var(--timeline);
+    }
+
+    .job{
+      position:relative;
+      padding-left:16px;
+      margin:0 0 22px 0;
+    }
+
+    .job::before{
+      content:"";
+      position:absolute;
+      left:-7px;
+      top:8px;
+      width:12px;
+      height:12px;
+      border:3px solid var(--timeline);
+      border-radius:50%;
+      background:#fff;
+    }
+
+    .job h2{
+      margin:0;
+      font-size:26px;
+      line-height:1.05;
+      font-weight:700;
+      color:#3d3d3d;
+    }
+
+    .meta{
+      margin:2px 0 18px;
+      font-size:17px;
+      color:#777;
+      font-weight:700;
+    }
+
+    .meta a{
+      font-weight:700;
+    }
+
+    .desc{
+      font-size:22px;
+      color:#3f3f3f;
+      margin:0;
+    }
+
+    .desc p{
+      margin:0 0 10px 0;
+    }
+
+    .desc p:last-child{
+      margin-bottom:0;
+    }
+
+    @media (max-width: 900px){
+      .page{
+        max-width:760px;
+      }
+      .card{
+        padding:32px 32px 28px;
+      }
+      h1{
+        font-size:54px;
+      }
+      .job h2{
+        font-size:25px;
+      }
+      .desc{
+        font-size:20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: none; }
+    }
+
+    @media (max-width: 560px){
+      .page{
+        margin:28px auto;
+        padding:0 7px;
+      }
+
+      .card{
+        padding:30px 24px 28px 30px;
+      }
+
+      header{
+        grid-template-columns: 1fr;
+        gap:8px;
+        margin-bottom:10px;
+      }
+
+      h1{
+        font-size:60px;
+        line-height:.88;
+        max-width:260px;
+      }
+
+      .social-nav{
+        text-align:right;
+        margin-top:-118px;
+        margin-right:-2px;
+      }
+
+      .social-nav ul{
+        display:inline-block;
+      }
+
+      .social-nav li{
+        font-size:18px;
+        line-height:1.08;
+        margin-bottom:2px;
+      }
+
+      .timeline{
+        margin-top:18px;
+      }
+
+      .job{
+        margin-bottom:20px;
+      }
+
+      .job h2{
+        font-size:25px;
+        line-height:1.02;
+      }
+
+      .meta{
+        font-size:17px;
+        line-height:1.25;
+        margin-bottom:18px;
+      }
+
+      .desc{
+        font-size:22px;
+        line-height:1.38;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <main id="main-content">
+      <section class="card" aria-label="Resume timeline">
+        <header>
+          <div>
+            <h1>[NAME REDACTED]</h1>
+          </div>
+          <nav class="social-nav" aria-label="Social links">
+            <ul>
+              <li><a href="#">[TWITTER REDACTED]</a></li>
+              <li><a href="#">[GITHUB REDACTED]</a></li>
+              <li><a href="#">[LINKEDIN REDACTED]</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <section class="timeline" aria-label="Work experience">
+          <article class="job">
+            <h2>Engineer Manager</h2>
+            <p class="meta"><a href="#">Mozilla</a> , France, May 2015 » Now</p>
+            <div class="desc">
+              <p>Managing a part of the Firefox developer tools engineering team and owner of the Inspector tool.</p>
+            </div>
+          </article>
+
+          <article class="job">
+            <h2>Senior Development Engineer</h2>
+            <p class="meta"><a href="#">Mozilla</a> , France, August 2013 » May 2015</p>
+            <div class="desc">
+              <p>Working on the Firefox developer tools, in charge of the HTML/CSS inspector part.</p>
+            </div>
+          </article>
+
+          <article class="job">
+            <h2>Senior Web Development Engineer</h2>
+            <p class="meta"><a href="#">Amadeus</a> , France, July 2012 » August 2013</p>
+            <div class="desc">
+              <p>Working on the next generation mission-critical HTML5 user interfaces for the Airport IT industry.<br>
+              Targetting modern browsers using HTML5, CSS3 and client-side templating.</p>
+            </div>
+          </article>
+
+          <article class="job">
+            <h2>Team Leader</h2>
+            <p class="meta"><a href="#">Amadeus</a> , France, June 2009 » July 2012</p>
+            <div class="desc">
+              <p>In charge of the team developing the Amadeus <a href="#">aria templates</a> web user interface framework.<br>
+              Team focused on delivering a fast, reliable and scalable software that enables professional ajax-based web applications to be built.<br>
+              I helped create the team, put processes in place (introduced SCRUM methodology) and I managed it for about 3 years to make it the official Amadeus UI framework, used by hundreds within the company, and now also open sourced.</p>
+            </div>
+          </article>
+
+          <article class="job">
+            <h2>Web Development Engineer</h2>
+            <p class="meta"><a href="#">Amadeus</a> , France, January 2008 » May 2009</p>
+            <div class="desc">
+              <p>Using a variety of technologies from Java/J2EE to Ajax, Javascript, HTML and CSS, I participated in the design/architecture, development and maintenance of the Amadeus' client/server framework.<br>
+              Helping and training other development teams using the framework to implement web applications for travel agencies and airlines.<br>
+              During that experience, I also worked on one of Amadeus' airlines retail sites engine, primarily focused on improving the Javascript and CSS layers of the application.</p>
+            </div>
+          </article>
+
+          <article class="job">
+            <h2>Web Development Engineer</h2>
+            <p class="meta"><a href="#">Astek</a> , France, July 2006 » January 2008</p>
+            <div class="desc">
+              <p>Software engineer contracting for Amadeus, working on <a href="#">aircanada.com</a> .<br>
+              Implemented and maintained several of the booking pages, implementing mockups provided by the customer, and especially helping on the CSS part.</p>
+            </div>
+          </article>
+
+          <article class="job">
+            <h2>Web Designer/Developer</h2>
+            <p class="meta"><a href="#">Zoe Communications</a> , New Zealand, June 2004 » February 2006</p>
+            <div class="desc">
+              <p>Web developer and designer for small to medium size New Zealand companies.<br>
+              Responsible for the complete design phase, from early meetings with clients, to mockup proposals and final working HTML versions.<br>
+              Development of the site using PHP/MySQL and an internal CMS.</p>
+            </div>
+          </article>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, nav, main, and section/article structure; ensured exactly one h1; used sequential heading hierarchy with h2 for job titles; added descriptive link text; set html lang="en"
+[B] ARIA fixes: used unique aria-labels for navigation and sections where helpful; avoided redundant role attributes on semantic landmarks; ensured no positive tabindex values remain
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator styling only
+-->

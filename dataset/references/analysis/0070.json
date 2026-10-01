@@ -1,0 +1,84 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place branding/navigation at the very top as a persistent header area separated from the rest of the page content; the desktop sketch especially shows a compact top bar above the hero, implying it remains available while scrolling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should stay fixed or become fixed on scroll so primary navigation remains accessible across the long page.",
+      "ambiguities": "It is unclear whether the nav is always fixed from page load or only becomes sticky after scrolling past an initial offset."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile layout omits visible horizontal navigation links and reserves only stacked content, strongly implying a collapsed mobile navigation control rather than full inline nav.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger button should toggle the mobile navigation panel open/closed, likely as an overlay or slide-in drawer.",
+      "ambiguities": "The sketch does not explicitly draw the icon or reveal whether the menu opens full-screen, from the side, or as a dropdown."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header shows multiple short nav items spaced horizontally, a common sketch convention for top-level navigation categories that likely expose deeper links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level nav items should reveal submenus on hover and/or click, with support for keyboard activation.",
+      "ambiguities": "The sketch does not explicitly depict submenu panels, so submenu depth and trigger mode are inferred rather than shown."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a contact-style form with multiple text inputs, a select field, a large message textarea, and a submit button.",
+      "confidence": "HIGH",
+      "behavior_notes": "Required fields should be validated before submission, with inline errors and submission-state feedback. Email/phone formatting may also need validation depending on field rules.",
+      "ambiguities": "The sketch does not indicate which fields are required or whether validation is inline, on blur, or on submit."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show one form field with a downward chevron, indicating a dropdown/select control distinct from plain text inputs.",
+      "confidence": "HIGH",
+      "behavior_notes": "If styled beyond the native browser select, it needs JS for open/close state, selected option display, and keyboard interaction; otherwise native select behavior may suffice.",
+      "ambiguities": "The sketch alone cannot confirm whether this is a native select or a custom-styled combobox."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "S1",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "form_validation",
+      "custom_select"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "dropdown_menu",
+      "form_validation",
+      "custom_select"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly simple marketing/content page with the main JavaScript concentrated in navigation and the contact form rather than dynamic content modules. Cross-viewport differences are important: desktop suggests exposed top navigation with likely dropdowns, while mobile suggests collapsed navigation behind a hamburger. The form appears in both views and is the clearest explicit interaction area, requiring validation and select-state handling. No strong evidence appears for tabs, accordions, modals, toasts, infinite scroll, or load-more behavior."
+}

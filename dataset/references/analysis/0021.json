@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a full-width top navigation/header band separated from the page content by a horizontal rule, suggesting a persistent site header that likely remains available while reading the article.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain accessible during scroll without obscuring content; if implemented as fixed/sticky it needs proper offset handling across mobile and desktop.",
+      "ambiguities": "The sketch does not explicitly show the header in scrolled states, so persistence is inferred rather than directly drawn."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses the top area into a narrow header with limited horizontal space and no visible full nav list, implying the desktop navigation would collapse behind a menu toggle on small screens.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should toggle the primary navigation open/closed, likely as an overlay or expandable panel beneath the header.",
+      "ambiguities": "The hamburger icon itself is not explicitly drawn; this is inferred from the responsive difference between mobile and desktop header density."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred mobile menu toggle/panel and any sticky header interactions require keyboard-operable state changes and managed focus; desktop navigation also needs logical focus handling because it contains multiple interactive links in the header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the menu and return to the trigger on close; keyboard navigation through header controls should remain logical across breakpoints.",
+      "ambiguities": "No explicit modal or disclosure widget is drawn, so this requirement is derived from the implied responsive navigation behavior rather than a visibly labeled component."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static article/detail page with low JavaScript complexity. The main cross-viewport interaction difference is navigation: desktop appears to have room for exposed nav links, while mobile likely needs a collapsed menu. Aside from that, the page reads as content-forward with a CTA button and related-content/sidebar blocks that do not by themselves imply advanced JS behaviors such as tabs, accordions, modals, search, or dynamic loading."
+}

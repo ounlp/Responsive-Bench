@@ -1,0 +1,30 @@
+{
+  "$schema": "./run.schema.json",
+  "run_id": "run_accessible_js_claude",
+  "dataset_root": "dataset",
+  "ids": null,
+  "provider": "claude",
+  "model": "claude-sonnet-5",
+  "prompt_template": "generate_a11y",
+  "mode": "generate_a11y",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 128000
+  },
+  "output": {
+    "root": "runs",
+    "overwrite": false
+  },
+  "retry": {
+    "max_attempts": 2,
+    "initial_backoff_seconds": 2,
+    "max_backoff_seconds": 120,
+    "backoff_multiplier": 2
+  },
+  "logging": {
+    "level": "INFO",
+    "console": true,
+    "file": true
+  }
+}
+

@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent header search field near the top with an adjacent smaller action area/button, indicating a searchable input as a primary interaction.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept a query and submit on button press or Enter. It may also support focus styling and possibly query assistance, but at minimum requires JS-aware submit handling if enhanced.",
+      "ambiguities": "The sketches do not make clear whether results are live/autocomplete or only submitted to a results page."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The search control is a user-input form element with a submit affordance in both mobile and desktop sketches, implying input handling and validation of empty or malformed submissions.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At minimum, prevent empty submissions or provide inline feedback/state when the search is submitted without usable input. Focus should remain understandable after validation.",
+      "ambiguities": "No explicit error state is drawn, so validation may be minimal and could also be handled server-side."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "form_validation"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "These sketches imply a largely static informational page in both viewports, with the only clear JavaScript need being the top search form. No hamburger, dropdowns, tabs, accordions, modals, sticky behavior, or progressive loading cues are visibly indicated. The desktop layout adds a right-side secondary column, but it still appears content-only rather than interactive. Overall JS complexity is low and centered on robust search submission, validation, and keyboard/focus behavior."
+}

@@ -1,0 +1,85 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small icon/control area instead of a full persistent navigation, implying collapsed navigation that must be opened from the header.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the header menu control should open and close the primary navigation panel, likely as an overlay or slide-out drawer given the reduced mobile width.",
+      "ambiguities": "The sketch does not make clear whether the menu opens full-screen, as a side drawer, or as a dropdown from the top."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a search affordance in the header area; on desktop it appears as a visible search field/control, while on mobile the compact header implies a search trigger that reveals or activates search.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search should accept input and submit queries; on mobile it likely expands or reveals the field from an icon/button, while on desktop it may be directly usable or expandable.",
+      "ambiguities": "The sketches do not indicate whether search supports live suggestions/results or only standard submit behavior."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile sketch implies a collapsible navigation/search overlay pattern, and the desktop sketch includes interactive header search and multiple actionable controls that require coherent keyboard movement and focus handling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When mobile navigation or an expanded search panel opens, focus should move into the opened UI and return to the trigger on close. Keyboard navigation order should remain logical across header controls, forms, galleries, and lists.",
+      "ambiguities": "Focus trapping is only strictly necessary if the mobile menu/search behaves as a modal-like overlay; the sketch alone does not fully specify overlay semantics."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The large hero image followed by many smaller thumbnails in both sketches strongly implies an image gallery where selecting an image opens a larger focused view rather than navigating away.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Clicking/tapping gallery images should open a lightbox-style modal with the enlarged image, close controls, backdrop dismissal, and likely previous/next navigation through the gallery set.",
+      "ambiguities": "The sketch does not explicitly draw the overlay state, so a modal lightbox is inferred from common gallery behavior rather than directly shown."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The page includes a visible contact/comments form with multiple fields and a submit action, implying client-side checks before posting.",
+      "confidence": "HIGH",
+      "behavior_notes": "Required fields such as name, email, message, and anti-spam/code entry should be validated on submit, with inline error feedback and prevention of invalid submission.",
+      "ambiguities": "The sketch does not specify which fields are required or whether validation is inline, on blur, or only on submit."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "F4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "focus_management",
+      "form_validation",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly content-heavy listing/detail page with modest but important JavaScript needs rather than a highly app-like interface. The biggest cross-viewport difference is mobile header behavior: navigation is condensed and likely toggled from a hamburger, while desktop keeps controls exposed. Both views strongly suggest searchable content, a validated inquiry/comment form, and a clickable image gallery that likely opens in a lightbox. No clear evidence appears for tabs, accordions, dropdown submenus, sticky navigation, or incremental loading."
+}

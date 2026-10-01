@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adversarial Font Size Violations</title>
+  <style>
+    /* Base styles - these should pass (>=12px) */
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 16px;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Passing elements with various CSS approaches */
+    .pass-direct {
+      font-size: 14px;  /* Direct pixel value >= 12px */
+      margin-bottom: 12px;
+    }
+
+    .pass-em {
+      font-size: 0.875em;  /* 0.875 * 16px = 14px >= 12px */
+      margin-bottom: 12px;
+    }
+
+    .pass-rem {
+      font-size: 0.75rem;  /* 0.75 * 16px = 12px >= 12px (borderline) */
+      margin-bottom: 12px;
+    }
+
+    .pass-percentage {
+      font-size: 80%;  /* 80% of 16px = 12.8px >= 12px */
+      margin-bottom: 12px;
+    }
+
+    /* Violating elements with various CSS approaches */
+    .fail-tiny-px {
+      font-size: 10px;  /* Direct pixel value < 12px - VIOLATION */
+      margin-bottom: 12px;
+      color: #d00;
+    }
+
+    .fail-small-em {
+      font-size: 0.625em;  /* 0.625 * 16px = 10px < 12px - VIOLATION */
+      margin-bottom: 12px;
+      color: #d00;
+    }
+
+    .fail-small-rem {
+      font-size: 0.5rem;  /* 0.5 * 16px = 8px < 12px - VIOLATION */
+      margin-bottom: 12px;
+      color: #d00;
+    }
+
+    .fail-percentage {
+      font-size: 60%;  /* 60% of 16px = 9.6px < 12px - VIOLATION */
+      margin-bottom: 12px;
+      color: #d00;
+    }
+
+    /* Nested violations - child inherits small size */
+    .parent-small {
+      font-size: 9px;  /* Parent has small font - VIOLATION */
+    }
+
+    .child-inherit {
+      /* Inherits 9px from parent - VIOLATION */
+      margin-bottom: 12px;
+      color: #d00;
+    }
+
+    /* Edge case: element with multiple classes */
+    .base-size {
+      font-size: 16px;
+    }
+
+    .override-tiny {
+      font-size: 11px !important;  /* Override with !important < 12px - VIOLATION */
+      color: #d00;
+      margin-bottom: 12px;
+    }
+
+    /* Inline text in various tags */
+    small {
+      font-size: 10px;  /* HTML5 small tag with explicit small size - VIOLATION */
+      color: #d00;
+    }
+
+    .caption {
+      font-size: 11px;  /* Caption text < 12px - VIOLATION */
+      font-style: italic;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    /* Passing heading styles */
+    h1 {
+      font-size: 28px;  /* Large heading - passes */
+      margin: 0 0 16px 0;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 20px;  /* Medium heading - passes */
+      margin: 16px 0 12px 0;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 16px;  /* Small heading - passes */
+      margin: 12px 0 8px 0;
+      font-weight: bold;
+    }
+
+    /* Code blocks - often use small fonts */
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;  /* Slightly larger than typical - passes */
+      background: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .code-violation {
+      font-family: 'Courier New', monospace;
+      font-size: 9px;  /* Tiny code font - VIOLATION */
+      background: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 3px;
+      color: #d00;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    /* Legal/fine print - common source of violations */
+    .legal {
+      font-size: 10px;  /* Traditional fine print size - VIOLATION */
+      color: #666;
+      margin-top: 24px;
+      padding-top: 12px;
+      border-top: 1px solid #ddd;
+    }
+
+    .section {
+      border: 1px solid #ddd;
+      padding: 16px;
+      margin-bottom: 16px;
+      background: #fafafa;
+    }
+
+    .violation-marker {
+      background: #fee;
+      border-left: 3px solid #d00;
+      padding-left: 12px;
+    }
+
+    .pass-marker {
+      background: #efe;
+      border-left: 3px solid #0a0;
+      padding-left: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Font Size Violations Test Page</h1>
+
+    <div class="section pass-marker">
+      <h2>Passing Elements (Font Size >= 12px)</h2>
+
+      <p class="pass-direct">
+        This paragraph uses direct pixel sizing at 14px and should pass the font size check.
+      </p>
+
+      <p class="pass-em">
+        This paragraph uses em units (0.875em = 14px) and should pass the font size check.
+      </p>
+
+      <p class="pass-rem">
+        This paragraph uses rem units (0.75rem = 12px) and should pass at the borderline.
+      </p>
+
+      <p class="pass-percentage">
+        This paragraph uses percentage sizing (80% = 12.8px) and should pass the font size check.
+      </p>
+
+      <h3>Normal Body Text</h3>
+      <p>
+        This is regular body text at the default 16px size. It contains <strong>bold text</strong>
+        and <em>italic text</em> which inherit the same font size. There's also a
+        <code>code snippet</code> that uses 13px monospace font.
+      </p>
+    </div>
+
+    <div class="section violation-marker">
+      <h2>Violating Elements (Font Size < 12px)</h2>
+
+      <p class="fail-tiny-px">
+        VIOLATION: This paragraph uses 10px direct pixel sizing, which is below the 12px minimum.
+      </p>
+
+      <p class="fail-small-em">
+        VIOLATION: This paragraph uses 0.625em (10px) sizing, which is below the minimum.
+      </p>
+
+      <p class="fail-small-rem">
+        VIOLATION: This paragraph uses 0.5rem (8px) sizing, which is below the minimum.
+      </p>
+
+      <p class="fail-percentage">
+        VIOLATION: This paragraph uses 60% sizing (9.6px), which is below the minimum.
+      </p>
+
+      <div class="parent-small">
+        <p class="child-inherit">
+          VIOLATION: This text inherits 9px from its parent container, violating the minimum.
+        </p>
+      </div>
+
+      <p class="base-size override-tiny">
+        VIOLATION: This uses !important to override and force 11px font size.
+      </p>
+
+      <p>
+        This paragraph contains a <small>small element with 10px font</small> which violates the minimum.
+      </p>
+
+      <div>
+        <p>Regular paragraph with normal text.</p>
+        <div class="caption">
+          VIOLATION: This caption uses 11px italic text for image descriptions or footnotes.
+        </div>
+      </div>
+
+      <code class="code-violation">
+        VIOLATION: This code block uses 9px monospace font, typical for dense code listings.
+      </code>
+    </div>
+
+    <div class="section">
+      <h2>Mixed Content</h2>
+      <p>
+        This section contains both passing and failing elements mixed together. The main paragraph
+        text is at 16px and passes, but watch out for the <span class="fail-tiny-px">tiny inline span</span>
+        that violates the rule. There's also a properly sized <code>inline code</code> element.
+      </p>
+
+      <h3>List with Mixed Sizes</h3>
+      <ul style="list-style: disc; margin-left: 20px;">
+        <li style="font-size: 14px; margin-bottom: 8px;">
+          Regular list item at 14px - passes
+        </li>
+        <li style="font-size: 11px; margin-bottom: 8px; color: #d00;">
+          VIOLATION: Tiny list item at 11px - fails
+        </li>
+        <li style="font-size: 13px; margin-bottom: 8px;">
+          Another regular list item at 13px - passes
+        </li>
+      </ul>
+    </div>
+
+    <div class="legal">
+      VIOLATION: This is fine print legal text at 10px. Commonly used for disclaimers,
+      copyright notices, and terms of service. While traditional, it violates accessibility
+      guidelines for minimum font size. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </div>
+  </div>
+</body>
+</html>

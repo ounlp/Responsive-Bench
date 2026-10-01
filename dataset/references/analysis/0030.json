@@ -1,0 +1,44 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a distinct top header/title area with a horizontal navigation row directly beneath it, separated from the body by a long horizontal rule. This layout strongly suggests a persistent top navigation bar that remains available while reading long-form content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Navigation should remain fixed or become fixed after scroll so section/context links stay accessible while the user reads the page content.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state, so it is unclear whether the nav is always fixed or only becomes sticky after passing the header."
+    }
+  ],
+  "applicable_criteria": [
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "Both sketches primarily depict static article-style content with headings, text blocks, and simple link-like elements. The mobile sketch does not clearly indicate any explicit interactive control such as a hamburger, modal trigger, accordion, or form. The desktop sketch adds a clearer horizontal navigation structure at the top, which implies sticky navigation as the main JavaScript-enhanced behavior. Overall JS complexity appears low, with desktop requiring slightly more interaction support than mobile."
+}

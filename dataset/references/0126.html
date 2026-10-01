@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Autocomplete Jokes — Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 36px;
+      color: #666;
+      background-color: white;
+      margin: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2em;
+    }
+
+    li {
+      margin-bottom: 0.8em;
+    }
+
+    a:link {
+      color: #666;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: #666;
+    }
+
+    .media {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 800px;
+      justify-content: center;
+    }
+
+    li.pane {
+      background-color: hsl(35, 10%, 97%);
+      padding-left: 1.2em;
+      padding-right: 1.2em;
+      padding-top: 1.2em;
+      padding-bottom: 1.2em;
+      margin-bottom: 2em;
+      border: 1px solid #ddd;
+      box-shadow: 2px 2px #e8e8e8;
+    }
+
+    .entry-meta {
+      color: hsl(341, 10%, 20%);
+      font-weight: bold;
+    }
+
+    .media-caption {
+      flex-grow: 1;
+      font-size: larger;
+      margin-top: 1em;
+    }
+
+    .text-caption {
+      color: #000;
+    }
+
+    .time-stamp {
+      margin-bottom: 1em;
+    }
+
+    .pane video,
+    .pane img {
+      border-left: 1px solid hsla(30, 14%, 67%, 0.5);
+      width: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      transform: translateY(-100%);
+      left: 0;
+      top: 0;
+      background: #fff;
+      color: #000;
+      padding: 0.5rem 0.75rem;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .previous-indexes {
+      margin-bottom: 2rem;
+    }
+
+    .previous-indexes nav ul {
+      margin-top: 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.4em;
+    }
+
+    .previous-indexes li {
+      margin-bottom: 0;
+    }
+
+    .load-status {
+      min-height: 1.2em;
+      font-size: 0.5em;
+      margin-top: 0.5em;
+    }
+
+    @media all and (max-width: 414px) {
+      body {
+        font-size: 12px;
+      }
+
+      .name {
+        font-size: 1em;
+      }
+
+      .project {
+        max-width: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <h1>Autocomplete Jokes</h1>
+  </header>
+
+  <main id="main-content">
+    <div class="annotation hidden warning" aria-hidden="true"></div>
+
+    <section class="media" aria-label="Joke entries">
+      <h2 class="hidden">Recent joke entries</h2>
+      <ul class="media-list" id="media-list">
+        <li class="pane">
+          <div class="time-stamp entry-meta">
+            <a href="#entry-2018-03-18-091703" aria-label="View joke posted on 2018-3-18 at 09:17:03">
+              <time id="entry-2018-03-18-091703" datetime="2018-03-18T13:17:03.305Z">2018-3-18 09:17:03</time>
+            </a>
+          </div>
+          <div class="text-caption">
+            Knock knock! Who's there?
+          </div>
+        </li>
+        <li class="pane">
+          <div class="time-stamp entry-meta">
+            <a href="#entry-2018-03-18-061703" aria-label="View joke posted on 2018-3-18 at 06:17:03">
+              <time id="entry-2018-03-18-061703" datetime="2018-03-18T10:17:03.076Z">2018-3-18 06:17:03</time>
+            </a>
+          </div>
+          <div class="text-caption">
+            Knock knock! Who's there?
+          </div>
+        </li>
+        <li class="pane">
+          <div class="time-stamp entry-meta">
+            <a href="#entry-2018-03-18-031702" aria-label="View joke posted on 2018-3-18 at 03:17:02">
+              <time id="entry-2018-03-18-031702" datetime="2018-03-18T07:17:02.757Z">2018-3-18 03:17:02</time>
+            </a>
+          </div>
+          <div class="text-caption">
+            Knock knock! Who's there?
+          </div>
+        </li>
+        <li class="pane">
+          <div class="time-stamp entry-meta">
+            <a href="#entry-2018-03-18-001702" aria-label="View joke posted on 2018-3-18 at 00:17:02">
+              <time id="entry-2018-03-18-001702" datetime="2018-03-18T04:17:02.800Z">2018-3-18 00:17:02</time>
+            </a>
+          </div>
+          <div class="text-caption">
+            Knock knock! Who's there?
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <div class="previous-indexes">
+      <nav aria-label="Archive pages">
+        <ul>
+          <li><a href="?page=6" data-page="6">Page 6</a></li>
+          <li aria-hidden="true">|</li>
+          <li><a href="?page=5" data-page="5">Page 5</a></li>
+          <li aria-hidden="true">|</li>
+          <li><a href="?page=4" data-page="4">Page 4</a></li>
+          <li aria-hidden="true">|</li>
+          <li><a href="?page=3" data-page="3">Page 3</a></li>
+          <li aria-hidden="true">|</li>
+          <li><a href="?page=2" data-page="2">Page 2</a></li>
+          <li aria-hidden="true">|</li>
+          <li><a href="?page=1" data-page="1">Page 1</a></li>
+          <li aria-hidden="true">|</li>
+          <li><a href="?page=0" data-page="0">Page 0</a></li>
+        </ul>
+      </nav>
+      <div id="load-status" class="load-status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    (function () {
+      const status = document.getElementById('load-status');
+      const archiveLinks = document.querySelectorAll('.previous-indexes a[data-page]');
+
+      archiveLinks.forEach(link => {
+        link.addEventListener('click', function () {
+          const page = this.getAttribute('data-page');
+          status.textContent = 'Loading page ' + page + '…';
+        });
+      });
+
+      window.addEventListener('pageshow', function () {
+        status.textContent = '';
+      });
+    })();
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added <!DOCTYPE html>; added lang="en"; updated title to descriptive "Autocomplete Jokes — Archive"; added skip link as first body child; added semantic header and main landmarks with id="main-content"; preserved a single descriptive h1; added a hidden h2 for the entries section; converted bottom archive area into a nav landmark; added descriptive href and text/labels for all links.
+[B] ARIA fixes: avoided redundant landmark roles; added aria-label to section and archive nav; marked decorative separators as aria-hidden; added aria-live status region for loading feedback; ensured no positive tabindex values remain via JS.
+[C] JS patterns added: implemented C-K1/K3 global focus indicator and positive tabindex cleanup; implemented conservative load_more/pagination loading state behavior with polite live announcement when archive page links are activated.
+-->

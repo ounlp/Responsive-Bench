@@ -1,0 +1,86 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent text input labeled 'input' paired with a nearby 'btn' at the top of the page, indicating a search/query control as a primary interaction.",
+      "confidence": "HIGH",
+      "behavior_notes": "Input should accept a query and submit via the adjacent button and likely Enter key. It may also support focus styling and possibly dynamic query handling, but at minimum requires JS-backed submit/search behavior.",
+      "ambiguities": "The sketch does not reveal whether results update live while typing or only after explicit submission."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The top input-plus-button combination implies a submittable form. Any user-entered query field with an action button typically needs empty-state handling and submission validation.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Validate that the field is usable before submission, handle empty or invalid queries, and provide feedback if submission cannot proceed.",
+      "ambiguities": "No explicit error states are drawn, so requiredness and exact validation rules are inferred rather than shown."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "After the hero image and descriptive text, both sketches include a standalone 'btn' before additional lower-page content blocks, suggesting a user-triggered reveal or fetch of more content/items.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Button likely loads or reveals additional related content, details, or listings below without a full page reload. Should manage loading/disabled state during fetch or expansion.",
+      "ambiguities": "The button could alternatively be a CTA unrelated to loading more content; the sketch does not label its purpose."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show multiple stacked content sections separated by bold horizontal divider-like headings, followed by grouped bullet/list content beneath each section. This repeated disclosure structure strongly suggests expandable/collapsible detail groups.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Section headers may toggle visibility of associated lists such as features, product info, or related categories. On mobile this is especially likely to conserve vertical space; desktop may keep some sections expanded by default.",
+      "ambiguities": "The sketches do not explicitly show chevrons, plus/minus icons, or collapsed states, so these could also be static headings."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Interactive controls implied by the sketches include the search form, possible accordion/disclosure sections, and a load-more button. These components require managed keyboard focus transitions for usable interaction.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Focus should move predictably after search submission, remain logical when accordion panels open/close, and stay stable when additional content is injected by the button.",
+      "ambiguities": "No explicit overlay or menu is shown, so focus management needs are limited to inline widgets rather than complex traps."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "D1",
+    "D4",
+    "S2",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "F3",
+    "F4",
+    "K2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "form_validation",
+      "accordion",
+      "load_more",
+      "focus_management"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "load_more",
+      "accordion",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly simple product/detail page with one clearly primary interactive area: the top search form. Beyond that, JavaScript needs are mostly inferred from structure rather than explicitly drawn. Mobile more strongly suggests collapsible sections because of the long stacked layout, while desktop could present the same sections expanded but still may use disclosure behavior. A mid-page button in both views likely triggers progressive reveal/loading of more content. No evidence suggests navigation menus, modals, tabs, sticky behavior, or live counters in the sketches themselves."
+}

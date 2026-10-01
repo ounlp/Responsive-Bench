@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a simplified stacked layout with no visible horizontal navigation links, while the desktop sketch clearly shows a full top navigation bar. This responsive reduction strongly implies a mobile nav toggle that reveals hidden navigation.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger button should open and close a navigation drawer or overlay containing the primary site links. It should update expanded state and likely lock background scroll while open.",
+      "ambiguities": "The sketch does not explicitly draw the hamburger icon or the opened menu state, so the exact panel style (drawer, dropdown, fullscreen overlay) is inferred from the desktop/mobile contrast."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred mobile navigation drawer/toggle requires keyboard-operable state changes and controlled focus movement. Desktop navigation also needs logical keyboard traversal across top-level links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into it and return to the trigger on close. Keyboard navigation order should remain logical across nav, map CTA, and footer links.",
+      "ambiguities": "No explicit modal or disclosure states are drawn; focus handling is inferred from the presence of interactive navigation and CTA elements."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static informational site with low JavaScript complexity. The main cross-viewport interaction difference is navigation: desktop presents a visible horizontal nav, while mobile likely collapses that navigation behind a hamburger-controlled panel. No forms, tabs, accordions, infinite loading, or modal content are suggested by the drawings; the remaining interactive needs are primarily accessibility-oriented keyboard and focus behavior around navigation and linked controls."
+}

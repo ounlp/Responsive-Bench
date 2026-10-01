@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zen Quotations — Beginner's Mind</title>
+  <style>
+    body {
+      margin: 0;
+      background: #ffffff url("../flower_bg_2.png") repeat;
+      color: #000;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    a {
+      color: #6C3483;
+    }
+
+    a:visited {
+      color: #6C3483;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: 0.5rem 0.75rem;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    header {
+      background: #D8BFD8;
+      padding: 0.15rem 0.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: underline;
+    }
+
+    main {
+      width: 90%;
+      max-width: 1065px;
+      margin: 36px auto 0;
+    }
+
+    .feature-quote {
+      background: #FF7F50;
+      text-align: center;
+      padding: 30px 40px;
+      margin-bottom: 33px;
+    }
+
+    .feature-quote h1 {
+      margin: 0 0 18px;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    .feature-quote p,
+    .quote-card p {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 33px;
+    }
+
+    .quote-card {
+      background: #D8BFD8;
+      text-align: center;
+      padding: 30px 24px;
+      min-height: 123px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .quote-card h2 {
+      margin: 0 0 18px;
+      font-family: "Lucida Console", Monaco, monospace;
+      font-size: 1.75rem;
+      font-weight: 400;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        width: 79%;
+      }
+
+      .feature-quote h1,
+      .quote-card h2 {
+        font-size: 1.5rem;
+      }
+
+      .feature-quote p,
+      .quote-card p {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        width: calc(100% - 44px);
+        margin-top: 36px;
+      }
+
+      .feature-quote {
+        padding: 30px 28px;
+      }
+
+      .feature-quote h1,
+      .quote-card h2 {
+        font-size: 1rem;
+      }
+
+      .feature-quote p,
+      .quote-card p {
+        font-size: 0.85rem;
+      }
+
+      .quote-grid {
+        gap: 32px;
+      }
+
+      .quote-card {
+        padding: 34px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#">Root</a></li>
+        <li><a href="#">Practice</a></li>
+        <li><a href="#">Wares</a></li>
+        <li><a href="#">Professional Bio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="feature-quote" aria-labelledby="beginners-mind-heading">
+      <h1 id="beginners-mind-heading">Beginner's Mind</h1>
+      <p><em>After you have practiced for a while, you will realize that it is not possible to make rapid, extraordinary progress. Even though you try very hard, the progress you make is always little by little.</em></p>
+    </section>
+
+    <section class="quote-grid" aria-label="Additional quotations">
+      <article class="quote-card" aria-labelledby="breathing-heading">
+        <h2 id="breathing-heading">Breathing</h2>
+        <p><em>If you say, "I breathe.", the "I" is extra.</em></p>
+      </article>
+
+      <article class="quote-card" aria-labelledby="sleeping-heading">
+        <h2 id="sleeping-heading">Sleeping</h2>
+        <p><em>Sleeping is the best meditation.</em></p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added <!DOCTYPE html>; added lang="en"; added descriptive page title; replaced table-based layout with semantic header, nav, main, section, and article structure; added skip link as first body child; added id="main-content" to main; created exactly one descriptive h1 and sequential h2 subheadings; converted non-descriptive empty anchors into descriptive navigation links; preserved visual layout with CSS; no forms or images required fixes on this page.
+[B] ARIA fixes: added aria-label="Main" to nav; added accessible labels to sections/articles where helpful; avoided redundant role attributes on semantic landmarks; ensured no positive tabindex remains via JS baseline.
+[C] JS patterns added: implemented required global focus indicator support and positive tabindex cleanup only; no hamburger, dropdown, accordion, tabs, form validation, modal, or toast added because they are not visible or implied by the screenshots.
+-->

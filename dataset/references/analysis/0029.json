@@ -1,0 +1,56 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a small standalone button labeled 'btn' in the upper-right corner, visually separated from the main content and navigation-like text. This placement strongly suggests a global action trigger rather than inline content, commonly opening an overlay or dialog.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Clicking/tapping the top-right button should likely open an overlay dialog for a secondary action such as login, signup, or utility content. The dialog would need open/close behavior, backdrop handling, escape/close support, and focus movement into the dialog.",
+      "ambiguities": "The sketch does not reveal the dialog contents or whether the button instead navigates to another page. Modal behavior is implied by isolated placement, but not explicit."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "If the top-right global button opens an overlay or any hidden panel, programmatic focus handling is required. The sketches imply at least one triggered UI surface beyond static content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "On open, focus should move into the revealed UI; on close, focus should return to the triggering button. If the triggered surface is modal, focus should be trapped within it while open.",
+      "ambiguities": "This depends on the top-right button opening a modal or disclosure rather than linking to a separate page."
+    }
+  ],
+  "applicable_criteria": [
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "modal_dialog",
+      "focus_management"
+    ],
+    "desktop": [
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static marketing/content page with image blocks and text, and very little explicit interaction beyond a single global button in the top-right. No hamburger icon, dropdown affordance, tabs, accordions, search, or load-more controls are visibly indicated. The main JavaScript complexity therefore appears low and concentrated in whatever triggered surface that button opens, with similar behavior across mobile and desktop."
+}

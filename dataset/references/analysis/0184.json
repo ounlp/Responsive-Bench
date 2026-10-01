@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch implies a compact header/navigation treatment rather than a full horizontal nav, which strongly suggests a collapsed mobile menu trigger. The reference layout also aligns with this by using a mobile drawer pattern.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target in the mobile header should open and close a navigation panel or drawer containing the primary links. The trigger should reflect expanded/collapsed state and likely close after a nav item is selected.",
+      "ambiguities": "The sketch does not explicitly draw the hamburger icon or the opened drawer state, so the exact menu presentation (slide-in drawer, dropdown sheet, full-screen overlay) is inferred rather than shown."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a prominent header/navigation region at the top of the page above long scrolling content, implying the navigation should remain accessible while the user scrolls through multiple large sections.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation/header should likely stick to the top edge after scroll begins, preserving access to branding and navigation across the long page. It may also change styling once pinned.",
+      "ambiguities": "The sketch does not explicitly indicate whether the entire header sticks, only the nav bar sticks, or whether the sticky behavior begins immediately versus after the hero."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any responsive navigation that collapses on mobile into a hidden panel requires programmatic focus handling, and sticky or interactive navigation across desktop also needs managed keyboard movement and state changes.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the menu, remain logically contained while open, and return to the trigger when closed. Keyboard users should be able to traverse nav items in a predictable order across both viewports.",
+      "ambiguities": "This depends on the exact implementation of the mobile navigation overlay/drawer, which is not explicitly drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively low-JS marketing site with long-scroll content sections, hero media, and image blocks, but very little explicit interactive content beyond navigation. The main cross-viewport difference is the likely collapse of navigation into a mobile menu on small screens, while desktop keeps navigation exposed. No forms, tabs, accordions, modals, search, or explicit gallery lightbox/load-more behaviors are clearly indicated by the sketches alone."
+}

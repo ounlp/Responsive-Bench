@@ -1,0 +1,270 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Responsive Web Evaluation Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["eval_id", "run_id", "metrics"],
+  "patternProperties": {
+    "^\\$": {}
+  },
+  "properties": {
+    "eval_id": {
+      "type": "string",
+      "description": "Unique identifier for this evaluation; used as folder name under runs/<run_id>/eval/."
+    },
+    "run_id": {
+      "type": "string",
+      "description": "Run ID or path to run directory to evaluate. Must exist under runs/ or be an absolute path."
+    },
+    "dataset_root": {
+      "type": "string",
+      "description": "Path to dataset root directory containing metadata/, sketches/, and the reference HTML.",
+      "default": "dataset"
+    },
+    "ids": {
+      "type": ["array", "null"],
+      "description": "Optional explicit list of sample IDs to evaluate. If null or not provided, evaluates all samples in the run.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "description": "List of metric names to run for each sample.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "accessible_landmarks",
+          "accessible_hamburger_menu",
+          "accessible_active_nav_item",
+          "accessible_no_keyboard_trap",
+          "accessible_form_labels",
+          "accessibility",
+          "layout_similarity",
+          "layout_block_f1",
+          "layout_block_f1_rra",
+          "horizontal_scroll",
+          "llm_judge_screenshots",
+          "tap_targets",
+          "line_spacing",
+          "viewport_meta_tag",
+          "responsive_media",
+          "relative_units",
+          "computed_font_sizes",
+          "rotation_friendly",
+          "text_media_cutoff_overlap",
+          "heading_order",
+          "text_enlargement"
+        ]
+      },
+      "minItems": 1
+    },
+    "viewport": {
+      "type": "object",
+      "description": "Viewport configuration for browser-based metrics.",
+      "additionalProperties": false,
+      "properties": {
+        "width": {
+          "type": "integer",
+          "description": "Viewport width in pixels.",
+          "minimum": 1,
+          "default": 480
+        },
+        "height": {
+          "type": "integer",
+          "description": "Viewport height in pixels.",
+          "minimum": 1,
+          "default": 800
+        }
+      },
+      "default": {
+        "width": 480,
+        "height": 800
+      }
+    },
+    "playwright": {
+      "type": "object",
+      "description": "Playwright browser configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "headless": {
+          "type": "boolean",
+          "description": "Run browser in headless mode.",
+          "default": true
+        },
+        "timeout_ms": {
+          "type": "integer",
+          "description": "Default timeout for browser operations in milliseconds.",
+          "minimum": 1000,
+          "default": 30000
+        }
+      },
+      "default": {
+        "headless": true,
+        "timeout_ms": 30000
+      }
+    },
+    "judge": {
+      "type": "object",
+      "description": "LLM judge configuration for llm_judge_screenshots and accessible metrics.",
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "type": ["string", "null"],
+          "description": "LLM provider for judge. 'hf' loads the model directly via transformers and runs inference in-process (see HF_* env vars in providers/hf_provider.py). Set to null to disable judge.",
+          "enum": ["openai", "claude", "vllm", "hf", null]
+        },
+        "model": {
+          "type": ["string", "null"],
+          "description": "Model identifier for the judge provider (e.g., OpenAI: 'gpt-4o', 'gpt-5.2'; Claude: 'claude-sonnet-4-6'). Required if provider is not null."
+        },
+        "temperature": {
+          "type": "number",
+          "description": "Temperature for judge model generation.",
+          "minimum": 0,
+          "maximum": 2,
+          "default": 0.3
+        },
+        "max_tokens": {
+          "type": "integer",
+          "description": "Maximum tokens for judge response.",
+          "minimum": 1,
+          "default": 1000
+        },
+        "prompt": {
+          "type": "string",
+          "description": "Jinja2 template ID for the judge prompt, relative to src/responsive/eval/prompts/ without .j2 extension. Used by llm_judge_screenshots to select the responsive scoring rubric. Defaults to 'llm_judge/unified_responsive_v1'.",
+          "default": "llm_judge/unified_responsive_v1"
+        },
+        "prompt_vars": {
+          "type": "object",
+          "description": "Optional key-value pairs passed as Jinja2 template variables when rendering the judge prompt. Merge with and override metric-supplied defaults.",
+          "additionalProperties": true,
+          "default": {}
+        },
+        "response_format": {
+          "type": ["string", "null"],
+          "description": "API-level JSON mode. Set to 'json_object' to enable structured JSON output on providers that support it (OpenAI, vLLM). Strongly recommended when using small models that don't reliably follow JSON instructions. Accepts the string shorthand 'json_object' (expanded to {\"type\": \"json_object\"} internally).",
+          "enum": ["json_object", null],
+          "default": null
+        },
+        "system_prompt": {
+          "type": ["string", "null"],
+          "description": "Optional system message prepended before the user turn. Use '/no_think' to disable Qwen3 chain-of-thought reasoning (prevents the model from spending all tokens on <think> blocks and returning an empty response).",
+          "default": null
+        },
+        "extra_body": {
+          "type": ["object", "null"],
+          "description": "Provider-specific extra parameters passed directly to the API request body (vLLM only). Example: {\"chat_template_kwargs\": {\"enable_thinking\": false}} disables Qwen3 thinking at the chat-template level, which is more reliable than the /no_think system prompt.",
+          "additionalProperties": true,
+          "default": null
+        },
+        "include_sketches": {
+          "type": "boolean",
+          "description": "Whether to include desktop and mobile sketch images as judge inputs. Set to false to use screenshot-only evaluation (3 images: mobile, tablet, desktop). When false, use a sketch-free prompt such as 'llm_judge/sketch_free_v1'. Defaults to true.",
+          "default": true
+        },
+        "max_retries": {
+          "type": "integer",
+          "description": "Maximum number of attempts for each judge API call. On non-JSON or any other error the call is retried with exponential backoff (1s, 2s, 4s, …). Defaults to 3.",
+          "minimum": 1,
+          "default": 3
+        }
+      },
+      "default": {}
+    },
+    "layout_block_f1": {
+      "type": "object",
+      "description": "Configuration for the layout_block_f1 metric.",
+      "additionalProperties": false,
+      "properties": {
+        "iou_threshold": {
+          "type": "number",
+          "description": "Minimum IoU for a generated block to be matched to a reference block of the same category. Pairs below this are left unmatched (contributing to false positives/negatives) rather than matched.",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5
+        }
+      },
+      "default": {}
+    },
+    "output": {
+      "type": "object",
+      "description": "Output configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "overwrite": {
+          "type": "boolean",
+          "description": "If true, overwrite existing evaluation results. If false, skip samples with existing metrics.json.",
+          "default": false
+        }
+      },
+      "default": {
+        "overwrite": false
+      }
+    },
+    "concurrency": {
+      "type": "object",
+      "description": "Concurrency configuration for parallel metric execution.",
+      "additionalProperties": false,
+      "properties": {
+        "max_workers": {
+          "type": "integer",
+          "description": "Maximum number of concurrent workers for metric execution.",
+          "minimum": 1,
+          "default": 1
+        }
+      },
+      "default": {
+        "max_workers": 1
+      }
+    },
+    "caching": {
+      "type": "object",
+      "description": "Caching configuration for evaluation results.",
+      "additionalProperties": false,
+      "properties": {
+        "skip_if_metrics_exist": {
+          "type": "boolean",
+          "description": "If true, skip samples that already have metrics.json (unless overwrite is true). Failed samples are retried.",
+          "default": true
+        }
+      },
+      "default": {
+        "skip_if_metrics_exist": true
+      }
+    },
+    "logging": {
+      "type": "object",
+      "description": "Logging configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "type": "string",
+          "description": "Log level: DEBUG, INFO, WARNING, ERROR.",
+          "enum": ["DEBUG", "INFO", "WARNING", "ERROR"],
+          "default": "INFO"
+        },
+        "console": {
+          "type": "boolean",
+          "description": "Enable console logging.",
+          "default": true
+        },
+        "file": {
+          "type": "boolean",
+          "description": "Enable file logging.",
+          "default": true
+        },
+        "file_path": {
+          "type": ["string", "null"],
+          "description": "Custom log file path (relative to eval directory). If null, defaults to eval.log."
+        }
+      },
+      "default": {
+        "level": "INFO",
+        "console": true,
+        "file": true
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a compact header/title area separated from the article body by a horizontal rule at the top, consistent with a persistent top bar while long content scrolls beneath it.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation region should remain available during scroll, likely collapsing to a smaller fixed bar on longer pages.",
+      "ambiguities": "The sketch does not explicitly show the sticky state or whether only the title bar, back control, or full nav remains fixed."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The reference layout and article pattern strongly imply tappable/clickable images embedded in the post and thumbnail cards; large content images in blog/article layouts commonly open in an overlay/lightbox, and the sketch emphasizes image blocks as distinct interactive media.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented faithfully to the implied article/media behavior, clicking/tapping images should open an enlarged overlay with dismiss behavior and managed focus.",
+      "ambiguities": "The sketch itself does not explicitly draw an overlay, zoom icon, or gallery controls, so this is inferred from the media-heavy article pattern rather than directly depicted."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "both",
+      "visual_evidence": "The article header area in the reference context includes a compact share/action control; the sketches leave a sparse top utility area where a small action menu is plausible rather than fully expanded controls.",
+      "confidence": "LOW",
+      "behavior_notes": "A compact action trigger could reveal a menu of share options or secondary actions, especially on mobile where space is constrained.",
+      "ambiguities": "No caret, ellipsis, or explicit menu trigger is drawn in the sketches, so this remains speculative."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a long article followed by a repeated list of related/popular post summaries beneath separators, suggesting a feed-like continuation where additional items may be progressively revealed rather than all shown at once.",
+      "confidence": "LOW",
+      "behavior_notes": "Could be implemented as a 'load more' control or progressive reveal for additional related posts/comments if the design intends to limit initial page length.",
+      "ambiguities": "The sketches do not show a button label or pagination affordance; the repeated cards may simply all be static content."
+    }
+  ],
+  "applicable_criteria": [
+    "N2",
+    "N3",
+    "S1",
+    "S2",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "modal_dialog",
+      "dropdown_menu",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "modal_dialog",
+      "dropdown_menu",
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches mostly depict a long-form article page with inline media and a related-posts section, so explicit JavaScript demands are relatively light. The strongest cross-viewport implication is a sticky top header because both mobile and desktop show long scrolling content under a distinct top bar. Other behaviors are weaker and inferred from common article-page conventions: media enlargement in a modal/lightbox, a compact action/share dropdown, and possible progressive loading for related content. There is no clear evidence of forms, tabs, accordions, custom selects, or infinite-scroll-specific triggers in the drawings."
+}

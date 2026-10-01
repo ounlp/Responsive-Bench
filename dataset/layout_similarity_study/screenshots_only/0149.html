@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meta-Running? — Running | Code</title>
+  <style>
+    :root{
+      --bg:#f7f9f8;
+      --header:#cfd9cd;
+      --text:#394247;
+      --muted:#7f9192;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    body{
+      font-family: Georgia, "Times New Roman", serif;
+      min-height:100vh;
+    }
+
+    .skip-link {
+      position:absolute;
+      left:1rem;
+      top:0;
+      transform:translateY(-100%);
+      background:#ffffff;
+      color:#000;
+      padding:.75rem 1rem;
+      z-index:1000;
+      text-decoration:none;
+    }
+
+    .skip-link:focus {
+      transform:translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--header);
+      text-align:center;
+      padding:42px 20px 58px;
+    }
+
+    .site-title{
+      margin:0;
+      font-size:3.25rem;
+      line-height:1.05;
+      font-weight:400;
+      letter-spacing:.01em;
+      color:#374046;
+    }
+
+    .tagline{
+      margin:14px 0 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size:1rem;
+      font-weight:300;
+      color:#374046;
+    }
+
+    main{
+      display:block;
+    }
+
+    .content-wrap{
+      max-width:760px;
+      margin:0 auto;
+      padding:56px 32px 80px;
+    }
+
+    article{
+      width:100%;
+    }
+
+    .post-title{
+      margin:0 0 4px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-weight:300;
+      font-size:3rem;
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      color:#374046;
+    }
+
+    .post-date{
+      margin:0 0 28px;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size:1rem;
+      color:var(--muted);
+      text-transform:uppercase;
+    }
+
+    .post-content p{
+      margin:0 0 28px;
+      font-size:1.15rem;
+      line-height:1.55;
+      color:#3f474c;
+    }
+
+    .site-footer{
+      text-align:center;
+      padding:18px 20px 18px;
+    }
+
+    .footer-nav{
+      margin-bottom:22px;
+    }
+
+    .footer-nav ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:0;
+      flex-wrap:wrap;
+    }
+
+    .footer-nav li{
+      font-size:1rem;
+      color:#8a9a9b;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .footer-nav li + li::before{
+      content:"•";
+      margin:0 .55rem;
+      color:#8a9a9b;
+    }
+
+    a{
+      color:#8a9a9b;
+      text-decoration:none;
+    }
+
+    a:hover,
+    a:focus{
+      text-decoration:underline;
+    }
+
+    .copyright{
+      margin:0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-size:.95rem;
+      color:#8a9a9b;
+    }
+
+    @media (max-width: 900px){
+      .site-header{
+        padding:40px 20px 50px;
+      }
+
+      .site-title{
+        font-size:2.9rem;
+      }
+
+      .content-wrap{
+        max-width:640px;
+        padding:52px 42px 72px;
+      }
+
+      .post-title{
+        font-size:3rem;
+      }
+
+      .post-content p{
+        font-size:1.1rem;
+        line-height:1.58;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (min-width: 769px) {
+      .nav-toggle { display: none; }
+    }
+
+    @media (max-width: 480px){
+      .site-header{
+        padding:22px 16px 14px;
+      }
+
+      .site-title{
+        font-size:2.1rem;
+      }
+
+      .tagline{
+        margin-top:10px;
+        font-size:.95rem;
+      }
+
+      .content-wrap{
+        padding:30px 10px 56px;
+      }
+
+      .post-title{
+        font-size:2.05rem;
+        margin-bottom:4px;
+      }
+
+      .post-date{
+        font-size:.9rem;
+        margin-bottom:18px;
+      }
+
+      .post-content p{
+        font-size:1.05rem;
+        line-height:1.48;
+        margin-bottom:22px;
+      }
+
+      .site-footer{
+        padding:18px 16px 14px;
+      }
+
+      .footer-nav{
+        margin-bottom:18px;
+      }
+
+      .footer-nav li{
+        font-size:.95rem;
+      }
+
+      .copyright{
+        font-size:.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <h1 class="site-title">Running | Code</h1>
+    <p class="tagline">About software and adventures on foot.</p>
+  </header>
+
+  <main id="main-content">
+    <div class="content-wrap">
+      <article aria-labelledby="post-title">
+        <h2 id="post-title" class="post-title">Meta-Running?</h2>
+        <p class="post-date">16MAR2015</p>
+
+        <div class="post-content">
+          <p>A problem lately: I start running, and within five minutes or so, I start thinking about a title or description for my online training log .</p>
+
+          <p>Take today’s run, for example. Strava entry about this in my head.</p>
+
+          <p>This is a bit of a problem, for me and I think a lot of other people (there is a steady stream of running-selfies out there, for one measure). Sometimes we are too connected; we quantify our runs until we neglect to feel the ground with each step, and we objectify our performance until we no longer feel our lungs fill with each breath.</p>
+
+          <p>Short of investing time in learning to meditate or throwing out all training technology (which really is useful), the only two solutions I know of are to run longer and work harder. Working hard or being out a long time, you will eventually get into a zone in which you are present to the reality of the run.</p>
+
+          <p>Maybe blogging about it will help.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <div class="footer-nav">
+        <ul>
+          <li><a href="#">My Apps</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p class="copyright">2023</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, main, footer, and nav landmarks; added skip link and main-content id; ensured exactly one h1 with sequential heading hierarchy; added lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: used unique aria-label on footer navigation; avoided redundant role attributes on semantic landmarks; removed any positive tabindex via script baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only; no other interactive patterns were visible in the screenshots.
+-->

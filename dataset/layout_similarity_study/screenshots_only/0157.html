@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attachment field — BizzStream Documentation</title>
+  <style>
+    :root{
+      --brand:#df542f;
+      --brand-dark:#b84526;
+      --text:#333;
+      --muted:#777;
+      --border:#dddddd;
+      --light:#f5f5f5;
+      --code:#f3f3f3;
+      --footer:#8a8a8a;
+      --link:#d85a3a;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.65;
+      font-size:14px;
+    }
+    .skip-link{position:absolute;left:12px;top:0;transform:translateY(-100%);background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--brand);
+      color:#fff;
+      box-shadow:0 2px 8px rgba(0,0,0,.18);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+    .header-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:8px 28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:46px;
+    }
+    .brand{
+      font-weight:700;
+      font-size:22px;
+      color:#fff;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+    .search-wrap{
+      width:165px;
+      flex:0 0 165px;
+    }
+    .search-box{
+      width:100%;
+      height:32px;
+      border:none;
+      background:var(--brand-dark);
+      color:#fff;
+      padding:0 12px;
+      font-size:14px;
+    }
+    .search-box::placeholder{color:#f3d2c8}
+    .nav-toggle{display:none;background:none;border:none;color:#fff;font-size:28px;line-height:1;padding:4px 8px;cursor:pointer}
+    #mobile-nav{display:none}
+
+    .page{
+      max-width:1280px;
+      margin:0 auto;
+      padding:34px 28px 0;
+      display:grid;
+      grid-template-columns: 210px minmax(0, 1fr) 190px;
+      gap:42px;
+      align-items:start;
+    }
+
+    .sidebar-left,
+    .sidebar-right{
+      font-size:14px;
+      color:#444;
+    }
+    .sidebar-left nav a,
+    .sidebar-right nav a{
+      display:block;
+      color:#333;
+      text-decoration:none;
+      margin:0 0 8px;
+    }
+    .sidebar-left nav a:hover,
+    .sidebar-right nav a:hover{
+      text-decoration:underline;
+    }
+
+    main{
+      min-width:0;
+    }
+    h1{
+      margin:0 0 28px;
+      font-weight:300;
+      font-size:54px;
+      line-height:1.15;
+      color:#777;
+    }
+    h2{
+      margin:34px 0 12px;
+      font-size:18px;
+      font-weight:400;
+      color:#333;
+    }
+    h3{
+      margin:18px 0 8px;
+      font-size:14px;
+      font-weight:700;
+      color:#333;
+    }
+    p{
+      margin:0 0 16px;
+      font-size:14px;
+    }
+    .note strong{font-weight:700}
+    .inline-link{
+      color:var(--link);
+      text-decoration:none;
+    }
+    .inline-link:hover{text-decoration:underline}
+
+    .hero-image,
+    .option-image{
+      display:block;
+      width:100%;
+      background:#0a0aff;
+      object-fit:cover;
+    }
+    .hero-image{
+      height:272px;
+      margin:8px 0 0;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:10px 0 26px;
+      table-layout:fixed;
+    }
+    th,td{
+      border:1px solid var(--border);
+      padding:10px 12px;
+      vertical-align:top;
+      text-align:left;
+      font-size:12px;
+    }
+    th{
+      font-weight:700;
+      background:#fff;
+    }
+
+    .properties-table col:nth-child(1){width:16%}
+    .properties-table col:nth-child(2){width:15%}
+    .properties-table col:nth-child(3){width:auto}
+
+    .code-block{
+      background:var(--code);
+      padding:12px 14px;
+      margin:10px 0 16px;
+      overflow:auto;
+      font-family: "Courier New", Courier, monospace;
+      font-size:12px;
+      line-height:1.45;
+      color:#555;
+      white-space:pre;
+    }
+
+    .upload-table col:nth-child(1){width:72%}
+    .upload-table col:nth-child(2){width:28%}
+    .upload-table td{padding:14px 14px 12px}
+    .upload-table .option-image{
+      height:220px;
+    }
+    .upload-table p{
+      font-size:12px;
+      line-height:1.55;
+      margin:0;
+    }
+
+    .footer{
+      margin-top:28px;
+      background:#8b8b8b;
+      color:#e9e9e9;
+      font-size:11px;
+    }
+    .footer-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:10px 28px;
+    }
+
+    @media (max-width: 1024px){
+      .page{
+        grid-template-columns:minmax(0,1fr);
+        gap:0;
+        padding:28px 10px 0;
+      }
+      .sidebar-left,
+      .sidebar-right{
+        display:none;
+      }
+      .header-inner{
+        padding:8px 28px;
+      }
+      .brand{font-size:20px}
+      h1{
+        font-size:34px;
+        margin-bottom:24px;
+      }
+      .hero-image{height:252px}
+      .upload-table .option-image{height:180px}
+    }
+
+    @media (max-width: 768px){
+      .nav-toggle { display: block; }
+      .search-wrap{display:none}
+      #mobile-nav{
+        display:block;
+        background:var(--brand);
+        border-top:1px solid rgba(255,255,255,.2);
+        padding:8px 28px 14px;
+      }
+      #mobile-nav a{
+        display:block;
+        color:#fff;
+        text-decoration:none;
+        padding:6px 0;
+      }
+      .header-inner{
+        padding:8px 16px 8px 28px;
+      }
+      .page{
+        padding:22px 9px 0;
+      }
+      h1{
+        font-size:28px;
+      }
+      .hero-image{
+        height:250px;
+      }
+      .upload-table col:nth-child(1){width:70%}
+      .upload-table col:nth-child(2){width:30%}
+      .upload-table .option-image{
+        height:160px;
+      }
+    }
+
+    @media (max-width: 480px){
+      body{font-size:13px}
+      .brand{font-size:18px}
+      h1{
+        font-size:24px;
+        margin-bottom:22px;
+      }
+      h2{
+        font-size:17px;
+      }
+      .hero-image{
+        height:145px;
+      }
+      th,td{
+        padding:8px 10px;
+        font-size:11px;
+      }
+      .code-block{
+        font-size:11px;
+        padding:10px;
+      }
+      .upload-table .option-image{
+        height:92px;
+      }
+      .footer-inner{
+        padding:10px 9px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="brand">BizzStream Documentation</a>
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+      <div class="search-wrap">
+        <label for="site-search" class="sr-only" style="position:absolute;left:-9999px;">Search</label>
+        <input id="site-search" class="search-box" type="search" placeholder="Search">
+      </div>
+    </div>
+    <nav id="mobile-nav" aria-label="Main" hidden>
+      <a href="#">BizzStream Documentation</a>
+      <a href="#">What is an Organization?</a>
+      <a href="#">What is an Environment?</a>
+      <a href="#">Document Systems</a>
+      <a href="#">Document Definitions</a>
+      <a href="#">Table of contents</a>
+      <a href="#">Properties</a>
+      <a href="#">How the data is stored</a>
+      <a href="#">Upload multiple photos / images</a>
+    </nav>
+  </header>
+
+  <div class="page">
+    <aside class="sidebar-left" aria-label="Documentation navigation">
+      <nav aria-label="Documentation sections">
+        <a href="#">BizzStream Documentation</a>
+        <a href="#">What is an Organization?</a>
+        <a href="#">What is an Environment?</a>
+        <a href="#">Document Systems</a>
+        <a href="#">Document Definitions</a>
+      </nav>
+    </aside>
+
+    <main id="main-content">
+      <h1>Attachment field</h1>
+
+      <p>An attachment field type can be used to attach additional information to a document such as images, photos, text documents or other files. All file types are supported.</p>
+
+      <p class="note"><strong>Note</strong> : Please be aware that some browsers may block downloads. For instance, Chrome shows the popup blocker icon (</p>
+
+      <img src="rick.jpg" alt="Illustration showing the popup blocker icon example in a browser" class="hero-image">
+
+      <p>) when downloads are blocked.</p>
+
+      <p class="note"><strong>Note</strong> : When you upload attachments on your mobile device, ensure that the app runs in the foreground untill all uploads have been completed. When you close the app, you mobile operating system will terminate the upload.</p>
+
+      <p class="note"><strong>Note</strong> : Attachments can have a maximum file size of 5 Gb.</p>
+
+      <h2>Properties</h2>
+
+      <table class="properties-table">
+        <colgroup>
+          <col><col><col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Setting</th>
+            <th>Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Label</td>
+            <td>Yes</td>
+            <td>The label is used for users of BizzStream. The label is shown in documents left to the value of the field.</td>
+          </tr>
+          <tr>
+            <td>Translation key</td>
+            <td>No</td>
+            <td>Can be used to replace the field label with a <a href="#" class="inline-link">translation</a> .</td>
+          </tr>
+          <tr>
+            <td>Name</td>
+            <td>Yes</td>
+            <td>The name is a BizzStream system field. Once the document definition is persisted, this field cannot be edited anymore.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>How the data is stored</h2>
+
+      <p>The meta data of the attachments is stored as array in the database. Each object represents a single attachment:</p>
+
+      <pre class="code-block">attachmentField:[
+    {
+        "_id":"b19c516f5c0a55afac85c934",
+        "_fileName":"cdv_photo_001.jpg",
+        "store":"image",
+        "_size":5781513,
+        "_width":4032,
+        "_height":3024
+    }
+]</pre>
+
+      <p>The attachments themselves are stored as object in an Amazon S3 Bucket.</p>
+
+      <h2>Upload multiple photos / images</h2>
+
+      <p>It is possible by making use of a mobile device to upload multiple photos / images by making use of the camera or library (gallery).</p>
+
+      <h3>Camera</h3>
+
+      <p>A mobile Android device makes it possible to take and upload multiple photos in a row (maximum of 10) by using the camera of the device (Button 'Take photo'). When it is desirable to upload less photos the user is able to cancel the capture mode by pressing the 'back' button on the device.</p>
+
+      <h3>Library / Gallery</h3>
+
+      <p>Both a mobile Android and an iOS device will provide the functionality of uploading multiple images from the library ('Photo' library button). When it is desirable to upload less images the user is able to cancel the capture mode by pressing the 'back' button on the device.</p>
+
+      <table class="upload-table">
+        <colgroup>
+          <col><col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="rick.jpg" alt="Camera upload option illustration" class="option-image"></td>
+            <td><p>Click to activate the camera on your device. On Android you can take multiple photo's in one go.</p></td>
+          </tr>
+          <tr>
+            <td><img src="rick.jpg" alt="Image library upload option illustration" class="option-image"></td>
+            <td><p>Click to upload images from your device.</p></td>
+          </tr>
+          <tr>
+            <td><img src="rick.jpg" alt="Document upload option illustration" class="option-image"></td>
+            <td><p>Click to upload documents from your device.</p></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h1 style="font-size:28px; margin-top:18px; margin-bottom:22px;">Uploading attachments on Mobile and Desktop - Differences</h1>
+
+      <p>When uploading a new attachment on desktop and your facing internet connection drop, then you do not need to worry about your uploading progress because it will resume right after your connection is up again. As a mobile user, you need to know that if your uploading an attachment and your internet connection drops, you will be able to see a "Warning" on your app that the upload failed and you just need to restart it from the "Uploads Tracker" window.</p>
+    </main>
+
+    <aside class="sidebar-right" aria-label="Table of contents">
+      <nav aria-label="Page table of contents">
+        <a href="#">Table of contents</a>
+        <a href="#">Properties</a>
+        <a href="#">How the data is stored</a>
+        <a href="#">Upload multiple photos / images</a>
+      </nav>
+    </aside>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">Copyright © 2013 - 2023 Maxedy BV</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          nav.querySelector('a, button').focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added header, nav, main, aside, and footer landmarks; added skip link and id="main-content"; ensured one primary h1 and sequential subheadings elsewhere; added meaningful alt text to all images; added label for search input; ensured descriptive link and button text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on native landmarks; added unique aria-labels for multiple nav and aside regions; ensured no tabindex values greater than 0 remain.
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile navigation; implemented C-K1/K3 tabindex cleanup and visible focus indicator.
+-->

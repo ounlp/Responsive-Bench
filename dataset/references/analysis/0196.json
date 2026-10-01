@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal row of navigation items directly beneath the top hero image/header, separated by horizontal rules, which strongly implies a standard desktop nav bar with top-level items that may reveal deeper sections.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level navigation items should be clickable/focusable, and any items with child sections should reveal submenus on click or hover while preserving keyboard access.",
+      "ambiguities": "The sketch does not explicitly draw submenu arrows or open panels, so submenu presence is inferred from the desktop nav-bar convention and the reference structure rather than explicitly shown."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses the page into a narrow single-column layout with no visible full horizontal navigation, implying that primary navigation would need to collapse behind a mobile menu trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should toggle the visibility of the site navigation panel/drawer on small screens, with expanded/collapsed state reflected programmatically.",
+      "ambiguities": "The hamburger icon itself is not explicitly drawn in the sketch, so this is inferred from the absence of visible nav in the mobile layout and the responsive nature of the page."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Both sketches imply interactive navigation structures; on mobile the collapsed nav would open into a disclosure/panel, and on desktop any dropdown navigation would require keyboard-operable focus movement and dismissal behavior.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move logically into the menu and return to the trigger on close; dropdown/disclosure states should be keyboard reachable and escapable without trapping users.",
+      "ambiguities": "No explicit modal or drawer boundaries are drawn, so the exact focus behavior depends on whether the mobile nav is implemented as an overlay, inline expansion, or off-canvas panel."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven article/report page with relatively light JavaScript needs. The main cross-viewport difference is navigation: desktop suggests an always-visible top navigation bar that may support dropdowns, while mobile strongly implies a collapsed hamburger-based navigation pattern because the nav is not shown in the narrow layout. The rest of the page appears to be static article cards, images, and footer content without clear evidence of tabs, accordions, search, modal overlays, or progressive loading controls."
+}

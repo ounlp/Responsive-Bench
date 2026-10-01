@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a compact input-like box in the top-right header area, visually separated as a search field/control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and search submission; may expand, submit on Enter, or trigger a results page depending on implementation.",
+      "ambiguities": "The sketch does not show whether results are live/autocomplete or simple submit-only search."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch lacks visible full navigation while the desktop sketch clearly includes a left navigation rail, implying that navigation is likely collapsed behind a mobile toggle.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile nav trigger should reveal/hide the site navigation or section menu that is persistently visible on desktop.",
+      "ambiguities": "No explicit hamburger icon is drawn in the mobile sketch, so the exact trigger placement and whether it opens a drawer, overlay, or inline panel is unclear."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred mobile navigation toggle and the desktop search control both imply interactive widgets that need managed keyboard focus; cross-viewport navigation changes also suggest focus handling when menus open/close.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the revealed navigation and return to the trigger on close; keyboard access for search and any revealed navigation states should be preserved.",
+      "ambiguities": "Focus behavior is not directly depicted because no explicit open state is shown in either sketch."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "search_input",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven page with low JavaScript complexity. The strongest explicit interaction is a desktop header search field. The main cross-viewport implication is responsive navigation: desktop exposes a persistent left-side menu while mobile suppresses it, strongly suggesting a collapsed mobile navigation toggle even though the icon is not explicitly drawn. No clear evidence appears for tabs, accordions, modals, dropdowns, sticky behavior, or dynamic loading."
+}

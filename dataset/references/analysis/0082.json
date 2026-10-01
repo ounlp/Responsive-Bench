@@ -1,0 +1,103 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses the page into a narrow single-column layout with no visible full navigation list, implying a collapsed mobile navigation control rather than persistent desktop-style nav.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu trigger should reveal and hide the primary navigation panel or drawer on small screens. It should support tap activation and dismissal.",
+      "ambiguities": "The sketch does not explicitly draw a hamburger icon, so the exact trigger style and whether the menu opens as drawer, dropdown, or full-screen overlay is unclear."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a compact control cluster in the top bar including a long field-like element consistent with a search box and adjacent action controls.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The search field needs submit behavior at minimum; live suggestions are not clearly implied, so standard search submission is the safest interpretation.",
+      "ambiguities": "It is unclear whether the field is global search, login input, or another utility field; live autocomplete is not explicit."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a login/content area with grouped text lines and boxed regions that align with a form layout; the reference context is a login page with username, password, and session-length controls.",
+      "confidence": "HIGH",
+      "behavior_notes": "Required fields should be validated before submission, with inline error handling for missing or invalid credentials-related inputs. Submit should be keyboard accessible and preserve focus context on errors.",
+      "ambiguities": "The sketch does not show explicit error states, so the exact validation messaging pattern is not visually specified."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "both",
+      "visual_evidence": "The login form context includes a 'time to stay logged in' choice, and the sketches show structured form blocks where a selectable duration control is likely present.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented as a styled replacement for a native select, it needs open/close state, selected option state, and keyboard navigation. If native select is used, little custom JS is needed.",
+      "ambiguities": "The sketch itself does not distinctly depict a dropdown widget, so this is inferred from the page type and reference HTML rather than explicit drawing."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop top utility area contains several compact button-like controls that plausibly trigger overlays such as login or account actions; the reference HTML explicitly uses an overlay login trigger in the header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At least one top-bar action should be able to open an overlay dialog, likely for login or account-related interaction. The modal should trap focus, restore focus on close, and support escape/backdrop dismissal if appropriate.",
+      "ambiguities": "The sketch does not explicitly depict an open modal state, so the exact trigger and modal contents are inferred from the page context."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically scrollable pages with footer-level utility links; long-page layouts commonly imply a return-to-top affordance, and the reference page includes a 'Go Up' control.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A control should scroll the viewport back to the top, potentially appearing persistently in the footer or as a floating button after scrolling.",
+      "ambiguities": "The sketch does not clearly show whether the control is always visible or only appears after scroll."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components across the sketches include a mobile nav reveal, form submission/error handling, possible custom select behavior, and likely overlay login/account interactions.",
+      "confidence": "HIGH",
+      "behavior_notes": "Programmatic focus handling is needed for opening/closing the mobile menu, any modal overlay, and returning focus to invalid form fields or the triggering control after dismissal.",
+      "ambiguities": "This is a supporting requirement implied by the other components rather than a separately drawn widget."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "S1",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "form_validation",
+      "focus_management",
+      "custom_select",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "form_validation",
+      "search_input",
+      "modal_dialog",
+      "focus_management",
+      "scroll_to_top",
+      "custom_select"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple but still stateful interface centered on authentication and utility navigation rather than rich dynamic content. Desktop appears to expose more top-bar utilities, including a likely search field and possible overlay-triggering actions, while mobile likely collapses navigation into a hidden menu pattern. No tabs, accordions, infinite loading, or live-updating counters are clearly suggested by the drawings; the main JavaScript burden is therefore around navigation reveal, form handling, optional overlay behavior, and accessible focus control across viewports."
+}

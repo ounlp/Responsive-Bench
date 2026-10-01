@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advertise your Caravan — West Wales Caravans</title>
+  <style>
+    :root{
+      --bg:#f5f2d8;
+      --panel:#ffffff;
+      --blue:#1200ff;
+      --text:#111;
+      --link:#0b1498;
+      --border:#222;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      width:min(900px, calc(100% - 20px));
+      margin:20px auto;
+      background:var(--panel);
+      padding:40px 10px 55px;
+    }
+
+    .hero,
+    .feature-image{
+      display:block;
+      width:calc(100% - 64px);
+      margin:0 auto;
+      object-fit:cover;
+      background:var(--blue);
+    }
+    .hero{
+      height:455px;
+      margin-bottom:18px;
+    }
+    .feature-image{
+      height:495px;
+      margin-top:34px;
+      margin-bottom:46px;
+    }
+
+    .contact-line{
+      text-align:center;
+      color:var(--link);
+      font-size:18px;
+      margin:0 0 18px;
+    }
+
+    .button-nav{
+      margin-bottom:22px;
+    }
+    .button-nav ul,
+    .footer-links ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .button-nav ul{
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .pill-link,
+    .back-top{
+      display:inline-block;
+      text-decoration:none;
+      color:#111;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:17px;
+      padding:10px 18px;
+      font-size:18px;
+      box-shadow:0 10px 18px rgba(0,0,0,.18);
+    }
+
+    main{
+      width:100%;
+    }
+
+    .content{
+      width:calc(100% - 18px);
+      margin:0 auto;
+      text-align:left;
+    }
+    h1{
+      font-size:28px;
+      line-height:1.15;
+      text-align:center;
+      margin:0 0 14px;
+      font-weight:500;
+    }
+    p{
+      font-size:17px;
+      line-height:1.08;
+      margin:0 0 18px;
+    }
+    .strong{
+      font-weight:700;
+    }
+
+    .terms{
+      text-align:center;
+      margin:64px 0 84px;
+      font-size:17px;
+    }
+    .terms a,
+    .footer-contact a,
+    .footer-links a,
+    .contact-line a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    footer{
+      text-align:center;
+    }
+    .back-top-wrap{
+      margin-bottom:18px;
+    }
+    .footer-contact{
+      font-size:18px;
+      margin-bottom:12px;
+    }
+    .footer-links{
+      font-size:17px;
+    }
+    .footer-links ul{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:0;
+    }
+    .footer-links li{
+      white-space:nowrap;
+    }
+    .footer-links li:not(:last-child)::after{
+      content:" | ";
+      color:#111;
+      margin:0 6px;
+    }
+
+    @media (max-width: 900px){
+      .page{
+        width:calc(100% - 20px);
+        padding-top:40px;
+      }
+      .hero{
+        width:calc(100% - 50px);
+        height:394px;
+      }
+      .feature-image{
+        width:calc(100% - 20px);
+        height:409px;
+        margin-top:48px;
+        margin-bottom:18px;
+      }
+      .content{
+        width:calc(100% - 20px);
+      }
+      h1{
+        font-size:28px;
+      }
+      p{
+        font-size:17px;
+      }
+      .terms{
+        margin:68px 0 86px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        width:calc(100% - 20px);
+        padding:40px 10px 55px;
+      }
+      .hero{
+        width:calc(100% - 30px);
+        height:173px;
+        margin-bottom:18px;
+      }
+      .contact-line{
+        font-size:18px;
+        line-height:1.15;
+        margin-bottom:18px;
+      }
+      .button-nav ul{
+        gap:6px 8px;
+      }
+      .pill-link,
+      .back-top{
+        font-size:18px;
+        padding:10px 14px;
+        border-radius:17px;
+      }
+      .feature-image{
+        width:100%;
+        height:188px;
+        margin-top:48px;
+        margin-bottom:18px;
+      }
+      .content{
+        width:100%;
+      }
+      h1{
+        font-size:28px;
+        margin-bottom:14px;
+      }
+      p{
+        font-size:17px;
+        line-height:1.02;
+        margin-bottom:18px;
+      }
+      .terms{
+        font-size:17px;
+        margin:66px 0 92px;
+      }
+      .footer-contact{
+        font-size:17px;
+        line-height:1.05;
+        margin-bottom:14px;
+      }
+      .footer-links{
+        font-size:17px;
+        line-height:1.05;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <img src="rick.jpg" alt="" class="hero">
+      <div class="contact-line">
+        Enquiries: <a href="#">[PHONE REDACTED]</a> &nbsp; - &nbsp; email: <a href="#">[EMAIL REDACTED]</a>
+      </div>
+      <nav aria-label="Main" class="button-nav">
+        <ul>
+          <li><a href="#" class="pill-link">All Caravans</a></li>
+          <li><a href="#" class="pill-link">Pet Friendly</a></li>
+          <li><a href="#" class="pill-link">Book Online</a></li>
+          <li><a href="#" class="pill-link">Cottages</a></li>
+          <li><a href="#" class="pill-link">New Quay</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <img src="rick.jpg" alt="" class="feature-image">
+
+      <section class="content" aria-label="Advertise your Caravan information">
+        <h1>Advertise your Caravan</h1>
+
+        <p>Ads are displayed on our New Quay website - www.newquay-westwales.co.uk , &nbsp;and on the West Wales Caravans website.</p>
+
+        <p>We only advertise caravans in West Wales at Quay West Caravan Park with private decking, or in nearby seafront locations.</p>
+
+        <p>We are local. Our office is based in New Quay.</p>
+
+        <p><span class="strong">Advertising details</span> - no setup charge, no yearly fee, free photoshoot.</p>
+
+        <p>Our office will take a deposit for your bookings by card online and then inform the guests how and when to send the balance of payment for the holiday directly to the owner.</p>
+
+        <p>There is no set up charge or annual charge - just a low commission rate on bookings taken through this office.</p>
+
+        <p>Owners are informed as soon as a booking is received.</p>
+
+        <p>Your ad will include a photo gallery and description, a prices and availability calendar, updated as booked, a location map, link to terms and conditions, printable booking form, online booking form and online deposit payment facility through PayPal or card.</p>
+
+        <p>Please call us on [PHONE REDACTED] with any questions.</p>
+
+        <div class="terms">
+          <a href="#">Click here for Terms and Conditions for advertisers</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="back-top-wrap">
+        <a href="#" class="back-top">Back to top of page</a>
+      </div>
+
+      <div class="footer-contact">
+        <a href="#">[ADDRESS REDACTED]</a> &nbsp;&nbsp; call: <a href="#">[PHONE REDACTED]</a>
+      </div>
+
+      <nav aria-label="Footer">
+        <div class="footer-links">
+          <ul>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Owner info</a></li>
+            <li><a href="#">New Quay</a></li>
+            <li><a href="#">Dolphins</a></li>
+            <li><a href="#">Wildlife</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Cottages</a></li>
+            <li><a href="#">Links</a></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential heading structure; added alt attributes to all images as decorative; ensured interactive elements have descriptive text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-labels for multiple nav regions; removed any positive tabindex via script baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

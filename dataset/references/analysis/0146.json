@@ -1,0 +1,102 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent search field in the header area: a full-width input near the top on mobile and a long horizontal search box in the desktop masthead.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and search submission; likely also supports live suggestions/autocomplete because of its prominence and placement in global navigation.",
+      "ambiguities": "The sketch does not explicitly show autocomplete results or a submit button, so live results are implied rather than certain."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "Desktop header shows multiple compact nav items aligned to the right of the search field, consistent with top-level navigation labels that likely reveal submenus.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level nav items should open submenus on click/hover and close on outside interaction or escape; active/open state should be visually indicated.",
+      "ambiguities": "The sketch does not explicitly draw submenu panels, so this is inferred from the multi-item desktop nav structure and common responsive behavior."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "Mobile sketch has a simplified stacked layout with no visible full horizontal nav, implying collapsed navigation for small screens.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu toggle should reveal/hide the primary navigation in an overlay or expandable panel; likely needed because desktop-style nav links are absent in the mobile header.",
+      "ambiguities": "No explicit hamburger icon is drawn, so the exact trigger style and whether it opens a drawer, sheet, or accordion menu is unclear."
+    },
+    {
+      "pattern_id": "tab_panel",
+      "present_in": "both",
+      "visual_evidence": "Near the top content area in both sketches there is a horizontal row of small adjacent rectangular items beneath the title/meta region, visually matching tabs for switching sections.",
+      "confidence": "HIGH",
+      "behavior_notes": "Selecting a tab should swap the visible content panel without full page reload, maintain an active state, and support keyboard navigation between tabs.",
+      "ambiguities": "It is unclear whether all tabs swap inline panels or some may navigate to anchored sections/pages."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include image galleries: a main cover/media area with adjacent small selectors and a row/grid of screenshot thumbnails, which strongly implies click-to-enlarge media viewing.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Clicking cover art or screenshots should likely open a larger overlay/lightbox with focus trap, close controls, and possibly previous/next navigation.",
+      "ambiguities": "The sketch does not explicitly depict an overlay, so enlargement could alternatively navigate to a dedicated media page instead of a modal."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a long vertically stacked page with repeated content blocks and a constrained screenshot grid, suggesting truncated sections that may expand or reveal more items progressively on small screens.",
+      "confidence": "LOW",
+      "behavior_notes": "Could expose additional screenshots, metadata, or long lists via a 'more' control to avoid overwhelming the mobile layout.",
+      "ambiguities": "No explicit button is drawn; this may instead be simple full-page scrolling with no incremental loading."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile layout compresses many metadata groups and content sections into stacked blocks, which commonly become collapsible disclosures on small screens to save space.",
+      "confidence": "LOW",
+      "behavior_notes": "Section headers could expand/collapse details such as credits, identifiers, reviews, or contribution info.",
+      "ambiguities": "No chevrons or explicit disclosure markers are visible, so this remains speculative."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "D1",
+    "D2",
+    "D4",
+    "M1",
+    "M2",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D3",
+    "M3",
+    "S1",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "hamburger_menu",
+      "tab_panel",
+      "modal_dialog",
+      "accordion",
+      "load_more"
+    ],
+    "desktop": [
+      "search_input",
+      "dropdown_menu",
+      "tab_panel",
+      "modal_dialog"
+    ]
+  },
+  "sketch_notes": "The sketches imply a content-heavy responsive detail page with modest but important JavaScript needs. Core shared behaviors are global search, tabbed section switching, and media enlargement from cover/screenshot areas. The main cross-viewport difference is navigation: desktop likely uses exposed top-nav items with dropdowns, while mobile likely collapses navigation behind a menu trigger. Mobile may also compress long sections into disclosures or progressive reveal patterns, but those are less explicit than the search, tabs, and media interactions."
+}

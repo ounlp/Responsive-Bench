@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a simple article/detail page with static content: a site title/logo area, plain navigation links, a headline/date area, a large hero image, and body text. There are no visible controls such as hamburger icons, dropdown indicators, tabs, accordions, form fields, modal triggers, counters, or pagination/load-more affordances. The cross-viewport difference appears to be purely responsive layout rather than JavaScript-driven interaction, so the implied implementation is essentially static aside from ordinary link navigation handled by the browser."
+}

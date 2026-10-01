@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a compact control in the top navigation area consistent with a search field; the reference HTML also includes a search input in the header navigation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and search submission, likely from the header on both viewports. On mobile it may need to expand or receive focus cleanly within constrained space.",
+      "ambiguities": "The sketches do not make clear whether results are live/autocomplete or only submitted on enter/button."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch places a thin horizontal navigation row across the very top, visually separated from the article body, suggesting a persistent utility/header bar while long content scrolls below.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If implemented as persistent while scrolling, it should remain accessible and not obscure content. Active/focused items should remain usable as the page scrolls.",
+      "ambiguities": "The sketch does not explicitly show scrolling states, so persistence is inferred from the detached top utility-nav layout."
+    }
+  ],
+  "applicable_criteria": [
+    "F2",
+    "K1",
+    "K3",
+    "S1",
+    "N3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input"
+    ],
+    "desktop": [
+      "search_input",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly static content-heavy article page with minimal JavaScript. The only clearly supported interactive requirement across both views is header search behavior. Desktop additionally suggests a utility/header navigation that may remain fixed during scrolling, but there is no strong evidence of menus, accordions, tabs, modals, or dynamic loading. Cross-viewport differences appear to be primarily layout-related rather than interaction-rich."
+}

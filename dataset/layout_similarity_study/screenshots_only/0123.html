@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introducing MyDryCleaner — MyDryCleaner</title>
+  <style>
+    :root{
+      --blue:#005fb3;
+      --dark-blue:#0f63ab;
+      --link:#1e7fd8;
+      --text:#333333;
+      --heading:#222222;
+      --placeholder:#1600ff;
+      --bg:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      line-height:1.65;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      z-index:1000;
+      text-decoration:none;
+      border:2px solid #000;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .page{
+      display:flex;
+      min-height:100vh;
+      align-items:stretch;
+    }
+
+    .sidebar{
+      width:344px;
+      background:var(--dark-blue);
+      color:#fff;
+      position:relative;
+      flex:0 0 344px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      min-height:100vh;
+    }
+
+    .brand-wrap{
+      padding:190px 32px 40px;
+      text-align:center;
+    }
+
+    .brand{
+      margin:0;
+      font-size:39px;
+      line-height:1.05;
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+
+    .tagline{
+      margin:4px 0 16px;
+      color:#d7d7d7;
+      font-size:28px;
+      line-height:1.05;
+      font-weight:300;
+    }
+
+    .brand-button{
+      display:inline-block;
+      color:#fff;
+      border:2px solid rgba(255,255,255,.8);
+      padding:7px 14px;
+      font-size:14px;
+      letter-spacing:.5px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    .sidebar-bottom{
+      padding:0 0 0 6px;
+    }
+
+    .sidebar-bottom img{
+      display:block;
+      width:306px;
+      height:170px;
+      object-fit:cover;
+      background:var(--placeholder);
+    }
+
+    .content{
+      flex:1;
+      padding:32px 0 28px;
+      background:#fff;
+    }
+
+    .content-inner{
+      width:min(820px, calc(100% - 64px));
+      margin:0 auto;
+    }
+
+    .hero-image{
+      width:100%;
+      height:406px;
+      object-fit:cover;
+      display:block;
+      background:var(--placeholder);
+      margin:0 0 22px;
+    }
+
+    h1{
+      margin:0 0 14px;
+      font-size:34px;
+      line-height:1.1;
+      color:var(--heading);
+      font-weight:700;
+      letter-spacing:-0.4px;
+    }
+
+    .intro{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:22px;
+      line-height:1.75;
+      color:#3a3a3a;
+    }
+
+    .intro p{
+      margin:0 0 22px;
+    }
+
+    .features{
+      margin:54px auto 18px;
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:26px 34px;
+      max-width:620px;
+      justify-items:center;
+      align-items:start;
+    }
+
+    .feature{
+      text-align:center;
+      width:100%;
+    }
+
+    .feature img{
+      width:108px;
+      height:60px;
+      object-fit:cover;
+      display:block;
+      margin:0 auto 12px;
+      background:var(--placeholder);
+    }
+
+    .feature a{
+      color:#005db8;
+      font-size:18px;
+      font-weight:700;
+      line-height:1.2;
+      display:inline-block;
+    }
+
+    .feature.join{
+      grid-column:1 / 2;
+    }
+
+    .site-footer{
+      text-align:center;
+      color:#000;
+      font-size:18px;
+      margin-top:26px;
+      padding-bottom:0;
+    }
+
+    .nav-toggle{ display:none; }
+
+    @media (max-width: 1024px){
+      .sidebar{
+        width:288px;
+        flex-basis:288px;
+      }
+      .brand-wrap{
+        padding:120px 24px 32px;
+      }
+      .brand{
+        font-size:31px;
+      }
+      .tagline{
+        font-size:24px;
+      }
+      .sidebar-bottom{
+        display:none;
+      }
+      .content{
+        padding:24px 0 28px;
+      }
+      .content-inner{
+        width:min(620px, calc(100% - 48px));
+      }
+      .hero-image{
+        height:242px;
+        margin-bottom:24px;
+      }
+      h1{
+        font-size:34px;
+      }
+      .intro{
+        font-size:21px;
+        line-height:1.72;
+      }
+      .features{
+        grid-template-columns:1fr;
+        gap:22px;
+        max-width:260px;
+        margin-top:48px;
+      }
+      .feature.join{
+        grid-column:auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .page{
+        display:block;
+      }
+      .sidebar{
+        width:100%;
+        min-height:auto;
+        flex-basis:auto;
+      }
+      .brand-wrap{
+        padding:48px 16px 46px;
+      }
+      .brand{
+        font-size:31px;
+      }
+      .tagline{
+        font-size:25px;
+        margin-top:2px;
+        margin-bottom:14px;
+      }
+      .brand-button{
+        font-size:14px;
+        padding:8px 14px;
+      }
+      .content{
+        padding:32px 0 24px;
+      }
+      .content-inner{
+        width:calc(100% - 32px);
+      }
+      .hero-image{
+        height:192px;
+        margin-bottom:28px;
+      }
+      h1{
+        font-size:36px;
+        line-height:1.02;
+        max-width:320px;
+        margin-bottom:14px;
+      }
+      .intro{
+        font-size:22px;
+        line-height:1.72;
+      }
+      .features{
+        margin-top:56px;
+        gap:24px;
+        max-width:260px;
+      }
+      .feature img{
+        width:86px;
+        height:48px;
+        margin-bottom:12px;
+      }
+      .feature a{
+        font-size:17px;
+      }
+      .site-footer{
+        margin-top:28px;
+        font-size:17px;
+        padding-bottom:8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <aside class="sidebar" aria-label="Brand panel">
+      <div class="brand-wrap">
+        <header>
+          <h2 class="brand">MyDryCleaner</h2>
+          <div class="tagline">Services for dry cleaners</div>
+          <nav aria-label="Main">
+            <a href="#" class="brand-button">SPOT BUSINESS SYSTEMS</a>
+          </nav>
+        </header>
+      </div>
+      <div class="sidebar-bottom">
+        <img src="rick.jpg" alt="" aria-hidden="true">
+      </div>
+    </aside>
+
+    <main id="main-content" class="content">
+      <div class="content-inner">
+        <img class="hero-image" src="rick.jpg" alt="" aria-hidden="true">
+
+        <h1>Introducing MyDryCleaner</h1>
+
+        <div class="intro">
+          <p>This site is owned and operated by <a href="#">SPOT Business Systems</a> . The current use of this site is to provide interactive access to our SPOT CustomerConnect and MyDryCleaner MobileApp features.</p>
+
+          <p>If you are a dry cleaning customer looking for help about a dry cleaning concern or login credentials please contact your local dry cleaner.</p>
+
+          <p>If you are a dry cleaner and are looking for more information on SPOT's CustomerConnect and MobileApp features, please contact SPOT Business Systems sales department at [PHONE REDACTED] or visit our <a href="#">web site</a> for more information. Our sales department is available to provide login credentials for you to test drive the site along with answering any questions about CustomerConnect and other options available in SPOT.</p>
+        </div>
+
+        <section class="features" aria-label="Feature links">
+          <div class="feature">
+            <img src="rick.jpg" alt="" aria-hidden="true">
+            <a href="#">Simple &amp; Seamless</a>
+          </div>
+          <div class="feature">
+            <img src="rick.jpg" alt="" aria-hidden="true">
+            <a href="#">Customer Rewards</a>
+          </div>
+          <div class="feature">
+            <img src="rick.jpg" alt="" aria-hidden="true">
+            <a href="#">Security &amp; Comfort</a>
+          </div>
+          <div class="feature join">
+            <img src="rick.jpg" alt="" aria-hidden="true">
+            <a href="#">Join Today</a>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <p>Copyright © 2020</p>
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, nav, main, aside, and footer landmarks; ensured one h1 for the page; added alt attributes to all images with decorative images marked empty; ensured interactive links have descriptive text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added unique aria-label values to nav, aside, and section landmarks where needed; removed any positive tabindex via script baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only; no other interactive patterns were visible in the screenshots.
+-->

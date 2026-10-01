@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Your Wedding Reception — Sound Sensations DJ Service</title>
+  <style>
+    :root{
+      --dark:#343434;
+      --text:#8a8a8a;
+      --heading:#2f2f2f;
+      --blue:#0b6aa8;
+      --border:#2f84bf;
+      --bg:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);font-family:Arial, Helvetica, sans-serif;color:var(--text)}
+    body{line-height:1.45}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    ul{margin:0;padding-left:1.4rem}
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--dark);
+      color:#9a9a9a;
+      padding:18px 38px;
+    }
+    .header-inner{
+      max-width:1240px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:2rem;
+    }
+    .brand{
+      font-size:24px;
+      letter-spacing:2px;
+      line-height:1.1;
+      text-transform:uppercase;
+      font-weight:300;
+    }
+    .brand .desktop-break{display:block}
+    .desktop-nav ul,
+    .mobile-nav ul,
+    .footer-nav ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      gap:46px;
+      align-items:center;
+    }
+    .desktop-nav a,
+    .footer-nav a,
+    .mobile-nav a{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:14px;
+      color:#8f8f8f;
+    }
+    .nav-toggle { display: none; background:none;border:1px solid #777;color:#d0d0d0;padding:.45rem .7rem;font-size:1.2rem; }
+    .mobile-nav{
+      background:var(--dark);
+      padding:0 20px 18px;
+    }
+    .mobile-nav ul{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:16px;
+    }
+
+    main{
+      max-width:1240px;
+      margin:0 auto;
+      padding:54px 0 0;
+    }
+    .hero{
+      margin:0 80px 42px;
+    }
+    .hero img{
+      width:100%;
+      height:610px;
+      object-fit:cover;
+      background:#1400ff;
+    }
+    h1{
+      margin:0 0 42px;
+      text-align:center;
+      color:#8b8b8b;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:26px;
+      font-weight:300;
+    }
+    .content-wrap{
+      display:grid;
+      grid-template-columns:minmax(0, 1.9fr) minmax(260px, .9fr);
+      gap:58px;
+      padding:0 80px;
+      align-items:start;
+    }
+    .main-copy h2,
+    .sidebar-callout h2{
+      margin:0 0 22px;
+      color:var(--heading);
+      font-size:18px;
+      line-height:1.2;
+      font-weight:700;
+    }
+    .main-copy p,
+    .sidebar-callout p{
+      margin:0 0 24px;
+      font-size:18px;
+      line-height:1.55;
+      color:#8d8d8d;
+    }
+    .main-copy li{
+      font-size:18px;
+      color:#8d8d8d;
+      margin:.15rem 0;
+    }
+    .sidebar-callout{
+      padding-top:2px;
+    }
+    .btn{
+      display:inline-block;
+      border:1px solid var(--border);
+      color:var(--blue);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-weight:700;
+      font-size:14px;
+      padding:16px 28px;
+      min-width:214px;
+      text-align:center;
+      background:#fff;
+    }
+    .btn-row{
+      display:flex;
+      justify-content:space-between;
+      gap:30px;
+      padding:120px 218px 56px;
+    }
+
+    .site-footer{
+      background:var(--dark);
+      color:#8f8f8f;
+      margin-top:0;
+      padding:62px 38px 54px;
+    }
+    .footer-inner{
+      max-width:1240px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .footer-nav{
+      margin-bottom:54px;
+      display:flex;
+      justify-content:center;
+    }
+    .footer-nav ul{
+      gap:34px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .footer-brand{
+      color:#f0f0f0;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:22px;
+    }
+    .footer-location,
+    .footer-phone{
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:14px;
+      margin-bottom:18px;
+    }
+    .footer-phone a{
+      color:var(--blue);
+    }
+    .footer-bottom{
+      margin-top:58px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:14px;
+    }
+    .footer-bottom .powered a{
+      color:var(--blue);
+    }
+
+    @media (max-width: 1024px){
+      .site-header{padding:18px 24px}
+      .header-inner{justify-content:center}
+      .desktop-nav{display:none}
+      .brand{
+        text-align:center;
+        font-size:22px;
+      }
+      .brand .desktop-break{display:inline}
+      main{padding-top:54px}
+      .hero{margin:0 22px 52px}
+      .hero img{height:382px}
+      h1{font-size:24px;margin-bottom:42px}
+      .content-wrap{
+        grid-template-columns:1fr;
+        gap:18px;
+        padding:0 82px;
+      }
+      .sidebar-callout{padding-top:0}
+      .btn-row{
+        padding:110px 66px 54px;
+      }
+      .footer-bottom{
+        flex-direction:column;
+        gap:18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .site-header{
+        padding:16px 18px;
+      }
+      .header-inner{
+        justify-content:center;
+        position:relative;
+      }
+      .nav-toggle{
+        position:absolute;
+        right:0;
+        top:50%;
+        transform:translateY(-50%);
+      }
+      .brand{
+        font-size:20px;
+        line-height:1.15;
+      }
+      .brand .desktop-break{display:block}
+      main{
+        padding-top:32px;
+      }
+      .hero{
+        margin:0 19px 52px;
+      }
+      .hero img{
+        height:147px;
+      }
+      h1{
+        font-size:24px;
+        line-height:1.45;
+        margin:0 0 34px;
+        padding:0 20px;
+      }
+      .content-wrap{
+        padding:0 19px;
+        gap:10px;
+      }
+      .main-copy h2,
+      .sidebar-callout h2{
+        font-size:18px;
+        margin-bottom:18px;
+      }
+      .main-copy p,
+      .sidebar-callout p,
+      .main-copy li{
+        font-size:17px;
+        line-height:1.55;
+      }
+      .btn{
+        min-width:0;
+        width:auto;
+        padding:14px 30px;
+      }
+      .btn-row{
+        flex-direction:column;
+        align-items:center;
+        gap:46px;
+        padding:72px 20px 34px;
+      }
+      .btn-row .btn{
+        width:198px;
+      }
+      .site-footer{
+        padding:56px 20px 42px;
+      }
+      .footer-nav{
+        margin-bottom:48px;
+      }
+      .footer-nav ul{
+        flex-direction:column;
+        gap:8px;
+      }
+      .footer-brand{
+        line-height:1.5;
+        margin-bottom:20px;
+      }
+      .footer-bottom{
+        margin-top:42px;
+        font-size:13px;
+        line-height:1.6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">SOUND SENSATIONS<span class="desktop-break"> DJ SERVICE</span></div>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <nav class="desktop-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">WHAT'S INCLUDED</a></li>
+          <li><a href="#">- WEDDINGS</a></li>
+          <li><a href="#">CONTACT US</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Main" hidden>
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">WHAT'S INCLUDED</a></li>
+        <li><a href="#">WEDDINGS</a></li>
+        <li><a href="#">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-label="Wedding reception image">
+      <img src="rick.jpg" alt="Large featured wedding reception image">
+    </section>
+
+    <h1>FOR YOUR WEDDING RECEPTION</h1>
+
+    <div class="content-wrap">
+      <section class="main-copy" aria-label="Wedding reception details">
+        <h2>What You’ll Get With Sound Sensations</h2>
+
+        <p>Here at Sound Sensations, our specialty is Weddings!&nbsp; With over 25 years of experience, we've provided entertainment for hundreds and hundreds of weddings of every type, size, and description.</p>
+
+        <p>Our standard package gives you Music and MC service for a full 6 hours and also includes:</p>
+
+        <ul>
+          <li>Formally Attired DJ/MC</li>
+          <li>Music for Cocktail hour and Dinner</li>
+          <li>Wireless Microphone for Toasts right at the head table.</li>
+          <li>Dance Floor Lights &amp; Mirror Ball</li>
+        </ul>
+
+        <p>You also receive our unique event planning packet full of helpful information and insight, as well as, our Reception Checklist and Music Selection worksheets to assist you in picking out music and deciding which things you would like to include on your special day.</p>
+
+        <p>Your package can be easily modified to include a number of additional items to meet your specific needs, including Extra Time, Special Effects Lighting for the dance floor, Bubble Machine, or Up-Lighting for your banquet room.</p>
+
+        <p>As DJ and Owner of Sound Sensations, you'll always work directly with me when planning the entertainment for your special day.&nbsp; I enjoy taking the time to talk with couples about their ideas and helping them navigate some of the important decisions that go along with making the day fun and memorable, and keeping it all running smoothly.</p>
+
+        <p>In 25 years, I've worked at most all of the area's wedding venues and know how to work as part of the team when coordinating with banquet staff, photographers, and wedding planners to make it all come together the way it should.</p>
+      </section>
+
+      <aside class="sidebar-callout" aria-label="Wedding ceremony sound system information">
+        <h2>Weddings with Sound Sensations DJ Service</h2>
+        <p>Ask us about our secondary sound system to provide music and wireless microphones for your On-Site Wedding Ceremony.</p>
+        <a class="btn" href="#">— FIND OUT MORE —</a>
+      </aside>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn" href="#">— REQUEST A QUOTE —</a>
+      <a class="btn" href="#">— BACK TO SERVICES —</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav class="footer-nav" aria-label="Footer">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">WHAT'S INCLUDED</a></li>
+          <li><a href="#">WEDDINGS</a></li>
+          <li><a href="#">CONTACT US</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-brand">SOUND SENSATIONS DJ SERVICE</div>
+      <div class="footer-location">ROCHESTER, NY</div>
+      <div class="footer-phone"><a href="#">[PHONE REDACTED]</a></div>
+
+      <div class="footer-bottom">
+        <div class="copyright">COPYRIGHT © 2018 SOUND SENSATIONS - ALL RIGHTS RESERVED.</div>
+        <div class="powered">POWERED BY <a href="#">GODADDY</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added semantic header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured exactly one h1 with sequential heading hierarchy; added meaningful alt text to image; ensured interactive elements have descriptive labels; set html lang="en".
+[B] ARIA fixes: used aria-label on multiple navigation regions; avoided redundant role attributes on semantic landmarks; ensured no tabindex values greater than 0 remain.
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile navigation; implemented C-K1/K3 focus indicator styles and tabindex cleanup.
+-->

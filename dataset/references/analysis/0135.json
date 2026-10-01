@@ -1,0 +1,53 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small boxed icon with stacked horizontal lines in the top-right of the header, a conventional hamburger/menu trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the site navigation. Because the desktop sketch shows visible navigation links/categories in the header area, the mobile version likely collapses those into an off-canvas panel, dropdown sheet, or expanded inline menu.",
+      "ambiguities": "The sketch does not reveal whether the menu opens as a full-screen overlay, slide-down panel, or drawer, nor whether nested items exist."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The presence of a hamburger-triggered hidden navigation implies a disclosure/overlay state change that must move focus appropriately when opened and returned when closed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, keyboard focus should move into the revealed navigation and return to the trigger on close. If implemented as an overlay/drawer, focus containment and escape/close handling are needed.",
+      "ambiguities": "Depends on whether the mobile menu is a simple inline expansion or a true overlay drawer."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "S1",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": []
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven article page with very low JavaScript complexity. The only clear interactive behavior is responsive navigation: desktop exposes navigation directly in the header, while mobile replaces it with a hamburger toggle. The article body, share/support area, related-content cards, and footer appear as standard links/cards rather than JS widgets, and there is no visual evidence of tabs, accordions, forms, modals, sticky behavior, or progressive loading."
+}

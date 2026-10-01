@@ -1,0 +1,103 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top bar with a boxed icon at the far left that reads as a menu trigger, with only a few header icons visible and no full navigation list exposed.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the left header control should open and close the primary navigation panel or menu for small screens. The open state should be visually indicated and dismissible.",
+      "ambiguities": "The sketch does not make clear whether the menu opens as a dropdown, slide-out drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "both",
+      "visual_evidence": "Mobile header includes a small square/list-like icon on the right and a secondary narrow bar beneath the header that suggests a collapsed breadcrumb/context selector; desktop shows grouped navigation-like text in the top bar and stacked right-rail boxes that could expose nested options or section menus.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "One or more compact triggers likely reveal contextual navigation or submenu choices, especially for breadcrumb/context selection on mobile and possibly utility/account or section menus on desktop.",
+      "ambiguities": "It is unclear which exact trigger opens which menu, and whether desktop menus open on click or hover."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "The reference layout strongly aligns with the sketches and includes repository-style navigation where search is a core utility; the mobile header and desktop top area reserve utility space consistent with a search control even if the sketch labels are abstracted.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Search should accept input and submit queries; optional live suggestions are possible but not required by the sketch alone. At minimum, JS may enhance submit behavior, focus, and responsive reveal/hide if search is compact in the header.",
+      "ambiguities": "The sketch does not explicitly draw a text field, so live autocomplete cannot be asserted with high confidence."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch has a right sidebar composed of stacked boxed sections separated by darker header bars, a classic visual cue for collapsible filter/detail panels.",
+      "confidence": "HIGH",
+      "behavior_notes": "Sidebar sections should expand/collapse independently or as an accordion to show and hide grouped metadata, filters, or related links. Header bars act as disclosure triggers.",
+      "ambiguities": "The sketch does not indicate whether multiple panels can stay open simultaneously."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch depicts a long vertically stacked content feed with repeated text blocks and section breaks, implying progressive disclosure for a content-heavy page on a constrained viewport.",
+      "confidence": "LOW",
+      "behavior_notes": "Additional content may be revealed via a 'load more' control or similar progressive expansion to avoid overwhelming the mobile page length.",
+      "ambiguities": "The sketch could also simply represent a fully rendered long page with no incremental loading."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a strong, persistent top header/navigation band spanning the viewport width, suggesting it remains available while scrolling through long content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Primary navigation/header may stay fixed or re-stick on scroll so utility actions remain accessible across long item/detail content.",
+      "ambiguities": "The sketch alone does not prove sticky behavior versus a static header."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The implied interactive components include a mobile hamburger menu, dropdown/disclosure controls, and desktop accordion/sidebar panels, all of which require managed focus when opened or toggled.",
+      "confidence": "HIGH",
+      "behavior_notes": "Focus should move into opened menus when appropriate, return to the trigger on close, preserve logical tab order, and support keyboard interaction for disclosure widgets.",
+      "ambiguities": "Exact focus targets depend on whether menus open as overlays, drawers, or inline expansions."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "D1",
+    "D4",
+    "S1",
+    "S2",
+    "K1",
+    "K3",
+    "K4",
+    "K2"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "dropdown_menu",
+      "focus_management",
+      "sticky_nav",
+      "search_input",
+      "load_more"
+    ],
+    "desktop": [
+      "accordion",
+      "dropdown_menu",
+      "focus_management",
+      "sticky_nav",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "The sketches imply a content-heavy repository/detail page with relatively modest but important JavaScript needs: responsive navigation on mobile, likely contextual dropdown behavior, and collapsible sidebar sections on desktop. Mobile complexity centers on compact navigation and utility access within a constrained header, while desktop complexity shifts toward managing right-rail disclosure panels alongside a large primary content area. No clear evidence of tabs, modals, toast messages, or explicit infinite scroll appears, but keyboard/focus handling is essential because the inferred menus and accordion-style disclosures must work accessibly across both viewports."
+}

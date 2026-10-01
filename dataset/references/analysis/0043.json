@@ -1,0 +1,120 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a persistent top header/navigation bar spanning the width of the viewport, separated from the page content below. The desktop sketch especially emphasizes a fixed top strip with logo, title, search, and utility controls.",
+      "confidence": "HIGH",
+      "behavior_notes": "Header should remain available while scrolling long documentation content. It may gain a shadow or condensed state after scroll, but at minimum it should stay fixed/sticky.",
+      "ambiguities": "The sketch does not clarify whether the header is always visible or auto-hides/reappears on scroll."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch has a compact top header with limited horizontal space and no visible full navigation tree, implying a collapsed navigation pattern for the documentation menu.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should open and close the primary navigation panel/drawer for section browsing on small screens.",
+      "ambiguities": "The hamburger icon itself is not explicitly drawn in the sketch, but the mobile layout strongly implies hidden navigation."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header clearly includes a rectangular input-like box in the top bar, visually distinct from surrounding text and controls, indicating site search.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search should accept text input and likely reveal results, suggestions, or a results panel. At minimum it needs input handling and submit behavior; for a docs site, live results are strongly implied.",
+      "ambiguities": "The sketch does not show whether results appear inline, in a dropdown, or on a separate page."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile header is compact and likely mirrors desktop functionality in reduced form; documentation sites commonly expose search from the header even when not fully drawn.",
+      "confidence": "LOW",
+      "behavior_notes": "Search may open as an overlay, expanded field, or dedicated panel on mobile.",
+      "ambiguities": "No explicit search field or icon is visible in the mobile sketch, so this is inferred from the desktop counterpart and page type."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header contains multiple compact utility areas beside the search field, consistent with language/theme/repository utility controls that typically open small menus or popovers.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "One or more header utility triggers may reveal a submenu/list of options on click or hover.",
+      "ambiguities": "The sketch does not label these controls, so the exact number and content of dropdowns is unclear."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "desktop",
+      "visual_evidence": "The left-side navigation in the desktop sketch is arranged as grouped section labels with subordinate items beneath, suggesting expandable/collapsible nested navigation groups.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Section headings in the navigation should expand/collapse child links. Active section may remain open while others can be toggled.",
+      "ambiguities": "The sketch could also represent a fully expanded static tree; expand/collapse is inferred from the grouped docs-navigation structure."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows long structured content with numbered sections and grouped headings; combined with the likely hidden mobile nav, nested documentation sections are likely disclosed progressively rather than all shown at once.",
+      "confidence": "LOW",
+      "behavior_notes": "If the mobile nav drawer contains nested docs sections, those groups should expand/collapse as disclosure items.",
+      "ambiguities": "The content area itself does not explicitly depict accordions; this is mainly inferred from the desktop navigation structure adapting to mobile."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a long, scroll-heavy documentation page with many headings, paragraphs, and lists extending well beyond the initial viewport, implying a convenience control for returning to the top.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A back-to-top button should appear after the user scrolls down and return focus/scroll position to the top when activated.",
+      "ambiguities": "The button is not explicitly drawn in the sketches, but is strongly implied by the long-form page pattern."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components across the sketches—mobile nav drawer, search UI, dropdowns, and expandable navigation—require controlled keyboard focus to behave accessibly.",
+      "confidence": "HIGH",
+      "behavior_notes": "Opening overlays/menus should move focus appropriately; closing them should restore focus to the trigger. Disclosure widgets and search results should support keyboard navigation without trapping users.",
+      "ambiguities": "This is not a standalone visual element but a necessary implementation requirement implied by the other interactive patterns."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "D1",
+    "S1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "hamburger_menu",
+      "focus_management",
+      "search_input",
+      "accordion",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input",
+      "accordion",
+      "dropdown_menu",
+      "focus_management",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a documentation-style page with relatively modest but important JavaScript needs centered on navigation and utility controls rather than rich in-page widgets. Desktop appears to rely on a sticky header, searchable top bar, and expandable left navigation tree, while mobile likely collapses navigation into a drawer and may compress search into an overlay or icon-triggered control. The page body itself looks mostly static long-form content, so the main implementation complexity is in responsive navigation behavior, keyboard/focus handling, and scroll-related affordances rather than dynamic content loading or modal workflows."
+}

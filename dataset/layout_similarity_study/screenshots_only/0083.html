@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mode : Auto-Reconnect to bluetooth device — Automate Community</title>
+  <style>
+    :root{
+      --text:#3a3a3a;
+      --muted:#777;
+      --light:#f3f3f3;
+      --border:#e3e3e3;
+      --blue:#4fc0ea;
+      --link:#2a78c8;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#fff;color:var(--text);font-family:Arial, Helvetica, sans-serif}
+    body{min-height:100vh}
+    .skip-link{position:absolute;left:12px;top:0;transform:translateY(-100%);background:#000;color:#fff;padding:10px 14px;z-index:1000;text-decoration:none}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    main{
+      flex:1;
+      padding:38px 70px 0;
+    }
+
+    .hero{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:24px;
+    }
+
+    .title-wrap{
+      flex:1;
+      min-width:0;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:37px;
+      line-height:1.08;
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+
+    .author{
+      margin:0;
+      font-size:18px;
+      color:#7a7a7a;
+      font-weight:400;
+    }
+
+    .meta{
+      width:262px;
+      text-align:left;
+      padding-top:18px;
+      flex-shrink:0;
+    }
+
+    .version{
+      margin:0 0 12px;
+      color:#6f6f6f;
+      font-size:16px;
+      white-space:nowrap;
+    }
+
+    .download-row{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .download-btn{
+      display:inline-block;
+      background:var(--blue);
+      color:#fff;
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:4px;
+      font-size:16px;
+      font-weight:700;
+      line-height:1;
+      white-space:nowrap;
+    }
+
+    .downloads{
+      color:#6f6f6f;
+      font-size:16px;
+      white-space:nowrap;
+    }
+
+    nav.breadcrumb{
+      margin-top:18px;
+      background:#f5f5f5;
+      border-radius:3px;
+      padding:10px 16px;
+      font-size:15px;
+    }
+
+    nav.breadcrumb a{
+      color:var(--link);
+      text-decoration:none;
+    }
+
+    .sep{
+      color:#b8b8b8;
+      margin:0 10px;
+    }
+
+    .content{
+      margin-top:16px;
+      font-size:17px;
+      line-height:1.45;
+      color:#333;
+    }
+
+    .content p{
+      margin:0;
+    }
+
+    footer{
+      margin-top:40px;
+      border-top:1px solid var(--border);
+      background:#f7f7f7;
+      padding:18px 70px 20px;
+    }
+
+    .footer-inner{
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .footer-logos{
+      display:flex;
+      align-items:flex-start;
+      gap:29px;
+      flex-shrink:0;
+    }
+
+    .logo-large{
+      width:165px;
+      height:92px;
+      background:#1708ff;
+    }
+
+    .logo-small{
+      width:68px;
+      height:39px;
+      background:#1708ff;
+      margin-top:1px;
+    }
+
+    .footer-text h2{
+      margin:0 0 8px;
+      font-size:25px;
+      line-height:1;
+      font-weight:700;
+      color:#3a3a3a;
+    }
+
+    .footer-text p{
+      margin:0;
+      font-size:15px;
+      color:#3f3f3f;
+    }
+
+    @media (max-width: 900px){
+      main{padding:38px 24px 0}
+      footer{padding:18px 24px 20px}
+      h1{font-size:37px}
+      .meta{width:220px;padding-top:12px}
+      .footer-text h2{font-size:21px}
+      .footer-text p{font-size:13px}
+      .logo-large{width:160px;height:109px}
+      .logo-small{width:95px;height:54px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 640px){
+      main{padding:40px 15px 0}
+      .hero{
+        display:block;
+      }
+      h1{
+        font-size:37px;
+        line-height:1.04;
+        margin-bottom:12px;
+      }
+      .author{
+        font-size:17px;
+        margin-bottom:4px;
+      }
+      .meta{
+        width:auto;
+        padding-top:0;
+      }
+      .version{
+        margin-bottom:10px;
+        font-size:16px;
+      }
+      .download-row{
+        gap:14px;
+        margin-bottom:18px;
+      }
+      nav.breadcrumb{
+        margin-top:0;
+        padding:12px 14px;
+        font-size:16px;
+      }
+      .content{
+        margin-top:16px;
+        font-size:17px;
+        line-height:1.45;
+      }
+      footer{
+        margin-top:275px;
+        padding:20px 15px 16px;
+      }
+      .footer-inner{
+        gap:18px;
+        align-items:flex-start;
+      }
+      .footer-logos{
+        gap:30px;
+      }
+      .logo-large{
+        width:95px;
+        height:52px;
+      }
+      .logo-small{
+        width:33px;
+        height:18px;
+        margin-top:0;
+      }
+      .footer-text h2{
+        font-size:20px;
+        line-height:1;
+        margin-bottom:6px;
+      }
+      .footer-text p{
+        font-size:11px;
+        line-height:1.25;
+        max-width:140px;
+      }
+    }
+
+    .nav-toggle{display:none}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <main id="main-content">
+      <section aria-label="Flow details">
+        <div class="hero">
+          <div class="title-wrap">
+            <h1>Mode : Auto-Reconnect to bluetooth device</h1>
+            <p class="author">by Taewook Yang (ワリ)</p>
+          </div>
+          <aside class="meta" aria-label="Download information">
+            <p class="version">Version 2 ( January 2, 2018 )</p>
+            <div class="download-row">
+              <a href="#" class="download-btn">□ Download</a>
+              <span class="downloads">(184 downloads)</span>
+            </div>
+          </aside>
+        </div>
+
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#">Automate Community</a>
+          <span class="sep">/</span>
+          <a href="#">Personalization</a>
+        </nav>
+
+        <div class="content">
+          <p>- This flow will help connect to selected bluetooth device automatically.<br>
+          - For use it. target device must be once paired to main device manually.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logos" aria-label="Brand graphics">
+          <img src="rick.jpg" alt="" class="logo-large">
+          <img src="rick.jpg" alt="" class="logo-small">
+        </div>
+        <div class="footer-text">
+          <h2>Automate for Android</h2>
+          <p>Make your phone or tablet smarter with automation</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic main, nav, aside, footer; ensured exactly one h1; added meaningful alt attributes to images with decorative images marked alt=""; ensured html lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: used unique aria-labels for breadcrumb nav and download information aside; avoided redundant role attributes on semantic landmarks; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented required tabindex cleanup script for focus order and focus indicator support (C-K1/K3 only).
+-->

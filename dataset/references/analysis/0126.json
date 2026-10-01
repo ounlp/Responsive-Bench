@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a vertically stacked list of repeated content cards/items with additional navigation-like marks at the bottom, implying the user can access more entries beyond the initially visible set.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Implement either explicit pagination-style loading or a 'load more' interaction to reveal older/additional list items without requiring a full redesign of the page structure. A loading state should be exposed when fetching more content.",
+      "ambiguities": "The sketches do not clearly distinguish between numbered pagination, a single 'load more' control, or plain links to archive pages. The reference HTML suggests previous indexes, so this may be pagination rather than in-place loading."
+    }
+  ],
+  "applicable_criteria": [
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "load_more"
+    ],
+    "desktop": [
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very simple content-listing page with repeated entries and minimal explicit interaction. No menus, forms, tabs, accordions, overlays, or sticky elements are visibly indicated. The main possible JavaScript requirement is handling access to additional content items at the bottom of the list; otherwise the page appears largely static, and the desktop/mobile difference is mostly layout density rather than interaction model."
+}

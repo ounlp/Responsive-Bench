@@ -1,0 +1,54 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a login form with text-entry fields and a primary action area; although these are username/password rather than search, the only relevant input-interaction taxonomy item besides validation is field behavior on entry and submit. The desktop sketch clearly shows two horizontal input boxes and a button, and the mobile sketch implies the same login form from the reference context.",
+      "confidence": "LOW",
+      "behavior_notes": "If interpreted strictly from the sketches plus reference context, the fields need JS only insofar as submit handling, focus states, and possibly Enter-key submission are managed. This is better represented by form validation, so this pattern is likely not truly intended.",
+      "ambiguities": "The taxonomy lacks a generic text-input pattern; these are probably not search fields. This pattern may be omitted in implementation."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The desktop sketch explicitly depicts a compact login form with two text fields, a checkbox, and a submit button. The mobile sketch, while more abstract, corresponds to the same page and implies a login form adapted to a smaller viewport. Any login form with required credentials and submit action implies client-side validation and submission-state handling.",
+      "confidence": "HIGH",
+      "behavior_notes": "Validate required username/email and password before submit, support Enter-key submission, preserve checkbox state, and surface inline or summary errors if authentication fails or fields are empty. A loading/disabled submit state may also be needed during submission.",
+      "ambiguities": "The sketch does not show explicit error text, password reveal, or forgot-password flow behavior, so only baseline validation and submit handling are clearly implied."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation"
+    ],
+    "desktop": [
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very low-JS page centered on authentication rather than rich interaction. The desktop view clearly shows a simple login form with two inputs, a checkbox, and a submit button; the mobile view appears to be the same content reflowed responsively. No navigation drawer, dropdowns, tabs, accordions, modal overlays, sticky elements, or infinite-loading behaviors are visibly indicated. The main JavaScript requirement across both viewports is robust form submission behavior with validation, focus handling, and accessible error feedback."
+}

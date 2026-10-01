@@ -1,0 +1,76 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a horizontal navigation/header bar at the very top of the page, visually separated from the content below and spanning the width like a persistent site header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain available while scrolling, especially because the page appears long and content-heavy. Active nav state is also implied by one emphasized nav item.",
+      "ambiguities": "The sketches do not explicitly show the header during scrolled states, so fixed/sticky behavior is inferred from the persistent top-bar treatment rather than directly depicted."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Each sketch shows a compact search control in the header area: on mobile a small square icon/button at the right of the top bar, and on desktop a boxed search field/button cluster beneath or within the nav area.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search should accept text and submit on button press or Enter. On mobile, the icon likely toggles or reveals the search field; on desktop, the search control appears directly available.",
+      "ambiguities": "It is unclear whether mobile search expands inline, opens a hidden field, or navigates to a dedicated search page."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The search UI in both sketches includes an input-like control paired with a trigger button, implying a submittable form.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At minimum, the search field should validate basic input state before submit, manage empty submissions, and support keyboard submission.",
+      "ambiguities": "The sketches do not indicate whether empty search is allowed or whether inline error messaging is expected."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Interactive header controls include nav items plus search trigger/input combinations; on mobile especially, the compact top-bar search affordance implies a reveal/hide interaction that requires moving focus into the opened control.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When search is expanded or revealed, focus should move into the input; when closed, focus should return to the trigger. Keyboard navigation across header controls should remain logical.",
+      "ambiguities": "This depends on whether the mobile search is a disclosure, overlay, or inline expansion."
+    }
+  ],
+  "applicable_criteria": [
+    "N3",
+    "F1",
+    "F2",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "focus_management",
+      "form_validation",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "sticky_nav",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively low-JS page centered on content reading, with the main interactive complexity concentrated in the top header/search area rather than in the body content. Desktop appears to expose search more directly, while mobile compresses header actions and likely requires a reveal interaction for search. No clear evidence appears for hamburger navigation, dropdowns, tabs, accordions, modals, toasts, or progressive loading; most remaining elements read as static links, article text, and footer navigation."
+}

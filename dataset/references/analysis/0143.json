@@ -1,0 +1,74 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent header/navigation area at the top, visually separated from the page content below by horizontal divider lines, implying the header remains fixed while the long content scrolls underneath.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should stay pinned during scroll without obscuring content; any interactive controls inside it remain reachable as the page moves.",
+      "ambiguities": "The sketch does not explicitly show scrolling state, so fixed vs simply top-positioned is inferred from the repeated top-bar treatment and long page length."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a simplified top area and list-driven layout consistent with a collapsed mobile navigation pattern rather than exposed desktop nav links; the reference structure strongly aligns with a hamburger-triggered off-canvas menu for mobile.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should toggle a hidden navigation panel, likely overlaying or sliding over the page. Opening it should expose primary navigation choices and closing should restore the page context.",
+      "ambiguities": "The hamburger icon itself is not clearly drawn in the sketch, so this is inferred from the mobile-vs-desktop layout difference and likely responsive navigation behavior."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal navigation row with multiple evenly spaced top-level items, a common pattern for hover/click-revealed submenus in desktop headers.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level nav items should reveal submenu panels on hover or click; only one submenu may be open at a time. Expanded state should be visually indicated.",
+      "ambiguities": "The sketch does not explicitly draw open submenu panels, so the exact trigger model (hover vs click) is not certain from the sketch alone."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred mobile off-canvas navigation and desktop dropdown navigation both require controlled keyboard movement and focus handling to be usable; the desktop header and mobile menu are the main interactive clusters.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When mobile nav opens, focus should move into it and return to the trigger on close. Dropdowns should support logical tab order and closing via keyboard. Focus should not be lost behind overlays or hidden panels.",
+      "ambiguities": "This pattern is implied by the interactive navigation structures rather than explicitly drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "dropdown_menu",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "These sketches imply relatively light JavaScript centered on responsive navigation rather than rich in-page widgets. The mobile view suggests a collapsed navigation system for a long scrolling list page, while the desktop view suggests a fixed top header with horizontal navigation that likely expands into dropdowns. No clear evidence appears for forms, modals, tabs, accordions, infinite loading, or toast messaging; most of the implementation complexity is in responsive nav state, keyboard accessibility, and maintaining a stable sticky header across viewports."
+}

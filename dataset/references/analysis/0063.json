@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a long vertically stacked content page with multiple large screenshot/image blocks followed by additional text sections and action rows, implying progressive disclosure of more content or a dedicated action to reveal more screenshots/content rather than all content being immediately visible.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Likely implemented as a button-triggered reveal of additional screenshots or related content sections. Could also be a 'View All Screenshots' action that expands or navigates to more media. Loading state may be needed if content is fetched asynchronously.",
+      "ambiguities": "The sketches do not explicitly label a button, spinner, or pagination control; this could alternatively be simple static scrolling content with no JS."
+    }
+  ],
+  "applicable_criteria": [
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "load_more"
+    ],
+    "desktop": [
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static content-detail page dominated by text blocks, stacked screenshots, and simple action rows, with very little explicit evidence of advanced JavaScript widgets. The main plausible interaction across both viewports is progressive loading or expansion of screenshot/media content, especially given the repeated image blocks and long page structure. No clear navigation menus, tabs, accordions, forms, modals, or live-updating UI are visibly indicated, so JS complexity appears low and largely centered on optional content reveal behavior."
+}

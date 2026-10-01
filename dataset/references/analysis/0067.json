@@ -1,0 +1,124 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place the title/header content at the very top in a way that reads like persistent page chrome above the article body, and the reference layout strongly suggests a header that remains available while scrolling through a long post.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should remain accessible during scroll, likely collapsing or pinning to the top as the reader moves down the article.",
+      "ambiguities": "The sketch does not explicitly show the sticky state or whether only part of the header sticks versus the full header."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "The page type is a blog/article layout and the reference structure includes a top search control; even though the sketch is low fidelity and unlabeled, a top utility action in this kind of layout strongly implies searchable blog content.",
+      "confidence": "LOW",
+      "behavior_notes": "Search should allow focus, text entry, and submit behavior; it may expand from an icon/button in tighter layouts and submit to filtered results.",
+      "ambiguities": "The sketch itself does not visibly depict the search field, so this is inferred from the overall blog template/context rather than explicit drawing."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a simplified single-column reading layout with no visible full navigation list, which implies primary navigation is likely hidden behind a compact mobile control.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should toggle a navigation panel or drawer, likely overlaying or sliding in over the content on small screens.",
+      "ambiguities": "The hamburger icon is not explicitly drawn, so the exact trigger placement and whether the menu is full-screen, drawer, or dropdown is unclear."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch compresses top-level utility/header space and likely needs desktop navigation to expose additional links from the header area, especially if multiple pages/categories exist beyond what fits inline.",
+      "confidence": "LOW",
+      "behavior_notes": "Desktop nav may reveal additional links or overflowed items on click/hover from the top navigation area.",
+      "ambiguities": "No submenu indicator is explicitly drawn; this may instead be simple inline links with no dropdown."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "both",
+      "visual_evidence": "The overall blog/sidebar pattern implied by the sketches and reinforced by the reference layout includes collapsible archive/labels sections that are commonly rendered as expandable blocks, especially in constrained mobile space and sidebar desktop space.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Sections such as archive, labels, or metadata should expand/collapse to show more items without navigating away.",
+      "ambiguities": "The sketch does not explicitly draw chevrons or disclosure markers, so the exact sections that collapse are inferred from the page type."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "The long article/post layout with additional metadata and potentially lengthy archive/label lists implies progressive disclosure for secondary content; the reference context specifically suggests 'show more/show less' behavior in sidebar lists.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Secondary lists or comment/archive areas may reveal additional items via a 'show more' control rather than displaying everything at once.",
+      "ambiguities": "It is unclear whether this applies to post lists, comments, archive items, labels, or only sidebar content."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Blog/article pages commonly include share or subscribe actions associated with the header/footer/sidebar areas; the reference layout strongly indicates overlay-based interactions for subscribe/share even though the sketch does not label them.",
+      "confidence": "LOW",
+      "behavior_notes": "Triggered overlays should open above the page, trap focus while active, and close via dismiss controls or outside interaction where appropriate.",
+      "ambiguities": "The sketch does not explicitly show a modal trigger, so this is inferred from the template context rather than visible wireframe evidence."
+    },
+    {
+      "pattern_id": "toast_notification",
+      "present_in": "both",
+      "visual_evidence": "If share actions include 'copy link' or similar quick actions, a transient confirmation is implied; this is a common companion interaction for article/share UI in this layout family.",
+      "confidence": "LOW",
+      "behavior_notes": "A brief non-modal confirmation should appear after actions like copying a link or completing a lightweight interaction.",
+      "ambiguities": "No notification is drawn in the sketch; this is only implied by likely share/copy behavior."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components across the sketches—mobile menu, collapsible sections, search expansion, and possible overlays—require managed focus to behave correctly for keyboard and assistive technology users.",
+      "confidence": "HIGH",
+      "behavior_notes": "Programmatic focus should move into opened menus/modals/search states and return to the trigger on close; disclosure widgets should maintain logical keyboard flow.",
+      "ambiguities": "Exact focus targets depend on which inferred components are ultimately implemented."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "D1",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "accordion",
+      "search_input",
+      "focus_management",
+      "load_more",
+      "modal_dialog",
+      "toast_notification"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "dropdown_menu",
+      "accordion",
+      "search_input",
+      "focus_management",
+      "load_more",
+      "modal_dialog",
+      "toast_notification"
+    ]
+  },
+  "sketch_notes": "These sketches imply a relatively simple reading-focused blog post page, but the likely JavaScript complexity comes from responsive navigation and progressive disclosure rather than the article body itself. Mobile likely depends on hidden navigation and compact utility controls, while desktop likely exposes more persistent header/sidebar functionality. Several behaviors are only weakly visible in the sketches and are inferred from the blog-template structure: collapsible archive/label sections, search behavior, and share/subscribe overlays. The core cross-viewport requirement is maintaining accessible state, focus, and scroll behavior for header/navigation and any revealed secondary UI."
+}

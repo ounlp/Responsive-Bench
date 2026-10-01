@@ -1,0 +1,91 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small boxed icon in the upper-right with stacked short horizontal strokes, a conventional hamburger/menu trigger, while the desktop sketch instead shows a full horizontal navigation bar.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel or overlay for small screens. The trigger should reflect open/closed state and likely replace or accompany hidden navigation links on mobile.",
+      "ambiguities": "The sketch does not show whether the mobile menu opens as a full-screen overlay, slide-in drawer, or dropdown panel."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch implies that navigation is not persistently visible and must be revealed from the hamburger trigger; given the sparse layout and isolated trigger, the hidden menu likely appears as an overlay panel rather than inline expanded content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If implemented as an overlay menu, opening it should place focus inside the menu, prevent background interaction/scroll, and provide a clear close action via the trigger, close button, or backdrop.",
+      "ambiguities": "The sketch does not explicitly draw the opened state, so the overlay treatment is inferred rather than directly shown."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch includes a hidden/revealed navigation trigger, which implies a stateful interactive container that needs managed keyboard focus when opened and closed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into it; when it closes, focus should return to the hamburger button. If the menu is modal-like, focus should be trapped within until dismissed.",
+      "ambiguities": "If the mobile menu is implemented as a simple inline expansion instead of an overlay, focus handling may be lighter-weight."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch places a long, thin horizontal bar across the very top that reads as a persistent site navigation/header separated from the content below.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation/header should remain available while scrolling long schedule/content sections, preserving access to site navigation across the page.",
+      "ambiguities": "The sketch alone does not prove fixed-on-scroll behavior; it could also be a static header. The long page length makes stickiness strongly plausible."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a compact top navigation bar with multiple grouped items, suggesting top-level navigation categories that may reveal deeper links, especially given the content-heavy site structure implied by the page.",
+      "confidence": "LOW",
+      "behavior_notes": "Top-level nav items with child pages should reveal submenus on hover/click/focus. Submenus should remain keyboard accessible and dismiss predictably.",
+      "ambiguities": "No submenu is explicitly drawn in the sketch, so this is inferred from likely information architecture rather than direct visual evidence."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically scrolling content with many stacked text sections, making a return-to-top affordance a likely interactive utility for usability on both mobile and desktop.",
+      "confidence": "LOW",
+      "behavior_notes": "A button may appear after the user scrolls down and return the viewport to the top when activated. It should be keyboard reachable and not obscure content.",
+      "ambiguities": "No explicit button is drawn in either sketch; this is inferred from the unusually long page length."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "M1",
+    "M2",
+    "S1",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "modal_dialog",
+      "focus_management",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "dropdown_menu",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven page with relatively light but important navigation JavaScript. Mobile has the clearest explicit interaction requirement: a hamburger-triggered hidden navigation, likely implemented as an overlay with focus control. Desktop appears to rely on a persistent top navigation/header and may include hierarchical menus, though submenu behavior is less explicit in the drawing. No forms, tabs, accordions, search, or dynamic loading are suggested by the sketches; the main cross-viewport complexity is responsive navigation behavior and accessibility handling for long-scroll layouts."
+}

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ukraine Kozelets Sights | Cathidral of Navity of Mother of God — Special Ukraine Tours</title>
+  <style>
+    :root{
+      --blue:#3f6f9f;
+      --teal:#3ea0a0;
+      --navy:#0f3d70;
+      --gold:#ffca08;
+      --link:#1f4f86;
+      --text:#111;
+      --white:#fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#fff;
+      color:var(--text);
+      line-height:1.18;
+    }
+    a{color:inherit;text-decoration:none}
+    .skip-link{position:absolute;transform:translateY(-100%);left:8px;top:8px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      width:min(760px, calc(100% - 16px));
+      margin:72px auto 18px;
+    }
+
+    header.site-header{
+      background:var(--blue);
+      color:#fff;
+    }
+    .topbar{
+      display:grid;
+      grid-template-columns: 152px 1fr;
+      gap:8px;
+      padding:16px 16px 10px;
+      align-items:start;
+    }
+    .logo-img{
+      width:152px;
+      height:182px;
+      object-fit:cover;
+      display:block;
+      background:#1a00ff;
+    }
+    .brand h1{
+      margin:14px 0 26px;
+      font-size:18px;
+      line-height:1.2;
+      font-weight:700;
+    }
+    .brand p{
+      margin:0 0 14px;
+      font-size:15px;
+      font-weight:700;
+    }
+    .brand .small{
+      margin-top:0;
+      font-size:14px;
+      font-weight:700;
+    }
+
+    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:28px;padding:8px 12px;margin:0 0 0 auto}
+    .main-nav{
+      padding:0 16px;
+    }
+    .main-nav ul,
+    .mobile-nav ul,
+    .tour-links ul,
+    .footer-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .main-nav ul{
+      display:flex;
+      justify-content:space-around;
+      gap:18px;
+      padding-bottom:14px;
+      flex-wrap:wrap;
+    }
+    .main-nav a{
+      color:#fff;
+      font-weight:700;
+      font-size:15px;
+    }
+    .main-nav a.active-yellow{color:#ffe100}
+
+    .tour-links{
+      background:var(--teal);
+      color:#fff;
+      padding:12px 18px 10px;
+    }
+    .tour-links ul{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px 28px;
+      align-items:center;
+    }
+    .tour-links li{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      font-size:16px;
+      font-weight:500;
+      white-space:nowrap;
+    }
+    .thumb{
+      width:58px;
+      height:30px;
+      object-fit:cover;
+      display:block;
+      background:#1a00ff;
+      flex:0 0 auto;
+    }
+
+    .title-band{
+      background:var(--navy);
+      color:#fff;
+      text-align:center;
+      padding:8px 16px 10px;
+    }
+    .title-band h2{
+      margin:0;
+      font-size:18px;
+      line-height:1.15;
+      font-weight:700;
+    }
+
+    main{
+      padding:20px 10px 0;
+    }
+    .intro{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:10px;
+      align-items:start;
+      margin-bottom:8px;
+    }
+    .hero-img{
+      width:320px;
+      height:240px;
+      object-fit:cover;
+      display:block;
+      background:#1a00ff;
+    }
+    .content p{
+      margin:0 0 14px;
+      font-size:17px;
+      line-height:1.22;
+    }
+    .content a{
+      color:var(--link);
+    }
+
+    .guide-card{
+      margin-top:10px;
+      background:var(--gold);
+      padding:20px 20px 18px;
+      display:grid;
+      grid-template-columns:225px 1fr;
+      gap:10px;
+      align-items:start;
+    }
+    .guide-img{
+      width:225px;
+      height:212px;
+      object-fit:cover;
+      display:block;
+      background:#1a00ff;
+    }
+    .guide-text{
+      font-size:17px;
+      color:#000;
+    }
+    .guide-text p{
+      margin:10px 0 14px;
+    }
+    .socials{
+      display:flex;
+      gap:14px;
+      margin-top:8px;
+      padding-left:10px;
+    }
+    .socials a{
+      display:inline-block;
+      width:25px;
+      height:25px;
+      background:#1a00ff;
+    }
+
+    footer{
+      margin-top:0;
+    }
+    .footer-nav{
+      background:var(--blue);
+      padding:10px 14px;
+    }
+    .footer-nav ul{
+      display:flex;
+      justify-content:space-around;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .footer-nav a{
+      color:#fff;
+      font-weight:700;
+      font-size:15px;
+    }
+    .footer-bottom{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:6px 14px 0;
+      color:#0019a8;
+      font-size:16px;
+    }
+    .reviews{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+    }
+    .reviews .circle{
+      width:18px;height:18px;border-radius:50%;
+      background:linear-gradient(#00d084 50%, #1a00ff 50%);
+      flex:0 0 auto;
+    }
+    .reviews .badge{
+      width:46px;height:18px;border:1px solid #666;background:
+      linear-gradient(90deg,#fff 0 10%,#8fffd1 10% 20%,#fff 20% 30%,#8fffd1 30% 40%,#fff 40% 50%,#8fffd1 50% 60%,#fff 60% 70%,#8fffd1 70% 80%,#fff 80% 90%,#8fffd1 90% 100%);
+      flex:0 0 auto;
+    }
+    .copyright{
+      white-space:nowrap;
+    }
+
+    .mobile-nav{
+      background:var(--blue);
+      padding:0 16px 12px;
+    }
+    .mobile-nav a{
+      display:block;
+      color:#fff;
+      font-weight:700;
+      padding:8px 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .main-nav{display:none}
+      .page{width:calc(100% - 16px);margin:44px auto 12px}
+      .topbar{
+        grid-template-columns:120px 1fr auto;
+        gap:8px;
+        padding:10px 8px 8px;
+      }
+      .logo-img{width:110px;height:142px}
+      .brand{
+        grid-column:2 / 3;
+      }
+      .brand h1{
+        margin:10px 0 18px;
+        font-size:18px;
+      }
+      .brand p{font-size:14px;margin-bottom:10px}
+      .brand .small{font-size:13px}
+      .tour-links{
+        padding:14px 10px 10px;
+      }
+      .tour-links ul{
+        gap:16px 10px;
+      }
+      .tour-links li{
+        gap:10px;
+        font-size:15px;
+        white-space:normal;
+      }
+      .thumb{width:60px;height:28px}
+      .title-band h2{font-size:17px}
+      .intro{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+      .hero-img{
+        width:100%;
+        height:auto;
+        aspect-ratio: 1.15 / 0.85;
+      }
+      .content p{font-size:16px}
+      .guide-card{
+        grid-template-columns:225px 1fr;
+        padding:20px;
+      }
+      .footer-bottom{
+        font-size:15px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .page{width:calc(100% - 10px);margin:44px auto 10px}
+      .topbar{
+        grid-template-columns:110px 1fr;
+        padding:10px 10px 8px;
+      }
+      .nav-toggle{
+        grid-column:1 / -1;
+        justify-self:end;
+        margin-top:-6px;
+        padding:0 4px 4px;
+      }
+      .logo-img{width:110px;height:142px}
+      .brand h1{
+        font-size:17px;
+        margin:10px 0 18px;
+      }
+      .brand p{font-size:12px}
+      .brand .small{font-size:12px}
+      .tour-links ul{
+        grid-template-columns:repeat(3,1fr);
+        gap:14px 8px;
+      }
+      .tour-links li{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:6px;
+        font-size:13px;
+      }
+      .thumb{width:44px;height:22px}
+      main{padding:16px 8px 0}
+      .title-band h2{font-size:16px}
+      .content p{font-size:16px}
+      .guide-card{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+        padding:12px;
+      }
+      .guide-img{
+        width:100%;
+        height:auto;
+        aspect-ratio:1/1;
+      }
+      .guide-text{font-size:16px}
+      .socials{
+        gap:10px;
+        padding-left:0;
+      }
+      .socials a{width:22px;height:22px}
+      .footer-nav{
+        padding:8px 6px;
+      }
+      .footer-nav ul{
+        justify-content:space-between;
+        gap:6px;
+      }
+      .footer-nav a{
+        font-size:12px;
+      }
+      .footer-bottom{
+        padding:6px 4px 0;
+        align-items:flex-start;
+        font-size:12px;
+      }
+      .reviews{
+        max-width:58%;
+        flex-wrap:wrap;
+      }
+      .copyright{
+        white-space:normal;
+        text-align:right;
+        max-width:40%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="topbar">
+        <img src="rick.jpg" alt="Special Ukraine Tours logo image" class="logo-img">
+        <div class="brand">
+          <h1>Special Ukraine Tours<br>Kyiv Tours I Tour Guide</h1>
+          <p>Ukraine Tours with Tour Guide for 105 Percent Satisfaction!</p>
+          <p class="small">Kyiv Tour Guide I [PHONE REDACTED] I [EMAIL REDACTED]</p>
+        </div>
+        <button
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation menu"
+          class="nav-toggle">
+          <span aria-hidden="true">&#9776;</span>
+        </button>
+      </div>
+
+      <nav aria-label="Main" class="main-nav">
+        <ul>
+          <li><a href="#" class="active-yellow">Ukraine Tours</a></li>
+          <li><a href="#" class="active-yellow">Tours Reviews</a></li>
+          <li><a href="#">Ukraine Sights</a></li>
+          <li><a href="#">How to be a Tour Guide</a></li>
+        </ul>
+      </nav>
+
+      <nav id="mobile-nav" aria-label="Main" class="mobile-nav" hidden>
+        <ul>
+          <li><a href="#">Ukraine Tours</a></li>
+          <li><a href="#">Tours Reviews</a></li>
+          <li><a href="#">Ukraine Sights</a></li>
+          <li><a href="#">How to be a Tour Guide</a></li>
+        </ul>
+      </nav>
+
+      <section class="tour-links" aria-label="Featured tours">
+        <ul>
+          <li><img src="rick.jpg" alt="" class="thumb"><a href="#">Kyiv Tour</a></li>
+          <li><img src="rick.jpg" alt="" class="thumb"><a href="#">SHERP Drive</a></li>
+          <li><img src="rick.jpg" alt="" class="thumb"><a href="#">Chernobyl Helicopter</a></li>
+          <li><img src="rick.jpg" alt="" class="thumb"><a href="#">Missile Museum</a></li>
+          <li><img src="rick.jpg" alt="" class="thumb"><a href="#">Flight Simulator</a></li>
+          <li><img src="rick.jpg" alt="" class="thumb"><a href="#">Kyiv Helicopter</a></li>
+        </ul>
+      </section>
+
+      <div class="title-band">
+        <h2>Ukraine Kozelets Sights I Cathidral of Navity of Mother of God<br>Individual and group tours to Kozelets</h2>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="content" aria-label="Article content">
+        <div class="intro">
+          <img src="rick.jpg" alt="Cathedral related article image" class="hero-img">
+          <div>
+            <p>Construction of <a href="#">Cathidral of Navity of Mother of God</a> in Kozelets directly related to Rozumovsky family very well know in Ukraine, Russian Empire and in the world.</p>
+
+            <p>In 1728 Alexey Rozum (Alexey Razumovsky) - son of an impoverished cossack Gregory Rozum of Lemeshev enters the church choir in Chemer.</p>
+
+            <p>During Christmas holidays in 1731 Colonel Theodore Wisniewski passed through Chemer carrying from Hungary Tokay wine to the royal family. Visiting local church he was struck by beauty and singing of young chorister and invited him to St. Petersburg.</p>
+          </div>
+        </div>
+
+        <p>Having ascended to Russian throne Elizabeth of Russia provides many privileges to Alexey Razumovsky - the rank of field marshal, ownership of villages in Ukraine, title of count and have made a secret marriage with him in Kozelets. Earldom got mother, brother and sister of Alexey Razumovsky.</p>
+
+        <p>Thus Kozelec became known because of Rozumovsky family: Natalka Demyanovna (Rozumiha) and her sons - a favorite of Empress Elizabeth - Alexey and the last Hetman of Left-Bank Ukraine (1750-1764, from 1764 - field marshal) Kirill Rozumovsky.</p>
+
+        <p>Rozumovsky family knew a lot about music, theater, art and architecture. Special memory of them left the architectural monument - <a href="#">Cathidral of Navity of Mother of God</a> in Kozelets.</p>
+
+        <p>Still not completely resolved the question of authorship of <a href="#">Cathidral of Navity of Mother of God</a> . Some authors believe that architects were Andrey Kvasov and Ivan Hryhorovych-Barskyi, others - Francesco Bartolomeo Rastrelli.</p>
+
+        <p>Construction of <a href="#">Cathidral of Navity of Mother of God</a> was carried out mainly by serfs.</p>
+
+        <p>For 11 years (1752-1763) was conducted <a href="#">Cathidral of Navity of Mother of God</a> . <a href="#">Cathidral of Navity of Mother of God</a> with bell tower.</p>
+
+        <p>Prominent feature of <a href="#">Cathidral of Navity of Mother of God</a> - a giant five-pointed linden iconostasis of 27 meters high which was made in Italy for Smolny Convent in St. Petersburg but thanks to efforts of Rozumovsky brothers got into Kozelets.</p>
+
+        <p>You could visit Ukraine KOzelets Sights I Cathidral of Navity of Mother of God with <a href="#">Ukraine Tour East Ring</a> or by private transfer of Kiev.</p>
+      </section>
+
+      <section class="guide-card" aria-label="Tour guide contact">
+        <img src="rick.jpg" alt="Pavel Korsun tour guide portrait" class="guide-img">
+        <div class="guide-text">
+          <p>Pavel Korsun<br>Tour Guide<br>Ukraine tours and Kiev tours</p>
+
+          <p>Book your tour or request information:<br>[PHONE REDACTED]<br>Viber, WhatsApp, Telegram, Snapchat<br>[EMAIL REDACTED]</p>
+
+          <div class="socials" aria-label="Social media links">
+            <a href="#" aria-label="Social media link 1"></a>
+            <a href="#" aria-label="Social media link 2"></a>
+            <a href="#" aria-label="Social media link 3"></a>
+            <a href="#" aria-label="Social media link 4"></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer" class="footer-nav">
+        <ul>
+          <li><a href="#">Hotels</a></li>
+          <li><a href="#">Hostels</a></li>
+          <li><a href="#">Restaurants</a></li>
+          <li><a href="#">Roads</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </nav>
+      <div class="footer-bottom">
+        <div class="reviews">
+          <span class="circle" aria-hidden="true"></span>
+          <span class="badge" aria-hidden="true"></span>
+          <a href="#">- please, look at reviews of tourists about our tours</a>
+        </div>
+        <div class="copyright">© 2011 - 2022 All rights reserved</div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer, and section landmarks; added skip link and id="main-content"; ensured exactly one h1 and sequential heading hierarchy with h2 for page section title; added meaningful alt text to content images and empty alt for decorative thumbnails; ensured interactive elements have descriptive labels; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-labels for multiple nav regions and labeled featured tours section; removed positive tabindex via script baseline.
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile navigation; implemented C-K1/K3 focus indicator styles and tabindex cleanup.
+-->

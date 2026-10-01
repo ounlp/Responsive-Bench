@@ -1,0 +1,73 @@
+You are an expert web accessibility evaluator.
+
+Task:
+You will be given:
+1) The full HTML source of a generated webpage
+2) Three Playwright accessibility trees (aria_snapshot of <body>) for three viewports:
+   - mobile (375px)
+   - tablet (768px)
+   - desktop (1280px)
+
+You must judge whether the page uses semantic landmark regions correctly, based on BOTH:
+- What the HTML structurally contains (e.g., whether there is a sidebar-like region)
+- What appears in the accessibility trees at each viewport
+
+Landmarks of interest:
+- <header> -> banner
+- <nav>    -> navigation
+- <main>   -> main
+- <footer> -> contentinfo
+- <aside>  -> complementary
+
+Rules:
+- Only landmarks that are relevant to the page content are required.
+  - If there is no sidebar or sidebar-like region in the HTML, then a complementary landmark is NOT required.
+  - If there is a sidebar-like region in the HTML, it SHOULD be represented as an <aside> (complementary) landmark.
+- main landmark is expected for the primary content region.
+- Nesting requirements:
+  - banner and navigation should not be nested inside main
+  - complementary should not be nested inside main
+- Responsive behavior:
+  - If a region is hidden on a viewport, it should be removed from the accessibility tree via display:none (not left as a ghost via visibility:hidden).
+
+Scoring (1–5):
+- 5: all required landmarks present, correctly nested, and consistent across viewports; hidden regions are absent when hidden.
+- 3: mostly correct but with minor issues (e.g., one optional/relevant landmark missing, minor nesting/label issue, or viewport inconsistency).
+- 1: major failures (e.g., main missing, multiple required landmarks missing, or severe nesting/ghost landmark problems).
+
+Output requirements:
+- Respond with exactly one JSON object.
+- Score must be an integer 1 to 5.
+- Rationale must be concise and reference specific evidence from the HTML and trees.
+
+Output JSON schema:
+{
+  "score": 1-5,
+  "rationale": "...",
+  "required_landmarks": ["banner","navigation","main","contentinfo","complementary"],
+  "notes": {
+    "mobile": "...",
+    "tablet": "...",
+    "desktop": "..."
+  }
+}
+
+HTML source:
+```html
+{{ html_source }}
+```
+
+Accessibility tree for mobile view:
+```yaml
+{{ tree_mobile }}
+```
+
+Accessibility tree for tablet view:
+```yaml
+{{ tree_tablet }}
+```
+
+Accessibility tree for desktop view:
+```yaml
+{{ tree_desktop }}
+```

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — Devon Orienteering</title>
+  <style>
+    :root{
+      --green:#2f6b3a;
+      --green-btn:#35863d;
+      --text:#3b3b3b;
+      --light:#f7f7f7;
+      --border:#cfcfcf;
+      --blue:#1200ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.45;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:0;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:#2f8a3d;text-decoration:underline}
+    .page{
+      max-width:1280px;
+      margin:0 auto;
+      padding:0 16px 24px;
+    }
+    .layout{
+      display:grid;
+      grid-template-columns:150px 1fr;
+      gap:23px;
+      align-items:start;
+    }
+    .sidebar-nav{
+      padding-top:8px;
+    }
+    .sidebar-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .sidebar-nav li{
+      margin:0 0 10px 0;
+    }
+    .sidebar-nav a,
+    .mobile-nav a{
+      display:block;
+      background:var(--green-btn);
+      color:#fff;
+      text-decoration:none;
+      text-align:center;
+      padding:8px 10px;
+      border-radius:5px;
+      font-size:17px;
+      line-height:1;
+    }
+
+    .hero{
+      width:100%;
+      height:603px;
+      background:var(--blue);
+      border-radius:4px;
+      overflow:hidden;
+    }
+    .hero img,
+    .inline-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 480px 262px;
+      gap:14px;
+      margin-top:8px;
+      align-items:start;
+    }
+    .main-copy h1{
+      margin:0 0 6px;
+      color:var(--green);
+      font-size:37px;
+      line-height:1.05;
+      font-weight:700;
+    }
+    .main-copy p{
+      margin:0 0 18px;
+      font-size:18px;
+    }
+    .main-copy h2{
+      margin:18px 0 6px;
+      color:var(--green);
+      font-size:29px;
+      line-height:1.05;
+      font-weight:700;
+    }
+    .inline-image{
+      height:269px;
+      background:var(--blue);
+      border-radius:4px;
+      margin-top:0;
+    }
+    .recent{
+      padding-top:8px;
+    }
+    .recent h2{
+      margin:0 0 10px;
+      color:var(--green);
+      font-size:34px;
+      line-height:1.05;
+      font-weight:700;
+    }
+    .recent ul{
+      margin:0;
+      padding-left:24px;
+      font-size:18px;
+    }
+    .recent li{
+      margin:0 0 8px;
+      color:var(--text);
+    }
+    .recent a{
+      color:#2f8a3d;
+      text-decoration:none;
+      line-height:1.35;
+    }
+
+    .search-section{
+      margin-top:22px;
+      max-width:480px;
+    }
+    .search-section h2{
+      margin:0 0 4px;
+      color:var(--green);
+      font-size:29px;
+      line-height:1.1;
+    }
+    .search-form label{
+      display:block;
+      font-size:0;
+      height:0;
+      overflow:hidden;
+    }
+    .search-form input{
+      width:100%;
+      height:37px;
+      border:1px solid var(--border);
+      border-radius:5px;
+      padding:6px 10px;
+      font-size:17px;
+      color:#666;
+    }
+    .search-form button{
+      margin-top:18px;
+      width:100%;
+      height:18px;
+      border:none;
+      border-radius:5px;
+      background:var(--green-btn);
+      color:#fff;
+      font-size:17px;
+      font-weight:700;
+      line-height:18px;
+      padding:0;
+      cursor:pointer;
+    }
+
+    footer{
+      text-align:center;
+      margin-top:38px;
+      font-size:17px;
+      color:#3d3d3d;
+    }
+
+    .nav-toggle { display: none; }
+    .mobile-nav-wrap{
+      display:none;
+      position:fixed;
+      left:0;
+      bottom:0;
+      width:149px;
+      background:#eef6ef;
+      padding:0 0 22px 0;
+      z-index:50;
+    }
+    .nav-toggle{
+      width:142px;
+      margin:0;
+      border:2px solid red;
+      border-radius:4px;
+      background:var(--green-btn);
+      color:#fff;
+      font-size:18px;
+      padding:8px 12px;
+      text-align:center;
+      cursor:pointer;
+    }
+    .mobile-nav{
+      padding:8px 0 0;
+    }
+    .mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0 8px;
+    }
+    .mobile-nav li{margin:0 0 8px}
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 1100px){
+      .content-grid{
+        grid-template-columns:minmax(0,1fr) 223px 200px;
+        gap:16px;
+      }
+      .hero{height:319px}
+      .inline-image{height:123px}
+      .main-copy h1{font-size:34px}
+      .recent h2{font-size:31px}
+      .main-copy h2{font-size:28px}
+      .search-section{max-width:221px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .page{
+        padding:0 16px 24px;
+      }
+      .layout{
+        display:block;
+      }
+      .sidebar-nav{
+        display:none;
+      }
+      .hero{
+        height:193px;
+        margin-top:0;
+      }
+      .content-grid{
+        grid-template-columns:1fr 206px;
+        gap:16px;
+        margin-top:7px;
+      }
+      .main-copy h1{
+        font-size:33px;
+        margin-bottom:6px;
+      }
+      .inline-image{
+        height:114px;
+      }
+      .recent{
+        grid-column:1 / -1;
+        padding-top:0;
+      }
+      .recent h2{
+        font-size:33px;
+        margin-top:10px;
+      }
+      .search-section{
+        max-width:none;
+      }
+      .search-form button{
+        height:19px;
+        line-height:19px;
+      }
+      .mobile-nav-wrap{
+        display:block;
+      }
+      footer{
+        margin-bottom:34px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        padding:0 16px 24px;
+      }
+      .hero{
+        height:193px;
+      }
+      .content-grid{
+        grid-template-columns:1fr 206px;
+        gap:16px;
+      }
+      .main-copy h1{
+        font-size:33px;
+        line-height:1.05;
+      }
+      .main-copy p{
+        font-size:18px;
+      }
+      .main-copy h2{
+        font-size:28px;
+        margin-top:18px;
+      }
+      .recent{
+        grid-column:1 / -1;
+      }
+      .recent ul{
+        font-size:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <div class="layout">
+      <header class="sidebar-nav">
+        <nav aria-label="Main">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Newcomers</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Anytime O</a></li>
+            <li><a href="#">Results</a></li>
+            <li><a href="#">Information</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">Search</a></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main id="main-content">
+        <section class="hero" aria-label="Header image">
+          <img src="rick.jpg" alt="Large header image area">
+        </section>
+
+        <section class="content-grid" aria-label="Page content">
+          <article class="main-copy">
+            <h1>We have a problem...</h1>
+            <p>We can't find the page you requested, and we're not sure what happened, but here are 4 possible causes.</p>
+
+            <h2>1. We have recently updated our website</h2>
+            <p>Some pages will have changed their location due to a new content structure, use the Navigation, Search or the list of Recent Entries to try and find what you are looking for.</p>
+
+            <h2>2. Did you follow a link from this website?</h2>
+            <p>That's probably our fault, please go to the <a href="#">contact page</a> and send an email to our webmaster to point us to the bad link so we can fix it.</p>
+
+            <h2>3. Did you follow a link from another website?</h2>
+            <p>We may have changed or moved the item, or they may have a typo in their link address. Again, <a href="#">let us know</a> so we can fix it.</p>
+
+            <h2>4. Did you type the address in yourself?</h2>
+            <p>Check that you entered it correctly.</p>
+
+            <h2>Still no luck?</h2>
+            <p>Use the Navigation, Search or the list of Recent Entries (right) to try and find what you are looking for.</p>
+
+            <section class="search-section" aria-label="Search">
+              <h2>Search</h2>
+              <form class="search-form" novalidate>
+                <label for="search-phrase">Search phrase</label>
+                <input type="text" id="search-phrase" name="search-phrase" placeholder="Search phrase">
+                <button type="submit">Go</button>
+              </form>
+            </section>
+          </article>
+
+          <section class="inline-image" aria-label="Supporting image">
+            <img src="rick.jpg" alt="Supporting content image area">
+          </section>
+
+          <aside class="recent" aria-label="Recent entries">
+            <h2>Recent entries</h2>
+            <ul>
+              <li><a href="#">South West Middle Distance Championships</a></li>
+              <li><a href="#">Devon League scores after event 2</a></li>
+              <li><a href="#">Annual General Meeting 2023</a></li>
+              <li><a href="#">Nun's Cross event</a></li>
+            </ul>
+          </aside>
+        </section>
+
+        <footer>
+          <div>© 2023 Devon Orienteering</div>
+          <div>Built by <a href="#">PFweb</a></div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <div class="mobile-nav-wrap">
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">≡</span> Menu
+    </button>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile main" hidden>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Newcomers</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Anytime O</a></li>
+        <li><a href="#">Results</a></li>
+        <li><a href="#">Information</a></li>
+        <li><a href="#">Contacts</a></li>
+        <li><a href="#">Search</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and main-content id; used semantic header, nav, main, aside, footer; ensured one h1 with sequential h2 headings; added alt text to all images; added associated label for search input; ensured descriptive button and link text; set html lang="en".
+[B] ARIA fixes: used aria-label on multiple navigation regions; avoided redundant role attributes on semantic landmarks; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, aria-controls, focus handling, and Escape close; implemented tabindex cleanup and focus-visible styling.
+-->

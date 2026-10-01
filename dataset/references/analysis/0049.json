@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a small rectangular input-like box in the top navigation area, positioned at the upper right on desktop and near the top section on mobile, which strongly implies a site/page search control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and search submission; may also include focus handling, placeholder behavior, and possibly live suggestions if implemented beyond a basic submit search.",
+      "ambiguities": "The sketch does not reveal whether results are live/autocomplete or only submitted on Enter/button press."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch has a distinct top horizontal utility/navigation row separated from the long article body below, suggesting a persistent header treatment for a content-heavy page.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If implemented as sticky, the top nav/search area should remain accessible while scrolling through the long document-like content.",
+      "ambiguities": "The sketch does not explicitly show a fixed state during scroll; this is inferred from the long-form layout and isolated header band."
+    }
+  ],
+  "applicable_criteria": [
+    "F2",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input"
+    ],
+    "desktop": [
+      "search_input",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly static, article-style page with minimal JavaScript needs. The clearest interactive requirement across both viewports is a search field in the header area. Desktop additionally suggests a persistent top navigation/header treatment because the page is long and document-like, while mobile appears simplified and stacked without any clearly drawn hamburger, dropdown, accordion, modal, or load-more behavior."
+}

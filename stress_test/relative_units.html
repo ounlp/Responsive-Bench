@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adversarial Relative Units Violations</title>
+  <style>
+    /* Base styles - passing with relative units */
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      font-size: 16px; /* Root font size for rem calculations */
+      line-height: 1.5;
+      padding: 1rem; /* Passing: uses rem */
+    }
+
+    .page {
+      max-width: 980px; /* Acceptable: max-width in px is fine for containers */
+      margin: 0 auto;
+    }
+
+    /* PASSING ELEMENTS - Using relative units */
+
+    /* Passing: width using percentage */
+    .pass-width-percent {
+      width: 80%; /* Passing: percentage is relative */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: width using viewport units */
+    .pass-width-vw {
+      width: 85%; /* Passing: percentage is relative */
+      max-width: 90vw; /* Passing: viewport width is relative */
+      box-sizing: border-box; /* Include padding and border in width */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: font-size using em */
+    .pass-font-em {
+      font-size: 1.25em; /* Passing: em is relative */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: font-size using rem */
+    .pass-font-rem {
+      font-size: 1.125rem; /* Passing: rem is relative */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: height using vh */
+    .pass-height-vh {
+      height: 20vh; /* Passing: viewport height is relative */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+      overflow: auto;
+    }
+
+    /* Passing: mixed relative units */
+    .pass-mixed-relative {
+      width: 75%; /* Passing: percentage */
+      min-width: 20em; /* Passing: em */
+      max-width: 90vw; /* Passing: vw */
+      font-size: 1rem; /* Passing: rem */
+      line-height: 1.6; /* Passing: unitless (relative) */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* VIOLATING ELEMENTS - Using absolute units (px) */
+
+    /* Violation: width using pixels */
+    .fail-width-px {
+      width: 320px; /* VIOLATION: absolute pixel width */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: max-width using pixels */
+    .fail-max-width-px {
+      width: 80%;
+      max-width: 450px; /* VIOLATION: max-width in px restricts responsiveness */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: min-width using pixels */
+    .fail-min-width-px {
+      width: 50%;
+      min-width: 300px; /* VIOLATION: min-width in px */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: height using pixels */
+    .fail-height-px {
+      height: 150px; /* VIOLATION: absolute pixel height */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+      overflow: auto;
+    }
+
+    /* Violation: max-height using pixels */
+    .fail-max-height-px {
+      max-height: 180px; /* VIOLATION: max-height in px */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+      overflow: auto;
+    }
+
+    /* Violation: min-height using pixels */
+    .fail-min-height-px {
+      min-height: 120px; /* VIOLATION: min-height in px */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: font-size using pixels */
+    .fail-font-px {
+      font-size: 18px; /* VIOLATION: absolute pixel font size */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: line-height using pixels */
+    .fail-line-height-px {
+      line-height: 24px; /* VIOLATION: absolute pixel line height */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: multiple absolute units */
+    .fail-multiple-px {
+      width: 400px; /* VIOLATION */
+      height: 200px; /* VIOLATION */
+      font-size: 16px; /* VIOLATION */
+      line-height: 22px; /* VIOLATION */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: other absolute units (pt, cm) */
+    .fail-pt-units {
+      font-size: 14pt; /* VIOLATION: points are absolute */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Nested container violation */
+    .outer-container {
+      width: 90%; /* Passing: percentage */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 2px solid #666;
+      background: #f5f5f5;
+    }
+
+    .inner-violation {
+      width: 280px; /* VIOLATION: nested container with px width */
+      padding: 0.5rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+      margin: 0.5rem 0;
+    }
+
+    /* Section headers */
+    h1 {
+      font-size: 1.75rem; /* Passing: rem */
+      margin: 0 0 1rem 0;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 1.5rem; /* Passing: rem */
+      margin: 1.5rem 0 1rem 0;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 1.25rem; /* Passing: rem */
+      margin: 1rem 0 0.5rem 0;
+      font-weight: bold;
+    }
+
+    .section-header {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      background: #f0f0f0;
+      border-left: 4px solid #333;
+    }
+
+    .hint {
+      color: #666;
+      font-size: 0.875rem; /* Passing: rem */
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Relative Units Violations Test Page</h1>
+    <div class="hint">
+      This page demonstrates both correct usage of relative units and common violations using absolute units.
+    </div>
+
+    <section>
+      <div class="section-header">
+        <h2 style="margin: 0;">Passing Elements (Using Relative Units)</h2>
+      </div>
+
+      <div class="grid">
+        <div class="pass-width-percent">
+          <h3>Width: Percentage (80%)</h3>
+          <p>
+            This container uses <strong>width: 80%</strong> which is a relative unit.
+            It will scale proportionally to its parent container.
+          </p>
+        </div>
+
+        <div class="pass-width-vw">
+          <h3>Width: Viewport Width (90vw)</h3>
+          <p>
+            This container uses <strong>width: 90vw</strong> which is relative to the viewport width.
+            It adapts to different screen sizes.
+          </p>
+        </div>
+      </div>
+
+      <div class="pass-font-em">
+        <h3>Font Size: Em Units (1.25em)</h3>
+        <p>
+          This section uses <strong>font-size: 1.25em</strong> which is relative to the parent's font size.
+          Em units cascade and scale proportionally.
+        </p>
+      </div>
+
+      <div class="pass-font-rem">
+        <h3>Font Size: Rem Units (1.125rem)</h3>
+        <p>
+          This section uses <strong>font-size: 1.125rem</strong> which is relative to the root font size.
+          Rem units provide consistent scaling across the document.
+        </p>
+      </div>
+
+      <div class="pass-height-vh">
+        <h3>Height: Viewport Height (20vh)</h3>
+        <p>
+          This container uses <strong>height: 20vh</strong> which is relative to the viewport height.
+          This allows responsive vertical sizing based on screen size.
+        </p>
+      </div>
+
+      <div class="pass-mixed-relative">
+        <h3>Mixed Relative Units</h3>
+        <p>
+          This container combines multiple relative units:
+          <strong>width: 75%</strong>, <strong>min-width: 20em</strong>,
+          <strong>max-width: 90vw</strong>, <strong>font-size: 1rem</strong>.
+          All relative units work together for responsive design.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <h2 style="margin: 0;">Violating Elements (Using Absolute Units)</h2>
+      </div>
+
+      <div class="fail-width-px">
+        <h3>VIOLATION: Width in Pixels</h3>
+        <p>
+          This container uses <strong>width: 320px</strong> which is an absolute unit.
+          The fixed pixel width doesn't adapt to different screen sizes or user preferences.
+        </p>
+      </div>
+
+      <div class="fail-max-width-px">
+        <h3>VIOLATION: Max-Width in Pixels</h3>
+        <p>
+          While using percentage for width (80%), this container uses <strong>max-width: 450px</strong>.
+          The pixel-based max-width limits responsiveness on larger screens.
+        </p>
+      </div>
+
+      <div class="fail-min-width-px">
+        <h3>VIOLATION: Min-Width in Pixels</h3>
+        <p>
+          This container uses <strong>min-width: 300px</strong> which is an absolute unit.
+          Fixed minimum widths can cause horizontal scrolling on small screens.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="fail-height-px">
+          <h3>VIOLATION: Height in Pixels</h3>
+          <p>
+            This container uses <strong>height: 150px</strong> which is an absolute unit.
+            Fixed pixel heights don't adapt to content or screen size changes.
+          </p>
+        </div>
+
+        <div class="fail-max-height-px">
+          <h3>VIOLATION: Max-Height in Pixels</h3>
+          <p>
+            This container uses <strong>max-height: 180px</strong>.
+            Absolute max-height can cause content overflow issues on different devices.
+          </p>
+        </div>
+      </div>
+
+      <div class="fail-min-height-px">
+        <h3>VIOLATION: Min-Height in Pixels</h3>
+        <p>
+          This container uses <strong>min-height: 120px</strong> which is an absolute unit.
+          Fixed minimum heights don't scale well across different contexts.
+        </p>
+      </div>
+
+      <div class="fail-font-px">
+        <h3>VIOLATION: Font Size in Pixels</h3>
+        <p>
+          This text uses <strong>font-size: 18px</strong> which is an absolute unit.
+          Pixel-based font sizes ignore user font size preferences and don't scale well.
+        </p>
+      </div>
+
+      <div class="fail-line-height-px">
+        <h3>VIOLATION: Line Height in Pixels</h3>
+        <p>
+          This text uses <strong>line-height: 24px</strong> which is an absolute unit.
+          Absolute line heights don't scale proportionally with font size changes.
+        </p>
+      </div>
+
+      <div class="fail-multiple-px">
+        <h3>VIOLATION: Multiple Absolute Units</h3>
+        <p>
+          This container violates multiple properties: <strong>width: 400px</strong>,
+          <strong>height: 200px</strong>, <strong>font-size: 16px</strong>,
+          <strong>line-height: 22px</strong>. Multiple absolute units compound responsiveness issues.
+        </p>
+      </div>
+
+      <div class="fail-pt-units">
+        <h3>VIOLATION: Point Units</h3>
+        <p>
+          This text uses <strong>font-size: 14pt</strong> which uses points, another absolute unit.
+          Points are designed for print media, not responsive web design.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-header">
+        <h2 style="margin: 0;">Nested Container Violations</h2>
+      </div>
+
+      <div class="outer-container">
+        <h3>Outer Container (Passing: width: 90%)</h3>
+        <p>This outer container correctly uses percentage width.</p>
+
+        <div class="inner-violation">
+          <h3 style="margin: 0 0 0.5rem 0;">VIOLATION: Inner Container (width: 280px)</h3>
+          <p style="margin: 0;">
+            This nested container violates the rule with <strong>width: 280px</strong>.
+            Even when the parent uses relative units, children can still violate with absolute units.
+          </p>
+        </div>
+
+        <div class="inner-violation">
+          <h3 style="margin: 0 0 0.5rem 0;">VIOLATION: Another Inner Container</h3>
+          <p style="margin: 0;">
+            Multiple nested containers can each have their own violations.
+            Each should be detected independently.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inline style violations -->
+    <section>
+      <div class="section-header">
+        <h2 style="margin: 0;">Inline Style Violations</h2>
+      </div>
+
+      <div style="width: 350px; padding: 1rem; border: 1px solid #d00; background: #fee; color: #d00; margin-bottom: 1rem;">
+        <h3>VIOLATION: Inline Width Style</h3>
+        <p>
+          This container uses inline <strong>style="width: 350px"</strong>.
+          Inline styles with absolute units should also be detected as violations.
+        </p>
+      </div>
+
+      <div style="height: 140px; font-size: 17px; padding: 1rem; border: 1px solid #d00; background: #fee; color: #d00; margin-bottom: 1rem; overflow: auto;">
+        <h3 style="margin-top: 0;">VIOLATION: Multiple Inline Properties</h3>
+        <p>
+          This uses inline <strong>style="height: 140px; font-size: 17px"</strong>.
+          Multiple absolute unit violations in inline styles.
+        </p>
+      </div>
+    </section>
+
+    <section style="margin-top: 2rem; padding: 1rem; background: #f9f9f9; border-radius: 4px;">
+      <h2>Summary</h2>
+      <p>
+        This test page demonstrates the importance of using relative units for responsive design.
+        The <strong>relative_units</strong> metric should detect all containers using
+        absolute units (px, pt, cm, mm, in, pc) for width, height, font-size, and line-height properties.
+      </p>
+      <p>
+        Passing elements use relative units like %, em, rem, vw, vh, vmin, vmax, which adapt
+        to different screen sizes, zoom levels, and user preferences.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

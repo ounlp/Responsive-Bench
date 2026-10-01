@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+   @charset "utf-8";
+body,td,th {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight:600;
+	color: #4e5052;
+	background-color: #FFF;
+}
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl {
+	padding: 0;
+	margin: 0;
+}
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight:bold;
+	color:#4e5052;
+}
+h1.title { 
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:18px;
+        color: #333333;
+        padding-top: 1em;
+}
+
+h1.km { 
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:120%;
+        color: #333333;
+        padding-top: 1em;
+}
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight:bold;
+	text-transform: uppercase;
+}
+h2.km {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #333333;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #c4d1e6;
+        padding-top: 0.5em;
+        font-size: 125%;
+        background-color: #777773;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        padding-left: 8px;
+}
+h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight:bold;
+	color: #4e5052;
+}
+h3.km {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:16px;
+        font-weight: bold;
+        color: #333333;
+        padding-top: 0.5em;
+}
+h4.km {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:101%;
+        font-weight: bold;
+        font-style:italic;
+        color: #000088;
+        padding-top: 0.5em;
+}
+
+/* H5 set to Slate Grey, Italics  */
+
+h5.km {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:101%;
+        font-weight: bold;
+        font-style:italic;
+        color: #666666;
+        padding-top: 0.5em;
+}
+
+
+table.km {
+        border-top-width: 1px;
+        border-left-width: 1px;
+        border-top-style: solid;
+        border-left-style: solid;
+        border-top-color: #c4d1e6;
+        border-left-color: #c4d1e6;
+}
+td.km {
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: #c4d1e6;
+        border-bottom-color: #c4d1e6;
+        padding: 4px;
+        vertical-align: top
+}
+th.km {
+        border-right-width: 1px;
+        border-bottom-width: 1px;
+        border-right-style: solid;
+        border-bottom-style: solid;
+        border-right-color: #c4d1e6;
+        border-bottom-color: #c4d1e6;
+        padding: 4px;
+        background-color: #dee6ef;
+        font-weight: bold;
+        text-align: left;
+        vertical-align: top
+}
+.kmnotebox {
+        background-color: #FEFCEE;
+        border: 2px solid #c1a90d;        
+        padding: 10px;
+        border: 0px;
+        background-color: #FFF9D7;
+        border: 1px solid #c1a90d;
+}
+.kmhidetext{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:103%;
+        color: #333333;
+}
+pre.km, code.km {
+        font-family:"Courier New",Courier,monospace;
+        font-size:90%;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+}
+div.kmcodeblock {
+        background-color:#EEF3F7;
+        overflow:auto;
+        border-width:1px;
+        border-style:solid;
+        border-color:#C4D1E6;
+        padding:0.5em;
+        margin:0px;margin-top:5px; 
+        font-family:"Courier New",Courier,monospace;
+        font-size:90%;
+        xborder-width:0px;
+    	background-color: #E0EAF1;
+}
+div.kmindent1 {
+        display: block;
+        padding-left: 40px;
+}
+div.kmindent2 {
+        display: block;
+        padding-left: 80px;
+}
+span.kmfixedwidthfont {
+        font-family:"Courier New",Courier,monospace;
+}
+h2.awiz {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:105%;
+        color: #333333;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #c4d1e6;
+}
+h3.awiz {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:103%;
+        color: #333333;
+}
+pre.awiz, code.awiz {
+        font-family:"Courier New",Courier,monospace;
+        font-size:90%;
+}
+font {
+        font-family: Arial, Helvetica, sans-serif;
+}
+.bugOutputLabel{
+    font-family: Helvetica, sans-serif; 
+    font-size:130%; 
+    font-weight: bold;
+    color: #333333
+}
+.bugOutputText{
+    font-family: Helvetica, sans-serif; 
+    font-size:130%;     
+    color: #333333
+}
+.kmBrowserFavOText{
+    font-family: Tahoma, Verdana, Helvetica, sans-serif;
+    font-weight:normal;
+    font-size:11px;
+}
+.kmBrowserFavOTextSmall{
+    font-family: Tahoma, Verdana, Helvetica, sans-serif;
+    font-weight:normal;
+    font-size:9px;
+}
+.kmBrowserFavLink{
+    color:Navy; 
+    text-decoration:none;
+}
+.documentContent_links a:link       {font-family:Tahoma,Arial,Helvetica,Geneva,sans-serif;font-size:100%;font-weight:normal;color:#1C2A40}
+.documentContent_links a:active     {font-family:Tahoma,Arial,Helvetica,Geneva,sans-serif;font-size:100%;font-weight:normal;color:#800080;}
+.documentContent_links a:visited    {font-family:Tahoma,Arial,Helvetica,Geneva,sans-serif;font-size:100%;font-weight:normal;color:#800080;}
+
+.kmDialogDutton_Highlight {font-size:small; background-color:rgb(255,255,180); border-color:Red; border-style:solid;}
+.kmDialogDutton_Highlight:hover {font-size:small; background-color:rgb(255,255,100); border-color:Red; border-style:solid;}
+.kmDialogDutton_Highlight:focus {font-size:small; background-color:rgb(255,255,100); border-color:Red; border-style:solid;}
+
+.searchIconImage {
+    margin-left: -38px;
+}
+.kmContent img {
+    max-width: 100%;
+}
+
+.kmDocVisibilityInt{
+    color:rgb(238,0,0);
+    font-weight: bold;
+}
+
+.kmDocVisibilityExt{
+    color:Black;
+}
+
+.kmDocBorderInternal{
+    background-color:White;
+    position:static;
+    border-color:rgb(238,0,0);
+    border-style:solid;
+    padding-left: 5px;
+}
+
+.kmDocBorderExternal{
+    background-color:White;
+    position:static;
+}
+
+.km2 {
+	color: #FFF;
+	background-color: #f80000;
+	padding: 0px;
+}
+	
+a img {
+	border: none;
+}
+a:link {
+	color: #00758f;
+	text-decoration: none;
+}
+a:visited {
+	color: #00758f;
+	text-decoration: none;
+}
+a:hover, a:active, a:focus {
+	text-decoration: none;
+	color: #1F4F82;
+}
+.container {
+	width: 90%;
+	position:relative;
+	margin-left: 10%;
+    margin-right: auto;
+}
+
+.content { 
+        font-family: Arial, Helvetica, sans-serif;
+        font-size:16px;
+        color: #333333;
+        padding-top: 1em;
+		padding: 10px 0;
+		width: 70%;
+		float: left;
+}
+
+.content ul, .content ol {
+	padding: 0 15px 15px 40px;
+}
+
+nav ul {
+	list-style: none;
+	border-top: 1px solid #666;
+	margin-bottom: 15px;
+}
+nav ul li {
+	border-bottom: 1px solid #666;
+}
+nav ul a, nav ul a:visited {
+	padding: 5px 5px 5px 15px;
+	display: block;
+	text-decoration: none;
+	background: #00758f;
+}
+nav ul a:hover, nav ul a:active, nav ul a:focus {
+	background: #dee0e0;
+	color: #FFF;
+}
+
+footer {
+	color: #4e5052;
+	font-size:14px;
+	text-align:left;
+	font-weight:normal;
+	background: #dee0e0;
+	padding: 20px 20px 20px 20px;
+	clear: both;
+}
+.fltrt {
+	float: right;
+	margin-left: 8px;
+}
+.fltlft {
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat {
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+
+aside {
+	color: #4e5052;
+	font-size:14px;
+	font-weight:normal;
+	margin-bottom: 20px;
+	margin-top:20px;
+}
+
+button {
+	font-weight:600;
+	background-color: #f80000;
+	width: 80px;
+	height: 40px;
+	margin:5px 20px 0 0;
+	position:relative;
+	color: #FFF;
+}
+
+button:active {
+  background-color: #939699;
+}
+
+button:hover {
+	background-color:#969993;
+	cursor:default;
+    color: #FFF;
+}
+
+header, section, footer, aside, nav, article, figure, main {
+	display: block;
+}
+
+docid {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 20px;
+	font-weight:bold;
+	color: #4e5052;
+}
+
+mosaccess {
+	color:#f80000;
+	text-align: left;
+	font-size:16px;
+	font-weight:normal;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.skip-link {
+	position: absolute;
+	transform: translateY(-100%);
+	left: 0;
+	top: 0;
+	background: #ffffff;
+	color: #000000;
+	padding: 8px 12px;
+	z-index: 1000;
+}
+.skip-link:focus {
+	transform: translateY(0);
+}
+:focus-visible {
+	outline: 3px solid #005FCC;
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+	outline: none;
+}
+@media (max-width: 768px) {
+	.container {
+		width: 95%;
+		margin-left: 5%;
+	}
+	.content {
+		width: 90%;
+		float: none;
+	}
+}
+  </style>
+  <meta charset="utf-8">
+  <meta content="max-age=86400" http-equiv="cache-control">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Oracle Fusion General Ledger Cloud Service - Version 11.1.11.1.0 and later: How To Restrict Users From Viewing The Reports For Which The Users Doesn't Have Any Access" name="description">
+  <meta content="BUG, CONNECT, ENHANCEMENT REQUEST, ESS, EXPECTED BEHAVIOR, INFORMATION, LEVEL, LIMITATION, My Oracle Support, PER, REPORT, RESPONSIBILITY, RESTRICTED, ROLE, SECURITY, SERVICE REQUEST, UPDATE, VIEW" name="keywords">
+  <meta content="Q10405" name="product_id">
+  <meta content="How To Restrict Users From Viewing The Reports For Which The Users Doesn't Have Any Access." name="title">
+  <meta content="en" name="language">
+  <meta content="2023-09-24" name="last-modified-date">
+  <meta content="WM179069" name="contenttype_id">
+  <title>How To Restrict Users From Viewing Reports Without Access — My Oracle Support</title>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="container">
+    <main id="main-content" class="content">
+      <header>
+        <div class="km2">
+          <img alt="My Oracle Support banner" src="rick.jpg" width="80%">
+        </div>
+        <h1 class="km">
+          How To Restrict Users From Viewing The Reports For Which The Users Doesn't Have Any Access.
+          <span>(Doc ID 2248281.1)</span>
+        </h1>
+        <p>Last updated on SEPTEMBER 24, 2023</p>
+      </header>
+
+      <section aria-labelledby="applies-to-heading">
+        <h2 class="km" id="applies-to-heading">Applies to</h2>
+        <p>
+          Oracle Fusion General Ledger Cloud Service - Version 11.1.11.1.0 and later<br>
+          Information in this document applies to any platform.
+        </p>
+      </section>
+
+      <section aria-labelledby="symptoms-heading">
+        <h2 class="km" id="symptoms-heading">Symptoms</h2>
+        <p>
+          ACTUAL BEHAVIOR<br>
+          ---------------
+        </p>
+        <p>
+          All users having the same roles and responsibility should be able to access and view requests submitted by users having same responsibility.
+        </p>
+        <p>
+          Apparently everyone can see every person's output jobs.
+        </p>
+        <p>
+          EXPECTED BEHAVIOR<br>
+          -----------------------
+          <br>
+          Restricted Secured by privileged level security.
+        </p>
+        <p>
+          STEPS<br>
+          -----------------------
+          <br>
+          The issue can be reproduced at will with the following steps:
+        </p>
+        <p>If two (2) users (u1, u2) are sharing the same role as RoleX.</p>
+        <ol>
+          <li>If any report is run by u1, can u2 see any and all output of any ESS job by u1?</li>
+        </ol>
+        <p>AP Role example Only AP Management should see what others in that role can see.</p>
+        <p>GL Manager should not.</p>
+      </section>
+
+      <section aria-labelledby="changes-heading">
+        <h2 class="km" id="changes-heading">Changes</h2>
+        <p>&nbsp;</p>
+      </section>
+
+      <section aria-labelledby="cause-heading">
+        <h2 class="km" id="cause-heading">Cause</h2>
+        <table border="0" width="95%">
+          <tbody>
+            <tr>
+              <td align="left" width="10%">
+                <a href="#" rel="nofollow" aria-label="Sign in to view full details">
+                  <button type="button">Sign In</button>
+                </a>
+              </td>
+              <td width="90%">
+                <h3>To view full details, sign in with your My Oracle Support account.</h3>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <a href="#" rel="nofollow" target="_blank" aria-label="Register for a My Oracle Support account">
+                  <button type="button">Register</button>
+                </a>
+              </td>
+              <td>
+                <h3>Don't have a My Oracle Support account? Click to get started!</h3>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr>
+
+      <nav aria-label="In this document">
+        <h2>In this Document</h2>
+        <ul>
+          <li><a href="#symptoms-heading">Symptoms</a></li>
+          <li><a href="#changes-heading">Changes</a></li>
+          <li><a href="#cause-heading">Cause</a></li>
+          <li><a href="#solution-heading">Solution</a></li>
+          <li><a href="#references-heading">References</a></li>
+        </ul>
+      </nav>
+
+      <section aria-labelledby="solution-heading">
+        <h2 class="km" id="solution-heading">Solution</h2>
+        <p>
+          <mosaccess>
+            My Oracle Support provides customers with access to over a million knowledge articles and a vibrant support community of peers and Oracle experts.
+          </mosaccess>
+        </p>
+      </section>
+
+      <section aria-labelledby="references-heading">
+        <h2 class="km" id="references-heading">References</h2>
+        <p>No references are displayed in this preview.</p>
+      </section>
+
+      <footer>
+        <p>
+          Oracle offers a comprehensive and fully integrated stack of cloud applications and platform services. For more information about Oracle (NYSE:ORCL), visit
+          <a href="https://www.oracle.com" target="_blank" rel="noopener noreferrer" title="Visit oracle.com">oracle.com</a>.
+        </p>
+        <hr>
+        <p>
+          <a data-lbl="copyright" href="#" rel="nofollow" target="_blank">© Oracle</a>
+          |
+          <a href="#" rel="nofollow" target="_blank">Contact and Chat</a>
+          |
+          <a href="#" rel="nofollow" target="_blank">Support</a>
+          |
+          <a href="#" rel="nofollow" target="_blank">Communities</a>
+          |
+          <a href="#" rel="nofollow" target="_blank">Connect with us</a>
+          |
+          <a href="#" rel="nofollow" target="_blank" aria-label="Oracle on Facebook">
+            <img alt="Facebook" height="16" src="rick.jpg" width="16">
+          </a>
+          |
+          <a href="#" rel="nofollow" target="_blank" aria-label="Oracle on Twitter">
+            <img alt="Twitter" height="16" src="rick.jpg" width="16">
+          </a>
+          |
+          <a href="#" rel="nofollow" target="_blank" aria-label="Oracle on LinkedIn">
+            <img alt="LinkedIn" height="16" src="rick.jpg" width="16">
+          </a>
+          |
+          <a data-lbl="legal notices" href="#" rel="nofollow" target="_blank">Legal Notices</a>
+          |
+          <a data-lbl="terms of use" href="#" rel="nofollow" target="_blank">Terms of Use</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: updated title to page-specific format; added skip link as first body child; added main landmark with id="main-content"; preserved a single h1 and corrected heading hierarchy; converted top content area into header; converted "In this Document" links into a semantic nav; added meaningful section structure for Applies to, Symptoms, Changes, Cause, Solution, and References; ensured all images have alt text; ensured interactive elements have descriptive labels; preserved html lang="en".
+[B] ARIA fixes: added aria-label to the navigation region; avoided redundant role attributes on native landmarks; ensured no positive tabindex values remain via JS baseline; added descriptive aria-labels for icon/social links and action links.
+[C] JS patterns added: implemented C-K1/K3 baseline only — global focus-visible styles and script to remove any positive tabindex values.
+-->

@@ -1,0 +1,121 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a compact header/navigation band at the very top, separated from the rest of the page content and visually persistent as a global control area. The desktop sketch especially shows multiple horizontal nav rows before the product content, implying a fixed site header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should remain available while scrolling, or at minimum transition into a fixed compact state once the user scrolls past the top.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state, so persistence on scroll is inferred from the prominent top nav structure rather than directly depicted."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses the top area into a narrow header with minimal horizontal space and no room to expose full multi-link navigation, implying a collapsed mobile navigation trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger button should open and close the primary navigation panel or drawer, likely revealing the same top-level sections visible on desktop.",
+      "ambiguities": "The icon itself is not clearly drawn in the sketch, so this is inferred from responsive layout constraints rather than explicit labeling."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows multiple horizontal navigation rows with grouped nav items and a search field aligned in the upper navigation area, suggesting expandable category/style menus or secondary nav reveals.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level navigation items should reveal submenu panels on click or hover, with one active/open state at a time.",
+      "ambiguities": "The sketch does not indicate whether submenu activation is hover- or click-based, nor whether all top items have dropdowns."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "A clearly drawn input field appears in the upper-right navigation area of the desktop sketch, visually separated as a search control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search field should accept text and submit a query, likely via Enter key or adjacent trigger. It may also support focus styling and optional live suggestions.",
+      "ambiguities": "Live results are not shown, so only submit/search behavior is certain; autocomplete would be speculative."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes at least two input/button combinations: one in the upper nav area and another beside the main product image/details area, implying searchable or contact/request forms that require valid submission.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Inputs should validate required entry before submission and provide inline error or missing-field feedback where appropriate.",
+      "ambiguities": "The exact purpose of the secondary input/button pair is unclear from the sketch alone; it could be inquiry, newsletter, or another simple form."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "desktop",
+      "visual_evidence": "Near the main product image/details block in the desktop sketch there are button-like controls adjacent to the hero content, consistent with actions such as request info, enlarge image, or quick contact that commonly open overlays rather than navigate away.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At least one CTA near the product hero likely opens an overlay dialog for inquiry or enlarged media. Modal should trap focus, support Escape/close button, and restore focus to trigger on close.",
+      "ambiguities": "The sketch does not explicitly depict an overlay state, so the modal interpretation is inferred from the product-detail layout and action-button placement."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show repeated grids/lists of related product cards followed by centered button elements between or beneath groups of cards, implying progressive reveal of additional catalog items rather than a single static set.",
+      "confidence": "HIGH",
+      "behavior_notes": "Centered buttons should load or reveal more related items/cards within the current section without a full page refresh, ideally announcing loading and appended results.",
+      "ambiguities": "It is unclear whether the button loads more items inline or navigates to a fuller listing page; the repeated placement strongly suggests progressive content expansion."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "The page is extremely long in both mobile and desktop sketches, with many stacked content sections and card grids, which strongly implies a utility to return to the top efficiently.",
+      "confidence": "LOW",
+      "behavior_notes": "A floating button may appear after scrolling and return the user to the top smoothly or instantly.",
+      "ambiguities": "No explicit button is drawn in the sketches; this is inferred from page length and common long-page behavior."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components across the sketches include mobile nav, dropdowns, possible modal actions, search, and load-more controls, all of which require managed focus states for accessible operation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Programmatic focus handling is needed for opened menus, any modal overlay, and keyboard progression after dynamic content insertion.",
+      "ambiguities": "This is not a standalone visible widget in the sketch; it is required by the interaction patterns implied elsewhere."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "M1",
+    "M2",
+    "S1",
+    "S2",
+    "D4",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M3",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "load_more",
+      "focus_management",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "dropdown_menu",
+      "search_input",
+      "form_validation",
+      "modal_dialog",
+      "load_more",
+      "focus_management",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "These sketches imply a product-detail page with responsive global navigation, a prominent hero/media area, supporting form actions, and multiple long related-item sections. Desktop carries more explicit interaction density through exposed nav rows, search, and action controls near the hero, while mobile likely collapses navigation and relies more heavily on progressive disclosure and long-scroll utilities. The strongest JS needs are responsive navigation behavior, search/form submission handling, possible modal inquiry/media interactions, and dynamic expansion of repeated product grids."
+}

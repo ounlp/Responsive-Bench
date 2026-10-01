@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en" class="csstransforms csstransforms3d csstransitions">
+<head>
+  <style>
+   /*! fancyBox v2.1.4 fancyapps.com | fancyapps.com/fancybox/#license */
+
+.fancybox-wrap,
+.fancybox-skin,
+.fancybox-outer,
+.fancybox-inner,
+.fancybox-image,
+.fancybox-wrap iframe,
+.fancybox-wrap object,
+.fancybox-nav,
+.fancybox-nav span,
+.fancybox-tmp
+{
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+  vertical-align: top;
+}
+
+.fancybox-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 8020;
+}
+
+.fancybox-skin {
+  position: relative;
+  background: transparent;
+  color: #444;
+  text-shadow: none;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+.fancybox-opened {
+  z-index: 8030;
+}
+
+.fancybox-outer, .fancybox-inner {
+  position: relative;
+}
+
+.fancybox-inner {
+  overflow: hidden;
+}
+
+.fancybox-type-iframe .fancybox-inner {
+  -webkit-overflow-scrolling: touch;
+}
+
+.fancybox-error {
+  color: #444;
+  font: 14px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 0;
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.fancybox-image, .fancybox-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.fancybox-image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.fancybox-close, .fancybox-prev span, .fancybox-next span {
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 22px 22px;
+  display: block;
+  height: 22px;
+  overflow: hidden;
+  text-indent: -999px;
+  width: 22px;
+}
+
+#fancybox-loading {
+  background-image: url("");
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -11px;
+  margin-left: -11px;
+  background-position: 0 0;
+  opacity: 1;
+  cursor: pointer;
+  z-index: 8060;
+  width: 23px;
+  height: 23px;
+}
+
+.fancybox-close {
+  background-image: url("");
+  position: absolute;
+  top: 15px;
+  right: -32px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 8040;
+}
+
+.lt-ie9 .fancybox-close {
+  background: url("") 0 0 no-repeat;
+}
+
+.fancybox-nav {
+  position: absolute;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  background: transparent url(""); /* helps IE */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  z-index: 8040;
+}
+
+.fancybox-prev {
+  left: 0;
+}
+
+.fancybox-next {
+  right: 0;
+}
+
+.fancybox-nav span {
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
+  cursor: pointer;
+  z-index: 8040;
+  visibility: hidden;
+}
+
+.fancybox-prev span {
+  background-image: url("");
+  left: 16px;
+}
+
+.lt-ie9 .fancybox-prev span {
+  background: url("") 0 0 no-repeat;
+}
+
+
+.fancybox-next span {
+  background-image: url("");
+  right: 16px;
+}
+
+.lt-ie9 .fancybox-next span {
+  background: url("") 0 0 no-repeat;
+}
+
+.fancybox-nav:hover span {
+  visibility: visible;
+}
+
+.fancybox-tmp {
+  position: absolute;
+  top: -99999px;
+  left: -99999px;
+  visibility: hidden;
+  max-width: 99999px;
+  max-height: 99999px;
+  overflow: visible !important;
+}
+
+/* Overlay helper */
+
+.fancybox-lock {
+  overflow: hidden;
+}
+
+.fancybox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  display: none;
+  z-index: 8010;
+  background: url("");
+}
+
+.fancybox-overlay-fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.fancybox-lock .fancybox-overlay {
+  overflow: auto;
+  overflow-y: scroll;
+}
+
+/* Title helper */
+
+.fancybox-title {
+  visibility: hidden;
+  font: normal 13px/20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  position: relative;
+  text-shadow: none;
+  z-index: 8050;
+}
+
+.fancybox-opened .fancybox-title {
+  visibility: visible;
+}
+
+.fancybox-title-float-wrap {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  margin-bottom: -35px;
+  z-index: 8050;
+  text-align: center;
+}
+
+.fancybox-title-float-wrap .child {
+  display: inline-block;
+  margin-right: -100%;
+  padding: 2px 20px;
+  background: transparent;
+  background: rgba(0, 0, 0, 0.8);
+  -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+          border-radius: 15px;
+  text-shadow: 0 1px 2px #222;
+  color: #FFF;
+  font-weight: bold;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.fancybox-title-outside-wrap {
+  position: relative;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.fancybox-title-inside-wrap {
+  padding-top: 10px;
+}
+
+.fancybox-title-over-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  padding: 10px;
+  background: #000;
+  background: rgba(0, 0, 0, .8);
+}
+/**** Isotope Filtering ****/
+
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, main, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, main {
+  display: block;
+}
+
+.loaded a, .loaded .main .button, .main .loaded .button, .loaded aside form.search label, aside form.search .loaded label, .loaded .overlay .products_list .product .product_info, .overlay .products_list .product .loaded .product_info {
+  -webkit-transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  -moz-transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  -o-transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+aside nav .cart, .main, .main header, .products_list, .page.cart form > ul .col1,
+.page.cart form > ul .col2, form.contact li {
+  zoom: 1;
+}
+aside nav .cart:after, .main:after, .main header:after, .products_list:after, .page.cart form > ul .col1:after,
+.page.cart form > ul .col2:after, form.contact li:after {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+
+@-webkit-keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@-o-keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+  height: 100%;
+  min-height: 100%;
+  min-width: 200px;
+}
+
+body {
+  background-color: #ffffff;
+  background-image:  url("") ;
+  background-repeat: repeat;
+  color: #3d3d3d;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 62.5%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+}
+@media screen and (max-width: 765px) {
+  body {
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+}
+body.working {
+  cursor: progress !important;
+}
+
+.wrapper {
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+}
+@media screen and (min-width: 765px) {
+  .wrapper:after {
+    background: transparent;
+    content: "";
+    display:  none ;
+    height: 100%;
+    left: 0;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    width: 209px;
+    z-index: 1;
+  }
+}
+@media screen and (min-width: 765px) and (max-width: 765px) {
+  .wrapper:after {
+    display: none;
+  }
+}
+
+::selection {
+  background-color: #FFFFFF;
+}
+
+::-moz-selection {
+  background-color: #FFFFFF;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #737373;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+h1 {
+  font-size: 21px;
+  line-height: 1.3em;
+}
+
+h2 {
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+h5 {
+  font-size: 12px;
+}
+
+h6 {
+  font-size: 11px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+sup,
+sub {
+  font-size: 0.6em;
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+pre code,
+code {
+  font-family: "Courier New", Courier, Monospace !important;
+  font-weight: 700;
+}
+
+blockquote {
+  width: auto;
+  font-style: italic;
+  margin: 15px;
+  padding: 10px;
+}
+blockquote:before, blockquote:after {
+  display: inline;
+  content: "\201C";
+  font-size: 1.2em;
+}
+blockquote:after {
+  content: "\201D";
+}
+
+small {
+  display: block;
+  font-size: 1.1em;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+i,
+em {
+  font-style: italic;
+}
+
+blockquote p {
+  display: inline;
+}
+
+b,
+strong {
+  font-weight: 700;
+}
+
+hr {
+  border-bottom-color: #ffdab2;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  height: 1px;
+  margin: 15px 0;
+  width: 100%;
+}
+
+.main .button {
+  background-color: #e87903;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  border: none;
+  color: #ffffff !important;
+  cursor: pointer;
+  font-family: Courier New;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  padding: 11px 20px;
+}
+.main .button:hover {
+  background-color: #ab5800;
+  color: #ffffff;
+}
+
+input[type=text],
+textarea {
+  background: white;
+  border: 1px solid #bfbfbf;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  font-family: Courier New;
+  height: 32px;
+  padding: 6px 10px;
+  outline: none;
+}
+input[type=text]:focus,
+textarea:focus {
+  -webkit-box-shadow: 0 0 5px #737373 inset;
+  -moz-box-shadow: 0 0 5px #737373 inset;
+  box-shadow: 0 0 5px #737373 inset;
+}
+@media screen and (max-width: 765px) {
+  input[type=text],
+  textarea {
+    height: 40px;
+  }
+}
+
+textarea {
+  padding: 10px;
+}
+
+.errors {
+  background-color: #FFFFFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 765px) {
+  .errors {
+    margin: 16px 0;
+  }
+}
+.errors li {
+  font-size: 11px;
+  font-weight: 700;
+  height: auto !important;
+  line-height: 1.3em;
+  padding: 15px !important;
+}
+
+.standalone {
+  height: auto;
+  margin: 0 auto;
+  max-width: 300px;
+  padding-top: 120px;
+  text-align: center;
+}
+.standalone h2 {
+  margin-bottom: 10px;
+}
+
+.mobile_only {
+  display: none;
+}
+@media screen and (max-width: 765px) {
+  .mobile_only {
+    display: block;
+  }
+}
+
+.not_mobile {
+  display: block;
+}
+@media screen and (max-width: 765px) {
+  .not_mobile {
+    display: none;
+  }
+}
+
+aside {
+  background-color: transparent;
+  float: left;
+  height: 100%;
+  padding: 57px 30px 0;
+  position:  fixed ;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  width: 209px;
+  z-index: 100;
+}
+@media screen and (max-width: 765px) {
+  aside {
+    border-right-color: #ffdab2;
+    border-right-style: solid;
+    border-right-width: 1px;
+    min-height: 100%;
+    padding: 0 32px;
+    position: absolute;
+    width: 272px;
+    z-index: 1;
+  }
+}
+aside > div {
+  min-height:  100% ;
+  margin-bottom: -94px;
+}
+@media screen and (max-width: 765px) {
+  aside > div {
+    margin-bottom: 0;
+    min-height: 0;
+  }
+}
+aside > div:after {
+  content: "";
+  display: block;
+  height: 94px;
+}
+@media screen and (max-width: 765px) {
+  aside > div:after {
+    display: none;
+  }
+}
+aside a {
+  color: #454545;
+}
+aside a:hover, aside a.current {
+  color: #ff9c33;
+}
+aside header {
+  margin-bottom: 35px;
+  overflow: hidden;
+  width: 150px;
+}
+@media screen and (max-width: 765px) {
+  aside header {
+    margin: 14px 0;
+    width: 100%;
+  }
+}
+aside header .logo {
+  display: block;
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1.2em;
+  word-wrap: break-word;
+}
+@media screen and (max-width: 765px) {
+  aside header .logo {
+    font-size: 16px;
+  }
+}
+aside nav section {
+  border-top-color: #ffdab2;
+  border-top-style: solid;
+  border-top-width: 1px;
+  padding: 10px 0;
+}
+@media screen and (max-width: 765px) {
+  aside nav section {
+    padding: 11px 0 6px;
+  }
+}
+@media screen and (max-width: 765px) {
+  aside nav .cart {
+    height: 30px;
+  }
+}
+aside nav .cart b {
+  float: left;
+}
+aside nav .cart span {
+  border-left-color: #ffdab2;
+  border-left-style: solid;
+  border-left-width: 1px;
+  float: right;
+  font-size: 11px;
+  font-weight: normal;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  margin-left: 8px;
+  padding-left: 8px;
+}
+@media screen and (max-width: 765px) {
+  aside nav .cart span {
+    font-size: 14px;
+  }
+}
+aside nav .cart span .currency_sign {
+  border: none;
+  display: inline;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+aside nav .cart span:last-child {
+  border-left: none;
+}
+aside nav .title,
+aside nav .title a {
+  color: #454545;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.9em;
+  margin-bottom: 0;
+}
+@media screen and (max-width: 765px) {
+  aside nav .title,
+  aside nav .title a {
+    font-size: 14px;
+  }
+}
+aside nav .title a:hover, aside nav .title a.current {
+  color: #ff9c33;
+}
+aside nav li {
+  line-height: 1.9em;
+}
+aside nav a {
+  display: block;
+  font-size: 11px;
+  line-height: 20px;
+}
+@media screen and (max-width: 765px) {
+  aside nav a {
+    font-size: 14px;
+    line-height: 29px;
+  }
+}
+aside footer {
+  height: 94px;
+  padding: 40px 0 30px;
+}
+aside footer cite a {
+  background: url(https://assets.bigcartel.com/theme_assets/3/1.5.17/images/bc_badge.png) no-repeat;
+  background-size: 100% 100%;
+  display: block;
+  float: left;
+  text-indent: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 79px;
+  height: 24px;
+}
+
+.main {
+  overflow: hidden;
+  padding: 60px 0;
+  width: 100%;
+}
+@media screen and (max-width: 765px) {
+  .main {
+    background-color: #ffffff;
+    background-image:  url(https://assets.bigcartel.com/theme_images/23692547/Light03.jpg) ;
+    background-repeat: repeat;
+    border-left-color: #ffdab2;
+    border-left-style: solid;
+    border-left-width: 1px;
+    box-sizing: content-box;
+    left: 0;
+    min-height: 100%;
+    padding: 0;
+    position: relative;
+    transition: all 0.25s ease-out;
+    transform: translateX(-1px);
+    width: 100%;
+    z-index: 2;
+  }
+  .show_menu .main {
+    transform: translateX(271px);
+  }
+}
+.main a,
+.main a:visited {
+  color: #e87903;
+}
+.main a:hover,
+.main a:visited:hover {
+  color: #ab5800;
+}
+.main header {
+  background-color: transparent;
+  border-bottom-color: #ffdab2;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  display: none;
+  height: 48px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+@media screen and (max-width: 765px) {
+  .main header {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background-color: #ffffff;
+  }
+}
+.main header .logo {
+  color: #454545;
+  font-size: 16px;
+  font-weight: 700;
+  left: 50%;
+  line-height: 48px;
+  margin-left: -35%;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 70%;
+}
+.main header .cart {
+  background: #454545;
+  border-radius: 16px;
+  color: #ffffff;
+  display: block;
+  float: right;
+  font-size: 10px;
+  font-weight: bold;
+  height: 24px;
+  line-height: 24px;
+  margin: 12px 16px;
+  padding: 0;
+  text-align: center;
+  width: 24px;
+}
+.main header .menu {
+  display: block;
+  float: left;
+  height: 48px;
+  overflow: hidden;
+  position: relative;
+  width: 48px;
+}
+.main header .menu b,
+.main header .menu b:before,
+.main header .menu b:after {
+  background: #454545;
+  display: block;
+  height: 2px;
+  left: 50%;
+  margin: -1px 0 0 -6px;
+  position: absolute;
+  top: 50%;
+  width: 12px;
+}
+.main header .menu b:before,
+.main header .menu b:after {
+  content: "";
+}
+.main header .menu b:before {
+  top: -3px;
+}
+.main header .menu b:after {
+  top: 5px;
+}
+.main .page {
+  margin: 0 60px 0 260px;
+  min-width: 500px;
+  width: auto;
+}
+@media screen and (max-width: 1023px) {
+  .main .page {
+    min-width: 0;
+  }
+}
+@media screen and (max-width: 765px) {
+  .main .page {
+    margin: 0;
+  }
+}
+.main h1 {
+  height: 60px;
+  margin: 0;
+}
+@media screen and (max-width: 765px) {
+  .main h1 {
+    font-size: 16px;
+    height: auto;
+    margin-bottom: 0;
+    padding: 13px 32px 0;
+  }
+}
+.main .alert {
+  font-size: 12px;
+}
+@media screen and (max-width: 765px) {
+  .main .alert.noproducts {
+    padding: 20px 32px;
+  }
+}
+
+.page.home {
+  margin-right: 16px;
+  padding-top: 60px;
+}
+@media screen and (max-width: 765px) {
+  .page.home {
+    margin-right: 0;
+    padding-top: 0;
+  }
+}
+
+.page.products {
+  margin-right: 16px;
+}
+@media screen and (max-width: 765px) {
+  .page.products {
+    margin-right: 0;
+  }
+  .page.products h1 {
+    padding-top: 23px;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .products_list {
+    padding: 32px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .products_list {
+    padding: 32px 0 0;
+  }
+}
+.products_list .product,
+.products_list .product img {
+  max-width:  210px ;
+}
+@media screen and (max-width: 480px) {
+  .products_list .product,
+  .products_list .product img {
+    max-width: 100%;
+  }
+}
+.products_list .product {
+  float: left;
+  margin: 0 30px 30px 0;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+}
+@media screen and (max-width: 765px) {
+  .products_list .product {
+    margin-right: 8%;
+    max-width: none;
+    text-align: center;
+    width: 46%;
+  }
+  .products_list .product:nth-child(2n+1) {
+    clear: left;
+  }
+  .products_list .product:nth-child(2n) {
+    margin-right: 0;
+  }
+  .products_list .product img {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .products_list .product {
+    float: none;
+    margin: 0 32px 23px;
+    max-width: none;
+    width: auto;
+  }
+  .products_list .product:nth-child(2n) {
+    margin-right: 32px;
+  }
+  .products_list .product img {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+.products_list .product a {
+  display: block;
+  -webkit-font-smoothing: antialiased;
+}
+.overlay .products_list .product:hover .product_info {
+  opacity: 1;
+}
+.products_list .product .product_info {
+  font-weight: 700px;
+  padding: 15px;
+  text-align: center;
+}
+.products_list .product .product_info span {
+  font-size: 11px;
+  line-height: 1.2em;
+  margin: 0;
+}
+@media screen and (max-width: 765px) {
+  .products_list .product .product_info {
+    color: #e87903;
+    font-size: 12px;
+    line-height: 1.4em;
+    padding-top: 16px;
+  }
+}
+.products_list .product .product_info .product_name {
+  display: block;
+  font-weight: bold;
+}
+.products_list .product .product_info p {
+  padding-top: 5px;
+}
+.overlay .products_list .product .product_info {
+  background-color: #e87903;
+  color: #ffffff;
+  display: block;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.overlay .products_list .product .product_info > div {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+.overlay .products_list .product .product_info p {
+  display: table-cell;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+.overlay .products_list .product .product_info p .product_name,
+.overlay .products_list .product .product_info p .sale,
+.overlay .products_list .product .product_info p .price {
+  display: block;
+  font-weight: 700;
+  padding: 5px 30px;
+}
+@media screen and (max-width: 765px) {
+  .overlay .products_list .product .product_info p .product_name,
+  .overlay .products_list .product .product_info p .sale,
+  .overlay .products_list .product .product_info p .price {
+    color: #ffffff;
+  }
+}
+@media screen and (max-width: 765px) {
+  .overlay .products_list .product .product_info {
+    background-color: transparent;
+    opacity: 1;
+    padding: 5px 0;
+    position: static;
+  }
+  .overlay .products_list .product .product_info > div,
+  .overlay .products_list .product .product_info p {
+    display: block;
+    height: auto;
+    margin-bottom: 0;
+    width: auto;
+  }
+  .overlay .products_list .product .product_info p .product_name,
+  .overlay .products_list .product .product_info p .sale,
+  .overlay .products_list .product .product_info p .price {
+    color: #e87903;
+    padding: 5px 0 0;
+  }
+  .overlay .products_list .product .product_info p .product_name {
+    font-weight: bold;
+  }
+}
+
+.pagination {
+  visibility: hidden;
+  opacity: 0;
+  float: right;
+  margin-bottom: 60px;
+  padding: 30px;
+}
+
+.product_detail {
+  padding-top: 60px;
+}
+@media screen and (max-width: 765px) {
+  .product_detail {
+    padding: 32px;
+  }
+}
+.product_detail .gallery {
+  float: left;
+  max-width: 500px;
+  position: relative;
+  width: 65%;
+}
+@media screen and (max-width: 1023px) {
+  .product_detail .gallery {
+    float: none;
+    margin-bottom: 25px;
+    max-width: none;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 765px) {
+  .product_detail .gallery {
+    display: none;
+  }
+  .product_detail .gallery.mobile_only {
+    display: block;
+  }
+  .product_detail .gallery.mobile_only img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .product_detail .gallery.mobile_only .mobile_gallery {
+    text-align: center;
+    margin-top: 16px;
+  }
+  .product_detail .gallery.mobile_only .mobile_gallery li {
+    display: inline;
+    margin: 8px 8px 8px 0;
+    transition: all 0.15s linear;
+  }
+  .product_detail .gallery.mobile_only .mobile_gallery li img {
+    display: inline;
+    margin-bottom: 8px;
+  }
+  .product_detail .gallery.mobile_only .mobile_gallery .active {
+    opacity: 0.25;
+  }
+  .product_detail .gallery.mobile_only .mobile_gallery img {
+    max-width: 50px;
+  }
+}
+.product_detail .gallery > a img,
+.product_detail .gallery > button img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+@media screen and (max-width: 1023px) {
+  .product_detail .gallery > a img,
+  .product_detail .gallery > button img {
+    margin: 0;
+  }
+}
+.product_detail .gallery > ul {
+  text-align: center;
+}
+.product_detail .gallery > ul li {
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  margin: 15px 15px 15px 0;
+}
+.product_detail .detail {
+  float: left;
+  margin-left: 5%;
+  max-width: 390px;
+  width: 30%;
+}
+@media screen and (max-width: 1023px) {
+  .product_detail .detail {
+    float: none;
+    margin-bottom: 25px;
+    margin-left: 0;
+    max-width: none;
+    width: 100%;
+  }
+}
+.product_detail .detail h1 {
+  height: auto;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 765px) {
+  .product_detail .detail h1 {
+    font-size: 16px;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+.product_detail .detail .artists {
+  color: #737373;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+@media screen and (max-width: 765px) {
+  .product_detail .detail .artists {
+    display: inline;
+    line-height: 1.4;
+  }
+  .product_detail .detail .artists:after {
+    content: "/ ";
+  }
+}
+.product_detail .detail .price {
+  color: #737373;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 10px 0;
+}
+@media screen and (max-width: 765px) {
+  .product_detail .detail .price {
+    display: inline;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0;
+  }
+}
+.product_detail .detail .price i {
+  color: #FFFFFF;
+  font-style: normal;
+  font-size: 12px;
+}
+.product_detail .detail p {
+  font-size: 12px;
+  line-height: 18px;
+}
+.product_detail .description {
+  border-top-color: #ffdab2;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.product_detail .description img {
+  margin-bottom: 20px;
+  max-width: 100%;
+}
+.product_detail .description *:last-child {
+  margin-bottom: 0;
+}
+
+.skip-link {
+  position: absolute;
+  transform: translateY(-100%);
+  left: 0;
+  top: 0;
+  background: #ffffff;
+  color: #000000;
+  padding: 10px 14px;
+  z-index: 10000;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.nav-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid #005FCC;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.menu.nav-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+.gallery-trigger {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  text-align: left;
+}
+
+#mobile-nav[hidden] {
+  display: none !important;
+}
+
+#modal-product-image {
+  position: fixed;
+  inset: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9001;
+  background: #ffffff;
+  padding: 20px;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+#modal-product-image img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(90vh - 80px);
+}
+#modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 9000;
+}
+.modal-close {
+  background: transparent;
+  border: none;
+  color: #454545;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+  </style>
+  <title>NOOTHGRUSH - Fiesta Grande and Other Public Failures Cassette — Blow the Reactors</title>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <meta content="Big Cartel" name="generator">
+  <meta content="Blow the Reactors" name="author">
+  <meta content="BtR is proud to present the first Noothgrush cassette release in over 15 years. Contained within this hour long tape are tracks from their set at..." name="description">
+  <meta content="origin" name="referrer">
+  <meta content="26274499" name="product_id">
+  <meta content="product" property="og:type">
+  <meta content="Blow the Reactors" property="og:site_name">
+  <meta content="NOOTHGRUSH - Fiesta Grande and Other Public Failures Cassette" property="og:title">
+  <meta content="" property="og:url">
+  <meta content="BtR is proud to present the first Noothgrush cassette release in over 15 years. Contained within this hour long tape are tracks from their set at..." property="og:description">
+  <meta content="" property="og:image">
+  <meta content="" property="og:image:secure_url">
+  <meta content="4.00" property="og:price:amount">
+  <meta content="GBP" property="og:price:currency">
+  <meta content="oos" property="og:availability">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="NOOTHGRUSH - Fiesta Grande and Other Public Failures Cassette" name="twitter:title">
+  <meta content="BtR is proud to present the first Noothgrush cassette release in over 15 years. Contained within this hour long tape are tracks from their set at..." name="twitter:description">
+  <meta content="" name="twitter:image">
+ </head>
+ <body class="theme loaded" data-search="false" id="product">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="wrapper">
+   <aside aria-label="Store sidebar">
+    <div>
+     <header aria-label="Store branding">
+      <a class="logo image" href="#" title="Blow the Reactors home">
+       <img alt="Blow the Reactors" src="rick.jpg">
+      </a>
+     </header>
+     <nav aria-label="Sidebar navigation">
+      <section aria-label="Cart summary">
+       <h2 class="title">
+        <a class="cart" href="#" aria-label="View cart with 0 items totaling 0 pounds">
+         <b>Cart</b>
+         <span class="total">
+          <span class="currency_sign">&pound;</span>
+          0.00
+         </span>
+         <span class="count" aria-hidden="true">0</span>
+        </a>
+       </h2>
+      </section>
+      <section aria-label="Product categories">
+       <h2 class="title">
+        <a href="#">Products</a>
+       </h2>
+       <ul>
+        <li><a href="#">BtR Releases</a></li>
+        <li><a href="#">Cassettes</a></li>
+        <li><a href="#">7&quot;s</a></li>
+        <li><a href="#">Apparel</a></li>
+       </ul>
+      </section>
+      <section aria-label="Artists">
+       <h2 class="title">Artists</h2>
+       <ul>
+        <li><a class="page" href="#">Noothgrush</a></li>
+        <li><a class="page" href="#">Workin' Man Noise Unit</a></li>
+       </ul>
+      </section>
+      <section aria-label="Store links">
+       <ul>
+        <li class="title"><a href="#">Contact</a></li>
+        <li class="title"><a href="#">Back to Site</a></li>
+       </ul>
+      </section>
+     </nav>
+    </div>
+    <footer aria-label="Store platform information">
+     <cite>
+      <a href="https://www.bigcartel.com/" target="_blank" rel="noopener noreferrer">
+       Powered by Big Cartel
+      </a>
+     </cite>
+    </footer>
+   </aside>
+   <main class="main overlay" id="main-content">
+    <header aria-label="Mobile site header">
+     <a class="cart" href="#" aria-label="View cart">
+      <span id="mobile-cart-count" aria-hidden="true">0</span>
+     </a>
+     <button
+       id="nav-toggle"
+       aria-expanded="false"
+       aria-controls="mobile-nav"
+       aria-label="Open navigation menu"
+       class="menu nav-toggle">
+      Menu
+      <b aria-hidden="true"></b>
+     </button>
+     <a class="logo" href="#" title="Blow the Reactors home">
+      Blow the Reactors
+     </a>
+     <div id="cart-status" class="sr-only" aria-live="polite" aria-atomic="true">Cart has 0 items.</div>
+    </header>
+
+    <nav id="mobile-nav" aria-label="Main" hidden>
+      <section aria-label="Mobile cart summary">
+        <h2 class="title">
+          <a class="cart" href="#" aria-label="View cart with 0 items totaling 0 pounds">
+            <b>Cart</b>
+            <span class="total">
+              <span class="currency_sign">&pound;</span>
+              0.00
+            </span>
+            <span class="count" aria-hidden="true">0</span>
+          </a>
+        </h2>
+      </section>
+      <section aria-label="Mobile product categories">
+        <h2 class="title"><a href="#">Products</a></h2>
+        <ul>
+          <li><a href="#">BtR Releases</a></li>
+          <li><a href="#">Cassettes</a></li>
+          <li><a href="#">7&quot;s</a></li>
+          <li><a href="#">Apparel</a></li>
+        </ul>
+      </section>
+      <section aria-label="Mobile artists">
+        <h2 class="title">Artists</h2>
+        <ul>
+          <li><a href="#">Noothgrush</a></li>
+          <li><a href="#">Workin' Man Noise Unit</a></li>
+        </ul>
+      </section>
+      <section aria-label="Mobile store links">
+        <ul>
+          <li class="title"><a href="#">Contact</a></li>
+          <li class="title"><a href="#">Back to Site</a></li>
+        </ul>
+      </section>
+    </nav>
+
+    <div class="page product_detail" style="height: 920px;">
+     <div class="gallery not_mobile" style="max-width: 541px ">
+      <button id="modal-trigger" class="gallery-trigger fancybox" aria-haspopup="dialog" type="button">
+       <img alt="NOOTHGRUSH - Fiesta Grande and Other Public Failures Cassette product image" src="rick.jpg">
+      </button>
+      <ul></ul>
+     </div>
+     <div class="gallery mobile_only">
+      <img alt="NOOTHGRUSH - Fiesta Grande and Other Public Failures Cassette product image" class="mobile_gallery_viewer" src="rick.jpg">
+      <ul class="mobile_gallery"></ul>
+     </div>
+     <div class="detail">
+      <h1>NOOTHGRUSH - Fiesta Grande and Other Public Failures Cassette</h1>
+      <p class="artists">by Noothgrush</p>
+      <p class="price sold-out">
+       <span class="currency_sign">&pound;</span>
+       4.00
+       <i>/ Sold Out</i>
+      </p>
+      <div class="description">
+       <p>
+        BtR is proud to present the first Noothgrush cassette release in over 15 years. Contained within this hour long tape are tracks from their set at Fiesta Grande #4 from 1996, aswell as a mix of other live songs dating from 1995-1999.
+       </p>
+       <p>
+        Risograph covers in a grey case.
+       </p>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div>
+
+  <div
+    id="modal-product-image"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title-product-image"
+    hidden>
+    <h2 id="modal-title-product-image">Product image</h2>
+    <img src="rick.jpg" alt="Enlarged view of NOOTHGRUSH - Fiesta Grande and Other Public Failures Cassette">
+    <button id="modal-close-product-image" class="modal-close" aria-label="Close product image">&#x2715;</button>
+  </div>
+  <div id="modal-backdrop" hidden aria-hidden="true"></div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        document.body.classList.toggle('show_menu', !expanded);
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          document.body.classList.remove('show_menu');
+          toggle.focus();
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && nav.hidden === false && !nav.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          document.body.classList.remove('show_menu');
+        }
+      });
+    }
+
+    function openModal(modal, trigger) {
+      modal.hidden = false;
+      document.getElementById('modal-backdrop').hidden = false;
+      document.body.setAttribute('aria-hidden', 'true');
+      modal.removeAttribute('aria-hidden');
+      const focusable = modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length) focusable[0].focus();
+
+      modal._trap = (e) => {
+        if (e.key !== 'Tab') return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      };
+      modal._esc = (e) => { if (e.key === 'Escape') closeModal(modal, trigger); };
+      modal.addEventListener('keydown', modal._trap);
+      document.addEventListener('keydown', modal._esc);
+      modal._trigger = trigger;
+    }
+
+    function closeModal(modal, trigger) {
+      modal.hidden = true;
+      document.getElementById('modal-backdrop').hidden = true;
+      document.body.removeAttribute('aria-hidden');
+      modal.removeEventListener('keydown', modal._trap);
+      document.removeEventListener('keydown', modal._esc);
+      (modal._trigger || trigger).focus();
+    }
+
+    const modalTrigger = document.getElementById('modal-trigger');
+    const modal = document.getElementById('modal-product-image');
+    const modalClose = document.getElementById('modal-close-product-image');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+
+    if (modalTrigger && modal && modalClose && modalBackdrop) {
+      modalTrigger.addEventListener('click', () => openModal(modal, modalTrigger));
+      modalClose.addEventListener('click', () => closeModal(modal, modalTrigger));
+      modalBackdrop.addEventListener('click', () => closeModal(modal, modalTrigger));
+    }
+
+    const cartStatus = document.getElementById('cart-status');
+    const mobileCartCount = document.getElementById('mobile-cart-count');
+    if (cartStatus && mobileCartCount) {
+      const count = mobileCartCount.textContent.trim();
+      cartStatus.textContent = 'Cart has ' + count + ' items.';
+    }
+  </script>
+ </body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added lang="en"; updated title to page-specific format; added skip link and main-content id; converted main content container to <main>; preserved existing semantic header/nav/footer/aside and added descriptive landmark labels; ensured exactly one h1 for the page; added meaningful href/text to anchor elements; ensured all images have meaningful alt text.
+[B] ARIA fixes: added unique aria-labels for multiple nav/section/header/footer/aside landmarks; removed need for redundant roles by using semantic elements only; added accessible labels for cart/menu controls; added live region for cart status; ensured no positive tabindex remains.
+[C] JS patterns added: implemented hamburger menu toggle with aria-expanded, aria-controls, Escape close, outside-click close, and focus return; implemented live region baseline for cart status; implemented modal dialog for product image with backdrop, Escape close, focus trap, and focus return; implemented global positive tabindex cleanup and focus-visible styling.
+-->

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Worldwide Coverage — MHC Traffic</title>
+  <style>
+    :root{
+      --bg:#f3f3f3;
+      --text:#222;
+      --muted:#6f6f6f;
+      --card:#ffffff;
+      --border:#d9d9d9;
+      --footer:#1f1f1f;
+      --footer-border:#343434;
+      --footer-text:#d8d8d8;
+      --footer-muted:#bdbdbd;
+      --blue:#1200ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      z-index:1000;
+      text-decoration:none;
+      border:1px solid #000;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .site-header{
+      background:#fff;
+      padding:34px 0 22px;
+    }
+
+    .container{
+      width:min(1180px, calc(100% - 48px));
+      margin:0 auto;
+    }
+
+    .nav-toggle { display: none; }
+
+    .main-nav ul,
+    .mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .main-nav ul{
+      display:flex;
+      gap:54px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .main-nav a,
+    .mobile-nav a{
+      font-size:18px;
+      font-weight:700;
+      color:#4a4a4a;
+      display:inline-block;
+    }
+
+    .main-nav a{padding:18px 0 0}
+
+    main{
+      padding:48px 0 44px;
+    }
+
+    .hero{
+      text-align:center;
+      margin-bottom:30px;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:29px;
+      line-height:1.15;
+      font-weight:800;
+      color:#111;
+    }
+
+    .intro{
+      max-width:930px;
+      margin:0 auto;
+      font-size:18px;
+      line-height:1.35;
+      color:#666;
+      font-weight:700;
+    }
+
+    .hero-image{
+      margin:28px auto 30px;
+      width:100%;
+      height:655px;
+      background:var(--blue);
+      display:block;
+      object-fit:cover;
+      border:none;
+    }
+
+    .cards{
+      display:flex;
+      flex-direction:column;
+      gap:44px;
+      align-items:flex-start;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:6px;
+      box-shadow:0 1px 5px rgba(0,0,0,.12);
+      width:80%;
+      padding:28px 34px 34px;
+      text-align:center;
+    }
+
+    .card h2{
+      margin:0 0 10px;
+      font-size:22px;
+      line-height:1.2;
+      font-weight:800;
+      color:#1b1b1b;
+    }
+
+    .card p{
+      margin:0;
+      color:#8a8a8a;
+      font-size:17px;
+      line-height:1.45;
+    }
+
+    .site-footer{
+      background:var(--footer);
+      color:var(--footer-text);
+      padding:138px 0 18px;
+      margin-top:0;
+    }
+
+    .footer-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:24px;
+      margin-bottom:24px;
+    }
+
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0;
+      align-items:center;
+      color:#d7d7d7;
+      font-size:16px;
+    }
+
+    .footer-links a{
+      color:#d7d7d7;
+      font-weight:500;
+    }
+
+    .footer-links span{
+      margin:0 12px;
+      color:#8f8f8f;
+    }
+
+    .social{
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .social a{
+      min-width:126px;
+      text-align:center;
+      border:1px solid #313131;
+      border-radius:4px;
+      padding:14px 18px;
+      color:#efefef;
+      font-size:16px;
+      font-weight:700;
+      background:transparent;
+    }
+
+    .footer-divider{
+      border-top:1px solid var(--footer-border);
+      margin:18px 0 38px;
+    }
+
+    .footer-addresses{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:34px;
+      align-items:start;
+    }
+
+    .office{
+      color:var(--footer-muted);
+      font-size:16px;
+      line-height:1.22;
+      font-weight:700;
+    }
+
+    .office-title{
+      color:var(--footer-muted);
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:2px;
+    }
+
+    .office p{
+      margin:0 0 14px;
+    }
+
+    .office .contact{
+      color:#f0f0f0;
+      font-weight:800;
+    }
+
+    .copyright{
+      margin-top:10px;
+      color:#cfcfcf;
+      font-size:14px;
+    }
+
+    @media (max-width: 1024px){
+      .container{
+        width:min(920px, calc(100% - 48px));
+      }
+      .hero-image{
+        height:400px;
+      }
+      .card{
+        width:80%;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .footer-addresses{
+        grid-template-columns:repeat(3, minmax(0,1fr));
+        gap:26px;
+      }
+      .office:last-child{
+        grid-column:1 / 2;
+      }
+      .site-footer{
+        padding-top:140px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .main-nav{display:none}
+      .site-header{
+        padding:18px 0 14px;
+      }
+      .header-row{
+        display:flex;
+        justify-content:flex-end;
+      }
+      .nav-toggle{
+        border:1px solid #ccc;
+        background:#fff;
+        padding:8px 12px;
+        border-radius:4px;
+        font-size:24px;
+        color:#333;
+      }
+      .mobile-nav{
+        margin-top:12px;
+      }
+      .mobile-nav ul{
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px 28px;
+      }
+      .mobile-nav a{
+        padding:6px 0;
+        font-size:17px;
+      }
+
+      main{
+        padding:42px 0 30px;
+      }
+      h1{
+        font-size:31px;
+      }
+      .intro{
+        max-width:620px;
+        font-size:17px;
+      }
+      .hero-image{
+        height:260px;
+        margin-top:26px;
+      }
+      .card{
+        width:82%;
+        padding:30px 34px 34px;
+      }
+      .card h2{
+        font-size:21px;
+      }
+      .card p{
+        font-size:17px;
+      }
+      .site-footer{
+        padding-top:108px;
+      }
+      .footer-top{
+        flex-direction:column-reverse;
+        align-items:flex-start;
+      }
+      .social{
+        align-self:flex-end;
+        flex-direction:column;
+      }
+      .footer-addresses{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+      .office:last-child{
+        grid-column:auto;
+      }
+    }
+
+    @media (max-width: 420px){
+      .container{
+        width:calc(100% - 36px);
+      }
+      .mobile-nav ul{
+        gap:2px 28px;
+      }
+      .mobile-nav a{
+        font-size:17px;
+        font-weight:700;
+      }
+      h1{
+        font-size:28px;
+        margin-bottom:10px;
+      }
+      .intro{
+        max-width:250px;
+        font-size:17px;
+        line-height:1.35;
+      }
+      .hero-image{
+        width:100%;
+        height:140px;
+        margin-top:22px;
+        margin-bottom:26px;
+      }
+      .cards{
+        gap:30px;
+      }
+      .card{
+        width:82%;
+        padding:24px 22px 28px;
+      }
+      .card h2{
+        font-size:20px;
+        margin-bottom:10px;
+      }
+      .card p{
+        font-size:16px;
+        line-height:1.42;
+      }
+      .site-footer{
+        padding-top:96px;
+      }
+      .social{
+        width:100%;
+        align-items:flex-end;
+        margin-bottom:18px;
+      }
+      .social a{
+        min-width:128px;
+        padding:12px 16px;
+      }
+      .footer-links{
+        font-size:15px;
+        line-height:2;
+      }
+      .footer-links span{
+        margin:0 10px;
+      }
+      .footer-divider{
+        margin:10px 0 28px;
+      }
+      .office{
+        font-size:15px;
+      }
+      .copyright{
+        font-size:13px;
+        line-height:1.5;
+        max-width:260px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-row">
+        <button
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation menu"
+          class="nav-toggle">
+          <span aria-hidden="true">&#9776;</span>
+        </button>
+      </div>
+
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Worldwide Coverage</a></li>
+          <li><a href="#">Bluetooth Tracking</a></li>
+          <li><a href="#">Video Surveillance</a></li>
+        </ul>
+      </nav>
+
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile Main" hidden>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Worldwide Coverage</a></li>
+          <li><a href="#">Bluetooth Tracking</a></li>
+          <li><a href="#">Video Surveillance</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="hero" aria-label="Worldwide Coverage introduction">
+        <h1>Worldwide Coverage</h1>
+        <p class="intro">The technological advances that we have made in our camera equipment over the last 18 months, have allowed MHC Traffic Ltd to expand into many and varied markets that were previously unavailable to us.</p>
+        <img src="rick.jpg" alt="Large featured image representing worldwide coverage services" class="hero-image">
+      </section>
+
+      <section class="cards" aria-label="Worldwide Coverage details">
+        <article class="card">
+          <h2>Our Experience</h2>
+          <p>In recent years we have been entrusted to undertake the traffic surveys relating to such prestigious projects across the globe as Abu Dhabi Plan 2030, and Singapore General Hospital, the latter involving in the region of 200 cameras to complete, over the course of a 2 week period.</p>
+        </article>
+
+        <article class="card">
+          <h2>Our Coverage</h2>
+          <p>We also regularly undertake surveys throughout mainland Europe. The fact that our range of camera equipment is so compact, and has been certified for carriage on both freight and commercial flights, opens up the viability of any survey, anywhere.</p>
+        </article>
+
+        <article class="card">
+          <h2>Get in Touch</h2>
+          <p>Please feel free to get in touch to discuss any requirements you have, and we can discuss your requirements based on the geographical location, and our experience in that area.</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <nav aria-label="Footer">
+          <div class="footer-links">
+            <a href="#">Get In Touch</a><span>|</span>
+            <a href="#">Testimonials</a><span>|</span>
+            <a href="#">Cookie Policy</a><span>|</span>
+            <a href="#">Privacy Policy</a>
+          </div>
+        </nav>
+
+        <div class="social">
+          <a href="#">Twitter</a>
+          <a href="#">Linkedin</a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-addresses">
+        <section class="office" aria-label="MHC Traffic London office">
+          <div class="office-title">MHC Traffic London</div>
+          <p>Suite 4054<br>Aldgate Tower<br>2 Leman Street<br>London<br>E1 8FA</p>
+          <p class="contact">T: 0203 865 0319<br>E: [EMAIL REDACTED]</p>
+        </section>
+
+        <section class="office" aria-label="MHC Traffic Head Office">
+          <div class="office-title">MHC Traffic Head Office</div>
+          <p>MHC Traffic Ltd<br>The Alpine Lodge<br>82 Irvine Road<br>Crosshouse KA2 0HQ</p>
+          <p class="contact">T: 01563 535 677<br>E: [EMAIL REDACTED]</p>
+        </section>
+
+        <section class="office" aria-label="MHC Traffic Dublin office">
+          <div class="office-title">MHC Traffic Dublin</div>
+          <p>Ground Floor<br>14 Herbert Street<br>Dublin 2</p>
+          <p class="contact">T: 01 619 0211<br>E: [EMAIL REDACTED]</p>
+        </section>
+
+        <section class="office" aria-label="MHC Traffic Northern Office">
+          <div class="office-title">MHC Traffic Northern Office</div>
+          <p>Unit 10a<br>Selby Iron Works Business Centre<br>Ousegate<br>Selby<br>YO8 4NN</p>
+          <p class="contact">T: 01563 535677<br>E: [EMAIL REDACTED]</p>
+        </section>
+      </div>
+
+      <div class="copyright">©2013 MHC All rights Reserved. Website by Microtech Digital .</div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added semantic header, nav, main, footer, and section/article structure; added skip link and main-content id; ensured exactly one h1 with sequential h2 headings; added meaningful alt text to image; ensured descriptive link/button labels; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-labels for multiple nav regions; added aria-labels to repeated section-like office blocks; removed any tabindex values greater than 0 via script baseline.
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, aria-controls, focus movement, and Escape close; implemented tab order cleanup script; included focus-visible styling.
+-->

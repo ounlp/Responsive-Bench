@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Shopping Cart — Century 2001</title>
+  <style>
+    :root{
+      --dark:#373535;
+      --teal:#1fb6cc;
+      --light:#f7f7f7;
+      --border:#d8d8d8;
+      --text:#333;
+      --muted:#9a9a9a;
+      --link:#00a0e3;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link { position:absolute; transform:translateY(-100%); left:10px; top:10px; background:#fff; color:#000; padding:8px 12px; z-index:1000; }
+    .skip-link:focus { transform:translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--dark);
+      color:#fff;
+      padding:12px 0 24px;
+    }
+    .topbar{
+      width:min(1100px, calc(100% - 40px));
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:20px;
+      font-size:12px;
+      text-transform:uppercase;
+      color:#e8e8e8;
+    }
+    .topbar-left,
+    .topbar-right{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .topbar-right .search-wrap{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .search-label{
+      color:#bfbfbf;
+      letter-spacing:.2px;
+    }
+    .search-line{
+      width:100px;
+      height:1px;
+      background:#8f8f8f;
+      display:inline-block;
+      vertical-align:middle;
+    }
+    .search-icon{
+      font-size:18px;
+      line-height:1;
+      color:#f2f2f2;
+    }
+
+    .hero{
+      width:min(1100px, calc(100% - 40px));
+      margin:22px auto 0;
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      align-items:center;
+      gap:0;
+    }
+    .hero-logo{
+      width:535px;
+      max-width:100%;
+      margin:0 auto;
+    }
+    .hero-logo img{
+      width:100%;
+      height:299px;
+      object-fit:cover;
+      background:#1400ff;
+    }
+    .hero-contact{
+      font-size:18px;
+      font-weight:700;
+      line-height:1.15;
+      color:#fff;
+      padding-left:2px;
+    }
+
+    .nav-toggle{
+      display:none;
+      margin:18px auto 0;
+      background:none;
+      border:0;
+      color:#fff;
+      font-size:44px;
+      line-height:1;
+      cursor:pointer;
+      padding:0;
+    }
+    .desktop-menu-icon{
+      text-align:center;
+      color:#fff;
+      font-size:44px;
+      line-height:1;
+      margin-top:18px;
+    }
+
+    #mobile-nav{
+      width:min(1100px, calc(100% - 40px));
+      margin:16px auto 0;
+      border-top:1px solid rgba(255,255,255,.15);
+      padding-top:14px;
+    }
+    #mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    #mobile-nav a{
+      color:#fff;
+      font-size:14px;
+      text-transform:uppercase;
+    }
+
+    main{
+      background:#fff;
+    }
+    .content{
+      width:min(1000px, calc(100% - 40px));
+      margin:0 auto;
+      padding:48px 0 70px;
+    }
+    h1{
+      margin:0 0 26px;
+      text-align:center;
+      font-size:16px;
+      font-weight:700;
+      color:#333;
+    }
+
+    .actions-top{
+      margin-bottom:18px;
+    }
+    .btn{
+      display:inline-block;
+      border:none;
+      cursor:pointer;
+      text-transform:uppercase;
+      font-size:16px;
+      color:#fff;
+      background:var(--teal);
+      padding:14px 28px;
+      min-width:281px;
+      text-align:center;
+    }
+    .cart-box{
+      border:1px solid var(--border);
+      margin-top:10px;
+      background:#fff;
+    }
+    .cart-box-header{
+      background:#f5f5f5;
+      border-bottom:1px solid var(--border);
+      padding:8px 16px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:18px;
+      color:#333;
+    }
+    .cart-box-body{
+      min-height:94px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      font-weight:700;
+      font-size:16px;
+      padding:20px;
+    }
+    .totals{
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+      gap:70px;
+      font-weight:700;
+      font-size:22px;
+      margin:10px 10px 0 0;
+    }
+    .checkout-row{
+      display:flex;
+      justify-content:flex-end;
+      margin-top:126px;
+    }
+    .checkout-row .btn{
+      min-width:280px;
+    }
+    .bottom-actions{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      margin-top:34px;
+    }
+    .btn-secondary{
+      background:#9d9b9b;
+      color:#fff;
+      font-size:14px;
+      min-width:auto;
+      padding:11px 14px;
+      text-transform:uppercase;
+    }
+    .empty-cart-link{
+      color:var(--link);
+      font-size:14px;
+    }
+
+    .cart-note-wrap{
+      margin-top:58px;
+    }
+    .cart-note-check{
+      display:flex;
+      justify-content:flex-end;
+      margin-bottom:2px;
+      font-size:13px;
+      color:#333;
+    }
+    .cart-note-check label{
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    .cart-note{
+      font-size:14px;
+      line-height:1.08;
+      color:#333;
+      max-width:100%;
+    }
+    .cart-note a{
+      color:var(--link);
+    }
+
+    .site-footer{
+      background:var(--dark);
+      min-height:162px;
+      color:#fff;
+      padding:0;
+    }
+    .footer-inner{
+      width:min(1000px, calc(100% - 20px));
+      margin:0 auto;
+      padding:110px 0 60px;
+    }
+    .footer-link{
+      color:var(--link);
+      font-size:16px;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .desktop-menu-icon{display:none}
+      .topbar{
+        width:calc(100% - 20px);
+        margin:0 10px;
+        gap:8px;
+      }
+      .topbar-left{
+        gap:10px;
+      }
+      .topbar-left .register-link,
+      .topbar-left .or-text{
+        display:none;
+      }
+      .topbar-right{
+        margin-left:auto;
+        gap:12px;
+      }
+      .hero{
+        width:100%;
+        padding:0 0 0 0;
+        grid-template-columns: 190px 1fr;
+        gap:4px;
+        align-items:center;
+      }
+      .hero-logo{
+        width:190px;
+        margin-left:0;
+      }
+      .hero-logo img{
+        height:104px;
+      }
+      .hero-contact{
+        font-size:18px;
+        padding-right:8px;
+      }
+      .content{
+        width:calc(100% - 20px);
+        padding:48px 0 54px;
+      }
+      h1{
+        font-size:17px;
+        margin-bottom:34px;
+      }
+      .btn{
+        width:100%;
+        min-width:0;
+        font-size:17px;
+      }
+      .cart-box-header{
+        font-size:20px;
+        padding:10px 17px;
+      }
+      .cart-box-body{
+        min-height:95px;
+        font-size:16px;
+      }
+      .totals{
+        justify-content:space-between;
+        gap:20px;
+        margin:8px 10px 0;
+        font-size:22px;
+      }
+      .checkout-row{
+        margin-top:34px;
+        padding-top:42px;
+        border-top:8px solid #f0f0f0;
+      }
+      .checkout-row .btn{
+        width:100%;
+      }
+      .bottom-actions{
+        justify-content:center;
+        margin-top:54px;
+      }
+      .btn-secondary{
+        width:auto;
+        min-width:113px;
+        font-size:14px;
+      }
+      .cart-note-wrap{
+        margin-top:78px;
+      }
+      .cart-note-check{
+        justify-content:flex-start;
+        font-size:13px;
+      }
+      .cart-note{
+        font-size:14px;
+        line-height:1.08;
+      }
+      .site-footer{
+        min-height:196px;
+      }
+      .footer-inner{
+        padding:112px 0 60px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1100px){
+      .hero{
+        width:min(900px, calc(100% - 48px));
+        grid-template-columns: 1fr 260px;
+      }
+      .hero-logo{
+        width:386px;
+      }
+      .hero-logo img{
+        height:217px;
+      }
+      .hero-contact{
+        font-size:18px;
+      }
+      .content{
+        width:min(900px, calc(100% - 46px));
+      }
+      .checkout-row{
+        margin-top:130px;
+      }
+      .cart-note-wrap{
+        margin-top:60px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <div class="topbar-left">
+        <a href="#">CLICK HERE TO SIGN IN</a>
+        <span class="or-text">OR</span>
+        <a href="#" class="register-link">CLICK HERE TO REGISTER</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#">VIEW CART</a>
+        <div class="search-wrap" aria-label="Search">
+          <span class="search-label">SEARCH</span>
+          <span class="search-line" aria-hidden="true"></span>
+          <span class="search-icon" aria-hidden="true">&#9906;</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-logo">
+        <img src="rick.jpg" alt="Century 2001 logo area">
+      </div>
+      <div class="hero-contact">Talk to a real person!<br>[PHONE REDACTED]</div>
+    </div>
+
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+
+    <div class="desktop-menu-icon" aria-hidden="true">&#9776;</div>
+
+    <nav id="mobile-nav" aria-label="Main" hidden>
+      <ul>
+        <li><a href="#">CLICK HERE TO SIGN IN</a></li>
+        <li><a href="#">CLICK HERE TO REGISTER</a></li>
+        <li><a href="#">VIEW CART</a></li>
+        <li><a href="#">SEARCH</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="content">
+      <h1>Your Shopping Cart</h1>
+
+      <div class="actions-top">
+        <a href="#" class="btn">CONTINUE SHOPPING</a>
+      </div>
+
+      <section aria-label="Shopping cart contents">
+        <div class="cart-box">
+          <div class="cart-box-header">Your Shopping Cart</div>
+          <div class="cart-box-body">YOUR SHOPPING CART IS EMPTY.</div>
+        </div>
+
+        <div class="totals" aria-label="Cart total">
+          <div>TOTAL</div>
+          <div>$0.00</div>
+        </div>
+      </section>
+
+      <div class="checkout-row">
+        <a href="#" class="btn">CHECKOUT</a>
+      </div>
+
+      <div class="bottom-actions">
+        <button type="button" class="btn btn-secondary">RECALCULATE</button>
+        <a href="#" class="empty-cart-link">Empty Cart</a>
+      </div>
+
+      <div class="cart-note-wrap">
+        <div class="cart-note-check">
+          <form novalidate aria-label="Shopping cart preference form">
+            <div class="field-group">
+              <label for="show-cart">
+                <input
+                  type="checkbox"
+                  id="show-cart"
+                  name="show-cart"
+                  checked>
+                Show me my shopping cart every time I order something.
+              </label>
+            </div>
+            <div aria-live="polite" id="form-status" class="sr-only"></div>
+          </form>
+        </div>
+
+        <div class="cart-note">
+          This site does not do live transactions. If you provide a credit card number it will not be billed immediately. Due to the custom nature of these products, you will be contacted by a sales person at Century 2001 to coordinate getting any custom artwork or other special handling instructions you require. There is a note area when you check out to provide any special instructions you may have regarding your order. Once the sales person has all the information they need and have verified the charges on this order, you will have the order acknowledgement mailed, emailed or faxed to your attention. If at that time you are satisfied with the order it will then be processed using the payment of your choice. If you would like to use your own custom logo for imprinting on any of our products <a href="#">contact us</a> for instructions on the best way of getting your logo to us. For information on acceptable digital artwork, see our <a href="#">artwork information</a> page. *** Tax will only be applicable on goods delivered to Florida.
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="#" class="footer-link">Your Account</a>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured one h1 with sequential headings; added alt text to image; ensured form control has associated label; ensured interactive elements have descriptive labels; set html lang="en"
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-label for main navigation; added section aria-label for shopping cart contents; removed any positive tabindex via script baseline
+[C] JS patterns added: implemented hamburger menu toggle with aria-expanded, aria-controls, focus management, and Escape close; implemented tab order cleanup for positive tabindex removal
+-->

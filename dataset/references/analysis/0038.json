@@ -1,0 +1,56 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a simple login/password-protected form layout with a single text/password input field and a separate submit button ('btn'). A submit action with user-entered credentials implies JavaScript handling for required-field checking and failed submission/error feedback.",
+      "confidence": "HIGH",
+      "behavior_notes": "Validate that the password field is not empty before submit, handle submit state, and surface an error message if authentication fails or the field is missing. The reference HTML also suggests an error-message area and a password field specifically.",
+      "ambiguities": "The sketch does not explicitly show inline errors, loading state, or whether validation is client-side only versus server-returned authentication errors."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The page is dominated by a single credential input as the primary task, centered in a compact login panel. This strongly implies programmatic focus should move to the password input on page load for efficient entry.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Set initial focus to the password/input field when the page loads and preserve logical keyboard flow from input to submit button. If validation fails, focus should return to the input or move to the error message as appropriate.",
+      "ambiguities": "Focus-on-load is not visually explicit in the sketch itself, though it is strongly supported by the single-purpose layout and the reference HTML."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "These sketches imply very low JavaScript complexity in both viewports: a single-purpose password/login form with one input and one submit button inside a centered panel. There is no evidence of navigation widgets, overlays, tabs, accordions, or dynamic loading. The main JS needs are robust form submission/validation behavior and sensible keyboard focus handling, with essentially the same interaction model on mobile and desktop."
+}

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lessons — Cottage on Blackbird Lane</title>
+  <style>
+    :root{
+      --bg:#f8f8f2;
+      --gold:#8f7d35;
+      --orange:#d8841f;
+      --muted:#a8a8a8;
+      --text:#111;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.55;
+    }
+    a{
+      color:var(--orange);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    .skip-link { position:absolute; transform:translateY(-100%); left:1rem; top:0; background:#fff; color:#000; padding:.5rem .75rem; z-index:1000; }
+    .skip-link:focus { transform:translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:980px;
+      margin:0 auto;
+      padding:34px 28px 48px;
+    }
+
+    .site-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:2rem;
+      margin-bottom:72px;
+    }
+    .branding h1{
+      margin:0;
+      color:var(--gold);
+      font-size:3.2rem;
+      line-height:1.05;
+      font-weight:normal;
+      letter-spacing:-0.02em;
+      text-transform:uppercase;
+    }
+    .main-nav{
+      margin-top:18px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:1rem;
+      color:var(--muted);
+      text-transform:uppercase;
+    }
+    .main-nav a{
+      color:var(--muted);
+    }
+    .search-link{
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform:uppercase;
+      color:var(--orange);
+      margin-top:18px;
+      white-space:nowrap;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:160px minmax(0, 1fr);
+      gap:72px;
+      align-items:start;
+    }
+
+    .sidebar{
+      padding-top:8px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:0.95rem;
+    }
+    .sidebar .share-title{
+      color:var(--orange);
+      margin:0 0 26px;
+      font-weight:normal;
+    }
+    .sidebar .labels-title{
+      margin:0 0 10px;
+      font-size:1rem;
+      color:#222;
+      font-weight:bold;
+    }
+    .sidebar ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .sidebar li{
+      margin:0 0 8px;
+    }
+
+    .post{
+      max-width:680px;
+    }
+    .post-date{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--muted);
+      font-size:0.95rem;
+      margin:0 0 8px;
+    }
+    .post-title{
+      margin:0;
+      color:var(--gold);
+      font-size:2.1rem;
+      line-height:1.1;
+      font-weight:normal;
+      text-transform:uppercase;
+    }
+    .post-divider{
+      font-size:2rem;
+      line-height:1;
+      margin:2px 0 10px;
+      color:#111;
+    }
+    .post-body p{
+      margin:0 0 28px;
+      font-size:1.05rem;
+    }
+    .meta-links{
+      margin-top:42px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:0.95rem;
+      color:var(--orange);
+    }
+    .meta-links .row{
+      margin-bottom:8px;
+    }
+    .meta-links a{
+      margin-right:16px;
+    }
+
+    .section-label{
+      margin:48px 0 8px;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--muted);
+      font-size:0.95rem;
+      text-transform:uppercase;
+    }
+    .comment-link{
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform:uppercase;
+      color:var(--orange);
+      display:inline-block;
+      margin-bottom:18px;
+    }
+
+    .popular-post{
+      margin:8px 0 54px;
+    }
+    .popular-post .image-wrap{
+      position:relative;
+      margin-bottom:10px;
+    }
+    .popular-post img{
+      display:block;
+      width:100%;
+      height:365px;
+      object-fit:cover;
+      background:#1400ff;
+    }
+    .popular-post .date-tag{
+      position:absolute;
+      left:0;
+      bottom:-1px;
+      background:var(--bg);
+      color:var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:0.95rem;
+      padding:2px 12px 2px 0;
+    }
+    .popular-post h3{
+      margin:0 0 8px;
+      color:var(--gold);
+      font-size:1.55rem;
+      line-height:1.1;
+      font-weight:normal;
+      text-transform:uppercase;
+    }
+    .popular-post .post-actions{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:0.95rem;
+      color:var(--orange);
+    }
+    .popular-post .post-actions a{
+      margin-right:16px;
+    }
+
+    .site-footer{
+      text-align:center;
+      color:var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:0.95rem;
+      margin-top:110px;
+    }
+    .site-footer p{
+      margin:0 0 18px;
+    }
+    .site-footer a{
+      color:var(--muted);
+    }
+
+    .nav-toggle{ display:none; }
+
+    @media (max-width: 900px){
+      .page{
+        max-width:760px;
+        padding:34px 32px 48px;
+      }
+      .site-header{
+        display:block;
+        margin-bottom:64px;
+      }
+      .branding h1{
+        font-size:3rem;
+        max-width:520px;
+      }
+      .search-link{
+        display:none;
+      }
+      .content-grid{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+      .sidebar{
+        display:none;
+      }
+      .post{
+        max-width:100%;
+      }
+      .popular-post img{
+        height:320px;
+      }
+    }
+
+    @media (max-width: 768px) { .nav-toggle { display: block; } }
+
+    @media (max-width: 480px){
+      .page{
+        padding:56px 32px 48px;
+      }
+      .branding h1{
+        font-size:1.2rem;
+        line-height:1.2;
+        max-width:none;
+      }
+      .main-nav{
+        margin-top:10px;
+        font-size:0.9rem;
+      }
+      .site-header{
+        margin-bottom:58px;
+      }
+      .post-date{
+        font-size:0.9rem;
+      }
+      .post-title{
+        font-size:1.45rem;
+      }
+      .post-body p{
+        font-size:0.98rem;
+        margin-bottom:26px;
+      }
+      .section-label{
+        margin-top:44px;
+      }
+      .popular-post img{
+        height:175px;
+      }
+      .popular-post h3{
+        font-size:1.15rem;
+      }
+      .site-footer{
+        margin-top:100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="branding">
+        <h1>COTTAGE ON BLACKBIRD LANE</h1>
+        <nav aria-label="Main" class="main-nav">
+          <a href="#">HOME</a> · <a href="#">ABOUT</a> · <a href="#">CONTACT</a>
+        </nav>
+      </div>
+      <a href="#" class="search-link">SEARCH</a>
+    </header>
+
+    <div class="content-grid">
+      <aside class="sidebar" aria-label="Post sidebar">
+        <p class="share-title">Share</p>
+        <h2 class="labels-title">Labels</h2>
+        <ul>
+          <li><a href="#">Lessons</a></li>
+        </ul>
+      </aside>
+
+      <main id="main-content">
+        <article class="post">
+          <p class="post-date">September 13, 2013</p>
+          <h2 class="post-title">LESSONS</h2>
+          <div class="post-divider">—</div>
+
+          <div class="post-body">
+            <p>This week I have learned that......</p>
+            <p>The cooler temperatures are a welcome pleasure.</p>
+            <p>We have missed eating supper outside.</p>
+            <p>Kitties will lose their collars.</p>
+            <p>A peach raspberry pie will become a new favorite.</p>
+          </div>
+
+          <div class="meta-links">
+            <div class="row">
+              <a href="#">Share</a>
+              <a href="#">Email Post</a>
+            </div>
+            <div class="row">
+              <a href="#">Labels: Lessons</a>
+            </div>
+          </div>
+
+          <h2 class="section-label">COMMENTS</h2>
+          <a href="#" class="comment-link">POST A COMMENT</a>
+
+          <h2 class="section-label">POPULAR POSTS</h2>
+
+          <article class="popular-post">
+            <div class="image-wrap">
+              <img src="rick.jpg" alt="Popular post image for Making My Own Bird Suet">
+              <div class="date-tag">February 24, 2016</div>
+            </div>
+            <h3><a href="#">MAKING MY OWN BIRD SUET</a></h3>
+            <div class="post-actions">
+              <a href="#">Share</a>
+              <a href="#">1 comment</a>
+            </div>
+          </article>
+
+          <article class="popular-post">
+            <div class="image-wrap">
+              <img src="rick.jpg" alt="Popular post image for 3rd Grade Biography Project">
+              <div class="date-tag">November 25, 2008</div>
+            </div>
+            <h3><a href="#">3RD GRADE BIOGRAPHY PROJECT</a></h3>
+            <div class="post-actions">
+              <a href="#">Share</a>
+              <a href="#">3 comments</a>
+            </div>
+          </article>
+        </article>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <p><a href="#">Powered by Blogger</a></p>
+      <p><a href="#">Theme images by richcano</a></p>
+      <p>You must attribute the work in the manner specified by the author</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, and footer landmarks; added skip link and main-content id; ensured one h1 with sequential heading structure; added meaningful alt text to all images; ensured html lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added unique aria-label to nav and aside landmarks; removed need for positive tabindex and included baseline tabindex cleanup support.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator styling only; no other interactive patterns were added because none were clearly visible in the screenshots.
+-->

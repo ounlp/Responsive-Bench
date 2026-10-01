@@ -1,0 +1,85 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a clear hamburger icon in the top-right corner, while the desktop sketch instead shows inline navigation items across the top.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close a mobile navigation panel or overlay containing the site links. The trigger should reflect open/closed state and likely hide page scrolling while the menu is open.",
+      "ambiguities": "The sketch does not show whether the menu opens as a full-screen overlay, side drawer, or dropdown panel, nor whether it includes social links or secondary actions."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place navigation/header controls at the very top in a persistent-looking header area: hamburger on mobile and horizontal nav on desktop. This strongly implies the header remains available while scrolling through long content below.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain fixed or become fixed on scroll so navigation stays accessible while the user moves through the image-and-text content. Active page indication may also need to persist in the nav.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state, so sticky behavior is inferred from the long-page layout rather than directly drawn."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches prominently feature image tiles/cards near the top of the content area. In portfolio/gallery layouts, large image blocks commonly imply click/tap-to-open enlarged media, especially when the page otherwise contains static descriptive text beneath.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Selecting an image should likely open it in an overlay/lightbox with dismiss behavior. If multiple images are part of a gallery, the modal may support previous/next navigation and background scroll lock.",
+      "ambiguities": "The sketch does not explicitly draw a lightbox, zoom icon, or arrows, so this is inferred from the gallery-style presentation and may alternatively be simple navigation to detail pages."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any mobile hamburger menu overlay and any image modal/lightbox implied by the gallery blocks would require managed keyboard focus. Desktop also needs focus handling if image overlays open from the gallery.",
+      "confidence": "HIGH",
+      "behavior_notes": "When the mobile menu or image modal opens, focus should move into the opened component, remain constrained appropriately while open, and return to the triggering control when closed.",
+      "ambiguities": "If the images navigate to separate pages instead of opening overlays, focus management would mainly apply to the mobile menu only."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically scrolling pages with substantial content below the fold, which commonly implies a return-to-top affordance for usability on content-heavy portfolio pages.",
+      "confidence": "LOW",
+      "behavior_notes": "A back-to-top control could appear after the user scrolls down and smoothly return them to the top/header when activated.",
+      "ambiguities": "No explicit button is drawn in the sketches, so this is speculative and based only on the long-scroll layout."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav",
+      "modal_dialog",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "modal_dialog",
+      "focus_management",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple portfolio/content page with most interaction concentrated in navigation and media presentation rather than forms or complex widgets. Mobile clearly requires a hamburger-driven navigation pattern, while desktop uses exposed top-level navigation. Across both viewports, the large image blocks strongly suggest gallery interactions that may open in a modal/lightbox, which in turn introduces focus-management requirements. The long-scroll composition also makes sticky header behavior plausible and a back-to-top affordance possible, though the latter is less explicit in the drawings."
+}

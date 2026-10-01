@@ -1,0 +1,103 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches imply a persistent top navigation/header area separated from the content below; the desktop sketch shows nav items aligned across the top, and the mobile layout implies a top app bar above the hero/content stack.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain fixed or persistently accessible while scrolling, especially given the long vertically scrolling page structure.",
+      "ambiguities": "The sketch does not explicitly show scroll state changes, shrinking, or style transitions for the header."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch omits visible full navigation links despite a content-heavy page, implying collapsed navigation in a compact header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger control would open and close the mobile navigation panel or drawer; likely overlays the page and should support dismissal.",
+      "ambiguities": "The icon itself is not clearly drawn in the sketch, so this is inferred from responsive convention rather than explicit depiction."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows multiple top-level navigation items across the header, which for an architecture/portfolio site commonly implies grouped sections with expandable subnavigation.",
+      "confidence": "LOW",
+      "behavior_notes": "Top-level nav items may reveal submenus on hover/click for secondary destinations.",
+      "ambiguities": "No submenu panels are explicitly drawn, so dropdown behavior is speculative from the information architecture implied by the header."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "The reference layout and sparse top-bar treatment suggest a global utility action in the header; on this type of content-rich site, search is a likely interactive control even though not explicitly labeled in the sketch.",
+      "confidence": "LOW",
+      "behavior_notes": "Search should open an input, accept a query, and submit or reveal results; on mobile it may appear as an overlay, on desktop inline or overlay.",
+      "ambiguities": "The sketch itself does not visibly depict a search field or icon, so this is weakly inferred."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show repeated content cards/teasers in stacked sections with centered button-like rectangles beneath groups of items, suggesting progressive reveal of additional content.",
+      "confidence": "HIGH",
+      "behavior_notes": "Centered CTA buttons likely load or reveal more items within a section such as news/projects rather than navigating away; loading state may be needed if asynchronous.",
+      "ambiguities": "The buttons could alternatively be simple links to archive pages instead of true in-place loading."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes circular controls centered beneath card grids, which could indicate a trigger for an overlay/lightbox or expanded content state rather than a standard text link.",
+      "confidence": "LOW",
+      "behavior_notes": "If these controls open expanded project/news previews, they should present an overlay with close behavior and focus containment.",
+      "ambiguities": "The circular marks may also be decorative icons, pagination, or simple buttons; modal behavior is not explicit."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components across the sketches—mobile menu, possible dropdowns, search overlay, and possible modal/load-more controls—would require managed keyboard focus to behave accessibly.",
+      "confidence": "HIGH",
+      "behavior_notes": "When menus or overlays open, focus should move into them and return to the trigger on close; keyboard traversal should remain logical across repeated card sections and CTAs.",
+      "ambiguities": "This is derived from the presence of other interactive patterns rather than a standalone visual element."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "M1",
+    "M2",
+    "S1",
+    "S2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "K4",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "hamburger_menu",
+      "load_more",
+      "focus_management",
+      "search_input"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "load_more",
+      "dropdown_menu",
+      "focus_management",
+      "modal_dialog",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple but still interactive editorial/portfolio homepage: a persistent header, long-scroll content sections, repeated image cards, and centered CTA controls beneath groups of content. Mobile likely relies on collapsed navigation, while desktop exposes top-level nav directly and may support richer hover/click behaviors such as dropdowns. The strongest explicit interaction implied by the drawings is progressive access to more content via section-level buttons; other behaviors like search, dropdowns, and modal expansion are plausible but less certain from the sketches alone."
+}

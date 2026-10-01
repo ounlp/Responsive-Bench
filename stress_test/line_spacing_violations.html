@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adversarial Line Spacing Violations</title>
+  <style>
+    /* Base styles */
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6; /* Passing: unitless >= 1.5 */
+      padding: 1rem;
+      background: #fff;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* PASSING ELEMENTS - Line height >= 1.5 */
+
+    /* Passing: unitless line-height 1.5 (minimum) */
+    .pass-unitless-min {
+      line-height: 1.5; /* Passing: exactly 1.5 */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: unitless line-height > 1.5 */
+    .pass-unitless-high {
+      line-height: 1.8; /* Passing: well above minimum */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: percentage line-height >= 150% */
+    .pass-percentage {
+      line-height: 160%; /* Passing: 160% = 1.6 */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: em line-height >= 1.5em */
+    .pass-em {
+      line-height: 1.5em; /* Passing: 1.5em */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* Passing: normal line-height (typically ~1.2, but 'normal' keyword might be accepted) */
+    .pass-normal {
+      line-height: normal; /* Default browser behavior */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+      font-size: 16px;
+    }
+
+    /* Passing: large unitless value */
+    .pass-unitless-large {
+      line-height: 2.0; /* Passing: double spacing */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    /* VIOLATING ELEMENTS - Line height < 1.5 */
+
+    /* Violation: unitless line-height < 1.5 */
+    .fail-unitless-low {
+      line-height: 1.2; /* VIOLATION: below minimum */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: very tight line-height */
+    .fail-unitless-tight {
+      line-height: 1.0; /* VIOLATION: single spacing */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: percentage line-height < 150% */
+    .fail-percentage {
+      line-height: 130%; /* VIOLATION: 130% = 1.3 */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: em line-height < 1.5em */
+    .fail-em {
+      line-height: 1.3em; /* VIOLATION: 1.3em */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: pixel-based line-height that's too tight */
+    .fail-pixels-tight {
+      font-size: 16px;
+      line-height: 20px; /* VIOLATION: 20/16 = 1.25 */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: very tight pixel line-height */
+    .fail-pixels-very-tight {
+      font-size: 18px;
+      line-height: 18px; /* VIOLATION: 18/18 = 1.0 (no spacing) */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: rem-based line-height that's too small */
+    .fail-rem {
+      font-size: 1rem;
+      line-height: 1.25rem; /* VIOLATION: 1.25 */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: inherited tight spacing */
+    .parent-tight {
+      line-height: 1.1; /* VIOLATION: parent has tight spacing */
+    }
+
+    .child-inherit {
+      /* Inherits 1.1 from parent - VIOLATION */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Violation: override with !important */
+    .base-spacing {
+      line-height: 1.8; /* Would pass */
+    }
+
+    .override-tight {
+      line-height: 1.15 !important; /* VIOLATION: override with tight spacing */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    /* Headers - various line-heights */
+    h1 {
+      font-size: 2rem;
+      line-height: 1.2; /* Headings often have tighter spacing - VIOLATION */
+      margin: 0 0 1rem 0;
+      font-weight: bold;
+      color: #d00;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.3; /* VIOLATION */
+      margin: 1.5rem 0 1rem 0;
+      font-weight: bold;
+      color: #d00;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      line-height: 1.4; /* VIOLATION: just below threshold */
+      margin: 1rem 0 0.5rem 0;
+      font-weight: bold;
+      color: #d00;
+    }
+
+    /* Passing heading */
+    .pass-heading {
+      font-size: 1.5rem;
+      line-height: 1.6; /* Passing: adequate spacing */
+      margin: 1rem 0;
+      font-weight: bold;
+      color: #0a0;
+    }
+
+    /* Section headers */
+    .section-header {
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      background: #f0f0f0;
+      border-left: 4px solid #333;
+      line-height: 1.5; /* Passing */
+    }
+
+    .hint {
+      color: #666;
+      font-size: 0.875rem;
+      line-height: 1.6; /* Passing */
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* Code blocks */
+    code {
+      font-family: 'Courier New', monospace;
+      line-height: 1.5; /* Passing */
+      background: #f5f5f5;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .code-violation {
+      font-family: 'Courier New', monospace;
+      line-height: 1.2; /* VIOLATION: tight code spacing */
+      background: #fee;
+      padding: 1rem;
+      border: 1px solid #d00;
+      color: #d00;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* List with tight spacing */
+    .tight-list {
+      line-height: 1.3; /* VIOLATION */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #d00;
+      background: #fee;
+      color: #d00;
+    }
+
+    .tight-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    /* List with good spacing */
+    .good-list {
+      line-height: 1.7; /* Passing */
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #0a0;
+      background: #efe;
+    }
+
+    .good-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Table with tight spacing */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+    }
+
+    .tight-table td,
+    .tight-table th {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      line-height: 1.1; /* VIOLATION */
+    }
+
+    .tight-table {
+      background: #fee;
+    }
+
+    .good-table td,
+    .good-table th {
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      line-height: 1.6; /* Passing */
+    }
+
+    .good-table {
+      background: #efe;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Line Spacing Violations Test Page</h1>
+    <div class="hint">
+      This page demonstrates both correct line spacing (>= 1.5) and violations (< 1.5).
+      Line spacing affects readability, especially for users with dyslexia or other reading difficulties.
+    </div>
+
+    <section>
+      <div class="section-header">
+        <h2 style="margin: 0; line-height: 1.5; color: #333;">Passing Elements (Line Height >= 1.5)</h2>
+      </div>
+
+      <div class="pass-unitless-min">
+        <h3 class="pass-heading">Unitless 1.5 (Minimum)</h3>
+        <p>
+          This paragraph uses <strong>line-height: 1.5</strong> which is the minimum acceptable value.
+          This is a unitless number, which is the recommended way to specify line height in CSS.
+          It multiplies the element's font size to determine the actual line height.
+        </p>
+      </div>
+
+      <div class="pass-unitless-high">
+        <h3 class="pass-heading">Unitless 1.8 (Comfortable)</h3>
+        <p>
+          This paragraph uses <strong>line-height: 1.8</strong> which provides generous spacing.
+          This makes text more readable, especially for longer paragraphs or users who need
+          extra spacing for accessibility reasons.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="pass-percentage">
+          <h3 class="pass-heading">Percentage (160%)</h3>
+          <p>
+            This uses <strong>line-height: 160%</strong> which equals 1.6.
+            Percentage values are calculated relative to the element's font size.
+          </p>
+        </div>
+
+        <div class="pass-em">
+          <h3 class="pass-heading">Em Units (1.5em)</h3>
+          <p>
+            This uses <strong>line-height: 1.5em</strong>.
+            Em units are relative to the element's font size, similar to percentages.
+          </p>
+        </div>
+      </div>
+
+      <div class="pass-unitless-large">
+        <h3 class="pass-heading">Double Spacing (2.0)</h3>
+        <p>
+          This paragraph uses <strong>line-height: 2.0</strong> for extra generous spacing.
+          This is particularly helpful for users with certain visual or cognitive disabilities.
+          The large spacing makes each line very distinct.
+        </p>
+      </div>
+
+      <div class="good-list">
+        <h3 class="pass-heading">List with Good Spacing</h3>
+        <ul style="margin: 0.5rem 0 0 1.5rem;">
+          <li>First item with adequate line spacing (1.7)</li>
+          <li>Second item - notice the comfortable spacing between lines</li>
+          <li>Third item - easier to read with proper spacing</li>
+          <li>Fourth item - prevents text from appearing cramped</li>
+        </ul>
+      </div>
+    </section>
+
+    <section style="margin-top: 2rem;">
+      <div class="section-header">
+        <h2 style="margin: 0; line-height: 1.5; color: #333;">Violating Elements (Line Height < 1.5)</h2>
+      </div>
+
+      <div class="fail-unitless-low">
+        <h3>VIOLATION: Unitless 1.2</h3>
+        <p>
+          This paragraph uses <strong>line-height: 1.2</strong> which is below the minimum.
+          Notice how the lines feel more cramped and harder to read, especially in longer paragraphs.
+          This is a common default but fails accessibility guidelines.
+        </p>
+      </div>
+
+      <div class="fail-unitless-tight">
+        <h3>VIOLATION: Single Spacing (1.0)</h3>
+        <p>
+          This paragraph uses <strong>line-height: 1.0</strong> which means no extra spacing.
+          The text is very cramped and difficult to read. Lines can appear to merge together,
+          especially for users with visual impairments or reading difficulties.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="fail-percentage">
+          <h3>VIOLATION: Percentage (130%)</h3>
+          <p>
+            This uses <strong>line-height: 130%</strong> which equals 1.3.
+            While better than 1.0, it's still below the 1.5 minimum.
+          </p>
+        </div>
+
+        <div class="fail-em">
+          <h3>VIOLATION: Em Units (1.3em)</h3>
+          <p>
+            This uses <strong>line-height: 1.3em</strong>.
+            The tight spacing makes longer text harder to parse.
+          </p>
+        </div>
+      </div>
+
+      <div class="fail-pixels-tight">
+        <h3>VIOLATION: Pixel-Based (20px on 16px)</h3>
+        <p>
+          This uses <strong>font-size: 16px; line-height: 20px</strong> which gives a ratio of 1.25.
+          Absolute pixel values for line-height can cause issues when font sizes change.
+          The computed ratio is below the 1.5 minimum.
+        </p>
+      </div>
+
+      <div class="fail-pixels-very-tight">
+        <h3>VIOLATION: Equal Font and Line Height</h3>
+        <p>
+          This uses <strong>font-size: 18px; line-height: 18px</strong> giving a ratio of 1.0.
+          There is literally no extra vertical space between lines. This makes text very difficult
+          to read and is particularly problematic for accessibility.
+        </p>
+      </div>
+
+      <div class="fail-rem">
+        <h3>VIOLATION: Rem Units (1.25rem)</h3>
+        <p>
+          This uses <strong>font-size: 1rem; line-height: 1.25rem</strong>.
+          While using relative units is good for other properties, this still violates
+          the 1.5 line-height minimum.
+        </p>
+      </div>
+
+      <div class="parent-tight">
+        <div class="child-inherit">
+          <h3>VIOLATION: Inherited Tight Spacing</h3>
+          <p>
+            This child element inherits <strong>line-height: 1.1</strong> from its parent.
+            Inheritance of tight line-height can propagate violations throughout the DOM tree.
+            Each element with text content should be checked.
+          </p>
+        </div>
+      </div>
+
+      <div class="base-spacing override-tight">
+        <h3>VIOLATION: Override with !important</h3>
+        <p>
+          This uses <strong>line-height: 1.15 !important</strong> to override the base 1.8.
+          Even with !important declarations, violations should be detected.
+        </p>
+      </div>
+
+      <div class="tight-list">
+        <h3>VIOLATION: List with Tight Spacing</h3>
+        <ul style="margin: 0.5rem 0 0 1.5rem;">
+          <li>First item - notice the cramped feeling (1.3 line-height)</li>
+          <li>Second item - lines are too close together</li>
+          <li>Third item - reduces readability significantly</li>
+          <li>Fourth item - especially problematic in dense content</li>
+        </ul>
+      </div>
+
+      <code class="code-violation">// Code block with tight spacing (1.2)
+function example() {
+  const data = getData();
+  processData(data);
+  return result;
+}
+// Notice how the code lines are cramped together</code>
+    </section>
+
+    <section style="margin-top: 2rem;">
+      <div class="section-header">
+        <h2 style="margin: 0; line-height: 1.5; color: #333;">Headings - Common Violation Source</h2>
+      </div>
+
+      <h1>H1 Heading (line-height: 1.2) - VIOLATION</h1>
+      <p style="line-height: 1.6;">
+        Headings commonly use tighter line-height for visual design, but they should still meet
+        the 1.5 minimum for accessibility.
+      </p>
+
+      <h2>H2 Heading (line-height: 1.3) - VIOLATION</h2>
+      <p style="line-height: 1.6;">
+        Even though headings are typically shorter, they should maintain adequate spacing.
+      </p>
+
+      <h3>H3 Heading (line-height: 1.4) - VIOLATION</h3>
+      <p style="line-height: 1.6;">
+        1.4 is close to the threshold but still fails the 1.5 requirement.
+      </p>
+    </section>
+
+    <section style="margin-top: 2rem;">
+      <div class="section-header">
+        <h2 style="margin: 0; line-height: 1.5; color: #333;">Tables with Line Spacing</h2>
+      </div>
+
+      <h3 style="line-height: 1.5; color: #333;">Table with Tight Spacing (VIOLATION)</h3>
+      <table class="tight-table">
+        <thead>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data with line-height: 1.1</td>
+            <td>Very cramped text</td>
+            <td>Hard to scan</td>
+          </tr>
+          <tr>
+            <td>More data in tight rows</td>
+            <td>Violates spacing rules</td>
+            <td>Accessibility issue</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="line-height: 1.5; color: #0a0; margin-top: 1.5rem;">Table with Good Spacing (PASSING)</h3>
+      <table class="good-table">
+        <thead>
+          <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data with line-height: 1.6</td>
+            <td>Comfortable text</td>
+            <td>Easy to scan</td>
+          </tr>
+          <tr>
+            <td>Better readability</td>
+            <td>Meets accessibility standards</td>
+            <td>Passes the check</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section style="margin-top: 2rem;">
+      <div class="section-header">
+        <h2 style="margin: 0; line-height: 1.5; color: #333;">Inline Style Violations</h2>
+      </div>
+
+      <div style="line-height: 1.25; padding: 1rem; border: 1px solid #d00; background: #fee; color: #d00; margin-bottom: 1rem;">
+        <h3 style="margin-top: 0;">VIOLATION: Inline Style (1.25)</h3>
+        <p style="margin-bottom: 0;">
+          This container uses inline <strong>style="line-height: 1.25"</strong>.
+          Inline styles with tight spacing should also be detected as violations.
+        </p>
+      </div>
+
+      <p style="line-height: 1.0; padding: 1rem; border: 1px solid #d00; background: #fee; color: #d00;">
+        VIOLATION: This paragraph has inline <strong>style="line-height: 1.0"</strong>.
+        Multiple inline violations with different values should each be caught.
+      </p>
+    </section>
+
+    <section style="margin-top: 2rem; padding: 1rem; background: #f9f9f9; border-radius: 4px; line-height: 1.6;">
+      <h2 style="line-height: 1.5; color: #333;">Summary</h2>
+      <p>
+        This test page demonstrates the importance of adequate line spacing for readability and accessibility.
+        The <strong>line_spacing</strong> metric should detect all elements with line-height < 1.5
+        (when computed as a ratio of font-size).
+      </p>
+      <p style="margin-bottom: 0;">
+        Passing elements use line-height values of 1.5 or greater using various CSS units:
+        unitless numbers, percentages (>=150%), em units (>=1.5em), or pixel values that compute to >=1.5 ratio.
+      </p>
+    </section>
+  </div>
+</body>
+</html>

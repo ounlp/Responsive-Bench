@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top bar with a small boxed icon containing stacked lines at the top-right, a conventional hamburger/menu trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close a navigation panel or menu overlay for small screens. The trigger should reflect expanded/collapsed state.",
+      "ambiguities": "The sketch does not show whether the menu opens as a drawer, dropdown, or full-screen overlay, nor what menu items it contains."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch places a narrow header/navigation bar at the very top above long scrolling article content, implying it remains available while reading.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top bar likely stays fixed or sticky during scroll so the menu remains accessible on a long content page.",
+      "ambiguities": "The sketch does not explicitly indicate fixed positioning versus a normal static header."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long content/article layouts with substantial stacked text blocks; the mobile version especially suggests a feed-like or comments-like continuation where progressive loading is plausible.",
+      "confidence": "LOW",
+      "behavior_notes": "If the page truncates long community content, a load-more control could reveal additional sections or comments without full navigation.",
+      "ambiguities": "No explicit button is drawn, so this may instead be a fully server-rendered long page with no incremental loading."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "load_more"
+    ],
+    "desktop": [
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-centric page with minimal explicit JavaScript. The clearest required interaction is the mobile hamburger navigation in the top header. Mobile also strongly suggests long-scroll reading behavior, making sticky header treatment more likely there than on desktop. Desktop appears comparatively static, with no visible dropdowns, tabs, accordions, forms, or modal triggers. Any incremental content loading is speculative rather than explicit."
+}

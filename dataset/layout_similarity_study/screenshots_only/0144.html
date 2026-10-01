@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inflatable Jewels? A Modular Method for Indexing Inflation in the Mansa Musa Game — Daniel Solis</title>
+  <style>
+    :root{
+      --bg:#efefef;
+      --paper:#ffffff;
+      --text:#111;
+      --muted:#666;
+      --line:#e6e6e6;
+      --footer-gray:#a9a9a9;
+      --tag-bg:#ffe3e3;
+      --tag-text:#ff2b2b;
+      --accent:#005FCC;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.9;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      z-index:1000;
+      text-decoration:none;
+      border:1px solid #ccc;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:inherit;text-decoration:none}
+
+    .site-header{
+      background:#fff;
+      border-bottom:1px solid #f0f0f0;
+    }
+
+    .header-inner{
+      max-width:980px;
+      margin:0 auto;
+      padding:8px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:54px;
+    }
+
+    .site-title{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:24px;
+      font-weight:400;
+      letter-spacing:-0.5px;
+      margin:0;
+      line-height:1.1;
+    }
+
+    .search-box{
+      background:#fafafa;
+      border:1px solid #f3f3f3;
+      width:182px;
+      height:34px;
+      display:flex;
+      align-items:center;
+      padding:0 12px;
+      overflow:hidden;
+    }
+
+    .search-label{
+      font-style:italic;
+      font-weight:700;
+      font-size:20px;
+      color:#111;
+      white-space:nowrap;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .hero-space{
+      height:72px;
+      background:var(--bg);
+    }
+
+    .page-wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:0 6px 0;
+    }
+
+    .post-card{
+      background:var(--paper);
+      max-width:632px;
+      margin:0 auto;
+      padding:22px 24px 22px;
+      box-shadow:none;
+    }
+
+    .post-title{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:22px;
+      line-height:1.15;
+      font-weight:400;
+      margin:0 0 6px;
+      color:#111;
+    }
+
+    .meta{
+      margin:0 0 18px;
+      font-size:12px;
+      font-style:italic;
+      color:#111;
+      line-height:1.3;
+    }
+
+    .post-image{
+      width:100%;
+      height:262px;
+      object-fit:cover;
+      display:block;
+      margin:0 0 22px;
+      background:#1400ff;
+    }
+
+    .post-content p{
+      margin:0 0 18px;
+      font-size:17px;
+    }
+
+    .value-list{
+      margin:8px 0 18px;
+      font-size:18px;
+      line-height:1.9;
+      white-space:pre-wrap;
+    }
+
+    .tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+
+    .tag{
+      display:inline-block;
+      background:var(--tag-bg);
+      color:var(--tag-text);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:12px;
+      line-height:1;
+      padding:5px 7px;
+      text-transform:uppercase;
+    }
+
+    .post-divider{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:64px 0 0;
+    }
+
+    .archive-wrap{
+      max-width:644px;
+      margin:18px auto 0;
+      padding:0 0 0;
+    }
+
+    .archive-title{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:18px;
+      font-weight:700;
+      margin:0 0 28px;
+      color:#111;
+    }
+
+    .past-posts{
+      background:var(--footer-gray);
+      color:#fff;
+      text-align:center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      padding:18px 12px;
+      margin:0 auto;
+      max-width:980px;
+    }
+
+    .site-footer{
+      text-align:center;
+      padding:10px 12px 18px;
+    }
+
+    .powered{
+      display:inline-block;
+      color:#ff1f1f;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:18px;
+      margin:18px 0 8px;
+    }
+
+    .copyright{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:12px;
+      color:#111;
+      margin:0;
+      line-height:1.4;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (min-width: 769px) {
+      .nav-toggle { display: none; }
+    }
+
+    @media (max-width: 900px){
+      .header-inner{
+        padding:8px 10px;
+      }
+      .page-wrap{
+        padding:0 6px;
+      }
+      .post-card{
+        max-width:none;
+        margin:0;
+      }
+      .archive-wrap{
+        max-width:none;
+        margin:18px 0 0;
+      }
+      .past-posts{
+        max-width:none;
+      }
+    }
+
+    @media (max-width: 540px){
+      .site-title{
+        font-size:18px;
+        letter-spacing:-0.3px;
+      }
+      .search-box{
+        width:28px;
+        height:28px;
+        padding:0 4px;
+        justify-content:flex-end;
+        border:none;
+        background:#fff;
+      }
+      .search-label{
+        font-size:18px;
+        width:12px;
+        overflow:hidden;
+      }
+      .hero-space{
+        height:44px;
+      }
+      .post-card{
+        padding:12px 14px 18px;
+      }
+      .post-title{
+        font-size:20px;
+      }
+      .post-image{
+        height:145px;
+        margin-bottom:18px;
+      }
+      .post-content p,
+      .value-list{
+        font-size:16px;
+      }
+      .archive-title{
+        font-size:18px;
+        margin-left:0;
+      }
+      .past-posts{
+        text-align:left;
+        padding:16px 14px;
+      }
+      .powered{
+        font-size:16px;
+      }
+      .copyright{
+        font-size:11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title"><a href="#">Daniel Solis</a></h1>
+      <a href="#" class="search-box" aria-label="Search this blog">
+        <span class="search-label">Search this blog</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="hero-space" aria-hidden="true"></div>
+
+    <div class="page-wrap">
+      <article class="post-card" aria-labelledby="post-title">
+        <h2 id="post-title" class="post-title">Inflatable Jewels? A Modular Method for Indexing Inflation in the Mansa Musa Game</h2>
+        <p class="meta">posted by Daniel Solis on February 25, 2013</p>
+
+        <img src="rick.jpg" alt="Illustration area for the article shown as a solid blue rectangular image" class="post-image">
+
+        <div class="post-content">
+          <p>Here's my current experiment with adjustable values for goods that get progressively inflated or deflated as Mansa Musa passes through.</p>
+
+          <p>I'm considering using a set of cards to create a winding connected path representing Mali to Mecca.</p>
+
+          <p>Basically, the Musa meeple acts as a progress bar and wherever you are to the east or west of that progress bar indicates the relative value of your goods. After all, checking an inflation line chart isn't exactly a fun time for most people.</p>
+
+          <p>I wanted to index the value of goods to Mansa Musa's progression across the track. Every so often, there is a demarcation space in the track that is used as the increment of inflation. In the final game, these might represent cities.</p>
+
+          <p>The base value of goods are as follows:</p>
+
+          <pre class="value-list">ARCH.:   3
+MATH:   2
+ART:    1
+SPICES:  1
+STONE:   2
+JEWELS:  3</pre>
+
+          <p>If you're to the WEST of Musa, the value of the first three goods is increased while the other three are decreased.</p>
+
+          <p>In the example above, the blue player is two hexes west of Musa, so the value of goods would be:</p>
+
+          <pre class="value-list">ARCH.:   5
+MATH:   4
+ART:    3
+SPICES:  0
+STONE:   0
+JEWELS:  1</pre>
+
+          <p>If you're to the EAST of Musa, the value of the first three goods is decreased while the other three are increased.</p>
+
+          <p>In the example above, the orange player is one hex east of Musa, so the value of goods would be:</p>
+
+          <pre class="value-list">ARCH.:   2
+MATH:   1
+ART:    0
+SPICES:  2
+STONE:   3
+JEWELS:  4</pre>
+
+          <p>For now, goods cannot be worth less than zero, though I am amused by the idea that if you're far west of Musa, people would actually pay you to take away their jewels. It's an idea worth considering if it's not too mentally burdensome in actual play.</p>
+
+          <p>For replay value, the map cards could be shuffled or flipped for alternate layouts. More cards could be added for more players, too.</p>
+
+          <div class="tags" aria-label="Post tags">
+            <a href="#" class="tag">LAB</a>
+            <a href="#" class="tag">MANSA MUSA</a>
+          </div>
+        </div>
+
+        <hr class="post-divider">
+      </article>
+
+      <section class="archive-wrap" aria-label="Archive section">
+        <h2 class="archive-title">Archive</h2>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="past-posts"><a href="#">Past Posts</a></div>
+    <a href="#" class="powered">Powered by Blogger</a>
+    <p class="copyright">© 2010 Daniel Solis (unless otherwise noted)</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, main, footer, and a labeled section; added skip link and main-content id; ensured one h1 and sequential heading hierarchy; added meaningful alt text to image; ensured interactive links have descriptive text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added aria-label where helpful for archive section and tags grouping; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented required tabindex cleanup script for focus order baseline; included focus-visible styling.
+-->

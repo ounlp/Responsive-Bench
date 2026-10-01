@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unicode C Google Cloud Storage REST API Examples — example-code.com</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#3b3b3b;
+      --muted:#6a6a6a;
+      --border:#d9d9d9;
+      --link:#2a78d1;
+      --blue:#1400ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Arial, Helvetica, sans-serif}
+    body{min-height:100vh}
+
+    .skip-link{position:absolute;left:12px;top:0;transform:translateY(-100%);background:#fff;color:#000;padding:10px 14px;border:2px solid #005FCC;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .page-header{
+      border:1px solid var(--border);
+      border-radius:4px;
+      padding:18px 16px 20px;
+      margin:0;
+      background:#fff;
+    }
+
+    .header-inner{
+      max-width:1100px;
+      margin:0 auto;
+    }
+
+    .back-link{
+      display:inline-block;
+      font-size:15px;
+      line-height:1.35;
+      margin-bottom:12px;
+    }
+
+    .title-row{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+
+    .logo-block{
+      width:64px;
+      height:36px;
+      background:var(--blue);
+      flex:0 0 auto;
+      margin-top:4px;
+    }
+
+    h1{
+      margin:0;
+      font-size:36px;
+      line-height:1.08;
+      font-weight:700;
+      color:#3a3a3a;
+      letter-spacing:-0.4px;
+    }
+
+    main{
+      max-width:1140px;
+      margin:30px auto 0;
+      padding:0 24px 20px;
+    }
+
+    .examples-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .examples-list li{
+      margin:0 0 11px 0;
+    }
+
+    .card{
+      display:block;
+      border:1px solid var(--border);
+      border-radius:4px;
+      background:#fff;
+      padding:10px 15px 10px;
+      color:inherit;
+    }
+
+    .card:hover{text-decoration:none}
+
+    .card-title{
+      display:block;
+      font-size:20px;
+      line-height:1.1;
+      font-weight:700;
+      color:#555;
+      margin:0 0 2px 0;
+    }
+
+    .card-desc{
+      display:block;
+      font-size:15px;
+      line-height:1.35;
+      color:var(--muted);
+      margin:0;
+    }
+
+    footer{display:none}
+
+    @media (max-width: 900px){
+      .page-header{
+        padding:18px 15px 20px;
+      }
+      .header-inner{
+        max-width:none;
+      }
+      h1{
+        font-size:34px;
+      }
+      main{
+        margin-top:31px;
+        padding:0 24px 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .page-header{
+        padding:16px 15px 18px;
+      }
+      .back-link{
+        font-size:16px;
+        max-width:260px;
+        margin-left:74px;
+        margin-bottom:10px;
+      }
+      .title-row{
+        gap:10px;
+        align-items:flex-start;
+      }
+      .logo-block{
+        width:64px;
+        height:36px;
+        margin-top:34px;
+      }
+      h1{
+        font-size:28px;
+        line-height:1.02;
+        letter-spacing:-0.5px;
+      }
+      main{
+        margin-top:30px;
+        padding:0 15px 20px;
+      }
+      .card{
+        padding:10px 15px 10px;
+      }
+      .card-title{
+        font-size:19px;
+        line-height:1.05;
+      }
+      .card-desc{
+        font-size:15px;
+        line-height:1.3;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="page-header">
+    <div class="header-inner">
+      <a href="#" class="back-link">□ Back to Google Cloud Storage Programming Languages Index</a>
+      <div class="title-row">
+        <div class="logo-block" aria-hidden="true"></div>
+        <h1>Unicode C Google Cloud Storage REST API Examples</h1>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <ul class="examples-list">
+      <li>
+        <a href="#" class="card">
+          <span class="card-title">More Google Cloud Storage Examples at example-code.com.</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="card">
+          <span class="card-title">List Buckets</span>
+          <span class="card-desc">Retrieves a list of buckets for a given project.</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="card">
+          <span class="card-title">Create Bucket</span>
+          <span class="card-desc">Creates a new bucket.</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="card">
+          <span class="card-title">Delete Bucket</span>
+          <span class="card-desc">Permanently deletes an empty bucket.</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="card">
+          <span class="card-title">List Objects in a Bucket</span>
+          <span class="card-desc">Retrieves a list of objects in the Google Cloud Storage bucket.</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="card">
+          <span class="card-title">Delete a File (i.e. Object)</span>
+          <span class="card-desc">Deletes a fie (also known as an object) from a Google Cloud Storage bucket.</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="card">
+          <span class="card-title">Copy File (Object) to another Bucket</span>
+          <span class="card-desc">Copies a fie (also known as an object) to another Google Cloud Storage bucket.</span>
+        </a>
+      </li>
+    </ul>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link as first body child; used semantic header and main landmarks; ensured exactly one h1; added lang="en"; preserved descriptive link text for all interactive elements.
+[B] ARIA fixes: avoided redundant landmark roles; added id="main-content" for skip target; removed positive tabindex values via JS baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only, as no other interactive patterns were visible in the screenshots.
+-->

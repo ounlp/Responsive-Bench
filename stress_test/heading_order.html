@@ -1,0 +1,43 @@
+Here is a minimal adversarial HTML that should trigger your updated rule.
+
+It starts with an h2 and that is fine. The violation is that a nested container under the section contains another h2. That nested heading should be h3 or deeper.
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adversarial Heading Nesting</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 16px; }
+    .box { border: 1px solid #999; padding: 12px; margin: 12px 0; }
+    .nested { margin-left: 16px; border-left: 6px solid #ddd; }
+  </style>
+</head>
+<body>
+  <section class="box">
+    <h2>Top heading can start at h2</h2>
+    <p>This is valid. Starting at h2 is allowed.</p>
+
+    <div class="box nested">
+      <h2>Violation: nested uses h2 again</h2>
+      <p>
+        This heading is inside a nested container within the section that already has an h2.
+        Under the nesting rule, this should be h3 or deeper.
+      </p>
+    </div>
+
+    <div class="box nested">
+      <h3>Control: nested uses h3</h3>
+      <p>This one should pass because it is deeper than the parent h2.</p>
+    </div>
+  </section>
+
+  <div class="box">
+    <h3>Another top-level heading starting at h3</h3>
+    <p>
+      This should not be penalized just because it starts at h3. It is not nested under another heading container.
+    </p>
+  </div>
+</body>
+</html>

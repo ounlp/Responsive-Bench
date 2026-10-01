@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inflation on $966 — Calculator Site</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#2b2f33;
+      --muted:#6b7280;
+      --dark:#23282d;
+      --blue:#1f6feb;
+      --blue-dark:#2f67a8;
+      --panel:#f3f5f7;
+      --line:#d9dee5;
+      --field:#ffffff;
+      --field-border:#c8d0da;
+      --shade:#f1f3f5;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.45;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--dark);
+      height:59px;
+      display:flex;
+      align-items:center;
+      padding:0 10px;
+    }
+    .logo{
+      width:69px;
+      height:38px;
+      background:linear-gradient(90deg,#0a00ff,#1f2cff);
+      display:block;
+      border:0;
+    }
+
+    .page{
+      max-width:1160px;
+      margin:0 auto;
+      padding:28px 24px 0;
+    }
+
+    h1{
+      font-size:34px;
+      line-height:1.15;
+      margin:0 0 8px;
+      font-weight:700;
+    }
+    .subtitle{
+      font-size:18px;
+      font-style:italic;
+      margin:0 0 10px;
+      color:#2f3135;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:26px;
+      align-items:start;
+      margin-top:8px;
+    }
+
+    .calc-card{
+      border:1px solid #e2e6ea;
+      background:#f8f9fb;
+      padding:10px;
+      width:100%;
+    }
+    .field-group{
+      margin-bottom:16px;
+    }
+    .field-group label{
+      display:block;
+      font-size:16px;
+      margin:0 0 6px;
+    }
+    .money-input{
+      display:flex;
+      align-items:stretch;
+      width:100%;
+    }
+    .money-input .prefix{
+      width:36px;
+      border:1px solid var(--field-border);
+      border-right:0;
+      background:#eef1f4;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      border-radius:4px 0 0 4px;
+    }
+    input[type="text"], select{
+      width:100%;
+      height:38px;
+      border:1px solid var(--field-border);
+      border-radius:4px;
+      background:var(--field);
+      padding:0 12px;
+      font-size:16px;
+      color:#2d3136;
+    }
+    .money-input input{
+      border-radius:0 4px 4px 0;
+    }
+    .calc-btn{
+      width:100%;
+      border:0;
+      background:#1f6feb;
+      color:#fff;
+      font-size:17px;
+      padding:8px 12px;
+      border-radius:4px;
+      cursor:pointer;
+      min-height:38px;
+    }
+    .result{
+      font-size:20px;
+      font-weight:700;
+      margin-top:4px;
+      color:#2b2f33;
+    }
+    .result .blue{
+      color:var(--blue-dark);
+    }
+
+    .content-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-top:42px;
+      align-items:start;
+    }
+    .info-box{
+      background:var(--panel);
+      padding:14px 16px 18px;
+      min-height:236px;
+    }
+    .info-box h2,
+    .year-table-wrap h2,
+    .links-section h2{
+      margin:0 0 8px;
+      font-size:20px;
+      line-height:1.2;
+      font-weight:400;
+    }
+    .year-table-wrap h2,
+    .links-section h2{
+      font-size:28px;
+      font-weight:700;
+    }
+    .info-box p{
+      margin:0 0 22px;
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:18px;
+    }
+    th, td{
+      text-align:left;
+      padding:3px 6px;
+      line-height:1.35;
+    }
+    thead th{
+      background:#f0f0f0;
+      font-weight:400;
+    }
+    tbody tr:nth-child(even) td{
+      background:#f3f3f3;
+    }
+
+    .links-section{
+      margin-top:0;
+      padding-bottom:34px;
+    }
+    .link-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:0 24px;
+    }
+    .link-col a{
+      display:block;
+      color:#2b2f33;
+      text-decoration:none;
+      font-size:18px;
+      padding:3px 4px;
+      margin:0 0 2px;
+    }
+    .link-col a:nth-child(odd){
+      background:#f1f3f5;
+    }
+
+    .site-footer{
+      border-top:1px solid #e3e7eb;
+      background:#f7f8fa;
+      margin-top:18px;
+      position:relative;
+      min-height:56px;
+    }
+    .footer-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    .footer-inner a{
+      color:#666;
+      text-decoration:none;
+      font-size:16px;
+    }
+
+    .nav-toggle{
+      display:none;
+      position:absolute;
+      left:12px;
+      bottom:8px;
+      width:56px;
+      height:40px;
+      border:1px solid #cfd6de;
+      border-radius:4px;
+      background:#fff;
+      color:#777;
+      font-size:24px;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+    }
+    .nav-toggle span{
+      display:block;
+      line-height:1;
+    }
+    #mobile-nav{
+      position:absolute;
+      left:12px;
+      bottom:56px;
+      background:#fff;
+      border:1px solid #d7dde4;
+      border-radius:4px;
+      padding:8px 0;
+      min-width:180px;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);
+    }
+    #mobile-nav a{
+      display:block;
+      padding:8px 14px;
+      color:#444;
+      text-decoration:none;
+      font-size:16px;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 900px){
+      .page{
+        padding:26px 36px 0;
+      }
+      .hero{
+        grid-template-columns:156px 1fr;
+        gap:26px;
+      }
+      .calc-card{
+        padding:12px;
+      }
+      .calc-btn{
+        min-height:61px;
+        line-height:1.25;
+      }
+      .content-row{
+        grid-template-columns:1fr 1fr;
+        gap:22px;
+        margin-top:38px;
+      }
+      .info-box{
+        min-height:auto;
+      }
+      .year-table-wrap h2,
+      .links-section h2{
+        font-size:24px;
+      }
+      .link-grid{
+        grid-template-columns:repeat(4, 1fr);
+        gap:0 24px;
+      }
+      .link-col a{
+        font-size:17px;
+      }
+      .site-footer{
+        min-height:58px;
+      }
+      .footer-inner{
+        visibility:hidden;
+      }
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 640px){
+      .page{
+        padding:26px 12px 0;
+      }
+      h1{
+        font-size:25px;
+        margin-bottom:6px;
+      }
+      .subtitle{
+        font-size:17px;
+        margin-bottom:12px;
+      }
+      .hero{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+      .calc-card{
+        padding:10px;
+        background:#f8f9fb;
+      }
+      .result{
+        margin-top:0;
+        padding-top:0;
+        font-size:18px;
+      }
+      .content-row{
+        grid-template-columns:1fr;
+        gap:0;
+        margin-top:320px;
+      }
+      .info-box{
+        margin:0 12px;
+        padding:14px 10px 12px;
+      }
+      .info-box h2{
+        font-size:18px;
+      }
+      .info-box p{
+        font-size:17px;
+        margin-bottom:18px;
+      }
+      .year-table-wrap{
+        margin:0 12px;
+        padding-top:0;
+      }
+      .year-table-wrap h2,
+      .links-section h2{
+        font-size:20px;
+        margin-top:0;
+      }
+      table{
+        font-size:17px;
+      }
+      .links-section{
+        margin-top:48px;
+      }
+      .link-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+      }
+      .link-col a{
+        font-size:17px;
+        padding:4px 6px;
+      }
+      .site-footer{
+        margin-top:18px;
+        min-height:58px;
+      }
+      .footer-inner{
+        visibility:hidden;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <a href="#" class="logo" aria-label="Calculator Site home"></a>
+  </header>
+
+  <main id="main-content" class="page">
+    <h1>Inflation on $966</h1>
+    <p class="subtitle">What was $966 worth by year?</p>
+
+    <section class="hero" aria-label="Inflation calculator">
+      <form class="calc-card" novalidate>
+        <div class="field-group">
+          <label for="amount">Amount</label>
+          <div class="money-input">
+            <span class="prefix" aria-hidden="true">$</span>
+            <input
+              type="text"
+              id="amount"
+              name="amount"
+              value="966"
+              required
+              aria-describedby="amount-error"
+              aria-invalid="false">
+          </div>
+          <span id="amount-error" role="alert" aria-live="assertive" hidden></span>
+        </div>
+
+        <div class="field-group">
+          <label for="from">From</label>
+          <select
+            id="from"
+            name="from"
+            required
+            aria-describedby="from-error"
+            aria-invalid="false">
+            <option selected>1914</option>
+            <option>1915</option>
+            <option>1916</option>
+            <option>1917</option>
+            <option>1941</option>
+            <option>1942</option>
+            <option>1943</option>
+            <option>1944</option>
+            <option>1968</option>
+            <option>1969</option>
+            <option>1970</option>
+            <option>1971</option>
+            <option>1996</option>
+            <option>1997</option>
+            <option>1998</option>
+            <option>1999</option>
+            <option>2023</option>
+          </select>
+          <span id="from-error" role="alert" aria-live="assertive" hidden></span>
+        </div>
+
+        <div class="field-group">
+          <label for="to">To</label>
+          <select
+            id="to"
+            name="to"
+            required
+            aria-describedby="to-error"
+            aria-invalid="false">
+            <option>1914</option>
+            <option>1915</option>
+            <option>1916</option>
+            <option>1917</option>
+            <option>1941</option>
+            <option>1942</option>
+            <option>1943</option>
+            <option>1944</option>
+            <option>1968</option>
+            <option>1969</option>
+            <option>1970</option>
+            <option>1971</option>
+            <option>1996</option>
+            <option>1997</option>
+            <option>1998</option>
+            <option>1999</option>
+            <option selected>2023</option>
+          </select>
+          <span id="to-error" role="alert" aria-live="assertive" hidden></span>
+        </div>
+
+        <div aria-live="polite" id="form-status" class="sr-only"></div>
+        <button type="submit" class="calc-btn">Calculate Inflation</button>
+      </form>
+
+      <div class="result" aria-live="polite">
+        <span class="blue">$966</span> <span class="blue">in 1914</span> is worth <span class="blue">$28,670.59</span> <span class="blue">in 2023</span>
+      </div>
+    </section>
+
+    <section class="content-row" aria-label="Explanation and yearly values">
+      <div class="info-box">
+        <h2>What did $966 used to be worth?</h2>
+        <p>Use this inflation calculator to determine the value of a dollar over time. Data is used by the United States government and put into an easy to use calculator.</p>
+        <p>This calculator is useful for providing a rough estimate of costs in the past. What would the dollar cost of a university education be worth today?</p>
+      </div>
+
+      <section class="year-table-wrap" aria-label="Inflation by Year table">
+        <h2>Inflation by Year</h2>
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Year</th>
+              <th scope="col">Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1914</td>
+              <td>$966.00</td>
+            </tr>
+            <tr>
+              <td>1915</td>
+              <td>$975.66</td>
+            </tr>
+            <tr>
+              <td>1916</td>
+              <td>$994.98</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+    <section class="links-section" aria-label="Inflation of $966 by Year">
+      <h2>Inflation of $966 by Year</h2>
+      <div class="link-grid">
+        <div class="link-col">
+          <a href="#">Value of $966 in 1914</a>
+          <a href="#">Value of $966 in 1915</a>
+          <a href="#">Value of $966 in 1916</a>
+          <a href="#">Value of $966 in 1917</a>
+        </div>
+        <div class="link-col">
+          <a href="#">Value of $966 in 1941</a>
+          <a href="#">Value of $966 in 1942</a>
+          <a href="#">Value of $966 in 1943</a>
+          <a href="#">Value of $966 in 1944</a>
+        </div>
+        <div class="link-col">
+          <a href="#">Value of $966 in 1968</a>
+          <a href="#">Value of $966 in 1969</a>
+          <a href="#">Value of $966 in 1970</a>
+          <a href="#">Value of $966 in 1971</a>
+        </div>
+        <div class="link-col">
+          <a href="#">Value of $966 in 1996</a>
+          <a href="#">Value of $966 in 1997</a>
+          <a href="#">Value of $966 in 1998</a>
+          <a href="#">Value of $966 in 1999</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <div class="footer-inner">
+        <a href="#">Home</a>
+        <a href="#">Amortization</a>
+        <a href="#">Inflation</a>
+        <a href="#">Car Loan</a>
+      </div>
+    </nav>
+
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+
+    <nav id="mobile-nav" aria-label="Main" hidden>
+      <a href="#">Home</a>
+      <a href="#">Amortization</a>
+      <a href="#">Inflation</a>
+      <a href="#">Car Loan</a>
+    </nav>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    const form = document.querySelector('.calc-card');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let firstError = null;
+
+      form.querySelectorAll('[required]').forEach(input => {
+        const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+        if (!input.value.trim()) {
+          input.setAttribute('aria-invalid', 'true');
+          errorEl.textContent = `${input.labels[0].textContent.trim()} is required`;
+          errorEl.hidden = false;
+          if (!firstError) firstError = input;
+        } else {
+          input.setAttribute('aria-invalid', 'false');
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+      });
+
+      if (firstError) {
+        firstError.focus();
+      } else {
+        document.getElementById('form-status').textContent = 'Form submitted successfully.';
+      }
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured one h1 with sequential headings; added labels for all form controls; added descriptive button and link text; set html lang="en"; included required attributes and accessible error messaging for form fields.
+[B] ARIA fixes: avoided redundant landmark roles; provided unique aria-labels for multiple nav regions; removed positive tabindex via script baseline; added aria-live regions and proper aria-invalid/aria-describedby associations.
+[C] JS patterns added: implemented hamburger menu for mobile footer navigation; implemented form validation with error announcement; implemented tabindex cleanup and focus indicator support.
+-->

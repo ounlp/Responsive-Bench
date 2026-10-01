@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to identify markings on antique pewter — eHow</title>
+  <style>
+    :root{
+      --bg:#f8f5e6;
+      --hero:#ffe56f;
+      --nav:#11161f;
+      --text:#222733;
+      --muted:#5a5f68;
+      --tip:#e2c44f;
+      --tip-bg:#fbf3c9;
+      --warn:#f08a4b;
+      --warn-bg:#fff0e4;
+      --border:#d8cfaa;
+      --footer-border:#d8c86a;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:inherit}
+    .site-header{
+      background:var(--nav);
+      color:#f0d85d;
+      min-height:42px;
+      display:flex;
+      align-items:center;
+    }
+
+    .topbar{
+      width:100%;
+      max-width:980px;
+      margin:0 auto;
+      padding:0 14px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .brand-dot{
+      font-size:10px;
+      line-height:1;
+      color:#f0d85d;
+      margin-right:8px;
+    }
+
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:0;
+      color:#f0d85d;
+      font-size:1.5rem;
+      padding:.35rem .5rem;
+      margin-left:auto;
+      cursor:pointer;
+    }
+
+    .main-nav ul,
+    .mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      align-items:center;
+      gap:42px;
+    }
+
+    .main-nav a,
+    .mobile-nav a{
+      text-decoration:none;
+      color:#f0d85d;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    .hero{
+      background:var(--hero);
+      padding:150px 0 34px;
+    }
+
+    .container{
+      width:min(100%, 930px);
+      margin:0 auto;
+      padding:0 24px;
+    }
+
+    .hero-inner{
+      max-width:620px;
+      margin-left:84px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-size:40px;
+      line-height:1.08;
+      font-weight:500;
+      letter-spacing:-0.02em;
+      color:#111827;
+    }
+
+    .byline{
+      font-size:14px;
+      color:#222;
+    }
+
+    .byline a{
+      text-decoration:underline;
+    }
+
+    main{
+      min-height:400px;
+    }
+
+    .article{
+      padding:38px 0 0;
+    }
+
+    .article-inner{
+      max-width:640px;
+      margin-left:84px;
+    }
+
+    .lead{
+      font-size:22px;
+      line-height:1.38;
+      margin:0 0 120px;
+      color:#2b313b;
+    }
+
+    .article p,
+    .article li{
+      font-size:18px;
+      line-height:1.45;
+      color:#2f3440;
+    }
+
+    .article ul{
+      margin:0 0 34px 16px;
+      padding:0;
+    }
+
+    .article li{
+      padding-left:8px;
+      margin-bottom:0;
+    }
+
+    .article p{
+      margin:0 0 28px;
+    }
+
+    .spacer-large{height:0}
+    .spacer-mid{height:0}
+
+    .label{
+      font-size:14px;
+      text-transform:uppercase;
+      margin:18px 0 4px;
+      letter-spacing:.02em;
+    }
+
+    .label.tip{color:var(--tip)}
+    .label.warning{color:var(--warn)}
+
+    .callout{
+      border:2px solid;
+      border-radius:4px;
+      padding:12px 14px;
+      margin:0 0 28px;
+      background:#fff8;
+    }
+
+    .callout.tip{
+      border-color:var(--tip);
+      background:var(--tip-bg);
+    }
+
+    .callout.warning{
+      border-color:var(--warn);
+      background:var(--warn-bg);
+    }
+
+    .related-section{
+      margin-top:230px;
+      padding:0 0 34px;
+      overflow:hidden;
+    }
+
+    .tabs{
+      display:flex;
+      gap:34px;
+      align-items:flex-end;
+      margin-bottom:12px;
+      padding-left:0;
+    }
+
+    .tabs button{
+      background:none;
+      border:0;
+      padding:0;
+      font-size:16px;
+      color:#2d3138;
+      cursor:pointer;
+    }
+
+    .tabs button[aria-selected="true"]{
+      background:#171b23;
+      color:#fff7c8;
+      padding:4px 14px;
+      border-radius:2px;
+      font-size:14px;
+      line-height:1;
+    }
+
+    .tabpanel-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:10px;
+      min-width:0;
+    }
+
+    .card{
+      border:2px solid var(--border);
+      border-radius:8px;
+      background:#fbf4cf;
+      padding:16px 18px 32px;
+      min-height:90px;
+      font-size:18px;
+      color:#2d3138;
+      text-decoration:none;
+      display:block;
+    }
+
+    .promo{
+      background:var(--hero);
+      border-top:1px solid var(--footer-border);
+      border-bottom:1px solid var(--footer-border);
+      padding:42px 0 28px;
+    }
+
+    .promo p{
+      max-width:760px;
+      margin:0 auto;
+      padding:0 24px;
+      font-size:16px;
+      line-height:1.5;
+      color:#222;
+    }
+
+    .site-footer{
+      background:var(--hero);
+      padding:34px 0 0;
+    }
+
+    .footer-links{
+      border-bottom:1px solid var(--footer-border);
+      padding-bottom:28px;
+    }
+
+    .footer-grid{
+      max-width:760px;
+      margin:0 auto;
+      padding:0 24px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:40px;
+    }
+
+    .footer-col h2{
+      font-size:24px;
+      margin:0 0 14px;
+      font-weight:700;
+      color:#111;
+      visibility:hidden;
+      height:0;
+    }
+
+    .footer-col h3{
+      margin:0 0 10px;
+      font-size:24px;
+      font-weight:700;
+      color:#111;
+    }
+
+    .footer-col ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .footer-col li{
+      margin:0 0 10px;
+      font-size:16px;
+    }
+
+    .footer-col a{
+      text-decoration:none;
+      color:#111;
+    }
+
+    .copyright{
+      max-width:760px;
+      margin:0 auto;
+      padding:18px 24px 22px;
+      font-size:14px;
+      color:#7a7a58;
+    }
+
+    .cookie-close{
+      position:fixed;
+      right:0;
+      bottom:0;
+      width:34px;
+      height:34px;
+      border:0;
+      border-top-left-radius:14px;
+      background:#d8c24f;
+      color:#111;
+      font-size:22px;
+      line-height:1;
+      cursor:pointer;
+    }
+
+    .mobile-nav{
+      background:var(--nav);
+      padding:0 14px 14px;
+    }
+
+    .mobile-nav ul{
+      flex-direction:column;
+      align-items:flex-start;
+      gap:14px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .main-nav{display:none}
+      .topbar{justify-content:space-between}
+      .hero{
+        padding:66px 0 28px;
+      }
+      .hero-inner,
+      .article-inner{
+        margin-left:0;
+        max-width:none;
+      }
+      h1{
+        font-size:34px;
+        max-width:320px;
+      }
+      .lead{
+        font-size:20px;
+        margin-bottom:84px;
+      }
+      .article p,
+      .article li{
+        font-size:17px;
+      }
+      .related-section{
+        margin-top:190px;
+      }
+      .tabpanel-grid{
+        display:flex;
+        gap:8px;
+        overflow-x:auto;
+        padding-bottom:4px;
+      }
+      .card{
+        min-width:190px;
+        font-size:16px;
+      }
+      .promo p{
+        font-size:15px;
+      }
+      .footer-grid{
+        gap:24px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      #mobile-nav{display:none !important}
+    }
+
+    @media (max-width: 480px){
+      .container{padding:0 15px}
+      h1{
+        font-size:28px;
+        max-width:240px;
+      }
+      .lead{
+        font-size:18px;
+        margin-bottom:82px;
+      }
+      .article p,
+      .article li{
+        font-size:16px;
+      }
+      .article ul{
+        margin-left:10px;
+      }
+      .related-section{
+        margin-top:190px;
+      }
+      .tabs{
+        gap:28px;
+        margin-bottom:10px;
+      }
+      .tabs button{
+        font-size:13px;
+      }
+      .tabs button[aria-selected="true"]{
+        font-size:12px;
+        padding:3px 12px;
+      }
+      .card{
+        min-width:170px;
+        min-height:84px;
+        padding:14px 16px 28px;
+      }
+      .promo{
+        padding:38px 0 22px;
+      }
+      .promo p{
+        font-size:14px;
+        max-width:340px;
+      }
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+      .footer-col li{
+        font-size:14px;
+      }
+      .copyright{
+        font-size:13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="topbar">
+      <span class="brand-dot" aria-hidden="true">›</span>
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Hobbies</a></li>
+          <li><a href="#">Health</a></li>
+        </ul>
+      </nav>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Main" hidden>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Hobbies</a></li>
+        <li><a href="#">Health</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <h1>How to identify markings on antique pewter</h1>
+        <p class="byline">by Graham Rix / in <a href="#">Hobbies</a></p>
+      </div>
+    </div>
+  </section>
+
+  <main id="main-content">
+    <article class="article">
+      <div class="container">
+        <div class="article-inner">
+          <p class="lead">An alloy of tin and copper or lead, pewter was a staple of domestic wares for five centuries--from the 1300s until the 1830s. Use for everything from tankards and cutlery to candlesticks, it went out of fashion with the introduction of mechanised silver-plating, only to be revived by the handicraft-oriented Arts and Crafts and Art Nouveau movements of the last quarter of the 19th century.</p>
+
+          <ul>
+            <li>An alloy of tin and copper or lead, pewter was a staple of domestic wares for five centuries--from the 1300s until the 1830s.</li>
+          </ul>
+
+          <p>Examine the outer rim of very old pewter plates and the handles of old ale-pots and tankards. Look for impressed initials -- the "touch mark" or stamp of a registered pewterer.</p>
+
+          <p>Scour the base for other markings. On early pieces you might find an X or the word "superfine"--both indications of best quality pewter.</p>
+
+          <p>Check for a maker's mark on later pieces, especially those with a strong, commercial design. In particular, look for the names Liberty's and W.M.F.</p>
+
+          <div class="label tip">TIP</div>
+          <div class="callout tip">
+            <p style="margin:0">Largely designed by Archibald Knox, Liberty's pewter was distinguished by its hand-planished (that is, hand-hammered) finish--an effect actually produced by machine--and by its use of coloured enamels. W.M.F.</p>
+          </div>
+
+          <div class="label warning">WARNING</div>
+          <div class="callout warning">
+            <p style="margin:0">As well as Tudric pewter, Liberty's also sold a range of silverware under the brand-name Cymric. Don't confuse the two, because Cymric is rather more valuable than Tudric.</p>
+          </div>
+
+          <section class="related-section" aria-label="Related content">
+            <div role="tablist" aria-label="Related content tabs" class="tabs">
+              <button role="tab" aria-selected="true" aria-controls="panel-related" id="tab-related" tabindex="0">Related</button>
+              <button role="tab" aria-selected="false" aria-controls="panel-references" id="tab-references" tabindex="-1">References</button>
+              <button role="tab" aria-selected="false" aria-controls="panel-author" id="tab-author" tabindex="-1">Author</button>
+            </div>
+
+            <div role="tabpanel" id="panel-related" aria-labelledby="tab-related">
+              <div class="tabpanel-grid">
+                <a href="#" class="card">How to Tell If It Is Real Wedgwood</a>
+                <a href="#" class="card">How to identify royal winton pottery</a>
+                <a href="#" class="card">How do I Identify Pewter Marks?</a>
+              </div>
+            </div>
+
+            <div role="tabpanel" id="panel-references" aria-labelledby="tab-references" hidden>
+              <div class="tabpanel-grid">
+                <a href="#" class="card">How to Tell If It Is Real Wedgwood</a>
+                <a href="#" class="card">How to identify royal winton pottery</a>
+                <a href="#" class="card">How do I Identify Pewter Marks?</a>
+              </div>
+            </div>
+
+            <div role="tabpanel" id="panel-author" aria-labelledby="tab-author" hidden>
+              <div class="tabpanel-grid">
+                <a href="#" class="card">How to Tell If It Is Real Wedgwood</a>
+                <a href="#" class="card">How to identify royal winton pottery</a>
+                <a href="#" class="card">How do I Identify Pewter Marks?</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <section class="promo" aria-label="Site description">
+    <p>Whether you need to fix, build, create or learn, eHow gives you practical solutions to the problems life throws at you. We empower you to efficiently solve each new challenge and make your life better and easier.</p>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Advertise</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Privacy Notice</a></li>
+            <li><a href="#">Cookie Notice</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">© 2023 Leaf Group Ltd. / Leaf Group Media, All Rights Reserved.</div>
+  </footer>
+
+  <button class="cookie-close" aria-label="Close">×</button>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+    function activateTab(tab) {
+      tabs.forEach(t => {
+        const selected = t === tab;
+        t.setAttribute('aria-selected', String(selected));
+        t.setAttribute('tabindex', selected ? '0' : '-1');
+      });
+
+      panels.forEach(panel => {
+        panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+
+      tab.addEventListener('keydown', (e) => {
+        let newIndex = index;
+
+        if (e.key === 'ArrowRight') {
+          newIndex = (index + 1) % tabs.length;
+          tabs[newIndex].focus();
+          e.preventDefault();
+        } else if (e.key === 'ArrowLeft') {
+          newIndex = (index - 1 + tabs.length) % tabs.length;
+          tabs[newIndex].focus();
+          e.preventDefault();
+        } else if (e.key === 'Home') {
+          tabs[0].focus();
+          e.preventDefault();
+        } else if (e.key === 'End') {
+          tabs[tabs.length - 1].focus();
+          e.preventDefault();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          activateTab(tab);
+          e.preventDefault();
+        }
+      });
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const cookieClose = document.querySelector('.cookie-close');
+    cookieClose.addEventListener('click', () => {
+      cookieClose.hidden = true;
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer, and section landmarks; added skip link and main-content id; ensured one h1 with sequential headings; added lang="en"; ensured all interactive elements have descriptive labels.
+[B] ARIA fixes: used unique aria-labels for navigation and related section; avoided redundant landmark roles; used proper tab semantics; removed positive tabindex via script baseline.
+[C] JS patterns added: implemented hamburger menu for mobile; implemented tab panel for Related/References/Author; implemented tab order cleanup and focus indicator; added close behavior for visible cookie close button.
+-->

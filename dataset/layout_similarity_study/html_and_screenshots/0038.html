@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Password Protected Area — Weebs</title>
+  <style>
+    #login {
+      float: none;
+      text-align: left;
+      width: 410px;
+      margin: 0 auto;
+      margin-top: 134px;
+      background: #171717;
+      border: 4px solid #222222;
+      font-family: arial, sans-serif;
+      color: white;
+      padding: 0 0 15px 25px;
+      opacity: .85;
+      filter: alpha(opacity=85);
+      box-sizing: border-box;
+    }
+
+    #title {
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+      width: 385px;
+      border-bottom: 1px solid #888;
+      margin-bottom: 30px;
+      padding-top: 25px;
+      line-height: 1.2;
+    }
+
+    #submit-password {
+      background: #E9E9E9;
+      color: #161616;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 4px;
+      margin-left: 5px;
+    }
+
+    #p {
+      border: 2px solid red;
+      font-size: 18px;
+      padding: 5px;
+      width: 305px;
+      box-sizing: border-box;
+    }
+
+    .error-message {
+      font-size: 14px;
+      color: red;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .skip-link {
+      position: absolute;
+      transform: translateY(-100%);
+      left: 0;
+      top: 0;
+      background: #ffffff;
+      color: #000000;
+      padding: 8px 12px;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    @media (max-width: 480px) {
+      #login {
+        width: 100%;
+        margin-top: 102px;
+        padding: 0 0 15px 25px;
+      }
+
+      #title {
+        width: calc(100% - 25px);
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      #p {
+        width: 305px;
+      }
+    }
+  </style>
+  <!--[if IE]>
+  <style type="text/css">
+    #login {
+      padding: 25px 25px 15px 25px;
+    }
+
+    #p {
+      width: 270px;
+      height: 35px;
+    }
+
+    #submit-password {
+      padding: 0px;
+      margin-left: 5px;
+      height: 38px;
+      position: relative;
+      top: 2px;
+    }
+  </style>
+  <![endif]-->
+</head>
+<body style="background: #F2F2F2; text-align: center; margin: 0; padding: 0;">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content">
+    <section id="login" aria-labelledby="title">
+      <h1 id="title">This area is password protected</h1>
+      <form id="password-form" method="post" novalidate>
+        <p style="font-size: 14px;">Please enter the password below</p>
+
+        <div class="field-group">
+          <label for="p" class="sr-only">Password</label>
+          <input
+            id="p"
+            name="p"
+            type="password"
+            required
+            aria-describedby="password-error"
+            aria-invalid="false"
+            autocomplete="current-password">
+          <input id="submit-password" type="submit" value="Login">
+          <span id="password-error" class="error-message" role="alert" aria-live="assertive" hidden></span>
+        </div>
+
+        <input name="redirect" type="hidden" value="/flavors/archives/04-2013">
+        <input name="u" type="hidden" value="weebs">
+        <div aria-live="polite" id="form-status" class="sr-only"></div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    window.addEventListener('load', () => {
+      const passwordInput = document.getElementById('p');
+      if (passwordInput) {
+        passwordInput.focus();
+      }
+    });
+
+    const form = document.getElementById('password-form');
+    const passwordInput = document.getElementById('p');
+    const errorEl = document.getElementById('password-error');
+    const statusEl = document.getElementById('form-status');
+
+    if (form && passwordInput && errorEl) {
+      passwordInput.addEventListener('input', () => {
+        if (passwordInput.value.trim()) {
+          passwordInput.setAttribute('aria-invalid', 'false');
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let firstError = null;
+
+        if (!passwordInput.value.trim()) {
+          passwordInput.setAttribute('aria-invalid', 'true');
+          errorEl.textContent = 'Password is required';
+          errorEl.hidden = false;
+          firstError = passwordInput;
+        } else {
+          passwordInput.setAttribute('aria-invalid', 'false');
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+          statusEl.textContent = 'Form submitted successfully.';
+          form.submit();
+          return;
+        }
+
+        if (firstError) {
+          firstError.focus();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added <!DOCTYPE html>; added lang="en"; updated title to "Password Protected Area — Weebs"; added skip link as first body child; added <main id="main-content"> landmark; converted page title paragraph to a single descriptive <h1>; added an associated label for the password input; marked password field as required; preserved existing IDs and layout styling.
+[B] ARIA fixes: added aria-describedby and aria-invalid to the password input; added role="alert" and aria-live="assertive" to the error message; added polite live region for form status; ensured no redundant landmark roles were added; removed inline onload focus handling in favor of JS; no positive tabindex values retained.
+[C] JS patterns added: implemented C-F1/F3 form validation with error announcement and focus to first error; implemented C-K1/K3 positive tabindex cleanup and global focus indicator; added programmatic initial focus to the password field on load.
+-->

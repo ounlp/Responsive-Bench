@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Conferencing — Zoom</title>
+  <style>
+    :root {
+      --blue-dark: #1f12f3;
+      --blue: #3a86e8;
+      --text: #000000;
+      --muted: #7a7d8a;
+      --border: #f0f1f5;
+      --bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: .75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+      border: 2px solid #005FCC;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 98px 20px 40px;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-mark {
+      width: 140px;
+      height: 31px;
+      background: var(--blue-dark);
+      margin: 0 auto 48px;
+    }
+
+    h1 {
+      margin: 0 0 54px;
+      font-size: 34px;
+      line-height: 1.15;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .actions {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .action-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .action-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 128px;
+      min-width: 128px;
+      height: 44px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 400;
+      border: none;
+    }
+
+    .action-desc {
+      font-size: 17px;
+      line-height: 1.35;
+      color: #000;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .made-with {
+      margin-top: 38px;
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .made-with a {
+      color: #1a73e8;
+      text-decoration: underline;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 22px 20px 20px;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      gap: 44px;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        padding-top: 115px;
+      }
+
+      .logo-mark {
+        width: 141px;
+        margin-bottom: 46px;
+      }
+
+      h1 {
+        font-size: 31px;
+        margin-bottom: 46px;
+      }
+
+      .action-row {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 28px;
+      }
+
+      .action-desc {
+        text-align: center;
+        white-space: normal;
+        font-size: 17px;
+      }
+
+      .made-with {
+        margin-top: 24px;
+      }
+
+      footer {
+        padding-top: 18px;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 14px;
+        align-items: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding-top: 83px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .logo-mark {
+        width: 142px;
+        height: 31px;
+        margin-bottom: 44px;
+      }
+
+      h1 {
+        font-size: 29px;
+        margin-bottom: 48px;
+      }
+
+      .action-button {
+        width: 120px;
+        min-width: 120px;
+        height: 44px;
+        font-size: 17px;
+      }
+
+      .action-row {
+        margin-bottom: 24px;
+      }
+
+      .action-desc,
+      .made-with {
+        font-size: 17px;
+      }
+
+      footer {
+        padding-bottom: 0;
+      }
+
+      .footer-links a {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <main id="main-content">
+      <section class="content" aria-labelledby="page-title">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <h1 id="page-title">Video Conferencing</h1>
+
+        <div class="actions">
+          <div class="action-row">
+            <a href="#" class="action-button">Join</a>
+            <div class="action-desc">Connect to a meeting in progress</div>
+          </div>
+
+          <div class="action-row">
+            <a href="#" class="action-button">Host</a>
+            <div class="action-desc">Start a meeting</div>
+          </div>
+
+          <div class="action-row">
+            <a href="#" class="action-button">Sign in</a>
+            <div class="action-desc">Configure your account</div>
+          </div>
+        </div>
+
+        <p class="made-with">Made with <a href="#">Zoom</a></p>
+      </section>
+    </main>
+
+    <footer>
+      <nav aria-label="Footer">
+        <ul class="footer-links">
+          <li><a href="#">Getting Started</a></li>
+          <li><a href="#">Download Client</a></li>
+          <li><a href="#">Zoom Support</a></li>
+        </ul>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic main and footer landmarks; added skip link and id="main-content"; ensured exactly one h1; added lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: used unique aria-label on footer navigation; avoided redundant role attributes; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented tabindex cleanup and focus indicator baseline (C-K1/K3 only).
+-->

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLT Fish Shack - New York — Sebastian Saint - New York City Restaurants</title>
+  <style>
+    :root{
+      --bg:#f8f5ea;
+      --text:#2f241f;
+      --muted:#7f7a73;
+      --accent:#cf6a57;
+      --card:#f6d3d3;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.65;
+    }
+    a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    .skip-link { position:absolute; left:12px; top:12px; transform:translateY(-140%); background:#fff; color:#000; padding:8px 12px; z-index:1000; }
+    .skip-link:focus { transform:translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 28px 24px 40px;
+    }
+
+    .site-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:24px;
+      margin-bottom:72px;
+    }
+    .branding h1{
+      margin:0;
+      font-size:31px;
+      line-height:1.08;
+      letter-spacing:-0.4px;
+      font-weight:700;
+      text-transform:uppercase;
+      max-width:640px;
+    }
+    .tagline{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+    }
+    .search-link{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      text-transform:uppercase;
+      margin-top:16px;
+      white-space:nowrap;
+    }
+
+    .content-wrap{
+      display:grid;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap:52px;
+      align-items:start;
+    }
+
+    .sidebar{
+      padding-top:34px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+    }
+    .sidebar .share{
+      display:block;
+      margin-bottom:18px;
+      font-weight:600;
+    }
+    .sidebar h2{
+      margin:0 0 8px;
+      font-size:14px;
+      color:var(--text);
+      font-weight:600;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .sidebar ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .sidebar li{
+      margin:4px 0;
+    }
+
+    .post-date{
+      color:var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      margin:0 0 8px;
+    }
+    .post-title{
+      margin:0;
+      font-size:24px;
+      line-height:1.2;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .title-rule{
+      font-size:34px;
+      line-height:1;
+      margin:0 0 10px;
+    }
+    .post-body p{
+      margin:0 0 22px;
+      font-size:18px;
+    }
+    .post-body .venue-link{
+      margin-bottom:0;
+    }
+    .post-meta{
+      margin-top:56px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      color:var(--accent);
+    }
+    .post-meta .actions{
+      margin-bottom:10px;
+    }
+    .post-meta .actions a{
+      margin-right:18px;
+    }
+    .post-meta .labels-line{
+      line-height:1.8;
+    }
+
+    .section-label{
+      margin:42px 0 18px;
+      color:var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:16px;
+      text-transform:uppercase;
+    }
+
+    .popular-posts{
+      margin-top:8px;
+    }
+    .popular-card{
+      background:var(--card);
+      padding:92px 58px;
+      margin-bottom:46px;
+      min-height:275px;
+      display:flex;
+      align-items:center;
+    }
+    .popular-card .inner{
+      max-width:520px;
+    }
+    .popular-card .date{
+      color:#6f6a66;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+    .popular-card h3{
+      margin:0 0 10px;
+      font-size:24px;
+      line-height:1.15;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .popular-card .links{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+    }
+    .popular-card .links a{
+      margin-right:16px;
+    }
+
+    .site-footer{
+      text-align:center;
+      color:var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:14px;
+      padding:44px 0 0;
+    }
+    .site-footer p{
+      margin:0 0 14px;
+    }
+
+    .nav-toggle { display: none; }
+
+    @media (max-width: 900px){
+      .page{
+        max-width:760px;
+        padding:30px 28px 40px;
+      }
+      .site-header{
+        margin-bottom:78px;
+      }
+      .branding h1{
+        font-size:31px;
+        max-width:520px;
+      }
+      .content-wrap{
+        grid-template-columns: 1fr;
+        gap:0;
+      }
+      .sidebar{
+        display:none;
+      }
+      .post-body p{
+        font-size:18px;
+      }
+      .popular-card{
+        padding:68px 62px;
+        min-height:252px;
+      }
+      .popular-card .inner{
+        max-width:420px;
+      }
+      .popular-card h3{
+        font-size:23px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        padding:56px 30px 36px;
+      }
+      .site-header{
+        display:block;
+        margin-bottom:58px;
+      }
+      .branding h1{
+        font-size:24px;
+        line-height:1.12;
+        max-width:none;
+      }
+      .tagline{
+        font-size:13px;
+        margin-top:10px;
+      }
+      .search-link{
+        display:none;
+      }
+      .post-date{
+        font-size:15px;
+      }
+      .post-title{
+        font-size:24px;
+      }
+      .title-rule{
+        margin-bottom:8px;
+      }
+      .post-body p{
+        font-size:18px;
+        line-height:1.7;
+        margin-bottom:22px;
+      }
+      .post-meta{
+        font-size:15px;
+        line-height:1.9;
+      }
+      .section-label{
+        font-size:16px;
+        margin:42px 0 16px;
+      }
+      .popular-card{
+        padding:34px 28px;
+        min-height:172px;
+        margin-bottom:44px;
+      }
+      .popular-card .inner{
+        max-width:none;
+      }
+      .popular-card h3{
+        font-size:22px;
+      }
+      .site-footer{
+        padding-top:54px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="branding">
+        <h1>SEBASTIAN SAINT - NEW YORK CITY RESTAURANTS</h1>
+        <p class="tagline">I am a New Yorker! I live and work in Manhattan.</p>
+      </div>
+      <nav aria-label="Utility">
+        <a href="#" class="search-link">SEARCH</a>
+      </nav>
+    </header>
+
+    <div class="content-wrap">
+      <aside class="sidebar" aria-label="Post sidebar">
+        <a href="#" class="share">Share</a>
+        <h2>Labels</h2>
+        <ul>
+          <li><a href="#">BLT</a></li>
+          <li><a href="#">BLT Fish Shack</a></li>
+          <li><a href="#">fish shack</a></li>
+          <li><a href="#">manhattan</a></li>
+        </ul>
+      </aside>
+
+      <main id="main-content">
+        <article>
+          <p class="post-date">March 12, 2010</p>
+          <h2 class="post-title">BLT FISH SHACK - NEW YORK</h2>
+          <div class="title-rule">—</div>
+
+          <div class="post-body">
+            <p>Fish shacks like the BLT Fish Shack in New York are almost like taking a short trip to the New England shore towns, at least that's how I feel when I dine at these types of a restaurants. They are casual, they offer a large daily-fresh seafood selection, they also have a friendly bunch of people serving the food and they are more wallet friendly than some other seafood restaurants in the city.</p>
+
+            <p>I ate few times upstairs at the BLT Fish and I can tell you, the two only share the raw bar and the building they are in but pretty much everything else is very different from each other.</p>
+
+            <p>This was one of my solo missions so I walked in without a reservation and took a seat at the bar.</p>
+
+            <p>As usual I selected few of the daily oysters from East and West coast. You can't go wrong with half a dozen or so of this lovelies with cold beer or a light white wine like dry Riesling, Sauvignon Blanc or Pinot Grigio...</p>
+
+            <p>I would normally go for the pick-your-fish or a lobster roll but because I had a late lunch I wasn't ready to eat lot so I ordered the fish tacos which was one of the daily specials and another pint of Sam Adams. I also skipped dessert but their key lime or apple pies are absolutely amazing so remember to leave some room.</p>
+
+            <p>Check out their web site for the weekly dinner specials which range from Surf&amp;Turf to Clambake or All you can eat mussels to steamed crabs depending on the day but they all give you your money's worth.</p>
+
+            <p class="venue-link"><a href="#">BLT Fish Shack</a><br>
+            http://www.bltfish.com/shack/</p>
+
+            <p>21 West 17th Street<br>
+            (between 5th Avenue &amp; Avenue Of The Americas)<br>
+            New York, NY 10011<br>
+            [PHONE REDACTED]</p>
+          </div>
+
+          <div class="post-meta">
+            <div class="actions">
+              <a href="#">Share</a>
+              <a href="#">Email Post</a>
+            </div>
+            <div class="labels-line">
+              Labels: <a href="#">BLT</a> , <a href="#">BLT Fish Shack</a> , <a href="#">fish shack</a> , <a href="#">manhattan</a> , <a href="#">New York City</a> , <a href="#">nyc restaurants</a> , <a href="#">oysters</a> , <a href="#">raw bar</a> , <a href="#">seafood</a>
+            </div>
+          </div>
+        </article>
+
+        <section aria-label="Comments">
+          <h2 class="section-label">COMMENTS</h2>
+        </section>
+
+        <section class="popular-posts" aria-label="Popular posts">
+          <h2 class="section-label">POPULAR POSTS</h2>
+
+          <article class="popular-card">
+            <div class="inner">
+              <div class="date">October 20, 2012</div>
+              <h3><a href="#">VINE STREET CAFE IN SHELTER ISLAND, NY</a></h3>
+              <div class="links">
+                <a href="#">Share</a>
+                <a href="#">Post a Comment</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="popular-card">
+            <div class="inner">
+              <div class="date">March 24, 2011</div>
+              <h3><a href="#">SERRA MEDITERRANEAN BISTRO {CLOSED}</a></h3>
+              <div class="links">
+                <a href="#">Share</a>
+                <a href="#">Post a Comment</a>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <footer class="site-footer">
+          <p>Powered by Blogger</p>
+          <p>Theme images by Gintare Marcel</p>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential heading structure; added html lang="en"; ensured all links have descriptive text; no forms or images were visible so no form labels or img alts were needed.
+[B] ARIA fixes: used unique aria-labels for multiple nav/aside/sections where needed; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 focus indicator CSS and tabindex cleanup JavaScript only.
+-->

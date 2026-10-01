@@ -1,0 +1,56 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show interactive form controls at the top: two checkboxes with labels, a central quantity/input control with minus and plus buttons, and multiple buttons that imply submission or state-changing actions. The presence of editable input plus action buttons implies validation of entered values and constraints.",
+      "confidence": "HIGH",
+      "behavior_notes": "The numeric/text input should validate allowed values, especially when changed directly or via +/- controls. Checkbox-driven options may also need validation or state syncing before actions like print/update.",
+      "ambiguities": "The sketch does not reveal whether validation is inline, on blur, or only on action button click, nor whether the input is strictly numeric."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Both sketches contain clustered interactive controls at the top (checkboxes, input with decrement/increment, several buttons), creating a composite control area that needs coherent keyboard movement and focus handling. If any controls trigger overlays or dynamic updates, focus should remain predictable.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Programmatic focus may be needed after pressing +/- buttons, toggling options, or activating action buttons so keyboard users stay oriented. At minimum, the composite control group should preserve logical focus order and not unexpectedly move focus during updates.",
+      "ambiguities": "No explicit modal/menu is drawn, so focus management beyond standard tab order is inferred from the composite interactive toolbar rather than directly depicted."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively low-JS page centered on a recipe/print-style content layout with a small interactive control bar at the top rather than navigation-heavy behavior. Across both mobile and desktop, the main JavaScript need is handling the top control cluster—checkbox toggles, editable servings/input with increment and decrement buttons, and action buttons—while the rest of the page appears largely static reading content. Desktop does not introduce additional distinct interaction patterns beyond the same controls arranged horizontally with more space."
+}

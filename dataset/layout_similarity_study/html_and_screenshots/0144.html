@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inflatable Jewels? A Modular Method for Indexing Inflation in the Mansa Musa Game — Daniel Solis</title>
+  <meta name="theme-color" content="#EEEEEE">
+  <meta name="msapplication-navbutton-color" content="#EEEEEE">
+  <meta name="generator" content="blogger">
+  <meta property="og:url" content="">
+  <meta property="og:title" content="Inflatable Jewels? A Modular Method for Indexing Inflation in the Mansa Musa Game">
+  <meta property="og:description" content="Here's my current experiment with adjustable values for goods that get progressively inflated or deflated as Mansa Musa passes through.">
+  <meta property="og:image" content="">
+  <style type="text/css">
+   @font-face{font-family:'Merriweather';font-style:italic;font-weight:300;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4l0qyriQwlOrhSvowK_l5-eR7lXff1jvzRPA.woff2)format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:300;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4l0qyriQwlOrhSvowK_l5-eR7lXff8jvzRPA.woff2)format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:300;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4l0qyriQwlOrhSvowK_l5-eR7lXff3jvzRPA.woff2)format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:300;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4l0qyriQwlOrhSvowK_l5-eR7lXff2jvzRPA.woff2)format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:300;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4l0qyriQwlOrhSvowK_l5-eR7lXff4jvw.woff2)format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4m0qyriQwlOrhSvowK_l5-eRZDf-LHrw.woff2)format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4m0qyriQwlOrhSvowK_l5-eRZKf-LHrw.woff2)format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4m0qyriQwlOrhSvowK_l5-eRZBf-LHrw.woff2)format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4m0qyriQwlOrhSvowK_l5-eRZAf-LHrw.woff2)format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:'Merriweather';font-style:italic;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-4m0qyriQwlOrhSvowK_l5-eRZOf-I.woff2)format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:'Merriweather';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-cSZMZ-Y.woff2)format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}@font-face{font-family:'Merriweather';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-eCZMZ-Y.woff2)format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}@font-face{font-family:'Merriweather';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-cyZMZ-Y.woff2)format('woff2');unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;}@font-face{font-family:'Merriweather';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-ciZMZ-Y.woff2)format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:'Merriweather';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/merriweather/v30/u-440qyriQwlOrhSvowK_l5-fCZM.woff2)format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKcg72j00.woff2)format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKew72j00.woff2)format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKcw72j00.woff2)format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKfA72j00.woff2)format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKcQ72j00.woff2)format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCs6KVjbNBYlgoKfw72.woff2)format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jvWyNL4U.woff2)format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jtGyNL4U.woff2)format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jvGyNL4U.woff2)format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3js2yNL4U.woff2)format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jvmyNL4U.woff2)format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCjC3jsGyN.woff2)format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjvWyNL4U.woff2)format('woff2');unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjtGyNL4U.woff2)format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjvGyNL4U.woff2)format('woff2');unicode-range:U+1F00-1FFF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjs2yNL4U.woff2)format('woff2');unicode-range:U+0370-03FF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjvmyNL4U.woff2)format('woff2');unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;}@font-face{font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(//fonts.gstatic.com/s/ubuntu/v20/4iCv6KVjbNBYlgoCxCvjsGyN.woff2)format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;}
+  </style>
+  <style id="page-skin-1" type="text/css">
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+body{overflow-wrap:break-word;word-break:break-word;word-wrap:break-word}
+.hidden{display:none}
+.invisible{visibility:hidden}
+.container::after,.float-container::after{clear:both;content:"";display:table}
+.clearboth{clear:both}
+#comments .comment .comment-actions,.subscribe-popup .FollowByEmail .follow-by-email-submit{background:0 0;border:0;box-shadow:none;color:#eb1111;cursor:pointer;font-size:14px;font-weight:700;outline:0;text-decoration:none;text-transform:uppercase;width:auto}
+.dim-overlay{background-color:rgba(0,0,0,.54);height:100vh;left:0;position:fixed;top:0;width:100%}
+#sharing-dim-overlay{background-color:transparent}
+input::-ms-clear{display:none}
+.skip-navigation{background-color:#fff;box-sizing:border-box;color:#000;display:block;height:0;left:0;line-height:50px;overflow:hidden;padding-top:0;position:fixed;text-align:center;top:0;-webkit-transition:box-shadow .3s,height .3s,padding-top .3s;transition:box-shadow .3s,height .3s,padding-top .3s;width:100%;z-index:900}
+.skip-navigation:focus{box-shadow:0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12),0 2px 4px -1px rgba(0,0,0,.2);height:50px}
+#main{outline:0}
+.main-heading{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}
+.Attribution{margin-top:1em;text-align:center}
+.Attribution div{line-height:24px;margin-top:.5em}
+.Attribution .copyright,.Attribution .image-attribution{font-size:.7em;margin-top:1.5em}
+.post-body img{max-width:100%}
+.post-body iframe{max-width:100%}
+.byline{margin-right:1em}
+.byline:last-child{margin-right:0}
+.collapsible{-webkit-transition:height .3s cubic-bezier(.4,0,.2,1);transition:height .3s cubic-bezier(.4,0,.2,1)}
+.collapsible,.collapsible>summary{display:block;overflow:hidden}
+.collapsible>:not(summary){display:none}
+.collapsible[open]>:not(summary){display:block}
+.collapsible:focus,.collapsible>summary:focus{outline:0}
+.collapsible>summary{cursor:pointer;display:block;padding:0}
+.collapsible>summary::-webkit-details-marker{display:none}
+.collapsible-title{-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}
+.collapsible-title .title{-webkit-box-flex:1;-webkit-flex:1 1 auto;-ms-flex:1 1 auto;flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.flat-button{cursor:pointer;display:inline-block;font-weight:700;text-transform:uppercase;border-radius:2px;padding:8px;margin:-8px}
+.touch-icon-button{background:0 0;border:0;margin:0;outline:0;padding:0}
+.extendable .remaining-items{height:0;overflow:hidden;-webkit-transition:height .3s cubic-bezier(.4,0,.2,1);transition:height .3s cubic-bezier(.4,0,.2,1)}
+.extendable .remaining-items.expanded{height:auto}
+.extendable .show-less,.extendable .show-more{border-color:#eb1111;color:#eb1111;margin-top:8px}
+.extendable .show-less.hidden,.extendable .show-more.hidden{display:none}
+.share-buttons{background-color:#FFFFFF;border-radius:2px;box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);color:#000000;list-style:none;margin:0;padding:8px 0;position:absolute;top:-11px;min-width:200px;z-index:101}
+.share-buttons.hidden{display:none}
+.sharing-button{background:0 0;border:0;margin:0;outline:0;padding:0;cursor:pointer}
+.share-buttons li{margin:0;height:48px}
+.share-buttons li .sharing-platform-button{box-sizing:border-box;cursor:pointer;display:block;height:100%;margin-bottom:0;padding:0 16px;position:relative;width:100%;background:none;border:0;text-align:left}
+.share-buttons li .sharing-platform-button:focus,.share-buttons li .sharing-platform-button:hover{background-color:rgba(128,128,128,.1);outline:0}
+.share-buttons li .platform-sharing-text{display:block;font-size:16px;line-height:48px;white-space:nowrap;margin-left:0}
+.sidebar-container{background-color:#9E9E9E;max-width:280px;overflow-y:auto;-webkit-transition-property:-webkit-transform;transition-property:-webkit-transform;transition-property:transform;transition-property:transform,-webkit-transform;-webkit-transition-duration:.3s;transition-duration:.3s;-webkit-transition-timing-function:cubic-bezier(0,0,.2,1);transition-timing-function:cubic-bezier(0,0,.2,1);width:280px;z-index:101;-webkit-overflow-scrolling:touch}
+.dim-overlay{background-color:rgba(0,0,0,.54);z-index:100}
+body{background:#f7f7f7 none repeat scroll top left;background-color:#EEEEEE;background-size:cover;color:#000000;font:normal 400 20px Ubuntu, sans-serif;margin:0;min-height:100vh}
+h3,h3.title{color:#000000}
+.post-wrapper .post-title,.post-wrapper .post-title a,.post-wrapper .post-title a:hover,.post-wrapper .post-title a:visited{color:#000000}
+a{color:#eb1111;font-style:normal;text-decoration:none}
+a:visited{color:#dc7ae0}
+a:hover{color:#79ff42}
+blockquote{color:#424242;font:normal 400 20px Ubuntu, sans-serif;font-size:x-large;font-style:italic;font-weight:300;text-align:center}
+.page{box-sizing:border-box;display:flex;flex-direction:column;min-height:100vh;padding-bottom:1em}
+.page>*{flex:0 0 auto}
+.page>#footer{margin-top:auto}
+.bg-photo-container{overflow:hidden}
+.bg-photo-container,.bg-photo-container .bg-photo{height:464px;width:100%}
+.bg-photo-container .bg-photo{background-position:center;background-size:cover;z-index:-1}
+.centered{margin:0 auto;position:relative;width:1482px}
+.centered .main,.centered .main-container{float:left}
+.centered .main{padding-bottom:1em}
+.centered .centered-bottom::after{clear:both;content:"";display:table}
+@media (min-width:1225px) and (max-width:1482px){.centered{width:1081px}}
+@media (max-width:1224px){.centered{width:680px}}
+@media (max-width:680px){.centered{max-width:600px;width:100%}}
+.feed-view .post-wrapper.hero,.main,.main-container,.post-filter-message,.top-nav .section{width:1187px}
+@media (max-width:1224px){.feed-view .post-wrapper.hero,.main,.main-container,.post-filter-message,.top-nav .section{width:auto}}
+.widget .title{font-size:22.5px;line-height:35px;margin:22.5px 0}
+.post-title{margin:0}
+.post-title,.post-title a{font:500 24px Ubuntu, sans-serif}
+.post-body{color:#000000;display:block;font:400 16px Merriweather, Georgia, serif;line-height:32px;margin:0}
+.byline,.byline.post-author a,.byline.post-timestamp a{color:#000000;font:italic 400 12px Merriweather, Georgia, serif}
+.byline.post-author{text-transform:lowercase}
+.byline.post-author a{text-transform:none}
+#blog-pager a{color:#eb1111;font:normal 500 16px Ubuntu, sans-serif;cursor:pointer;text-transform:uppercase}
+.Label{overflow-x:hidden}
+.Label ul{list-style:none;padding:0}
+.Label li{display:inline-block;overflow:hidden;max-width:100%;text-overflow:ellipsis;white-space:nowrap}
+.Label li a,.Label span.label-size,.byline.post-labels a{background-color:rgba(238,238,238,.1);border-radius:2px;color:#eeeeee;cursor:pointer;display:inline-block;font:500 10.5px Ubuntu, sans-serif;line-height:1.5;margin:4px 4px 4px 0;padding:4px 8px;text-transform:uppercase;vertical-align:middle}
+body.item-view .byline.post-labels a{background-color:rgba(235,17,17,.1);color:#eb1111}
+.Attribution{color:#000000}
+.Attribution a,.Attribution a:hover,.Attribution a:visited{color:#eb1111}
+.centered-top-container.sticky,.sticky .centered-top{background-color:#f6f6f6}
+.centered-top{align-items:flex-start;display:flex;flex-wrap:wrap;margin:0 auto;padding-top:40px;max-width:1482px}
+.centered-top .blog-name,.centered-top .hamburger-section,.centered-top .search{margin-left:16px}
+.centered-top .return_link{flex:0 0 auto;height:24px;order:0;width:24px}
+.centered-top .blog-name{flex:1 1 0;order:1}
+.centered-top .search{flex:0 0 auto;order:2}
+.centered-top .hamburger-section{display:none;flex:0 0 auto;order:3}
+.centered-top .subscribe-section-container{flex:1 0 100%;order:4}
+.centered-top .top-nav{flex:1 0 100%;margin-top:32px;order:5}
+.sticky .centered-top{align-items:center;box-sizing:border-box;flex-wrap:nowrap;padding:0 16px}
+.sticky .centered-top .blog-name{flex:0 1 auto;max-width:none;min-width:0}
+.sticky .centered-top .search{flex:1 0 auto;order:3}
+.search{position:relative;width:250px}
+.search,.search .search-expand,.search .section{height:48px}
+.search .search-expand{background:0 0;border:0;margin:0;outline:0;padding:0;display:none;margin-left:auto}
+.search .search-expand-text{display:none}
+.search h2{display:none}
+.search .section{background-color:#FFFFFF;box-sizing:border-box;right:0;line-height:24px;overflow-x:hidden;position:absolute;top:0;transition-duration:.3s;transition-property:background-color,width;transition-timing-function:cubic-bezier(.4,0,.2,1);width:250px;z-index:8}
+.search.focused .section{background-color:#FFFFFF}
+.search form{display:flex}
+.search form .search-submit-container{align-items:center;display:flex;flex:0 0 auto;height:48px;order:0}
+.search form .search-input{flex:1 1 auto;order:1}
+.search form .search-input input{box-sizing:border-box;height:48px;width:100%}
+.search .search-submit-container input[type=submit]{display:none}
+.search .search-input input{background:0 0;border:0;color:#6d6d6d;font:normal 400 24px Merriweather, Georgia, serif;outline:0;padding:0 8px}
+.search .search-input input::placeholder{color:#000000;font:italic 400 24px Merriweather, Georgia, serif;line-height:48px}
+.centered-top .Header p{color:#6d6d6d;font:italic 300 14px Merriweather, Georgia, serif;line-height:1.7;margin:16px 0;padding:0}
+.sticky .centered-top .Header p{display:none}
+.subscribe-section-container{border-left:0;margin:0}
+.top-nav .PageList ul{list-style:none;margin:0;padding:0}
+.top-nav .PageList ul li a{background-color:#ffffff;color:#000000;display:block;height:44px;line-height:44px;overflow:hidden;padding:0 22px;text-overflow:ellipsis;vertical-align:middle}
+@media (max-width:1224px){
+.search{width:24px}
+.search .search-expand{display:block;position:relative;z-index:8}
+.search .section{background-color:rgba(255,255,255,0);width:32px;z-index:7}
+.search.focused .section{width:250px;z-index:8}
+.blog-name,.return_link,.subscribe-section-container{opacity:1;transition:opacity .3s cubic-bezier(.4,0,.2,1)}
+.centered-top.search-focused .blog-name,.centered-top.search-focused .return_link,.centered-top.search-focused .subscribe-section-container{opacity:0}
+}
+@media (max-width:745px){
+.centered-top{padding-top:16px}
+.centered-top .hamburger-section{align-items:center;display:flex;height:48px;margin-right:24px}
+.widget.Header h2{font:normal 500 36px Ubuntu, sans-serif;padding:0}
+.centered-top-container.sticky .centered-top{flex-wrap:wrap}
+.centered-top-container.sticky .blog-name{flex:1 1 0}
+.centered-top-container.sticky .search{flex:0 0 auto}
+.centered-top-container.sticky .hamburger-section,.centered-top-container.sticky .search{margin-bottom:8px;margin-top:8px}
+.centered-top-container.sticky .widget.Header h2{font-size:16px;margin:0}
+}
+body.sidebar-visible .page{overflow-y:scroll}
+.sidebar-container{float:left;margin-left:15px}
+.sidebar-container a{font:400 14px Merriweather, Georgia, serif;color:#eeeeee}
+.sidebar-container .navigation{display:none}
+.sidebar-container .widget{margin:auto 0;padding:24px}
+.sidebar-container .widget .title{font:500 16px Ubuntu, sans-serif}
+@media (max-width:680px){
+.sidebar-container{margin-left:0;max-width:none;width:100%}
+.sidebar-container .navigation{display:block;padding:24px}
+.sidebar-container .navigation+.sidebar.section{clear:both}
+.sidebar-container .widget{padding-left:32px}
+}
+.post-wrapper{background-color:#FFFFFF;position:relative}
+.item-view .page_body{padding-top:70px}
+.item-view .centered,.item-view .centered .main,.item-view .centered .main-container{width:100%}
+.item-view .main-container{max-width:890px;margin-right:15px}
+.item-view .centered-bottom{max-width:1185px;margin-left:auto;margin-right:auto;padding-right:0;padding-top:0;width:100%}
+.item-view .bg-photo{filter:blur(12px);transform:scale(1.05)}
+.item-view .bg-photo-container+.centered .centered-bottom{margin-top:0}
+.item-view .bg-photo-container+.centered .centered-bottom .post-wrapper{margin-top:-368px}
+.item-view .post-wrapper{border-radius:0;float:none;height:auto;margin:0;padding:32px;width:auto}
+.item-view .post-outer{padding:8px}
+.item-view .comments{border-radius:0;color:#000000;margin:0 8px 8px}
+.item-view .post-title{font:500 24px Ubuntu, sans-serif}
+.item-view .post-header{display:block;width:auto}
+.item-view .post-share-buttons{display:block;margin-bottom:40px;margin-top:20px}
+.item-view .post-footer{display:block}
+.item-view .post-footer a{color:#eb1111;font:normal 500 16px Ubuntu, sans-serif;cursor:pointer;text-transform:uppercase}
+.item-view .post-footer-line{border:0}
+.item-view .sidebar-container{box-sizing:border-box;margin-left:0;margin-top:15px;max-width:280px;padding:0;width:280px}
+.item-view .sidebar-container .widget{padding:15px 0}
+@media (max-width:1328px){
+.item-view .centered{width:100%}
+.item-view .centered .centered-bottom{margin-left:auto;margin-right:auto;padding-right:0;padding-top:0;width:100%}
+.item-view .centered .main-container{float:none;margin:0 auto}
+.item-view div.widget.Blog{margin:auto;width:100%}
+.item-view .post-share-buttons{margin-bottom:32px}
+.item-view .sidebar-container{float:none;margin:0;max-height:none;max-width:none;padding:0 15px;position:static;width:100%}
+.item-view .sidebar-container .section{margin:15px auto;max-width:480px}
+.item-view .sidebar-container .section .widget{position:static;width:100%}
+}
+@media (max-width:745px){
+.item-view .bg-photo,.item-view .bg-photo-container{width:auto;height:296px}
+.item-view .bg-photo-container+.centered .centered-bottom .post-wrapper{margin-top:-240px}
+.item-view .post-outer{background:#FFFFFF}
+.item-view .post-outer .post-wrapper{padding:16px}
+.item-view .comments{margin:0}
+}
+#comments{background:#FFFFFF;border-top:1px solid #eeeeee;margin-top:0;padding:32px}
+#comments .comment-form .title,#comments h2.title{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}
+#comments .comment-form{border-bottom:1px solid #eeeeee;border-top:1px solid #eeeeee}
+.item-view #comments .comment-form h3{position:absolute;clip:rect(1px,1px,1px,1px);padding:0;border:0;height:1px;width:1px;overflow:hidden}
+#comment-holder .continue{display:none}
+  </style>
+  <style id="template-skin-1" type="text/css">
+body#layout .hidden,
+body#layout .invisible {
+display: inherit;
+}
+body#layout .centered-bottom {
+position: relative;
+}
+body#layout .section.featured-post,
+body#layout .section.main,
+body#layout .section.vertical-ad-container {
+float: left;
+width: 55%;
+}
+body#layout .sidebar-container {
+display: inline-block;
+width: 39%;
+}
+body#layout .centered-bottom:after {
+clear: both;
+content: "";
+display: table;
+}
+body#layout .hamburger-menu,
+body#layout .search {
+display: none;
+}
+  </style>
+  <style>
+    .bg-photo {background-image:url(https://lh3.googleusercontent.com/blogger_img_proxy/ALY8t1t_UnR3mhtcEF4hUx3th-RRhibEjQxOebJ_NowJwjGg7CrMGcOmBiKOnsMjnVBx5E8e12-JenZmiNulMYabkJe1BQmgP1QuFtOlI0_P4SZlVPtOhvCIeviwQqN7V2b_-t2k);}
+    @media (max-width: 200px) { .bg-photo {background-image:url(https://lh3.googleusercontent.com/blogger_img_proxy/ALY8t1t_UnR3mhtcEF4hUx3th-RRhibEjQxOebJ_NowJwjGg7CrMGcOmBiKOnsMjnVBx5E8e12-JenZmiNulMYabkJe1BQmgP1QuFtOlI0_P4SZlVPtOhvCIeviwQqN7V2b_-t2k=w200);}}
+    @media (max-width: 400px) and (min-width: 201px) { .bg-photo {background-image:url(https://lh3.googleusercontent.com/blogger_img_proxy/ALY8t1t_UnR3mhtcEF4hUx3th-RRhibEjQxOebJ_NowJwjGg7CrMGcOmBiKOnsMjnVBx5E8e12-JenZmiNulMYabkJe1BQmgP1QuFtOlI0_P4SZlVPtOhvCIeviwQqN7V2b_-t2k=w400);}}
+    @media (max-width: 800px) and (min-width: 401px) { .bg-photo {background-image:url(https://lh3.googleusercontent.com/blogger_img_proxy/ALY8t1t_UnR3mhtcEF4hUx3th-RRhibEjQxOebJ_NowJwjGg7CrMGcOmBiKOnsMjnVBx5E8e12-JenZmiNulMYabkJe1BQmgP1QuFtOlI0_P4SZlVPtOhvCIeviwQqN7V2b_-t2k=w800);}}
+    @media (max-width: 1200px) and (min-width: 801px) { .bg-photo {background-image:url(https://lh3.googleusercontent.com/blogger_img_proxy/ALY8t1t_UnR3mhtcEF4hUx3th-RRhibEjQxOebJ_NowJwjGg7CrMGcOmBiKOnsMjnVBx5E8e12-JenZmiNulMYabkJe1BQmgP1QuFtOlI0_P4SZlVPtOhvCIeviwQqN7V2b_-t2k=w1200);}}
+    @media (min-width: 1201px) { .bg-photo {background-image:url(https://lh3.googleusercontent.com/blogger_img_proxy/ALY8t1t_UnR3mhtcEF4hUx3th-RRhibEjQxOebJ_NowJwjGg7CrMGcOmBiKOnsMjnVBx5E8e12-JenZmiNulMYabkJe1BQmgP1QuFtOlI0_P4SZlVPtOhvCIeviwQqN7V2b_-t2k=w1600);}}
+    .skip-link{position:absolute;transform:translateY(-100%);left:0;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible{outline:3px solid #005FCC;outline-offset:2px;border-radius:2px}
+    :focus:not(:focus-visible){outline:none}
+    .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .accordion button{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;width:100%;cursor:pointer}
+    .sharing-button-text{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+    .share-icon{display:inline-block;width:24px;height:24px;position:relative}
+    .share-icon::before{content:"↗";display:block;font-size:20px;line-height:24px;color:#eb1111;text-align:center}
+    .search-submit-button{background:none;border:0;padding:12px 8px}
+    .search-submit-button::before,.search-expand::before{content:"⌕";display:block;font-size:24px;line-height:24px;color:#000}
+    .nav-toggle{display:none}
+    @media (max-width:768px){.nav-toggle{display:block}}
+  </style>
+</head>
+<body class="item-view version-1-3-3 variant-vegeclub_light" data-js-state="loaded">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="page">
+    <div class="page_body">
+      <div class="bg-photo-container" aria-hidden="true">
+        <div class="bg-photo"></div>
+      </div>
+      <div class="centered">
+        <header class="centered-top-container sticky">
+          <div class="centered-top">
+            <a class="return_link" href="/" aria-label="Go to homepage"></a>
+            <div class="blog-name">
+              <div class="section" id="header" name="Header">
+                <div class="widget Header" data-version="2" id="Header1">
+                  <div class="header-widget">
+                    <div>
+                      <h2>
+                        <a href="/" aria-label="Daniel Solis home">Daniel Solis</a>
+                      </h2>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="search">
+              <button aria-label="Open search" class="search-expand touch-icon-button" type="button">
+                <span class="search-expand-text">Search</span>
+              </button>
+              <div class="section" id="search_top" name="Search (Top)">
+                <div class="widget BlogSearch" data-version="2" id="BlogSearch1">
+                  <h2 class="title">Search This Blog</h2>
+                  <div class="widget-content" role="search">
+                    <form action="" target="_top" novalidate>
+                      <div class="search-input">
+                        <label for="blog-search-input" class="sr-only">Search this blog</label>
+                        <input id="blog-search-input" aria-label="Search this blog" autocomplete="off" name="q" placeholder="Search this blog" type="search" value="">
+                      </div>
+                      <div class="search-submit-container">
+                        <button type="submit" class="search-submit-button" aria-label="Submit search"></button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="dim-overlay hidden" aria-hidden="true"></div>
+            </div>
+          </div>
+        </header>
+        <div class="centered-bottom">
+          <main class="main-container" id="main-content" tabindex="-1">
+            <div class="featured-post section" id="featured_post" name="Featured Post"></div>
+            <div class="main section" id="page_body" name="Page Body">
+              <div class="widget Blog" data-version="2" id="Blog1">
+                <div class="blog-posts hfeed container">
+                  <article class="post-outer-container">
+                    <div class="post-outer">
+                      <div class="post-wrapper not-hero post-5098440618396110459 image has-labels">
+                        <div class="snippet-thumbnail-container">
+                          <div class="snippet-thumbnail post-thumb-5098440618396110459" aria-hidden="true"></div>
+                        </div>
+                        <div class="slide">
+                          <div class="post">
+                            <div class="post-title-container">
+                              <a id="post-5098440618396110459-anchor" href="#post-5098440618396110459-anchor" aria-hidden="true" tabindex="-1"></a>
+                              <h1 class="post-title entry-title">Inflatable Jewels? A Modular Method for Indexing Inflation in the Mansa Musa Game</h1>
+                            </div>
+                            <div class="post-header">
+                              <div class="post-header-line-1">
+                                <span class="byline post-author vcard">
+                                  <span class="post-author-label">Posted by</span>
+                                  <span class="fn">
+                                    <a class="g-profile" rel="author" title="Author profile" href="/">
+                                      <span>Daniel Solis</span>
+                                    </a>
+                                  </span>
+                                </span>
+                                <span class="byline post-timestamp">
+                                  on
+                                  <a class="timestamp-link" rel="bookmark" title="Permanent link" href="#post-5098440618396110459-anchor">
+                                    <time class="published" datetime="2013-02-25T16:42:00-05:00" title="2013-02-25T16:42:00-05:00">February 25, 2013</time>
+                                  </a>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="post-share-buttons post-share-buttons-top">
+                              <div class="byline post-share-buttons goog-inline-block">
+                                <div class="sharing" data-title="Inflatable Jewels? A Modular Method for Indexing Inflation in the Mansa Musa Game">
+                                  <button aria-controls="sharing-popup-top" aria-expanded="false" aria-haspopup="true" aria-label="Share this post" class="sharing-button touch-icon-button" id="sharing-button-top" type="button">
+                                    <span class="share-icon" aria-hidden="true"></span>
+                                    <span class="sharing-button-text">Share this post</span>
+                                  </button>
+                                  <div class="share-buttons-container">
+                                    <ul aria-hidden="true" aria-label="Share this post" class="share-buttons hidden" id="sharing-popup-top" role="menu">
+                                      <li><button class="sharing-platform-button sharing-element-link" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Get link</span></button></li>
+                                      <li><button class="sharing-platform-button sharing-element-facebook" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Facebook</span></button></li>
+                                      <li><button class="sharing-platform-button sharing-element-twitter" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Twitter</span></button></li>
+                                      <li><button class="sharing-platform-button sharing-element-pinterest" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Pinterest</span></button></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="post-body entry-content float-container" id="post-body-5098440618396110459">
+                              <a href="rick.jpg" title="Mansa Musa value tracker image">
+                                <img alt="Diagram labeled Mansa Musa Value Tracker showing a path and player positions relative to Mansa Musa" height="258" src="rick.jpg" width="640">
+                              </a>
+                              <br><br>
+                              Here's my current experiment with adjustable values for goods that get progressively inflated or deflated as Mansa Musa passes through.
+                              <br><br>
+                              I'm considering using a set of cards to create a winding connected path representing Mali to Mecca.
+                              <br><br>
+                              Basically, the Musa meeple acts as a progress bar and wherever you are to the east or west of that progress bar indicates the relative value of your goods. After all, checking an inflation line chart isn't exactly a fun time for most people.
+                              <br><br>
+                              I wanted to index the value of goods to Mansa Musa's progression across the track. Every so often, there is a demarcation space in the track that is used as the increment of inflation. In the final game, these might represent cities.
+                              <br><br>
+                              The base value of goods are as follows:
+                              <br><br>
+                              <span style='font-family: "Courier New",Courier,monospace;'>
+                                ARCH.:&nbsp;&nbsp;&nbsp; 3<br>
+                                MATH:&nbsp;&nbsp;&nbsp;&nbsp; 2<br>
+                                ART:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1<br>
+                                SPICES:&nbsp;&nbsp; 1<br>
+                                STONE:&nbsp;&nbsp;&nbsp; 2<br>
+                                JEWELS:&nbsp;&nbsp; 3
+                              </span>
+                              <br><br>
+                              If you're to the WEST of Musa, the value of the first three goods is increased while the other three are decreased.
+                              <br><br>
+                              In the example above, the blue player is two hexes west of Musa, so the value of goods would be:
+                              <br><br>
+                              <span style='font-family: "Courier New",Courier,monospace;'>
+                                ARCH.: &nbsp;&nbsp; 5<br>
+                                MATH: &nbsp;&nbsp;&nbsp; 4<br>
+                                ART: &nbsp;&nbsp;&nbsp;&nbsp; 3<br>
+                                SPICES: &nbsp; 0<br>
+                                STONE: &nbsp;&nbsp; 0<br>
+                                JEWELS: &nbsp; 1
+                              </span>
+                              <br><br>
+                              If you're to the EAST of Musa, the value of the first three goods is decreased while the other three are increased.
+                              <br><br>
+                              In the example above, the orange player is one hex east of Musa, so the value of goods would be:
+                              <br><br>
+                              <span style='font-family: "Courier New",Courier,monospace;'>
+                                ARCH.: &nbsp;&nbsp; 2<br>
+                                MATH: &nbsp;&nbsp;&nbsp; 1<br>
+                                ART: &nbsp;&nbsp;&nbsp;&nbsp; 0<br>
+                                SPICES:&nbsp;&nbsp; 2<br>
+                                STONE: &nbsp;&nbsp; 3<br>
+                                JEWELS: &nbsp; 4
+                              </span>
+                              <br><br>
+                              For now, goods cannot be worth less than zero, though I am amused by the idea that if you're far west of Musa, people would actually pay you to take away their jewels. It's an idea worth considering if it's not too mentally burdensome in actual play.
+                              <br><br>
+                              For replay value, the map cards could be shuffled or flipped for alternate layouts. More cards could be added for more players, too.
+                            </div>
+                            <div class="post-footer container">
+                              <div class="post-footer-line post-footer-line-1">
+                                <span class="byline post-icons">
+                                  <span class="item-action">
+                                    <a title="Email this post" href="mailto:?subject=Inflatable%20Jewels%3F%20A%20Modular%20Method%20for%20Indexing%20Inflation%20in%20the%20Mansa%20Musa%20Game&amp;body=Inflatable%20Jewels%3F%20A%20Modular%20Method%20for%20Indexing%20Inflation%20in%20the%20Mansa%20Musa%20Game">Email this post</a>
+                                  </span>
+                                </span>
+                              </div>
+                              <div class="post-footer-line post-footer-line-2">
+                                <span class="byline post-labels">
+                                  <span class="byline-label sr-only">Labels</span>
+                                  <a rel="tag" href="#">lab</a>
+                                  <a rel="tag" href="#">Mansa Musa</a>
+                                </span>
+                              </div>
+                              <div class="post-footer-line post-footer-line-3"></div>
+                              <div class="post-share-buttons post-share-buttons-bottom">
+                                <div class="byline post-share-buttons goog-inline-block">
+                                  <div class="sharing" data-title="Inflatable Jewels? A Modular Method for Indexing Inflation in the Mansa Musa Game">
+                                    <button aria-controls="sharing-popup-bottom" aria-expanded="false" aria-haspopup="true" aria-label="Share this post" class="sharing-button touch-icon-button" id="sharing-button-bottom" type="button">
+                                      <span class="share-icon" aria-hidden="true"></span>
+                                      <span class="sharing-button-text">Share this post</span>
+                                    </button>
+                                    <div class="share-buttons-container">
+                                      <ul aria-hidden="true" aria-label="Share this post" class="share-buttons hidden" id="sharing-popup-bottom" role="menu">
+                                        <li><button class="sharing-platform-button sharing-element-link" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Get link</span></button></li>
+                                        <li><button class="sharing-platform-button sharing-element-facebook" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Facebook</span></button></li>
+                                        <li><button class="sharing-platform-button sharing-element-twitter" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Twitter</span></button></li>
+                                        <li><button class="sharing-platform-button sharing-element-pinterest" role="menuitem" tabindex="-1" type="button"><span class="platform-sharing-text">Pinterest</span></button></li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <section class="comments embed" data-num-comments="0" id="comments" aria-label="Comments">
+                      <a id="comments-anchor" href="#comments-anchor" aria-hidden="true" tabindex="-1"></a>
+                      <h2 class="title">Comments</h2>
+                      <div id="Blog1_comments-block-wrapper"></div>
+                      <footer class="footer">
+                        <div class="comment-form">
+                          <a id="comment-form-anchor" href="#comment-form-anchor" aria-hidden="true" tabindex="-1"></a>
+                          <h3 id="comment-post-message">Post a Comment</h3>
+                          <a id="comment-editor-src" href="#comment-editor-src" aria-hidden="true" tabindex="-1"></a>
+                        </div>
+                      </footer>
+                    </section>
+                  </article>
+                </div>
+              </div>
+
+              <section class="widget BlogArchive" data-version="2" id="BlogArchive1" aria-label="Archive">
+                <div class="accordion">
+                  <h2>
+                    <button aria-expanded="true" aria-controls="panel-archive-main" id="accordion-archive-main" type="button">
+                      Archive
+                    </button>
+                  </h2>
+                  <div id="panel-archive-main" role="region" aria-labelledby="accordion-archive-main">
+                    <div class="widget-content">
+                      <div id="ArchiveList">
+                        <div id="BlogArchive1_ArchiveList" class="extendable">
+                          <div class="first-items">
+                            <ul class="hierarchy">
+                              <li class="archivedate">
+                                <div class="hierarchy-title">
+                                  <a class="post-count-link" href="#">2023 <span class="post-count">15</span></a>
+                                </div>
+                                <div class="hierarchy-content">
+                                  <ul class="hierarchy">
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">May <span class="post-count">2</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">March <span class="post-count">3</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">February <span class="post-count">5</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">January <span class="post-count">5</span></a></div><div class="hierarchy-content"></div></li>
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="remaining-items">
+                            <ul class="hierarchy">
+                              <li class="archivedate">
+                                <div class="hierarchy-title"><a class="post-count-link" href="#">2022 <span class="post-count">18</span></a></div>
+                                <div class="hierarchy-content">
+                                  <ul class="hierarchy">
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">December <span class="post-count">7</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">November <span class="post-count">11</span></a></div><div class="hierarchy-content"></div></li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li class="archivedate">
+                                <div class="hierarchy-title"><a class="post-count-link" href="#">2017 <span class="post-count">4</span></a></div>
+                                <div class="hierarchy-content">
+                                  <ul class="hierarchy">
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">July <span class="post-count">1</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">May <span class="post-count">1</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">April <span class="post-count">1</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">January <span class="post-count">1</span></a></div><div class="hierarchy-content"></div></li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li class="archivedate">
+                                <div class="hierarchy-title"><a class="post-count-link" href="#">2016 <span class="post-count">60</span></a></div>
+                                <div class="hierarchy-content">
+                                  <ul class="hierarchy">
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">December <span class="post-count">1</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">October <span class="post-count">3</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">September <span class="post-count">5</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">August <span class="post-count">2</span></a></div><div class="hierarchy-content"></div></li>
+                                  </ul>
+                                </div>
+                              </li>
+                              <li class="archivedate">
+                                <div class="hierarchy-title"><a class="post-count-link" href="#">2015 <span class="post-count">110</span></a></div>
+                                <div class="hierarchy-content">
+                                  <ul class="hierarchy">
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">December <span class="post-count">8</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">November <span class="post-count">10</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">October <span class="post-count">8</span></a></div><div class="hierarchy-content"></div></li>
+                                    <li class="archivedate"><div class="hierarchy-title"><a class="post-count-link" href="#">September <span class="post-count">5</span></a></div><div class="hierarchy-content"></div></li>
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <button class="show-more flat-button" type="button">Show more</button>
+                          <button class="show-less hidden flat-button" type="button">Show less</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </main>
+
+          <div class="vertical-ad-container no-items section" id="ads" name="Ads"></div>
+
+          <aside class="sidebar-container container" aria-label="Past posts sidebar">
+            <div class="section" id="sidebar_item" name="Sidebar (Item Page)">
+              <section class="widget BlogArchive" data-version="2" id="BlogArchive2" aria-label="Past posts">
+                <div class="accordion">
+                  <h2>
+                    <button aria-expanded="true" aria-controls="panel-past-posts" id="accordion-past-posts" type="button">
+                      Past Posts
+                    </button>
+                  </h2>
+                  <div id="panel-past-posts" role="region" aria-labelledby="accordion-past-posts">
+                    <div class="widget-content">
+                      <div id="ArchiveList-sidebar">
+                        <div id="BlogArchive2_ArchiveList" class="extendable">
+                          <div class="first-items">
+                            <ul class="flat">
+                              <li class="archivedate"><a href="#">May 2023 <span class="post-count">2</span></a></li>
+                              <li class="archivedate"><a href="#">March 2023 <span class="post-count">3</span></a></li>
+                              <li class="archivedate"><a href="#">February 2023 <span class="post-count">5</span></a></li>
+                              <li class="archivedate"><a href="#">January 2023 <span class="post-count">5</span></a></li>
+                            </ul>
+                          </div>
+                          <div class="remaining-items">
+                            <ul class="flat">
+                              <li class="archivedate"><a href="#">December 2016 <span class="post-count">1</span></a></li>
+                              <li class="archivedate"><a href="#">October 2016 <span class="post-count">3</span></a></li>
+                              <li class="archivedate"><a href="#">September 2016 <span class="post-count">5</span></a></li>
+                              <li class="archivedate"><a href="#">August 2016 <span class="post-count">2</span></a></li>
+                            </ul>
+                          </div>
+                          <button class="show-more flat-button" type="button">Show more</button>
+                          <button class="show-less hidden flat-button" type="button">Show less</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </aside>
+          <div class="dim-overlay hidden" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer section" id="footer" name="Footer">
+      <div class="widget Attribution" data-version="2" id="Attribution1">
+        <div class="widget-content">
+          <div class="blogger">
+            <a rel="nofollow" href="https://www.blogger.com/">Powered by Blogger</a>
+          </div>
+          <div class="copyright">&copy; 2010 Daniel Solis (unless otherwise noted)</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="dim-overlay hidden" id="subscribe-dim-overlay" aria-hidden="true"></div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    document.querySelectorAll('.accordion button[aria-controls]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const panel = document.getElementById(btn.getAttribute('aria-controls'));
+        btn.setAttribute('aria-expanded', String(!expanded));
+        panel.hidden = expanded;
+      });
+    });
+
+    document.querySelectorAll('.accordion button[aria-controls]').forEach(btn => {
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+      if (btn.getAttribute('aria-expanded') === 'false') {
+        panel.hidden = true;
+      }
+    });
+
+    document.querySelectorAll('.extendable').forEach(container => {
+      const remaining = container.querySelector('.remaining-items');
+      const showMore = container.querySelector('.show-more');
+      const showLess = container.querySelector('.show-less');
+      if (!remaining || !showMore || !showLess) return;
+
+      remaining.classList.remove('expanded');
+      showLess.classList.add('hidden');
+
+      showMore.addEventListener('click', () => {
+        remaining.classList.add('expanded');
+        showMore.classList.add('hidden');
+        showLess.classList.remove('hidden');
+      });
+
+      showLess.addEventListener('click', () => {
+        remaining.classList.remove('expanded');
+        showLess.classList.add('hidden');
+        showMore.classList.remove('hidden');
+      });
+    });
+
+    const searchContainer = document.querySelector('.search');
+    const searchExpand = document.querySelector('.search-expand');
+    const searchInput = document.getElementById('blog-search-input');
+    const searchOverlay = document.querySelector('.search .dim-overlay');
+    const centeredTop = document.querySelector('.centered-top');
+
+    function closeSearch() {
+      if (!searchContainer) return;
+      searchContainer.classList.remove('focused');
+      if (centeredTop) centeredTop.classList.remove('search-focused');
+      if (searchOverlay) searchOverlay.classList.add('hidden');
+      if (searchExpand) searchExpand.setAttribute('aria-label', 'Open search');
+    }
+
+    function openSearch() {
+      if (!searchContainer) return;
+      searchContainer.classList.add('focused');
+      if (centeredTop) centeredTop.classList.add('search-focused');
+      if (searchOverlay) searchOverlay.classList.remove('hidden');
+      if (searchExpand) searchExpand.setAttribute('aria-label', 'Close search');
+      if (searchInput) searchInput.focus();
+    }
+
+    if (searchExpand) {
+      searchExpand.addEventListener('click', () => {
+        const isOpen = searchContainer.classList.contains('focused');
+        if (isOpen) {
+          closeSearch();
+        } else {
+          openSearch();
+        }
+      });
+    }
+
+    if (searchOverlay) {
+      searchOverlay.addEventListener('click', closeSearch);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSearch();
+      }
+    });
+
+    document.querySelectorAll('.sharing').forEach(sharing => {
+      const button = sharing.querySelector('.sharing-button');
+      const menu = sharing.querySelector('.share-buttons');
+      const items = menu ? Array.from(menu.querySelectorAll('[role="menuitem"]')) : [];
+      if (!button || !menu) return;
+
+      function closeMenu(returnFocus = false) {
+        button.setAttribute('aria-expanded', 'false');
+        menu.classList.add('hidden');
+        menu.setAttribute('aria-hidden', 'true');
+        items.forEach(item => item.setAttribute('tabindex', '-1'));
+        if (returnFocus) button.focus();
+      }
+
+      function openMenu() {
+        button.setAttribute('aria-expanded', 'true');
+        menu.classList.remove('hidden');
+        menu.setAttribute('aria-hidden', 'false');
+        items.forEach(item => item.setAttribute('tabindex', '-1'));
+      }
+
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.sharing').forEach(other => {
+          if (other !== sharing) {
+            const otherButton = other.querySelector('.sharing-button');
+            const otherMenu = other.querySelector('.share-buttons');
+            if (otherButton && otherMenu) {
+              otherButton.setAttribute('aria-expanded', 'false');
+              otherMenu.classList.add('hidden');
+              otherMenu.setAttribute('aria-hidden', 'true');
+              other.querySelectorAll('[role="menuitem"]').forEach(item => item.setAttribute('tabindex', '-1'));
+            }
+          }
+        });
+        if (expanded) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          openMenu();
+          if (items.length) {
+            items[0].setAttribute('tabindex', '0');
+            items[0].focus();
+          }
+        } else if (e.key === 'Escape') {
+          closeMenu(true);
+        }
+      });
+
+      items.forEach((item, index) => {
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            const next = items[(index + 1) % items.length];
+            next.focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            const prev = items[(index - 1 + items.length) % items.length];
+            prev.focus();
+          } else if (e.key === 'Escape') {
+            e.preventDefault();
+            closeMenu(true);
+          }
+        });
+      });
+
+      menu.addEventListener('click', (e) => e.stopPropagation());
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.sharing').forEach(sharing => {
+        const button = sharing.querySelector('.sharing-button');
+        const menu = sharing.querySelector('.share-buttons');
+        if (button && menu) {
+          button.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          menu.setAttribute('aria-hidden', 'true');
+          sharing.querySelectorAll('[role="menuitem"]').forEach(item => item.setAttribute('tabindex', '-1'));
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: updated title to page-specific format; added skip link as first body child; added id="main-content" to main; ensured exactly one h1 for the article title; converted site title and other section titles to sequential h2/h3 structure; added meaningful alt text to the post image; added explicit label for search input; added descriptive text or labels to buttons and links; ensured html lang="en".
+[B] ARIA fixes: removed redundant landmark roles from header/main/footer; added aria-labels to multiple section/aside regions where needed; removed positive tabindex usage; added proper aria-controls/expanded states for accordion and share menus; ensured share menu items are keyboard reachable.
+[C] JS patterns added: implemented accordion behavior for Archive and Past Posts; implemented extendable show more/show less behavior; implemented search expand/collapse behavior implied by responsive screenshots; implemented share menu toggle with keyboard support and outside-click/Escape close; applied global positive tabindex cleanup and focus-visible styling.
+-->

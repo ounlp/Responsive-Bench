@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a distinct header/navigation region separated from the page body by horizontal rules, suggesting a persistent top bar that remains available while long article content scrolls beneath it.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top navigation/header should likely stay fixed or become fixed after scroll so branding and primary actions remain accessible across the long content page.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state or duplicated compact header, so it could also be a static header; stickiness is inferred from the long-form layout."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch has a compact top bar with a small control area at the right side rather than full horizontal navigation, implying a collapsed mobile navigation trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target should open and close a mobile nav panel or drawer containing the primary site links that are not visible inline on the small viewport.",
+      "ambiguities": "The icon is not explicitly drawn as three lines, so this may alternatively be another header action; however a hidden mobile nav is strongly implied by the simplified header."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a prominent rectangular field/control in the upper-right header area, visually consistent with a search box or search-triggering input.",
+      "confidence": "LOW",
+      "behavior_notes": "If this is a search field, it needs input handling and either submit behavior or live filtering/navigation to results.",
+      "ambiguities": "The rectangle could also be a CTA button rather than search; the sketch alone does not label it."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly content-driven article page with relatively light JavaScript needs. The strongest cross-viewport behavior is top-level navigation persistence, especially given the long scrolling layout. Mobile likely collapses navigation into a menu trigger, while desktop may expose an additional header control that could be search or a CTA. No clear evidence appears for tabs, accordions, modals, infinite loading, or other richer dynamic widgets in the drawn content blocks."
+}

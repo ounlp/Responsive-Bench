@@ -1,0 +1,33 @@
+{
+  "$schema": "./eval.schema.json",
+  "eval_id": "eval_accessible_js_block_f1",
+  "run_id": "run_accessible_js",
+  "dataset_root": "dataset",
+  "ids": null,
+  "metrics": [
+    "layout_similarity",
+    "layout_block_f1",
+    "layout_block_f1_rra"
+  ],
+  "playwright": {
+    "headless": true,
+    "timeout_ms": 30000
+  },
+  "judge": {
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "temperature": 0.0,
+    "max_tokens": 1200,
+    "prompt": "llm_judge/unified_responsive_v1",
+    "include_sketches": true
+  },
+  "output": {
+    "overwrite": true
+  },
+  "concurrency": {
+    "max_workers": 8
+  },
+  "caching": {
+    "skip_if_metrics_exist": false
+  }
+}

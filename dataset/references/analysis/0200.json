@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "The sketches depict a largely static article/detail page with text blocks, a large hero image, card-like related content or sidebar modules, and footer content, but they do not visibly indicate any explicit JavaScript-driven controls such as a hamburger, dropdown, tabs, accordion triggers, modal launchers, search field, load-more control, or sticky/fixed navigation treatment. While the reference HTML suggests a mobile menu toggle and comment embed may exist in the real implementation, those behaviors are not inferable from the sketches alone, so no JS patterns can be confidently attributed based on the drawings."
+}

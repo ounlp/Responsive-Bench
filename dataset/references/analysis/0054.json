@@ -1,0 +1,123 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a compact input/control area in the header region that reads as a search field with an adjacent action button or submit affordance.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and submission, likely via button click and Enter key. If implemented as site search, focus and submit behavior are required even if no live suggestions are shown.",
+      "ambiguities": "The sketch does not make clear whether results update live or only after explicit submit."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "both",
+      "visual_evidence": "A small boxed control with a dropdown-like indicator appears near the header utility area in both views, implying a selectable option such as currency or locale.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If styled beyond native browser appearance, it needs open/close state, selected option state, and keyboard interaction. Changing the selection likely updates pricing or page context.",
+      "ambiguities": "Could be a native select styled minimally rather than a fully custom combobox."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses header controls and does not show a full horizontal navigation bar, implying a collapsed navigation trigger rather than always-visible menu items.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should reveal and hide the primary navigation panel. It should expose current state, allow dismissal, and preserve access to nested navigation items.",
+      "ambiguities": "The hamburger icon itself is not explicitly drawn; this is inferred from the reduced mobile header and the desktop-only visible nav structure."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a horizontal navigation strip with multiple top-level items, a common pattern for menus that reveal subcategories.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level nav items likely open submenus on hover or click. Active/open state should be visually indicated and submenus should remain navigable by keyboard.",
+      "ambiguities": "The sketch does not explicitly draw submenu panels, so the dropdown behavior is inferred from the multi-item top navigation structure."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a strong header/navigation region at the top followed by long vertically scrolling content, suggesting the header or nav may remain accessible while scrolling.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented, the header/nav should pin after scroll and remain usable without obscuring content. Sticky behavior is especially plausible on mobile due to long content stacks.",
+      "ambiguities": "The sketches alone do not explicitly indicate fixed positioning; this is only a plausible implementation implication."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "both",
+      "visual_evidence": "Header utility areas imply compact status elements typical of cart count, selected currency, or other changing summary information; product grids also imply add-to-cart related count updates elsewhere on the page.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Any cart count, price total, or similar status summary should update dynamically after user actions and be announced accessibly if changed without full page reload.",
+      "ambiguities": "The sketch does not explicitly label the status text, so the exact live-updating element is inferred from common ecommerce header patterns."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a long stacked product/content list extending well beyond the initial viewport, implying progressive reveal or additional content retrieval for smaller screens.",
+      "confidence": "LOW",
+      "behavior_notes": "A load-more control could append additional product cards or content blocks below the initial set. Loading state and appended content announcement would be needed.",
+      "ambiguities": "The sketch may simply depict a long static page rather than an explicit load-more interaction."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict very long pages with substantial vertical scrolling, which commonly implies a return-to-top affordance for usability.",
+      "confidence": "LOW",
+      "behavior_notes": "A button may appear after scrolling and return the user to the top smoothly or instantly. It should be keyboard reachable and not obstruct content.",
+      "ambiguities": "No explicit top button is drawn in the sketches."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The header search control and selectable utility control together imply user-submittable inputs that require basic validation or state handling before submission.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At minimum, empty or malformed submissions should be handled gracefully. If the select triggers a form submission, invalid or unavailable states should be prevented.",
+      "ambiguities": "No full checkout or contact form is visible in the sketches, so this is limited to lightweight validation around visible controls."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "F1",
+    "F2",
+    "F4",
+    "D3",
+    "D4",
+    "S2",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F3",
+    "D1",
+    "D2",
+    "M1",
+    "M2",
+    "M3",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "custom_select",
+      "live_region",
+      "form_validation",
+      "load_more",
+      "sticky_nav",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "search_input",
+      "custom_select",
+      "live_region",
+      "form_validation",
+      "sticky_nav",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly standard ecommerce-style interface with modest but important JavaScript needs concentrated in header/navigation behavior and utility controls rather than complex in-page widgets. Mobile likely relies on collapsed navigation and possibly progressive content reveal, while desktop emphasizes horizontal navigation with likely dropdowns and richer always-visible utility controls. Most other visible sections appear content-driven and card-based, with limited evidence for tabs, accordions, or modal flows."
+}

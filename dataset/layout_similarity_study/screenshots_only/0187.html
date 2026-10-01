@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2000 Ford F-150 — Car-from-UK.com</title>
+  <style>
+    :root{
+      --blue:#1200ff;
+      --link:#4b63d8;
+      --red:#e10000;
+      --light:#eef1f7;
+      --border:#d9d9d9;
+      --text:#111;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      font-size:12px;
+      line-height:1.2;
+    }
+    a{color:var(--link); text-decoration:underline}
+    img{max-width:100%; display:block}
+    .skip-link{position:absolute; transform:translateY(-100%); left:8px; top:8px; background:#fff; color:#000; padding:8px 10px; z-index:1000; border:1px solid #000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) { outline: none; }
+
+    .site-header{
+      border-bottom:1px solid #e5e5e5;
+      padding:0 15px 10px;
+    }
+    .header-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      min-height:89px;
+    }
+    .logo{
+      width:130px;
+      height:89px;
+      background:var(--blue);
+      flex:0 0 auto;
+    }
+    .search-wrap{
+      padding-top:22px;
+      text-align:right;
+      min-width:220px;
+    }
+    .search-wrap label{
+      display:block;
+      font-size:16px;
+      margin-bottom:10px;
+    }
+    .search-box{
+      display:inline-flex;
+      align-items:center;
+      border:1px solid #bfbfbf;
+      border-radius:6px;
+      overflow:hidden;
+      background:#fff;
+      height:25px;
+    }
+    .search-box input{
+      border:0;
+      width:100px;
+      height:23px;
+      padding:2px 6px;
+      font-size:12px;
+    }
+    .search-box button{
+      border:0;
+      background:#fff;
+      width:34px;
+      height:23px;
+      cursor:pointer;
+      font-size:18px;
+      line-height:1;
+    }
+
+    .page{
+      max-width:953px;
+      margin:0 auto;
+      padding:230px 8px 0;
+    }
+    .layout{
+      display:grid;
+      grid-template-columns:130px 1fr 223px;
+      gap:14px;
+      align-items:start;
+    }
+
+    .sidebar-box{
+      margin-bottom:14px;
+    }
+    .sidebar-title{
+      color:var(--red);
+      font-weight:700;
+      margin:0 0 6px;
+    }
+    .side-list, .menu-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+      background:#f2f4f8;
+    }
+    .side-list li, .menu-list li{
+      border-bottom:1px solid #fff;
+      padding:4px 6px;
+      min-height:18px;
+    }
+    .flag{
+      display:inline-block;
+      width:15px;
+      height:17px;
+      background:var(--blue);
+      vertical-align:middle;
+      margin-right:8px;
+    }
+    .menu-list a{color:#222}
+    .menu-list .strong a{font-weight:700}
+
+    .breadcrumbs{
+      margin-bottom:8px;
+      color:#333;
+    }
+    .breadcrumbs a{font-size:11px}
+    h1{
+      font-size:18px;
+      margin:0 0 10px;
+      font-weight:400;
+    }
+    .sale-price{
+      color:var(--red);
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+    .sale-price .offer{
+      font-weight:700;
+      margin-left:6px;
+      white-space:nowrap;
+    }
+    .sale-type{
+      margin-bottom:12px;
+      font-size:14px;
+    }
+    .sale-type strong{font-style:italic}
+    h2{
+      font-size:16px;
+      margin:0 0 14px;
+      font-weight:700;
+    }
+
+    .spec-gallery{
+      display:grid;
+      grid-template-columns:1fr 223px;
+      gap:8px;
+      align-items:start;
+    }
+    .specs{
+      padding-right:8px;
+    }
+    .spec-row{
+      display:grid;
+      grid-template-columns:90px 1fr;
+      margin-bottom:8px;
+      font-size:14px;
+    }
+    .spec-row .value{font-weight:700}
+    .spec-row .question{color:var(--red)}
+    .rating-box{
+      border-top:1px solid #ececec;
+      border-bottom:1px solid #ececec;
+      padding:12px 0;
+      margin-top:18px;
+      font-size:14px;
+    }
+    .rating-bar{
+      display:inline-block;
+      width:42px;
+      height:10px;
+      background:var(--blue);
+      vertical-align:middle;
+      margin:0 4px;
+    }
+
+    .main-photo{
+      width:223px;
+      height:150px;
+      background:var(--blue);
+      margin-bottom:8px;
+    }
+    .thumb-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 49px);
+      gap:8px;
+      width:223px;
+    }
+    .thumb{
+      width:49px;
+      height:49px;
+      background:var(--blue);
+    }
+
+    .description{
+      margin:28px 0 12px;
+      font-size:14px;
+    }
+    .buy-title{
+      color:var(--red);
+      font-size:16px;
+      font-weight:700;
+      margin:0 0 10px;
+    }
+    .comments-title{
+      font-size:14px;
+      font-weight:700;
+      margin:0 0 6px;
+    }
+    .comment-box{
+      background:#f3f3f3;
+      padding:8px;
+      border:1px solid #eee;
+      max-width:556px;
+    }
+    .comment-grid{
+      display:grid;
+      grid-template-columns:52px 1fr 50px 1fr;
+      gap:6px 8px;
+      align-items:start;
+      font-size:12px;
+    }
+    .comment-grid label{
+      align-self:center;
+    }
+    .comment-grid input[type="text"],
+    .comment-grid input[type="email"],
+    .comment-grid textarea{
+      width:100%;
+      border:1px solid #a9a9a9;
+      font-size:12px;
+      padding:2px 4px;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+    .comment-grid textarea{
+      height:69px;
+      resize:vertical;
+      grid-column:2 / 5;
+    }
+    .captcha-row{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      flex-wrap:wrap;
+      margin-top:4px;
+    }
+    .captcha-box{
+      display:inline-flex;
+      gap:3px;
+      vertical-align:middle;
+    }
+    .captcha-box span{
+      width:8px;
+      height:8px;
+      background:var(--blue);
+      display:inline-block;
+    }
+    .comment-actions{
+      text-align:center;
+      margin-top:8px;
+    }
+    .comment-actions button{
+      font-size:12px;
+      padding:2px 10px;
+      cursor:pointer;
+    }
+    .error{
+      color:#b00020;
+      font-size:11px;
+      display:block;
+      margin-top:2px;
+    }
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    .section-title{
+      font-size:16px;
+      font-weight:700;
+      margin:14px 0 12px;
+    }
+    .auction-grid{
+      border:1px solid #e5e5e5;
+      padding:8px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px 20px;
+      max-width:556px;
+    }
+    .auction-card .img{
+      height:146px;
+      background:var(--blue);
+      margin-bottom:8px;
+    }
+    .auction-card .price{
+      font-size:14px;
+      margin-bottom:6px;
+    }
+    .auction-card .price strong{
+      color:var(--red);
+      font-size:16px;
+    }
+
+    .latest-list{
+      max-width:556px;
+    }
+    .latest-item{
+      display:grid;
+      grid-template-columns:55px 1fr 28px 18px 110px;
+      gap:10px;
+      align-items:center;
+      padding:8px 0;
+      border-bottom:1px solid #efefef;
+    }
+    .latest-thumb{
+      width:55px;
+      height:38px;
+      background:var(--blue);
+    }
+    .copies{
+      font-size:14px;
+      color:#777;
+    }
+    .price-right{
+      font-size:14px;
+      font-weight:700;
+      text-align:right;
+      white-space:nowrap;
+    }
+
+    .right-title{
+      color:var(--red);
+      font-weight:700;
+      margin:0 0 6px 8px;
+    }
+    .classic-title{
+      color:var(--red);
+      font-weight:700;
+      margin:12px 0 12px 8px;
+      font-size:18px;
+    }
+    .classic-card{
+      margin-bottom:14px;
+      text-align:center;
+    }
+    .classic-card .img{
+      height:148px;
+      background:var(--blue);
+      margin-bottom:6px;
+    }
+    .classic-card .name{
+      font-size:12px;
+      line-height:1.1;
+      margin-bottom:2px;
+    }
+    .classic-card .price{
+      font-size:14px;
+    }
+    .classic-card .price strong{color:var(--red)}
+
+    .friends{
+      margin-top:390px;
+    }
+    .friends-box{
+      background:#eef1f7;
+      padding:10px 0;
+      text-align:center;
+    }
+    .friends-box h3{
+      margin:0 0 12px;
+      font-size:16px;
+    }
+    .socials{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+    }
+    .socials span{
+      width:19px;
+      height:19px;
+      background:var(--blue);
+      display:inline-block;
+    }
+
+    .site-footer{
+      max-width:953px;
+      margin:14px auto 0;
+      border-top:1px solid #9f9f9f;
+      padding:12px 8px 8px;
+      color:#666;
+      font-size:11px;
+    }
+
+    .nav-toggle { display: none; }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 900px){
+      .page{padding-top:120px}
+      .layout{
+        grid-template-columns:74px 1fr 252px;
+        gap:10px;
+      }
+      .spec-gallery{
+        grid-template-columns:1fr 136px;
+      }
+      .main-photo{width:136px;height:104px}
+      .thumb-grid{width:136px;grid-template-columns:repeat(4, 29px);gap:6px}
+      .thumb{width:29px;height:29px}
+      .auction-grid,.comment-box,.latest-list{max-width:none}
+      .classic-card .img{height:130px}
+      .friends{margin-top:220px}
+      .logo{width:79px;height:53px}
+      .header-inner{min-height:53px}
+      .search-wrap{padding-top:14px}
+      .search-wrap label{font-size:10px;margin-bottom:4px}
+      .search-box{height:16px}
+      .search-box input{height:14px;width:70px;font-size:10px}
+      .search-box button{height:14px;width:20px;font-size:12px}
+      .sidebar-title,.right-title,.classic-title{font-size:10px}
+      body{font-size:10px}
+      h1{font-size:14px}
+      h2,.section-title{font-size:12px}
+      .sale-price,.sale-type,.spec-row,.rating-box,.description,.buy-title,.comments-title,.auction-card .price,.classic-card .price,.price-right{font-size:12px}
+      .auction-card .price strong{font-size:14px}
+      .latest-item{grid-template-columns:32px 1fr 18px 12px 80px}
+      .latest-thumb{width:32px;height:22px}
+    }
+
+    @media (max-width: 480px){
+      .page{padding:95px 4px 0}
+      .layout{
+        grid-template-columns:1fr;
+      }
+      .left-sidebar{display:none}
+      .content{order:1}
+      .right-sidebar{order:2}
+      .spec-gallery{
+        grid-template-columns:1fr;
+      }
+      .main-photo{width:140px;height:118px}
+      .thumb-grid{width:140px;grid-template-columns:repeat(4, 31px);gap:4px}
+      .thumb{width:31px;height:31px}
+      .comment-box{padding:4px}
+      .comment-grid{
+        grid-template-columns:48px 1fr 24px 1fr;
+        gap:4px;
+      }
+      .auction-grid{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        padding:4px;
+      }
+      .auction-card .img{height:72px}
+      .latest-item{
+        grid-template-columns:28px 1fr 70px;
+        gap:6px;
+      }
+      .latest-item .count,
+      .latest-item .copies{display:none}
+      .latest-thumb{width:28px;height:22px}
+      .classic-card .img{
+        width:138px;
+        height:111px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .friends{margin-top:180px}
+      .friends-box{padding:8px 0}
+      .friends-box h3{font-size:12px}
+      .socials span{width:12px;height:12px}
+      .site-footer{font-size:8px;padding-left:4px;padding-right:4px}
+      .search-wrap{display:none}
+      .logo{width:50px;height:26px}
+      .header-inner{min-height:26px}
+      h1{font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo" aria-hidden="true"></div>
+      <div class="search-wrap">
+        <form aria-label="Site search" novalidate>
+          <label for="site-search">Site Search:</label>
+          <div class="search-box">
+            <input id="site-search" name="site-search" type="text">
+            <button type="submit" aria-label="Search site">⌕</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="page">
+    <div class="layout">
+      <aside class="left-sidebar" aria-label="Browse filters">
+        <section class="sidebar-box" aria-label="Choose country">
+          <h2 class="sidebar-title">Choose country:</h2>
+          <ul class="side-list">
+            <li><span class="flag" aria-hidden="true"></span><a href="#">United States</a></li>
+            <li><span class="flag" aria-hidden="true"></span><a href="#">Canada</a></li>
+            <li><span class="flag" aria-hidden="true"></span><a href="#">United Kingdom</a></li>
+            <li><span class="flag" aria-hidden="true"></span><a href="#">Australia</a></li>
+          </ul>
+        </section>
+
+        <section class="sidebar-box" aria-label="Choose brand">
+          <h2 class="sidebar-title">Choose brand:</h2>
+          <ul class="side-list">
+            <li><a href="#">Abarth</a> <span style="color:#888">(179)</span></li>
+            <li><a href="#">AC Cars</a> <span style="color:#888">(593)</span></li>
+            <li><a href="#">AEC</a> <span style="color:#888">(45)</span></li>
+            <li><a href="#">Alfa Romeo</a> <span style="color:#888">(3173)</span></li>
+          </ul>
+        </section>
+      </aside>
+
+      <section class="content" aria-label="Car listing details">
+        <div class="breadcrumbs">
+          <a href="#">Classic Cars</a> / / Car for sale
+        </div>
+
+        <h1>2000 Ford F-150</h1>
+
+        <div class="sale-price">
+          Sale price: $ 27,995.00
+          <a href="#" class="offer">✉ make an offer</a>
+        </div>
+
+        <div class="sale-type"><strong>Sale type:</strong> Fixed price listing</div>
+
+        <h2>Technical specifications, photos and description:</h2>
+
+        <div class="spec-gallery">
+          <div class="specs">
+            <div class="spec-row"><div>Year:</div><div class="value">2000</div></div>
+            <div class="spec-row"><div>Mileage:</div><div class="value">14,156</div></div>
+            <div class="spec-row"><div class="question">Got questions?</div><div><a href="#">Ask here!</a></div></div>
+
+            <div class="rating-box">
+              <div>2000 Ford F-150 for sale</div>
+              <div>Current customer rating: <span class="rating-bar" aria-hidden="true"></span> ( 2.05 ) based on 155 votes</div>
+            </div>
+          </div>
+
+          <div class="gallery" aria-label="Vehicle photo gallery">
+            <div class="main-photo" aria-hidden="true"></div>
+            <div class="thumb-grid">
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+              <div class="thumb" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="description">I'm the original owner of this very rare first-year ford Harley truck.<br>Also published at eBay.com</p>
+
+        <div class="buy-title">Want to buy this car?</div>
+
+        <div class="comments-title">Comments and questions to the seller:</div>
+
+        <form class="comment-box" novalidate aria-label="Comments and questions to the seller">
+          <div class="comment-grid">
+            <label for="name">Name</label>
+            <div>
+              <input type="text" id="name" name="name">
+            </div>
+
+            <label for="email">E-mail</label>
+            <div>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-describedby="email-error"
+                aria-invalid="false">
+              <span id="email-error" class="error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+
+            <label for="text">Text</label>
+            <textarea id="text" name="text"></textarea>
+          </div>
+
+          <div class="captcha-row">
+            <label for="antispam">Antispam code:</label>
+            <span class="captcha-box" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+            <input
+              type="text"
+              id="antispam"
+              name="antispam"
+              required
+              aria-describedby="antispam-error"
+              aria-invalid="false"
+              style="width:150px;border:1px solid #a9a9a9;padding:2px 4px;font-size:12px;">
+            <span>(enter the number)</span>
+            <span id="antispam-error" class="error" role="alert" aria-live="assertive" hidden></span>
+          </div>
+
+          <div aria-live="polite" id="form-status" class="sr-only"></div>
+
+          <div class="comment-actions">
+            <button type="submit">Post!</button>
+          </div>
+        </form>
+
+        <div class="section-title">Other classic cars offered via internet auctions:</div>
+
+        <section class="auction-grid" aria-label="Other classic cars offered via internet auctions">
+          <article class="auction-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="price">price: <strong>$US 59,995.00</strong></div>
+            <a href="#">2016 Chevrolet Tahoe 2WD 4dr LTZ</a>
+          </article>
+          <article class="auction-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="price">price: <strong>$21,225.00</strong></div>
+            <a href="#">2011 Jeep Wrangler Sport</a>
+          </article>
+          <article class="auction-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="price">price: <strong>$29,039.00</strong></div>
+            <a href="#">2016 Chevrolet Malibu 4dr Sedan LT w/1LT</a>
+          </article>
+          <article class="auction-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="price">price: <strong>$7,985.00</strong></div>
+            <a href="#">1999 Toyota Tacoma</a>
+          </article>
+        </section>
+
+        <div class="section-title">Latest arrivals:</div>
+
+        <section class="latest-list" aria-label="Latest arrivals">
+          <article class="latest-item">
+            <div class="latest-thumb" aria-hidden="true"></div>
+            <a href="#">Moskvitch 408 Moski 1970 Made in USSR Classic 1.4 l Petrol restored Imolles VGC</a>
+            <div class="count">16</div>
+            <div class="copies">▣</div>
+            <div class="price-right">£5,950.000</div>
+          </article>
+          <article class="latest-item">
+            <div class="latest-thumb" aria-hidden="true"></div>
+            <a href="#">1975 Beauford Wedding Car 2 door tourer Cabriolet *reserve reduced*</a>
+            <div class="count">19</div>
+            <div class="copies">▣</div>
+            <div class="price-right">£6,900.000</div>
+          </article>
+          <article class="latest-item">
+            <div class="latest-thumb" aria-hidden="true"></div>
+            <a href="#">1989 MERCEDES 300 SL Convertible Petrol Manual</a>
+            <div class="count">8</div>
+            <div class="copies">▣</div>
+            <div class="price-right">£39,995.000</div>
+          </article>
+          <article class="latest-item">
+            <div class="latest-thumb" aria-hidden="true"></div>
+            <a href="#">MERCEDES 350 SL CLASSIC</a>
+            <div class="count">12</div>
+            <div class="copies">▣</div>
+            <div class="price-right">£30,000.000</div>
+          </article>
+        </section>
+      </section>
+
+      <aside class="right-sidebar" aria-label="Related links and classic cars">
+        <section aria-label="Menu">
+          <h2 class="right-title">Menu</h2>
+          <nav aria-label="Main">
+            <ul class="menu-list">
+              <li><a href="#">Main catalog</a></li>
+              <li><a href="#">About us</a></li>
+              <li class="strong"><a href="#">Add your car to our listing!</a></li>
+              <li><a href="#">How to buy a car in UK?</a></li>
+            </ul>
+          </nav>
+        </section>
+
+        <section aria-label="Classic Cars for Sale">
+          <h2 class="classic-title">Classic Cars for Sale</h2>
+
+          <article class="classic-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="name"><a href="#">1981 Chevrolet Camaro Z28 4-Speed, Real Z28, Rare Color, Sale/Trade</a></div>
+            <div class="price">price: <strong>$27,500.00</strong></div>
+          </article>
+
+          <article class="classic-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="name"><a href="#">1968 Chevrolet Camaro 327/275HP L30 V8 Convertible</a></div>
+            <div class="price">price: <strong>$37,125.00</strong></div>
+          </article>
+
+          <article class="classic-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="name"><a href="#">1964 Chevrolet El Camino</a></div>
+            <div class="price">price: <strong>$37,999.00</strong></div>
+          </article>
+
+          <article class="classic-card">
+            <div class="img" aria-hidden="true"></div>
+            <div class="name"><a href="#">1967 Chevrolet Camaro RS/SS</a></div>
+            <div class="price">price: <strong>$15,100.00</strong></div>
+          </article>
+        </section>
+
+        <section class="friends" aria-label="Social links">
+          <h2 class="right-title">Let's be friends!</h2>
+          <div class="friends-box">
+            <h3>Join us on:</h3>
+            <div class="socials" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    © Car From UK Team, <a href="#">«Car-from-UK.com»</a> 2010 - 2023
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const form = document.querySelector('.comment-box');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let firstError = null;
+
+        form.querySelectorAll('[required]').forEach(input => {
+          const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+          if (!input.value.trim()) {
+            input.setAttribute('aria-invalid', 'true');
+            const labelText = input.labels && input.labels[0]
+              ? input.labels[0].textContent.trim()
+              : input.name;
+            errorEl.textContent = `${labelText} is required`;
+            errorEl.hidden = false;
+            if (!firstError) firstError = input;
+          } else {
+            input.setAttribute('aria-invalid', 'false');
+            errorEl.hidden = true;
+            errorEl.textContent = '';
+          }
+        });
+
+        if (firstError) {
+          firstError.focus();
+        } else {
+          document.getElementById('form-status').textContent = 'Form submitted successfully.';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added header, nav, main, aside, footer landmarks; added skip link and id="main-content"; ensured one h1 with sequential headings; added labels for all form inputs and textarea; added meaningful button and link text; set html lang="en".
+[B] ARIA fixes: used unique aria-labels for multiple landmark regions and navigation; avoided redundant role attributes on semantic landmarks; no tabindex values greater than 0.
+[C] JS patterns added: implemented form validation with error announcement for required fields; implemented tab order cleanup script; added focus-visible styling.
+-->

@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small boxed icon at the top right that reads as a hamburger/menu trigger, while the desktop sketch does not show this collapsed navigation control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the site/page navigation for small screens, likely revealing a hidden menu panel or stacked links. The trigger should update expanded/collapsed state.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown below the header, a slide-out drawer, or a full-screen overlay."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile sketch includes a hamburger-triggered navigation state, and the desktop sketch includes a search control in the header; these interactive controls imply keyboard/focus handling. If the mobile menu opens as an overlay or drawer, focus must move into it and return on close.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Ensure logical focus order across header controls, navigation, links, and footer icons. For the mobile menu, programmatically manage focus when opened/closed; for search and any disclosure-like controls, preserve visible focus and sensible tab sequence.",
+      "ambiguities": "Focus management is certain for accessibility, but the exact scope depends on whether the mobile menu is a simple inline reveal or an overlay/drawer."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a small rectangular control in the top-right header area that reads as a search field or search box, whereas the mobile sketch only shows a menu icon in that position.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The search control should accept input and submit a query; if collapsed initially, it may expand on interaction before submission. Standard search keyboard behavior and focus handling are needed.",
+      "ambiguities": "The sketch does not make clear whether this is always-visible search input, a compact search trigger, or another utility control."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "search_input",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-heavy page with limited JavaScript complexity. The clearest cross-viewport difference is navigation: mobile uses a collapsed menu trigger, while desktop appears to expose navigation/layout without a hamburger. Desktop also suggests a header search control. No clear evidence appears for tabs, accordions, modals, carousels, load-more behavior, or sticky navigation; most of the page looks like static text and links."
+}

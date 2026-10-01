@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agriculture Jobs — IndiaAgroNet.Com</title>
+  <style>
+    :root{
+      --dark:#1b1b1b;
+      --charcoal:#333333;
+      --light:#f7f7f7;
+      --off:#e8e5dc;
+      --green:#4a8f22;
+      --orange:#ff8c1a;
+      --border:#d7ebc8;
+      --blue:#140dff;
+      --text:#333;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:0;top:0;background:#fff;color:#000;padding:10px 14px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .top-banner{
+      background:#373737;
+      height:343px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      padding-top:10px;
+    }
+    .top-banner .hero{
+      width:43%;
+      max-width:550px;
+      min-width:280px;
+      height:324px;
+      background:var(--blue);
+    }
+    .top-banner img{width:100%;height:100%;object-fit:cover}
+
+    .main-nav-wrap{
+      background:var(--dark);
+      color:#fff;
+      position:relative;
+    }
+    .main-nav{
+      max-width:1280px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:51px;
+    }
+    .nav-left,.nav-right{
+      display:flex;
+      align-items:stretch;
+    }
+    .nav-item{
+      display:flex;
+      align-items:center;
+      padding:0 24px;
+      font-size:18px;
+      font-weight:700;
+      min-height:51px;
+      white-space:nowrap;
+    }
+    .nav-item.home{
+      background:#e8e8e8;
+      color:#555;
+      margin-left:15px;
+    }
+    .nav-item.jobs{
+      color:#fff;
+    }
+    .nav-item.contact{
+      padding-right:24px;
+    }
+
+    .nav-toggle{
+      display:none;
+      position:absolute;
+      right:10px;
+      top:50%;
+      transform:translateY(-50%);
+      background:#2a2a2a;
+      color:#9a9a9a;
+      border:1px solid #7a7a7a;
+      border-radius:4px;
+      width:30px;
+      height:28px;
+      font-size:18px;
+      line-height:1;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+
+    #mobile-nav{
+      background:var(--dark);
+      border-top:1px solid #2d2d2d;
+      padding:8px 0 12px;
+    }
+    #mobile-nav a{
+      display:block;
+      color:#fff;
+      padding:10px 24px;
+      font-weight:700;
+    }
+
+    .page{
+      background:#fff;
+      padding:20px 0 0;
+    }
+    .content-shell{
+      max-width:1020px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 255px;
+      gap:0;
+      border:1px solid var(--border);
+      border-top:none;
+    }
+    .content{
+      padding:16px 16px 20px;
+      background:#fff;
+      min-width:0;
+    }
+    .sidebar{
+      border-left:1px solid var(--border);
+      background:#fff;
+    }
+    .orange-rule{
+      height:9px;
+      background:var(--orange);
+      margin:6px 0 8px;
+    }
+    h1{
+      margin:0 0 34px;
+      color:var(--orange);
+      font-size:22px;
+      line-height:1.2;
+      font-weight:700;
+    }
+    h2{
+      margin:0 0 10px;
+      color:var(--green);
+      font-size:18px;
+      line-height:1.3;
+      font-weight:700;
+    }
+    .job-table{
+      width:100%;
+      border-collapse:collapse;
+      margin-bottom:26px;
+      table-layout:fixed;
+    }
+    .job-table tr{
+      border-top:1px solid #ddd;
+    }
+    .job-table td{
+      padding:8px 8px;
+      vertical-align:top;
+      font-size:16px;
+      line-height:1.3;
+    }
+    .job-table td.label{
+      width:170px;
+      color:var(--green);
+      font-weight:700;
+    }
+    .job-table td.colon{
+      width:22px;
+      text-align:center;
+      color:#333;
+    }
+    .section-label{
+      color:var(--green);
+      font-weight:700;
+      font-size:16px;
+      margin:0 0 2px;
+    }
+    .content p{
+      margin:0 0 20px;
+      font-size:16px;
+    }
+    .highlight{
+      color:var(--orange);
+      font-weight:700;
+    }
+    .source-line{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      margin-bottom:22px;
+      flex-wrap:wrap;
+    }
+    .source-line .section-label{
+      margin:0;
+    }
+
+    .footer-top{
+      background:var(--off);
+      margin-top:20px;
+      padding:24px 0 22px;
+    }
+    .footer-inner{
+      max-width:1280px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(6, 1fr);
+      gap:24px;
+      align-items:start;
+      padding:0 16px;
+    }
+    .footer-col a{
+      display:block;
+      color:#009900;
+      font-size:17px;
+      line-height:1.45;
+      margin-bottom:6px;
+    }
+    .social-col{
+      text-align:center;
+    }
+    .social-col h2{
+      color:#009900;
+      font-size:22px;
+      margin:0 0 14px;
+      font-weight:400;
+    }
+    .social-icons{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      margin-top:8px;
+    }
+    .social-icons a{
+      width:30px;
+      height:30px;
+      background:var(--blue);
+      display:inline-block;
+    }
+
+    .footer-bottom{
+      background:#333;
+      color:#fff;
+      text-align:center;
+      padding:10px 12px 12px;
+      font-size:16px;
+    }
+
+    @media (max-width: 1024px){
+      .top-banner{height:213px}
+      .top-banner .hero{
+        width:45%;
+        height:194px;
+      }
+      .content-shell{
+        max-width:80%;
+        grid-template-columns:1fr;
+      }
+      .sidebar{display:none}
+      .footer-inner{
+        grid-template-columns:repeat(3, 1fr);
+      }
+      .social-col{
+        grid-column:1 / -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: flex; }
+      .main-nav .nav-left,
+      .main-nav .nav-right{
+        display:none;
+      }
+      .main-nav{
+        min-height:30px;
+        height:30px;
+      }
+      .top-banner{
+        height:124px;
+        justify-content:flex-start;
+        padding:7px 0 0 24px;
+      }
+      .top-banner .hero{
+        width:193px;
+        min-width:193px;
+        height:109px;
+      }
+      .page{
+        padding-top:14px;
+      }
+      .content-shell{
+        max-width:194px;
+        border-top:1px solid var(--border);
+      }
+      .content{
+        padding:11px 10px 14px;
+      }
+      .orange-rule{
+        height:6px;
+        margin:2px 0 6px;
+      }
+      h1{
+        font-size:14px;
+        margin:0 0 28px;
+      }
+      h2{
+        font-size:14px;
+        line-height:1.15;
+        margin-bottom:4px;
+      }
+      .job-table td,
+      .content p,
+      .section-label,
+      .source-line,
+      .source-line div{
+        font-size:12px;
+      }
+      .job-table td{
+        padding:6px 2px;
+        line-height:1.35;
+      }
+      .job-table td.label{
+        width:72px;
+      }
+      .job-table td.colon{
+        width:12px;
+      }
+      .content p{
+        margin-bottom:18px;
+        text-align:justify;
+      }
+      .footer-top{
+        padding:18px 0 18px;
+      }
+      .footer-inner{
+        grid-template-columns:1fr;
+        gap:10px;
+        padding:0 10px;
+      }
+      .footer-col a{
+        font-size:14px;
+        margin-bottom:4px;
+      }
+      .social-col h2{
+        font-size:18px;
+        margin-top:4px;
+      }
+      .social-icons{
+        gap:12px;
+      }
+      .social-icons a{
+        width:20px;
+        height:20px;
+      }
+      .footer-bottom{
+        font-size:12px;
+        padding:8px 6px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="top-banner">
+      <div class="hero">
+        <img src="rick.jpg" alt="Blue rectangular banner image">
+      </div>
+    </div>
+
+    <div class="main-nav-wrap">
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <nav aria-label="Main" class="main-nav">
+        <div class="nav-left">
+          <a href="#" class="nav-item home">Home</a>
+          <a href="#" class="nav-item jobs">Agriculture Jobs</a>
+        </div>
+        <div class="nav-right">
+          <a href="#" class="nav-item contact">Contact Us</a>
+        </div>
+      </nav>
+
+      <nav id="mobile-nav" aria-label="Mobile Main" hidden>
+        <a href="#">Home</a>
+        <a href="#">Agriculture Jobs</a>
+        <a href="#">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="page">
+      <div class="content-shell">
+        <section class="content" aria-label="Agriculture job details">
+          <div class="orange-rule"></div>
+          <h1>Agriculture Jobs</h1>
+
+          <h2>Agronomy Jobs as Senior Research Fellow (SRF) at IISS</h2>
+
+          <table class="job-table">
+            <tr>
+              <td class="label">Job Title</td>
+              <td class="colon">:</td>
+              <td>Senior Research Fellow (SRF)</td>
+            </tr>
+            <tr>
+              <td class="label">Job Location</td>
+              <td class="colon">:</td>
+              <td>Bhopal, Madhya Pradesh</td>
+            </tr>
+            <tr>
+              <td class="label">No. of Positions</td>
+              <td class="colon">:</td>
+              <td>01</td>
+            </tr>
+            <tr>
+              <td class="label">Project Name</td>
+              <td class="colon">:</td>
+              <td>“Development, refinement and validation of conservation agriculture in Vertisols of central India and quantifying impact of CA practices on soil and environment”</td>
+            </tr>
+          </table>
+
+          <p><span class="section-label">Qualification:</span><br>
+          Essential: M.Sc. in Agronomy/Soil Science/ Soil Science and Agricultural Chemistry/ Master degree in relevant discipline with 4 years / 5 years of Bachelor’s degree.</p>
+
+          <p>Candidates having post graduate degree in Basic Sciences with 3 years Bachelor’s degree and 2 years Master’s degree must have N.E.T./GATE qualification.</p>
+
+          <p>Desirable: Experience in field experimentation and management of experiments in farmers field/ Experience in weed management and conservation agriculture/ Soil &amp; plant analytical work/ Laboratory work</p>
+
+          <p><span class="section-label">Age limit:</span> &nbsp; 35 years for Men and 40 years for women (relaxation of age in case of SC/ST/OBC/PH candidates as per Government norms)</p>
+
+          <p><span class="section-label">How to Apply:</span><br>
+          Interview of eligible candidates will be held at Indian Institute of Soil Science, Nabibagh, Berasia Road, Bhopal, which is 6 K.M from Bhopal main station for the above contractual positions.</p>
+
+          <p>All eligible candidates are requested to be present 30 minutes before the scheduled time on date of interview for necessary formalities.</p>
+
+          <p>The applicants must bring with them original documents for verification along with one set of the complete bio-data in the enclosed proforma with self attested photograph and self attested enclosures such as mark sheets, proof of date of birth, certificates for qualification, experience, and cast certificate for submission in office at the time of interview. <span class="highlight">Please Contact Employer Directly.</span></p>
+
+          <p><span class="section-label">For More Details Visit:</span><br>
+          http://www.iiss.nic.in/Recruitment/Advertisement%20%20of%20%20CRP%20on%20CA_2017.pdf</p>
+
+          <div class="source-line">
+            <div class="section-label">Source:</div>
+            <div>http://www.iiss.nic.in/</div>
+          </div>
+
+          <p><span class="section-label">Disclaimer:</span><br>
+          Dear Candidates : This jobs related information is only for the purpose of providing information and for career advancement of agricultural graduates.</p>
+        </section>
+
+        <aside class="sidebar" aria-label="Empty sidebar"></aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-inner">
+        <div class="footer-col">
+          <a href="#">Agriculture Finance</a>
+          <a href="#">Agriculture Insurance</a>
+          <a href="#">Crop Cultivation Guide</a>
+        </div>
+        <div class="footer-col">
+          <a href="#">Govt. Agri Scheme</a>
+          <a href="#">Agriculture Information</a>
+          <a href="#">Agri Land Buy Sale</a>
+        </div>
+        <div class="footer-col">
+          <a href="#">Wanted For sale</a>
+          <a href="#">Horticulture</a>
+          <a href="#">Poultry Farming</a>
+        </div>
+        <div class="footer-col">
+          <a href="#">Dairy Farming</a>
+          <a href="#">Livestock</a>
+          <a href="#">Agri Classifieds</a>
+        </div>
+        <div class="footer-col">
+          <a href="#">Advertise With Us</a>
+          <a href="#">Contact Us</a>
+        </div>
+        <div class="social-col">
+          <h2>Stay Connected</h2>
+          <div class="social-icons" aria-label="Social media links">
+            <a href="#" aria-label="Social media link 1"></a>
+            <a href="#" aria-label="Social media link 2"></a>
+            <a href="#" aria-label="Social media link 3"></a>
+            <a href="#" aria-label="Social media link 4"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">Copyright © 2017 · All Rights Reserved · IndiaAgroNet.Com</div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added semantic header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured exactly one h1 with sequential heading structure; added alt text to image; ensured interactive elements have descriptive labels; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-labels for multiple nav regions; added aria-label to aside landmark; removed any tabindex values greater than 0 via JS baseline.
+[C] JS patterns added: implemented mobile hamburger menu with aria-expanded, aria-controls, focus handling, and Escape close; implemented tab order cleanup for tabindex values greater than 0; included focus-visible styling.
+-->

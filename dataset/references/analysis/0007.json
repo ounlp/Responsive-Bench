@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both mobile and desktop sketches depict a static forum-thread/archive style page: a breadcrumb/header area followed by a vertical list of post cards and footer text. No controls are drawn that imply JavaScript-specific interaction such as menus, search, tabs, accordions, modal triggers, pagination loaders, or sticky elements. The two viewports appear effectively identical in structure, so the implied implementation is primarily static content and links rather than scripted UI behavior."
+}

@@ -1,0 +1,53 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a boxed three-line icon at the top left, a conventional hamburger trigger for revealing site navigation on small screens.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel. Because this is the only explicit nav control in the mobile sketch, it likely reveals the contents navigation that is otherwise hidden on small screens.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-in drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch includes a hamburger-triggered hidden navigation pattern, which implies keyboard and assistive-tech focus handling when the menu is opened and closed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the revealed navigation and return to the trigger when closed. If implemented as an overlay or drawer, focus containment may be needed while open.",
+      "ambiguities": "Focus trapping depends on whether the menu is a modal-style overlay versus an inline disclosure."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": []
+  },
+  "sketch_notes": "These sketches imply a mostly static reading page with very limited JavaScript needs. The only clearly indicated interactive behavior is a mobile-only collapsed navigation opened by a hamburger icon; the desktop sketch instead shows the navigation already visible in a left sidebar and does not suggest additional disclosure, tabs, modal, form, or infinite-loading behavior. Most remaining elements appear to be static links, article text, share buttons, and footer content rather than custom JS widgets."
+}

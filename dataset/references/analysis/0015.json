@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a persistent top header band separated from the content below; on desktop it contains the site title and a search input, and on mobile it appears as a compact top bar above the article stream.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain fixed or become fixed during scroll so core navigation/search stays available while reading long article and comments content.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state or shrinking header, so it is unclear whether the nav is always fixed or only becomes sticky after scrolling."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch explicitly includes an input field in the top-right header area labeled as an input/search-like control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search field needs submit behavior at minimum; depending on implementation it may expand, focus on activation, and return results or filter content.",
+      "ambiguities": "The sketch does not show whether results are live, inline, or on a separate results page."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The article layout includes large media blocks and repeated image thumbnails/cards that strongly imply tappable images or share/comment actions that commonly open overlays; the reference context also suggests image-centric blog content.",
+      "confidence": "LOW",
+      "behavior_notes": "If images are intended to enlarge or share actions open panels, a modal/lightbox overlay with close controls and focus handling would be needed.",
+      "ambiguities": "No overlay is explicitly drawn in either sketch, so this is speculative and depends on whether media is meant to open enlarged views."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any sticky header and especially the desktop search field imply keyboard interaction; if modal/lightbox behavior or expandable search is implemented, focus must move intentionally between trigger, field, and dismissed state.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Programmatic focus should support entering the search field, preserving logical tab order in the sticky header, and restoring focus after any overlay/dialog interaction.",
+      "ambiguities": "This depends partly on whether search is enhanced and whether image/share overlays are implemented."
+    }
+  ],
+  "applicable_criteria": [
+    "F2",
+    "K1",
+    "K2",
+    "K3",
+    "M1",
+    "M2",
+    "S1"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "focus_management",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "search_input",
+      "sticky_nav",
+      "focus_management",
+      "modal_dialog"
+    ]
+  },
+  "sketch_notes": "The sketches mostly depict a content-heavy blog/article page with long-form reading, images, comments, and sidebar content rather than a highly interactive application. The clearest JavaScript need is desktop search behavior, with sticky header behavior strongly implied across both viewports because the page is long and the header is visually isolated. Other interactions are limited and mostly inferred from common blog/media patterns rather than explicitly drawn controls, so overall JS complexity appears low to moderate, with desktop requiring slightly more enhancement than mobile."
+}

@@ -1,0 +1,11 @@
+{
+  "id": "0001",
+  "sketches": {
+    "desktop": "sketches/0001-d-v2.png",
+    "mobile": "sketches/0001-m-v2.png"
+  },
+  "reference_html": "references/0001.html",
+  "source_html": "source_html/0001.html",
+  "created_at": "2026-03-02T18:31:31.658845+00:00",
+  "page_type": "unknown"
+}

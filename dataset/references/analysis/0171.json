@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal top navigation bar with multiple top-level items spread across the header area, matching a classic desktop nav treatment that often reveals secondary choices from a selected item.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level navigation items may reveal submenu content on hover or click. If implemented, submenu open/close state and active item indication should be handled in JavaScript for accessibility and parity across input types.",
+      "ambiguities": "No submenu is explicitly drawn in the sketch, so this may also be a simple static nav with no dropdown behavior."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically stacked lists of content items beneath a hero image, implying a feed or archive page with potentially many entries extending beyond the initial viewport.",
+      "confidence": "LOW",
+      "behavior_notes": "A progressive 'load more' interaction could be used to reveal additional list items without full page reload, especially on mobile where the list is very long. If used, loading state and appended content announcement should be managed.",
+      "ambiguities": "The sketches do not explicitly show a button, pager, or loading affordance, so standard pagination is equally plausible."
+    }
+  ],
+  "applicable_criteria": [
+    "N2",
+    "N3",
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "load_more"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches mostly imply a content-heavy listing page with a static hero image and top navigation, not a highly interactive application. The clearest possible JavaScript need is desktop navigation enhancement if the top-level menu exposes deeper sections; otherwise the page could be largely static. The long stacked content in both viewports weakly suggests progressive loading behavior, especially on mobile, but this is speculative because no explicit trigger is drawn."
+}

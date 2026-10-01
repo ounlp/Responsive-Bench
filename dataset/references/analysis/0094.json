@@ -1,0 +1,84 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a compact rectangular field in the top navigation/header area that reads as a search box or search control; on mobile it appears as a split control near the top, and on desktop it appears at the far right inside the horizontal header bar.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should accept text input and trigger search on submit; likely needs focus handling, keyboard submission, and possibly reveal/expand behavior if compact in one viewport.",
+      "ambiguities": "The sketches do not clarify whether results are live-filtered or only submitted traditionally."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch has a compact top area with a segmented header/control row and minimal space for full navigation, implying a collapsed mobile navigation trigger rather than persistent full nav links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target should open and close the primary navigation panel or drawer; menu state should be reflected visually and likely overlay or push content below.",
+      "ambiguities": "The icon itself is not explicitly drawn as three bars, so this is inferred from the constrained mobile header layout rather than directly labeled."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a wide top navigation bar with multiple short text items spread across the header, a common pattern for top-level nav items that may reveal submenus on hover or click.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented, top-level items would open submenus on hover/click and close on blur/escape/outside click.",
+      "ambiguities": "No submenu panels are explicitly drawn, so dropdown behavior is plausible but not certain from the sketch alone."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches contain large image placeholders/X-marked media blocks embedded in content, which commonly imply clickable screenshots or media that open in an enlarged overlay/lightbox.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Clicking/tapping an image should likely open a larger overlay view with close control; focus should move into the dialog and return to the trigger on close.",
+      "ambiguities": "The sketches do not explicitly show an overlay state, so this may alternatively be simple inline media without enlargement."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components across the sketches—search, mobile nav toggle, possible dropdowns, and possible image lightbox/modal—require managed keyboard focus to behave accessibly.",
+      "confidence": "HIGH",
+      "behavior_notes": "Programmatic focus should move appropriately when menus or dialogs open/close, and keyboard users should be able to navigate all interactive controls in a logical order.",
+      "ambiguities": "This is a supporting requirement inferred from the other components rather than a separately drawn widget."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "F2",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "modal_dialog",
+      "focus_management"
+    ],
+    "desktop": [
+      "search_input",
+      "dropdown_menu",
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven page with relatively light but important JavaScript: header interaction differs by viewport, with mobile likely collapsing navigation behind a toggle while desktop keeps navigation exposed and possibly enhanced with dropdown behavior. Both views appear to include a search control in the header and multiple large media blocks that may benefit from lightbox/modal treatment. No strong evidence suggests tabs, accordions, infinite loading, sticky navigation, or transactional form validation; the main complexity is in responsive navigation, search submission, and accessible focus behavior around any revealed UI."
+}

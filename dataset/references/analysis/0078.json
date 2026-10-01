@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches appear to depict a largely static marketing/content page with headings, descriptive text, app store badges, a large hero/app image, and a list of items. No explicit or strongly implied JavaScript-driven controls are visible in either viewport: there is no clear hamburger icon, dropdown, search field, accordion, tabs, modal trigger, load-more control, sticky navigation treatment, or other interactive widget from the provided taxonomy. Any interactivity beyond ordinary links/buttons would be speculative from these sketches alone."
+}

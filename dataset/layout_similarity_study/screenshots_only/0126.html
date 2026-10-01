@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autocomplete Jokes — Autocomplete Jokes</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --heading: #6a6a6a;
+      --card-bg: #fafafa;
+      --card-border: #d9d9d9;
+      --shadow: #e3e3e3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+      border: 2px solid #005FCC;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page {
+      width: 100%;
+    }
+
+    .site-header {
+      text-align: center;
+      padding-top: 48px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--heading);
+      font-size: 76px;
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    main {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 620px;
+      padding: 118px 24px 24px;
+    }
+
+    .joke-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .joke-item {
+      margin: 0 0 72px 0;
+    }
+
+    .joke-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: 2px 2px 0 var(--shadow);
+      padding: 42px 44px 44px;
+    }
+
+    .joke-date {
+      display: block;
+      font-size: 38px;
+      line-height: 1.15;
+      font-weight: 700;
+      color: #3d343b;
+      margin-bottom: 38px;
+    }
+
+    .joke-text {
+      display: block;
+      font-size: 36px;
+      line-height: 1.2;
+      font-weight: 400;
+      color: #000;
+    }
+
+    .pagination {
+      text-align: center;
+      padding-top: 34px;
+      padding-bottom: 8px;
+    }
+
+    .pagination nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      color: var(--muted);
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .pagination li {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .pagination a {
+      color: var(--muted);
+      text-decoration: none;
+      display: inline-block;
+      padding: 0 4px;
+    }
+
+    .separator {
+      color: var(--muted);
+      padding: 0 2px;
+    }
+
+    footer {
+      height: 1px;
+      overflow: hidden;
+    }
+
+    @media (max-width: 900px) {
+      .site-header {
+        padding-top: 56px;
+      }
+
+      h1 {
+        font-size: 76px;
+      }
+
+      .content {
+        max-width: 575px;
+        padding-top: 118px;
+      }
+
+      .joke-card {
+        padding: 42px 44px 44px;
+      }
+
+      .joke-date {
+        font-size: 38px;
+        margin-bottom: 36px;
+      }
+
+      .joke-text {
+        font-size: 35px;
+      }
+
+      .pagination nav ul {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-header {
+        padding-top: 16px;
+      }
+
+      h1 {
+        font-size: 28px;
+        line-height: 1.15;
+      }
+
+      .content {
+        max-width: 208px;
+        padding: 44px 0 24px;
+      }
+
+      .joke-item {
+        margin-bottom: 24px;
+      }
+
+      .joke-card {
+        padding: 14px 14px 14px;
+        box-shadow: 2px 2px 0 var(--shadow);
+      }
+
+      .joke-date {
+        font-size: 14px;
+        line-height: 1.2;
+        margin-bottom: 18px;
+      }
+
+      .joke-text {
+        font-size: 14px;
+        line-height: 1.25;
+        white-space: nowrap;
+      }
+
+      .pagination {
+        padding-top: 12px;
+      }
+
+      .pagination nav ul {
+        font-size: 16px;
+      }
+
+      .pagination a {
+        padding: 0 2px;
+      }
+
+      .separator {
+        padding: 0 1px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <h1>Autocomplete Jokes</h1>
+    </header>
+
+    <main id="main-content">
+      <div class="content">
+        <section aria-label="Joke list">
+          <h2 style="position:absolute;left:-9999px;">Jokes</h2>
+          <ul class="joke-list">
+            <li class="joke-item">
+              <a href="#" class="joke-card" aria-label="Joke posted on 2018-3-18 09:17:03. Knock knock! Who's there?">
+                <span class="joke-date">2018-3-18 09:17:03</span>
+                <span class="joke-text">Knock knock! Who's there?</span>
+              </a>
+            </li>
+            <li class="joke-item">
+              <a href="#" class="joke-card" aria-label="Joke posted on 2018-3-18 06:17:03. Knock knock! Who's there?">
+                <span class="joke-date">2018-3-18 06:17:03</span>
+                <span class="joke-text">Knock knock! Who's there?</span>
+              </a>
+            </li>
+            <li class="joke-item">
+              <a href="#" class="joke-card" aria-label="Joke posted on 2018-3-18 03:17:02. Knock knock! Who's there?">
+                <span class="joke-date">2018-3-18 03:17:02</span>
+                <span class="joke-text">Knock knock! Who's there?</span>
+              </a>
+            </li>
+            <li class="joke-item">
+              <a href="#" class="joke-card" aria-label="Joke posted on 2018-3-18 00:17:02. Knock knock! Who's there?">
+                <span class="joke-date">2018-3-18 00:17:02</span>
+                <span class="joke-text">Knock knock! Who's there?</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <div class="pagination">
+          <nav aria-label="Pagination">
+            <ul>
+              <li><a href="#" aria-label="Page 6">6</a></li>
+              <li class="separator" aria-hidden="true">|</li>
+              <li><a href="#" aria-label="Page 5">5</a></li>
+              <li class="separator" aria-hidden="true">|</li>
+              <li><a href="#" aria-label="Page 4">4</a></li>
+              <li class="separator" aria-hidden="true">|</li>
+              <li><a href="#" aria-label="Page 3">3</a></li>
+              <li class="separator" aria-hidden="true">|</li>
+              <li><a href="#" aria-label="Page 2">2</a></li>
+              <li class="separator" aria-hidden="true">|</li>
+              <li><a href="#" aria-label="Page 1">1</a></li>
+              <li class="separator" aria-hidden="true">|</li>
+              <li><a href="#" aria-label="Page 0">0</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </main>
+
+    <footer aria-label="Site footer"></footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link as first body child; used semantic header, nav, main, and footer landmarks; added id="main-content" to main; ensured exactly one h1; added descriptive hidden h2 for the jokes section; ensured all links have descriptive text and aria-labels; set html lang="en".
+[B] ARIA fixes: used unique aria-label for pagination nav; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented required focus indicator support and tabindex cleanup pattern (C-K1/K3) only.
+-->

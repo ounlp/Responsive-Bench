@@ -1,0 +1,103 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small boxed two-line icon in the top-right of the header, a conventional collapsed navigation trigger on narrow screens.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel or menu links for mobile. The trigger should reflect expanded/collapsed state and likely reveal the hidden site sections shown more openly on desktop.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-in drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows multiple short nav labels across the top and additional grouped link text beneath the header area, implying expandable navigation categories or secondary menus.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level nav items should reveal submenu links on click or hover, matching the extra link rows suggested below the main nav. Active/open state should be visually indicated.",
+      "ambiguities": "It is unclear which top-level items have submenus, whether interaction is hover or click first, and whether only one menu stays open at a time."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a large bordered content block separated from the surrounding page; in the mobile sketch it resembles a distinct overlay/card with isolated content and CTA, and the reference HTML strongly suggests image lightbox/cart overlay behavior on this product page.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A triggered overlay is likely needed for at least one major action such as viewing the product image larger or opening cart/details. It should open above page content, trap focus, and close via explicit dismiss action and Escape.",
+      "ambiguities": "The sketch does not explicitly draw a close icon or dimmed backdrop, so this could also be an inline panel rather than a true modal."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The product area includes a prominent CTA/button and form-like structure in the lower content block, consistent with quantity/add-to-cart or contact/purchase input behavior on a product page.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Any quantity or purchase-related input should validate before submission, prevent invalid values, and surface inline errors or status if submission fails. If there is a required field, focus should move to the invalid control.",
+      "ambiguities": "The sketch does not clearly expose the exact fields, so validation scope is inferred from the product-page layout and CTA."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header includes compact utility text at top right and a bottom-wide bar with small text at both ends, consistent with a cart/status area that can update after actions.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Cart item count, subtotal, or status text should update dynamically after add/remove actions without full page reload. Updates should be announced accessibly if they change in response to user actions.",
+      "ambiguities": "The sketch does not explicitly label the changing text as cart count versus another status indicator."
+    },
+    {
+      "pattern_id": "toast_notification",
+      "present_in": "both",
+      "visual_evidence": "The product-focused layout with a strong CTA implies immediate feedback after actions like Add to Cart; the isolated lower card area suggests transient confirmation messaging may appear near the action.",
+      "confidence": "LOW",
+      "behavior_notes": "After successful add-to-cart or similar action, a brief confirmation message should appear and dismiss automatically or be manually dismissible.",
+      "ambiguities": "No explicit toast is drawn; this is inferred from expected ecommerce interaction rather than a clearly sketched component."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile hamburger and the likely overlay/modal interactions imply components that open and close, requiring managed keyboard focus. Desktop dropdowns also imply controlled focus movement.",
+      "confidence": "HIGH",
+      "behavior_notes": "When menus or overlays open, focus should move into them appropriately; when they close, focus should return to the triggering control. Keyboard navigation through open menus should be logical and visible.",
+      "ambiguities": "Exact focus targets depend on whether the hidden content is a drawer, dropdown, or modal."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F4",
+    "D1",
+    "D2",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "form_validation",
+      "modal_dialog",
+      "toast_notification"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "live_region",
+      "form_validation",
+      "modal_dialog",
+      "focus_management",
+      "toast_notification"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively light but important layer of JavaScript centered on ecommerce/product interactions rather than complex app-like widgets. Mobile primarily depends on a collapsed navigation trigger and careful focus handling for hidden content, while desktop more strongly suggests exposed top navigation with expandable secondary links and a dynamically updating utility/cart area. A product action flow is implied in both views, so validation and user feedback behaviors are likely necessary even where fields are only loosely sketched."
+}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copy Command to System Clipboard — Site Name</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#222222;
+      --muted:#666666;
+      --link:#2f80ed;
+      --header-bg:#f5f5f3;
+      --code-bg:#242424;
+      --code-text:#d9d9d9;
+      --code-blue:#18b7d8;
+      --code-yellow:#f2a900;
+      --inline-bg:#f3f3f3;
+      --accent:#6c63ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+    body{
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.55;
+    }
+
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.5rem .75rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .site-header{
+      background:var(--header-bg);
+    }
+
+    .header-inner{
+      max-width:760px;
+      margin:0 auto;
+      padding:48px 16px 38px;
+    }
+
+    .main-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:14px;
+    }
+
+    .main-nav a{
+      color:#555;
+      font-size:17px;
+      text-transform:uppercase;
+    }
+
+    .logo-square{
+      width:17px;
+      height:17px;
+      background:var(--accent);
+      margin:48px auto 0;
+      display:none;
+    }
+
+    main{
+      max-width:760px;
+      margin:0 auto;
+      padding:56px 16px 40px;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-size:26px;
+      line-height:1.25;
+      font-weight:500;
+      letter-spacing:-0.02em;
+      text-transform:uppercase;
+      color:#3a3a3a;
+    }
+
+    .post-date{
+      margin:0 0 28px;
+      color:#666;
+      font-size:18px;
+    }
+
+    .post-content p{
+      font-size:18px;
+      margin:0 0 22px;
+    }
+
+    pre{
+      margin:0 0 18px;
+      background:var(--code-bg);
+      color:var(--code-text);
+      padding:16px 16px 14px;
+      overflow:auto;
+      font-size:16px;
+      line-height:1.55;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+
+    p code{
+      background:var(--inline-bg);
+      padding:1px 6px;
+      border-radius:2px;
+      font-size:.92em;
+    }
+
+    .c-blue{color:var(--code-blue)}
+    .c-yellow{color:var(--code-yellow)}
+    .c-white{color:var(--code-text)}
+
+    .tags{
+      font-size:18px;
+      margin-top:8px;
+      margin-bottom:10px;
+    }
+
+    .tags strong{
+      color:#111;
+      font-weight:700;
+    }
+
+    .back-link{
+      display:inline-block;
+      font-size:18px;
+      margin-top:2px;
+    }
+
+    .bottom-square{
+      width:16px;
+      height:16px;
+      background:var(--accent);
+      margin-top:18px;
+    }
+
+    .mobile-date{
+      display:block;
+    }
+
+    @media (max-width: 767px) {
+      .site-header{
+        min-height:172px;
+      }
+
+      .header-inner{
+        max-width:none;
+        padding:44px 16px 40px;
+        text-align:center;
+      }
+
+      .main-nav ul{
+        justify-content:center;
+      }
+
+      .logo-square{
+        display:block;
+      }
+
+      main{
+        padding:44px 16px 48px;
+      }
+
+      h1{
+        font-size:28px;
+        margin-bottom:28px;
+      }
+
+      .post-date{
+        display:none;
+      }
+
+      .post-content p{
+        font-size:17px;
+        margin-bottom:18px;
+      }
+
+      pre{
+        font-size:15px;
+        padding:14px 14px 12px;
+      }
+
+      .bottom-square{
+        display:none;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1100px) {
+      .header-inner,
+      main{
+        max-width:690px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <nav aria-label="Main" class="main-nav">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+        </ul>
+      </nav>
+      <div class="logo-square" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article>
+      <h1>COPY COMMAND TO SYSTEM CLIPBOARD</h1>
+      <p class="post-date">May 30, 2018</p>
+
+      <div class="post-content">
+        <p>In Bash you can copy the previous command to the system clipboard directly from the command line, and have it be correctly quoted, using</p>
+
+        <pre aria-label="Code example showing clipboard command"><code>$ <span class="c-blue">echo</span> !!:q | xsel --clipboard</code></pre>
+
+        <p>This is very useful for sharing or embedding complex commands. Consider this example, with a command that includes quotation marks:</p>
+
+        <pre aria-label="Code example showing quoted command copied to clipboard"><code>$ <span class="c-blue">echo</span> <span class="c-yellow">'foo bar'</span>
+foo bar
+$ <span class="c-blue">echo</span> !!:q | xsel -b
+<span class="c-blue">echo</span> <span class="c-yellow">'echo '\''foo bar'\'''</span> | xsel -b
+$ xsel -b
+<span class="c-blue">echo</span> <span class="c-yellow">'foo bar'</span></code></pre>
+
+        <p>The first command, in its entirety, is the command we’re interested in copying. In the second command, the <code>!!</code> history expansion <em>event designator</em> selects the previously executed command, and the <code>q</code> <em>modifier</em> wraps the command in quotation marks, escaping characters as necessary. Wrapping the command in quotation marks turns it into a single argument to the second <code>echo</code>, which pipes it into <code>xsel</code>’s standard input. The final command dumps the contents of the clipboard <em>selection</em>: <code>echo 'foo bar'</code>, as desired.</p>
+
+        <p>You might have <code>xclip(1)</code> instead of <code>xsel(1)</code>, in which case you’ll need to pass different options, and on macOS you will probably want to use <code>pbcopy(1)</code>.</p>
+
+        <p class="tags"><strong>Tags:</strong> <a href="#">bash ergonomics</a></p>
+
+        <p><a href="#" class="back-link">Back to posts</a></p>
+
+        <div class="bottom-square" aria-hidden="true"></div>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, and main landmarks; added skip link and main-content id; ensured exactly one h1 with sequential structure; preserved text content and added accessible labels for code regions; set html lang="en".
+[B] ARIA fixes: used aria-label on main navigation; avoided redundant landmark roles; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and visible focus indicator styling.
+-->

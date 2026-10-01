@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Algebraic Mode — Educalc.net</title>
+  <style>
+    :root{
+      --text:#4a4a4a;
+      --line:#a9a9a9;
+      --blue:#1208ff;
+      --bg:#ffffff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+    body{
+      font-family: Courier, "Courier New", monospace;
+      min-height:100vh;
+    }
+    .skip-link{
+      position:absolute;
+      transform:translateY(-100%);
+      left:0;
+      top:0;
+      background:#fff;
+      color:#000;
+      padding:.5rem .75rem;
+      z-index:1000;
+    }
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width: 790px;
+      margin: 35px auto 0;
+      padding: 0 10px 30px;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom: 18px;
+    }
+
+    .logo{
+      width:83px;
+      height:46px;
+      background:var(--blue);
+      margin:0 auto 16px;
+      display:block;
+    }
+
+    .site-title{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    nav[aria-label="Main"] ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:0;
+      font-size:18px;
+      font-weight:700;
+      line-height:1.2;
+    }
+    nav[aria-label="Main"] li{
+      display:flex;
+      align-items:center;
+    }
+    nav[aria-label="Main"] li:not(:last-child)::after{
+      content:"|";
+      margin:0 10px;
+      color:var(--text);
+      font-weight:400;
+    }
+    a{
+      color:var(--text);
+      text-decoration:underline;
+    }
+
+    main{
+      border-top:1px solid var(--line);
+      padding-top:16px;
+    }
+
+    .content{
+      font-size:18px;
+      line-height:1.02;
+      font-weight:700;
+      letter-spacing:0;
+    }
+    .content p{
+      margin:0 0 18px 0;
+    }
+    .content .list-item{
+      margin:0 0 18px 0;
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      margin-top:28px;
+      padding-top:18px;
+      text-align:center;
+      font-size:14px;
+      font-weight:400;
+      line-height:1.35;
+    }
+
+    @media (max-width: 900px){
+      .page{
+        max-width: 100%;
+        margin-top: 35px;
+      }
+      .content{
+        font-size:18px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        padding: 0 10px 24px;
+        margin-top: 34px;
+      }
+      .logo{
+        width:83px;
+        height:46px;
+        margin-bottom:16px;
+      }
+      nav[aria-label="Main"] ul{
+        font-size:17px;
+        line-height:1.05;
+      }
+      nav[aria-label="Main"] li:not(:last-child)::after{
+        margin:0 8px;
+      }
+      main{
+        padding-top:18px;
+      }
+      .content{
+        font-size:18px;
+        line-height:1.02;
+      }
+      .content p,
+      .content .list-item{
+        margin-bottom:18px;
+      }
+      footer{
+        margin-top:34px;
+        font-size:14px;
+        padding:18px 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <div class="logo" aria-hidden="true"></div>
+      <h1 class="site-title">Algebraic Mode</h1>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#">Educalc.net</a></li>
+          <li><a href="#">Category</a></li>
+          <li><a href="#">Tag</a></li>
+          <li><a href="#">Search</a></li>
+          <li><a href="#">Find</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="content" aria-label="Algebraic mode article">
+        <p>On most HP calculators model that has dual mode, the algebraic annunciators and keys are labeled as ALG.</p>
+
+        <p>This is the name of the mathematic notation used on all non-RPN calculators where you enter a mathematic equation like this: 1+3*(3+(2-5)/3). In algebraic mode, parentheses and order of operations are extremely important.</p>
+
+        <p>The algebraic mode of operation uses the following hierarchy:</p>
+
+        <p class="list-item">1. Parentheses</p>
+
+        <p class="list-item">2. Exponents</p>
+
+        <p class="list-item">3. Multiplication and Division</p>
+
+        <p class="list-item">4. Addition and Subtraction</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Copyright © 2022 Educalc.net. This work is licensed under the <a href="#">CC BY-SA 4.0</a> license.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added semantic header, nav, main, footer; added skip link and main-content id; ensured exactly one h1; added lang="en"; ensured descriptive link text; no unlabeled form controls present.
+[B] ARIA fixes: used aria-label on main navigation; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented required tabindex cleanup script for focus order baseline; added visible focus indicator styles.
+-->

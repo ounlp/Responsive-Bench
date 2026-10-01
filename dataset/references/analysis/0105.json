@@ -1,0 +1,73 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top navigation/header treatment rather than a full horizontal nav, implying a collapsed mobile menu trigger is needed to reveal navigation options.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile nav toggle should open and close the hidden navigation panel, likely overlaying or pushing content below the header.",
+      "ambiguities": "The hamburger icon itself is not clearly drawn in the sketch, so the collapsed-menu behavior is inferred from the simplified mobile header and the desktop comparison."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a horizontal navigation bar with multiple grouped nav items and circular markers/caret-like indicators beside some items, implying submenu triggers.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Desktop nav items with indicators should reveal submenu panels on click or hover; submenus should dismiss on outside click and support keyboard access.",
+      "ambiguities": "The sketch does not make clear whether submenus open on hover or click, nor how many levels of nesting exist."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a long article-like page with substantial vertical scrolling; the reference context also suggests a back-to-top affordance for long content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A back-to-top control should appear after the user scrolls down and smoothly return focus/scroll position to the top when activated.",
+      "ambiguities": "The exact placement and visibility threshold are not explicit in the sketches."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch emphasizes a persistent horizontal navigation bar near the top spanning the page width, which strongly suggests it should remain accessible while scrolling through long content.",
+      "confidence": "LOW",
+      "behavior_notes": "The top navigation may stay fixed or become fixed after scrolling past the header so section/site navigation remains available on long pages.",
+      "ambiguities": "The sketch alone does not explicitly show a fixed state; this is inferred from the long-scroll layout and prominent nav bar."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "sticky_nav",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven page with relatively light JavaScript needs centered on navigation and long-scroll assistance rather than forms or dynamic modules. The main cross-viewport difference is navigation behavior: mobile likely collapses into a toggleable menu, while desktop exposes a horizontal nav with possible dropdowns and perhaps sticky behavior. The rest of the page appears largely static article content with optional back-to-top support due to the page length."
+}

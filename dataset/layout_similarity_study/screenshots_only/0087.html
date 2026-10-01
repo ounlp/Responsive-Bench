@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>South Carolina Segway Tours — Segway Guided Tours</title>
+  <style>
+    :root{
+      --bg:#ececec;
+      --white:#ffffff;
+      --text:#3d3d3d;
+      --muted:#8a8a8a;
+      --line:#dddddd;
+      --teal:#1fa892;
+      --teal-dark:#12927d;
+      --blue:#0a08ff;
+      --footer-gray:#9f9f9f;
+      --link:#3f648b;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Arial, Helvetica, sans-serif;color:var(--text);background:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:12px;top:0;background:#fff;color:#000;padding:10px 14px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:#fff;
+      border:1px solid #e5e5e5;
+      border-left:none;
+      border-right:none;
+    }
+    .header-inner{
+      max-width:900px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 12px 22px;
+      position:relative;
+    }
+    .logo{
+      font-size:26px;
+      font-weight:700;
+      color:#6f6f6f;
+      letter-spacing:-0.5px;
+      white-space:nowrap;
+    }
+    .logo em{
+      font-style:italic;
+      font-weight:600;
+    }
+    .desktop-nav ul,
+    .mobile-nav ul,
+    .footer-links ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .desktop-nav ul{
+      display:flex;
+      gap:24px;
+      font-size:12px;
+      color:#666;
+      margin-top:8px;
+    }
+    .desktop-nav a:hover,
+    .mobile-nav a:hover,
+    .footer-links a:hover{ text-decoration:underline; }
+
+    .nav-toggle{
+      display:none;
+      border:1px solid #d8d8d8;
+      background:#fff;
+      color:#777;
+      width:34px;
+      height:30px;
+      border-radius:3px;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      line-height:1;
+      cursor:pointer;
+    }
+
+    .hero-search{
+      padding:52px 12px 34px;
+    }
+    .search-wrap{
+      max-width:688px;
+      margin:0 auto;
+      display:flex;
+      background:#fff;
+      border-radius:2px;
+      overflow:hidden;
+    }
+    .search-wrap label{
+      position:absolute;
+      left:-9999px;
+    }
+    .search-wrap input{
+      flex:1;
+      border:none;
+      padding:14px 18px;
+      font-size:14px;
+      color:#777;
+    }
+    .search-wrap button{
+      border:none;
+      background:var(--teal);
+      color:#fff;
+      font-size:16px;
+      font-weight:700;
+      width:172px;
+      cursor:pointer;
+    }
+
+    .page-wrap{
+      max-width:900px;
+      margin:0 auto;
+      padding:34px 12px 0;
+    }
+    .breadcrumbs{
+      font-size:12px;
+      color:#bdbdbd;
+      margin:0 0 16px 6px;
+    }
+    .breadcrumbs a{
+      color:#2f5f93;
+      margin:0 8px;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:minmax(0, 640px) 198px;
+      gap:17px;
+      align-items:start;
+    }
+    .card{
+      background:#fff;
+      border:1px solid #dfdfdf;
+      border-radius:3px;
+      box-shadow:0 1px 0 rgba(0,0,0,.03);
+    }
+    .main-card{
+      padding:12px 12px 10px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size:27px;
+      line-height:1.15;
+      font-weight:500;
+      color:#333;
+    }
+    .meta{
+      border-top:1px solid #e3e3e3;
+      padding-top:10px;
+      font-size:11px;
+      color:#9a9a9a;
+      margin-bottom:14px;
+    }
+    .image-block{
+      position:relative;
+      background:var(--blue);
+      height:345px;
+      overflow:hidden;
+    }
+    .image-block img,
+    .ad-box img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+    }
+    .tag{
+      position:absolute;
+      top:35px;
+      left:0;
+      background:#0ea0c0;
+      color:#fff;
+      font-size:16px;
+      padding:8px 14px;
+    }
+    .tag::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-10px;
+      border-width:10px 10px 0 0;
+      border-style:solid;
+      border-color:#7f7f7f transparent transparent transparent;
+    }
+    .section-title{
+      margin:26px 0 10px;
+      font-size:18px;
+      font-weight:500;
+      color:#333;
+      text-transform:uppercase;
+      position:relative;
+      padding-bottom:10px;
+      border-bottom:1px solid #dddddd;
+    }
+    .section-title::after{
+      content:"";
+      position:absolute;
+      left:28px;
+      bottom:-1px;
+      width:14px;
+      height:8px;
+      background:#fff;
+      border-left:1px solid #dddddd;
+      border-bottom:1px solid #dddddd;
+      transform:skewX(-45deg) translateY(4px);
+    }
+    .intro{
+      font-size:14px;
+      line-height:1.45;
+      color:#444;
+      margin:0 0 18px;
+      padding-bottom:16px;
+      border-bottom:1px solid #efefef;
+    }
+
+    .tour-tree{
+      text-align:center;
+      color:var(--link);
+      padding:8px 0 0;
+    }
+    .tour-tree .lvl1{font-size:18px;font-weight:500;margin:0 0 14px}
+    .tour-tree .lvl2{font-size:17px;font-weight:500;margin:0 0 10px}
+    .tour-tree .lvl3{font-size:16px;font-weight:500;margin:0 0 8px}
+    .tour-tree .lvl4{font-size:13px;font-weight:500;margin:0 0 10px}
+    .tour-tree p{margin:0}
+    .tour-tree .group{margin-bottom:20px}
+    .showing{
+      text-align:right;
+      font-size:13px;
+      color:#444;
+      margin-top:18px;
+    }
+
+    .ad-box{
+      background:var(--blue);
+      height:113px;
+      margin-top:0;
+    }
+
+    .info-card{
+      margin-top:50px;
+      padding:12px 12px 16px;
+    }
+    .info-card h2{
+      margin:0 0 10px;
+      font-size:24px;
+      font-weight:500;
+      color:#333;
+    }
+    .info-card p{
+      margin:0 0 10px;
+      font-size:14px;
+      line-height:1.45;
+      color:#444;
+    }
+    .info-card a{color:#3f78b5}
+
+    .tablet-blue{
+      display:none;
+      margin:18px 0 0;
+      background:var(--blue);
+      height:249px;
+    }
+
+    .stats{
+      margin-top:50px;
+      background:#9f9f9f;
+      color:#fff;
+      padding:66px 12px 62px;
+    }
+    .stats-inner{
+      max-width:900px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:28px;
+    }
+    .stat{
+      border-left:1px solid rgba(255,255,255,.25);
+      padding-left:24px;
+    }
+    .stat .num{
+      font-size:28px;
+      font-weight:700;
+      line-height:1;
+      margin-bottom:2px;
+    }
+    .stat .label{
+      font-size:12px;
+      color:#d8d8d8;
+      text-transform:uppercase;
+    }
+
+    .cta{
+      background:var(--teal);
+      color:#fff;
+      text-align:center;
+      padding:64px 12px 62px;
+    }
+    .cta h2{
+      margin:0 0 28px;
+      font-size:26px;
+      font-weight:500;
+    }
+    .cta a{
+      display:inline-block;
+      background:#0f8f79;
+      color:#fff;
+      padding:12px 28px;
+      border-radius:2px;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .site-footer{
+      background:#fff;
+      padding:30px 12px 26px;
+    }
+    .footer-inner{
+      max-width:900px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:24px;
+      color:#666;
+      font-size:12px;
+    }
+    .footer-links{
+      display:grid;
+      grid-template-columns:repeat(3, auto);
+      gap:34px;
+    }
+    .footer-links li{
+      margin-bottom:8px;
+      text-transform:uppercase;
+      font-weight:600;
+    }
+    .copyright{
+      white-space:nowrap;
+      font-weight:600;
+      margin-top:2px;
+    }
+
+    .mobile-nav{
+      background:#fff;
+      border-top:1px solid #e5e5e5;
+      padding:10px 12px 14px;
+    }
+    .mobile-nav li{margin:10px 0}
+    .mobile-nav a{font-size:14px;color:#666}
+
+    @media (max-width: 768px) { .nav-toggle { display: block; } }
+
+    @media (max-width: 900px){
+      .header-inner,
+      .page-wrap,
+      .stats-inner,
+      .footer-inner{max-width:none}
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+      .ad-box{
+        display:none;
+      }
+      .tablet-blue{
+        display:block;
+      }
+      .info-card{
+        margin-top:34px;
+      }
+    }
+
+    @media (max-width: 768px){
+      .header-inner{
+        padding:8px 8px 10px;
+        min-height:46px;
+      }
+      .logo{
+        font-size:20px;
+      }
+      .desktop-nav{
+        display:none;
+      }
+      .hero-search{
+        padding:20px 8px 22px;
+      }
+      .search-wrap{
+        max-width:none;
+      }
+      .search-wrap input{
+        padding:10px 14px;
+        font-size:13px;
+      }
+      .search-wrap button{
+        width:82px;
+        font-size:14px;
+      }
+      .page-wrap{
+        padding:22px 8px 0;
+      }
+      .breadcrumbs{
+        margin-left:4px;
+        margin-bottom:12px;
+      }
+      .main-card{
+        padding:10px 8px 12px;
+      }
+      h1{
+        font-size:18px;
+        margin-bottom:10px;
+      }
+      .meta{
+        font-size:9px;
+        margin-bottom:10px;
+      }
+      .image-block{
+        height:260px;
+      }
+      .tag{
+        top:56px;
+        font-size:14px;
+        padding:6px 10px;
+      }
+      .section-title{
+        margin-top:16px;
+        font-size:16px;
+      }
+      .intro{
+        font-size:13px;
+      }
+      .tour-tree{
+        text-align:left;
+        padding-left:12px;
+      }
+      .tour-tree .lvl1{font-size:16px}
+      .tour-tree .lvl2{font-size:14px;padding-left:16px}
+      .tour-tree .lvl3{font-size:13px;padding-left:32px}
+      .tour-tree .lvl4{font-size:12px;padding-left:36px}
+      .showing{
+        text-align:left;
+        font-size:12px;
+      }
+      .info-card{
+        padding:10px 12px 12px;
+      }
+      .info-card h2{
+        font-size:16px;
+      }
+      .info-card p{
+        font-size:12px;
+      }
+      .tablet-blue{
+        height:108px;
+        margin-top:18px;
+      }
+      .stats{
+        margin-top:390px;
+        padding:44px 0 42px;
+      }
+      .stats-inner{
+        grid-template-columns:1fr;
+        gap:18px;
+        padding:0 56px;
+      }
+      .stat{
+        padding-left:0;
+        border-left:1px solid rgba(255,255,255,.18);
+        margin-left:0;
+      }
+      .stat .num{
+        font-size:22px;
+      }
+      .cta{
+        padding:36px 12px 40px;
+      }
+      .cta h2{
+        font-size:18px;
+        line-height:1.3;
+        margin-bottom:24px;
+      }
+      .cta a{
+        font-size:12px;
+        padding:10px 18px;
+      }
+      .site-footer{
+        padding:18px 12px 24px;
+      }
+      .footer-inner{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:14px;
+      }
+      .footer-links{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+      .footer-links li{
+        margin-bottom:6px;
+        font-size:11px;
+      }
+      .copyright{
+        white-space:normal;
+        font-size:10px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px){
+      .header-inner{padding-left:14px;padding-right:14px}
+      .logo{font-size:22px}
+      .desktop-nav ul{gap:16px;font-size:10px}
+      .hero-search{padding-top:10px}
+      .search-wrap{max-width:none}
+      .search-wrap button{width:108px}
+      .page-wrap{padding-left:14px;padding-right:14px}
+      .main-card{padding:10px}
+      h1{font-size:22px}
+      .image-block{height:234px}
+      .tag{top:23px}
+      .info-card h2{font-size:18px}
+      .tablet-blue{display:block}
+      .stats{margin-top:612px;padding:44px 8px}
+      .stats-inner{gap:10px}
+      .stat{padding-left:8px}
+      .stat .num{font-size:24px}
+      .cta{padding:42px 12px}
+      .cta h2{font-size:20px}
+      .footer-links{gap:18px}
+      .footer-links li{font-size:11px}
+      .copyright{font-size:10px}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo" aria-label="Segway Guided Tours home">SEGWAY <em>Guided TOURS</em></a>
+
+      <nav class="desktop-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Find Segway Tours</a></li>
+          <li><a href="#">Browse Tours</a></li>
+          <li><a href="#">For Tour Operators</a></li>
+        </ul>
+      </nav>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" aria-label="Main" class="mobile-nav" hidden>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Find Segway Tours</a></li>
+        <li><a href="#">Browse Tours</a></li>
+        <li><a href="#">For Tour Operators</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero-search">
+    <form class="search-wrap" novalidate>
+      <label for="tour-location">Tour Location</label>
+      <input id="tour-location" name="tour-location" type="text" placeholder="Tour Location..." aria-label="Tour Location">
+      <button type="submit">FIND</button>
+    </form>
+  </div>
+
+  <main id="main-content">
+    <div class="page-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumbs">
+        / <a href="#">USA</a> / <a href="#">SOUTH CAROLINA</a>
+      </nav>
+
+      <div class="content-grid">
+        <section class="card main-card" aria-label="South Carolina tours listing">
+          <h1>List of 6 Segway Tours in South Carolina</h1>
+          <div class="meta">South Carolina List Date: 11/3/23</div>
+
+          <div class="image-block">
+            <img src="rick.jpg" alt="South Carolina featured tour image">
+            <div class="tag">South Carolina</div>
+          </div>
+
+          <h2 class="section-title">SOUTH CAROLINA SEGWAY TOURS</h2>
+          <p class="intro">Discover South Carolina on one of these six Segway tours. Experience the sights and sounds of South Carolina's cities and landmarks with an up-close and personal tour on the Segway® PT.</p>
+
+          <div class="tour-tree">
+            <p class="lvl1">USA &gt;&gt;</p>
+            <p class="lvl2">SOUTH CAROLINA &gt;&gt;</p>
+
+            <div class="group">
+              <p class="lvl3">CHARLESTON &gt;&gt;</p>
+              <p class="lvl4">Segway of Charleston &gt;&gt;</p>
+            </div>
+
+            <div class="group">
+              <p class="lvl3">GREENVILLE &gt;&gt;</p>
+              <p class="lvl4">Carolina Segway &gt;&gt;</p>
+              <p class="lvl4">Greenville Glides &gt;&gt;</p>
+            </div>
+
+            <div class="group">
+              <p class="lvl3">HILTON HEAD ISLAND &gt;&gt;</p>
+              <p class="lvl4">Hilton Head Segway &gt;&gt;</p>
+            </div>
+
+            <div class="group">
+              <p class="lvl3">LITTLE RIVER &gt;&gt;</p>
+              <p class="lvl4">Myrtle Beach Segway &gt;&gt;</p>
+            </div>
+
+            <div class="group">
+              <p class="lvl4">Myrtle Beach Segway &gt;&gt;</p>
+            </div>
+          </div>
+
+          <div class="showing">Showing 6 South Carolina tours of 636 tours Worldwide</div>
+        </section>
+
+        <aside aria-label="Sidebar advertisement">
+          <div class="ad-box">
+            <img src="rick.jpg" alt="">
+          </div>
+        </aside>
+      </div>
+
+      <section class="card info-card" aria-label="South Carolina Segway Tours information">
+        <h2>South Carolina Segway Tours</h2>
+        <p>Whether South Carolina is your home state or your next travel destination, one of these Segway tours can add exciting new fun to your next business trip, vacation or weekend plans.</p>
+        <p>Looking for adventure tours beyond South Carolina's six Segway tours? Use our Directory to <a href="#">find Segway Tours</a> across the United States and around the world and experience touring on a Segway PT for yourself!</p>
+      </section>
+
+      <div class="tablet-blue">
+        <img src="rick.jpg" alt="">
+      </div>
+    </div>
+  </main>
+
+  <section class="stats" aria-label="Site statistics">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="num">636</div>
+        <div class="label">WORLDWIDE</div>
+      </div>
+      <div class="stat">
+        <div class="num">56</div>
+        <div class="label">COUNTRIES</div>
+      </div>
+      <div class="stat">
+        <div class="num">198</div>
+        <div class="label">REGIONS</div>
+      </div>
+      <div class="stat">
+        <div class="num">442</div>
+        <div class="label">CITIES</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" aria-label="Find a tour call to action">
+    <h2>Find a Tour on a Segway® PT now!</h2>
+    <a href="#">Find a Tour Now</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav class="footer-links" aria-label="Footer">
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">FIND SEGWAY TOURS</a></li>
+          <li><a href="#">BROWSE TOURS</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">ABOUT SGT</a></li>
+          <li><a href="#">SEGWAY MINIPRO</a></li>
+          <li><a href="#">FOR TOUR OPERATORS</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">LEGALESE</a></li>
+          <li><a href="#">SITEMAP</a></li>
+        </ul>
+      </nav>
+      <div class="copyright">©2004-2023 SegwayGuidedTours.com</div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured one h1 with sequential h2 headings; added alt attributes to all images; added label for search input; ensured descriptive link and button text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added unique aria-labels for Main, Breadcrumb, Footer nav, sidebar aside, and sections; no positive tabindex values retained.
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile; implemented C-K1/K3 focus indicator and tabindex cleanup.
+-->

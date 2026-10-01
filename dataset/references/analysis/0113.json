@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches appear to depict a largely static landing page with a logo/image block at the top, several stacked content rows or card-like blocks, and footer-like text links. There are no explicit indicators of JavaScript-driven UI such as a hamburger icon, dropdown chevrons, tabs, accordions, search, form fields, modal triggers, counters, or load-more controls. Any interactions suggested by the reference HTML are simple link/button navigation rather than taxonomy-listed JavaScript patterns, so the implied JS complexity is minimal to none across both mobile and desktop."
+}

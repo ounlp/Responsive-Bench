@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a largely static error/information page: a large illustrative block, headline/body text, a divider, and several action buttons/links. No navigation chrome, menus, form fields, tabs, accordions, overlays, counters, or scrolling affordances are visibly indicated. The only implied interactivity is ordinary link/button activation for the help actions, which is outside the provided JavaScript pattern taxonomy and does not by itself require JavaScript. Cross-viewport differences appear purely responsive/layout-related rather than behavior-driven."
+}

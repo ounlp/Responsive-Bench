@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header area with branding at top and no visible full navigation list, while the desktop sketch shows multiple top-right nav items/icons. This cross-viewport difference strongly implies the desktop nav collapses into a mobile menu trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should toggle the primary navigation open/closed on mobile. It should expose the same destinations visible in desktop navigation and indicate expanded/collapsed state.",
+      "ambiguities": "The exact trigger icon and whether the menu opens as a dropdown, drawer, or full-screen panel are not clear from the sketch."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a large primary image with a row/grid of smaller thumbnail images beneath or nearby, a common gallery pattern implying enlarged image viewing when a thumbnail or hero image is activated.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Activating a thumbnail should likely open a larger image view or replace the hero image; if implemented as a lightbox overlay, it needs open/close behavior, focus handling, and dismissal via close control/Escape/backdrop.",
+      "ambiguities": "The sketch does not explicitly show an overlay state, so this could alternatively be an inline image swap rather than a modal lightbox."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The lower content area in both sketches includes a comments/discussion-like section with bullet-style entries and supporting text blocks, consistent with a comment form or submission area shown in the reference structure.",
+      "confidence": "LOW",
+      "behavior_notes": "If a comment form is present as implied by the page type, required fields and submission errors should be validated client-side and surfaced clearly.",
+      "ambiguities": "The sketches do not explicitly draw input fields, labels, or buttons, so the presence of a form is inferred from page context rather than clearly visible controls."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "The page is very long in both mobile and desktop sketches, with substantial content extending far below the fold. Long editorial/gallery pages commonly include a return-to-top control; the reference HTML also contains a back-to-top link.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A back-to-top control should scroll the page to the top, ideally appearing after some scrolling or remaining available near the footer.",
+      "ambiguities": "The sketch does not clearly depict the control itself, so the need is inferred from page length and page type."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "modal_dialog",
+      "scroll_to_top",
+      "form_validation"
+    ],
+    "desktop": [
+      "modal_dialog",
+      "scroll_to_top",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven waterfall detail page with limited but important JavaScript: mobile navigation collapse, image-gallery interaction, likely comment-form validation, and long-page convenience behavior like back-to-top. The main cross-viewport difference is navigation treatment: desktop appears to expose top-level nav directly, while mobile likely requires a collapsed menu. Gallery behavior is suggested in both layouts by the prominent hero image plus thumbnails, but whether that interaction is an inline image swap or a true lightbox overlay remains the biggest uncertainty."
+}

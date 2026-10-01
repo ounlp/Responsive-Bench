@@ -1,0 +1,74 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact single-column layout with a small isolated mark near the upper left area that plausibly represents a collapsed navigation trigger rather than visible full navigation links. The desktop sketch does not show an equivalent collapsed trigger and instead suggests expanded content layout.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target should open and close a mobile navigation panel or drawer containing site links. The trigger should reflect expanded/collapsed state and likely overlay or slide in navigation over the page.",
+      "ambiguities": "The sketch is very abstract and does not explicitly draw a hamburger icon or drawer; this is inferred from the mobile-first sparse header treatment and the absence of visible nav links."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a distinct header/title region at the top before long vertically scrollable content. The page appears content-heavy and long enough that preserving navigation access while scrolling is strongly implied by the persistent top branding/header structure.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation/header should remain available as the user scrolls, likely pinning to the top after initial page load or remaining fixed throughout. On mobile this would preserve access to the menu trigger; on desktop it would preserve branding/navigation context.",
+      "ambiguities": "The sketches do not explicitly indicate whether the header is fixed from the start or becomes sticky after scrolling."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a prominent blue rectangular panel overlapping the upper-right portion of a large hero/image area, visually separated from the underlying content and containing its own text and button-like rectangle. This strongly suggests an overlay card or popup requiring dismissal or interaction.",
+      "confidence": "HIGH",
+      "behavior_notes": "The overlay should open in front of page content, receive focus, and support dismissal via close action, escape key, or clicking an intended control if provided. If implemented as a true modal, background interaction should be blocked until closed.",
+      "ambiguities": "It is unclear whether this is a modal dialog, a floating callout card, or a persistent promotional overlay. The sketch does not show an explicit close icon."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any mobile navigation drawer implied by the mobile sketch and the desktop overlay panel both require controlled keyboard focus behavior. The desktop overlay especially implies a layered interaction above page content.",
+      "confidence": "HIGH",
+      "behavior_notes": "When the mobile menu opens, focus should move into it and return to the trigger on close. If the desktop overlay is modal, focus should move into the dialog, remain constrained appropriately, and restore on close.",
+      "ambiguities": "If the desktop blue panel is only a static card and not an interactive overlay, focus management would only be required for the mobile menu."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "focus_management"
+    ],
+    "desktop": [
+      "modal_dialog",
+      "focus_management",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven page with limited but important JavaScript behavior concentrated in navigation and overlay handling rather than dynamic data widgets. Mobile likely relies on collapsed navigation because the layout is narrow and link-dense content is not shown in the header, while desktop appears to expose more of the page directly but introduces a prominent overlapping callout/popup element over the hero area. No forms, tabs, accordions, search, or infinite-loading patterns are clearly suggested by the drawings."
+}

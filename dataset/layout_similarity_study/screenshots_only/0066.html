@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[NAME REDACTED] — DATA GOV US</title>
+  <style>
+    :root{
+      --text:#3d3d3d;
+      --muted:#777;
+      --border:#ddd;
+      --border2:#e9e9e9;
+      --bg:#fff;
+      --soft:#f7f7f7;
+      --link:#2a78c9;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#fff;color:var(--text);font-family:Arial, Helvetica, sans-serif}
+    body{font-size:14px;line-height:1.45}
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;left:12px;top:0;transform:translateY(-100%);background:#000;color:#fff;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      border-bottom:1px solid var(--border2);
+      background:#fff;
+    }
+    .header-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:8px 15px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      min-height:58px;
+    }
+    .brand{
+      font-weight:700;
+      font-size:18px;
+      letter-spacing:-.3px;
+      white-space:nowrap;
+    }
+    .brand .blue{color:#1b2aa6}
+    .brand .red{color:#d92d20}
+    .desktop-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:28px;
+      align-items:center;
+    }
+    .desktop-nav a{
+      color:#666;
+      font-size:14px;
+    }
+    .desktop-nav .caret{
+      display:inline-block;
+      margin-left:4px;
+      width:0;height:0;
+      border-left:4px solid transparent;
+      border-right:4px solid transparent;
+      border-top:5px solid #888;
+      vertical-align:middle;
+    }
+    .header-search{
+      margin-left:auto;
+      display:flex;
+      gap:4px;
+      align-items:center;
+    }
+    .header-search label,
+    .sidebar-search label{
+      position:absolute;
+      width:1px;height:1px;
+      padding:0;margin:-1px;
+      overflow:hidden;clip:rect(0,0,0,0);
+      white-space:nowrap;border:0;
+    }
+    .header-search input,
+    .sidebar-search input{
+      border:1px solid #cfcfcf;
+      border-radius:4px;
+      padding:8px 12px;
+      font-size:14px;
+      color:#666;
+      background:#fff;
+    }
+    .header-search input{width:178px}
+    .header-search button,
+    .sidebar-search button{
+      border:1px solid #cfcfcf;
+      background:#fff;
+      color:#444;
+      border-radius:4px;
+      padding:8px 14px;
+      font-size:14px;
+      cursor:pointer;
+    }
+
+    .nav-toggle{
+      display:none;
+      margin-left:auto;
+      border:1px solid #d7d7d7;
+      background:#fff;
+      border-radius:4px;
+      width:30px;
+      height:28px;
+      color:#888;
+      font-size:18px;
+      line-height:1;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+    }
+    #mobile-nav{
+      border-top:1px solid var(--border2);
+      padding:10px 15px 14px;
+      background:#fff;
+    }
+    #mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    #mobile-nav li+li{margin-top:10px}
+    #mobile-nav a{
+      color:#666;
+      font-size:16px;
+    }
+
+    .page{
+      max-width:1280px;
+      margin:0 auto;
+      padding:14px 15px 0;
+    }
+    .layout{
+      display:grid;
+      grid-template-columns:290px 1fr;
+      gap:30px;
+      align-items:start;
+    }
+    .sidebar-card{
+      border:1px solid #d9d9d9;
+      border-radius:4px;
+      background:#fff;
+      overflow:hidden;
+      margin-bottom:20px;
+    }
+    .sidebar-card h2{
+      margin:0;
+      padding:12px 14px 10px;
+      font-size:14px;
+      font-weight:400;
+      color:#444;
+      border-bottom:1px solid #e5e5e5;
+      background:#fafafa;
+    }
+    .sidebar-search{
+      padding:14px;
+      display:flex;
+      gap:0;
+    }
+    .sidebar-search input{
+      flex:1;
+      border-radius:4px 0 0 4px;
+      padding:8px 12px;
+    }
+    .sidebar-search button{
+      border-left:0;
+      border-radius:0 4px 4px 0;
+      min-width:46px;
+    }
+    .ad-box{
+      border:1px solid #f0f0f0;
+      background:#fff;
+      border-radius:4px;
+      min-height:600px;
+      margin-bottom:20px;
+    }
+    .ad-box.small{min-height:930px}
+
+    .content h1{
+      margin:14px 0 4px;
+      font-size:47px;
+      line-height:1.05;
+      font-weight:700;
+      letter-spacing:-1px;
+      color:#3f3f3f;
+    }
+    .subtitle{
+      margin:0 0 10px;
+      font-size:25px;
+      color:#777;
+      font-weight:400;
+    }
+    .breadcrumb{
+      background:#fafafa;
+      border-radius:3px;
+      padding:10px 15px;
+      margin:0 0 20px;
+      font-size:15px;
+      color:#999;
+    }
+    .breadcrumb nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .breadcrumb li{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .breadcrumb li:not(:last-child)::after{
+      content:"/";
+      color:#b5b5b5;
+    }
+
+    .hero-box{
+      min-height:282px;
+      border:1px solid #f0f0f0;
+      border-radius:4px;
+      background:#fff;
+      margin-bottom:20px;
+    }
+    .rule{
+      border:0;
+      border-top:1px solid #ededed;
+      margin:0 0 18px;
+    }
+    .summary{
+      font-size:22px;
+      line-height:1.35;
+      color:#444;
+      margin:0 0 18px;
+      padding:0 0 0;
+    }
+    .summary strong{font-weight:700}
+    .summary em{font-style:italic;color:#555}
+
+    .panel{
+      border:1px solid #d9d9d9;
+      border-radius:4px;
+      overflow:hidden;
+      background:#fff;
+      margin:20px 0 42px;
+    }
+    .panel h2{
+      margin:0;
+      padding:24px 16px 18px;
+      font-size:24px;
+      line-height:1.15;
+      font-weight:700;
+      color:#3f3f3f;
+      background:#fafafa;
+      border-bottom:1px solid #d9d9d9;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      table-layout:fixed;
+    }
+    .details-table td{
+      border:1px solid #d9d9d9;
+      padding:6px 8px;
+      vertical-align:top;
+      font-size:15px;
+      line-height:1.25;
+    }
+    .details-table td:first-child{
+      width:37%;
+      color:#333;
+    }
+    .details-table .label-strong{
+      font-weight:700;
+    }
+
+    .list-table td{
+      border:1px solid #d9d9d9;
+      padding:8px 6px;
+      vertical-align:top;
+      font-size:15px;
+      line-height:1.2;
+    }
+    .list-table td:first-child{width:24%}
+
+    .bottom-space{
+      min-height:330px;
+    }
+
+    .footer-links-wrap{
+      border-top:1px solid #ededed;
+      padding:20px 0 16px;
+      color:var(--link);
+      font-size:15px;
+      line-height:1.45;
+    }
+    .footer-links-wrap a{
+      margin-right:12px;
+      display:inline-block;
+    }
+    .site-footer{
+      border-top:1px solid #ededed;
+      padding:18px 15px 14px;
+      max-width:1280px;
+      margin:0 auto;
+      font-size:15px;
+      color:#666;
+    }
+    .site-footer nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+    .site-footer li{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .site-footer li:not(:last-child)::after{
+      content:"·";
+      color:#666;
+    }
+
+    @media (max-width: 1024px){
+      .layout{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+      .sidebar{
+        display:none;
+      }
+      .content h1{font-size:36px}
+      .subtitle{font-size:22px}
+      .summary{font-size:20px}
+      .hero-box{min-height:282px}
+      .bottom-space{min-height:320px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: inline-flex; }
+      .desktop-nav,
+      .header-search{display:none}
+      .header-inner{
+        padding:6px 10px;
+        min-height:44px;
+      }
+      .brand{font-size:14px}
+      .page{padding:10px 9px 0}
+      .sidebar{
+        display:block;
+        margin-bottom:14px;
+      }
+      .layout{
+        display:block;
+      }
+      .sidebar-card{
+        margin-bottom:14px;
+      }
+      .sidebar-card h2{
+        font-size:12px;
+        padding:10px 12px;
+      }
+      .sidebar-search{
+        padding:10px 12px 12px;
+      }
+      .sidebar-search input{
+        font-size:13px;
+        padding:7px 10px;
+      }
+      .sidebar-search button{
+        font-size:13px;
+        padding:7px 12px;
+      }
+      .ad-box{
+        min-height:406px;
+        margin-bottom:14px;
+      }
+      .ad-box.small{display:none}
+      .content h1{
+        font-size:28px;
+        margin:24px 0 4px;
+        line-height:1.05;
+      }
+      .subtitle{
+        font-size:18px;
+        margin-bottom:10px;
+      }
+      .breadcrumb{
+        padding:8px 12px;
+        font-size:12px;
+        margin-bottom:14px;
+      }
+      .hero-box{
+        min-height:190px;
+        margin-bottom:14px;
+      }
+      .rule{margin-bottom:16px}
+      .summary{
+        font-size:14px;
+        line-height:1.45;
+        margin-bottom:18px;
+      }
+      .panel{
+        margin:18px 0 28px;
+      }
+      .panel h2{
+        font-size:18px;
+        padding:18px 12px 14px;
+      }
+      .details-table td,
+      .list-table td{
+        font-size:12px;
+        padding:5px 4px;
+      }
+      .list-table td:first-child{width:28%}
+      .bottom-space{min-height:520px}
+      .footer-links-wrap{
+        font-size:12px;
+        padding:14px 0 12px;
+      }
+      .footer-links-wrap a{
+        margin-right:0;
+      }
+      .site-footer{
+        font-size:12px;
+        padding:14px 9px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="brand" aria-label="DATA GOV US home">
+        <span class="blue">DATA</span> <span class="red">GOV US</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">Business <span class="caret" aria-hidden="true"></span></a></li>
+          <li><a href="#">Employee <span class="caret" aria-hidden="true"></span></a></li>
+          <li><a href="#">New York <span class="caret" aria-hidden="true"></span></a></li>
+          <li><a href="#">Los Angeles <span class="caret" aria-hidden="true"></span></a></li>
+        </ul>
+      </nav>
+
+      <form class="header-search" novalidate>
+        <label for="header-keywords">Keywords</label>
+        <input id="header-keywords" name="keywords" type="text" value="" placeholder="Keywords">
+        <button type="submit">Go</button>
+      </form>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+    </div>
+
+    <nav id="mobile-nav" aria-label="Main" hidden>
+      <ul>
+        <li><a href="#">Business</a></li>
+        <li><a href="#">Employee</a></li>
+        <li><a href="#">New York</a></li>
+        <li><a href="#">Los Angeles</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page">
+    <div class="layout">
+      <aside class="sidebar" aria-label="Search sidebar">
+        <section class="sidebar-card" aria-label="Find Philadelphia Business">
+          <h2>Find Philadelphia Business</h2>
+          <form class="sidebar-search" novalidate>
+            <label for="sidebar-address">Address</label>
+            <input id="sidebar-address" name="address" type="text" placeholder="Address, ...">
+            <button type="submit">Go</button>
+          </form>
+        </section>
+        <div class="ad-box" aria-hidden="true"></div>
+        <div class="ad-box small" aria-hidden="true"></div>
+      </aside>
+
+      <main id="main-content" class="content">
+        <h1>[NAME REDACTED]</h1>
+        <p class="subtitle">[ADDRESS REDACTED]</p>
+
+        <div class="breadcrumb">
+          <nav aria-label="Breadcrumb">
+            <ul>
+              <li><a href="#">Philadelphia Business</a></li>
+              <li><a href="#">19130</a></li>
+              <li><a href="#">Rental</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="hero-box" aria-hidden="true"></div>
+
+        <hr class="rule">
+        <hr class="rule">
+
+        <p class="summary"><strong>[NAME REDACTED]</strong> is a business licensed by the Department of Licenses &amp; Inspections, Philadelphia. The business license number is <em>216656</em> . The zip code is <a href="#">19130</a> . The license type is <a href="#">Rental</a> .</p>
+
+        <hr class="rule">
+
+        <section class="panel" aria-label="Business details">
+          <h2>[NAME REDACTED] · [ADDRESS REDACTED]</h2>
+          <table class="details-table">
+            <tbody>
+              <tr>
+                <td>License Number</td>
+                <td>216656</td>
+              </tr>
+              <tr>
+                <td>Legal Name</td>
+                <td>[NAME REDACTED]</td>
+              </tr>
+              <tr>
+                <td class="label-strong">License Type</td>
+                <td><a href="#">Rental</a></td>
+              </tr>
+              <tr>
+                <td class="label-strong">Full Address</td>
+                <td>2732 W GIRARD AVE,<br>Philadelphia, PA 19130-1213</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel" aria-label="19130 Rental Philadelphia Business">
+          <h2>19130 · Rental · Philadelphia Business</h2>
+          <table class="list-table">
+            <tbody>
+              <tr>
+                <td><a href="#">David Auxer</a></td>
+                <td>819 JUDSON ST, Philadelphia, PA 19130-1921</td>
+              </tr>
+              <tr>
+                <td><a href="#">Daniel Robinson</a></td>
+                <td>2601 PENNSYLVANIA AVE #446, Philadelphia, PA 19130-2301</td>
+              </tr>
+              <tr>
+                <td><a href="#">Netanel Gross LLC</a></td>
+                <td>1621 SWAIN ST, Philadelphia, PA 19130-2827</td>
+              </tr>
+              <tr>
+                <td><a href="#">Samuel Chachkin</a></td>
+                <td>2001 HAMILTON ST #1107, Philadelphia, PA 19130-4247</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="panel" aria-label="19130 Philadelphia Business">
+          <h2>19130 · Philadelphia Business</h2>
+          <table class="list-table">
+            <tbody>
+              <tr>
+                <td><a href="#">David Auxer</a></td>
+                <td>819 JUDSON ST, Philadelphia, PA 19130-1921</td>
+              </tr>
+              <tr>
+                <td><a href="#">Daniel Robinson</a></td>
+                <td>2601 PENNSYLVANIA AVE #446, Philadelphia, PA 19130-2301</td>
+              </tr>
+              <tr>
+                <td><a href="#">Netanel Gross LLC</a></td>
+                <td>1621 SWAIN ST, Philadelphia, PA 19130-2827</td>
+              </tr>
+              <tr>
+                <td><a href="#">Samuel Chachkin</a></td>
+                <td>2001 HAMILTON ST #1107, Philadelphia, PA 19130-4247</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <hr class="rule">
+        <hr class="rule">
+
+        <div class="bottom-space" aria-hidden="true"></div>
+
+        <div class="footer-links-wrap">
+          <a href="#">http://datagovus.com/los-angeles-business.php?id=[PHONE REDACTED]-0002-6</a>
+          <a href="#">sports wear distributors zipmail.com.br</a>
+          <a href="#">t-shirt suppliers gmail.com</a><br>
+          <a href="#">http://datagovus.com/philadelphia-employee.php?department=city council</a>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <nav aria-label="Footer">
+      <ul>
+        <li><a href="#">datagovus</a></li>
+        <li><a href="#">contact</a></li>
+        <li><a href="#">keywords</a></li>
+      </ul>
+    </nav>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured one h1 with sequential headings; added labels to search inputs; ensured descriptive link/button text; set html lang="en".
+[B] ARIA fixes: used unique aria-labels for Main, Breadcrumb, Footer, and Search sidebar navigation/landmarks where needed; avoided redundant role attributes; ensured no tabindex values greater than 0.
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile; implemented C-K1/K3 tabindex cleanup and focus-visible styling.
+-->

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+   img {
+  height: 200px;
+}
+
+img#pic {
+ float: right; 
+ margin: 25px; 
+ height: 276px
+}
+
+.tools-and-languages {
+  column-count: 4;
+}
+
+.date {
+    text-align: right;
+}
+
+.entry {
+  padding-left: 6px;
+  padding-right: 3px;
+}
+
+hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+body {
+    font-family: "serif";
+    font-size: larger;
+    background-color: #f7f7f8;
+}
+
+.content-interior {
+    text-align: center;
+}
+
+.content-header {
+    font-family: sans-serif;
+    font-weight: 700;
+}
+
+.content-subheader {
+    font-style: italic;
+    padding-left: 20px;
+}
+
+pre {
+  border: 4px dashed gray;
+  padding: 10px 5px 10px 10px;
+	font-size: 10pt;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.content-body {
+    line-height: 1.2em;
+}
+
+.quote {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-bottom: 0.5em;
+    font-size: 12px;
+}
+
+.prime {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border:  double gray;
+    max-width: 690px;
+    min-width: 300px;
+    background-color: white;
+}
+
+li.menu_item {
+    list-style-type:none;
+    margin:0;
+    padding-left:10px;
+    padding-right:10px;
+    display: inline;
+    font: 16px monospace;
+    text-align: center;
+}
+
+ul.navmenu {
+    display: block;
+    text-align: center;
+    padding: 0px;
+}
+
+li.menu_item a{
+    text-decoration: none;
+}
+
+li.menu_item a:hover{
+    text-decoration: underline;
+}
+
+.secondary {
+    margin: 10px;
+}
+
+.content_interior {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.content {
+    margin: 0.5%;
+    border: 1px solid grey;
+}
+
+a {
+    color: inherit;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+a:visited {
+    color: grey;
+}
+
+div.banner h2.titleheader a {
+    color: inherit;
+    text-decoration: none;
+}
+
+div.banner h2.titleheader a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.hideable {
+  display: initial;
+}
+
+.hideable.hide {
+  display: none;
+}
+
+.nesting_1 {
+  position: relative;
+  left: 20px;
+}
+
+.skip-link {
+  position: absolute;
+  transform: translateY(-100%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 3px solid #005FCC;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@media screen and (max-width: 500px) {
+
+   body {
+     margin: 0;
+   }
+
+  .prime {
+      margin-top: 0;
+      border:  none;
+  }
+
+  .secondary {
+      margin: 0;
+  }
+
+  img#pic {
+    height: 100px;
+  }
+
+
+  .tools-and-languages {
+    column-count: 2;
+  }
+}
+
+ @media print {
+
+   input, label {
+    display: none;
+   }
+
+   p, .company {
+     break-inside: avoid-page; 
+   }
+
+   body {
+     margin: 0;
+     font-family: "serif";
+     font-size: smaller;
+     background-color: initial;
+   }
+
+   pre {
+     border: none;
+     padding: 0;
+     font-size: inherit;
+     overflow-x: inherit;
+     overflow-y: inherit;
+     max-height: initial;
+   }
+
+    .prime {
+      margin-left: 0;
+      margin-right:0;
+      margin-top: 0;
+      border:  none;
+      max-width: initial;
+      min-width: initial;
+      background-color: initial;
+    }
+
+    .secondary {
+        margin: 0;
+    }
+
+    .content.banner, .content.nav {
+       display: none;
+    }
+
+    .content-body {
+        line-height: initial;
+    }
+
+    .content {
+        margin: 0;
+        border: none;
+    }
+ }
+  </style>
+  <title>A simple one-liner to create strong passwords — Renomad</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta charset="utf-8">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="prime">
+    <div class="secondary">
+      <header class="content banner">
+        <div class="content_interior">
+          <h1 class="titleheader">
+            <a href="/" aria-label="Renomad home">Renomad</a>
+          </h1>
+        </div>
+      </header>
+
+      <div class="content nav">
+        <div class="content_interior">
+          <nav aria-label="Main">
+            <ul class="navmenu">
+              <li class="menu_item">
+                <a class="typ_link" href="/blog">Blog</a>
+              </li>
+              <li class="menu_item">
+                <a class="typ_link" href="/play">Play</a>
+              </li>
+              <li class="menu_item">
+                <a class="typ_link" href="/work">Work</a>
+              </li>
+              <li class="menu_item">
+                <a class="typ_link" href="/favorite-posts">Favorite posts</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <main id="main-content" class="content">
+        <div class="content_interior">
+          <article class="entry">
+            <h2 class="content-header">A simple one-liner to create strong passwords.</h2>
+            <div class="date">
+              <time datetime="2017-06-07">June 7, 2017</time>
+            </div>
+            <pre class="language-bash">tr -cd [:graph:] &lt; /dev/urandom | fold -w75 | sed 's/[&amp;&lt;&gt;"'']/l/g' | head -n10
+</pre>
+            <div class="content-body">
+              <pre>explanation:
+  the first part, from "tr" to "unrandom", takes the random binary
+  input from unrandom and deletes all input except the ascii
+  characters that are printable (which comes from using the :graph:
+  command).
+
+  fold -w30
+  Then we chop that down to just 75 characters, nearly filling a
+  whole line.
+
+  sed 's/ ...
+  here we remove certain characters we don't want.  Specifically, we
+  don't want any characters that would need to be escaped in xml,
+  because I store my passwords in xml format.
+
+  head -n10
+  Get 10 lines of random text.
+  </pre>
+            </div>
+          </article>
+        </div>
+      </main>
+
+      <footer class="content">
+        <div class="content-interior">
+          <p>Contact me at [EMAIL REDACTED]</p>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added lang="en"; updated title to page-specific format; added skip link and main-content target; converted banner area to header; converted primary content container to main; converted contact area to footer; ensured exactly one h1 for site title and sequential h2 for article title; added descriptive hrefs and labels to links; preserved existing classes and layout.
+[B] ARIA fixes: added aria-label="Main" to the navigation landmark; avoided redundant role attributes on semantic landmarks; ensured no positive tabindex remains via JS.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and JS cleanup for positive tabindex values only.
+-->

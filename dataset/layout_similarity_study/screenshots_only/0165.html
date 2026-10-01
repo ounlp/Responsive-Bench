@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hamlet Analysis of Act IV, Scene 5 — Homework Online Study Guides</title>
+  <style>
+    :root{
+      --blue:#11a7ea;
+      --text:#2f2f2f;
+      --muted:#e9e9e9;
+      --line:#d7d7d7;
+      --dark:#5a5a5a;
+      --fb:#4663a8;
+      --pin:#d3131f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+    }
+    a{
+      color:var(--blue);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+    .skip-link{
+      position:absolute;
+      transform:translateY(-100%);
+      left:0;
+      top:0;
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      z-index:1000;
+    }
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:#ececec;
+      height:52px;
+      display:flex;
+      align-items:center;
+      padding:0 30px;
+      position:relative;
+    }
+    .brand{
+      font-size:23px;
+      line-height:1;
+      color:var(--blue);
+      font-weight:400;
+      white-space:nowrap;
+    }
+
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:0;
+      font-size:24px;
+      color:#111;
+      padding:6px 8px;
+      margin-right:6px;
+      cursor:pointer;
+    }
+
+    .hero-space{
+      height:310px;
+      background:#fff;
+    }
+
+    .page-wrap{
+      max-width:1280px;
+      margin:0 auto;
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+      padding:0 32px 0 0;
+    }
+
+    .sidebar{
+      width:252px;
+      background:#ececec;
+      padding:14px 12px 18px 18px;
+      flex:0 0 252px;
+      min-height:397px;
+    }
+    .sidebar h2{
+      margin:0 0 20px;
+      font-size:24px;
+      font-weight:400;
+      color:#222;
+    }
+    .sidebar nav a,
+    .sidebar nav .section-label,
+    .sidebar nav .subsection{
+      display:block;
+      font-size:16px;
+      line-height:1.45;
+      margin:0 0 8px;
+    }
+    .sidebar nav .subsection{
+      color:#333;
+      margin-left:8px;
+    }
+    .sidebar hr{
+      border:0;
+      border-top:1px solid #cfcfcf;
+      margin:4px 0 10px;
+    }
+    .sidebar ul{
+      list-style:square;
+      margin:0 0 10px 22px;
+      padding:0;
+    }
+    .sidebar li{
+      margin:0 0 10px;
+      color:#333;
+    }
+
+    .content{
+      flex:1;
+      padding-top:10px;
+      max-width:980px;
+    }
+    h1{
+      margin:0 0 18px;
+      font-size:27px;
+      line-height:1.15;
+      color:#2d2d2d;
+      font-weight:700;
+    }
+    .subtitle{
+      display:block;
+      font-weight:400;
+    }
+    .content p{
+      font-size:18px;
+      line-height:1.45;
+      margin:0 0 24px;
+      color:#2f2f2f;
+    }
+
+    .share-row{
+      display:flex;
+      gap:16px;
+      margin:8px 0 26px 6px;
+      flex-wrap:wrap;
+    }
+    .share-btn{
+      display:inline-block;
+      color:#fff;
+      font-size:14px;
+      padding:6px 12px;
+      border-radius:5px;
+      font-weight:700;
+      line-height:1.1;
+    }
+    .facebook{background:var(--fb)}
+    .pinterest{background:var(--pin)}
+
+    .next-link{
+      display:block;
+      background:var(--dark);
+      color:#fff;
+      font-size:18px;
+      text-align:right;
+      padding:8px 30px;
+      margin:0 0 30px;
+      min-height:36px;
+      line-height:1.15;
+    }
+
+    .site-footer{
+      border-top:1px solid #e0e0e0;
+      text-align:center;
+      padding:12px 16px 60px;
+      font-size:16px;
+      line-height:1.45;
+      color:#2f2f2f;
+      margin-top:14px;
+    }
+    .footer-links{
+      margin-top:2px;
+    }
+
+    #mobile-nav{
+      background:#ececec;
+      padding:12px 16px 18px;
+      border-top:1px solid #ddd;
+    }
+    #mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    #mobile-nav li{
+      margin:0 0 10px;
+    }
+    #mobile-nav a{
+      font-size:18px;
+      color:var(--blue);
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .site-header{
+        padding:0 8px;
+      }
+      .brand{
+        font-size:22px;
+      }
+      .hero-space{
+        height:320px;
+      }
+      .page-wrap{
+        display:block;
+        padding:0 9px;
+      }
+      .sidebar{
+        display:none;
+      }
+      .content{
+        max-width:none;
+        padding-top:0;
+      }
+      h1{
+        font-size:28px;
+        margin-bottom:18px;
+      }
+      .content p{
+        font-size:18px;
+        line-height:1.45;
+        margin-bottom:24px;
+      }
+      .share-row{
+        margin:8px 0 24px;
+        gap:18px;
+      }
+      .next-link{
+        text-align:center;
+        font-size:17px;
+        padding:8px 10px;
+        margin-bottom:30px;
+      }
+      .site-footer{
+        padding:12px 16px 56px;
+        font-size:16px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1100px){
+      .site-header{
+        padding:0 30px;
+      }
+      .hero-space{
+        height:309px;
+      }
+      .page-wrap{
+        padding:0 28px 0 18px;
+        gap:20px;
+      }
+      .sidebar{
+        width:221px;
+        flex-basis:221px;
+      }
+      .content p{
+        font-size:18px;
+        line-height:1.48;
+      }
+      .next-link{
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+    <a href="#" class="brand">Homework Online Study Guides</a>
+  </header>
+
+  <nav id="mobile-nav" aria-label="Main" hidden>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Plot Summaries &amp; Analysis</a></li>
+      <li><a href="#">Act I, Scene 1</a></li>
+      <li><a href="#">Summary</a></li>
+      <li><a href="#">Analysis</a></li>
+      <li><a href="#">Act I, Scene 2</a></li>
+      <li><a href="#">Character Analysis</a></li>
+      <li><a href="#">Hamlet</a></li>
+      <li><a href="#">Claudius</a></li>
+      <li><a href="#">Gertrude</a></li>
+      <li><a href="#">Laertes</a></li>
+      <li><a href="#">Themes</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-space" aria-hidden="true"></div>
+
+  <div class="page-wrap">
+    <aside class="sidebar" aria-label="Contents">
+      <h2>Contents</h2>
+      <nav aria-label="Contents navigation">
+        <a href="#">Home</a>
+        <a href="#">Plot Summaries &amp; Analysis</a>
+        <span class="subsection">Act I, Scene 1</span>
+        <hr>
+        <ul>
+          <li><a href="#">Summary</a></li>
+          <li><a href="#">Analysis</a></li>
+        </ul>
+        <span class="subsection">Act I, Scene 2</span>
+        <hr>
+        <a href="#">Character Analysis</a>
+        <ul>
+          <li><a href="#">Hamlet</a></li>
+          <li><a href="#">Claudius</a></li>
+          <li><a href="#">Gertrude</a></li>
+          <li><a href="#">Laertes</a></li>
+        </ul>
+        <a href="#">Themes</a>
+      </nav>
+    </aside>
+
+    <main id="main-content" class="content">
+      <h1>Hamlet Analysis of Act IV, Scene 5 <span class="subtitle">by William Shakespeare</span></h1>
+
+      <p>One of the key themes of Hamlet is the connection between the health of a nation and the state of its rulers. Claudius is rotten, and in this scene, we see that Denmark is starting to rot as well; there is civil unrest, mobs storming the castle, and echoes of revolt against the current king.</p>
+
+      <p>Here, the difference between Laertes and Hamlet becomes most obvious. Each has a dead father to avenge; but while Laertes acts openly and with moral law on his side, Hamlet has failed to act and has forfeited any position as the “good guy” by killing Polonius.</p>
+
+      <div class="share-row" aria-label="Share links">
+        <a href="#" class="share-btn facebook">Share on Facebook</a>
+        <a href="#" class="share-btn pinterest">Share on Pinterest</a>
+      </div>
+
+      <a href="#" class="next-link">Next: Summary of Act IV, Scene 6 &gt;&gt;</a>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div>Copyright © 1998-2022. <a href="#">Homework Online, Inc.</a> All Rights Reserved.</div>
+    <div class="footer-links"><a href="#">Terms and Conditions of Use</a> | <a href="#">Privacy Policy</a></div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, and footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential heading structure; added html lang="en"; ensured all interactive elements have descriptive labels/text.
+[B] ARIA fixes: used unique aria-labels for multiple nav regions; added aria-label to aside landmark; avoided redundant role attributes on semantic landmarks; removed any tabindex values greater than 0 via JS baseline.
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile with aria-expanded, aria-controls, focus handling, and Escape to close; implemented C-K1/K3 focus indicator and tabindex cleanup.
+-->

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Park management and conservation professor wins award for work in wildlife conservation — K-State Today</title>
+  <style>
+    :root{
+      --purple:#5a2d91;
+      --purple-dark:#4b247d;
+      --purple-light:#6d35ad;
+      --text:#222;
+      --muted:#666;
+      --panel:#eceae5;
+      --panel-2:#e6e3dc;
+      --gold:#efd58a;
+      --rule:#cfcfc9;
+      --blue:#1200ff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.35;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .topbar{
+      background:linear-gradient(90deg,var(--purple-dark),var(--purple-light));
+      min-height:130px;
+      color:#fff;
+    }
+    .topbar-inner{
+      max-width:980px;
+      margin:0 auto;
+      padding:22px 16px 18px;
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-start;
+    }
+    .utility{
+      width:210px;
+      text-align:left;
+    }
+    .utility label{
+      position:absolute;
+      left:-9999px;
+    }
+    .utility input{
+      width:100%;
+      height:20px;
+      border:0;
+      padding:2px 6px;
+      font-size:12px;
+      color:#666;
+    }
+    .utility-links{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:4px;
+      font-weight:700;
+      font-size:14px;
+    }
+    .utility-links .signin::after{
+      content:" ▼";
+      font-size:11px;
+    }
+
+    .page{
+      max-width:980px;
+      margin:0 auto;
+      padding:0 16px 0;
+    }
+
+    .breadcrumbs{
+      font-size:11px;
+      color:#333;
+      padding:8px 0 0;
+      margin-bottom:2px;
+    }
+    .breadcrumbs a{color:#333}
+    .breadcrumbs span.sep{margin:0 8px;color:#666}
+
+    .site-title{
+      font-size:28px;
+      font-weight:700;
+      color:#3a3a3a;
+      margin:10px 0 18px;
+    }
+
+    .layout{
+      display:grid;
+      grid-template-columns:176px 1fr 216px;
+      gap:20px;
+      align-items:start;
+      padding-bottom:66px;
+      min-height:930px;
+    }
+
+    .left-col .box,
+    .right-col .issue-box,
+    .contact-box{
+      background:var(--panel);
+      border-radius:9px;
+    }
+
+    .nav-box{
+      overflow:hidden;
+      margin-bottom:8px;
+    }
+    .nav-box a{
+      display:block;
+      padding:10px 12px;
+      font-weight:700;
+      font-size:14px;
+      border-bottom:1px solid #fff;
+      background:#dcd8ce;
+    }
+    .nav-box a.active{
+      background:var(--gold);
+    }
+
+    .pub-box{
+      padding:12px 10px 14px;
+      margin-bottom:8px;
+    }
+    .pub-box h2,
+    .issue-box h2{
+      color:var(--purple);
+      font-size:14px;
+      margin:10px 0 12px;
+      font-weight:700;
+    }
+    .pub-box ul,
+    .issue-box ul{
+      list-style:none;
+      padding:0;
+      margin:0 0 10px;
+    }
+    .pub-box li{
+      margin:0 0 8px;
+      font-size:13px;
+      color:#333;
+    }
+    .blue-block{
+      height:87px;
+      background:linear-gradient(180deg,#1f12ff,#0d00ff);
+      margin-top:10px;
+    }
+
+    .contact-box{
+      padding:10px;
+      font-size:13px;
+      color:#333;
+      font-style:italic;
+      line-height:1.2;
+      overflow:hidden;
+    }
+    .contact-box strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:4px;
+    }
+
+    .content{
+      padding-top:4px;
+    }
+    .date{
+      color:var(--purple);
+      font-size:22px;
+      font-weight:700;
+      margin:0 0 18px;
+      padding-bottom:6px;
+      border-bottom:4px solid var(--rule);
+    }
+    .article-title{
+      font-size:18px;
+      line-height:1.25;
+      margin:24px 0 2px;
+      font-weight:700;
+      max-width:520px;
+    }
+    .byline{
+      font-size:15px;
+      margin-bottom:12px;
+    }
+    .content p{
+      font-size:16px;
+      color:#333;
+      margin:0 0 14px;
+      max-width:540px;
+    }
+
+    .issue-box{
+      padding:12px 10px 14px;
+    }
+    .issue-section{
+      margin-bottom:22px;
+    }
+    .issue-section h3{
+      font-size:16px;
+      margin:0 0 8px;
+      font-weight:700;
+      color:#111;
+    }
+    .issue-section p{
+      font-size:13px;
+      margin:0 0 8px;
+      color:#333;
+      line-height:1.35;
+    }
+
+    .footer{
+      background:linear-gradient(90deg,var(--purple-dark),var(--purple));
+      color:#fff;
+      padding:18px 0 8px;
+    }
+    .footer-inner{
+      max-width:980px;
+      margin:0 auto;
+      padding:0 16px;
+    }
+    .footer-links{
+      display:flex;
+      gap:34px;
+      flex-wrap:wrap;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .footer-meta{
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+      color:#cbb9df;
+      font-size:13px;
+      margin-bottom:10px;
+    }
+    .footer-mark{
+      display:flex;
+      justify-content:flex-end;
+      padding-right:36px;
+    }
+    .footer-mark .bars{
+      display:flex;
+      gap:10px;
+      align-items:flex-end;
+      height:34px;
+    }
+    .footer-mark .bars span{
+      display:block;
+      width:31px;
+      height:4px;
+      background:#2f1a4f;
+      position:relative;
+      box-shadow:0 2px 2px rgba(0,0,0,.35);
+    }
+    .footer-mark .bars span::after{
+      content:"";
+      position:absolute;
+      right:0;
+      bottom:0;
+      width:4px;
+      height:30px;
+      background:#2f1a4f;
+    }
+
+    .nav-toggle{display:none}
+
+    @media (max-width: 900px){
+      .page{max-width:768px}
+      .topbar-inner{max-width:768px}
+      .footer-inner{max-width:768px}
+      .layout{
+        grid-template-columns:176px 1fr 215px;
+        gap:18px;
+        min-height:820px;
+      }
+      .content p{max-width:100%}
+      .article-title{max-width:100%}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar{
+        min-height:60px;
+      }
+      .topbar-inner{
+        justify-content:flex-end;
+        padding:10px 16px;
+      }
+      .utility{
+        display:none;
+      }
+      .breadcrumbs,
+      .left-col{
+        display:none;
+      }
+      .site-title{
+        text-align:center;
+        font-size:25px;
+        margin:16px 0 10px;
+      }
+      .layout{
+        grid-template-columns:1fr;
+        gap:18px;
+        min-height:auto;
+        padding-bottom:32px;
+      }
+      .content{
+        padding-top:0;
+      }
+      .date{
+        font-size:21px;
+        margin-bottom:18px;
+      }
+      .article-title{
+        font-size:20px;
+        max-width:none;
+        margin-top:22px;
+      }
+      .byline{
+        font-size:16px;
+      }
+      .content p{
+        font-size:17px;
+        max-width:none;
+      }
+      .right-col{
+        order:2;
+      }
+      .issue-box{
+        padding:14px 12px 10px;
+      }
+      .issue-section h3{
+        font-size:17px;
+      }
+      .issue-section p{
+        font-size:14px;
+      }
+      .footer{
+        padding-top:10px;
+      }
+      .footer-links{
+        flex-direction:column;
+        gap:2px;
+        margin-bottom:4px;
+      }
+      .footer-meta{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:2px 18px;
+        font-size:12px;
+      }
+      .footer-mark{
+        justify-content:center;
+        padding-right:0;
+        margin-top:8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="utility">
+        <label for="site-search">Search web, people, directories</label>
+        <input id="site-search" type="text" value="Search web, people, directories" aria-label="Search web, people, directories">
+        <div class="utility-links">
+          <a href="#">Browse A–Z</a>
+          <a href="#" class="signin">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+    <nav aria-label="Breadcrumb" class="breadcrumbs">
+      <a href="#">Kansas State University</a>
+      <span class="sep">»</span>
+      <a href="#">Division of Communications and Marketing</a>
+      <span class="sep">»</span>
+      <a href="#">K-State Today</a>
+      <span class="sep">»</span>
+      <a href="#">Park management and conservation professor wins award for work in wildlife conservation</a>
+    </nav>
+
+    <h1 class="site-title">K-State Today</h1>
+
+    <div class="layout">
+      <aside class="left-col" aria-label="Sidebar resources">
+        <nav aria-label="Section navigation" class="box nav-box">
+          <a href="#">Current Issue</a>
+          <a href="#" class="active">Archive</a>
+          <a href="#">Contribute</a>
+          <a href="#">Guidelines</a>
+        </nav>
+
+        <section class="box pub-box" aria-label="Other publications and resources">
+          <h2>Other publications</h2>
+          <ul>
+            <li><a href="#">K-State Olathe newsletter</a></li>
+            <li><a href="#">Global Campus' WorldWide Wildcats</a></li>
+            <li><a href="#">K-State Research and Extension newsletter</a></li>
+            <li><a href="#">The Collegian</a></li>
+          </ul>
+
+          <h2>Other resources</h2>
+          <ul>
+            <li><a href="#">In the news</a></li>
+            <li><a href="#">Job opportunities</a></li>
+            <li><a href="#">Professional development</a></li>
+            <li><a href="#">Wildcat Watch</a></li>
+          </ul>
+          <div class="blue-block" aria-hidden="true"></div>
+        </section>
+
+        <section class="contact-box" aria-label="Division contact information">
+          <strong>Division of Communications and Marketing</strong>
+          Kansas State University<br>
+          128 Dole Hall<br>
+          1525 Mid-Campus Drive<br>
+          North<br>
+          Manhattan, KS 66506<br>
+          [PHONE REDACTED]<br>
+          [EMAIL REDACTED]
+          <div class="blue-block" aria-hidden="true"></div>
+        </section>
+      </aside>
+
+      <main id="main-content" class="content">
+        <div class="date">September 8, 2017</div>
+
+        <h2 class="article-title">Park management and conservation professor wins award for work in wildlife conservation</h2>
+        <div class="byline">Submitted by Jeffrey Skibins</div>
+
+        <p>Jeffrey Skibins, assistant professor of park management and conservation, was awarded the Dwight A. Holder award, one of the prestigious Hartzog Awards from the Clemson University Institute for Parks.</p>
+
+        <p>Skibins was presented with the award for his outstanding work and sustained achievement that fosters understanding, wise use, and conservation of natural and cultural resources. The award recognizes his pioneering work in the field of emotional connections to wildlife and pro-conservation behaviors.</p>
+
+        <p>The award ceremony is at the end of October.</p>
+      </main>
+
+      <aside class="right-col" aria-label="In this issue">
+        <section class="issue-box">
+          <h2>In this issue</h2>
+
+          <div class="issue-section">
+            <h3>From the administration</h3>
+            <p><a href="#">Statement from Kansas State University on Title IX update</a></p>
+          </div>
+
+          <div class="issue-section">
+            <h3>News and research</h3>
+            <p><a href="#">K-State and PepsiCo team up on affordable nutrition</a></p>
+            <p><a href="#">Research experience: Students work with K-State faculty in summer fellowship program</a></p>
+          </div>
+
+          <div class="issue-section">
+            <h3>Events</h3>
+            <p><a href="#">Lunchtime forum to kick off centralized food pantry operations</a></p>
+            <p><a href="#">K-State meat sale today</a></p>
+            <p><a href="#">Don't miss the K-State Law Fair today</a></p>
+            <p><a href="#">Graduate Student Council announces Professional Development Fall Workshop Series</a></p>
+          </div>
+
+          <div class="issue-section">
+            <h3>Human resources, benefits and training</h3>
+            <p><a href="#">Movement Challenge week two results</a></p>
+          </div>
+
+          <div class="issue-section">
+            <h3>Kudos, publications and presentations</h3>
+            <p><a href="#">Education Abroad thanks faculty, staff for internationalizing K-State classrooms</a></p>
+            <p><a href="#">Park management and conservation professor wins award for work in wildlife conservation</a></p>
+          </div>
+
+          <div class="issue-section" style="margin-bottom:0;">
+            <h3>Campus construction and maintenance</h3>
+            <p><a href="#">Service interruption: Chemistry/Biochemistry Building fume hoods</a></p>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <nav aria-label="Footer" class="footer-links">
+        <a href="#">Contact us</a>
+        <a href="#">Emergency</a>
+        <a href="#">Statements and disclosures</a>
+      </nav>
+      <div class="footer-meta">
+        <span>Kansas State University</span>
+        <span>Manhattan, KS 66506</span>
+        <span>[PHONE REDACTED]</span>
+        <span>© Kansas State University</span>
+      </div>
+      <div class="footer-mark" aria-hidden="true">
+        <div class="bars">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, and footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential heading structure; ensured all links have descriptive text; set html lang="en"; no unlabeled form controls added beyond visible search field and provided label.
+[B] ARIA fixes: used unique aria-labels for multiple nav regions and asides; avoided redundant role attributes on semantic landmarks; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

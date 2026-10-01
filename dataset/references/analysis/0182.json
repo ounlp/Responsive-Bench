@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small square control at the top right, separate from the main title area, which strongly reads as a collapsed navigation trigger in a narrow viewport.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Tapping the control should open and close the primary navigation panel or menu drawer for mobile. The trigger should reflect expanded/collapsed state.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-in drawer, or full-screen overlay, nor whether secondary nav items exist."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a long horizontal input-like bar beneath the hero area, visually distinct from buttons and aligned like a search field.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept text input and support submit behavior, likely via Enter or an adjacent implicit action. If implemented as site search, it may also support focus styling and optional live suggestions.",
+      "ambiguities": "The sketch does not explicitly show a search icon, submit button, or whether results are live versus full-page submit."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include clear form controls: mobile shows a checkbox and button-like controls; desktop shows multiple button/input-like rectangles and a long text-entry field. These imply user-submittable form interactions that require validation or state handling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Inputs should be validated as needed before submission, with clear error handling for required or malformed entries. Checkbox state and any text field submission should be processed reliably.",
+      "ambiguities": "The exact required fields and validation rules are not visible from the sketches alone."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "both",
+      "visual_evidence": "The layouts resemble a shopping/cart or checkout-related page, with action buttons and selectable controls that likely affect totals, status, or cart state. The reference HTML also strongly supports dynamic cart totals and status messaging.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Changes such as cart updates, recalculation, empty-cart actions, or checkout-related state should update visible status text or totals dynamically and announce important changes accessibly.",
+      "ambiguities": "The sketch itself does not explicitly label counters or totals, so the exact live-updating element is inferred from the page structure and reference context."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch has a prominent dark full-width header band with branding/navigation content separated from the page body, suggesting a persistent top navigation region.",
+      "confidence": "LOW",
+      "behavior_notes": "If the design intends persistent access to navigation, the header could remain fixed during scroll while preserving keyboard and reading order behavior.",
+      "ambiguities": "The sketch does not explicitly indicate scrolling behavior or a pinned state; this is only a plausible inference from the strong header treatment."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "D3",
+    "D4",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "form_validation",
+      "live_region"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "live_region",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light-to-moderate JavaScript complexity centered on core commerce/page utility behaviors rather than rich widgets. Mobile primarily suggests collapsed navigation plus basic form state, while desktop adds a prominent searchable input area and possibly a persistent header. Across both views, the strongest inferred dynamic behavior is form submission/state handling and live updates tied to cart or page status, with little evidence for tabs, accordions, modals, or infinite-loading patterns."
+}

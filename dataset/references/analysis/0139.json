@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a very simple static content page: a top navigation rendered as plain text links, a heading, body copy, and a footer separated by a horizontal rule. There are no visible controls such as hamburger icons, dropdown indicators, tabs, accordions, search fields, forms, modals, counters, or load triggers. The desktop version appears to expose the navigation inline, and the mobile sketch also does not explicitly show a collapsed menu control. Based on the sketches alone, no JavaScript-driven interaction patterns are reliably implied; the page can be implemented as static HTML/CSS."
+}

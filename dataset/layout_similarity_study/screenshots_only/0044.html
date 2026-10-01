@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>503 Service Temporarily Unavailable — Site Name</title>
+  <style>
+    :root{
+      --bg-dark:#394652;
+      --text:#4a4a4a;
+      --muted:#4f5f70;
+      --accent:#f7744f;
+      --line:#d9d9d9;
+      --link:#1697f6;
+      --white:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      min-height:100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--white);
+      color:var(--text);
+    }
+
+    .skip-link {
+      position:absolute;
+      transform:translateY(-100%);
+      left:12px;
+      top:12px;
+      background:#fff;
+      color:#000;
+      padding:8px 12px;
+      z-index:1000;
+      text-decoration:none;
+      border:2px solid #005FCC;
+    }
+    .skip-link:focus { transform:translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    body{
+      display:flex;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .visual-band{
+      background:var(--bg-dark);
+      flex:0 0 34.4%;
+      min-height:100vh;
+    }
+
+    .page-wrap{
+      flex:1;
+      background:#fff;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    main{
+      padding:100px 50px 60px;
+      max-width:980px;
+    }
+
+    .error-panel{
+      max-width:740px;
+    }
+
+    .eyebrow{
+      font-size:22px;
+      line-height:1.2;
+      margin:0 0 8px 0;
+      font-weight:400;
+      color:var(--text);
+    }
+
+    h1{
+      margin:0;
+      font-weight:400;
+      color:var(--text);
+      line-height:0.95;
+    }
+
+    .code{
+      display:block;
+      font-size:82px;
+      color:var(--accent);
+      margin:0 0 2px 0;
+      font-weight:400;
+    }
+
+    .title-line{
+      display:block;
+      font-size:38px;
+      color:var(--text);
+      font-weight:400;
+      line-height:1.05;
+      margin:0 0 12px 0;
+    }
+
+    .description{
+      margin:0 0 24px 0;
+      font-size:18px;
+      line-height:1.35;
+      color:var(--muted);
+      max-width:760px;
+    }
+
+    hr{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:22px 0 22px;
+    }
+
+    .help-title{
+      margin:0 0 14px 0;
+      font-size:16px;
+      line-height:1.3;
+      font-weight:400;
+      color:#000;
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .btn-link{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--link);
+      border:2px solid var(--link);
+      background:#fff;
+      padding:7px 12px 8px;
+      font-size:14px;
+      line-height:1;
+      white-space:nowrap;
+    }
+
+    @media (max-width: 1024px){
+      body{
+        display:block;
+      }
+
+      .visual-band{
+        width:100%;
+        min-height:250px;
+      }
+
+      .page-wrap{
+        min-height:auto;
+      }
+
+      main{
+        padding:48px 50px 60px;
+        max-width:none;
+      }
+
+      .error-panel{
+        max-width:700px;
+      }
+
+      .code{
+        font-size:82px;
+      }
+
+      .title-line{
+        font-size:37px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (min-width: 769px) {
+      .nav-toggle { display: none; }
+    }
+
+    @media (max-width: 480px){
+      .visual-band{
+        min-height:249px;
+      }
+
+      main{
+        padding:28px 30px 50px;
+      }
+
+      .eyebrow{
+        font-size:25px;
+        margin-bottom:10px;
+      }
+
+      .code{
+        font-size:79px;
+        line-height:0.92;
+        margin-bottom:6px;
+      }
+
+      .title-line{
+        font-size:39px;
+        line-height:0.98;
+        max-width:320px;
+        margin-bottom:14px;
+      }
+
+      .description{
+        font-size:17px;
+        line-height:1.28;
+        margin-bottom:22px;
+      }
+
+      hr{
+        margin:18px 0 22px;
+      }
+
+      .help-title{
+        font-size:16px;
+        margin-bottom:14px;
+      }
+
+      .actions{
+        gap:8px 10px;
+      }
+
+      .btn-link{
+        font-size:14px;
+        padding:8px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <aside class="visual-band" aria-label="Decorative side panel"></aside>
+
+  <div class="page-wrap">
+    <main id="main-content">
+      <section class="error-panel" aria-labelledby="page-title">
+        <p class="eyebrow">Server Error</p>
+        <h1 id="page-title">
+          <span class="code">503</span>
+          <span class="title-line">Service Temporarily Unavailable</span>
+        </h1>
+        <p class="description">The server is temporarily unable to service your request due to maintenance downtime or capacity problems. Please try again later.</p>
+        <hr>
+        <h2 class="help-title">That's what you can do</h2>
+        <nav aria-label="Error page actions">
+          <div class="actions">
+            <a href="#" class="btn-link">Reload Page</a>
+            <a href="#" class="btn-link">Back to Previous Page</a>
+            <a href="#" class="btn-link">Home Page</a>
+          </div>
+        </nav>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link; used semantic main, nav, and aside landmarks; ensured exactly one h1; added lang="en"; ensured interactive links have descriptive text
+[B] ARIA fixes: used unique aria-label on navigation and aside landmarks; avoided redundant role attributes; removed tabindex values greater than 0 via JS baseline
+[C] JS patterns added: implemented C-K1/K3 focus indicator and tabindex cleanup only
+-->

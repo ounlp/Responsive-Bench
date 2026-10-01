@@ -1,0 +1,85 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a boxed three-line icon in the top-left, a conventional hamburger trigger for collapsed navigation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping should open and close the primary navigation panel. Because this is the main nav entry point on mobile, it likely reveals the site sections shown inline on desktop.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-in drawer, or full-screen panel."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches imply a contact/request form area: on mobile a boxed field-like block appears mid-page and a small form-like block appears near the bottom; on desktop the right sidebar clearly contains stacked input rows, a large message area, and a submit control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Inputs should validate on submit, likely including required fields and email/phone formatting where applicable. Validation feedback should be shown near fields and submission state handled in JS if asynchronous.",
+      "ambiguities": "The exact required fields and whether submission is synchronous or AJAX are not visible from the sketches alone."
+    },
+    {
+      "pattern_id": "toast_notification",
+      "present_in": "both",
+      "visual_evidence": "The presence of a contact form with a submit action strongly implies a transient success or error confirmation after submission, especially if the form submits without a full page reload.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "After submit, show temporary success/error feedback confirming message sent or highlighting failure. This is especially useful on mobile where page context is limited.",
+      "ambiguities": "The sketch does not explicitly draw a confirmation message, so this is inferred from the form workflow rather than directly depicted."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "The layouts are long, vertically scrolling pages. The reference structure also suggests a bottom utility area where a return-to-top control commonly appears, and the mobile sketch has a small isolated control near the lower right that could serve as a utility action.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A button may appear after scrolling down and return the user to the top smoothly when activated.",
+      "ambiguities": "The sketch does not explicitly label this control, so it may instead be a footer icon or secondary action."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Interactive components implied by the sketches include a mobile hamburger menu and form submission/validation flows, both of which require programmatic focus handling for accessibility.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into it and return to the trigger on close. Validation errors should move focus to the first invalid field or error summary as appropriate.",
+      "ambiguities": "No explicit modal or drawer boundaries are drawn, so the exact focus strategy depends on the chosen menu implementation."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "M3",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "S1",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "form_validation",
+      "focus_management",
+      "toast_notification",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "form_validation",
+      "toast_notification",
+      "scroll_to_top",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven marketing page with relatively light but important JavaScript. The biggest cross-viewport difference is navigation: mobile clearly collapses to a hamburger-triggered menu, while desktop appears to expose navigation directly without an obvious dropdown or sticky treatment. Both views strongly imply a contact form workflow that needs validation and likely post-submit feedback. Beyond that, the page seems largely static, with only utility behavior such as scroll-to-top and accessibility-focused focus handling needed to complete the interaction model."
+}

@@ -1,0 +1,56 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a comment/input area near the bottom with multiple boxed fields and action controls, matching a post/comment form with a large message field plus smaller identity fields and submission actions.",
+      "confidence": "HIGH",
+      "behavior_notes": "Required fields should be validated before submit, especially the main comment field and likely name/email fields. Submission should prevent empty/too-short content and surface inline errors or status feedback.",
+      "ambiguities": "The sketches do not reveal which exact fields are required, whether preview/edit is present, or whether validation is inline, on blur, or only on submit."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The presence of a multi-control form with several stacked inputs and action buttons implies keyboard traversal and programmatic focus handling after validation errors or submit-related state changes.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If validation fails, focus should move to the first invalid field or associated error. Keyboard order across textarea, metadata fields, and action buttons should remain logical. Any preview/edit state in the form should preserve or restore focus appropriately.",
+      "ambiguities": "No explicit modal/menu/disclosure is drawn, so focus management is inferred mainly from form error handling rather than a clearly visible composite widget."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static article/post page with long-form content and a comment form at the end. There is little evidence of advanced interactive navigation, overlays, tabs, accordions, or dynamic loading. The main JavaScript need across both viewports is robust form behavior for the comment area, with desktop additionally requiring explicit keyboard/focus quality because the criteria call for desktop keyboard handling. Cross-viewport differences appear minimal; the mobile sketch mainly shows stacked content and stacked form fields, while the desktop sketch shows the same content in a wider layout with the form still present."
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "./run.schema.json",
+  "run_id": "run_reconstruct_from_screenshot_all_gpt5.4",
+  "dataset_root": "dataset",
+  "ids": null,
+  "provider": "openai",
+  "model": "gpt-5.4",
+  "prompt_template": "reconstruct_from_screenshot",
+  "mode": "reconstruct_from_screenshot",
+  "dataset_output_dir": "layout_similarity_study/screenshots_only",
+  "generation": {
+    "temperature": 0,
+    "max_tokens": 128000
+  },
+  "output": {
+    "root": "runs",
+    "overwrite": false
+  },
+  "retry": {
+    "max_attempts": 5,
+    "initial_backoff_seconds": 2,
+    "max_backoff_seconds": 120,
+    "backoff_multiplier": 2
+  },
+  "logging": {
+    "level": "INFO",
+    "console": true,
+    "file": true
+  }
+}

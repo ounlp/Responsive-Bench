@@ -1,0 +1,38 @@
+{
+  "$schema": "./eval.schema.json",
+  "eval_id": "eval_accessible_js_gemini",
+  "run_id": "run_accessible_js_gemini",
+  "dataset_root": "dataset",
+  "ids": null,
+  "metrics": [
+    "layout_similarity",
+    "llm_judge_screenshots",
+    "accessibility",
+    "accessible_landmarks",
+    "accessible_hamburger_menu",
+    "accessible_active_nav_item",
+    "accessible_no_keyboard_trap",
+    "accessible_form_labels"
+  ],
+  "playwright": {
+    "headless": true,
+    "timeout_ms": 30000
+  },
+  "judge": {
+    "provider": "openai",
+    "model": "gpt-5.4",
+    "temperature": 0.0,
+    "max_tokens": 1200,
+    "prompt": "llm_judge/unified_responsive_v1",
+    "include_sketches": true
+  },
+  "output": {
+    "overwrite": false
+  },
+  "concurrency": {
+    "max_workers": 8
+  },
+  "caching": {
+    "skip_if_metrics_exist": true
+  }
+}

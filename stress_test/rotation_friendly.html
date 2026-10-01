@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adversarial Rotation Friendly</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    .page {
+      padding: 14px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .header {
+      border: 1px solid #999;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    /* Looks responsive in general: becomes two columns on wider viewports */
+    @media (min-width: 600px) {
+      .layout {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      border: 1px solid #999;
+      padding: 12px;
+      background: #fafafa;
+      position: relative;
+    }
+
+    /* Adversarial text container: width locked to portraitish size.
+       When rotated to landscape, this does NOT scale, causing width_not_scaling. */
+    .locked-text {
+      width: 330px;          /* near portrait width content area */
+      max-width: 100%;
+      overflow: visible;
+    }
+
+    /* Adversarial overflow: force nowrap so rotation produces horizontal overflow */
+    .nowrap {
+      white-space: nowrap;
+    }
+
+    /* Adversarial media: fixed size that does not scale with viewport rotation */
+    .media-box {
+      width: 320px;
+      height: 180px;
+      background: #ddd;
+      border: 2px solid #444;
+    }
+
+    .media-box img {
+      width: 320px;
+      height: 180px;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Create a "media container" with an image that the metric will inspect */
+    .media-wrap {
+      width: 330px;          /* also locked */
+      max-width: 100%;
+    }
+
+    /* Adversarial disappearance on rotation to landscape sized viewport */
+    @media (min-width: 650px) {
+      .disappear-on-rotate {
+        display: none;
+      }
+    }
+
+    h1 {
+      margin: 0 0 6px 0;
+      font-size: 22px;
+    }
+
+    h2 {
+      margin: 0 0 8px 0;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .hint {
+      color: #444;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>Rotation Adversarial Page</h1>
+      <div class="hint">
+        Portrait looks acceptable. Rotating to landscape triggers locked widths, overflow, and a disappearing element.
+      </div>
+    </div>
+
+    <div class="layout">
+      <section class="card">
+        <h2>Text container that fails to scale</h2>
+        <div class="locked-text">
+          <p>
+            This paragraph is designed so it should have more horizontal room in landscape, but the container width is locked.
+            When rotated, the width ratio will deviate and should be flagged by rotation friendly checks.
+          </p>
+          <p class="hint">
+            The container stays near portrait width even when the viewport becomes wider.
+          </p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Media that does not scale</h2>
+        <div class="media-wrap">
+          <div class="media-box">
+            <img
+              alt="fixed media"
+              src="data:image/svg+xml;utf8,
+                <svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'>
+                  <rect width='100%25' height='100%25' fill='%23bdbdbd'/>
+                  <text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle'
+                        font-family='Arial' font-size='36' fill='%23333'>
+                    Fixed 320x180
+                  </text>
+                </svg>"
+            />
+          </div>
+          <p class="hint">
+            Fixed pixel media prevents proportional scaling across rotation.
+          </p>
+        </div>
+      </section>
+
+      <section class="card disappear-on-rotate">
+        <h2>Disappears in landscape</h2>
+        <p>
+          This block is visible in portrait but is hidden at wider widths, simulating an element that disappears on rotation.
+        </p>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

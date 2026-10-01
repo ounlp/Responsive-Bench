@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon — FirstFishOnline</title>
+  <style>
+    :root{
+      --text:#7b8792;
+      --dark:#454b52;
+      --border:#d9dee3;
+      --button:#7f9caf;
+      --bg:#ffffff;
+      --link:#4f5963;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .skip-link{
+      position:absolute;
+      transform:translateY(-100%);
+      left:1rem;
+      top:0;
+      background:#fff;
+      color:#000;
+      padding:.75rem 1rem;
+      z-index:1000;
+      border:1px solid #000;
+      text-decoration:none;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+    }
+
+    header{
+      padding:22px 28px 0;
+      display:flex;
+      justify-content:flex-end;
+    }
+
+    .password-link{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--dark);
+      border:1px solid var(--border);
+      padding:13px 18px;
+      font-size:14px;
+      letter-spacing:.08em;
+      font-weight:700;
+      text-transform:uppercase;
+      background:#fff;
+      min-width:262px;
+      text-align:center;
+    }
+
+    main{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px 20px;
+    }
+
+    .content{
+      width:100%;
+      max-width:620px;
+      text-align:center;
+      margin-top:-18px;
+    }
+
+    h1{
+      margin:0;
+      font-size:34px;
+      line-height:1.15;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .subtitle{
+      margin:18px 0 0;
+      font-size:22px;
+      line-height:1.2;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .lead{
+      margin:82px 0 0;
+      font-size:18px;
+      line-height:1.5;
+      color:var(--text);
+    }
+
+    .strong{
+      margin:24px 0 0;
+      font-size:18px;
+      line-height:1.5;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    form{
+      margin:50px auto 0;
+      max-width:340px;
+    }
+
+    .field-row{
+      display:flex;
+      width:100%;
+    }
+
+    .field-group{
+      flex:1;
+      text-align:left;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    input[type="email"]{
+      width:100%;
+      height:46px;
+      border:1px solid var(--border);
+      border-right:none;
+      padding:0 18px;
+      font-size:16px;
+      color:#666;
+      background:#fff;
+    }
+
+    .notify-btn{
+      height:46px;
+      border:1px solid var(--button);
+      background:var(--button);
+      color:#fff;
+      padding:0 20px;
+      min-width:126px;
+      font-size:15px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .error{
+      display:block;
+      margin-top:8px;
+      font-size:14px;
+      color:#b00020;
+    }
+
+    .share-title{
+      margin:52px 0 0;
+      font-size:18px;
+      line-height:1.4;
+      color:var(--text);
+      font-weight:700;
+    }
+
+    .share-links{
+      margin:52px 0 0;
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    .share-links a{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--dark);
+      border:1px solid var(--border);
+      background:#fff;
+      padding:8px 12px;
+      min-width:69px;
+      text-align:center;
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    footer{
+      text-align:center;
+      padding:28px 20px 30px;
+      color:var(--text);
+      font-size:14px;
+    }
+
+    footer a{
+      color:var(--link);
+      text-decoration:underline;
+    }
+
+    @media (max-width: 768px) {
+      header{
+        justify-content:center;
+        padding:23px 16px 0;
+      }
+
+      .password-link{
+        min-width:255px;
+        padding:12px 16px;
+        font-size:13px;
+      }
+
+      main{
+        padding:54px 16px 20px;
+        align-items:flex-start;
+      }
+
+      .content{
+        margin-top:28px;
+        max-width:420px;
+      }
+
+      h1{
+        font-size:32px;
+      }
+
+      .subtitle{
+        font-size:18px;
+        margin-top:16px;
+      }
+
+      .lead{
+        margin-top:82px;
+        font-size:17px;
+      }
+
+      .strong{
+        margin-top:22px;
+        font-size:17px;
+      }
+
+      form{
+        margin-top:50px;
+        max-width:340px;
+      }
+
+      .share-title{
+        margin-top:54px;
+      }
+
+      .share-links{
+        margin-top:54px;
+      }
+
+      footer{
+        padding-top:96px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header{
+        padding-top:23px;
+      }
+
+      .password-link{
+        min-width:255px;
+        font-size:13px;
+      }
+
+      main{
+        padding:42px 14px 20px;
+      }
+
+      .content{
+        margin-top:38px;
+        max-width:320px;
+      }
+
+      h1{
+        font-size:31px;
+      }
+
+      .subtitle{
+        font-size:17px;
+        letter-spacing:.12em;
+      }
+
+      .lead{
+        margin-top:78px;
+        font-size:17px;
+      }
+
+      .strong{
+        font-size:17px;
+      }
+
+      form{
+        max-width:320px;
+      }
+
+      input[type="email"]{
+        font-size:16px;
+        padding:0 14px;
+      }
+
+      .notify-btn{
+        min-width:119px;
+        padding:0 14px;
+      }
+
+      .share-links{
+        gap:10px;
+      }
+
+      footer{
+        padding-top:94px;
+        font-size:15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <a href="#" class="password-link">ENTER USING PASSWORD →</a>
+    </header>
+
+    <main id="main-content">
+      <section class="content" aria-label="Coming soon signup">
+        <h1>FirstFishOnline</h1>
+        <p class="subtitle">COMING SOON</p>
+
+        <p class="lead">Gone Fishing, check back again.</p>
+        <p class="strong">Be the first to know when we launch.</p>
+
+        <form novalidate>
+          <div class="field-group">
+            <label for="email" class="sr-only">Email address</label>
+            <div class="field-row">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-describedby="email-error"
+                aria-invalid="false"
+                autocomplete="email">
+              <button type="submit" class="notify-btn">NOTIFY ME</button>
+            </div>
+            <span id="email-error" class="error" role="alert" aria-live="assertive" hidden></span>
+          </div>
+          <div aria-live="polite" id="form-status" class="sr-only"></div>
+        </form>
+
+        <h2 class="share-title">Spread the word</h2>
+
+        <nav aria-label="Social sharing">
+          <div class="share-links">
+            <a href="#">SHARE</a>
+            <a href="#">TWEET</a>
+            <a href="#">PIN IT</a>
+          </div>
+        </nav>
+      </section>
+    </main>
+
+    <footer>
+      <p>This shop will be powered by <a href="#">Shopify</a></p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let firstError = null;
+
+      form.querySelectorAll('[required]').forEach(input => {
+        const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+        if (!input.value.trim()) {
+          input.setAttribute('aria-invalid', 'true');
+          errorEl.textContent = `${input.labels[0].textContent.trim()} is required`;
+          errorEl.hidden = false;
+          if (!firstError) firstError = input;
+        } else {
+          input.setAttribute('aria-invalid', 'false');
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+      });
+
+      if (firstError) {
+        firstError.focus();
+      } else {
+        document.getElementById('form-status').textContent = 'Form submitted successfully.';
+      }
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, main, footer, and secondary nav landmarks; added skip link and id="main-content"; ensured one h1 with sequential heading hierarchy; added meaningful label for email input; added descriptive text for links and button; set html lang="en"; added meaningful form validation messaging.
+[B] ARIA fixes: avoided redundant landmark roles; added unique aria-label to social sharing nav; ensured no positive tabindex values remain; added aria-describedby and aria-invalid for form field.
+[C] JS patterns added: implemented form validation + error announcement (C-F1/F3); implemented tab order cleanup and focus indicator baseline (C-K1/K3).
+-->

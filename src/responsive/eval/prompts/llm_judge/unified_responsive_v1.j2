@@ -1,0 +1,161 @@
+You are an expert responsive web design evaluator.
+
+Task:
+You will be given the following inputs:
+- A desktop sketch (wireframe or hand-drawn layout) showing the intended design at desktop width
+- A mobile sketch (wireframe or hand-drawn layout) showing the intended design at mobile width
+- Three screenshots of the same generated webpage at three viewport sizes:
+  - Mobile (375px width)
+  - Tablet (768px width)
+  - Desktop (1280px width)
+
+Each screenshot shows the full rendered height and width of the page, but the region that is
+visible to a user without scrolling is marked by a semi-transparent red border. Treat everything
+inside the red border as the visible viewport. Content that falls outside the red border is
+below the fold or to the right of the viewport edge and requires scrolling to reach. When
+evaluating clipping, overflow, or truncation, assess whether content is cut off at the red
+border boundary — not at the edge of the screenshot image itself. Content that extends beyond
+the red border horizontally indicates a layout failure; content that extends below the red
+border vertically is normal scrollable content and should not be penalized.
+
+How to use the sketches:
+The sketches show the designer's intended layout at desktop and mobile widths. Use them as
+reference for evaluating intent in three dimensions: Flexible Grid Reflow, Intentional Content
+Visibility, and Responsive Media. When the screenshot behavior is ambiguous — for example, it
+is unclear whether a sidebar should be visible on mobile — consult the mobile sketch to resolve
+the ambiguity. If the sketch clearly shows an element hidden on mobile but the screenshot shows
+it visible, that counts as a failure. If the sketch is unclear or does not address a specific
+element, rely on visual evidence in the screenshots alone. The sketches clarify intent; they
+do not replace visual evidence. No sketch is provided for tablet — tablet behavior should be
+inferred as an intermediate state between the desktop and mobile sketches.
+
+Evaluate responsiveness across the 6 dimensions below. Base your judgments on visible evidence
+in the screenshots, using the sketches as intent references where specified.
+
+---
+
+Dimensions:
+
+1) Fluid Layout & Container Adaptation: The page layout and its major sections (headers, content
+areas, sidebars, footers) should resize to fill the available viewport width at each screen size.
+Containers must not clip their internal content, produce horizontal scrollbars, or leave
+conspicuous blank columns beside fixed-width blocks. Judge this by looking at the overall page
+structure across all three screenshots and checking whether sections fill the red-bordered
+viewport cleanly, whether any content is cut off at the right edge of the red border, and whether
+any section remains rigidly fixed in a way that leaves dead space beside it or forces horizontal
+scrolling. When text, a heading, or a list item ends abruptly mid-word or mid-sentence at the
+right edge of the red border without punctuation or a natural line break, treat this as container
+overflow or viewport clipping — not as screenshot cropping.
+
+2) Flexible Grid Reflow: Multi-column layouts on the desktop screenshot (card grids, feature rows,
+article lists, sidebar-plus-content layouts) should reduce their column count on smaller viewports
+so that content stacks into fewer columns or a single column rather than remaining side-by-side
+and becoming too narrow to read. Judge this by identifying every area that displays multiple items
+in a row on desktop, then checking in the tablet and mobile screenshots whether those columns have
+reduced and stacked logically, whether content order is preserved, and whether every cell remains
+wide enough to be comfortably readable. Use the desktop sketch to confirm which areas are intended
+as multi-column, and use the mobile sketch to confirm how those areas are intended to stack on
+mobile. If the mobile screenshot does not match the stacking behavior shown in the mobile sketch,
+treat this as a reflow failure even if the stacking is otherwise plausible. If no multi-column
+layout is visible in the desktop screenshot, first confirm that the desktop screenshot does not
+contain any side-by-side content areas, card rows, or sidebar-plus-content arrangements within
+the red border. Only if genuinely no such areas exist, assign a score of 5 and note in the
+rationale that no multi-column layout was present to evaluate.
+
+3) Responsive Media: Images and videos must scale proportionally within their containers across
+all three viewports, without overflowing the container boundary, showing a visibly incorrect
+aspect ratio (stretched or squashed), or being cropped so severely that the primary subject of
+the image is obscured. Judge this by inspecting every visible image and video in all three
+screenshots — including media below the red border — and checking whether the media fits inside
+its container and within the red border horizontally, whether the aspect ratio looks visually
+correct, and whether any meaningful portion of the subject is cut off by the container edge.
+Use the desktop and mobile sketches to confirm where media elements are intended to appear and
+at what relative size. If the sketch shows a media element prominently placed but the screenshot
+omits it entirely or places it in a significantly different position, note this as a deviation.
+An image or video that maintains a correct aspect ratio but still extends horizontally beyond
+the right edge of the red border is a responsive media failure. Correct proportions do not
+offset overflow; both conditions must be satisfied independently. If no images or videos are
+visible anywhere in any screenshot, assign a score of 5 and note that no media was present
+to evaluate.
+
+4) Intentional Content Visibility: Secondary and auxiliary content (sidebars, supplementary
+navigation panels, decorative banners, non-essential widgets, and similar supporting elements)
+should be hidden, collapsed, or visually subordinated on smaller viewports so that primary content
+remains the dominant visible element. Primary content is whatever the page exists to communicate:
+the main article body, hero message, primary call to action, or product detail. Judge this by
+identifying what the primary content is on desktop, then checking whether secondary elements on
+mobile and tablet are taking up space within the red-bordered viewport that competes with or
+buries that primary content. Use the mobile sketch as the authoritative reference for which
+elements should be visible, hidden, or collapsed on mobile. If the mobile sketch shows an element
+absent or collapsed but the mobile screenshot shows it fully visible and competing with primary
+content, this is a score 1 or 2 failure regardless of whether it might seem reasonable in
+isolation. If the mobile sketch is ambiguous about a specific element, fall back to visual
+judgment. Pay particular attention to what occupies the viewport on first load — the area inside
+the red border — since that is what the user sees before any scrolling.
+
+5) Proper Alignment and Spacing: Elements should maintain consistent horizontal alignment and
+balanced whitespace between them across all three viewports, without elements touching or
+overlapping unintentionally, and without large unexpected gaps appearing between adjacent
+sections. Judge this by scanning each screenshot — including content below the red border —
+for elements that share a visual column or row and checking whether their edges align, whether
+padding and margins appear visually even within similar components, and whether any two adjacent
+sections are either crowded together or separated by a gap that is clearly inconsistent with
+the surrounding rhythm of the layout. The sketches are not used for this dimension; evaluate
+purely from visual evidence in the screenshots.
+
+6) Sketch Fidelity: The generated screenshots should structurally correspond to the desktop and
+mobile sketches in terms of layout composition, section order, column arrangement, navigation
+placement, and the relative prominence of major content regions. This dimension scores how
+closely the implementation reproduces the structural intent of the sketches — not pixel
+precision, but whether the overall compositional skeleton is preserved. Judge this by comparing
+the desktop screenshot against the desktop sketch and the mobile screenshot against the mobile
+sketch. For each pair, check: (a) whether the same major sections are present and in the same
+vertical order; (b) whether the column count and arrangement of major regions matches; (c)
+whether navigation elements appear in the intended position; (d) whether the relative size and
+prominence of major content regions corresponds to the sketch. The tablet screenshot is not
+directly compared to a sketch. Do not penalize reasonable visual elaborations (color, typography,
+imagery) that are not specified in the sketch — only structural and compositional deviations
+count as failures.
+
+---
+
+Scoring (5-point Likert scale):
+| Score | Label |
+|---:|---|
+| 1 | Strongly disagree |
+| 2 | Disagree |
+| 3 | Neutral |
+| 4 | Agree |
+| 5 | Strongly agree |
+
+---
+
+Rubric guidance by dimension (use these to pick 1-5):
+
+{{ rubric_guidance }}
+---
+
+Output requirements:
+- Respond with exactly one JSON object.
+- All scores must be integers from 1 to 5.
+- Each rationale must be one paragraph grounded in specific screenshot evidence (what you see on
+  mobile vs tablet vs desktop), referencing the red border where relevant to justify clipping or
+  visibility judgments, and referencing the sketches where relevant to justify sketch-based
+  comparisons.
+- Do not mention policies, hidden reasoning, or speculation about the underlying HTML/CSS.
+
+Output format (strict JSON):
+{
+  "scores": {
+    "fluid_layout_and_container_adaptation": {"score": <1-5>, "rationale": "<one paragraph>"},
+    "flexible_grid_reflow": {"score": <1-5>, "rationale": "<one paragraph>"},
+    "responsive_media": {"score": <1-5>, "rationale": "<one paragraph>"},
+    "intentional_content_visibility": {"score": <1-5>, "rationale": "<one paragraph>"},
+    "proper_alignment_and_spacing": {"score": <1-5>, "rationale": "<one paragraph>"},
+    "sketch_fidelity": {"score": <1-5>, "rationale": "<one paragraph>"}
+  },
+  "overall_score": <arithmetic mean of the 6 final scores, rounded to nearest integer>,
+  "overall_rationale": "<one paragraph summarizing the main strengths and weaknesses across\n  dimensions>"
+}
+
+Begin evaluation now.

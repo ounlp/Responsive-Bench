@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find and Compare Senior Care and Housing Options in Shellman , GA — EnsoCare</title>
+  <style>
+    :root{
+      --blue:#2f69b1;
+      --blue-dark:#2d3b49;
+      --text:#5a718b;
+      --heading:#5a718b;
+      --muted:#a9b8c8;
+      --border:#d8dbe3;
+      --panel:#ececf2;
+      --white:#fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:
+        linear-gradient(174deg, var(--blue) 0 170px, #ffffff 170px 100%);
+    }
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+    ul{margin:0;padding:0;list-style:none}
+    .skip-link { position:absolute; transform:translateY(-100%); background:#fff; color:#000; padding:8px 12px; z-index:1000; }
+    .skip-link:focus { transform:translateY(0); }
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:1140px;
+      margin:0 auto;
+      background:#fff;
+      min-height:100vh;
+    }
+
+    .topbar{
+      color:#fff;
+      padding:16px 0 10px;
+    }
+    .topbar-inner{
+      max-width:1140px;
+      margin:0 auto;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 18px;
+    }
+    .topbar nav ul{
+      display:flex;
+      gap:34px;
+      align-items:center;
+      font-weight:700;
+      font-size:18px;
+    }
+    .auth{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      font-weight:700;
+      font-size:18px;
+    }
+    .signup{
+      background:#3d7bd0;
+      padding:12px 20px;
+      border-radius:24px;
+      display:inline-block;
+    }
+
+    .nav-toggle { display: none; background:none; border:0; color:#fff; font-size:28px; padding:6px 10px; cursor:pointer; }
+
+    .breadcrumb{
+      background:#efeff4;
+      border:1px solid var(--border);
+      border-left:none;
+      border-right:none;
+      padding:14px 16px;
+      font-size:16px;
+    }
+    .breadcrumb ol{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .breadcrumb li:not(:last-child)::after{
+      content:"/";
+      margin-left:18px;
+      color:#7d8ea3;
+    }
+
+    .hero{
+      padding:34px 32px 30px;
+      border-bottom:1px solid var(--border);
+    }
+    h1{
+      margin:0 0 12px;
+      color:var(--heading);
+      font-size:34px;
+      line-height:1.2;
+      font-weight:700;
+    }
+    .subtitle{
+      color:#b2c0cf;
+      font-size:18px;
+      line-height:1.4;
+    }
+
+    .content-wrap{
+      display:grid;
+      grid-template-columns: 2.1fr 1fr;
+      align-items:start;
+    }
+    .main-column{
+      padding:32px;
+      background:#fff;
+    }
+    .sidebar{
+      background:#ececf2;
+      border-left:1px solid var(--border);
+      min-height:100%;
+      padding:32px;
+    }
+    .notice{
+      background:#fff;
+      border:1px solid #cfd3dc;
+      padding:18px 20px;
+      font-size:18px;
+      line-height:1.55;
+      color:#667d96;
+      margin-bottom:34px;
+    }
+    .sidebar p{
+      margin:0 0 22px;
+      font-size:18px;
+      line-height:1.65;
+      color:#667d96;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:34px 32px;
+      margin-bottom:64px;
+    }
+    .card{
+      background:#4f86c8;
+      color:#fff;
+      border-radius:3px;
+      min-height:86px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:14px 10px;
+      box-shadow:none;
+    }
+    .card-title{
+      font-size:26px;
+      line-height:1.15;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .card-sub{
+      font-size:14px;
+      color:#c8d6e8;
+      font-weight:700;
+    }
+
+    section{
+      margin-bottom:58px;
+    }
+    h2{
+      margin:0 0 16px;
+      color:var(--heading);
+      font-size:28px;
+      line-height:1.2;
+      font-weight:700;
+    }
+    .link-grid.four{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:8px 28px;
+    }
+    .link-grid.two{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:8px 48px;
+    }
+    .link-grid a{
+      display:block;
+      font-size:18px;
+      line-height:1.45;
+      color:#5f7690;
+    }
+
+    .site-footer{
+      background:var(--blue-dark);
+      color:#fff;
+      padding:42px 0 34px;
+      margin-top:0;
+    }
+    .footer-inner{
+      max-width:1140px;
+      margin:0 auto;
+      padding:0 18px;
+    }
+    .footer-links{
+      display:flex;
+      gap:28px;
+      flex-wrap:wrap;
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:22px;
+    }
+    .copyright{
+      font-size:14px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar nav.desktop-nav{ display:none; }
+      .auth.desktop-auth{ display:none; }
+      .topbar{
+        padding:8px 0;
+      }
+      .topbar-inner{
+        padding:0 10px;
+      }
+      #mobile-nav{
+        background:var(--blue);
+        padding:8px 12px 14px;
+      }
+      #mobile-nav ul{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+        color:#fff;
+        font-weight:700;
+      }
+      .page{
+        width:100%;
+      }
+      .hero{
+        padding:24px 20px 20px;
+      }
+      h1{
+        font-size:28px;
+      }
+      .subtitle{
+        font-size:12px;
+        max-width:320px;
+      }
+      .content-wrap{
+        grid-template-columns: 1.45fr .8fr;
+      }
+      .main-column{
+        padding:22px 20px;
+      }
+      .sidebar{
+        padding:22px 14px;
+      }
+      .cards{
+        gap:22px 18px;
+        margin-bottom:44px;
+      }
+      .card{
+        min-height:74px;
+        padding:10px 6px;
+      }
+      .card-title{
+        font-size:18px;
+      }
+      .card-sub{
+        font-size:12px;
+      }
+      h2{
+        font-size:24px;
+      }
+      .link-grid.four{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        gap:6px 18px;
+      }
+      .link-grid.two{
+        grid-template-columns:repeat(2, minmax(0,1fr));
+        gap:6px 18px;
+      }
+      .link-grid a{
+        font-size:12px;
+        line-height:1.35;
+      }
+      .notice{
+        font-size:12px;
+        line-height:1.6;
+        padding:14px 12px;
+      }
+      .sidebar p{
+        font-size:12px;
+        line-height:1.6;
+      }
+      .breadcrumb{
+        font-size:11px;
+        padding:10px 12px;
+      }
+      .footer-links{
+        gap:16px;
+        font-size:10px;
+      }
+      .copyright{
+        font-size:9px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px){
+      .topbar nav ul{
+        font-size:14px;
+        gap:26px;
+      }
+      .auth{
+        font-size:14px;
+      }
+      .signup{
+        padding:10px 16px;
+      }
+      .hero{
+        padding:28px 32px;
+      }
+      h1{
+        font-size:38px;
+      }
+      .subtitle{
+        font-size:16px;
+      }
+      .content-wrap{
+        grid-template-columns: 2fr 1fr;
+      }
+      .main-column{
+        padding:32px;
+      }
+      .sidebar{
+        padding:32px;
+      }
+      .card{
+        min-height:110px;
+      }
+      .card-title{
+        font-size:26px;
+      }
+      .link-grid.four a,
+      .link-grid.two a{
+        font-size:16px;
+      }
+      .notice,
+      .sidebar p{
+        font-size:16px;
+      }
+      .footer-links{
+        font-size:14px;
+      }
+      .copyright{
+        font-size:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <nav class="desktop-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">Request Demo</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <div class="auth desktop-auth">
+        <a href="#">Log In</a>
+        <a href="#" class="signup">Sign Up</a>
+      </div>
+    </div>
+
+    <nav id="mobile-nav" aria-label="Main" hidden>
+      <ul>
+        <li><a href="#">Request Demo</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Log In</a></li>
+        <li><a href="#">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="#">Provider Directory</a></li>
+        <li><a href="#">Georgia</a></li>
+        <li><a href="#">Shellman</a></li>
+      </ol>
+    </nav>
+
+    <main id="main-content">
+      <section class="hero" aria-label="Page introduction">
+        <h1>Find and Compare Senior Care and Housing Options in Shellman , GA</h1>
+        <div class="subtitle">Shellman Assisted Living, Senior Care Services, Homes and More for the Elderly</div>
+      </section>
+
+      <div class="content-wrap">
+        <div class="main-column">
+          <section aria-label="Senior care categories">
+            <div class="cards">
+              <a href="#" class="card"><span class="card-title">Assisted Living</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Senior Living</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Nursing Homes</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Retirement Homes</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Home Care</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Memory Care</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Caregivers</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Independent Living</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Hospice Care</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Geriatric Care</span><span class="card-sub">Shellman</span></a>
+              <a href="#" class="card"><span class="card-title">Elderly Care</span><span class="card-sub">Shellman</span></a>
+            </div>
+          </section>
+
+          <section aria-label="Popular Searches">
+            <h2>Popular Searches</h2>
+            <div class="link-grid four">
+              <div>
+                <a href="#">Assisted Living</a>
+                <a href="#">Home Care</a>
+                <a href="#">Hospice Care</a>
+              </div>
+              <div>
+                <a href="#">Senior Living</a>
+                <a href="#">Memory Care</a>
+                <a href="#">Geriatric Care</a>
+              </div>
+              <div>
+                <a href="#">Nursing Homes</a>
+                <a href="#">Caregivers</a>
+                <a href="#">Elderly Care</a>
+              </div>
+              <div>
+                <a href="#">Retirement Homes</a>
+                <a href="#">Independent Living</a>
+              </div>
+            </div>
+          </section>
+
+          <section aria-label="Popular Areas">
+            <h2>Popular Areas</h2>
+            <div class="link-grid four">
+              <div>
+                <a href="#">Atlanta</a>
+                <a href="#">Colorado Springs</a>
+                <a href="#">Los Angeles</a>
+                <a href="#">Sacramento</a>
+                <a href="#">San Jose</a>
+              </div>
+              <div>
+                <a href="#">Austin</a>
+                <a href="#">Denver</a>
+                <a href="#">New York</a>
+                <a href="#">San Antonio</a>
+                <a href="#">Scottsdale</a>
+              </div>
+              <div>
+                <a href="#">Boston</a>
+                <a href="#">Houston</a>
+                <a href="#">Omaha</a>
+                <a href="#">San Diego</a>
+                <a href="#">Seattle</a>
+              </div>
+              <div>
+                <a href="#">Chicago</a>
+                <a href="#">Las Vegas</a>
+                <a href="#">Phoenix</a>
+                <a href="#">San Francisco</a>
+                <a href="#">Tuscon</a>
+              </div>
+            </div>
+          </section>
+
+          <section aria-label="All Care Types">
+            <h2>All Care Types</h2>
+            <div class="link-grid two">
+              <div>
+                <a href="#">Assisted Living</a>
+                <a href="#">Senior Housing</a>
+                <a href="#">Senior Living Communities</a>
+                <a href="#">Skilled Nursing Facility</a>
+                <a href="#">Nursing Home Compare</a>
+                <a href="#">Retirement Communities</a>
+                <a href="#">Home Care</a>
+                <a href="#">Home Health Care</a>
+                <a href="#">Senior Care Services</a>
+                <a href="#">Memory Care</a>
+                <a href="#">Dementia Care</a>
+                <a href="#">Independent Living</a>
+                <a href="#">End of Life Care</a>
+                <a href="#">Adult Day Care</a>
+                <a href="#">Care Homes</a>
+                <a href="#">Elder Care Services</a>
+                <a href="#">Convalescent Home</a>
+              </div>
+              <div>
+                <a href="#">Senior Living</a>
+                <a href="#">Senior Citizen Housing</a>
+                <a href="#">Nursing Homes</a>
+                <a href="#">Skilled Nursing Homes</a>
+                <a href="#">Retirement Homes</a>
+                <a href="#">55+ communities</a>
+                <a href="#">Home Care Agencies</a>
+                <a href="#">Home Health Aide</a>
+                <a href="#">Senior Home Care</a>
+                <a href="#">Alzheimer's Care</a>
+                <a href="#">Caregivers</a>
+                <a href="#">Hospice Care</a>
+                <a href="#">Geriatric Care</a>
+                <a href="#">Respite Care</a>
+                <a href="#">Elderly Care</a>
+                <a href="#">Long Term Care Facilities</a>
+                <a href="#">Palliative Care</a>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="sidebar" aria-label="Provider information">
+          <div class="notice">
+            We exercise no independent judgment as to the quality of, nor do we recommend or endorse, any Provider.
+          </div>
+          <p>There are thousands of senior care services and housing options for the elderly in Shellman , Georgia . Whether you or a loved one is in need of a senior living home, assisted living facilities, in home care services, a nursing home, adult day care services, retirement home, or are suffering from memory loss, such as dementia or Alzheimer's disease, we can help you find the best care services or senior living option for your needs in the city or surrounding area of your choice in Shellman .</p>
+          <p>Ensocare offers access to its nationwide provider directory in order to help you find the best senior care services for your needs. We have teamed up with A Place For Mom to help you find the best care services and housing options for your loved one.</p>
+          <p>Contact us to request more information.</p>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <nav aria-label="Footer">
+        <div class="footer-links">
+          <a href="#">Home</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+      </nav>
+      <div class="copyright">© Ensocare. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured one h1 with sequential h2 headings; added html lang="en"; ensured all interactive elements have descriptive labels/text.
+[B] ARIA fixes: used unique aria-labels for Main, Breadcrumb, and Footer navigation; labeled aside and introductory section; avoided redundant role attributes; removed positive tabindex values via JS baseline.
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, aria-controls, focus movement, and Escape close; implemented tab order cleanup for tabindex values greater than 0.
+-->

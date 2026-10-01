@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adversarial Overlap and Cutoff</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Problem 1: text cutoff by clipping + fixed height */
+    .cutoff {
+      border: 1px solid #999;
+      padding: 12px;
+      height: 72px;         /* fixed height causes vertical overflow */
+      overflow: hidden;     /* clips overflowing text */
+    }
+
+    /* Problem 3: horizontal cutoff via nowrap + overflow hidden */
+    .h-cutoff {
+      border: 1px solid #999;
+      padding: 12px;
+      white-space: nowrap;   /* forces single-line text */
+      overflow: hidden;      /* hides overflowing horizontal text */
+      text-overflow: clip;   /* no ellipsis, hard cutoff */
+    }
+
+    /* Problem 2: overlap via absolute positioning + negative offset */
+    .overlap-wrap {
+      position: relative;
+      border: 1px solid #999;
+      padding: 12px;
+      min-height: 120px;
+    }
+
+    .card {
+      padding: 12px;
+      border: 1px dashed #777;
+      background: #f7f7f7;
+    }
+
+    .badge {
+      position: absolute;
+      top: 40px;
+      left: 8px;
+      width: calc(100% - 16px);
+      padding: 10px;
+      border: 2px solid #333;
+      background: rgba(255,255,255,0.9);
+      z-index: 10;
+    }
+
+    .badge h2 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.1;     /* tighter line height increases overlap likelihood */
+    }
+
+    .badge p {
+      margin: 6px 0 0 0;
+    }
+
+    .hero {
+      border: 1px solid #999;
+      padding: 12px;
+      background: #fafafa;
+    }
+
+    .hero h1 {
+      margin: 0 0 8px 0;
+      font-size: 24px;
+    }
+
+    .muted { color: #444; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="hero">
+      <h1>Responsive Layout, Broken Text</h1>
+      <div class="muted">This page stays responsive but intentionally violates cutoff and overlap.</div>
+    </div>
+
+    <div class="grid">
+      <section class="cutoff">
+        <strong>Cutoff example (clipped text):</strong>
+        <p>
+          This paragraph is deliberately too long for the fixed-height container.
+          It will overflow vertically but gets clipped because overflow is hidden.
+          The content continues beyond the visible area and should be flagged as cutoff.
+        </p>
+      </section>
+
+      <section class="h-cutoff">
+        <strong>Horizontal cutoff example:</strong>
+        <p>
+          ThisIsAnIntentionallyVeryLongUnbrokenStringWithoutSpacesThatWillOverflowHorizontallyAndGetCutOffAtTheContainerBoundary
+        </p>
+      </section>
+
+      <section class="overlap-wrap">
+        <div class="card">
+          <h2>Base content</h2>
+          <p>
+            This is the underlying content block. It looks normal in the layout,
+            but an absolutely positioned overlay is placed on top of it.
+          </p>
+        </div>
+
+        <div class="badge">
+          <h2>Overlay Heading</h2>
+          <p>
+            This overlay overlaps the base content and should be detected as overlap.
+            The container is responsive, but the content intentionally intersects.
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header bar with a clear hamburger icon at the top right, implying collapsed navigation that must be revealed on tap.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the hamburger should open and close the mobile navigation panel or menu. The trigger should reflect expanded/collapsed state and likely expose the same primary nav items visible in desktop.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-out drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place navigation/header content at the very top in a persistent-looking bar. The mobile sketch especially suggests a fixed top bar above a long scrolling article, and the desktop sketch shows a full-width top nav separated from content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation/header should likely remain visible while scrolling so users can access navigation from long content pages.",
+      "ambiguities": "The sketches do not explicitly indicate whether the nav is fixed at all times or only styled as a top header."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static content page with low JavaScript complexity. The main required interaction is responsive navigation: a hamburger-controlled mobile menu and likely a persistent top navigation/header across viewports. No forms, tabs, accordions, modals, dropdown submenus, or dynamic loading cues are visibly indicated. Desktop appears to expose navigation inline, while mobile compresses it into a toggleable control."
+}

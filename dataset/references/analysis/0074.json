@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small boxed icon/control at the top right, while the desktop sketch shows the navigation links expanded horizontally. This cross-viewport difference strongly implies a collapsed mobile navigation toggle.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the mobile toggle should show and hide the primary navigation panel/list. The expanded state should expose the same top-level links visible on desktop and indicate the current page if applicable.",
+      "ambiguities": "The sketch does not show whether the mobile menu opens as a dropdown below the header, an overlay drawer, or a full-screen panel."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The implied mobile hamburger disclosure requires keyboard focus to move predictably to revealed navigation items, and focus must remain sensible when the menu is opened or closed. Desktop navigation also needs logical keyboard traversal across links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, keyboard users should be able to reach the revealed links immediately; when it closes, focus should return to the toggle. Across both layouts, interactive elements should follow a logical tab order with visible focus states.",
+      "ambiguities": "Because no modal or complex composite widget is explicitly drawn, the exact amount of programmatic focus handling beyond the mobile nav disclosure is not fully specified."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly static article/detail page with low JavaScript complexity. The main cross-viewport interaction difference is navigation: desktop presents direct top-level links, while mobile appears to collapse them behind a header toggle. The rest of the page reads as static content, related links, pagination-style older/newer links, and footer links that do not inherently require JavaScript beyond standard navigation behavior."
+}

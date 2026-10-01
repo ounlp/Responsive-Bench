@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Exposed Burl — Michael Enn Sirvet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+/*!
+ *  Font Awesome 4.0.3 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('../fonts/fontawesome-webfont.eot?v=4.0.3');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.0.3') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff?v=4.0.3') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.0.3') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.fa {
+  display: inline-block;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-twitter:before { content: "\f099"; }
+.fa-facebook:before { content: "\f09a"; }
+.fa-pinterest:before { content: "\f0d2"; }
+.fa-instagram:before { content: "\f16d"; }
+.fa-tumblr:before { content: "\f173"; }
+
+/*! normalize/bootstrap subset from source */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+body{margin:0}
+article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
+a{background-color:transparent}
+a:active,a:hover{outline:0}
+b,strong{font-weight:bold}
+img{border:0}
+button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
+button{overflow:visible}
+button,select{text-transform:none}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+html{font-size:10px;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+body{font-family:"pt-sans",sans-serif;font-size:14px;line-height:1.42857143;color:#fff;background-color:#333}
+a{color:#ddd;text-decoration:none}
+a:hover,a:focus{color:#b7b7b7;text-decoration:underline}
+img{vertical-align:middle}
+.img-responsive{display:block;max-width:100%;height:auto}
+.sr-only{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);border:0}
+h1,h2,h3,h4,h5,h6{font-family:inherit;font-weight:500;line-height:1.1;color:inherit}
+h1,.h1{font-size:36px}
+h2,.h2{font-size:30px}
+h3,.h3{font-size:24px}
+p{margin:0 0 10px}
+.container{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
+@media (min-width:768px){.container{width:750px}}
+@media (min-width:992px){.container{width:970px}}
+@media (min-width:1200px){.container{width:1170px}}
+.container-fluid{margin-right:auto;margin-left:auto;padding-left:15px;padding-right:15px}
+.row{margin-left:-15px;margin-right:-15px}
+.col-xs-12,.col-sm-12,.col-md-4,.col-md-8{position:relative;min-height:1px;padding-left:15px;padding-right:15px}
+.col-xs-12{float:left;width:100%}
+@media (min-width:992px){
+  .col-md-4,.col-md-8{float:left}
+  .col-md-4{width:33.33333333%}
+  .col-md-8{width:66.66666667%}
+}
+.nav{margin-bottom:0;padding-left:0;list-style:none}
+.nav>li{position:relative;display:block}
+.nav>li>a{position:relative;display:block;padding:10px 15px}
+.navbar{position:relative;min-height:50px;margin-bottom:20px;border:1px solid transparent}
+.navbar-header:before,.navbar-header:after,.navbar:before,.navbar:after,.container:before,.container:after,.container-fluid:before,.container-fluid:after,.row:before,.row:after{content:" ";display:table}
+.navbar-header:after,.navbar:after,.container:after,.container-fluid:after,.row:after{clear:both}
+.navbar-brand{float:left;padding:15px 15px;font-size:18px;line-height:20px;height:50px}
+.navbar-toggle{position:relative;float:right;margin-right:15px;padding:9px 10px;margin-top:8px;margin-bottom:8px;background-color:transparent;background-image:none;border:1px solid transparent;border-radius:4px}
+.navbar-toggle .icon-bar{display:block;width:22px;height:2px;border-radius:1px}
+.navbar-toggle .icon-bar+.icon-bar{margin-top:4px}
+.navbar-collapse{overflow-x:visible;padding-right:15px;padding-left:15px;border-top:1px solid transparent}
+.collapse{display:none}
+.collapse.in{display:block}
+.navbar-nav{margin:7.5px -15px}
+.navbar-nav>li>a{padding-top:10px;padding-bottom:10px;line-height:20px}
+@media (min-width:768px){
+  .navbar-header{float:left}
+  .navbar-toggle{display:none}
+  .navbar-collapse{width:auto;border-top:0;display:block !important;height:auto !important;padding-bottom:0;overflow:visible !important}
+  .navbar-nav{float:left;margin:0}
+  .navbar-nav>li{float:left}
+  .navbar-nav>li>a{padding-top:15px;padding-bottom:15px}
+  .navbar-right{float:right !important;margin-right:-15px}
+}
+.navbar-default{background-color:#c00;border-color:#c00;border-radius:4px}
+.navbar-default .navbar-brand{color:#fff}
+.navbar-default .navbar-nav>li>a{color:#fff}
+.navbar-default .navbar-nav>li>a:hover,.navbar-default .navbar-nav>li>a:focus{color:#333;background-color:transparent}
+.pull-right{float:right !important}
+.pull-left{float:left !important}
+.hidden{display:none !important}
+.visible-xs-block{display:none !important}
+@media (max-width:767px){.visible-xs-block{display:block !important}.hidden-xs{display:none !important}}
+@media (min-width:768px){.hidden-sm-up{display:none !important}}
+
+.year {
+  border-bottom: 1px #CCC solid;
+}
+div.item-filter {
+  border:1px solid #494949;
+  background:#393939;
+  height:250px;
+  width:100%;
+  text-align:center;
+  padding:40px 0px 40px 0px;
+  margin:0px 0px 20px 0px;
+  text-transform:uppercase;
+  font-size:14px;
+  font-weight:normal;
+  letter-spacing:1px;
+}
+div.item-filter img {
+  margin-bottom:10px;
+  border: 1px solid #FFF;
+}
+div.item-filter a {
+  text-decoration:none;
+}
+div.general {
+  background-color:#666;
+  padding:20px;
+}
+div#sidebar-right,
+div#sidebar-left {
+  background-color:#666;
+  text-align:center;
+  padding:20px;
+}
+div#sidebar-right img,
+div#sidebar-left img {
+  width:100%!important;
+  height:auto!important;
+}
+#footer {
+  border-top:2px solid #666;
+  margin-top:10px;
+  padding:5px 0px 30px 0px;
+  height:50px;
+}
+#copyright {
+  border-top:2px solid #666;
+  color:#777;
+  text-align:center;
+  margin:5px 0px 5px 0px;
+  padding:5px 0px 5px 0px;
+  font-size:12px;
+}
+#social-share {
+  float:right;
+  font-size:22px;
+  color:#777;
+}
+#social-share a {
+  color:#777;
+}
+#social-share a:hover {
+  color:#FFF;
+}
+#social-follow {
+  float:left;
+  font-size:22px;
+  color:#777;
+}
+#social-follow a {
+  color:#777;
+}
+#social-follow a:hover {
+  color:#FFF;
+}
+a.navbar-brand {
+  text-transform:uppercase;
+  font-weight:900;
+  font-size:1.5em;
+}
+.navbar-default {
+  background-color:#CC0000;
+  border-radius: 4px;
+}
+.navbar-brand,
+.navbar-nav > li > a {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.tk-proxima-nova{font-family:"proxima-nova",sans-serif;}
+.tk-pt-sans{font-family:"pt-sans",sans-serif;}
+@font-face{font-family:proxima-nova;src:url(https://use.typekit.com/af/8c5f68/00000000000000003b9ad1b1/27/l?subset_id=2&fvd=n7&v=3) format("woff2"),url(https://use.typekit.com/af/8c5f68/00000000000000003b9ad1b1/27/d?subset_id=2&fvd=n7&v=3) format("woff"),url(https://use.typekit.com/af/8c5f68/00000000000000003b9ad1b1/27/a?subset_id=2&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;font-stretch:normal;font-display:auto;}
+@font-face{font-family:proxima-nova;src:url(https://use.typekit.com/af/aa8afb/00000000000000003b9ad1b9/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.com/af/aa8afb/00000000000000003b9ad1b9/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.com/af/aa8afb/00000000000000003b9ad1b9/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;font-stretch:normal;font-display:auto;}
+@font-face{font-family:pt-sans;src:url(https://use.typekit.com/af/f482a1/0000000000000000000124f9/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.com/af/f482a1/0000000000000000000124f9/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.com/af/f482a1/0000000000000000000124f9/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;font-stretch:normal;font-display:auto;}
+@font-face{font-family:pt-sans;src:url(https://use.typekit.com/af/96b1c3/0000000000000000000124fa/27/l?subset_id=2&fvd=n7&v=3) format("woff2"),url(https://use.typekit.com/af/96b1c3/0000000000000000000124fa/27/d?subset_id=2&fvd=n7&v=3) format("woff"),url(https://use.typekit.com/af/96b1c3/0000000000000000000124fa/27/a?subset_id=2&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;font-stretch:normal;font-display:auto;}
+
+/* Required accessibility additions */
+.skip-link {
+  position: absolute;
+  left: 15px;
+  top: 0;
+  transform: translateY(-100%);
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  z-index: 2000;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+:focus-visible {
+  outline: 3px solid #005FCC;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Hamburger pattern */
+.nav-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+    float: right;
+    margin-right: 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    padding: 9px 12px;
+    background: transparent;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    color: #fff;
+    line-height: 1;
+  }
+  .desktop-nav {
+    display: none !important;
+  }
+  #mobile-nav {
+    clear: both;
+    padding: 0 15px 10px 15px;
+  }
+  #mobile-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  #mobile-nav li a {
+    display: block;
+    padding: 10px 0;
+    color: #fff;
+  }
+}
+@media (min-width: 769px) {
+  #mobile-nav {
+    display: none !important;
+  }
+}
+
+/* Minor semantic element reset to preserve layout */
+header.navbar .navbar-brand {
+  display: inline-block;
+}
+main {
+  display: block;
+}
+aside#sidebar-left {
+  border-radius: 10px;
+}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="container">
+    <header class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/" aria-label="Michael Enn Sirvet home">Michael Enn Sirvet</a>
+          <button
+            id="nav-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Open navigation menu"
+            class="nav-toggle"
+            type="button">
+            <span aria-hidden="true">&#9776;</span>
+          </button>
+        </div>
+
+        <nav class="navbar-collapse collapse desktop-nav" id="navbar" aria-label="Main">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/bio">Bio</a></li>
+            <li><a href="/sculpture-gallery">Sculpture Gallery</a></li>
+            <li><a href="/design-gallery">Design Gallery</a></li>
+            <li><a href="/artist-statement">Artist Statement</a></li>
+          </ul>
+        </nav>
+
+        <nav id="mobile-nav" aria-label="Main" hidden>
+          <ul>
+            <li><a href="/bio">Bio</a></li>
+            <li><a href="/sculpture-gallery">Sculpture Gallery</a></li>
+            <li><a href="/design-gallery">Design Gallery</a></li>
+            <li><a href="/artist-statement">Artist Statement</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-md-4">
+            <aside id="sidebar-left" aria-label="Artwork details">
+              <h1><em>Exposed Burl</em></h1>
+              <p>Materials: Maple Burl<br>
+              Dimensions: 13&quot; x 19&quot; x 5&quot;<br>
+              Price: INQUIRE</p>
+              <p>
+                <a href="rick.jpg" aria-label="View detail image of Exposed Burl">
+                  <img alt="Detail view of the Exposed Burl sculpture" src="rick.jpg" style="border: 1px #FFF solid;">
+                </a>
+              </p>
+            </aside>
+          </div>
+
+          <div class="col-xs-12 col-md-8">
+            <img alt="Main view of the Exposed Burl sculpture" src="rick.jpg" style="width:100%;height:auto;border: 1px #FFF solid;">
+            <h2>About <em>Exposed Burl</em></h2>
+            <p>The Exposed Burl is a beautiful, small maple burl that I exposed to the world thorough smoothing and polishing its flat surfaces and opening up areas within the piece of wood. The piece come to me beautiful, so my task is to extenuate that beauty.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer">
+      <div id="social-follow">
+        follow:
+        <a href="https://twitter.com/" aria-label="Follow Michael Enn Sirvet on Twitter">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="https://facebook.com/" aria-label="Follow Michael Enn Sirvet on Facebook">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="https://pinterest.com/" aria-label="Follow Michael Enn Sirvet on Pinterest">
+          <i class="fa fa-pinterest" aria-hidden="true"></i>
+        </a>
+        <a href="https://instagram.com/" aria-label="Follow Michael Enn Sirvet on Instagram">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+        <a href="https://tumblr.com/" aria-label="Follow Michael Enn Sirvet on Tumblr">
+          <i class="fa fa-tumblr" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div id="social-share">
+        share this:
+        <a href="https://twitter.com/intent/tweet" aria-label="Share this artwork on Twitter">
+          <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.facebook.com/sharer/sharer.php" aria-label="Share this artwork on Facebook">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="https://pinterest.com/pin/create/button/" aria-label="Share this artwork on Pinterest">
+          <i class="fa fa-pinterest" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.tumblr.com/widgets/share/tool" aria-label="Share this artwork on Tumblr">
+          <i class="fa fa-tumblr" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div style="clear:both;"></div>
+
+      <div id="copyright">
+        &copy; 2023. All Rights Reserved.
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added lang="en"; updated title to page-specific format; added skip link and main id; converted top area to header; added main landmark; converted left details panel to aside with descriptive label; converted footer container to footer; ensured exactly one h1 for the artwork title and sequential h2 for About section; added meaningful alt text to both images; added descriptive href/text/aria-labels to all links and icon-only links.
+[B] ARIA fixes: used nav landmarks with unique labels for desktop and mobile main navigation; avoided redundant landmark roles; ensured aside has aria-label; removed need for positive tabindex and included cleanup script; added proper aria-expanded/aria-controls/aria-label to mobile menu button.
+[C] JS patterns added: implemented hamburger menu toggle for mobile with focus management and Escape close; added global positive tabindex cleanup; added required global focus-visible styling.
+-->

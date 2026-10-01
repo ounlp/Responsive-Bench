@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small menu icon in the top-right of the header area, separate from the logo/branding, which conventionally indicates a collapsed navigation drawer or overlay menu.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation. Because this is the main site nav in a compact header, it likely reveals a full-screen or slide-in menu panel and should update expanded/collapsed state.",
+      "ambiguities": "The sketch does not show whether the menu opens as a drawer, dropdown sheet, or full-screen overlay, nor whether nested items exist."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent header/navigation bar at the top; on desktop it is drawn as a full-width top bar above the hero, and on mobile the compact header sits above a long scrolling page, implying it remains available during scroll.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain accessible while scrolling, likely sticking to the top after initial load or staying fixed throughout. If it shrinks or changes state on scroll, that would also require JS state handling.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state, so sticky behavior is inferred from common responsive real-estate layouts rather than directly depicted."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "The page in both views is long and content-heavy, especially the mobile sketch with many stacked sections/cards, which strongly implies a return-to-top affordance for usability on long scrolls.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A button should appear after the user scrolls down and smoothly return focus/scroll position to the top when activated.",
+      "ambiguities": "No explicit button is drawn in the sketches, so this is inferred from the unusually long page length rather than directly shown."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively light JavaScript layer focused mainly on responsive navigation and scroll-related behavior rather than rich widgets or forms. Mobile clearly requires a hamburger-driven navigation pattern, while desktop presents a conventional top navigation bar that may become sticky during scroll. Both layouts appear to be long, content-led pages with hero/media sections and repeated content blocks, so scroll assistance such as a sticky header and likely a scroll-to-top control are the main inferred interactive needs; there is no clear evidence of tabs, accordions, modal triggers, dropdown submenus, or interactive forms in the sketches themselves."
+}

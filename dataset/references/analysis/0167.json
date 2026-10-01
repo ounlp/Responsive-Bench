@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a long-form article layout with static content: hero/image blocks, headings, body text, and simple previous/next style footer navigation on desktop. There are no visible controls such as hamburger icons, menus, tabs, accordions, search, forms, modal triggers, counters, or load-more affordances. The implied interaction is limited to ordinary hyperlink navigation, which is not part of the provided JavaScript taxonomy. Cross-viewport differences appear to be purely responsive layout changes rather than JS-driven behavior."
+}

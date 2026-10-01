@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>410 - Website No Longer Exists — Lycos</title>
+  <style>
+    :root{
+      --bg-header:#d9edf8;
+      --bg-page:#f7f4ee;
+      --text:#4f3d3f;
+      --rule:#e7dfd6;
+      --link-blue:#2f8fbe;
+      --card-border:#d8d1c8;
+      --logout:#a8cf45;
+      --logo-blue:#0a00ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      min-height:100vh;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      z-index:1000;
+      text-decoration:none;
+      border:2px solid #005FCC;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    header{
+      background:var(--bg-header);
+      position:relative;
+      padding:44px 20px 22px;
+    }
+
+    .logout-wrap{
+      position:absolute;
+      top:0;
+      right:0;
+    }
+
+    .logout{
+      display:inline-block;
+      background:var(--logout);
+      color:#2f2a1f;
+      text-decoration:none;
+      padding:11px 15px 12px;
+      font-size:14px;
+    }
+
+    .header-inner{
+      max-width:1060px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:140px;
+      min-height:150px;
+    }
+
+    .logo{
+      width:220px;
+      height:124px;
+      background:var(--logo-blue);
+      flex:0 0 auto;
+    }
+
+    .desktop-nav ul,
+    .mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:38px;
+      align-items:center;
+    }
+
+    .desktop-nav a,
+    .mobile-nav a{
+      color:#3d3528;
+      text-decoration:none;
+      font-weight:700;
+      font-size:21px;
+      border-bottom:1px solid #cfc7bc;
+      padding-bottom:6px;
+      display:inline-block;
+    }
+
+    .nav-toggle{ display:none; }
+
+    main{
+      max-width:1060px;
+      margin:0 auto;
+      padding:22px 20px 180px;
+    }
+
+    h1{
+      margin:0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-weight:300;
+      letter-spacing:-1px;
+      color:#584648;
+      font-size:38px;
+      line-height:1;
+      text-transform:uppercase;
+    }
+
+    .title-rule{
+      height:1px;
+      background:var(--rule);
+      margin:14px 0 40px;
+      width:72%;
+    }
+
+    .lead{
+      font-weight:700;
+      font-size:26px;
+      line-height:1.08;
+      max-width:700px;
+      margin:0 0 26px;
+      color:#4d3d3f;
+    }
+
+    .cards{
+      max-width:716px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--card-border);
+      min-height:103px;
+      margin:0 0 16px;
+      display:flex;
+      align-items:center;
+      padding:18px 24px;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .card img{
+      width:210px;
+      height:66px;
+      object-fit:cover;
+      margin-right:26px;
+      flex:0 0 auto;
+      opacity:0;
+    }
+
+    .card-text{
+      color:var(--link-blue);
+      font-size:16px;
+      line-height:1.25;
+      max-width:420px;
+    }
+
+    .card-title{
+      display:block;
+      font-weight:700;
+      font-size:18px;
+      margin-bottom:2px;
+    }
+
+    footer{
+      height:28px;
+    }
+
+    @media (max-width: 1024px){
+      .header-inner{
+        max-width:760px;
+        gap:70px;
+        justify-content:center;
+        flex-direction:column;
+        padding-top:30px;
+        min-height:auto;
+      }
+
+      .logo{
+        width:221px;
+        height:124px;
+      }
+
+      .desktop-nav ul{
+        gap:34px;
+      }
+
+      .desktop-nav a{
+        font-size:18px;
+      }
+
+      main{
+        max-width:760px;
+        padding:30px 16px 100px;
+      }
+
+      h1{
+        font-size:44px;
+        max-width:430px;
+        line-height:0.95;
+      }
+
+      .title-rule{
+        width:65%;
+        margin-bottom:34px;
+      }
+
+      .lead{
+        font-size:28px;
+        max-width:620px;
+      }
+
+      .cards{
+        max-width:478px;
+      }
+
+      .card{
+        min-height:109px;
+        padding:16px 18px;
+      }
+
+      .card img{
+        width:220px;
+        height:72px;
+        margin-right:22px;
+      }
+
+      .card-text{
+        font-size:15px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .desktop-nav{display:none}
+
+      header{
+        padding:0 0 18px;
+      }
+
+      .header-inner{
+        gap:18px;
+        padding:67px 20px 0;
+      }
+
+      .logo{
+        width:220px;
+        height:131px;
+      }
+
+      .nav-toggle{
+        margin:10px auto 0;
+        background:transparent;
+        border:1px solid transparent;
+        font-size:28px;
+        color:#3d3528;
+        cursor:pointer;
+      }
+
+      .mobile-nav{
+        margin-top:10px;
+      }
+
+      .mobile-nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+        gap:12px 34px;
+        max-width:280px;
+        margin:0 auto;
+      }
+
+      .mobile-nav a{
+        font-size:17px;
+      }
+
+      main{
+        padding:16px 20px 120px;
+      }
+
+      h1{
+        font-size:31px;
+        text-align:center;
+        max-width:none;
+      }
+
+      .title-rule{
+        width:100%;
+        margin:10px 0 12px;
+      }
+
+      .lead{
+        font-size:24px;
+        line-height:1.08;
+        max-width:none;
+        margin-bottom:14px;
+      }
+
+      .cards{
+        max-width:none;
+      }
+
+      .card{
+        min-height:162px;
+        padding:18px 14px;
+        align-items:flex-end;
+      }
+
+      .card img{
+        width:0;
+        height:0;
+        margin:0;
+      }
+
+      .card-text{
+        font-size:14px;
+        max-width:100%;
+      }
+
+      .card-title{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="logout-wrap">
+      <a href="#" class="logout">Log out</a>
+    </div>
+
+    <div class="header-inner">
+      <img src="rick.jpg" alt="" class="logo">
+
+      <nav aria-label="Main" class="desktop-nav">
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+
+    <nav id="mobile-nav" aria-label="Main" class="mobile-nav" hidden>
+      <ul>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h1>410 - WEBSITE NO LONGER EXISTS</h1>
+    <div class="title-rule" aria-hidden="true"></div>
+
+    <p class="lead">
+      The Page You've Requested Is From A Site That Has Been Permanently Removed.<br>
+      Please Remove All References To This Page.
+    </p>
+
+    <section class="cards" aria-label="Suggested links">
+      <a href="#" class="card">
+        <img src="rick.jpg" alt="">
+        <div class="card-text">
+          <span class="card-title">Tripod.com</span>
+          Create a website for your business, interests and hobbies on Tripod!
+        </div>
+      </a>
+
+      <a href="#" class="card">
+        <img src="rick.jpg" alt="">
+        <div class="card-text">
+          <span class="card-title">Lycos Shopping</span>
+          The best online shopping deals, coupons &amp; exclusive close out sales at bargain prices.
+        </div>
+      </a>
+
+      <a href="#" class="card">
+        <img src="rick.jpg" alt="">
+        <div class="card-text">
+          <span class="card-title">Lycos.com</span>
+          Search the web, read the news, check your mail and more!
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer></footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured exactly one h1 with sequential structure; added alt attributes to all images; ensured interactive elements have descriptive labels/text; set html lang="en".
+[B] ARIA fixes: used aria-label on navigation regions; avoided redundant role attributes on semantic landmarks; ensured no tabindex values greater than 0 remain.
+[C] JS patterns added: implemented hamburger menu toggle with aria-expanded, aria-controls, focus handling, and Escape close; implemented tabindex cleanup and focus-visible support.
+-->

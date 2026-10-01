@@ -1,0 +1,74 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top header area with minimal controls and no persistent left sidebar, while the desktop sketch clearly shows a full left navigation rail. This cross-viewport difference strongly implies the desktop sidebar/navigation collapses behind a mobile menu trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile nav toggle should open and close the hidden navigation panel or drawer, likely exposing the same section links visible in the desktop sidebar/top nav. It should support dismiss via toggle re-press and likely outside tap.",
+      "ambiguities": "The hamburger icon itself is not distinctly drawn in the mobile sketch, so the need is inferred from the missing persistent navigation rather than explicitly depicted."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a horizontal header/navigation bar at the very top, visually separated from long scrolling content beneath. The desktop sketch especially suggests a persistent top bar above a long documentation page and a fixed left rail.",
+      "confidence": "HIGH",
+      "behavior_notes": "Top navigation should remain fixed while the long article scrolls. On desktop, the left sidebar may also remain fixed independently while content scrolls. Active state should remain visible as users navigate the page/site.",
+      "ambiguities": "The sketch does not clarify whether only the top bar is sticky or whether the sidebar is also sticky/fixed, though the layout strongly suggests both."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header includes a distinct rectangular input field centered/near the top navigation, consistent with a site search box. The mobile sketch does not clearly show an equivalent field.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search should accept input and likely trigger filtering or suggestion results for documentation pages. Focus, typing, and possibly submit/autocomplete behavior are implied by the dedicated search field placement in the header.",
+      "ambiguities": "The sketch does not show whether results appear inline, as a dropdown, or on a separate results page."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred mobile drawer/menu, sticky navigation, and desktop search field all imply interactive controls that need managed keyboard focus. If the mobile nav opens as an overlay/drawer, focus must move into it and return to the trigger on close.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Ensure logical focus order across header, sidebar, search, and content. Programmatic focus is especially needed for the mobile menu/drawer and any search suggestion UI if implemented.",
+      "ambiguities": "Focus handling is not directly visible in sketches; it is inferred from the interaction patterns required by the layouts."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F2",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "focus_management"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "These sketches imply a documentation-style layout with relatively low-to-moderate JavaScript complexity: the main behaviors are responsive navigation differences between mobile and desktop, a persistent/sticky header (and likely fixed sidebar on desktop), and a desktop search field. The desktop view explicitly shows a search box and persistent left navigation, while the mobile view suppresses that persistent navigation, implying a toggleable menu. No clear evidence appears for tabs, accordions, modals, toasts, load-more, or infinite scrolling; most of the page is long-form static content."
+}

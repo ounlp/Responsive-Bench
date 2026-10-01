@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small boxed icon with stacked horizontal lines in the top-right of the header, a conventional hamburger trigger for collapsed navigation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping should open and close the primary navigation panel for small screens. The trigger should reflect expanded/collapsed state and likely reveal links that are otherwise hidden in the compact header.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-in drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include prominent boxed callout areas with a button-like control inside; the reference HTML also contains a signup modal and a purchase/login prompt, reinforcing that at least one CTA likely opens an overlay dialog.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A CTA such as newsletter signup, continue/register, or similar promotional/purchase action may open a modal overlay. The modal should trap focus while open, support close via close button/Escape/backdrop as appropriate, and return focus to the triggering control.",
+      "ambiguities": "The sketches do not explicitly depict an overlay state, so it is unclear which specific button opens a modal versus navigating to another page."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile hamburger menu implies a disclosure/navigation panel, and the boxed CTA areas imply possible modal or disclosure interactions that require managed keyboard focus.",
+      "confidence": "HIGH",
+      "behavior_notes": "When the mobile menu opens, focus should move logically into the revealed navigation or remain on the toggle with accessible state updates. If any CTA opens a modal, focus must move into it, remain contained, and return to the trigger on close.",
+      "ambiguities": "If the boxed CTA sections are simple links rather than overlays, focus management would mainly apply to the mobile navigation only."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven page with relatively light JavaScript needs. The clearest cross-viewport difference is navigation: mobile uses a collapsed hamburger menu while desktop appears to expose navigation links directly without a visible toggle. The remaining likely JS comes from CTA-driven overlays or dialogs suggested by boxed promotional/purchase sections, but those are less explicit in the sketches than the mobile nav. No clear evidence appears for tabs, accordions, dropdown submenus, search, load-more, sticky navigation, or infinite scrolling."
+}

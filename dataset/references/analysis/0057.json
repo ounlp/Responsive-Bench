@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a search area with a text input and submit control; the desktop sketch shows this in the left sidebar and the mobile sketch shows the same form stacked within the page.",
+      "confidence": "HIGH",
+      "behavior_notes": "The text field should accept letters and trigger a search on submit. It may also support Enter-key submission and possibly input-state handling such as enabling/disabling submit or preserving entered query.",
+      "ambiguities": "The sketch does not indicate live autocomplete or instant results, so behavior may be simple submit-only rather than live search."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The search form in both sketches contains a select control, a text field, and a submit button, implying user input must be checked before processing.",
+      "confidence": "HIGH",
+      "behavior_notes": "Validation should ensure the letters field is not empty and likely conforms to expected character rules/length before submission. Error feedback should be shown if invalid.",
+      "ambiguities": "Exact validation rules are not visible in the sketch; max length, allowed characters, and whether the select is required are inferred from the form purpose rather than explicitly drawn."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a dropdown/select field at the top of the search form for choosing search mode.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If implemented as a styled custom dropdown rather than a native select, it needs open/close behavior, selected-state updates, and keyboard interaction. If native select is used, little custom JS may be needed.",
+      "ambiguities": "The sketch only shows a select-like control, not whether it is native HTML or a custom JS widget."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch has a prominent horizontal header/navigation bar spanning the top above a long content page, which strongly suggests it may remain available during scrolling.",
+      "confidence": "LOW",
+      "behavior_notes": "If made sticky, the top navigation should remain fixed or pinned after scroll while preserving access to page content and active section context.",
+      "ambiguities": "The sketch does not explicitly show a fixed state or repeated nav; stickiness is plausible due to long-scroll layout but not certain."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "K1",
+    "K3",
+    "K4",
+    "S1",
+    "N3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "form_validation",
+      "custom_select"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "custom_select",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "These sketches imply relatively light JavaScript overall. The clearest interactive requirement in both viewports is the search form, including submit behavior and validation, with a possible custom select depending on implementation choice. The rest of the page appears largely content-and-link driven rather than widget-heavy: no clear accordion, tabs, modal, load-more, or infinite-scroll cues are visible. Desktop may optionally add sticky header behavior because of the long scrolling layout and persistent top navigation, but that remains speculative from the sketch alone."
+}

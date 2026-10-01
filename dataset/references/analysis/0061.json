@@ -1,0 +1,93 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent single-line field near the top/header area that reads as site search. In the desktop sketch it is clearly isolated in the upper-right header region; in the mobile sketch it appears as a top horizontal input-like box.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and submit behavior, likely triggering a results page or filtering catalog content. Focus styling and keyboard submission are expected.",
+      "ambiguities": "The sketches do not show whether search is instant/live or only submits on Enter/button press."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The search field is a functional form control in both sketches, implying input handling before submission even if no explicit error state is drawn.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At minimum, empty or malformed submissions should be handled gracefully, with focus retained or moved appropriately if validation feedback is needed.",
+      "ambiguities": "No explicit required markers or error messages are drawn, so validation may be minimal."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses header content into a narrow top area without room for full navigation, implying a collapsed mobile navigation trigger rather than always-visible full nav links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should reveal and hide the primary navigation panel on tap. It should support dismissal, state indication, and likely overlay or push-down behavior depending on layout.",
+      "ambiguities": "The trigger icon itself is not explicitly drawn, so the exact presentation of the collapsed nav is inferred from the constrained mobile layout."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Interactive header controls and the inferred mobile menu require keyboard-operable state changes; if the mobile nav opens as an overlay/panel, focus must move into it and return on close.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Programmatic focus handling is needed for the mobile menu and any other disclosure-like controls so keyboard users can operate them predictably.",
+      "ambiguities": "Depends on whether the mobile menu is implemented as an overlay, drawer, or inline expansion."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows multiple stacked content blocks and repeated compact rows/buttons in the middle section, suggesting collapsible detail groups to conserve vertical space on small screens.",
+      "confidence": "LOW",
+      "behavior_notes": "If these stacked sections represent metadata/download groups or detail panels, they should expand/collapse individually with clear state indication.",
+      "ambiguities": "The sketch does not explicitly show chevrons or open/closed states, so this may also be static stacked content."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch contains a long vertically scrolling content list with repeated text rows and card-like sections, which commonly implies progressive loading on smaller screens.",
+      "confidence": "LOW",
+      "behavior_notes": "Could use a button at the end of the list to fetch additional items rather than rendering the entire catalog at once.",
+      "ambiguities": "No explicit 'Load more' label is drawn; this is only a plausible enhancement inferred from the long feed-like layout."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F1",
+    "F2",
+    "D1",
+    "D4",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "S1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "F3",
+    "F4",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "focus_management",
+      "form_validation",
+      "accordion",
+      "load_more"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light JavaScript overall, centered mainly on header/search behavior and responsive navigation differences between mobile and desktop. Desktop appears largely static with visible content blocks and no clearly drawn overlays, tabs, or dropdowns. Mobile likely needs the most JS due to constrained space, especially for collapsed navigation and possibly collapsible content groupings; however, several of those mobile behaviors are inferred rather than explicitly depicted."
+}

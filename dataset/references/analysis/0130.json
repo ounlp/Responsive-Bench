@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small boxed three-line icon in the top-right of the header, a conventional hamburger trigger for collapsed navigation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation. Because the sketch only shows the trigger and not the expanded state, implementation likely uses an overlay, dropdown panel, or slide-down menu tied to the header.",
+      "ambiguities": "The sketch does not reveal whether the menu opens full-screen, as a drawer, or as a simple dropdown, nor whether subitems exist."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place branding/navigation at the top in a persistent header-like band. On mobile the header line with logo and hamburger is clearly separated from content; on desktop the logo sits apart from the content card in a top-left masthead position, implying persistent site navigation/chrome.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Navigation/header should likely remain available while scrolling long content, especially on mobile where the page body is tall and the menu trigger would otherwise disappear. If implemented as fixed or sticky, it needs accessible scroll behavior and no content occlusion.",
+      "ambiguities": "The desktop sketch could also represent a static masthead rather than a sticky one; persistence is implied more strongly on mobile than desktop."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply very light JavaScript overall. The only explicit interactive control is the mobile hamburger menu, which strongly suggests collapsed navigation behavior and associated keyboard/focus handling expectations for the revealed menu. Across viewports, the top branding/navigation treatment and long-form content suggest a likely sticky header/navigation pattern, though that is somewhat interpretive on desktop. No forms, tabs, accordions, modals, search, pagination, or dynamic loading cues are visible in either sketch."
+}

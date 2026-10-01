@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small boxed icon at the top right containing horizontal lines, a conventional menu trigger in a narrow viewport.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping should open and close the primary navigation panel for mobile. The trigger should reflect expanded/collapsed state and likely reveal site-level links hidden in the compact layout.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-in drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "both",
+      "visual_evidence": "Both sketches imply condensed navigation/breadcrumb behavior near the top area; the mobile header includes a compact control likely used to reveal hidden navigation options, and the desktop layout suggests grouped navigation/utility areas that may expose nested links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A click/tap-triggered menu should reveal secondary navigation or breadcrumb/context links. It should close on outside click, Escape, or selecting an item.",
+      "ambiguities": "The exact trigger is clearer in mobile than desktop; on desktop this could instead be plain links rather than a true submenu."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a clearly drawn sidebar text field labeled like an input with an adjacent button, indicating a search form in the right rail.",
+      "confidence": "HIGH",
+      "behavior_notes": "Users should be able to type a query and submit via the button or Enter. At minimum this requires submit handling; optionally it may support live suggestions, but the sketch only guarantees search interaction.",
+      "ambiguities": "No live results or autocomplete are explicitly drawn, so behavior beyond standard submit is uncertain."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sidebar contains a text input with a button and nearby radio-style circular controls, implying a small search/filter form with selectable scope options.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The form should validate basic input/state before submission as needed, preserve selected scope, and communicate invalid or empty submissions if the implementation requires a query.",
+      "ambiguities": "It is unclear whether empty search is allowed, so validation strictness is not explicit from the sketch."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically stacked content blocks extending well beyond the initial viewport, suggesting paginated or progressively revealed repository/article-related content where additional items or sections may be fetched or expanded.",
+      "confidence": "LOW",
+      "behavior_notes": "If the implementation follows the sketch's long-feed implication, a load-more control could append additional related items or records without full page reload.",
+      "ambiguities": "The sketch may simply represent a long static page rather than incremental loading; no explicit button is drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "dropdown_menu",
+      "load_more"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "dropdown_menu",
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-heavy repository/item-detail page with relatively light but important JavaScript. Mobile complexity centers on collapsed navigation via a hamburger and possibly condensed contextual menus, while desktop complexity shifts to sidebar search/filter form behavior. Most of the page appears static reading content, with only weak evidence for progressive loading; there is no strong indication of tabs, accordions, modals, sticky navigation, or live-updating widgets."
+}

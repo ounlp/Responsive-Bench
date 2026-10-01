@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Website Feedback &amp; Errors — Feedback Form</title>
+  <style>
+    :root{
+      --bg: #acd6c4;
+      --panel: #4f8fdd;
+      --text: #ffffff;
+      --line: rgba(255,255,255,0.8);
+      --input-bg: #f4f4f4;
+      --input-border: #d8d8d8;
+      --focus: #005FCC;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 210px 20px 60px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 690px;
+      background: var(--panel);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      padding: 36px 36px 28px;
+    }
+
+    .intro {
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .double-rule {
+      margin: 26px 0 30px;
+    }
+
+    .double-rule hr,
+    .single-rule hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 0;
+    }
+
+    .double-rule hr + hr {
+      margin-top: 12px;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 700;
+      margin: 0 auto 28px;
+      max-width: 610px;
+    }
+
+    .single-rule {
+      margin: 0 0 24px;
+    }
+
+    form {
+      margin: 0;
+    }
+
+    .fieldset {
+      border: 0;
+      padding: 0;
+      margin: 0 0 34px;
+      min-width: 0;
+    }
+
+    .legend-like {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    .name-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+      flex-wrap: nowrap;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field-group.small {
+      width: 88px;
+    }
+
+    .field-group.small.last {
+      width: 120px;
+    }
+
+    .field-group.email {
+      width: 228px;
+    }
+
+    label {
+      font-size: 12px;
+      line-height: 1.2;
+      font-weight: 400;
+      color: var(--text);
+      margin-top: 4px;
+    }
+
+    .section-label {
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 10px;
+      display: block;
+    }
+
+    input {
+      height: 24px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: #111;
+      padding: 2px 8px;
+      font-size: 14px;
+      border-radius: 2px;
+      width: 100%;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    .redacted {
+      margin-top: 4px;
+      font-size: 12px;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    [role="alert"] {
+      font-size: 12px;
+      margin-top: 4px;
+      color: #fff;
+    }
+
+    @media (max-width: 1024px) {
+      .page-wrap {
+        padding-top: 210px;
+      }
+
+      main {
+        max-width: 690px;
+        padding: 34px 36px 28px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+      }
+
+      .note {
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        display: block;
+      }
+
+      .page-wrap {
+        padding: 118px 0 0;
+      }
+
+      main {
+        max-width: none;
+        width: 100%;
+        box-shadow: none;
+        padding: 24px 20px 18px;
+      }
+
+      .intro {
+        text-align: left;
+      }
+
+      h1 {
+        font-size: 22px;
+        margin-bottom: 6px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        line-height: 1.45;
+      }
+
+      .double-rule {
+        margin: 24px 0 26px;
+      }
+
+      .double-rule hr + hr {
+        margin-top: 8px;
+      }
+
+      .note {
+        font-size: 17px;
+        line-height: 1.45;
+        max-width: none;
+        margin-bottom: 22px;
+      }
+
+      .single-rule {
+        margin-bottom: 22px;
+      }
+
+      .fieldset {
+        margin-bottom: 14px;
+      }
+
+      .name-row {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .field-group.small,
+      .field-group.small.last,
+      .field-group.email {
+        width: 100%;
+      }
+
+      input {
+        height: 24px;
+      }
+
+      label {
+        margin: 4px 0 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page-wrap">
+    <main id="main-content">
+      <section aria-label="Feedback form introduction">
+        <div class="intro">
+          <h1>New Website Feedback &amp; Errors</h1>
+          <p class="subtitle">Please let us know of any issues you have discovered while using our new website .</p>
+        </div>
+
+        <div class="double-rule" aria-hidden="true">
+          <hr />
+          <hr />
+        </div>
+
+        <p class="note">Note: missing or incorrect images will be backlogged and corrected within 90 days. Some 'missing' images may be stored under another appointment before or after the date of your missing shoot.</p>
+
+        <div class="single-rule" aria-hidden="true">
+          <hr />
+        </div>
+      </section>
+
+      <form novalidate aria-label="New Website Feedback and Errors form">
+        <fieldset class="fieldset">
+          <legend class="legend-like">Your Name</legend>
+          <div class="name-row">
+            <div class="field-group small">
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                required
+                aria-describedby="first-name-error"
+                aria-invalid="false" />
+              <label for="first-name">First Name</label>
+              <span id="first-name-error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+
+            <div class="field-group small last">
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                required
+                aria-describedby="last-name-error"
+                aria-invalid="false" />
+              <label for="last-name">Last Name</label>
+              <span id="last-name-error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="field-group email">
+          <label for="email" class="section-label">Log in Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            aria-describedby="email-error"
+            aria-invalid="false" />
+          <span id="email-error" role="alert" aria-live="assertive" hidden></span>
+          <div class="redacted">[EMAIL REDACTED]</div>
+        </div>
+
+        <div aria-live="polite" id="form-status" class="sr-only"></div>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const form = document.querySelector('form[novalidate]');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let firstError = null;
+
+        form.querySelectorAll('[required]').forEach(input => {
+          const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+          if (!input.value.trim()) {
+            input.setAttribute('aria-invalid', 'true');
+            errorEl.textContent = `${input.labels[0].textContent.trim()} is required`;
+            errorEl.hidden = false;
+            if (!firstError) firstError = input;
+          } else {
+            input.setAttribute('aria-invalid', 'false');
+            errorEl.hidden = true;
+            errorEl.textContent = '';
+          }
+        });
+
+        if (firstError) {
+          firstError.focus();
+        } else {
+          document.getElementById('form-status').textContent = 'Form submitted successfully.';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic <main> and <section>; ensured exactly one <h1>; added explicit labels for all inputs; added required attributes and meaningful alt strategy not needed because no images are visible; set <html lang="en">; ensured interactive elements have descriptive labels.
+[B] ARIA fixes: avoided redundant landmark roles; used aria-label on section/form where helpful; added aria-describedby and aria-invalid for form fields; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented C-F1/F3 form validation with error announcement; implemented C-K1/K3 tabindex cleanup and focus indicator styling.
+-->

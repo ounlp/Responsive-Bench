@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About me — Personal Site</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #2f2f2f;
+      --heading: #000000;
+      --muted: #9a9a9a;
+      --rule: #d9d9d9;
+      --focus: #005FCC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+      border: 2px solid var(--focus);
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 60px 56px 40px;
+    }
+
+    header {
+      margin-bottom: 28px;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    nav[aria-label="Main"] ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav[aria-label="Main"] a {
+      text-decoration: none;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    main {
+      max-width: 900px;
+    }
+
+    h1 {
+      margin: 0 0 34px;
+      color: var(--heading);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 58px;
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .intro,
+    .research {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.42;
+      color: #333333;
+    }
+
+    .research {
+      margin-top: 22px;
+    }
+
+    footer {
+      margin-top: 22px;
+      padding-top: 14px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 1024px) {
+      .page {
+        max-width: 760px;
+        padding: 60px 54px 40px;
+      }
+
+      h1 {
+        font-size: 50px;
+        margin-bottom: 30px;
+      }
+
+      .intro,
+      .research {
+        font-size: 28px;
+        line-height: 1.42;
+      }
+
+      footer {
+        margin-top: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+
+      .page {
+        padding: 54px 56px 30px;
+      }
+
+      nav[aria-label="Main"] ul {
+        gap: 28px;
+      }
+
+      nav[aria-label="Main"] a {
+        font-size: 17px;
+      }
+
+      h1 {
+        font-size: 50px;
+        margin-bottom: 28px;
+      }
+
+      .intro,
+      .research {
+        font-size: 28px;
+        line-height: 1.45;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 54px 56px 28px;
+      }
+
+      header {
+        margin-bottom: 30px;
+      }
+
+      nav[aria-label="Main"] ul {
+        gap: 22px;
+      }
+
+      nav[aria-label="Main"] a {
+        font-size: 17px;
+      }
+
+      h1 {
+        font-size: 50px;
+        line-height: 1.02;
+        margin-bottom: 30px;
+      }
+
+      .intro,
+      .research {
+        font-size: 28px;
+        line-height: 1.42;
+      }
+
+      .research {
+        margin-top: 24px;
+      }
+
+      footer {
+        margin-top: 24px;
+        padding-top: 12px;
+      }
+
+      .footer-links {
+        gap: 22px;
+      }
+
+      .footer-links a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="#">Papers</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">CV</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <h1>About me</h1>
+
+      <p class="intro">I'm [NAME REDACTED], an economics Ph.D. candidate and recent J.D. graduate at the University of Michigan.</p>
+
+      <p class="research">My primary research goal is to inform legal practices to improve outcomes after contact with the criminal justice system and to reduce the disparities the legal system generates. I am particularly focused on the relationship between the criminal justice system and employment.</p>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">email</a>
+        <a href="#">github.com/benpyle</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, and footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential structure; added lang="en"; ensured interactive elements have descriptive text.
+[B] ARIA fixes: used aria-label on main navigation; avoided redundant role attributes; ensured no tabindex values greater than 0 remain.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and visible focus indicator styling.
+-->

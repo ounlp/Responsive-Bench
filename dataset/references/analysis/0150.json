@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a three-line menu icon at the top right, a classic collapsed navigation trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel or menu list. Because this is the main nav entry point on mobile, it likely overlays or expands beneath the header.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, full-screen overlay, slide-in drawer, or accordion list."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a horizontal top navigation area with multiple short nav labels and a separate boxed area beneath/right that resembles a revealed submenu or dropdown panel.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Desktop top-level nav items likely reveal submenu content on click or hover. The boxed submenu region suggests one active item exposes secondary links.",
+      "ambiguities": "It is unclear whether submenu activation is hover-based or click-based, and whether only one dropdown can be open at a time."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "In the desktop header, a rectangular field-like box appears at the top right with a small icon/marking inside, visually consistent with a search box.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The field should accept a query and submit on Enter or icon/button activation. At minimum this implies JS-assisted submit handling or enhancement if the icon is clickable.",
+      "ambiguities": "The sketch does not indicate whether results are live/autocomplete or standard submit-only search."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long lists/grids of repeated content blocks extending down the page, implying paginated or progressively revealed content rather than a single short static page. The mobile sketch especially shows many repeated card/article sections in a feed-like layout.",
+      "confidence": "LOW",
+      "behavior_notes": "A load-more interaction could be used to reveal additional cards/items without full page reload, especially on mobile feed layouts.",
+      "ambiguities": "This could also be plain static content or server-side pagination; no explicit button is drawn."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile hamburger menu and desktop dropdown/search interactions all imply temporary revealed UI states that require controlled keyboard focus behavior.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into it and return to the trigger on close. Desktop dropdowns should support keyboard entry and escape/close behavior. Search trigger/field interactions should preserve logical focus order.",
+      "ambiguities": "Focus handling is inferred from the interactive components rather than explicitly drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "F2",
+    "D4",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "load_more"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "search_input",
+      "focus_management",
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light-to-moderate JavaScript complexity centered on responsive navigation differences: mobile clearly relies on a collapsed hamburger menu, while desktop appears to expose fuller navigation with at least one dropdown-like submenu and a likely search field in the header. Most of the remaining page looks content-heavy and could be static, though the repeated feed/card structures plausibly support progressive loading. No explicit tabs, accordions, modals, sticky behavior, or validation-heavy forms are visibly indicated."
+}

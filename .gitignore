@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.cache/
+
+# Secrets (copy .env.example to .env)
+.env
+.env.*
+!/.env.example
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Node
+node_modules/
+frontend/dist/
+.vercel
+
+# Generated outputs
+runs/
+results/
+frontend/public/data/
+frontend/public/run-assets/
+dataset/responsivebench.parquet

@@ -1,0 +1,99 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a simplified top header with branding and a compact navigation affordance implied by the reduced header treatment versus the fuller desktop navigation. The reference structure also strongly aligns with an off-canvas mobile menu pattern.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target should open and close the mobile navigation panel, likely revealing stacked links and nested sections. The menu state should be reflected visually and dismissible by tapping the toggle again or outside/close control if present.",
+      "ambiguities": "The sketch does not explicitly draw the hamburger icon or open panel state, so the exact animation and whether it is overlay, push, or drawer style is inferred rather than explicit."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal header/navigation area with multiple top-level items and a secondary horizontal strip beneath it, implying submenu content revealed from a primary nav item.",
+      "confidence": "HIGH",
+      "behavior_notes": "Top-level navigation items should reveal subordinate links on hover and/or click. The active parent item should remain visually associated with the revealed submenu strip.",
+      "ambiguities": "The sketch does not clarify whether submenu activation is hover-only, click-only, or both."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "mobile",
+      "visual_evidence": "Given the compressed mobile layout and the likely presence of multiple navigation levels carried over from desktop, nested mobile navigation sections are implied even though the open state is not drawn.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Within the mobile menu, parent items with children should expand/collapse to reveal nested links rather than relying on hover.",
+      "ambiguities": "The sketch does not show explicit disclosure arrows or expanded sections, so this is inferred from responsive adaptation of the desktop IA."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile navigation likely contains nested sections that must expand vertically in a stacked layout; this is functionally an accordion/disclosure pattern for submenu groups.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Tapping a parent row or disclosure control should expand/collapse its child links. Expanded state should be visually indicated and manageable one section at a time or multiple open depending on design choice.",
+      "ambiguities": "It is unclear whether only one section should stay open at once or whether multiple groups can remain expanded."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header includes a small rectangular field-like element at the right side of the top navigation/header cluster, which strongly suggests a search box.",
+      "confidence": "HIGH",
+      "behavior_notes": "The search field should accept input and submit a query, likely via Enter key or adjacent icon/button. If collapsed by default, it may expand on activation before accepting text.",
+      "ambiguities": "The sketch does not show whether search is always visible, expandable, or includes live suggestions."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile layout likely needs a compact search affordance corresponding to the desktop header utility/search area, though it is not explicitly drawn in the sketch.",
+      "confidence": "LOW",
+      "behavior_notes": "If included in the mobile nav or header, it should support text entry and query submission with touch-friendly controls.",
+      "ambiguities": "The sketch itself does not clearly depict a mobile search field, so this remains speculative."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch is a long vertically stacked page with multiple large content sections, making a return-to-top control strongly implied for usability on small screens.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A back-to-top control should appear after scrolling and smoothly or instantly return the user to the top of the page.",
+      "ambiguities": "The sketch does not explicitly draw the control, so its presence is inferred from the long mobile page length."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "D1",
+    "S1",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "accordion",
+      "dropdown_menu",
+      "scroll_to_top",
+      "search_input"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly standard responsive church/homepage-style site with modest JavaScript complexity: desktop emphasizes hierarchical navigation and header utilities, while mobile shifts that complexity into a collapsible menu with expandable nested sections and likely a convenience scroll-to-top behavior due to the long stacked layout. No clear evidence appears for tabs, modals, toasts, infinite loading, or dynamic counters; the main interaction burden is responsive navigation and search behavior."
+}

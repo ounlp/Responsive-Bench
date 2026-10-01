@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top header with a three-line icon at the top right, a classic collapsed navigation trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel. The menu likely reveals the same top-level links visible in the desktop header.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, slide-in drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent header/navigation bar at the very top, visually separated from the content below. The reference layout also strongly suggests a fixed top navbar.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Navigation should remain available while scrolling, especially because the page contains a long feed of stacked content cards/comments.",
+      "ambiguities": "The sketch alone does not explicitly indicate whether the header stays fixed after scroll or is simply positioned at the top initially."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically stacked repeated content blocks, implying a feed or comment/thread list that may not show all items at once.",
+      "confidence": "LOW",
+      "behavior_notes": "A progressive loading mechanism could append more entries/comments when the user reaches the end or activates a control. If implemented, it should preserve reading position and announce loading state.",
+      "ambiguities": "No explicit button or pagination control is drawn, so this may instead be a fully static long page."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile hamburger menu implies an interactive disclosure/navigation component that needs controlled keyboard focus. Sticky navigation also increases the need for predictable focus behavior across viewports.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the revealed navigation and return to the trigger when closed. Keyboard navigation through header controls should remain logical on desktop as well.",
+      "ambiguities": "This is inferred from the presence of interactive navigation rather than explicitly drawn focus states."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "D4",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "load_more",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple content-heavy page with the main JavaScript complexity concentrated in responsive navigation rather than in-body widgets. Mobile clearly requires a hamburger-driven nav disclosure, while both viewports suggest a persistent top navigation treatment over a long scrolling thread/feed. No forms, tabs, accordions, modals, or explicit overlays are visible, so most interaction logic is likely limited to navigation state, keyboard/focus handling, and possibly progressive loading if the long repeated content is intended to be fetched incrementally."
+}

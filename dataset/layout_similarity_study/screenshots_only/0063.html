@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Description — BigBoss</title>
+  <style>
+    :root{
+      --bg:#e9eaf2;
+      --card:#ffffff;
+      --border:#c8c9d3;
+      --text:#111111;
+      --muted:#666666;
+      --muted-light:#8a8a8a;
+      --blue:#1400ff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    .skip-link{
+      position:absolute;
+      transform:translateY(-100%);
+      left:12px;
+      top:12px;
+      background:#fff;
+      color:#000;
+      padding:8px 12px;
+      border:1px solid #000;
+      z-index:1000;
+      text-decoration:none;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      width:100%;
+      max-width:672px;
+      margin:0 auto;
+      padding:9px 0 18px;
+    }
+
+    .card{
+      background:var(--card);
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      margin:0 0 9px;
+    }
+
+    .section-pad{
+      padding:10px 16px 14px;
+    }
+
+    h1,h2{
+      margin:0 0 10px;
+      font-weight:400;
+      color:#000;
+    }
+
+    h1,h2{
+      font-size:18px;
+    }
+
+    p{
+      margin:0 0 14px;
+      font-size:15px;
+      color:var(--muted);
+    }
+
+    .screenshots{
+      margin-top:8px;
+    }
+
+    .shot{
+      display:block;
+      width:100%;
+      height:auto;
+      margin:0 0 15px;
+      border:none;
+      background:var(--blue);
+    }
+
+    .helper-text{
+      color:var(--muted);
+      font-size:15px;
+      margin:0;
+    }
+
+    .link-row{
+      display:block;
+      padding:10px 16px 12px;
+      border-top:1px solid var(--border);
+      color:#000;
+      text-decoration:none;
+      font-size:17px;
+    }
+
+    .center-note{
+      text-align:center;
+      color:#000;
+      font-size:15px;
+      margin:6px 0 20px;
+    }
+
+    .simple-text{
+      font-size:15px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:90px 1fr;
+      gap:6px 14px;
+      max-width:320px;
+      margin-left:0;
+      padding-left:38px;
+      font-size:15px;
+    }
+
+    .info-grid dt{
+      margin:0;
+      color:var(--muted-light);
+      font-weight:400;
+      text-align:right;
+    }
+
+    .info-grid dd{
+      margin:0;
+      color:#000;
+    }
+
+    .footer-links{
+      text-align:center;
+      padding:0 0 4px;
+    }
+
+    .footer-links a{
+      display:block;
+      color:#000;
+      text-decoration:none;
+      font-size:15px;
+      margin:0 0 10px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+    .nav-toggle { display: none; }
+
+    @media (max-width: 767px){
+      .page{
+        max-width:none;
+        padding-top:9px;
+      }
+      .card{
+        margin-bottom:9px;
+      }
+      .section-pad{
+        padding:10px 17px 14px;
+      }
+      .link-row{
+        padding:10px 16px 12px;
+        font-size:17px;
+      }
+      .center-note{
+        margin:6px 0 20px;
+      }
+      .info-grid{
+        padding-left:0;
+        margin:0 auto;
+        max-width:270px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content" class="page">
+    <section class="card" aria-label="Description section">
+      <div class="section-pad">
+        <h1>Description</h1>
+        <p>
+          Uninstall Guard can be able to forbid the Apps to be uninstalled.
+          So avoid the Apps you care about (like Facebook, WhatsApp,
+          Line, Pokemon GO, WeChat, Messenger), deleted by children,
+          others or by incorrect operations.
+        </p>
+        <p>
+          卸载守护者，能够设定应用不可卸载。从而避免你关心的应用
+          （微信、支付宝、抖音等），被小孩、他人或误操作而删除。
+        </p>
+
+        <div class="screenshots" aria-label="App screenshots">
+          <img class="shot" src="rick.jpg" alt="First app screenshot preview" width="600" height="320">
+          <img class="shot" src="rick.jpg" alt="Second app screenshot preview" width="600" height="320">
+          <img class="shot" src="rick.jpg" alt="Third app screenshot preview" width="600" height="320">
+        </div>
+
+        <p class="helper-text">See larger Screenshots below..</p>
+      </div>
+      <a href="#" class="link-row">View All Screenshots</a>
+    </section>
+
+    <div class="center-note">Advertisements</div>
+
+    <section class="card" aria-label="What's New section">
+      <div class="section-pad">
+        <h2>What's New</h2>
+        <p class="simple-text">- supporting rootless.</p>
+      </div>
+    </section>
+
+    <section class="card" aria-label="Information section">
+      <div class="section-pad">
+        <h2>Information</h2>
+        <dl class="info-grid">
+          <dt>Updated</dt>
+          <dd>May 16, 2023</dd>
+          <dt>License</dt>
+          <dd>Free Package</dd>
+        </dl>
+      </div>
+      <a href="#" class="link-row">More Packages from Developer</a>
+    </section>
+
+    <section class="card" aria-label="Submission section">
+      <a href="#" class="link-row" style="border-top:none;">Submit Your Tweak or App</a>
+      <a href="#" class="link-row">Follow @BigBoss on Twitter</a>
+    </section>
+
+    <footer class="footer-links">
+      <a href="#">Terms and Conditions</a>
+      <a href="#">Advertisements</a>
+    </footer>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic main and footer landmarks; used one h1 for "Description" and h2 for section headings; added meaningful alt text to all images; ensured html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added aria-labels to sections for clarity; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented required tabindex cleanup script for focus order baseline and focus indicator support.
+-->

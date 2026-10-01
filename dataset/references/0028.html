@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+   @charset "UTF-8";body{font-family:sans,Helvetica,Arial,sans-serif}.wf-active body{font-family:'Open Sans',sans-serif;letter-spacing:normal;line-height:1em}*{box-sizing:border-box}html{-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:none;text-size-adjust:none}a{text-decoration:none}blockquote,body,div,figure,footer,form,h1,h2,h3,h4,h5,h6,header,html,iframe,label,legend,li,nav,object,ol,p,section,table,ul{margin:0;padding:0}article,figure,footer,header,hgroup,nav,section{display:block}img{border:0}.loader{-webkit-animation:load3 1.4s infinite linear;animation:load3 1.4s infinite linear;background:linear-gradient(left,#419ad9 10%,rgba(79,171,225,0) 42%);background-color:#419ad9;border-radius:50%;font-size:10px;height:11em;margin:50px auto;position:relative;text-indent:-9999em;-ms-transform:translateZ(0);-webkit-transform:translateZ(0);transform:translateZ(0);width:11em}.loader::before{background:#419ad9;border-radius:100% 0 0;content:'';height:50%;left:0;position:absolute;top:0;width:50%}.loader::after{background:#419ad9;border-radius:50%;bottom:0;content:'';height:75%;left:0;margin:auto;position:absolute;right:0;top:0;width:75%}@-webkit-keyframes load3{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes load3{0%{-webkit-transform:rotate(0);transform:rotate(0)}100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}.row{max-width:75rem;margin-left:auto;margin-right:auto}.row::after,.row::before{content:' ';display:table}.row::after{clear:both}.row.collapse>.column,.row.collapse>.columns{padding-left:0;padding-right:0}.row .row{max-width:none;margin-left:-.625rem;margin-right:-.625rem;max-width:none}@media screen and (min-width:40em){.row .row{margin-left:-.9375rem;margin-right:-.9375rem}}.row .row.collapse{margin-left:0;margin-right:0}.row.expanded{max-width:none}.row.expanded .row{margin-left:auto;margin-right:auto}.column,.columns{width:100%;float:left;padding-left:.625rem;padding-right:.625rem}@media screen and (min-width:40em){.column,.columns{padding-left:.9375rem;padding-right:.9375rem}}.column:last-child:not(:first-child),.columns:last-child:not(:first-child){float:right}.column.end:last-child:last-child,.end.columns:last-child:last-child{float:left}.column.row.row,.row.row.columns{float:none}.row .column.row.row,.row .row.row.columns{padding-left:0;padding-right:0;margin-left:0;margin-right:0}.small-3{width:25%}.small-push-3{position:relative;left:25%}.small-pull-3{position:relative;left:-25%}.small-offset-3{margin-left:25%}.small-4{width:33.333333%}.small-push-4{position:relative;left:33.333333%}.small-pull-4{position:relative;left:-33.333333%}.small-offset-4{margin-left:33.333333%}.small-6{width:50%}.small-push-6{position:relative;left:50%}.small-pull-6{position:relative;left:-50%}.small-8{width:66.666667%}.small-push-8{position:relative;left:66.666667%}.small-pull-8{position:relative;left:-66.666667%}.small-10{width:83.333333%}.small-push-10{position:relative;left:83.333333%}.small-pull-10{position:relative;left:-83.333333%}.small-12{width:100%}.small-up-1>.column,.small-up-1>.columns{width:100%;float:left}.small-up-1>.column:nth-of-type(1n),.small-up-1>.columns:nth-of-type(1n){clear:none}.small-up-1>.column:nth-of-type(1n+1),.small-up-1>.columns:nth-of-type(1n+1){clear:both}.small-up-1>.column:last-child,.small-up-1>.columns:last-child{float:left}.small-up-2>.column,.small-up-2>.columns{width:50%;float:left}.small-up-2>.column:nth-of-type(1n),.small-up-2>.columns:nth-of-type(1n){clear:none}.small-up-2>.column:nth-of-type(2n+1),.small-up-2>.columns:nth-of-type(2n+1){clear:both}.small-up-2>.column:last-child,.small-up-2>.columns:last-child{float:left}.small-up-3>.column,.small-up-3>.columns{width:33.333333%;float:left}.small-up-3>.column:nth-of-type(1n),.small-up-3>.columns:nth-of-type(1n){clear:none}.small-up-3>.column:nth-of-type(3n+1),.small-up-3>.columns:nth-of-type(3n+1){clear:both}.small-up-3>.column:last-child,.small-up-3>.columns:last-child{float:left}.small-up-4>.column,.small-up-4>.columns{width:25%;float:left}.small-up-4>.column:nth-of-type(1n),.small-up-4>.columns:nth-of-type(1n){clear:none}.small-up-4>.column:nth-of-type(4n+1),.small-up-4>.columns:nth-of-type(4n+1){clear:both}.small-up-4>.column:last-child,.small-up-4>.columns:last-child{float:left}.small-up-5>.column,.small-up-5>.columns{width:20%;float:left}.small-up-5>.column:nth-of-type(1n),.small-up-5>.columns:nth-of-type(1n){clear:none}.small-up-5>.column:nth-of-type(5n+1),.small-up-5>.columns:nth-of-type(5n+1){clear:both}.small-up-5>.column:last-child,.small-up-5>.columns:last-child{float:left}.small-up-6>.column,.small-up-6>.columns{width:16.666667%;float:left}.small-up-6>.column:nth-of-type(1n),.small-up-6>.columns:nth-of-type(1n){clear:none}.small-up-6>.column:nth-of-type(6n+1),.small-up-6>.columns:nth-of-type(6n+1){clear:both}.small-up-6>.column:last-child,.small-up-6>.columns:last-child{float:left}.small-up-7>.column,.small-up-7>.columns{width:14.285714%;float:left}.small-up-7>.column:nth-of-type(1n),.small-up-7>.columns:nth-of-type(1n){clear:none}.small-up-7>.column:nth-of-type(7n+1),.small-up-7>.columns:nth-of-type(7n+1){clear:both}.small-up-7>.column:last-child,.small-up-7>.columns:last-child{float:left}.small-up-8>.column,.small-up-8>.columns{width:12.5%;float:left}.small-up-8>.column:nth-of-type(1n),.small-up-8>.columns:nth-of-type(1n){clear:none}.small-up-8>.column:nth-of-type(8n+1),.small-up-8>.columns:nth-of-type(8n+1){clear:both}.small-up-8>.column:last-child,.small-up-8>.columns:last-child{float:left}.small-collapse>.column,.small-collapse>.columns{padding-left:0;padding-right:0}.small-collapse .row{margin-left:0;margin-right:0}.small-uncollapse>.column,.small-uncollapse>.columns{padding-left:.625rem;padding-right:.625rem}.small-centered{float:none;margin-left:auto;margin-right:auto}.small-pull-0,.small-push-0,.small-uncentered{position:static;margin-left:0;margin-right:0;float:left}@media screen and (min-width:40em){.medium-4{width:33.333333%}.medium-5{width:41.666667%}.medium-10{width:83.333333%}.medium-12{width:100%}.medium-up-1>.column,.medium-up-1>.columns{width:100%;float:left}.medium-up-1>.column:nth-of-type(1n),.medium-up-1>.columns:nth-of-type(1n){clear:none}.medium-up-1>.column:nth-of-type(1n+1),.medium-up-1>.columns:nth-of-type(1n+1){clear:both}.medium-up-1>.column:last-child,.medium-up-1>.columns:last-child{float:left}.medium-up-2>.column,.medium-up-2>.columns{width:50%;float:left}.medium-up-2>.column:nth-of-type(1n),.medium-up-2>.columns:nth-of-type(1n){clear:none}.medium-up-2>.column:nth-of-type(2n+1),.medium-up-2>.columns:nth-of-type(2n+1){clear:both}.medium-up-2>.column:last-child,.medium-up-2>.columns:last-child{float:left}.medium-up-3>.column,.medium-up-3>.columns{width:33.333333%;float:left}.medium-up-3>.column:nth-of-type(1n),.medium-up-3>.columns:nth-of-type(1n){clear:none}.medium-up-3>.column:nth-of-type(3n+1),.medium-up-3>.columns:nth-of-type(3n+1){clear:both}.medium-up-3>.column:last-child,.medium-up-3>.columns:last-child{float:left}.medium-up-4>.column,.medium-up-4>.columns{width:25%;float:left}.medium-up-4>.column:nth-of-type(1n),.medium-up-4>.columns:nth-of-type(1n){clear:none}.medium-up-4>.column:nth-of-type(4n+1),.medium-up-4>.columns:nth-of-type(4n+1){clear:both}.medium-up-4>.column:last-child,.medium-up-4>.columns:last-child{float:left}.medium-up-5>.column,.medium-up-5>.columns{width:20%;float:left}.medium-up-5>.column:nth-of-type(1n),.medium-up-5>.columns:nth-of-type(1n){clear:none}.medium-up-5>.column:nth-of-type(5n+1),.medium-up-5>.columns:nth-of-type(5n+1){clear:both}.medium-up-5>.column:last-child,.medium-up-5>.columns:last-child{float:left}.medium-up-6>.column,.medium-up-6>.columns{width:16.666667%;float:left}.medium-up-6>.column:nth-of-type(1n),.medium-up-6>.columns:nth-of-type(1n){clear:none}.medium-up-6>.column:nth-of-type(6n+1),.medium-up-6>.columns:nth-of-type(6n+1){clear:both}.medium-up-6>.column:last-child,.medium-up-6>.columns:last-child{float:left}.medium-up-7>.column,.medium-up-7>.columns{width:14.285714%;float:left}.medium-up-7>.column:nth-of-type(1n),.medium-up-7>.columns:nth-of-type(1n){clear:none}.medium-up-7>.column:nth-of-type(7n+1),.medium-up-7>.columns:nth-of-type(7n+1){clear:both}.medium-up-7>.column:last-child,.medium-up-7>.columns:last-child{float:left}.medium-up-8>.column,.medium-up-8>.columns{width:12.5%;float:left}.medium-up-8>.column:nth-of-type(1n),.medium-up-8>.columns:nth-of-type(1n){clear:none}.medium-up-8>.column:nth-of-type(8n+1),.medium-up-8>.columns:nth-of-type(8n+1){clear:both}.medium-up-8>.column:last-child,.medium-up-8>.columns:last-child{float:left}.medium-collapse>.column,.medium-collapse>.columns{padding-left:0;padding-right:0}.medium-collapse .row{margin-left:0;margin-right:0}.medium-uncollapse>.column,.medium-uncollapse>.columns{padding-left:.9375rem;padding-right:.9375rem}.medium-centered{float:none;margin-left:auto;margin-right:auto}.medium-pull-0,.medium-push-0,.medium-uncentered{position:static;margin-left:0;margin-right:0;float:left}}@media screen and (min-width:64em){.large-4{width:33.333333%}.large-8{width:66.666667%}.large-10{width:83.333333%}.large-11{width:91.666667%}.large-12{width:100%}.large-up-1>.column,.large-up-1>.columns{width:100%;float:left}.large-up-1>.column:nth-of-type(1n),.large-up-1>.columns:nth-of-type(1n){clear:none}.large-up-1>.column:nth-of-type(1n+1),.large-up-1>.columns:nth-of-type(1n+1){clear:both}.large-up-1>.column:last-child,.large-up-1>.columns:last-child{float:left}.large-up-2>.column,.large-up-2>.columns{width:50%;float:left}.large-up-2>.column:nth-of-type(1n),.large-up-2>.columns:nth-of-type(1n){clear:none}.large-up-2>.column:nth-of-type(2n+1),.large-up-2>.columns:nth-of-type(2n+1){clear:both}.large-up-2>.column:last-child,.large-up-2>.columns:last-child{float:left}.large-up-3>.column,.large-up-3>.columns{width:33.333333%;float:left}.large-up-3>.column:nth-of-type(1n),.large-up-3>.columns:nth-of-type(1n){clear:none}.large-up-3>.column:nth-of-type(3n+1),.large-up-3>.columns:nth-of-type(3n+1){clear:both}.large-up-3>.column:last-child,.large-up-3>.columns:last-child{float:left}.large-up-4>.column,.large-up-4>.columns{width:25%;float:left}.large-up-4>.column:nth-of-type(1n),.large-up-4>.columns:nth-of-type(1n){clear:none}.large-up-4>.column:nth-of-type(4n+1),.large-up-4>.columns:nth-of-type(4n+1){clear:both}.large-up-4>.column:last-child,.large-up-4>.columns:last-child{float:left}.large-up-5>.column,.large-up-5>.columns{width:20%;float:left}.large-up-5>.column:nth-of-type(1n),.large-up-5>.columns:nth-of-type(1n){clear:none}.large-up-5>.column:nth-of-type(5n+1),.large-up-5>.columns:nth-of-type(5n+1){clear:both}.large-up-5>.column:last-child,.large-up-5>.columns:last-child{float:left}.large-up-6>.column,.large-up-6>.columns{width:16.666667%;float:left}.large-up-6>.column:nth-of-type(1n),.large-up-6>.columns:nth-of-type(1n){clear:none}.large-up-6>.column:nth-of-type(6n+1),.large-up-6>.columns:nth-of-type(6n+1){clear:both}.large-up-6>.column:last-child,.large-up-6>.columns:last-child{float:left}.large-up-7>.column,.large-up-7>.columns{width:14.285714%;float:left}.large-up-7>.column:nth-of-type(1n),.large-up-7>.columns:nth-of-type(1n){clear:none}.large-up-7>.column:nth-of-type(7n+1),.large-up-7>.columns:nth-of-type(7n+1){clear:both}.large-up-7>.column:last-child,.large-up-7>.columns:last-child{float:left}.large-up-8>.column,.large-up-8>.columns{width:12.5%;float:left}.large-up-8>.column:nth-of-type(1n),.large-up-8>.columns:nth-of-type(1n){clear:none}.large-up-8>.column:nth-of-type(8n+1),.large-up-8>.columns:nth-of-type(8n+1){clear:both}.large-up-8>.column:last-child,.large-up-8>.columns:last-child{float:left}.large-collapse>.column,.large-collapse>.columns{padding-left:0;padding-right:0}.large-collapse .row{margin-left:0;margin-right:0}.large-uncollapse>.column,.large-uncollapse>.columns{padding-left:.9375rem;padding-right:.9375rem}.large-centered{float:none;margin-left:auto;margin-right:auto}.large-pull-0,.large-push-0,.large-uncentered{position:static;margin-left:0;margin-right:0;float:left}}.hide{display:none!important}.invisible{visibility:hidden}@media screen and (max-width:39.9375em){.hide-for-small-only{display:none!important}}@media screen and (max-width:0em),screen and (min-width:40em){.show-for-small-only{display:none!important}}@media screen and (min-width:40em){.hide-for-medium{display:none!important}}@media screen and (max-width:39.9375em){.show-for-medium{display:none!important}}@media screen and (min-width:40em) and (max-width:63.9375em){.hide-for-medium-only{display:none!important}}@media screen and (max-width:39.9375em),screen and (min-width:64em){.show-for-medium-only{display:none!important}}@media screen and (min-width:64em){.hide-for-large{display:none!important}}@media screen and (max-width:63.9375em){.show-for-large{display:none!important}}@media screen and (min-width:64em) and (max-width:74.9375em){.hide-for-large-only{display:none!important}}@media screen and (max-width:63.9375em),screen and (min-width:75em){.show-for-large-only{display:none!important}}.show-for-sr,.show-on-focus{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.show-on-focus:active,.show-on-focus:focus{position:static!important;height:auto;width:auto;overflow:visible;clip:auto}.hide-for-portrait,.show-for-landscape{display:block!important}@media screen and (orientation:landscape){.hide-for-portrait,.show-for-landscape{display:block!important}}@media screen and (orientation:portrait){.hide-for-portrait,.show-for-landscape{display:none!important}}.hide-for-landscape,.show-for-portrait{display:none!important}@media screen and (orientation:landscape){.hide-for-landscape,.show-for-portrait{display:none!important}}@media screen and (orientation:portrait){.hide-for-landscape,.show-for-portrait{display:block!important}}a{color:#ff555a;text-decoration:none}button{font-size:16px}.popular-assignment-row{margin-bottom:1em}.popular-assignment-list__item{color:#435059;display:inline-block;font-weight:400;margin:0 0 .9375rem;text-align:left}.popular-assignment-list__item:hover{color:#419ad9}.burger{margin-right:1rem;position:relative}@media screen and (max-width:63.9375em){.burger__hero-img{height:20px;width:auto}}input,select,textarea{-webkit-border-radius:.3em;-moz-border-radius:.3em;-ms-border-radius:.3em;border-radius:.3em;border:1px solid #e1e4e5;color:#435059;font-size:1rem;padding:.8rem 1rem;transition:all .2s ease-in-out}input[type=color],input[type=date],input[type=datetime-local],input[type=datetime],input[type=email],input[type=month],input[type=number],input[type=password],input[type=search],input[type=tel],input[type=text],input[type=time],input[type=url],input[type=week],select,textarea{display:block;width:100%}label{color:#c2c8cc;font-size:.8em;font-weight:500;letter-spacing:.1em;text-transform:uppercase}h4,h5,h6{margin-bottom:.8em}.heading-l,.heading-m,.heading-s,.heading-xl,.heading-xs,.heading-xxl{line-height:1.35em;margin-bottom:.3125em}.heading-m{font-size:1.5rem;font-weight:400}.heading-xs{font-size:1rem;font-weight:500;line-height:1.6em}@media screen and (max-width:480px){.heading-xs{font-size:.875rem}}.text-l,.text-m,.text-s,.text-xl,.text-xs,.text-xxs,.text-xxxs{line-height:1.6em;margin-bottom:.9375em}.text-xl{font-size:1.5rem}.text-l{font-size:1.25rem}.text-m{font-size:1rem}.text-s{font-size:.875rem;margin-bottom:.625em}.weight-400{font-weight:400}.weight-500{font-weight:500}.weight-700{font-weight:700}.source-serif{font-family:'Source Serif Pro',serif}.icon--account{background-image:url(../images/icons/user-icon-navy-circle.png);background-position:center;background-repeat:no-repeat;height:30px;width:30px}.button,button{-webkit-border-radius:0;-moz-border-radius:0;-ms-border-radius:0;border-radius:0;background-color:#ff555a;border:1px solid #ff555a;box-sizing:border-box;color:#fff;cursor:pointer;display:inline-block;line-height:2.2rem;margin:0 0 .9375rem;padding:0 1.125rem;text-align:center;text-decoration:none;white-space:nowrap}.button--extra,button--extra{border-color:#fff;border-radius:100px;border-style:solid;border-width:2px;color:#fff;display:inline-block;padding:14px 25px;text-align:center;text-decoration:none;width:100%}.button--extra_container,button--extra_container{background-color:#008d7f;bottom:0;font-size:20px;min-height:80px;padding-bottom:15px;padding-left:45px;padding-right:45px;padding-top:15px;position:fixed;width:100%;z-index:9999999999999999}.card{-webkit-border-radius:.25rem;-moz-border-radius:.25rem;-ms-border-radius:.25rem;border-radius:.25rem;background-color:#fff;border:1px solid #e1e4e5;line-height:1.5rem;margin-bottom:1.5rem;padding:1.25rem 1.5rem;position:relative}.card--sidebar-nav{border-top:2px solid #ff555a}@media screen and (max-width:63.9375em){.card--sidebar-nav{margin-left:auto;margin-right:auto;width:50%}}@media screen and (max-width:39.9375em){.card--sidebar-nav{margin-left:auto;margin-right:auto;width:100%}}.card--sidebar-nav__link{color:#ff555a;display:block;line-height:1.4}.card--sidebar-nav__list{list-style-type:none}.card--sidebar-nav__list-item{margin-bottom:.8rem}.card--sidebar-nav__list-item--separators{border-bottom:1px solid #e1e4e5;padding:.25rem 0}.card--sidebar-nav__section{margin-bottom:1rem}.essay-details{display:block;margin-bottom:1rem}.essay-details__item{color:#959fa6;font-size:.9em;font-weight:400}.nav-breadcrumbs{display:block;margin-bottom:1.3em}.nav-breadcrumbs__item{color:#959fa6;font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase}.paper{font-size:1.25rem;line-height:1.6em}@media screen and (max-width:63.9375em){.paper{font-size:1.25rem}}@media screen and (max-width:39.9375em){.paper{font-size:1rem}}.paper--related{margin-bottom:6rem;position:relative}.paper--related__details{color:#737a80;display:block;font-size:1rem;margin:.5rem 0 1.5rem}.paper--related-separator{border-top:1px solid #c2c8cc;margin:7rem auto 4rem;position:relative;text-align:center;width:80%}.paper--related-separator-word{background-color:#fff;bottom:35px;color:#c2c8cc;display:inline-block;font-size:1.6rem;height:50px;margin:auto;padding:1rem;position:relative;width:125px}.paper__cta{bottom:2rem;left:0;position:absolute;width:100%;z-index:1}.paper__gradient{left:0;position:absolute;width:100%;z-index:1}.paper__gradient--bottom{background:linear-gradient(to bottom,rgba(255,255,255,0),#fff);bottom:0;height:150px}.paper-container{background:#fff;padding:8rem}@media screen and (max-width:63.9375em){.paper-container{padding:5rem}}@media screen and (max-width:39.9375em){.paper-container{padding:1rem;padding-top:2rem}}@media screen and (min-width:64em){.paper-container--with-sidebar{padding:5rem}}.search-box{display:inline-block;position:relative;width:100%}.search-box__input{border:5px solid #414169;border-radius:2px;display:inline-block;font-size:1rem;height:3.75rem;margin:0;padding:1.25rem;padding-left:1.875rem;padding-right:3.75rem;position:relative;width:100%;z-index:1}.search-box__input--gray-bg{background-color:#fafafa;border:1px solid #e1e4e5;box-shadow:none}.search-box__input--splat-header{height:4rem;margin:0;padding:.25rem;padding-left:1rem;padding-right:2.5rem}@media screen and (max-width:39.9375em){.search-box__input--splat-header{border-radius:0;padding-right:.5rem}}.search-box__button{-webkit-border-radius:0 4px 4px 0;-moz-border-radius:0 4px 4px 0;-ms-border-radius:0 4px 4px 0;border-radius:0 4px 4px 0;display:block;height:60px;margin:0;padding:0;position:absolute;right:0;top:0;width:60px;z-index:2}.search-box__button--splat-header{background-color:#414169;border-bottom:1px solid #414169;border-left:5px solid #414169;border-right:1px solid #414169;border-top:1px solid #414169;height:4rem;width:4rem}@media screen and (max-width:39.9375em){.search-box__button--splat-header{display:none}}.search-box__icon{color:#fff;font-size:22px;line-height:3.75rem;text-align:center}.search-box__icon--splat-header{line-height:2.35rem}.section--footer{background-color:#f5f5fc;border-bottom:0;border-top:1px solid #b4b4b4;padding-bottom:5rem;text-align:center}@media screen and (min-width:40em){.section--footer{text-align:left}}.top-nav{color:#737a80;padding:1.25rem;position:fixed;text-align:left;width:100%;z-index:3}.header-splat{background-color:#f5f5fc;border-bottom:0;min-width:20rem;padding:.8125rem 0}.header-splat__logo-container{background-image:url(../images/logos/anti-essays/logo-anti-essays-green.svg);background-position:left center;background-repeat:no-repeat;display:block;height:100%}@media screen and (max-width:39.9375em){.header-splat__logo-container{background-size:contain}}@media screen and (min-width:40em){.header-splat__logo-container{background-image:url(../images/logos/anti-essays/logo-anti-essays.svg);background-size:contain;min-width:205px}}.header-splat__search-box{box-shadow:none}@media screen and (max-width:39.9375em){.header-splat__search-box{left:0;position:absolute;top:4.1rem;visibility:hidden}.header-splat__search-box.conditionally-visible{visibility:visible}}@media screen and (max-width:39.9375em){.header-splat__search-box--custom-nav{left:-66vw;position:absolute;top:5.5rem;width:100vw}}.header-splat__search-box--btn-icon{background:url(../images/icons/magnifying-glass-white.svg) center no-repeat;height:30px;padding:.75rem;width:30px}.header-splat__search-box--btn-icon-mobile{background:url(../images/icons/magnifying-glass-anti-green.svg) center no-repeat;height:30px;padding:.75rem;width:30px}.header-splat__search-toggle-container{cursor:pointer;display:block;font-size:1.5rem;height:2.3rem;position:absolute;right:10.5rem;top:1.05rem;visibility:visible;width:2.3rem}@media screen and (min-width:40em){.header-splat__search-toggle-container{visibility:hidden}}.header-splat__search-toggle-container--custom-nav{right:0;top:.8rem}.header-splat__search-toggle-container--custom-nav-ng1{top:1.2rem}.header-splat__icon-ui-24-search-toggle{color:#414169;font-size:1.75rem;line-height:.5}.header-splat__columns{height:4rem;position:relative}.section{background-color:#fff;border-bottom:.0625rem solid #e1e4e5;min-width:300px;padding-bottom:3.75rem;padding-top:3.75rem;position:relative}.vertical-nav-list{margin-bottom:1.7rem}.vertical-nav-list__container{list-style:none}.vertical-nav-list__item{font-size:1rem;line-height:1.75em}.vertical-nav-list__item__anchor{color:#868686;margin-right:.3125em}.unstyled{list-style:none}.full-height{height:100%}.center{text-align:center}.center--small{text-align:center}@media screen and (max-width:39.9375em){.center--small-down{text-align:center}}.align-right{text-align:right}.align-right--medium{text-align:right}.align-left{text-align:left}.position-relative{position:relative}.position-absolute{position:absolute}@media screen and (min-width:40em){.position-absolute--medium{position:absolute}}.overflow-hidden{overflow:hidden}.text-ellipsis-after::after{content:"…"}.break-word{word-wrap:break-word}.capitalize{text-transform:capitalize}.display-block{display:block}.display-none{display:none}.display-inline-block{display:inline-block}@media screen and (min-width:40em){.display-inline-block--medium{display:inline-block}}.cursor-pointer{cursor:pointer}.border-box-shadow{-webkit-box-shadow:0 3px 13px -5px rgba(0,0,0,.3);-moz-box-shadow:0 3px 13px -5px rgba(0,0,0,.3);box-shadow:0 3px 13px -5px rgba(0,0,0,.3);border:1px solid #e1e4e5}.no-border{border:0}.no-margin{margin:0}.no-margin--bottom{margin-bottom:0}.margin-1{margin-bottom:1rem}.margin-2{margin-bottom:2rem}.margin-4{margin-bottom:4rem}.padding-top-1{padding-top:1rem}.padding-top-2{padding-top:2rem}.margin-right-1{margin-right:1rem}@media screen and (min-width:64em){.margin-right-1-5--large{margin-right:1.5rem}}.brand-primary{color:#ff555a}.brand-secondary{color:#008d7f}.white{color:#fff}.mid-gray{color:#737a80}.ash-gray{color:#959fa6}.vert-align-middle{vertical-align:middle}.vert-center{margin-bottom:0;margin-top:0;position:relative;top:50%;transform:translateY(-50%)}.white-space--break-spaces{white-space:break-spaces}.stickyheader{position:-webkit-sticky;position:sticky;top:0;z-index:100000000!important}body{color:#435059;font:16px Helvetica,Arial,sans-serif;letter-spacing:-.1px}.wf-active body{font:16px Roboto,Helvetica,Arial,sans-serif;letter-spacing:normal}
+   .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#000;color:#fff;padding:.75rem 1rem;z-index:10000000000000001}
+   .skip-link:focus{transform:translateY(0)}
+   :focus-visible{outline:3px solid #005FCC;outline-offset:2px;border-radius:2px}
+   :focus:not(:focus-visible){outline:none}
+   .sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+   .header-splat__search-box[hidden]{display:none}
+   .document__body.is-collapsed{max-height:12rem;overflow:hidden;position:relative}
+   .paper--related .related-preview.is-collapsed{max-height:8.5rem;overflow:hidden;position:relative}
+  </style>
+  <title>Healthcare Reform: Cost, Quality and Access — AntiEssays</title>
+  <meta content="Healthcare Reform: Cost, Quality and Access Healthcare reforms are polices set by the government that describes future ideas and changes based on economic..." name="description">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="upgrade-insecure-requests;block-all-mixed-content" http-equiv="Content-Security-Policy">
+  <meta content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9" http-equiv="origin-trial">
+ </head>
+ <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="app">
+   <header class="header-splat stickyheader">
+    <div class="row">
+     <div class="columns small-8 medium-5 large-4 header-splat__columns">
+      <a class="header-splat__logo-container" href="/" aria-label="AntiEssays home"></a>
+     </div>
+     <div class="columns small-2 medium-4 large-4 header-splat__search-box-container position-relative">
+      <form action="/search" class="search-box header-splat__search-box header-splat__search-box--custom-nav" id="search-form" method="GET">
+       <label for="site-search" class="sr-only">Search essays</label>
+       <input class="search-box__input search-box__input--gray-bg search-box__input--splat-header" id="site-search" name="query" placeholder="Search over 500,000 essays..." type="text">
+       <button aria-label="Submit search" class="search-box__button search-box__button--splat-header" type="submit">
+        <span class="search-box__icon search-box__icon--splat-header">
+         <i class="header-splat__search-box--btn-icon" aria-hidden="true"></i>
+        </span>
+       </button>
+      </form>
+      <button class="header-splat__search-toggle-container header-splat__search-toggle-container--custom-nav header-splat__search-toggle-container--custom-nav-ng1 button__reset" id="search-toggle" aria-expanded="false" aria-controls="search-form" aria-label="Open search">
+       <i class="header-splat__search-box--btn-icon-mobile" id="header-splat__icon-ui-24-search-toggle" aria-hidden="true"></i>
+      </button>
+     </div>
+     <div class="columns small-2 medium-3 large-4 header-splat__columns">
+      <div class="header-splat__columns align-right">
+       <a aria-label="My Account" rel="nofollow" href="/account">
+        <span class="burger full-height vert-align-middle display-inline-block cursor-pointer position-relative">
+         <span class="vert-center icon--account" aria-hidden="true"></span>
+        </span>
+       </a>
+      </div>
+     </div>
+    </div>
+   </header>
+
+   <nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="row small-12 columns padding-top-1">
+     <ol class="unstyled nav-breadcrumbs">
+      <li class="display-inline-block">
+       <a class="capitalize brand-primary" href="/">Home Page</a>
+      </li>
+      <li class="display-inline-block">
+       <span class="ash-gray capitalize" aria-current="page">Healthcare Reform: Cost, Quality and Access</span>
+      </li>
+     </ol>
+    </div>
+   </nav>
+
+   <main id="main-content">
+    <div class="rhino-slot center" id="AdCenterTop" aria-hidden="true"></div>
+    <div class="row columns"></div>
+
+    <div class="row essay-preview-block" id="divPreviewBlock">
+     <section class="columns large-8 paper-container paper-container--with-sidebar position-relative border-box-shadow margin-4" aria-label="Essay preview and related essays">
+      <div class="position-relative margin-4 text-xl">
+       <div id="essay-body-heading-details">
+        <h1 class="heading-m weight-700 brand-secondary">Healthcare Reform: Cost, Quality and Access</h1>
+        <p class="essay-details no-margin--bottom">
+         <span class="text-m">753 Words</span>
+         <span class="text-m">4 Pages</span>
+        </p>
+       </div>
+       <div class="document__body padding-top-2 white-space--break-spaces break-word is-collapsed" id="essay-preview" tabindex="-1">
+        <div class="document__preview text-l source-serif">
+Healthcare Reform: Cost, Quality and Access
+Healthcare reforms are polices set by the government that describes future ideas and changes based on economic and social advances to create an improved healthcare system that benefits the society as a whole. The topics of cost, quality, and access have become a concern to many as the issues continue to grow.
+        </div>
+       </div>
+       <div class="paper__gradient paper__gradient--bottom" id="essay-preview-gradient"></div>
+       <div class="center paper__cta">
+        <button class="button text-m" id="ShowMoreButton" type="button" aria-expanded="false" aria-controls="essay-preview">Show more of Healthcare Reform: Cost, Quality and Access</button>
+       </div>
+      </div>
+
+      <div class="rhino-slot center" id="AdCenterMiddle" aria-hidden="true"></div>
+
+      <div class="paper--related-separator">
+       <span class="paper--related-separator-word">Related</span>
+      </div>
+
+      <section aria-label="Related essays">
+       <ul class="unstyled" id="RelatedDocumentCenter">
+        <li>
+         <article class="paper paper--related">
+          <h2 class="heading-m weight-700 brand-secondary">
+           <a href="/essay/long-patient-wait-time">Long Patient Wait Time</a>
+          </h2>
+          <p class="paper--related__details">1511 Words &nbsp;|&nbsp;7 Pages</p>
+          <div class="related-preview is-collapsed" id="related-preview-1" tabindex="-1">
+           <p class="text-l source-serif break-word">
+            They argue that introducing private health care will lessen the burden on the publicly funded system as many well off citizens would simply choose to pay out of pocket or through private insurers for services rather than rely on the public system. They argue that the government cannot do it efficiently.
+           </p>
+          </div>
+          <div class="paper__gradient paper__gradient--bottom" id="related-gradient-1"></div>
+          <div class="center paper__cta">
+           <button class="button text-m related-toggle" type="button" aria-expanded="false" aria-controls="related-preview-1">Read more about Long Patient Wait Time</button>
+          </div>
+         </article>
+        </li>
+        <li>
+         <article class="paper paper--related">
+          <h2 class="heading-m weight-700 brand-secondary">
+           <a href="/essay/hcs-449-health-care-industry-research-paper">Hcs 449 Health Care Industry Research Paper</a>
+          </h2>
+          <p class="paper--related__details">1199 Words &nbsp;|&nbsp;5 Pages</p>
+          <div class="related-preview is-collapsed" id="related-preview-2" tabindex="-1">
+           <p class="text-l source-serif break-word">
+            Health Care Industry 1
+
+                                                                                            Health Care Industry
+                                                                                                   HCS/449
+                                                                                               Donna Hawley
+
+Health Care Industry
+
+	The health care industry is the fastest growing industry. As the years go by, more and more breakthroughs will be shaped.
+           </p>
+          </div>
+          <div class="paper__gradient paper__gradient--bottom" id="related-gradient-2"></div>
+          <div class="center paper__cta">
+           <button class="button text-m related-toggle" type="button" aria-expanded="false" aria-controls="related-preview-2">Read more about Hcs 449 Health Care Industry Research Paper</button>
+          </div>
+         </article>
+        </li>
+        <li>
+         <article class="paper paper--related">
+          <h2 class="heading-m weight-700 brand-secondary">
+           <a href="/essay/indemnity-versus-managed-care">Indemnity Versus Managed Care</a>
+          </h2>
+          <p class="paper--related__details">458 Words &nbsp;|&nbsp;2 Pages</p>
+          <div class="related-preview is-collapsed" id="related-preview-3" tabindex="-1">
+           <p class="text-l source-serif break-word">
+            As a result of the rise in healthcare spending, the economy is growing rapidly thus, having elevated healthcare costs. Furthermore, in healthcare there are two types of plans, that all insurance plans are based on.
+           </p>
+          </div>
+          <div class="paper__gradient paper__gradient--bottom" id="related-gradient-3"></div>
+          <div class="center paper__cta">
+           <button class="button text-m related-toggle" type="button" aria-expanded="false" aria-controls="related-preview-3">Read more about Indemnity Versus Managed Care</button>
+          </div>
+         </article>
+        </li>
+        <li>
+         <article class="paper paper--related">
+          <h2 class="heading-m weight-700 brand-secondary">
+           <a href="/essay/future-direction-of-health-care">Future Direction Of Health Care</a>
+          </h2>
+          <p class="paper--related__details">1392 Words &nbsp;|&nbsp;6 Pages</p>
+          <div class="related-preview is-collapsed" id="related-preview-4" tabindex="-1">
+           <p class="text-l source-serif break-word">
+            By adopting a pay for performance stance on impacting the preventative side of health care, a substantial savings in rising health care costs may be met. Challenges for putting into practice a pay for performance system is it is very difficult to get everyone on board with quality standards.
+           </p>
+          </div>
+          <div class="paper__gradient paper__gradient--bottom" id="related-gradient-4"></div>
+          <div class="center paper__cta">
+           <button class="button text-m related-toggle" type="button" aria-expanded="false" aria-controls="related-preview-4">Read more about Future Direction Of Health Care</button>
+          </div>
+         </article>
+        </li>
+       </ul>
+      </section>
+     </section>
+
+     <aside class="columns large-4 hide-for-medium-only hide-for-small-only" aria-label="More about this essay">
+      <div class="rhino-slot center" id="AdSidebarTop" aria-hidden="true"></div>
+      <div class="card card--sidebar-nav no-border">
+       <div class="card--sidebar-nav__section">
+        <div class="rhino-slot center" aria-hidden="true"></div>
+        <h2 class="heading-xs card--sidebar-nav__heading mid-gray weight-500 margin-2">
+         More about Healthcare Reform: Cost, Quality and Access
+        </h2>
+        <ul class="card--sidebar-nav__list">
+         <li class="card--sidebar-nav__list-item card--sidebar-nav__list-item--separators" id="sidebar-nav1">
+          <h3 class="heading-xs brand-secondary weight-700">
+           <a class="card--sidebar-nav__link" href="/essay/long-patient-wait-time">Long Patient Wait Time</a>
+          </h3>
+          <span class="text-s mid-gray margin-1 display-block">1511 Words | 7 Pages</span>
+         </li>
+         <li class="card--sidebar-nav__list-item card--sidebar-nav__list-item--separators" id="sidebar-nav2">
+          <h3 class="heading-xs brand-secondary weight-700">
+           <a class="card--sidebar-nav__link" href="/essay/hcs-449-health-care-industry-research-paper">Hcs 449 Health Care Industry Research Paper</a>
+          </h3>
+          <span class="text-s mid-gray margin-1 display-block">1199 Words | 5 Pages</span>
+         </li>
+         <li class="card--sidebar-nav__list-item card--sidebar-nav__list-item--separators" id="sidebar-nav3">
+          <h3 class="heading-xs brand-secondary weight-700">
+           <a class="card--sidebar-nav__link" href="/essay/indemnity-versus-managed-care">Indemnity Versus Managed Care</a>
+          </h3>
+          <span class="text-s mid-gray margin-1 display-block">458 Words | 2 Pages</span>
+         </li>
+         <li class="card--sidebar-nav__list-item card--sidebar-nav__list-item--separators" id="sidebar-nav4">
+          <h3 class="heading-xs brand-secondary weight-700">
+           <a class="card--sidebar-nav__link" href="/essay/future-direction-of-health-care">Future Direction Of Health Care</a>
+          </h3>
+          <span class="text-s mid-gray margin-1 display-block">1392 Words | 6 Pages</span>
+         </li>
+        </ul>
+       </div>
+       <div class="rhino-slot center" aria-hidden="true"></div>
+      </div>
+      <div class="rhino-slot center" id="AdSidebarBottom" aria-hidden="true"></div>
+     </aside>
+    </div>
+
+    <div class="rhino-slot center" id="AdCenterBottom" aria-hidden="true"></div>
+    <div class="row columns"></div>
+   </main>
+
+   <div class="button--extra_container show-for-small-only">
+    <a class="button--extra" href="/document/healthcare-reform-cost-quality-and-access">Open Document</a>
+   </div>
+
+   <div class="rhino-slot center" id="AdCenterAboveFooter" aria-hidden="true"></div>
+
+   <footer class="section section--footer no-padding padding-top-1">
+    <div class="row">
+     <nav class="align-left small-8 small-offset-4 medium-offset-0 medium-10 large-11 columns" aria-label="Footer">
+      <div class="vertical-nav-list">
+       <ul class="vertical-nav-list__container">
+        <li class="vertical-nav-list__item display-inline-block--medium margin-right-1 margin-right-1-5--large weight-700 padding-top-1">
+         <a class="vertical-nav-list__item__anchor text-m mid-gray" href="/privacy-policy">Privacy Policy</a>
+        </li>
+        <li class="vertical-nav-list__item display-inline-block--medium margin-right-1 margin-right-1-5--large weight-700 padding-top-1">
+         <a class="vertical-nav-list__item__anchor text-m mid-gray" href="/contact">Contact</a>
+        </li>
+        <li class="vertical-nav-list__item display-inline-block--medium margin-right-1 margin-right-1-5--large weight-700 padding-top-1">
+         <a class="vertical-nav-list__item__anchor text-m mid-gray" href="/terms-of-service">Terms of Service</a>
+        </li>
+        <li class="vertical-nav-list__item display-inline-block--medium margin-right-1 margin-right-1-5--large weight-700 padding-top-1">
+         <a class="vertical-nav-list__item__anchor text-m mid-gray" href="/copyright">Copyright</a>
+        </li>
+       </ul>
+      </div>
+     </nav>
+     <div class="align-left align-right--medium small-8 small-offset-4 medium-offset-0 medium-2 large-1 columns">
+      <div class="vertical-nav-list">
+       <ul class="vertical-nav-list__container">
+        <li class="vertical-nav-list__item">
+         <a href="/" aria-label="AntiEssays home">
+          <img alt="AntiEssays logo" class="position-absolute--medium" height="69" src="rick.jpg" width="69">
+         </a>
+        </li>
+       </ul>
+      </div>
+     </div>
+    </div>
+    <div class="row">
+     <div class="center--small-down small-12 columns">
+      <div class="vertical-nav-list">
+       <p class="vertical-nav-list__item__anchor text-m mid-gray">
+        Copyright &copy; 2023 Anti Essays. All rights reserved.
+       </p>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    (function () {
+      const searchToggle = document.getElementById('search-toggle');
+      const searchForm = document.getElementById('search-form');
+      const searchInput = document.getElementById('site-search');
+
+      function isMobile() {
+        return window.matchMedia('(max-width: 39.9375em)').matches;
+      }
+
+      function closeSearch() {
+        if (!isMobile()) return;
+        searchForm.classList.remove('conditionally-visible');
+        searchForm.hidden = true;
+        searchToggle.setAttribute('aria-expanded', 'false');
+        searchToggle.setAttribute('aria-label', 'Open search');
+      }
+
+      function openSearch() {
+        if (!isMobile()) return;
+        searchForm.hidden = false;
+        searchForm.classList.add('conditionally-visible');
+        searchToggle.setAttribute('aria-expanded', 'true');
+        searchToggle.setAttribute('aria-label', 'Close search');
+        searchInput.focus();
+      }
+
+      function syncSearchVisibility() {
+        if (isMobile()) {
+          if (searchToggle.getAttribute('aria-expanded') !== 'true') {
+            searchForm.hidden = true;
+          }
+        } else {
+          searchForm.hidden = false;
+          searchForm.classList.remove('conditionally-visible');
+          searchToggle.setAttribute('aria-expanded', 'false');
+          searchToggle.setAttribute('aria-label', 'Open search');
+        }
+      }
+
+      searchToggle.addEventListener('click', function () {
+        const expanded = searchToggle.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          closeSearch();
+          searchToggle.focus();
+        } else {
+          openSearch();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isMobile() && searchToggle.getAttribute('aria-expanded') === 'true') {
+          closeSearch();
+          searchToggle.focus();
+        }
+      });
+
+      window.addEventListener('resize', syncSearchVisibility);
+      syncSearchVisibility();
+    })();
+
+    (function () {
+      function setupDisclosure(button, panel, gradient, labels) {
+        button.addEventListener('click', function () {
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          button.setAttribute('aria-expanded', String(!expanded));
+
+          if (expanded) {
+            panel.classList.add('is-collapsed');
+            if (gradient) gradient.hidden = false;
+            button.textContent = labels.more;
+          } else {
+            panel.classList.remove('is-collapsed');
+            if (gradient) gradient.hidden = true;
+            button.textContent = labels.less;
+            panel.focus();
+          }
+        });
+      }
+
+      const mainButton = document.getElementById('ShowMoreButton');
+      const mainPanel = document.getElementById('essay-preview');
+      const mainGradient = document.getElementById('essay-preview-gradient');
+
+      setupDisclosure(mainButton, mainPanel, mainGradient, {
+        more: 'Show more of Healthcare Reform: Cost, Quality and Access',
+        less: 'Show less of Healthcare Reform: Cost, Quality and Access'
+      });
+
+      document.querySelectorAll('.related-toggle').forEach(function (button) {
+        const panel = document.getElementById(button.getAttribute('aria-controls'));
+        const gradientId = button.getAttribute('aria-controls').replace('related-preview', 'related-gradient');
+        const gradient = document.getElementById(gradientId);
+        const title = button.textContent.replace(/^Read more about\s+/i, '').trim();
+
+        setupDisclosure(button, panel, gradient, {
+          more: 'Read more about ' + title,
+          less: 'Show less about ' + title
+        });
+      });
+    })();
+  </script>
+ </body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added lang attribute; updated title format; added skip link and main landmark with id="main-content"; preserved semantic header/footer and added main/aside landmarks; converted breadcrumb area to nav with label; ensured exactly one h1; corrected heading hierarchy in related and sidebar content; added alt text to image; added explicit label for search input; replaced non-functional anchors used as buttons with real buttons or meaningful links; added descriptive hrefs/labels to interactive elements.
+[B] ARIA fixes: added unique aria-labels for breadcrumb and footer navigation and aside; added aria-current to current breadcrumb item; added aria-expanded/aria-controls to search toggle and disclosure buttons; removed redundant implicit-role ARIA usage; ensured no positive tabindex values remain and used tabindex="-1" only for programmatic focus targets.
+[C] JS patterns added: implemented search input support with accessible mobile search toggle and Escape handling; implemented load more/show less progressive disclosure for main preview and related previews; preserved sticky header behavior; added focus management after disclosure expansion and global positive tabindex cleanup; added required global focus-visible styles.
+-->

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <style>
+/*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+}
+a:active,
+a:hover {
+  outline: 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+dfn {
+  font-style: italic;
+}
+h1 {
+  margin: .67em 0;
+  font-size: 2em;
+}
+mark {
+  color: #000;
+  background: #ff0;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -.5em;
+}
+sub {
+  bottom: -.25em;
+}
+img {
+  border: 0;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 1em 40px;
+}
+hr {
+  height: 0;
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+pre {
+  overflow: auto;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  margin: 0;
+  font: inherit;
+  color: inherit;
+}
+button {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+input {
+  line-height: normal;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+fieldset {
+  padding: .35em .625em .75em;
+  margin: 0 2px;
+  border: 1px solid #c0c0c0;
+}
+legend {
+  padding: 0;
+  border: 0;
+}
+textarea {
+  overflow: auto;
+}
+optgroup {
+  font-weight: bold;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+td,
+th {
+  padding: 0;
+}
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+@media print {
+  *,
+  *:before,
+  *:after {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  .navbar {
+    display: none;
+  }
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important;
+  }
+  .label {
+    border: 1px solid #000;
+  }
+  .table {
+    border-collapse: collapse !important;
+  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
+}
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url("../fonts/glyphicons-halflings-regular.f4769f9bdb74.eot");
+  src: url("../fonts/glyphicons-halflings-regular.f4769f9bdb74.eot?#iefix") format('embedded-opentype'), url("../fonts/glyphicons-halflings-regular.448c34a56d69.woff2") format('woff2'), url("../fonts/glyphicons-halflings-regular.fa2772327f55.woff") format('woff'), url("../fonts/glyphicons-halflings-regular.e18bbf611f2a.ttf") format('truetype'), url("../fonts/glyphicons-halflings-regular.89889688147b.svg#glyphicons_halflingsregular") format('svg');
+}
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.glyphicon-exclamation-sign:before {
+  content: "\e101";
+}
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+html {
+  font-size: 10px;
+
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+input,
+button,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+a:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+figure {
+  margin: 0;
+}
+img {
+  vertical-align: middle;
+}
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+h1,
+.h1 {
+  font-size: 36px;
+}
+h2,
+.h2 {
+  font-size: 30px;
+}
+h3,
+.h3 {
+  font-size: 24px;
+}
+p {
+  margin: 0 0 10px;
+}
+.lead {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+@media (min-width: 768px) {
+  .lead {
+    font-size: 21px;
+  }
+}
+.text-muted {
+  color: #777;
+}
+.text-center {
+  text-align: center;
+}
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.col-xs-12, .col-sm-9, .col-md-9 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.col-xs-12 {
+  float: left;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .col-sm-9 {
+    float: left;
+    width: 75%;
+  }
+}
+@media (min-width: 992px) {
+  .col-md-9 {
+    float: left;
+    width: 75%;
+  }
+}
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.btn:focus,
+.btn:hover {
+  text-decoration: none;
+}
+.btn-default {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.dropdown,
+.dropup {
+  position: relative;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1001;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.open > .dropdown-menu {
+  display: block;
+}
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.nav > li {
+  position: relative;
+  display: block;
+}
+.nav > li > a,
+.nav > li > button {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+}
+.navbar-header:before,
+.navbar-header:after,
+.navbar:before,
+.navbar:after,
+.container:before,
+.container:after,
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+.navbar-header:after,
+.navbar:after,
+.container:after,
+.row:after {
+  clear: both;
+}
+@media (min-width: 768px) {
+  .navbar-header {
+    float: left;
+  }
+}
+.navbar-collapse {
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow-x: visible;
+  border-top: 1px solid transparent;
+}
+.navbar-collapse.in {
+  overflow-y: auto;
+}
+@media (min-width: 768px) {
+  .navbar-collapse {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+  }
+  .navbar-collapse.collapse {
+    display: block !important;
+    height: auto !important;
+    padding-bottom: 0;
+    overflow: visible !important;
+  }
+}
+.container > .navbar-header,
+.container > .navbar-collapse {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+@media (min-width: 768px) {
+  .container > .navbar-header,
+  .container > .navbar-collapse {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+.navbar-brand {
+  float: left;
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+.navbar-brand > img {
+  display: block;
+}
+.navbar-toggle {
+  position: relative;
+  float: right;
+  padding: 9px 10px;
+  margin-top: 8px;
+  margin-right: 15px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+@media (min-width: 768px) {
+  .navbar-toggle {
+    display: none;
+  }
+}
+.navbar-nav {
+  margin: 7.5px -15px;
+}
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: left;
+    margin: 0;
+  }
+  .navbar-nav > li {
+    float: left;
+  }
+  .navbar-nav > li > a,
+  .navbar-nav > li > button {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+.navbar-inverse {
+  background-color: #222;
+  border-color: #080808;
+}
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse .navbar-nav > li > button {
+  color: #9d9d9d;
+}
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > button,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > button:hover,
+.navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .open > button:focus {
+  color: #fff;
+  background-color: #080808;
+}
+.navbar-inverse .navbar-toggle {
+  border-color: #333;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.pull-left {
+  float: left !important;
+}
+.pull-right {
+  float: right !important;
+}
+.hidden {
+  display: none !important;
+}
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+body {
+  color: #222;
+  font-size: 16px;
+  background-repeat: repeat;
+}
+body > .container {
+  max-width: 1000px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navbar-brand,
+#navbar {
+  font-weight: 500;
+  color: #222;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-shadow: 1px 1px 1px rgba(150, 150, 150, 0.64);
+}
+.alert {
+  margin-bottom: 10px;
+}
+.alert-info {
+  color: #222;
+  border-color: #31b0d5;
+  background-color: #d9edf7;
+}
+.invisible {
+  visibility: hidden;
+}
+.disclaimer {
+  color: #727272;
+}
+.lead {
+  margin-bottom: 7px;
+}
+.alert {
+  margin-top: 10px;
+}
+.unstyled-link {
+  color: inherit;
+}
+.unstyled-link:hover {
+  text-decoration: none;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  padding-bottom: 150px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background: #e6e6e6;
+  height: auto;
+  overflow: auto;
+  font-size: 12px;
+}
+.footer-logos {
+  display: flex;
+  gap: 15px;
+  margin: 1rem 0 2rem;
+  width: 100%;
+}
+.footer-logos__bennett {
+  height: auto;
+  max-height: 50px;
+  max-width: 115px;
+  width: 100%;
+}
+.footer-logos__nuffield {
+  height: auto;
+  max-height: 50px;
+  max-width: 123px;
+  width: 100%;
+}
+.footer-logos__oxford {
+  height: auto;
+  max-height: 50px;
+  max-width: 50px;
+  width: 100%;
+}
+@media (max-width: 990px) {
+  .footer {
+    font-size: 10px;
+  }
+}
+#feedback-button {
+  position: fixed;
+  cursor: pointer;
+  width: auto;
+  border: 0;
+  font-size: 14px;
+  background: #2C2C2C;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  margin: 0;
+  z-index: 100;
+  bottom: 0;
+  right: 5%;
+  border-radius: 5px 5px 0 0;
+}
+.navbar-inverse {
+  margin-bottom: 10px;
+  background: #1c1c1c;
+  background: linear-gradient(to bottom, #1c1c1c 0%, #131313 0%, #333333 100%);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.home .active_home > a,
+.analyse .active_analyse > a,
+.dashboards .active_dashboards > a,
+.trends .active_trends > a,
+.more .active_more > a,
+.home .active_home > button,
+.analyse .active_analyse > button,
+.dashboards .active_dashboards > button,
+.trends .active_trends > button,
+.more .active_more > button {
+  color: #fff !important;
+  background-color: #080808;
+}
+img.logo {
+  width: 20px;
+  margin-right: 5px;
+  float: left;
+}
+.dropdown-menu {
+  z-index: 1001 !important;
+}
+#no-data {
+  display: none;
+  clear: both;
+}
+#trends {
+  display: none;
+  clear: both;
+  margin-bottom: 70px;
+}
+#trends h3 {
+  float: left;
+}
+#trends #graphtype {
+  float: left;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+#trends .chart {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 20px;
+  vertical-align: middle;
+  text-align: center;
+}
+#trends .chart .status {
+  padding-top: 160px;
+}
+.skip-link {
+  position: absolute;
+  transform: translateY(-100%);
+  left: 10px;
+  top: 0;
+  background: #fff;
+  color: #000;
+  padding: 8px 12px;
+  z-index: 2000;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+:focus-visible {
+  outline: 3px solid #005FCC;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+.navbar-nav > li > button.dropdown-toggle {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .navbar-nav > li > button.dropdown-toggle {
+    width: auto;
+  }
+}
+.nav-toggle {
+  display: none;
+}
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block;
+  }
+}
+  </style>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="High-level prescribing trends for Surgical Adhesive Tape (BNF section 20.10) across all GP practices in NHS England." name="description">
+  <meta content="OpenPrescribing" name="author">
+  <meta content="JcfqytwjhFX03U1JI15k7oxfih_wpC1OWbCl1vxsosM" name="google-site-verification">
+  <title>20.10: Surgical Adhesive Tape — OpenPrescribing</title>
+  <meta content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9" http-equiv="origin-trial">
+  <style id="bigtext-style">
+    .bigtext * { white-space: nowrap; } .bigtext > * { display: block; }
+    .bigtext .bigtext-exempt, .bigtext .bigtext-exempt * { white-space: normal; }
+  </style>
+</head>
+<body class="trends">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <nav class="navbar navbar-inverse" aria-label="Main">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            id="nav-toggle"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Open navigation menu"
+            class="navbar-toggle collapsed nav-toggle"
+            type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span aria-hidden="true" class="icon-bar"></span>
+            <span aria-hidden="true" class="icon-bar"></span>
+            <span aria-hidden="true" class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" aria-label="OpenPrescribing home">
+            <img alt="" class="logo" onerror="this.src='/static/img/logo.ea74f0412f2f.png';this.onerror=null;" src="rick.jpg">
+            OpenPrescribing
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li class="active_analyse">
+              <a href="#" aria-current="page">Analyse</a>
+            </li>
+            <li class="dropdown active_dashboards has-dropdown">
+              <button
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="dropdown-dashboards"
+                class="dropdown-toggle"
+                type="button">
+                Area and Practice Dashboards
+                <span aria-hidden="true" class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="dropdown-dashboards" role="list" hidden>
+                <li><a href="#">Practices</a></li>
+                <li><a href="#">PCNs</a></li>
+                <li><a href="#">Sub-ICB Locations</a></li>
+                <li><a href="#">ICBs</a></li>
+              </ul>
+            </li>
+            <li class="dropdown active_trends has-dropdown">
+              <button
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="dropdown-trends"
+                class="dropdown-toggle"
+                type="button">
+                Trends
+                <span aria-hidden="true" class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="dropdown-trends" role="list" hidden>
+                <li><a href="#">Trends for BNF sections</a></li>
+                <li><a href="#">Trends for chemicals</a></li>
+                <li><a href="#">Trends for Drug Tariff and Concessions</a></li>
+                <li><a href="#">Long term trends analysis</a></li>
+              </ul>
+            </li>
+            <li class="dropdown active_more has-dropdown">
+              <button
+                aria-expanded="false"
+                aria-haspopup="true"
+                aria-controls="dropdown-more"
+                class="dropdown-toggle"
+                type="button">
+                More
+                <span aria-hidden="true" class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="dropdown-more" role="list" hidden>
+                <li class="active_howtouse"><a href="#">How to use</a></li>
+                <li class="active_contact"><a href="#">Stay in touch</a></li>
+                <li class="active_faq"><a href="#">FAQ</a></li>
+                <li class="active_api"><a href="#">API</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <div class="starter-template">
+        <h1>20.10: Surgical Adhesive Tape</h1>
+        <p class="lead">
+          Part of chapter
+          <a href="#">20 Dressings</a>
+        </p>
+        <hr>
+        <p>
+          High-level prescribing trends for Surgical Adhesive Tape (BNF section 20.10) across all GP practices in NHS England for the last five years. You can
+          <a href="#">explore prescribing trends for this section by Sub-ICB Location</a>,
+          or learn more
+          <a href="#">about this site</a>.
+        </p>
+        <p>
+          <a href="#">View all matching dm+d items.</a>
+        </p>
+
+        <div id="no-data">
+          <p>No prescriptions found.</p>
+        </div>
+
+        <section id="trends" aria-label="Prescribing trends">
+          <h2>Trends</h2>
+          <div aria-label="Show spending or items on graph" class="btn-group btn-toggle" id="graphtype">
+            <button class="btn btn-info" data-type="items" type="button">Items</button>
+            <button class="btn btn-default" data-type="actual_cost" type="button">Spending</button>
+          </div>
+          <div class="chart" id="chart" aria-label="Prescribing trends chart">
+            <div class="status"></div>
+          </div>
+        </section>
+
+        <div class="alert alert-info">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          Do you need help with your analysis? Don't forget to check the
+          <a href="#">FAQ page</a>,
+          and
+          <a href="#">get in touch</a>
+          if you have questions.
+        </div>
+
+        <section aria-labelledby="chemicals-heading">
+          <h2 id="chemicals-heading">Chemicals</h2>
+          <p><a href="#">Surgical Adhesive Tape (2010)</a></p>
+        </section>
+
+        <section id="download-data" aria-labelledby="download-heading">
+          <h2 id="download-heading">Download raw data</h2>
+          <p>
+            Download CSVs:
+            <a href="#">all data on Surgical Adhesive Tape</a>
+            or
+            <a href="#">data on Surgical Adhesive Tape by Sub-ICB Location</a>.
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="list-unstyled footer-logos">
+            <li>
+              <a href="#" title="Bennett Institute for Applied Data Science">
+                <img alt="Bennett Institute for Applied Data Science logo" class="footer-logos__bennett" src="rick.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="#" title="Nuffield Department of Primary Care Health Sciences">
+                <img alt="Nuffield Department of Primary Care Health Sciences logo" class="footer-logos__nuffield" src="rick.jpg">
+              </a>
+            </li>
+            <li>
+              <a href="#" title="University of Oxford">
+                <img alt="University of Oxford logo" class="footer-logos__oxford" src="rick.jpg">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-9 col-sm-9 col-xs-12 attribution text-muted">
+          <div>
+            Designed and built by the
+            <a href="#">Bennett Institute for Applied Data Science</a>,
+            <a href="#">Department of Primary Care Health Sciences</a>,
+            University of Oxford. Please see the
+            <a href="#">about page</a>
+            for details of our funding.
+            Contact us:
+            <a href="mailto:[EMAIL REDACTED]">[EMAIL REDACTED]</a>
+            and find us on
+            <a href="#">Twitter</a>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a id="feedback-button" href="#">Feedback</a>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('navbar');
+
+    function syncMobileNav() {
+      if (window.innerWidth <= 768) {
+        nav.hidden = toggle.getAttribute('aria-expanded') !== 'true';
+      } else {
+        nav.hidden = false;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        const firstFocusable = nav.querySelector('a, button');
+        if (firstFocusable) firstFocusable.focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false && window.innerWidth <= 768) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    window.addEventListener('resize', syncMobileNav);
+    syncMobileNav();
+
+    const dropdownButtons = document.querySelectorAll('.has-dropdown > button');
+
+    function closeAllDropdowns(exceptButton) {
+      dropdownButtons.forEach(button => {
+        if (button !== exceptButton) {
+          button.setAttribute('aria-expanded', 'false');
+          const menu = document.getElementById(button.getAttribute('aria-controls'));
+          const parent = button.parentElement;
+          menu.hidden = true;
+          parent.classList.remove('open');
+        }
+      });
+    }
+
+    dropdownButtons.forEach(button => {
+      const menu = document.getElementById(button.getAttribute('aria-controls'));
+      const parent = button.parentElement;
+      const items = () => Array.from(menu.querySelectorAll('a'));
+
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        closeAllDropdowns(button);
+        button.setAttribute('aria-expanded', String(!expanded));
+        menu.hidden = expanded;
+        parent.classList.toggle('open', !expanded);
+      });
+
+      button.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          closeAllDropdowns(button);
+          button.setAttribute('aria-expanded', 'true');
+          menu.hidden = false;
+          parent.classList.add('open');
+          const firstItem = items()[0];
+          if (firstItem) firstItem.focus();
+        } else if (e.key === 'Escape') {
+          button.setAttribute('aria-expanded', 'false');
+          menu.hidden = true;
+          parent.classList.remove('open');
+          button.focus();
+        }
+      });
+
+      menu.addEventListener('keydown', (e) => {
+        const menuItems = items();
+        const currentIndex = menuItems.indexOf(document.activeElement);
+
+        if (e.key === 'Escape') {
+          button.setAttribute('aria-expanded', 'false');
+          menu.hidden = true;
+          parent.classList.remove('open');
+          button.focus();
+        } else if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          const nextIndex = currentIndex < menuItems.length - 1 ? currentIndex + 1 : 0;
+          menuItems[nextIndex].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          const prevIndex = currentIndex > 0 ? currentIndex - 1 : menuItems.length - 1;
+          menuItems[prevIndex].focus();
+        }
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.has-dropdown')) {
+        closeAllDropdowns();
+      }
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and main id; preserved html lang="en"; used header/nav/main/footer landmarks; ensured one h1; changed lower section headings to h2; added alt attributes and decorative alt for brand logo image; added descriptive href/text for all links; ensured interactive buttons have labels.
+[B] ARIA fixes: labeled main navigation; removed redundant role usage; added aria-haspopup/aria-expanded/aria-controls for dropdowns and mobile nav; added unique controls ids for dropdown menus; ensured no positive tabindex remains.
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, hidden state, focus return, and Escape close; implemented dropdown menus with click toggle, outside click close, Escape close, and ArrowUp/ArrowDown keyboard navigation; added global positive tabindex cleanup and focus-visible styling.
+-->

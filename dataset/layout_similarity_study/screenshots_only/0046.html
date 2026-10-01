@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The dog in my head — Verena Ortlieb</title>
+  <style>
+    :root{
+      --text:#3f3f3f;
+      --muted:#666;
+      --line:#c9c9c9;
+      --bg:#ffffff;
+      --blue:#1200ff;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.45;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:1rem;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:.75rem 1rem;
+      z-index:1000;
+      text-decoration:none;
+      border:1px solid #000;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:760px;
+      margin:0 auto;
+      padding:34px 38px 40px;
+    }
+
+    .site-header{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .site-title{
+      margin:0;
+      font-size:34px;
+      font-weight:400;
+      letter-spacing:0;
+      color:#3d3d3d;
+    }
+
+    .divider{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:28px auto 0;
+      width:100%;
+    }
+
+    main{
+      display:block;
+    }
+
+    .article{
+      max-width:540px;
+      margin:0 auto;
+      padding-top:58px;
+    }
+
+    .meta-date{
+      font-size:18px;
+      color:#666;
+      margin:0 0 18px;
+    }
+
+    h1{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:34px;
+      line-height:1.12;
+      font-weight:400;
+      color:#3d3d3d;
+    }
+
+    .reading-time{
+      margin:6px 0 0;
+      font-size:18px;
+      color:#444;
+    }
+
+    .hero{
+      margin:68px 0 48px;
+    }
+
+    .hero img{
+      display:block;
+      width:100%;
+      height:305px;
+      object-fit:cover;
+      background:var(--blue);
+    }
+
+    .content p{
+      margin:0 0 18px;
+      font-size:20px;
+      color:#404040;
+    }
+
+    .content strong{
+      font-weight:700;
+    }
+
+    .site-footer{
+      text-align:center;
+      padding:92px 0 0;
+    }
+
+    .footer-nav{
+      margin-bottom:10px;
+    }
+
+    .footer-nav ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:0;
+      flex-wrap:wrap;
+      font-size:18px;
+    }
+
+    .footer-nav li{
+      display:flex;
+      align-items:center;
+    }
+
+    .footer-nav li:not(:last-child)::after{
+      content:"○";
+      display:inline-block;
+      margin:0 14px;
+      color:#3f3f3f;
+      font-size:14px;
+      line-height:1;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .copyright{
+      margin:0;
+      font-size:18px;
+      color:#3f3f3f;
+    }
+
+    @media (max-width: 900px){
+      .page{
+        max-width:700px;
+        padding:34px 28px 40px;
+      }
+      .article{
+        max-width:524px;
+      }
+      .hero img{
+        height:294px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        padding:26px 38px 34px;
+      }
+
+      .site-header{
+        margin-bottom:18px;
+      }
+
+      .site-title{
+        font-size:28px;
+      }
+
+      .divider{
+        margin-top:20px;
+      }
+
+      .article{
+        max-width:none;
+        padding-top:34px;
+      }
+
+      .meta-date{
+        font-size:17px;
+        margin-bottom:16px;
+      }
+
+      h1{
+        font-size:31px;
+      }
+
+      .reading-time{
+        font-size:17px;
+      }
+
+      .hero{
+        margin:56px 0 40px;
+      }
+
+      .hero img{
+        height:140px;
+      }
+
+      .content p{
+        font-size:18px;
+        margin-bottom:14px;
+      }
+
+      .site-footer{
+        padding-top:86px;
+      }
+
+      .footer-nav ul,
+      .copyright{
+        font-size:17px;
+      }
+
+      .footer-nav li:not(:last-child)::after{
+        margin:0 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <p class="site-title">Verena Ortlieb</p>
+      <hr class="divider">
+    </header>
+
+    <main id="main-content">
+      <article class="article">
+        <p class="meta-date">16.03.2018</p>
+        <h1>The dog in my head</h1>
+        <p class="reading-time">Reading time ~ 3 minutes</p>
+
+        <figure class="hero">
+          <img src="rick.jpg" alt="Large rectangular featured image for The dog in my head article">
+        </figure>
+
+        <div class="content">
+          <p><strong>Sometimes, my brain behaves like a dog.</strong> A sweet little dog.</p>
+
+          <p>When I pay attention, keep him occupied, and train him well he is a blast to be around. We have a lot of fun together, get compliments and enjoy our evenings cuddling on the couch.</p>
+
+          <p><strong>But if I don’t pay attention, when I am distracted or forget to occupy this sweet little dog, it goes south. The dog starts to bite the sofa, digs holes into the floor and barks at the mailman.</strong></p>
+
+          <p>No matter how sweet the dog is, this behavior isn’t welcome in the long run. In the beginning, it might be sweet to watch the puppy catch the mailman or slip on the floor with his small clumsy paws, but as the puppy grows into a bigger dog, he can do a lot of damage.</p>
+
+          <p>No, it is not possible that I am attentive all the time and always be mindful and occupy my brain with the “right stuff.” Every now and then the thoughts wander. Every now and then negative thoughts take over.</p>
+
+          <p>That’s ok. Every now and then the dog can dig a hole in the garden, may be scared of a loud noise or chase a rabbit in the woods.</p>
+
+          <p><strong>But it is essential that it is only every now and then. This must not become the rule and may under no circumstances determine my life.</strong></p>
+
+          <p>In these situations, it is important to watch out and rethink. Because what happens in my mind is still my decision.</p>
+
+          <p>And I am not going to allow a scared dog to determine what I do. I will take the dog to my side, show him that it was nothing terrible that scared him, and walk with him in the eerie forest because I know that nothing can happen to me.</p>
+
+          <p><strong>And in the end, these are the stories I want to tell.</strong> Of the roads that scared me, and the steep slopes I climbed, and the eerie caves I explored. And all with my companion, with my wonderfully behaved dog by my side.</p>
+        </div>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <nav aria-label="Footer">
+        <div class="footer-nav">
+          <ul>
+            <li><a href="#">Email</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Dribbble</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p class="copyright">© 2022 Verena Ortlieb</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, main, footer, and nav landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential heading structure; added meaningful alt text to image; ensured interactive links have descriptive text; set html lang="en"
+[B] ARIA fixes: used unique aria-label on footer navigation; avoided redundant landmark roles; removed positive tabindex values via script baseline
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only
+-->

@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a prominent rectangular input field area and adjacent button-like rectangles, consistent with an email/signup or password-entry form. The mobile sketch shows a long horizontal field with surrounding text blocks and a CTA-like boxed area; the desktop sketch shows a compact field/button grouping and another small boxed control near the top right.",
+      "confidence": "HIGH",
+      "behavior_notes": "Inputs should validate required entry before submission, likely email format on the main signup field and possibly password format/presence on the secondary access field. Submission should prevent empty/invalid values and provide inline feedback.",
+      "ambiguities": "The exact field purposes are not labeled in the sketches, so validation rules beyond required/email/password are inferred from the layout and reference HTML."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "A small isolated boxed control near the top/right area in desktop and a separated boxed trigger-like element in mobile suggest an auxiliary action distinct from the main form flow, matching a password-entry overlay trigger rather than inline content. The reference structure strongly aligns with a password-entry modal opened from a header action.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Trigger opens an overlay dialog for secondary access, focus moves into the dialog, background becomes inert, Escape and close control dismiss it, and focus returns to the trigger.",
+      "ambiguities": "The sketches do not explicitly draw an overlay state, so the modal is inferred from the detached trigger placement and the likely 'enter password' action."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The presence of form controls and an inferred modal/dialog trigger implies programmatic focus handling is needed, especially if the secondary access flow opens in an overlay rather than inline.",
+      "confidence": "HIGH",
+      "behavior_notes": "Focus should move logically through form fields and buttons; if a modal opens, focus should be trapped within it until closed and then restored to the opener.",
+      "ambiguities": "If the secondary access flow is inline instead of modal, focus management needs would be lighter and mostly limited to standard form/error focus."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation",
+      "modal_dialog",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation",
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "These sketches imply a relatively low-JS landing/password page rather than a complex application shell. The dominant interactive requirement in both viewports is form handling for a primary signup/input action, with a likely secondary password-access action that is probably implemented as a modal overlay. No clear evidence suggests navigation menus, tabs, accordions, infinite loading, or sticky behaviors. Cross-viewport differences appear mostly presentational: mobile uses a more vertically stacked composition while desktop compresses the same interactions into tighter grouped controls."
+}

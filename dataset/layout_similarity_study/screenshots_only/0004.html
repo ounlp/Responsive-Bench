@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Closed Notice — Radio Futura Music</title>
+  <style>
+    :root{
+      --text:#3f3f42;
+      --muted:#666;
+      --border:#d9d9d9;
+      --dark:#444244;
+      --bg:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      min-height:100%;
+    }
+
+    body{
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    .skip-link {
+      position:absolute;
+      transform:translateY(-100%);
+      left:1rem;
+      top:0;
+      background:#fff;
+      color:#000;
+      padding:.75rem 1rem;
+      z-index:1000;
+      border:1px solid #000;
+      text-decoration:none;
+    }
+
+    .skip-link:focus { transform:translateY(0); }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      width:100%;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:space-between;
+      padding:22px 24px 30px;
+    }
+
+    .topbar{
+      width:100%;
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-start;
+    }
+
+    .password-link{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--dark);
+      border:1px solid #4a4a4a;
+      padding:18px 20px 16px;
+      min-width:248px;
+      text-align:center;
+      font-size:13px;
+      line-height:1;
+      letter-spacing:2px;
+      font-weight:700;
+      text-transform:uppercase;
+      background:#fff;
+    }
+
+    main{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      flex:1;
+    }
+
+    .content{
+      width:100%;
+      max-width:760px;
+      text-align:center;
+      padding-top:48px;
+    }
+
+    h1{
+      margin:0;
+      font-size:34px;
+      line-height:1.15;
+      font-weight:700;
+      color:#3b3b3d;
+    }
+
+    .closed-message{
+      margin:18px 0 0;
+      font-size:23px;
+      line-height:1.25;
+      letter-spacing:3px;
+      font-weight:700;
+      text-transform:uppercase;
+      color:#3f3f42;
+    }
+
+    .intro{
+      margin:82px 0 0;
+      font-size:18px;
+      line-height:1.7;
+      color:#3f3f42;
+    }
+
+    h2{
+      margin:22px 0 0;
+      font-size:20px;
+      line-height:1.35;
+      font-weight:700;
+      color:#3f3f42;
+    }
+
+    .subtext{
+      margin:14px auto 0;
+      max-width:700px;
+      font-size:17px;
+      line-height:1.7;
+      color:#3f3f42;
+    }
+
+    form{
+      margin:34px auto 0;
+      max-width:560px;
+      width:100%;
+    }
+
+    .field-row{
+      display:flex;
+      width:100%;
+    }
+
+    .field-group{
+      width:100%;
+      text-align:left;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-size:0;
+    }
+
+    input[type="email"]{
+      flex:1;
+      width:100%;
+      height:46px;
+      border:1px solid #cfcfcf;
+      border-right:none;
+      padding:0 18px;
+      font-size:16px;
+      color:#3f3f42;
+      background:#fff;
+    }
+
+    input[type="email"]::placeholder{
+      color:#6f6f73;
+      opacity:1;
+    }
+
+    .notify-btn{
+      height:46px;
+      border:none;
+      background:var(--dark);
+      color:#fff;
+      padding:0 22px;
+      min-width:119px;
+      font-size:13px;
+      letter-spacing:2px;
+      font-weight:700;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    .error{
+      display:block;
+      margin-top:8px;
+      font-size:14px;
+      color:#b00020;
+    }
+
+    .share-section{
+      margin-top:95px;
+      text-align:center;
+    }
+
+    .share-section h2{
+      margin:0;
+      font-size:18px;
+      font-weight:700;
+      line-height:1.4;
+    }
+
+    .share-links{
+      margin-top:54px;
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+
+    .share-links a{
+      display:inline-block;
+      text-decoration:none;
+      color:var(--dark);
+      border:1px solid #e1e1e1;
+      background:#fff;
+      padding:8px 12px;
+      min-width:68px;
+      text-align:center;
+      font-size:12px;
+      letter-spacing:1.5px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    footer{
+      width:100%;
+      text-align:center;
+      padding-top:70px;
+      color:#4a4a4a;
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    footer a{
+      color:#4a4a4a;
+      text-decoration:none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+    .nav-toggle { display: none; }
+
+    @media (max-width: 767px){
+      .page{
+        padding:24px 20px 34px;
+      }
+
+      .topbar{
+        justify-content:center;
+      }
+
+      .password-link{
+        min-width:240px;
+        padding:16px 18px 15px;
+        font-size:12px;
+      }
+
+      .content{
+        max-width:320px;
+        padding-top:58px;
+      }
+
+      h1{
+        font-size:32px;
+        line-height:1.18;
+      }
+
+      .closed-message{
+        margin-top:20px;
+        font-size:18px;
+        line-height:1.18;
+        letter-spacing:3px;
+      }
+
+      .intro{
+        margin-top:74px;
+        font-size:17px;
+        line-height:1.45;
+      }
+
+      h2{
+        margin-top:26px;
+        font-size:17px;
+        line-height:1.25;
+      }
+
+      .subtext{
+        margin-top:14px;
+        font-size:17px;
+        line-height:1.45;
+        max-width:300px;
+      }
+
+      form{
+        margin-top:34px;
+        max-width:320px;
+      }
+
+      .field-row{
+        flex-direction:column;
+        gap:16px;
+      }
+
+      input[type="email"]{
+        border-right:1px solid #cfcfcf;
+        height:42px;
+      }
+
+      .notify-btn{
+        width:100%;
+        height:42px;
+      }
+
+      .share-section{
+        margin-top:80px;
+      }
+
+      .share-links{
+        margin-top:52px;
+      }
+
+      footer{
+        padding-top:96px;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1100px){
+      .content{
+        max-width:700px;
+        padding-top:54px;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      .closed-message{
+        font-size:22px;
+      }
+
+      .intro{
+        margin-top:78px;
+      }
+
+      .share-section{
+        margin-top:92px;
+      }
+
+      footer{
+        padding-top:92px;
+      }
+
+      form{
+        max-width:560px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="topbar">
+      <a href="#" class="password-link">ENTER USING PASSWORD →</a>
+    </header>
+
+    <main id="main-content">
+      <section class="content" aria-label="Store closed notice">
+        <h1>Radio Futura Music</h1>
+        <p class="closed-message">WE MISSED YOU! THE SHOP IS TEMPORARILY CLOSED.</p>
+
+        <p class="intro">We're On Vacation. We Will Return Soon.</p>
+
+        <h2>Get Notified When We Return From Vacation!</h2>
+
+        <p class="subtext">If you are in the Los Angeles area, vinyl is also available for sale at GCS Santa Ana.</p>
+
+        <form novalidate aria-label="Notification signup form">
+          <div class="field-group">
+            <label for="email">Email address <span aria-hidden="true">*</span></label>
+            <div class="field-row">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Email address"
+                aria-describedby="email-error"
+                aria-invalid="false">
+              <button type="submit" class="notify-btn">NOTIFY ME</button>
+            </div>
+            <span id="email-error" class="error" role="alert" aria-live="assertive" hidden></span>
+          </div>
+          <div aria-live="polite" id="form-status" class="sr-only"></div>
+        </form>
+
+        <section class="share-section" aria-label="Social sharing">
+          <h2>Spread the word</h2>
+          <nav aria-label="Share links" class="share-links">
+            <a href="#">SHARE</a>
+            <a href="#">TWEET</a>
+            <a href="#">PIN IT</a>
+          </nav>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#">Powered by Shopify</a>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let firstError = null;
+
+      form.querySelectorAll('[required]').forEach(input => {
+        const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+        if (!input.value.trim()) {
+          input.setAttribute('aria-invalid', 'true');
+          errorEl.textContent = `${input.labels[0].textContent.replace('*', '').trim()} is required`;
+          errorEl.hidden = false;
+          if (!firstError) firstError = input;
+        } else {
+          input.setAttribute('aria-invalid', 'false');
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+      });
+
+      if (firstError) {
+        firstError.focus();
+      } else {
+        document.getElementById('form-status').textContent = 'Form submitted successfully.';
+      }
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, main, footer, section, and nav landmarks; ensured exactly one h1 with sequential h2 headings; added explicit label for email input; added required attribute and accessible error/status messaging; ensured descriptive link and button text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added unique aria-labels to navigation/sections where needed; used aria-describedby and aria-invalid for form field; no positive tabindex values retained.
+[C] JS patterns added: implemented form validation with error announcement and success status; implemented tabindex cleanup script; included focus-visible styling.
+-->

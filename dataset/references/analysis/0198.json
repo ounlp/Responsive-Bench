@@ -1,0 +1,73 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a distinct top navigation/header bar separated from the page content. In the desktop sketch it spans the full width with branding and a small control at the top right; in the mobile sketch there is a compact top row above the content stack. This kind of persistent header is strongly associated with staying visible while the long page scrolls.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain fixed or become fixed after scroll so primary navigation/branding stays accessible while browsing long lists of links and content.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state, so it is unclear whether the nav is always fixed or only becomes sticky after scrolling."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch has a very compressed top area with small items across the top and no room for full desktop-style navigation links, implying a collapsed mobile navigation control rather than expanded nav text.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button would toggle visibility of the site navigation or utility links in an overlay, drawer, or expanded panel.",
+      "ambiguities": "The icon itself is not clearly drawn; this is inferred from the constrained mobile header and the richer desktop header."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "In the desktop sketch, the top-right of the header contains a small boxed control that reads like a search field or search trigger, distinct from the surrounding text/logo marks.",
+      "confidence": "LOW",
+      "behavior_notes": "If this is a search control, it should accept input and either submit to results or reveal matching content/categories.",
+      "ambiguities": "The small boxed element could also be an icon button or utility control rather than search; the sketch is too abstract to confirm."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows long stacked content blocks followed by a prominent full-width rectangular bar/button near the lower portion of the page, visually separated from the content above and below. This strongly resembles a 'load more' or pagination trigger for additional results.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Activating the button should append more content cards/links below the current list and likely show a loading state while fetching.",
+      "ambiguities": "The rectangle could be a CTA or input rather than a load-more control, but its placement after long repeated content suggests progressive loading."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F2",
+    "D4",
+    "S1",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "hamburger_menu",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-heavy directory/listing page with relatively light but important JavaScript: persistent header behavior across viewports, a likely collapsed mobile navigation pattern, and a probable progressive content-loading control on mobile. The desktop version appears more expanded and stable, with possible search affordance in the header, while the mobile version relies more on condensed navigation and sequential content loading. No strong evidence appears for tabs, accordions, modals, dropdown submenus, or complex form workflows."
+}

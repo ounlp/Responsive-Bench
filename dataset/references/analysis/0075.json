@@ -1,0 +1,44 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a distinct top header bar separated from the article body by a horizontal rule, with logo on the left and navigation items on the right, suggesting a persistent global navigation region that may remain visible while reading a long article.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented as sticky, the header should remain fixed or pinned during scroll without obscuring content, and active navigation state should remain perceivable.",
+      "ambiguities": "The sketch does not explicitly show the header in multiple scroll positions, so stickiness is only inferred from the long-form article layout."
+    }
+  ],
+  "applicable_criteria": [
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly static content experience: a desktop article page with standard header, body, callout, and footer, and a mobile layout that appears to be a hero plus image grid and large banner without any explicit controls. No clear hamburger, dropdown, tabs, accordion, modal, search, or form interactions are drawn. The only plausible JavaScript-enhanced behavior is a sticky desktop header for long-scroll reading, but even that remains speculative from the sketch alone."
+}

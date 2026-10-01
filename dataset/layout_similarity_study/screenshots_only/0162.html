@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Pink Rose Cottage — The Pink Rose Cottage</title>
+  <style>
+    :root{
+      --bg:#d8edf0;
+      --panel:#fbf5ea;
+      --panel2:#f4ead4;
+      --text:#4f4037;
+      --muted:#6f9ab8;
+      --nav:#f8f1df;
+      --blue:#1200ff;
+      --line:#d8c8a8;
+      --shadow:rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      min-height:100vh;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.5rem .75rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    h1,h2,h3,.brand,.script{
+      font-family: "Brush Script MT","Segoe Script","Lucida Handwriting",cursive;
+      font-weight: 700;
+      letter-spacing:.2px;
+      color:#5d5b5b;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .page{
+      max-width:1280px;
+      margin:0 auto;
+      padding:16px 16px 28px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:14px;
+    }
+    .brand{
+      font-size:4rem;
+      line-height:.95;
+      margin:18px 0 0;
+    }
+    .top-actions{
+      display:flex;
+      align-items:flex-start;
+      gap:28px;
+      color:#5b4638;
+      margin-top:2px;
+    }
+    .auth-currency{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+    }
+    .auth{
+      background:var(--panel);
+      border-radius:18px;
+      padding:4px 12px;
+      font-size:1rem;
+      color:#6f9ab8;
+      display:flex;
+      gap:28px;
+    }
+    .currency{
+      background:var(--panel);
+      border-radius:18px;
+      padding:8px 14px 10px;
+      text-align:center;
+      min-width:112px;
+      font-size:1rem;
+    }
+    .currency label{display:block;margin-bottom:4px}
+    .currency select{
+      border:1px solid #cdbda0;
+      border-radius:8px;
+      background:#fff;
+      padding:4px 24px 4px 10px;
+      font-size:1rem;
+      color:#6b5a4d;
+    }
+    .cart{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      margin-top:40px;
+      line-height:1;
+    }
+    .cart .count{
+      font-size:3rem;
+    }
+    .cart .label{
+      font-size:1rem;
+      max-width:70px;
+    }
+
+    .nav-toggle{display:none}
+    .main-nav{
+      background:linear-gradient(to bottom, #fff8ea, #f8edd7);
+      border-radius:22px;
+      margin-bottom:16px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+    }
+    .main-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .main-nav li{
+      border-right:1px solid #8f7f67;
+    }
+    .main-nav li:last-child{border-right:none}
+    .main-nav a{
+      display:block;
+      padding:10px 18px;
+      color:#6f9ab8;
+      font-size:1.05rem;
+      font-family: "Brush Script MT","Segoe Script","Lucida Handwriting",cursive;
+      font-weight:700;
+    }
+
+    .content-shell{
+      background:var(--panel);
+      border-radius:22px;
+      padding:16px;
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:18px;
+      min-height:1380px;
+    }
+
+    .sidebar{
+      background:linear-gradient(to right, #f8efd9, #f3e8cf);
+      border-radius:0 0 0 18px;
+      padding:0;
+    }
+    .search-wrap{
+      margin-bottom:16px;
+    }
+    .search-wrap label{
+      position:absolute;
+      left:-9999px;
+    }
+    .search-wrap input{
+      width:100%;
+      border:1px solid #c9b89a;
+      border-radius:6px;
+      padding:10px 14px;
+      font-size:1rem;
+      background:#fff;
+      color:#6b5a4d;
+    }
+
+    .category-list{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .category-list li{
+      margin-bottom:4px;
+    }
+    .category-list a,
+    .category-list button{
+      width:100%;
+      text-align:left;
+      border:none;
+      background:linear-gradient(to right, #f8efd9, #f1e5c9);
+      color:#6f9ab8;
+      border-radius:12px;
+      padding:10px 20px;
+      font-size:1.05rem;
+      font-family: "Brush Script MT","Segoe Script","Lucida Handwriting",cursive;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      cursor:pointer;
+    }
+    .category-list .submenu{
+      list-style:none;
+      margin:4px 0 8px 14px;
+      padding:0;
+    }
+    .category-list .submenu li a{
+      font-family:Georgia, serif;
+      font-size:.95rem;
+      color:#6b5a4d;
+      padding:8px 12px;
+      border-radius:8px;
+      background:#f7efdd;
+    }
+    .caret{
+      font-size:.9rem;
+      color:#6f9ab8;
+      margin-left:10px;
+    }
+
+    .social-box,.newsletter{
+      background:linear-gradient(to right, #f8efd9, #f1e5c9);
+      border-radius:12px;
+      padding:18px 16px;
+      margin-top:16px;
+    }
+    .social-box h3,.newsletter h3{
+      margin:0 0 14px;
+      font-size:1.15rem;
+      color:#5b4638;
+    }
+    .social-icons{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .social-icons a{
+      width:36px;height:36px;border-radius:50%;display:inline-block;
+    }
+    .social-icons a:nth-child(1){background:#4464a8}
+    .social-icons a:nth-child(2){background:#d91f26}
+    .social-icons a:nth-child(3){background:#e83d63}
+    .newsletter p{
+      margin:0 0 10px;
+      font-size:.95rem;
+      line-height:1.35;
+    }
+    .newsletter label{
+      position:absolute;
+      left:-9999px;
+    }
+    .newsletter input{
+      width:100%;
+      border:1px solid #c9b89a;
+      border-radius:5px;
+      padding:8px 10px;
+      font-size:1rem;
+      margin-bottom:10px;
+    }
+    .newsletter button{
+      border:none;
+      border-radius:18px;
+      padding:9px 22px;
+      color:#fff;
+      font-weight:700;
+      font-size:1rem;
+      background:linear-gradient(to bottom, #5f95b8, #3f7598);
+      cursor:pointer;
+      font-family:"Brush Script MT","Segoe Script","Lucida Handwriting",cursive;
+    }
+    .field-group span[role="alert"]{
+      display:block;
+      color:#8b0000;
+      font-size:.9rem;
+      margin-top:4px;
+    }
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    .hero{
+      border:4px solid #fff;
+      background:var(--blue);
+      height:505px;
+      border-radius:2px;
+      margin:4px 4px 34px;
+    }
+    .intro{
+      text-align:center;
+      max-width:860px;
+      margin:0 auto 28px;
+      color:#4f4037;
+    }
+    .intro p{
+      margin:0 0 18px;
+      font-size:1.05rem;
+      line-height:1.35;
+    }
+    .intro .lead{
+      font-style:italic;
+      font-size:1.1rem;
+      margin-bottom:22px;
+    }
+
+    .featured h2{
+      font-size:2rem;
+      margin:0 0 14px;
+    }
+    .products{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:34px 40px;
+      align-items:start;
+    }
+    .product{
+      text-align:center;
+    }
+    .product img{
+      width:100%;
+      aspect-ratio: 1.55 / 1;
+      object-fit:cover;
+      display:block;
+      background:var(--blue);
+      border:none;
+    }
+    .product h3{
+      margin:10px 0 4px;
+      font-size:1rem;
+      line-height:1.05;
+      color:#6f9ab8;
+      font-family: Georgia, serif;
+      font-weight:700;
+    }
+    .price{
+      font-size:1.05rem;
+      color:#5b4638;
+    }
+
+    .footer{
+      text-align:center;
+      padding:52px 0 0;
+    }
+    .footer-icons{
+      display:flex;
+      justify-content:center;
+      gap:10px;
+      margin-bottom:26px;
+      flex-wrap:wrap;
+    }
+    .footer-icons span{
+      width:40px;
+      height:22px;
+      background:var(--blue);
+      display:inline-block;
+    }
+    .footer-nav{
+      display:flex;
+      justify-content:center;
+      gap:28px;
+      flex-wrap:wrap;
+      margin-bottom:34px;
+      font-size:1rem;
+      color:#3f342d;
+    }
+    .copyright{
+      font-size:.9rem;
+      color:#3f342d;
+      margin-bottom:0;
+    }
+
+    @media (max-width: 1024px){
+      .page{max-width:620px;padding:12px}
+      .topbar{
+        flex-direction:column;
+        align-items:center;
+        gap:8px;
+      }
+      .brand{
+        font-size:3.8rem;
+        text-align:center;
+        margin-top:8px;
+      }
+      .top-actions{
+        width:100%;
+        justify-content:center;
+        margin-top:0;
+      }
+      .auth{display:none}
+      .cart{display:none}
+      .currency{
+        background:transparent;
+        padding:0;
+        min-width:auto;
+      }
+      .currency label{display:none}
+      .currency select{
+        appearance:none;
+        border:none;
+        background:#6f93ad;
+        color:#fff;
+        border-radius:50%;
+        width:46px;
+        height:46px;
+        padding:0;
+        text-align:center;
+        font-weight:700;
+        font-size:1rem;
+      }
+      .main-nav{display:none}
+      .content-shell{
+        grid-template-columns:1fr;
+        min-height:1760px;
+        padding:16px;
+      }
+      .sidebar{display:none}
+      .hero{
+        height:305px;
+        margin:2px 0 34px;
+      }
+      .products{
+        grid-template-columns:repeat(2, 1fr);
+        gap:34px 30px;
+      }
+      .product h3{font-size:1rem}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .page{max-width:265px;padding:10px 10px 24px}
+      .brand{
+        font-size:3.2rem;
+        line-height:1.05;
+      }
+      .top-actions{gap:10px}
+      .currency select{
+        width:42px;height:42px;font-size:.95rem;
+      }
+      .content-shell{
+        border-radius:18px;
+        padding:12px;
+        min-height:1680px;
+      }
+      .hero{
+        height:114px;
+        margin-bottom:26px;
+      }
+      .intro{
+        max-width:100%;
+        margin-bottom:24px;
+      }
+      .intro p{
+        font-size:.9rem;
+        line-height:1.5;
+        margin-bottom:12px;
+      }
+      .intro .lead{font-size:.95rem}
+      .featured h2{
+        font-size:1.55rem;
+        margin-bottom:12px;
+      }
+      .products{
+        gap:22px 26px;
+      }
+      .product img{
+        aspect-ratio: 1.45 / 1;
+      }
+      .product h3{
+        font-size:.82rem;
+        line-height:1.05;
+      }
+      .price{font-size:.85rem}
+      .footer{
+        padding-top:38px;
+      }
+      .footer-icons{
+        gap:6px;
+        margin-bottom:18px;
+      }
+      .footer-icons span{
+        width:27px;
+        height:16px;
+      }
+      .footer-nav{
+        gap:14px;
+        margin-bottom:18px;
+        font-size:.9rem;
+      }
+      .copyright{
+        font-size:.62rem;
+        line-height:1.4;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <h1 class="brand">The Pink Rose Cottage</h1>
+
+        <div class="top-actions">
+          <div class="auth-currency">
+            <nav aria-label="Account">
+              <div class="auth">
+                <a href="#">Log in</a>
+                <a href="#">Sign up</a>
+              </div>
+            </nav>
+            <div class="currency">
+              <label for="currency">Pick a currency</label>
+              <select id="currency" name="currency">
+                <option selected>USD</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="cart" aria-label="Shopping cart summary">
+            <span class="count">0</span>
+            <span class="label">items in your cart</span>
+          </div>
+        </div>
+      </div>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">New Products</a></li>
+          <li><a href="#">Clearance</a></li>
+        </ul>
+      </nav>
+
+      <nav id="mobile-nav" aria-label="Main" hidden>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">New Products</a></li>
+          <li><a href="#">Clearance</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content-shell">
+      <aside aria-label="Product categories and newsletter">
+        <div class="sidebar">
+          <div class="search-wrap">
+            <label for="site-search">Search</label>
+            <input id="site-search" type="search" value="" placeholder="Search..." />
+          </div>
+
+          <nav aria-label="Product categories">
+            <ul class="category-list">
+              <li><a href="#">Cozy Cottage and Farmhouse Decor</a></li>
+              <li class="has-dropdown">
+                <button aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-linens">
+                  Vintage &amp; Antique Linens <span class="caret" aria-hidden="true">&#9660;</span>
+                </button>
+                <ul id="dropdown-linens" class="submenu" role="list" hidden>
+                  <li><a href="#">Vintage &amp; Antique Linens</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Vintage Bride &amp; Wedding</a></li>
+              <li><a href="#">Tea Time</a></li>
+              <li><a href="#">Vintage Hand Painted China</a></li>
+              <li><a href="#">Shabby &amp; Shiny Silver</a></li>
+              <li><a href="#">Vintage Kitchen</a></li>
+              <li><a href="#">Homer Laughlin Fiesta ware</a></li>
+              <li><a href="#">Vintage Laundry Room</a></li>
+              <li class="has-dropdown">
+                <button aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-vanity">
+                  Ladies Vintage Vanity <span class="caret" aria-hidden="true">&#9660;</span>
+                </button>
+                <ul id="dropdown-vanity" class="submenu" role="list" hidden>
+                  <li><a href="#">Ladies Vintage Vanity</a></li>
+                </ul>
+              </li>
+              <li class="has-dropdown">
+                <button aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-jewelry">
+                  Jewelry <span class="caret" aria-hidden="true">&#9660;</span>
+                </button>
+                <ul id="dropdown-jewelry" class="submenu" role="list" hidden>
+                  <li><a href="#">Jewelry</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Cottage Garden</a></li>
+              <li><a href="#">Vintage Ephemera</a></li>
+              <li><a href="#">Vintage Travel Souvenirs</a></li>
+              <li><a href="#">Vintage Children’s Items</a></li>
+              <li><a href="#">Vintage Sewing Notions</a></li>
+              <li class="has-dropdown">
+                <button aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-holidays">
+                  Vintage Holidays <span class="caret" aria-hidden="true">&#9660;</span>
+                </button>
+                <ul id="dropdown-holidays" class="submenu" role="list" hidden>
+                  <li><a href="#">Vintage Holidays</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Book Nook</a></li>
+            </ul>
+          </nav>
+
+          <section class="social-box" aria-label="Stay in touch">
+            <h2>Stay in touch</h2>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"></a>
+              <a href="#" aria-label="Pinterest"></a>
+              <a href="#" aria-label="Instagram"></a>
+            </div>
+          </section>
+
+          <section class="newsletter" aria-label="Newsletter signup">
+            <h2>Newsletter</h2>
+            <p>Sign up to our newsletter for the latest news and special offers...</p>
+            <form novalidate>
+              <div class="field-group">
+                <label for="email">Email address <span aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="type your email..."
+                  aria-describedby="email-error"
+                  aria-invalid="false">
+                <span id="email-error" role="alert" aria-live="assertive" hidden></span>
+              </div>
+              <div aria-live="polite" id="form-status" class="sr-only"></div>
+              <button type="submit">Subscribe</button>
+            </form>
+          </section>
+        </div>
+      </aside>
+
+      <main id="main-content">
+        <div class="hero" aria-hidden="true"></div>
+
+        <section class="intro" aria-label="Welcome message">
+          <p class="lead">Thank you for visiting The Pink Rose Cottage!</p>
+          <p>Here you’ll find all the little extras that make your home cottage cozy.<br>
+          We also have beautiful extras for the lady, from wonderful vintage powder compacts, to unusual vintage purses<br>
+          and handbags, to sparkling costume jewelry.</p>
+          <p>The place to shop for cozy cottage, shabby chic decor and trinkets!</p>
+        </section>
+
+        <section class="featured" aria-label="Featured products">
+          <h2>Featured Products</h2>
+          <div class="products">
+            <article class="product">
+              <img src="rick.jpg" alt="Heidi Daus Cornucopia Brooch Heidi's Harvest Pin product image">
+              <h3><a href="#">Heidi Daus Cornucopia Brooch Heidi's Harvest Pin</a></h3>
+              <div class="price">$150.00</div>
+            </article>
+
+            <article class="product">
+              <img src="rick.jpg" alt="Heidi Daus Squirrel Sparkle Fall Rhinestone Pin product image">
+              <h3><a href="#">Heidi Daus Squirrel Sparkle Fall Rhinestone Pin</a></h3>
+              <div class="price">$125.00</div>
+            </article>
+
+            <article class="product">
+              <img src="rick.jpg" alt="Heidi Daus Precious Pumpkin Pavé Fall Brooch Pin product image">
+              <h3><a href="#">Heidi Daus Precious Pumpkin Pavé Fall Brooch Pin</a></h3>
+              <div class="price">$150.00</div>
+            </article>
+
+            <article class="product">
+              <img src="rick.jpg" alt="Vintage McCoy Pottery Purple and White Chrysanthemum Vase product image">
+              <h3><a href="#">Vintage McCoy Pottery Purple and White Chrysanthemum Vase</a></h3>
+              <div class="price">$55.00</div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-icons" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <nav aria-label="Footer">
+        <div class="footer-nav">
+          <a href="#">Search</a>
+          <a href="#">Contact</a>
+          <a href="#">About Us</a>
+          <a href="#">Cleaning Silver</a>
+        </div>
+      </nav>
+      <p class="copyright">Copyright © 2023 The Pink Rose Cottage . All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    const dropdownButtons = document.querySelectorAll('.has-dropdown > button');
+
+    function closeAllDropdowns(exceptBtn = null) {
+      dropdownButtons.forEach(btn => {
+        if (btn !== exceptBtn) {
+          btn.setAttribute('aria-expanded', 'false');
+          const menu = document.getElementById(btn.getAttribute('aria-controls'));
+          if (menu) menu.hidden = true;
+        }
+      });
+    }
+
+    dropdownButtons.forEach(btn => {
+      const menu = document.getElementById(btn.getAttribute('aria-controls'));
+      const items = menu ? Array.from(menu.querySelectorAll('a')) : [];
+
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        closeAllDropdowns(btn);
+        btn.setAttribute('aria-expanded', String(!expanded));
+        if (menu) menu.hidden = expanded;
+      });
+
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          btn.setAttribute('aria-expanded', 'true');
+          if (menu) menu.hidden = false;
+          if (items[0]) items[0].focus();
+        }
+        if (e.key === 'Escape') {
+          btn.setAttribute('aria-expanded', 'false');
+          if (menu) menu.hidden = true;
+          btn.focus();
+        }
+      });
+
+      items.forEach((item, index) => {
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            items[(index + 1) % items.length].focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            items[(index - 1 + items.length) % items.length].focus();
+          } else if (e.key === 'Escape') {
+            btn.setAttribute('aria-expanded', 'false');
+            if (menu) menu.hidden = true;
+            btn.focus();
+          }
+        });
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.has-dropdown')) {
+        closeAllDropdowns();
+      }
+    });
+
+    const form = document.querySelector('.newsletter form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let firstError = null;
+
+        form.querySelectorAll('[required]').forEach(input => {
+          const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+          if (!input.value.trim()) {
+            input.setAttribute('aria-invalid', 'true');
+            errorEl.textContent = `${input.labels[0].textContent.trim()} is required`;
+            errorEl.hidden = false;
+            if (!firstError) firstError = input;
+          } else {
+            input.setAttribute('aria-invalid', 'false');
+            errorEl.hidden = true;
+            errorEl.textContent = '';
+          }
+        });
+
+        if (firstError) {
+          firstError.focus();
+        } else {
+          document.getElementById('form-status').textContent = 'Form submitted successfully.';
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, and footer landmarks; added skip link and main-content id; ensured one h1 with sequential headings; added meaningful alt text to all images; added labels for search, currency, and newsletter email form fields; ensured descriptive text/aria-labels for links and buttons; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added unique aria-labels for multiple nav regions and aside/sections; ensured no tabindex values greater than 0 remain.
+[C] JS patterns added: implemented hamburger menu for mobile navigation; implemented dropdown menus for visible category arrows; implemented form validation and error announcement for newsletter form; implemented tabindex cleanup and focus indicator support.
+-->

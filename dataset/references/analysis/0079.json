@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "The mobile sketch shows a large persistent rectangular bar near the bottom with several evenly spaced nav items beneath/around it, and the desktop sketch shows a dedicated vertical navigation rail fixed along the left side while content occupies the rest of the page.",
+      "confidence": "HIGH",
+      "behavior_notes": "Navigation should remain available while scrolling. On mobile this likely means a fixed bottom navigation region; on desktop a fixed or pinned left-side navigation column. Active page state should be visually indicated as the user navigates.",
+      "ambiguities": "The sketch does not make fully explicit whether the mobile nav is always visible or only appears after scrolling, but the persistent placement strongly suggests a sticky/fixed treatment."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile layout has constrained width and a simplified top area with no room for a full expanded navigation list, implying a collapsed mobile navigation control rather than the full desktop-style menu.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu trigger should open and close the mobile navigation panel or reveal hidden nav links. The trigger should expose the current expanded/collapsed state and likely coexist with the sticky mobile nav treatment.",
+      "ambiguities": "No explicit hamburger icon is drawn in the sketch itself, so this is inferred from the mobile layout pattern and the reference structure rather than directly depicted."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "mobile",
+      "visual_evidence": "Midway down the mobile sketch there is a long horizontal input field with a smaller attached box on the right, visually matching a search field with a submit button.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept a query and submit search on button press or Enter. Focus handling and clear input affordance may be needed. If implemented with live suggestions, that would add complexity, but the sketch only clearly implies search submission.",
+      "ambiguities": "The sketch does not show whether results update live or only after submit."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch includes a search-like form control with a distinct action button, implying user input and submission behavior that needs validation such as empty-query handling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At minimum, prevent empty or invalid submissions, preserve entered value on error, and provide accessible feedback if submission fails or requires input.",
+      "ambiguities": "Because the only visible form appears to be search, validation may be minimal and could be handled server-side; the sketch does not indicate required-field messaging explicitly."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred mobile menu toggle and the search form both require keyboard-operable state changes; the desktop sticky navigation also needs logical keyboard traversal across persistent navigation and content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move predictably or remain on the trigger with accessible expanded state. Keyboard users should be able to tab through sticky nav, search controls, and content in a logical order. If the menu behaves like an overlay/drawer, focus containment and return-to-trigger behavior may be needed.",
+      "ambiguities": "Whether the mobile menu is a simple inline disclosure or a true overlay drawer is unclear, which affects how much programmatic focus control is required."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F1",
+    "F2",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "hamburger_menu",
+      "search_input",
+      "form_validation",
+      "focus_management"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "These sketches imply relatively light JavaScript overall: the main interactive needs are navigation behavior differences across viewports and a search form. Mobile likely requires the most JS because the navigation appears compressed into a smaller persistent area and probably needs a toggleable menu state, while desktop mainly suggests a persistent left-side navigation rail with active-state and keyboard support. No clear evidence appears for tabs, accordions, modals, dropdown submenus, infinite loading, or notification-style dynamic updates."
+}

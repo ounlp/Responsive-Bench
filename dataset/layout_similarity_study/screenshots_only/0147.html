@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banana Oatmeal Chocolate Chip Muffins — 2 Cookin Mamas</title>
+  <style>
+    :root{
+      --text:#333;
+      --muted:#666;
+      --light:#f7f7f7;
+      --panel:#f5f5f5;
+      --border:#666;
+      --dark:#4a4a4a;
+      --link:#1e88e5;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.45;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.5rem .75rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:1280px;
+      margin:0 auto;
+      padding:20px 0 0;
+    }
+
+    header{
+      text-align:center;
+      padding-bottom:18px;
+    }
+
+    .top-actions{
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      border:1px solid #666;
+      background:#fff;
+      color:#333;
+      padding:10px 20px;
+      font-size:18px;
+      line-height:1;
+      border-radius:3px;
+      cursor:pointer;
+    }
+    .btn.dark{
+      background:var(--dark);
+      color:#fff;
+      border-color:var(--dark);
+    }
+
+    .controls{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+    }
+
+    .checkbox-row,
+    .servings-row,
+    .size-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .check{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:18px;
+      color:#444;
+    }
+
+    .check input{
+      appearance:none;
+      -webkit-appearance:none;
+      width:23px;
+      height:23px;
+      border:1px solid #666;
+      border-radius:3px;
+      background:#fff;
+      margin:0;
+      position:relative;
+      cursor:pointer;
+    }
+    .check input:checked{
+      background:var(--dark);
+      border-color:var(--dark);
+    }
+    .check input:checked::after{
+      content:"✓";
+      position:absolute;
+      color:#fff;
+      font-size:18px;
+      left:4px;
+      top:-1px;
+      font-weight:700;
+    }
+
+    .serving-stepper{
+      display:inline-flex;
+      align-items:center;
+      gap:3px;
+    }
+
+    .step-btn{
+      width:20px;
+      height:31px;
+      border:1px solid var(--dark);
+      background:var(--dark);
+      color:#fff;
+      font-size:24px;
+      line-height:1;
+      padding:0;
+      cursor:pointer;
+    }
+
+    .serving-input{
+      width:43px;
+      height:31px;
+      border:1px solid #666;
+      text-align:center;
+      font-size:24px;
+      padding:0;
+    }
+
+    .yield-text{
+      font-size:18px;
+      color:#444;
+    }
+
+    .size-buttons{
+      display:inline-flex;
+      gap:0;
+    }
+    .size-buttons button{
+      border:1px solid #666;
+      background:#fff;
+      color:#444;
+      padding:6px 12px;
+      font-size:18px;
+      cursor:pointer;
+      margin:0;
+    }
+    .size-buttons button.active{
+      background:var(--dark);
+      color:#fff;
+      border-color:var(--dark);
+    }
+
+    main{
+      margin-top:22px;
+    }
+
+    .recipe-card{
+      background:var(--panel);
+      width:min(620px, calc(100% - 20px));
+      margin:0 auto;
+      padding:14px 11px 10px;
+    }
+
+    .recipe-image{
+      margin:0 0 14px;
+    }
+    .recipe-image img{
+      width:100%;
+      display:block;
+      height:auto;
+    }
+
+    h1{
+      margin:0 0 8px;
+      font-size:28px;
+      line-height:1.2;
+      font-weight:700;
+      color:#000;
+    }
+
+    .description{
+      margin:0 0 10px;
+      font-size:17px;
+      color:#3d3d3d;
+    }
+
+    .meta{
+      display:grid;
+      grid-template-columns: 120px 1fr;
+      row-gap:2px;
+      column-gap:14px;
+      margin-bottom:18px;
+      font-size:17px;
+    }
+    .meta dt{
+      font-weight:700;
+    }
+    .meta dd{
+      margin:0;
+    }
+    .meta small{
+      font-size:.82em;
+    }
+    a{
+      color:var(--link);
+      text-decoration:none;
+    }
+
+    h2{
+      margin:18px 0 4px;
+      font-size:21px;
+      line-height:1.2;
+      color:#000;
+    }
+
+    ul{
+      margin:0 0 14px 18px;
+      padding-left:16px;
+      font-size:17px;
+    }
+
+    ol{
+      margin:0 0 14px 22px;
+      padding-left:12px;
+      font-size:17px;
+    }
+    li{margin:2px 0}
+
+    .notes-subhead{
+      margin:0 0 16px;
+      font-size:17px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    .notes p,
+    .nutrition{
+      font-size:17px;
+      margin:0 0 16px;
+    }
+
+    .nutrition{
+      color:#666;
+    }
+
+    footer{
+      text-align:center;
+      font-size:14px;
+      color:#333;
+      padding:18px 10px 10px;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 768px) {
+      .page{padding-top:20px}
+      .top-actions{gap:24px;margin-bottom:20px}
+      .btn{font-size:17px;padding:10px 20px}
+      .checkbox-row,.servings-row,.size-row{gap:14px}
+      .recipe-card{
+        width:100%;
+        padding:22px 10px 10px;
+      }
+      h1{
+        font-size:31px;
+        margin-bottom:8px;
+      }
+      .description,
+      .meta,
+      ul,
+      ol,
+      .notes p,
+      .nutrition{
+        font-size:16px;
+      }
+      .meta{
+        grid-template-columns: auto 1fr;
+        column-gap:10px;
+      }
+      h2{font-size:18px}
+      footer{
+        font-size:13px;
+        line-height:1.2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <div class="top-actions">
+        <button type="button" class="btn">Go Back</button>
+        <button type="button" class="btn dark" onclick="window.print()">Print</button>
+      </div>
+
+      <div class="controls" aria-label="Recipe display controls">
+        <div class="checkbox-row">
+          <label class="check" for="toggle-image">
+            <input type="checkbox" id="toggle-image" name="toggle-image">
+            <span>Recipe Image</span>
+          </label>
+          <label class="check" for="toggle-notes">
+            <input type="checkbox" id="toggle-notes" name="toggle-notes" checked>
+            <span>Notes</span>
+          </label>
+          <label class="check" for="toggle-nutrition">
+            <input type="checkbox" id="toggle-nutrition" name="toggle-nutrition" checked>
+            <span>Nutrition Label</span>
+          </label>
+        </div>
+
+        <div class="servings-row">
+          <div class="serving-stepper" aria-label="Adjust servings">
+            <button type="button" class="step-btn" id="decrease-servings" aria-label="Decrease servings">−</button>
+            <label for="servings" class="sr-only">Servings</label>
+            <input class="serving-input" id="servings" name="servings" type="text" value="12" inputmode="numeric" aria-describedby="yield-text">
+            <button type="button" class="step-btn" id="increase-servings" aria-label="Increase servings">+</button>
+          </div>
+          <div class="yield-text" id="yield-text">- 14 muffins</div>
+        </div>
+
+        <div class="size-row">
+          <div class="size-buttons" aria-label="Text size controls">
+            <button type="button" data-size="small">Smaller</button>
+            <button type="button" data-size="normal" class="active">Normal</button>
+            <button type="button" data-size="large">Larger</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <article class="recipe-card">
+        <figure class="recipe-image" id="recipe-image" hidden>
+          <img src="rick.jpg" alt="Banana oatmeal chocolate chip muffins recipe image">
+        </figure>
+
+        <h1>Banana Oatmeal Chocolate Chip Muffins</h1>
+        <p class="description">Easy to make grab 'n go banana oatmeal muffins. It's oatmeal in muffin form!</p>
+
+        <dl class="meta">
+          <dt>Course</dt><dd>Breakfast</dd>
+          <dt>Cuisine</dt><dd>American</dd>
+          <dt>Prep Time</dt><dd>10 <small>minutes</small></dd>
+          <dt>Cook Time</dt><dd>20 <small>minutes</small></dd>
+          <dt>Total Time</dt><dd>30 <small>minutes</small></dd>
+          <dt style="margin-top:8px;">Servings</dt><dd style="margin-top:8px;">12 - 14 muffins</dd>
+          <dt>Calories</dt><dd>200 <small>kcal</small></dd>
+          <dt>Author</dt><dd><a href="#">Linda Warren</a></dd>
+        </dl>
+
+        <section aria-label="Ingredients">
+          <h2>Ingredients</h2>
+          <ul>
+            <li>3 cups old fashioned oats</li>
+            <li>3 Tablespoons brown sugar</li>
+            <li>½ teaspoon cinnamon</li>
+            <li>¼ teaspoon salt</li>
+          </ul>
+        </section>
+
+        <section aria-label="Instructions">
+          <h2>Instructions</h2>
+          <ol>
+            <li>Preheat oven to 350 degrees. Spray a 12-cup muffin pan with a non-stick spray.</li>
+            <li>Combine dry ingredients in a large bowl.</li>
+            <li>In a medium bowl, mash bananas and whisk with the remaining ingredients except for chocolate chips.</li>
+            <li>Add the banana mixture to the dry ingredients.</li>
+          </ol>
+        </section>
+
+        <section class="notes" id="notes-section" aria-label="Notes">
+          <h2>Notes</h2>
+          <p class="notes-subhead">STORE/FREEZE/REHEAT</p>
+
+          <p><strong>To Store:</strong> Allow the muffins to cool completely. Place them in an airtight container at room temperature for up to 3 days or in the refrigerator for up to 1 week.</p>
+
+          <p><strong>To Freeze:</strong> Allow the muffins to cool completely.</p>
+
+          <p><strong>To Reheat:</strong> Microwave the muffins for about 30 seconds if thawed or 1 minute if frozen, or until heated through.</p>
+        </section>
+
+        <section id="nutrition-section" aria-label="Nutrition">
+          <h2>Nutrition</h2>
+          <p class="nutrition">Calories: 200 kcal | Carbohydrates: 28 g | Protein: 6 g | Fat: 7 g | Saturated Fat: 3 g | Polyunsaturated Fat: 1 g | Monounsaturated Fat: 3 g | Trans Fat: 0.02 g | Cholesterol: 33 mg | Sodium: 82 mg | Potassium: 284 mg | Fiber: 3 g | Sugar: 12 g | Vitamin A: 135 IU | Vitamin C: 2 mg | Calcium: 107 mg | Iron: 1 mg</p>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      Banana Oatmeal Chocolate Chip Muffins https://2cookinmamas.com/banana-oatmeal-muffins/
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggleImage = document.getElementById('toggle-image');
+    const toggleNotes = document.getElementById('toggle-notes');
+    const toggleNutrition = document.getElementById('toggle-nutrition');
+    const recipeImage = document.getElementById('recipe-image');
+    const notesSection = document.getElementById('notes-section');
+    const nutritionSection = document.getElementById('nutrition-section');
+
+    toggleImage.addEventListener('change', () => {
+      recipeImage.hidden = !toggleImage.checked;
+    });
+
+    toggleNotes.addEventListener('change', () => {
+      notesSection.hidden = !toggleNotes.checked;
+    });
+
+    toggleNutrition.addEventListener('change', () => {
+      nutritionSection.hidden = !toggleNutrition.checked;
+    });
+
+    const servingsInput = document.getElementById('servings');
+    const decreaseBtn = document.getElementById('decrease-servings');
+    const increaseBtn = document.getElementById('increase-servings');
+
+    function clampServings(value) {
+      const num = parseInt(value, 10);
+      if (isNaN(num)) return 12;
+      return Math.min(99, Math.max(1, num));
+    }
+
+    decreaseBtn.addEventListener('click', () => {
+      servingsInput.value = clampServings(parseInt(servingsInput.value || '12', 10) - 1);
+    });
+
+    increaseBtn.addEventListener('click', () => {
+      servingsInput.value = clampServings(parseInt(servingsInput.value || '12', 10) + 1);
+    });
+
+    servingsInput.addEventListener('input', () => {
+      servingsInput.value = servingsInput.value.replace(/[^\d]/g, '');
+    });
+
+    servingsInput.addEventListener('blur', () => {
+      servingsInput.value = clampServings(servingsInput.value);
+    });
+
+    const sizeButtons = document.querySelectorAll('.size-buttons button');
+    const recipeCard = document.querySelector('.recipe-card');
+
+    sizeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        sizeButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const size = button.getAttribute('data-size');
+        if (size === 'small') {
+          recipeCard.style.fontSize = '0.92rem';
+        } else if (size === 'large') {
+          recipeCard.style.fontSize = '1.08rem';
+        } else {
+          recipeCard.style.fontSize = '1rem';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and main-content id; used semantic header, main, footer, article, and section elements; ensured exactly one h1 with sequential h2 headings; added labels for all inputs; added meaningful alt text for image; set html lang="en"; ensured buttons and links have descriptive labels/text.
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added aria-labels to content sections where helpful; removed any positive tabindex via script baseline.
+[C] JS patterns added: implemented visible print button behavior; implemented visible recipe image/notes/nutrition checkbox toggles; implemented visible servings stepper controls; implemented visible text size toggle buttons; implemented required focus indicator and positive tabindex cleanup.
+-->

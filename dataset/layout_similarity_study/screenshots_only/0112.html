@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flash Gordon facts for kids — Kiddle encyclopedia</title>
+  <style>
+    :root{
+      --cream:#fff4c9;
+      --blue:#0a36d8;
+      --text:#222;
+      --muted:#6f6f6f;
+      --border:#d9d9d9;
+      --footer:#e9edf3;
+      --accent:#ff6f6f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.45;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:#0a36d8;text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .topbar{
+      background:var(--cream);
+      box-shadow: inset 0 -1px 0 rgba(0,0,0,.08);
+    }
+    .topbar-inner{
+      max-width:980px;
+      margin:0 auto;
+      padding:6px 14px 10px;
+      position:relative;
+      min-height:138px;
+    }
+    .logo-left,
+    .logo-center{
+      background:#1200ff;
+      display:block;
+    }
+    .logo-left{
+      width:140px;height:170px;
+      position:absolute;left:6px;top:6px;
+    }
+    .logo-center{
+      width:142px;height:80px;
+      margin:0 auto 6px;
+    }
+    .search-wrap{
+      max-width:615px;
+      margin:0 auto;
+      position:relative;
+    }
+    .search-form{
+      position:relative;
+    }
+    .search-input{
+      width:100%;
+      height:56px;
+      border-radius:30px;
+      border:none;
+      background:#fff;
+      box-shadow:0 6px 18px rgba(0,0,0,.22);
+      padding:0 58px 0 22px;
+      font-size:1rem;
+    }
+    .search-btn{
+      position:absolute;
+      right:14px;
+      top:50%;
+      transform:translateY(-50%);
+      border:none;
+      background:transparent;
+      font-size:1.8rem;
+      color:#8a8a8a;
+      cursor:pointer;
+      line-height:1;
+      padding:0;
+    }
+    .top-links{
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      margin-top:12px;
+      font-size:1rem;
+      font-weight:600;
+    }
+    .top-links a{color:#b33a1f}
+    .top-links .active{
+      background:var(--accent);
+      color:#fff;
+      padding:4px 10px;
+      border-radius:0;
+    }
+
+    .nav-toggle { display: none; }
+
+    main{
+      max-width:930px;
+      margin:0 auto;
+      padding:110px 18px 0;
+    }
+    .article{
+      max-width:894px;
+      margin:0 auto;
+    }
+    h1,h2{
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight:700;
+      color:#2a2a2a;
+      line-height:1.05;
+      margin:0 0 6px;
+    }
+    h1{font-size:4rem}
+    h2{font-size:3rem;margin-top:34px;margin-bottom:18px}
+    .subhead{
+      font-size:1rem;
+      margin-bottom:18px;
+    }
+
+    .intro{
+      display:grid;
+      grid-template-columns: 1fr 300px;
+      gap:28px;
+      align-items:start;
+    }
+    .intro-text p{
+      font-size:1.05rem;
+      margin:0 0 18px;
+    }
+    .intro-text em,
+    .gallery em,
+    .see-also em,
+    .license em{
+      font-style:italic;
+    }
+    .intro-text strong{
+      font-style:italic;
+      font-weight:700;
+    }
+    figure{
+      margin:0;
+    }
+    .hero-figure{
+      padding-top:14px;
+    }
+    .hero-figure img{
+      width:100%;
+      height:auto;
+      display:block;
+      border:1px solid transparent;
+    }
+    figcaption{
+      font-size:.92rem;
+      color:#555;
+      margin-top:6px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:8px;
+      align-items:start;
+      margin-left:20px;
+      max-width:640px;
+    }
+    .gallery figure img{
+      width:100%;
+      display:block;
+      border:1px solid #cfcfcf;
+      background:#fff;
+    }
+    .gallery figcaption{
+      font-size:1rem;
+      color:#222;
+      margin-top:10px;
+    }
+
+    .see-also{
+      margin-top:48px;
+    }
+    .see-item{
+      display:flex;
+      align-items:center;
+      gap:4px;
+      margin:8px 0 36px;
+    }
+    .see-item img{
+      width:60px;
+      height:auto;
+      display:block;
+    }
+    .license-badge{
+      width:150px;
+      display:block;
+      margin:0 0 8px;
+    }
+    .license{
+      max-width:860px;
+      margin-bottom:22px;
+    }
+    .license p{
+      margin:0 0 14px;
+      font-size:1rem;
+    }
+    .license .muted{
+      color:#7a7a7a;
+      font-style:italic;
+    }
+    .edit-link{
+      display:inline-block;
+      border:1px solid #bdbdbd;
+      background:#efefef;
+      padding:0 4px;
+      line-height:1.2;
+    }
+
+    footer{
+      background:var(--footer);
+      border-top:1px solid #cfd5dd;
+      margin-top:18px;
+    }
+    .footer-inner{
+      max-width:930px;
+      margin:0 auto;
+      padding:14px 18px 22px;
+    }
+    .footer-title{
+      font-size:1.2rem;
+      margin:0 0 4px;
+      font-weight:400;
+    }
+    .footer-title a{
+      font-size:1.15em;
+    }
+    .footer-copy{
+      font-size:.95rem;
+      margin:0 0 4px;
+    }
+    .footer-links{
+      font-size:.95rem;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      align-items:center;
+    }
+    .footer-links .dot{color:#555}
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 900px){
+      .topbar-inner{min-height:132px}
+      .logo-left{width:139px;height:170px}
+      h1{font-size:3.6rem}
+      h2{font-size:2.6rem}
+      .intro{
+        grid-template-columns: 1fr 300px;
+      }
+      .gallery{
+        grid-template-columns: repeat(4, 1fr);
+        margin-left:20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .logo-left{
+        width:82px;height:174px;left:6px;top:6px;
+      }
+      .logo-center{
+        width:142px;height:84px;
+      }
+      .topbar-inner{
+        min-height:180px;
+        padding-bottom:12px;
+      }
+      .search-wrap{
+        max-width:590px;
+      }
+      main{
+        padding-top:120px;
+      }
+      h1{font-size:2.9rem}
+      h2{font-size:2.2rem}
+      .intro{
+        grid-template-columns: 1fr;
+      }
+      .hero-figure{
+        order:-1;
+        max-width:420px;
+        padding-top:0;
+      }
+      .gallery{
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        max-width:100%;
+        margin-left:0;
+        gap:6px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .topbar-inner{
+        padding:2px 4px 6px;
+        min-height:138px;
+      }
+      .logo-left{display:none}
+      .logo-center{
+        width:82px;height:46px;margin:0 auto 4px;
+      }
+      .search-wrap{max-width:none}
+      .search-input{
+        height:42px;
+        padding-left:16px;
+        padding-right:46px;
+      }
+      .search-btn{
+        right:12px;
+        font-size:1.55rem;
+      }
+      .top-links{
+        gap:18px;
+        font-size:.82rem;
+        margin-top:10px;
+      }
+      .top-links .active{padding:4px 9px}
+      main{
+        padding:100px 14px 0;
+      }
+      h1{
+        font-size:2.2rem;
+        margin-top:0;
+      }
+      h2{
+        font-size:2rem;
+        margin-top:26px;
+      }
+      .subhead{margin-bottom:14px}
+      .intro-text p{
+        font-size:.98rem;
+        line-height:1.55;
+      }
+      .hero-figure{
+        max-width:none;
+      }
+      .gallery{
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        gap:6px;
+      }
+      .gallery figcaption{
+        font-size:.95rem;
+      }
+      .see-item{
+        gap:4px;
+        align-items:center;
+      }
+      .see-item img{
+        width:50px;
+      }
+      .license-badge{
+        width:126px;
+      }
+      .footer-inner{
+        padding:10px 14px 16px;
+      }
+      .footer-title{
+        font-size:1rem;
+      }
+      .footer-copy,
+      .footer-links{
+        font-size:.88rem;
+        line-height:1.35;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <img src="rick.jpg" alt="" class="logo-left">
+      <img src="rick.jpg" alt="" class="logo-center">
+      <div class="search-wrap">
+        <form class="search-form" novalidate aria-label="Site search">
+          <label for="site-search" class="sr-only">Search Kiddle encyclopedia</label>
+          <input id="site-search" class="search-input" type="search" name="search">
+          <button type="submit" class="search-btn" aria-label="Search">⌕</button>
+        </form>
+        <nav aria-label="Main" class="top-links">
+          <a href="#">Web</a>
+          <a href="#">Images</a>
+          <a href="#">Kimages</a>
+          <a href="#" class="active">Kpedia</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article class="article">
+      <h1>Flash Gordon facts for kids</h1>
+      <div class="subhead"><a href="#">Kids Encyclopedia Facts</a></div>
+
+      <section class="intro" aria-label="Article introduction">
+        <div class="intro-text">
+          <p><strong>Flash Gordon</strong> is a <a href="#">science fiction adventure</a> story that began as a comic strip in 1934. Since then, the Flash Gordon story has been made into movies, TV shows and a radio show.</p>
+
+          <p>In the story, Flash Gordon and Dale Arden blast off into space in a rocket invented by the strange Dr. Hans Zarkov. They travel to the planet Mongo, where the evil Emperor Ming plans to take over the Earth.</p>
+
+          <p>A new <em>Flash Gordon</em> TV show premieres on the Sci Fi Channel in August 2007.</p>
+        </div>
+
+        <figure class="hero-figure">
+          <img src="rick.jpg" alt="Alex Raymond's Flash Gordon comic strip illustration">
+          <figcaption>Alex Raymond's <em>Flash Gordon</em> (February 25, 1934)</figcaption>
+        </figure>
+      </section>
+
+      <section aria-label="Images for kids">
+        <h2>Images for kids</h2>
+        <div class="gallery">
+          <figure>
+            <img src="rick.jpg" alt="The first Flash Gordon comic strip">
+            <figcaption>The first <em>Flash Gordon</em> comic strip (1934).</figcaption>
+          </figure>
+          <figure>
+            <img src="rick.jpg" alt="A young corporal of the Home Army reading a Polish edition of Flash Gordon">
+            <figcaption>A young corporal of the Home Army reading a Polish edition of one of Flash Gordon ("Błysk Gordon - Królowa Błękitnej Magii") graphic novels during the <a href="#">Warsaw Uprising</a> of 1944</figcaption>
+          </figure>
+          <figure>
+            <img src="rick.jpg" alt="Alex Raymond's Flash Gordon from March 4, 1934">
+            <figcaption>Alex Raymond's <em>Flash Gordon</em> (March 4, 1934). Flash and Thun rush to stop the wedding of Ming and Dale.</figcaption>
+          </figure>
+          <figure>
+            <img src="rick.jpg" alt="Cover of the December 1936 issue of Flash Gordon Strange Adventures">
+            <figcaption>Cover of the December 1936 issue of <em>Flash Gordon Strange Adventures</em> .</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="see-also" aria-label="See also">
+        <h2>See also</h2>
+        <div class="see-item">
+          <img src="rick.jpg" alt="">
+          <p>In Spanish: <a href="#">Flash Gordon para niños</a></p>
+        </div>
+
+        <img src="rick.jpg" alt="" class="license-badge">
+
+        <div class="license">
+          <p class="muted">All content from <a href="#">Kiddle encyclopedia</a> articles (including the article images and facts) can be freely used under <a href="#">Attribution-ShareAlike</a> license, unless stated otherwise. Cite this article:</p>
+
+          <p><a href="#">Flash Gordon Facts for Kids</a> . <em>Kiddle Encyclopedia.</em></p>
+
+          <p>This page was last modified on 16 October 2023, at 15:53. <a href="#" class="edit-link">Suggest an edit</a> .</p>
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-title"><a href="#">Kiddle encyclopedia</a></p>
+      <p class="footer-copy">Content is available under <a href="#">CC BY-SA 3.0</a> unless otherwise noted. Kiddle encyclopedia articles are based on selected content and facts from <a href="#">Wikipedia</a> , edited or rewritten for children. Powered by <a href="#">MediaWiki</a> .</p>
+      <div class="footer-links">
+        <a href="#">Kiddle</a>
+        <span class="dot">•</span>
+        <a href="#">Español</a>
+        <span class="dot">•</span>
+        <a href="#">About</a>
+        <span class="dot">•</span>
+        <a href="#">Privacy</a>
+        <span class="dot">© 2023 Kiddle.co</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer, and section landmarks; added skip link and main-content id; ensured one h1 with sequential h2 headings; added alt text to all images and empty alt for decorative images; added label for search input; ensured interactive elements have descriptive labels/text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided aria-label for main navigation and labeled sections; removed any positive tabindex via script baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

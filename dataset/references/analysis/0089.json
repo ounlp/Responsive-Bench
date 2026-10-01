@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top header with a small control/icon area rather than a full horizontal navigation, implying a collapsed mobile menu trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the trigger should open and close the primary navigation panel. Because this is a menu disclosure, it also implies state changes such as expanded/collapsed and likely an overlay or slide-down/slide-in panel.",
+      "ambiguities": "The sketch does not show whether the menu opens as a full-screen drawer, dropdown sheet, or off-canvas panel."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent header/navigation bar at the very top in a conventional site-header position, and the reference layout strongly suggests a fixed top bar across viewports.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain available while scrolling, especially on long article content pages. JS may be needed for scroll-state class changes, condensed styling, or preserving accessibility when fixed.",
+      "ambiguities": "The sketch alone does not explicitly show scroll behavior; stickiness is inferred from the repeated top-bar treatment and long-page layout."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile sketch implies a hamburger-triggered navigation panel, which requires managed focus when opened/closed. Desktop navigation and any sticky/fixed header interactions also require keyboard focus handling.",
+      "confidence": "HIGH",
+      "behavior_notes": "When the mobile menu opens, focus should move into it, remain logically contained while active if presented as an overlay/drawer, and return to the trigger on close. Keyboard navigation order should remain coherent across header controls and page content.",
+      "ambiguities": "Depends on whether the mobile menu is implemented as a modal drawer, inline expansion, or simple reveal; the strictness of focus trapping varies by implementation."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven article/detail page with relatively low JS complexity. The main interactive requirement is the mobile navigation toggle, with associated keyboard/focus behavior. Desktop appears largely static aside from a likely persistent/sticky header. No clear evidence appears for forms, tabs, accordions, modals, search, or dynamic loading in either viewport."
+}

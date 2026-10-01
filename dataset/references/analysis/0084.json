@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches appear to depict a simple article/post layout with static text blocks, headings, and horizontal separators only. There are no visible controls such as hamburger icons, menus, tabs, accordions, search fields, buttons, overlays, pagination triggers, or other affordances that would imply JavaScript-driven interaction. Any interactivity beyond standard hyperlink navigation would be speculative from these sketches alone."
+}

@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent search field in the header area near the top, visually separated as a primary control and paired with branding/navigation elements, implying user-entered search behavior.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search should accept text input and trigger a search action on submit; likely also needs focus styling and possibly clear/active-state behavior because the field is emphasized as a key interactive header control.",
+      "ambiguities": "The sketches do not make clear whether results appear live/autocomplete-style or only after submit."
+    }
+  ],
+  "applicable_criteria": [
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input"
+    ],
+    "desktop": [
+      "search_input"
+    ]
+  },
+  "sketch_notes": "The sketches imply a largely static article/content page in both mobile and desktop layouts, with the only clearly recurring JavaScript-dependent interaction being the prominent header search control. The rest of the page appears to be long-form content, images, tables, and lists without explicit signs of collapsible navigation, tabs, modal overlays, infinite loading, or sticky behavior. Desktop mainly changes layout density and side-by-side placement, not interaction model."
+}

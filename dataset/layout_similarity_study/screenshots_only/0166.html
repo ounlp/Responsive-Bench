@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore North Wales Coming Soon — Menai Holidays</title>
+  <style>
+    :root {
+      --bg: #b9b9b9;
+      --text: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.65);
+      --focus: #005FCC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .content {
+      max-width: 1040px;
+      width: 100%;
+      color: var(--text);
+      text-shadow:
+        0 1px 0 var(--shadow),
+        2px 2px 0 var(--shadow);
+    }
+
+    h1 {
+      margin: 0 0 1.5rem;
+      font-size: 3.25rem;
+      line-height: 1.05;
+      font-weight: 700;
+    }
+
+    .intro {
+      margin: 0 auto 1.5rem;
+      max-width: 1020px;
+      font-size: 1.15rem;
+      line-height: 1.15;
+      font-weight: 400;
+    }
+
+    .team {
+      margin: 0 0 2rem;
+      font-size: 1.05rem;
+      font-weight: 400;
+    }
+
+    .website-link {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .website-link:hover,
+    .website-link:focus-visible {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .content {
+        max-width: 760px;
+      }
+
+      h1 {
+        font-size: 2.9rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .intro {
+        font-size: 1.05rem;
+        max-width: 700px;
+      }
+
+      .team {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+
+      .website-link {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 2rem 1rem;
+      }
+
+      .content {
+        max-width: 340px;
+      }
+
+      h1 {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+      }
+
+      .intro {
+        font-size: 0.8rem;
+        line-height: 1.1;
+        max-width: 290px;
+        margin-bottom: 1rem;
+      }
+
+      .team {
+        font-size: 0.75rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .website-link {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content" class="page">
+    <section class="content" aria-label="Coming soon message">
+      <h1>Explore North Wales Coming Soon!</h1>
+      <p class="intro">Explore North Wales will offer a host of handpicked local information. Discover a wealth of things to see and do, local events, great places to eat and drink and so many places to visit.</p>
+      <p class="team">Team Menai Holidays</p>
+      <p><a href="#" class="website-link">Visit our Website</a></p>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link; used main landmark with id="main-content"; ensured exactly one h1; added lang="en"; ensured interactive link has descriptive text.
+[B] ARIA fixes: avoided redundant ARIA roles on semantic landmarks; added aria-label to the visible content section as a labeled section; removed positive tabindex values via JS baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

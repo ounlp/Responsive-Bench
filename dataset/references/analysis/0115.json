@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small boxed three-line icon in the top-right of the header, a conventional hamburger trigger for collapsed navigation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping should open and close the primary navigation panel for small screens. The trigger should reflect expanded/collapsed state and likely reveal the same nav links visible in desktop.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown below the header, an off-canvas drawer, or a full-screen overlay."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile sketch includes a hamburger-triggered navigation control, which implies a disclosure/menu that needs managed keyboard focus; desktop also has navigation links and likely the same responsive nav system across breakpoints.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move predictably to the revealed navigation or remain on the toggle with accessible traversal; closing should restore focus to the trigger. Keyboard interaction should avoid trapping users.",
+      "ambiguities": "No explicit modal or accordion is drawn, so focus handling is inferred mainly from the responsive navigation behavior rather than directly depicted widgets."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static article/blog layout with minimal JavaScript. The only clearly indicated interactive behavior is responsive navigation: desktop appears to show links directly in the header, while mobile collapses them behind a hamburger button. No search, tabs, accordions, modals, pagination widgets, or dynamic loading controls are explicitly suggested by the drawings, so JS complexity appears low and concentrated in accessible mobile nav behavior."
+}

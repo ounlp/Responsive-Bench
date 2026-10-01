@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a very simple static article/post layout: a large header area with title/tagline, a horizontal divider, a post title/byline area, and long-form body text. There are no visible controls such as menus, tabs, accordions, buttons, inputs, overlays, badges, or pagination triggers. The cross-viewport difference appears to be only responsive reflow and text width, which can be handled with CSS rather than JavaScript. Any richer behaviors beyond basic link navigation would be speculative from these sketches alone."
+}

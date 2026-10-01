@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a very minimal top header with branding on the left and a small control area on the right, matching a collapsed mobile navigation trigger rather than visible full nav links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target in the header should open and close a hidden navigation panel or drawer containing site links. The trigger should reflect open/closed state.",
+      "ambiguities": "The sketch does not explicitly draw the hamburger icon lines or the opened panel, so the exact menu presentation (drawer, dropdown, fullscreen overlay) is inferred from the sparse mobile header layout and reference HTML."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent horizontal header bar at the very top, visually separated from the page content below, suggesting a fixed site header that remains available while scrolling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should remain fixed or sticky during scroll so branding/navigation stays accessible. If it changes style on scroll, state changes should be handled without disrupting navigation.",
+      "ambiguities": "The sketch alone does not prove whether the header is always fixed or only visually separated at the top; the reference HTML strongly supports a fixed header."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The inferred mobile nav toggle implies an off-canvas or overlay navigation experience that requires keyboard focus to move into the opened menu and return to the trigger when closed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the menu, keyboard users should be able to navigate its links, and focus should return to the opener on close. Escape/close behavior should be supported.",
+      "ambiguities": "This depends on the mobile navigation being implemented as an overlay/drawer rather than simple inline expansion, but that is the most likely interpretation."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly static informational marketing page with very low JavaScript complexity. The only strong cross-viewport interaction need is the top navigation/header behavior: desktop appears to rely on a persistent top header, while mobile likely collapses navigation into a toggleable menu. No forms, tabs, accordions, modals, search, or dynamic loading cues are visible in either sketch; the large oval appears to be an image or illustration rather than an interactive control."
+}

@@ -1,0 +1,38 @@
+You are an expert web accessibility evaluator.
+
+Task:
+You will be given the full HTML source of a generated webpage.
+Determine whether the page contains a hamburger menu — a toggle button that shows or hides
+a navigation panel, typically used on mobile viewports.
+
+A hamburger menu toggle typically:
+- Is a <button> or element with role="button"
+- Has a label such as "☰", "≡", "menu", "open menu", "toggle navigation", or similar
+- May carry aria-expanded, aria-controls, or aria-haspopup attributes
+- Controls a <nav> or navigation container that is hidden by default on mobile
+
+Instructions:
+1. Inspect the HTML for any toggle element that controls navigation visibility.
+2. If found, produce the most specific CSS selector that uniquely targets that clickable element.
+   Prefer: attribute selectors (button[aria-expanded], button[aria-controls="..."]), ID selectors (#nav-toggle),
+   or stable class selectors. Avoid overly broad selectors like "button".
+3. If no hamburger toggle is present (e.g., the nav is always visible, or there is no nav at all),
+   set applicable to false.
+
+Output requirements:
+- Respond with exactly one JSON object.
+- "applicable": true if a hamburger menu toggle exists, false otherwise.
+- "selector": a CSS selector string to locate the toggle button (required when applicable is true, null otherwise).
+- "reason": a brief explanation of what you found or why this is not applicable.
+
+Output JSON schema:
+{
+  "applicable": true or false,
+  "selector": "CSS selector string or null",
+  "reason": "..."
+}
+
+HTML source:
+```html
+{{ html_source }}
+```

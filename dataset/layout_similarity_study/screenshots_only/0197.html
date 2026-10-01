@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule — Philadelphia Museum of Dance</title>
+  <style>
+    :root{
+      --teal:#12b3b8;
+      --cyan:#00c7d9;
+      --red:#ff3a2f;
+      --text:#111;
+      --muted:#5a5a5a;
+      --line:#d7d7d7;
+      --footer:#000;
+      --footer-text:#8f8f8f;
+      --blue:#1700ff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.35;
+    }
+    .skip-link{position:absolute;left:12px;top:0;transform:translateY(-100%);background:#fff;color:#000;padding:10px 14px;z-index:1000;text-decoration:none}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .topbar{
+      background:var(--teal);
+      max-width:760px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      min-height:38px;
+      gap:30px;
+      font-weight:700;
+      font-size:18px;
+    }
+    .topbar a{
+      color:#fff;
+      text-decoration:none;
+      display:inline-block;
+      padding:6px 0;
+    }
+
+    .page{
+      max-width:760px;
+      margin:0 auto;
+      padding:72px 0 0;
+    }
+    .content{
+      padding:0 0 48px;
+    }
+    h1{
+      font-size:33px;
+      line-height:1.1;
+      margin:0 0 58px;
+      font-weight:700;
+    }
+    h2.event-title{
+      font-size:26px;
+      line-height:1.15;
+      margin:0 0 18px;
+      font-weight:700;
+    }
+    .italic{font-style:italic}
+    .date{
+      color:var(--red);
+      font-size:16px;
+      letter-spacing:1.5px;
+      font-weight:700;
+      text-transform:uppercase;
+      margin:0 0 18px;
+    }
+    .address, .body-copy{
+      font-size:18px;
+      color:#333;
+      margin:0 0 18px;
+    }
+    .section-gap{margin-top:58px}
+    h3{
+      font-size:25px;
+      line-height:1.2;
+      margin:0 0 18px;
+      font-weight:700;
+    }
+    .subhead{
+      font-size:18px;
+      margin:0 0 16px;
+      font-weight:400;
+      color:#111;
+    }
+
+    .schedule-table{
+      border-top:1px solid var(--line);
+      margin-top:8px;
+    }
+    .schedule-row{
+      display:grid;
+      grid-template-columns:116px 1fr;
+      gap:0;
+      border-bottom:1px solid var(--line);
+      padding:8px 0 10px;
+    }
+    .time{
+      font-size:18px;
+      font-weight:700;
+      color:#111;
+      padding-right:18px;
+    }
+    .item-title{
+      color:var(--cyan);
+      font-size:18px;
+      margin:0 0 2px;
+      line-height:1.35;
+    }
+    .item-location{
+      font-size:15px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      color:#222;
+      margin:0 0 0;
+    }
+    .item-note{
+      font-size:18px;
+      color:#333;
+      margin:0;
+    }
+
+    .text-section{
+      margin-top:14px;
+    }
+    .text-section h3{
+      font-size:21px;
+      font-weight:400;
+      margin:0 0 14px;
+    }
+    .text-section p{
+      font-size:18px;
+      color:#333;
+      margin:0 0 18px;
+    }
+    .remember p{
+      margin:0;
+    }
+    .remember strong{
+      font-weight:700;
+      color:#111;
+    }
+
+    footer{
+      background:var(--footer);
+      color:var(--footer-text);
+      padding:30px 0 42px;
+    }
+    .footer-inner{
+      max-width:760px;
+      margin:0 auto;
+    }
+    .logo-row{
+      display:flex;
+      gap:44px;
+      align-items:flex-start;
+      margin:0 0 26px;
+      flex-wrap:wrap;
+    }
+    .logo-box{
+      width:93px;
+      height:70px;
+      background:var(--blue);
+      display:block;
+    }
+    .footer-inner p{
+      font-size:17px;
+      line-height:1.55;
+      margin:0 0 20px;
+    }
+    footer a{
+      color:var(--cyan);
+      text-decoration:none;
+    }
+
+    @media (max-width: 900px){
+      .topbar,.page,.footer-inner{max-width:calc(100% - 180px)}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar,.page,.footer-inner{max-width:calc(100% - 90px)}
+      .topbar-inner{
+        gap:22px;
+        font-size:17px;
+      }
+      .page{padding-top:70px}
+      h1{font-size:32px;margin-bottom:58px}
+      h2.event-title{font-size:25px}
+      .schedule-row{grid-template-columns:118px 1fr}
+      .logo-row{gap:44px}
+      .logo-box{width:125px;height:80px}
+    }
+
+    .nav-toggle { display: none; }
+
+    @media (max-width: 480px){
+      .topbar,.page,.footer-inner{max-width:calc(100% - 64px)}
+      .topbar{
+        min-height:19px;
+        padding:0;
+      }
+      .topbar-inner{
+        min-height:19px;
+        font-size:0;
+        gap:0;
+      }
+      .topbar a{
+        font-size:0;
+        padding:0;
+      }
+      .page{
+        padding-top:40px;
+      }
+      .content{
+        padding-bottom:34px;
+      }
+      h1{
+        font-size:24px;
+        margin-bottom:48px;
+      }
+      h2.event-title{
+        font-size:24px;
+        margin-bottom:14px;
+      }
+      .date{
+        font-size:14px;
+        letter-spacing:1.6px;
+        margin-bottom:14px;
+      }
+      .address,.body-copy,.text-section p{
+        font-size:17px;
+      }
+      .section-gap{margin-top:44px}
+      .subhead{
+        font-size:18px;
+        margin-bottom:14px;
+      }
+      .schedule-row{
+        grid-template-columns:95px 1fr;
+        padding:6px 0 8px;
+      }
+      .time{
+        font-size:17px;
+        padding-right:10px;
+      }
+      .item-title{
+        font-size:17px;
+      }
+      .item-location{
+        font-size:14px;
+      }
+      .item-note{
+        font-size:17px;
+      }
+      .text-section h3{
+        font-size:20px;
+        margin-bottom:12px;
+      }
+      .logo-row{
+        display:block;
+        margin-bottom:24px;
+      }
+      .logo-box{
+        width:70px;
+        height:58px;
+        margin:0 0 20px;
+      }
+      .footer-inner p{
+        font-size:16px;
+        line-height:1.6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <nav aria-label="Main" class="topbar">
+      <div class="topbar-inner">
+        <a href="#">schedule</a>
+        <a href="#">the artists</a>
+        <a href="#">the curators</a>
+        <a href="#">press</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="page">
+    <div class="content">
+      <h1>Schedule</h1>
+
+      <section aria-label="manger by Boris Charmatz event details">
+        <h2 class="event-title"><span class="italic">manger</span> by Boris Charmatz</h2>
+        <p class="date">SEPTEMBER 22-23, 2018 · 8–9 PM</p>
+        <p class="address">
+          FringeArts<br>
+          140 N Columbus Blvd (at Race St)<br>
+          Philadelphia, PA 19106
+        </p>
+      </section>
+
+      <section class="section-gap" aria-label="Philadelphia Museum of Dance event details">
+        <h2 class="event-title">Philadelphia Museum of Dance</h2>
+        <p class="date">OCTOBER 6, 2018 · 3–9 PM</p>
+        <p class="address">
+          Barnes Foundation<br>
+          2025 Benjamin Franklin Parkway<br>
+          Philadelphia, PA 19130<br>
+          [PHONE REDACTED]
+        </p>
+
+        <p class="body-copy">FREE EVENT · Just walk up. Stop by for an hour or stay for all six.</p>
+
+        <h3 class="subhead">Schedule</h3>
+
+        <div class="schedule-table" aria-label="Event schedule">
+          <div class="schedule-row">
+            <div class="time">3–4 pm</div>
+            <div>
+              <p class="item-title">Public warm-up led by Boris Charmatz and Romain Bigé</p>
+              <p class="item-location">WEST TERRACE, MAIN FLOOR</p>
+              <p class="item-note">Join In—the audience is invited to participate</p>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="time">4–4:30 pm</div>
+            <div>
+              <p class="item-title">A medley of choreographed and freestyle pieces by It’s Showtime NYC!</p>
+              <p class="item-location">WEST TERRACE, MAIN FLOOR</p>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="time"></div>
+            <div>
+              <p class="item-title">STAGED? (2016) _ <span class="italic">undressed</span> by Maria Hassabi</p>
+              <p class="item-location">MAIN ENTRANCE, OUTSIDE</p>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <div class="time">4:30–4:45 pm</div>
+            <div>
+              <p class="item-title"><span class="italic">1973</span>, a collective dance proposed by Boris Charmatz, performed by local college students</p>
+              <p class="item-location">ANNENBERG COURT, MAIN FLOOR</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-section">
+          <h3>Rain or Shine</h3>
+          <p>Philadelphia Museum of Dance will take place rain or shine. Outside performance locations for the Solo Forest may be inside if it rains.</p>
+        </div>
+
+        <div class="text-section remember">
+          <h3>Times to Remember</h3>
+          <p><strong>5 pm</strong> · Barnes collection and parking lot close</p>
+          <p><strong>9 pm</strong> · Event ends and building closes</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="logo-row" aria-label="Sponsor logos">
+        <img src="rick.jpg" alt="" class="logo-box">
+        <img src="rick.jpg" alt="" class="logo-box">
+        <img src="rick.jpg" alt="" class="logo-box">
+        <img src="rick.jpg" alt="" class="logo-box">
+      </div>
+
+      <p>
+        Support for Philadelphia Museum of Dance has been provided to Westphal College of Media Arts &amp; Design by
+        <a href="#">The Pew Center for Arts &amp; Heritage</a>. Philadelphia Museum of Dance is produced in partnership with the Barnes Foundation. Performances of <span class="italic">manger</span> are presented in partnership with FringeArts.
+      </p>
+
+      <p>
+        Copyright © 2023, <a href="#">Westphal College of Media Arts &amp; Design</a> , <a href="#">Drexel University</a> . All rights reserved.<br>
+        Contact: &nbsp; <a href="#">[PHONE REDACTED]</a> &nbsp; <a href="#">[EMAIL REDACTED]</a><br>
+        Website developed by <a href="#">Zero Defect Design</a> .
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, nav, main, footer; added skip link and main-content id; ensured one h1 with sequential headings; added alt attributes to all images; ensured descriptive link text; set html lang="en"
+[B] ARIA fixes: used aria-label on main navigation; avoided redundant role attributes; no positive tabindex values retained
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator only
+-->

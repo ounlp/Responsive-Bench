@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top bar with a small square icon at the top right containing short horizontal lines, a conventional hamburger/menu trigger, while the desktop sketch shows full navigation items inline instead of a collapsed menu.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel for mobile. The menu should expose the same top-level destinations visible inline on desktop and reflect the current page state.",
+      "ambiguities": "The sketch does not show whether the mobile menu opens as a dropdown below the header, an off-canvas drawer, or a full-screen overlay."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a repeated vertical stack of boxed question/result cards beneath the main content area. In the reference structure, each card has a heading, body text, and a separate answer/reveal area, which strongly implies per-item disclosure behavior rather than static content.",
+      "confidence": "HIGH",
+      "behavior_notes": "Each question card should support expand/collapse or reveal/hide behavior for its answer/details. On activation, the hidden answer region should become visible within the card, and the trigger label/state should update accordingly.",
+      "ambiguities": "The sketch does not make clear whether only the answer line toggles, whether the whole card body collapses, or whether multiple cards can be open simultaneously."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile hamburger trigger and the repeated disclosure-style question cards imply interactive widgets that need keyboard-operable state changes and managed focus movement/retention. Desktop especially requires visible keyboard interaction across nav and disclosure controls.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the revealed navigation or remain predictably on the toggle with accessible expanded state. Accordion/disclosure triggers should be keyboard activatable, preserve logical tab order, and expose expanded/collapsed state. Focus should not be lost when content is revealed.",
+      "ambiguities": "No explicit focus styling or keyboard hints are drawn; this is inferred from the presence of disclosure/navigation widgets rather than directly depicted."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "D1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "accordion",
+      "focus_management"
+    ],
+    "desktop": [
+      "accordion",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light but important JavaScript: the main cross-viewport interaction is a repeated disclosure/reveal pattern for the stacked question cards, while the primary viewport difference is navigation treatment—collapsed behind a hamburger on mobile and always visible on desktop. There is no clear evidence of tabs, modals, search, infinite loading, or live-updating counters. Most implementation complexity comes from making the mobile nav and repeated reveal widgets accessible and stateful rather than from heavy dynamic application behavior."
+}

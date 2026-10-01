@@ -1,0 +1,114 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent search field in the header area, implying user text entry and search submission behavior.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search should accept input, support submit behavior, and likely expand/focus from a compact header control on smaller screens if space is constrained.",
+      "ambiguities": "The sketches do not show whether results appear live, on submit, or on a separate results page."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a header/navigation region at the top in a way that suggests persistent site navigation across long scrolling content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/nav may remain fixed or become fixed after scroll so navigation and search stay accessible while reading long post lists/content.",
+      "ambiguities": "The sketch does not explicitly indicate whether the header is always fixed or only becomes sticky after scrolling."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile layout compresses navigation into a narrow top area with no room for full horizontal nav, implying a collapsed mobile menu trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger button should open and close a navigation panel or drawer containing the primary links and possibly sidebar content.",
+      "ambiguities": "The sketch does not explicitly draw the icon or reveal whether the menu opens as an overlay, drawer, or full-screen panel."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a feed/listing layout with repeated content blocks and a clear continuation of content, implying pagination or progressive loading for additional posts.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A 'more posts' control or equivalent should fetch or reveal additional entries, ideally with a loading state and appended content.",
+      "ambiguities": "The sketch does not clarify whether loading is manual via button or automatic via scrolling."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a newsletter/contact-style form area with multiple stacked input fields and a submit button.",
+      "confidence": "HIGH",
+      "behavior_notes": "Required fields should be validated before submission, with inline error handling and success/failure feedback.",
+      "ambiguities": "The sketch does not indicate which fields are required or whether validation is inline, on blur, or on submit."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch suggests sidebar/list sections that are grouped and likely expandable, consistent with archive/category panels that can open and collapse.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Sidebar sections such as archives or labels should expand/collapse to manage long lists without overwhelming the layout.",
+      "ambiguities": "The sketch does not explicitly show disclosure arrows or open/closed states."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The presence of a compact form area and share/action affordances in a blog-style layout strongly implies overlay interactions such as subscribe or share dialogs rather than full-page transitions for every action.",
+      "confidence": "LOW",
+      "behavior_notes": "Subscribe or share actions may open a modal overlay requiring focus trap, dismiss controls, and return focus to the trigger.",
+      "ambiguities": "No modal is explicitly drawn; this is inferred from common blog interactions and the compact action areas."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components include search, mobile navigation, accordion/sidebar disclosures, load-more controls, and possible modal overlays, all of which require managed keyboard focus.",
+      "confidence": "HIGH",
+      "behavior_notes": "Focus should move into opened menus/modals, remain logical through dynamic content, and return to the triggering control when overlays close.",
+      "ambiguities": "This is a supporting requirement inferred from the other components rather than a separately drawn widget."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "D1",
+    "D4",
+    "M1",
+    "M2",
+    "S1",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "D2",
+    "D3",
+    "F4",
+    "M3",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "form_validation",
+      "load_more",
+      "sticky_nav",
+      "focus_management",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "search_input",
+      "accordion",
+      "form_validation",
+      "load_more",
+      "sticky_nav",
+      "focus_management",
+      "modal_dialog"
+    ]
+  },
+  "sketch_notes": "The sketches imply a blog/archive page with moderate JavaScript complexity: core interactions center on responsive navigation, header search, a validated subscription/contact form, and progressive access to more content. Mobile likely relies on a collapsed navigation pattern, while desktop shifts complexity toward expandable sidebar sections. Several behaviors are only implied rather than explicitly drawn, especially overlays for subscribe/share actions, but keyboard focus handling is clearly necessary across the inferred interactive components."
+}

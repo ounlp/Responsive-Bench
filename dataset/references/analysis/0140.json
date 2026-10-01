@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a contact-style form with multiple labeled single-line inputs, a larger multiline message area, and a submit button beneath the fields.",
+      "confidence": "HIGH",
+      "behavior_notes": "Required-field checking is implied before submission, especially for name/email/subject/message style fields. Email format validation is strongly implied by the contact-form layout. Inline error messaging and submit handling are needed.",
+      "ambiguities": "The sketches do not show explicit error text, success state, or whether validation is inline-on-blur versus on-submit."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation"
+    ],
+    "desktop": [
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very low-JS page centered on a straightforward contact form rather than a highly interactive application. Across both mobile and desktop, the only clearly necessary JavaScript behavior is form submission support with validation and accessible error/focus handling. No convincing sketch evidence suggests menus, tabs, accordions, modals, sticky elements, search, or dynamic loading behaviors."
+}

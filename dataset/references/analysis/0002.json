@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a small stacked-line icon in the top-right corner of the header/hero area, a conventional hamburger trigger for revealing site navigation on small screens.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close a hidden navigation panel or drawer for mobile. Because this is a disclosure-style nav, it also implies state changes such as expanded/collapsed and likely an overlay or slide-in panel.",
+      "ambiguities": "The sketch does not show whether the menu opens as a full-screen overlay, side drawer, or dropdown panel, nor whether nested nav items exist inside it."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a clearly drawn text input near the lower content area, and the desktop sketch additionally shows an input paired with a button near the hero/header region.",
+      "confidence": "HIGH",
+      "behavior_notes": "The search field requires submit behavior at minimum; desktop explicitly suggests a search action button. Focus handling, keyboard submission, and possibly query-state updates are implied.",
+      "ambiguities": "The sketch does not indicate whether results update live or only after explicit submit, so live autocomplete should not be assumed."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The presence of search/newsletter-style input fields in both sketches implies user-entered form data that must be handled on submit, including empty-state prevention or basic validation.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At minimum, JavaScript may validate non-empty input before submission and manage focus/error feedback if submission is blocked. This is especially likely for the lower standalone input area that resembles a signup/contact field.",
+      "ambiguities": "The exact purpose of the lower input is unclear from the sketch alone, so required-field rules and error messaging specifics are not visible."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Interactive controls in the sketches include the mobile hamburger menu and multiple form inputs/buttons; the mobile menu especially implies programmatic focus movement when opened and closed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the revealed navigation and return to the trigger on close. Inputs and any revealed interactive regions should participate in a logical keyboard flow.",
+      "ambiguities": "No modal or explicit overlay is drawn, so the extent of focus trapping versus simple focus placement depends on the eventual menu implementation."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "search_input",
+      "form_validation"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light JavaScript overall: the main cross-viewport behavior is form handling for visible inputs, while the primary mobile-specific interaction is a hamburger-triggered navigation reveal. No tabs, accordions, modals, infinite loading, sticky navigation, or explicit dropdowns are visually indicated. Desktop appears mostly static aside from search/input submission, whereas mobile adds the only clearly structural JS interaction through the collapsed navigation control."
+}

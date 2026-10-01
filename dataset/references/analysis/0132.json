@@ -1,0 +1,56 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show calculator-style input groups inside boxed panels, including paired fields and result areas that imply user entry and computed output. The desktop sketch clearly shows two side-by-side calculator cards; the mobile sketch shows stacked calculator cards with segmented input rows.",
+      "confidence": "HIGH",
+      "behavior_notes": "Inputs should accept numeric values, reject or sanitize invalid characters, handle empty states, and update or submit calculations without breaking layout. Validation likely includes numeric-only/decimal handling and guarding against divide-by-zero or blank second-number cases.",
+      "ambiguities": "The sketch does not show explicit error text, submit buttons, or whether calculation is live-on-input versus submit-triggered, though live updating is strongly implied by the calculator layout."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The page contains multiple interactive form controls grouped in compact calculator cards across both mobile and desktop layouts, implying keyboard traversal and managed focus between related fields/results.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Focus order should move logically through the calculator inputs and any actionable controls. If validation errors or computed results are surfaced dynamically, focus may need to remain stable or move intentionally to the first invalid field.",
+      "ambiguities": "No modal/menu/disclosure is drawn, so this is limited to form-related focus behavior rather than complex focus trapping."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static informational page with low JavaScript complexity centered on calculator-style forms rather than navigation or content widgets. The main cross-viewport difference is layout: desktop presents the calculators side by side, while mobile stacks them vertically, but the underlying JS needs appear the same—numeric input handling, validation, and accessible keyboard/focus behavior for dynamically updated calculation results."
+}

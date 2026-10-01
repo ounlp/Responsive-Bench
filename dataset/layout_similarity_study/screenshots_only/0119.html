@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avery 07300 Durable Slant Ring Reference Binder- 1" Capacity- Blue — Blog</title>
+  <style>
+    :root{
+      --lime:#a8c800;
+      --blue:#1200ff;
+      --text:#8f8f8f;
+      --border:#d7d7d7;
+      --bg:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.5rem .75rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px 24px 0;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-start;
+      min-height:110px;
+    }
+    .brand-nav{
+      text-align:center;
+    }
+    .brand{
+      display:flex;
+      justify-content:center;
+      gap:6px;
+      margin:8px 0 24px;
+    }
+    .brand span{
+      width:20px;
+      height:10px;
+      background:var(--blue);
+      display:inline-block;
+    }
+    .home-btn{
+      display:inline-block;
+      text-decoration:none;
+      color:#666;
+      background:linear-gradient(#f7f7f7,#ececec);
+      border:1px solid #ddd;
+      border-bottom-color:#bdbdbd;
+      border-radius:12px;
+      padding:12px 20px;
+      font-size:18px;
+      box-shadow:0 2px 0 rgba(0,0,0,.15);
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 320px;
+      gap:26px;
+      align-items:start;
+    }
+
+    h1,h2{
+      color:var(--lime);
+      font-weight:500;
+      line-height:1.25;
+      text-align:center;
+      margin:0 0 28px;
+    }
+    h1{font-size:33px;}
+    h2{font-size:31px; margin-top:28px;}
+    h3{
+      color:var(--lime);
+      font-size:28px;
+      font-weight:600;
+      text-align:center;
+      margin:34px 0 18px;
+    }
+
+    .hero img{
+      width:100%;
+      height:332px;
+      object-fit:cover;
+      display:block;
+      background:var(--blue);
+    }
+
+    .intro,
+    .description,
+    .review{
+      text-align:center;
+      font-size:18px;
+      font-weight:600;
+      color:#8f8f8f;
+      max-width:760px;
+      margin:28px auto 18px;
+    }
+    .description,
+    .review{
+      font-weight:600;
+      max-width:820px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:18px 0 26px;
+      font-size:18px;
+      color:#8f8f8f;
+    }
+    th,td{
+      border:1px solid var(--border);
+      vertical-align:top;
+      padding:12px 12px;
+    }
+    th{
+      text-align:center;
+      font-weight:700;
+      background:#fff;
+    }
+    td.merchant{
+      width:34%;
+      font-weight:600;
+    }
+    td.price{
+      width:12%;
+      text-align:center;
+      font-weight:700;
+      line-height:1.5;
+    }
+    td.thumb{
+      width:54%;
+      text-align:center;
+    }
+    .show-price{
+      color:#7ea700;
+      text-decoration:none;
+      font-weight:700;
+    }
+    .thumb img{
+      width:100%;
+      max-width:321px;
+      height:181px;
+      object-fit:cover;
+      display:block;
+      margin:0 auto;
+      background:var(--blue);
+    }
+
+    aside h2{
+      text-align:left;
+      font-size:24px;
+      margin:0 0 12px;
+    }
+    .other-posts{
+      padding-top:8px;
+    }
+    .other-posts ul{
+      margin:0;
+      padding-left:24px;
+    }
+    .other-posts li{
+      margin:8px 0;
+      color:#9a9a9a;
+    }
+    .other-posts a{
+      color:#7ea700;
+      text-decoration:none;
+      font-size:18px;
+      font-weight:600;
+      line-height:1.45;
+    }
+
+    footer{
+      max-width:1000px;
+      margin:120px auto 28px;
+      padding:0 24px;
+    }
+    .footer-bar{
+      background:var(--lime);
+      color:#fff;
+      text-align:center;
+      font-weight:700;
+      font-size:18px;
+      border-radius:12px;
+      padding:18px 12px;
+    }
+
+    .nav-toggle{ display:none; }
+
+    @media (max-width: 900px){
+      .page{max-width:760px}
+      .content-grid{
+        grid-template-columns:minmax(0, 1fr) 250px;
+        gap:20px;
+      }
+      h1{font-size:36px}
+      .hero img{height:245px}
+      .thumb img{height:120px; max-width:145px}
+      .intro,.description,.review{font-size:17px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar{
+        justify-content:center;
+        min-height:auto;
+        margin-top:18px;
+      }
+      .content-grid{
+        grid-template-columns:1fr;
+      }
+      .sidebar-desktop{
+        display:none;
+      }
+      .sidebar-mobile{
+        display:block;
+        margin-top:18px;
+      }
+      h1{
+        font-size:28px;
+        margin-bottom:22px;
+      }
+      h2{
+        font-size:25px;
+      }
+      h3{
+        font-size:26px;
+      }
+      .hero img{
+        height:156px;
+      }
+      .intro,.description,.review{
+        font-size:16px;
+        line-height:1.7;
+      }
+      table{
+        font-size:16px;
+      }
+      td.merchant{width:48%}
+      td.price{width:22%}
+      td.thumb{width:30%}
+      .thumb img{
+        max-width:10px;
+        height:10px;
+      }
+      footer{
+        margin-top:110px;
+      }
+      .footer-bar{
+        font-size:16px;
+        padding:16px 12px;
+      }
+    }
+
+    @media (min-width: 769px){
+      .sidebar-mobile{
+        display:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="page">
+    <div class="topbar">
+      <div class="brand-nav">
+        <div class="brand" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <nav aria-label="Main">
+          <a href="#" class="home-btn">HOME</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="page">
+    <div class="content-grid">
+      <section aria-label="Product content">
+        <h1>Avery 07300 Durable Slant Ring Reference Binder- 1" Capacity- Blue</h1>
+
+        <div class="hero">
+          <img src="rick.jpg" alt="Product image area for Avery 07300 Durable Slant Ring Reference Binder- 1 inch Capacity- Blue">
+        </div>
+
+        <p class="intro">We compared price of Avery 07300 Durable Slant Ring Reference Binder- 1" Capacity- Blue across hundreds of online stores. We found Avery 07300 Durable Slant Ring Reference Binder- 1" Capacity- Blue in 3 stores with lowest price $3.86 in iBuyOfficeSupply.com.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Merchant</th>
+              <th>Price</th>
+              <th>-</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="merchant">iBuyOfficeSupply.com</td>
+              <td class="price">[ <a href="#" class="show-price">show price</a> ]</td>
+              <td class="thumb"><img src="rick.jpg" alt="Merchant product preview image for iBuyOfficeSupply.com"></td>
+            </tr>
+            <tr>
+              <td class="merchant">DiscountOfficeItems.com</td>
+              <td class="price">[ <a href="#" class="show-price">show price</a> ]</td>
+              <td class="thumb"><img src="rick.jpg" alt="Merchant product preview image for DiscountOfficeItems.com"></td>
+            </tr>
+            <tr>
+              <td class="merchant">UnbeatableSale.com</td>
+              <td class="price">[ <a href="#" class="show-price">show price</a> ]</td>
+              <td class="thumb"><img src="rick.jpg" alt="Merchant product preview image for UnbeatableSale.com"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2>Avery 07300 Durable Slant Ring Reference Binder- 1" Capacity- Blue description from UnbeatableSale.com</h2>
+
+        <p class="description">Gap Free feature prevents ring misalignment so pages turn smoothly. Back-mounted slant rings hold up to 25 percent more sheets than same size round rings and allow pages to lie flat.</p>
+
+        <h3>Customer review</h3>
+
+        <p class="review">Now I bought next two Avery 07300 Durable Slant Ring Reference Binder- 1" Capacity- Blue! This is the best binders what I ever Had!</p>
+      </section>
+
+      <aside class="other-posts sidebar-desktop" aria-label="Other posts">
+        <h2>Other posts</h2>
+        <ul>
+          <li><a href="#">Avery 07400 Durable Slant Ring Reference Binder- 1-1/2" Capacity- Blue</a></li>
+          <li><a href="#">Avery 07301 Durable Slant Ring Reference Binder- 1" Capacity- Black</a></li>
+          <li><a href="#">Avery 08302 Durable Slant Ring Reference Binder With Label Holder- 1" Capacity- Black</a></li>
+          <li><a href="#">Avery 08402 Durable Slant Ring Reference Binder With Label Holder- 1-1/2" Capacity- Black</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <aside class="other-posts sidebar-mobile" aria-label="Other posts mobile">
+      <h2>Other posts</h2>
+      <ul>
+        <li><a href="#">Avery 07400 Durable Slant Ring Reference Binder- 1-1/2" Capacity- Blue</a></li>
+        <li><a href="#">Avery 07301 Durable Slant Ring Reference Binder- 1" Capacity- Black</a></li>
+        <li><a href="#">Avery 08302 Durable Slant Ring Reference Binder With Label Holder- 1" Capacity- Black</a></li>
+        <li><a href="#">Avery 08402 Durable Slant Ring Reference Binder With Label Holder- 1-1/2" Capacity- Black</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="footer-bar">© BLOG 2014</div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured exactly one h1 with sequential headings; added meaningful alt text to all images; ensured descriptive link text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added unique aria-labels to navigation and aside landmarks; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator styling only.
+-->

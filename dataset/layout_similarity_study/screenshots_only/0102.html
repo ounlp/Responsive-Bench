@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Wayward Wild — Wayward Wild</title>
+  <style>
+    :root {
+      --bg: #050505;
+      --text: #f4f4f4;
+      --muted: #b8b8b8;
+      --blue: #1700ff;
+      --focus: #005FCC;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 90px 78px 64px;
+    }
+
+    header {
+      margin-bottom: 56px;
+    }
+
+    .logo-block {
+      width: 93px;
+      height: 72px;
+      background: linear-gradient(180deg, #1f0dff 0%, #1200ff 100%);
+      display: block;
+    }
+
+    main {
+      display: block;
+    }
+
+    h1 {
+      margin: 0 0 64px 0;
+      font-size: 4.55rem;
+      line-height: 0.98;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      max-width: 1040px;
+    }
+
+    .content {
+      max-width: 1040px;
+    }
+
+    .content p {
+      margin: 0 0 34px 0;
+      font-size: 1.18rem;
+      line-height: 1.5;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .content a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    footer {
+      margin-top: 104px;
+      color: var(--muted);
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.92rem;
+      line-height: 1.45;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+
+    footer p {
+      margin: 0 0 4px 0;
+    }
+
+    @media (max-width: 1024px) {
+      .page {
+        padding: 72px 46px 56px;
+      }
+
+      .logo-block {
+        width: 94px;
+        height: 71px;
+      }
+
+      header {
+        margin-bottom: 62px;
+      }
+
+      h1 {
+        font-size: 4.15rem;
+        max-width: 900px;
+        margin-bottom: 52px;
+      }
+
+      .content p {
+        font-size: 1.12rem;
+        line-height: 1.42;
+        margin-bottom: 28px;
+      }
+
+      footer {
+        margin-top: 108px;
+        font-size: 0.88rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 86px 23px 64px;
+      }
+
+      .logo-block {
+        width: 125px;
+        height: 70px;
+      }
+
+      header {
+        margin-bottom: 64px;
+      }
+
+      h1 {
+        font-size: 2.15rem;
+        line-height: 0.98;
+        letter-spacing: -0.03em;
+        margin-bottom: 28px;
+        max-width: 100%;
+      }
+
+      .content p {
+        font-size: 1rem;
+        line-height: 1.28;
+        margin-bottom: 28px;
+      }
+
+      footer {
+        margin-top: 102px;
+        font-size: 0.78rem;
+        line-height: 1.55;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <a href="#" aria-label="Wayward Wild home">
+        <span class="logo-block" aria-hidden="true"></span>
+      </a>
+    </header>
+
+    <main id="main-content">
+      <h1>Wayward Wild is a forward-looking product studio and incubator that brings together the best principles in design, technology, and editorial to expand the future for independent content makers everywhere.</h1>
+
+      <div class="content">
+        <p>As a digital product studio, we invest in, build, and scale digital products. We work to connect great ideas to frictionless multi-platform experiences.</p>
+
+        <p>As an incubator, we work with content makers to fortify strong, self-actualized media businesses.</p>
+
+        <p>Wayward Wild was home to <a href="#">Simplecast</a> (acq. SiriusXM–Pandora; June 2020), a podcast management and analytics platform, championing our passion to improve spoken word audio publishing for podcasters of all sizes.</p>
+
+        <p>Born of an acute need to address some of the most difficult questions in the industry today, we believe in the necessity of diverse new perspectives across a variety of media, and the power of technology to advance the conversation.</p>
+
+        <p>Our goal is to expand the future for independent content makers. And we are ready to do anything to see that transition through.</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>A DIGITAL PRODUCT STUDIO AND INCUBATOR</p>
+      <p>MADE WITH ♥ IN NASHVILLE TENNESSEE</p>
+      <p>©2015–2023 WAYWARD WILD™ VENTURES, ALL RIGHTS RESERVED</p>
+      <p>v23.220</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, main, and footer landmarks; added skip link and id="main-content"; ensured exactly one h1; added meaningful accessible label to the logo link; set html lang="en"
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; ensured no positive tabindex values remain
+[C] JS patterns added: implemented required tabindex cleanup script for focus order baseline and focus indicator support
+-->

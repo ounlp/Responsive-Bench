@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Disruption: Sell at the click of a mouse, buy with a money back guarantee — Entegral Blog</title>
+  <style>
+    :root{
+      --bg:#f3f3f3;
+      --panel:#ffffff;
+      --text:#6f6f6f;
+      --heading:#4a4a4a;
+      --muted:#9a9a9a;
+      --accent:#c9d84a;
+      --rule:#cfcfcf;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .site-wrap{
+      max-width: 830px;
+      margin: 0 auto;
+      padding: 0 16px 48px;
+    }
+
+    header{
+      padding: 26px 0 12px;
+      text-align:left;
+    }
+
+    .brand{
+      font-size: 27px;
+      font-weight: 700;
+      color: var(--heading);
+      margin: 0;
+      line-height:1.1;
+    }
+
+    .tagline{
+      margin: 6px 0 0;
+      font-size: 17px;
+      color: #6d6d6d;
+      font-weight: 600;
+    }
+
+    .article-card{
+      background: var(--panel);
+      margin-top: 22px;
+      padding: 34px 38px 62px;
+    }
+
+    h1{
+      margin:0 0 18px;
+      color:var(--heading);
+      font-size: 24px;
+      line-height:1.15;
+      font-weight:700;
+    }
+
+    .date{
+      color:#9b9b9b;
+      font-size:18px;
+      margin:0 0 28px;
+    }
+
+    p{
+      margin: 0 0 24px;
+      font-size: 17px;
+    }
+
+    .accent{
+      color:var(--accent);
+      font-weight:600;
+    }
+
+    strong{
+      color:#666;
+      font-weight:700;
+    }
+
+    em{
+      font-style:italic;
+      font-weight:700;
+      color:#666;
+    }
+
+    .hero-image{
+      display:block;
+      width: 78%;
+      margin: 56px auto 28px;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background:#1a11ff;
+    }
+
+    .links-block{
+      margin-top: 8px;
+    }
+
+    .links-block p{
+      margin-bottom:0;
+    }
+
+    .links-list{
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+      font-size:17px;
+    }
+
+    .links-list li{
+      margin: 0;
+      line-height:1.45;
+    }
+
+    .tags{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin: 36px 0 26px;
+    }
+
+    .tag{
+      display:inline-block;
+      background:#f7f7f2;
+      color:var(--accent);
+      border-radius:18px;
+      padding:6px 10px;
+      font-size:16px;
+      line-height:1;
+    }
+
+    .dashed{
+      border-top:1px dashed #9f9f9f;
+      margin-top: 28px;
+      padding-top: 0;
+    }
+
+    .popular{
+      padding: 34px 38px 0;
+    }
+
+    .popular h2{
+      margin:0 0 22px;
+      color:#6a6a6a;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    .post{
+      padding: 0 0 26px;
+      margin: 0 0 18px;
+      border-bottom:1px dashed #d7d7d7;
+    }
+
+    .post:last-child{
+      border-bottom:none;
+      margin-bottom:0;
+    }
+
+    .post h3{
+      margin:0 0 8px;
+      color:var(--heading);
+      font-size:22px;
+      line-height:1.25;
+      font-weight:700;
+    }
+
+    .post-date{
+      color:var(--accent);
+      font-style:italic;
+      font-size:16px;
+      margin:0 0 18px;
+    }
+
+    .post-row{
+      display:grid;
+      grid-template-columns: 84px 1fr;
+      gap: 28px;
+      align-items:start;
+    }
+
+    .thumb{
+      width:84px;
+      height:84px;
+      object-fit:cover;
+      background:#1a11ff;
+      display:block;
+    }
+
+    .excerpt-wrap{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      min-width:0;
+    }
+
+    .excerpt{
+      margin:0;
+      font-size:17px;
+      color:#7a7a7a;
+    }
+
+    .read-more{
+      align-self:flex-end;
+      color:var(--accent);
+      font-size:17px;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    footer{
+      height: 24px;
+    }
+
+    .nav-toggle{ display: none; }
+
+    @media (max-width: 900px){
+      .site-wrap{
+        max-width: 760px;
+        padding: 0 15px 40px;
+      }
+      .article-card{
+        padding: 18px 15px 42px;
+      }
+      .popular{
+        padding: 38px 15px 0;
+      }
+      .hero-image{
+        width: 86%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 640px){
+      .site-wrap{
+        padding:0 0 28px;
+      }
+      header{
+        text-align:center;
+        padding: 24px 12px 10px;
+      }
+      .brand{
+        font-size:24px;
+      }
+      .tagline{
+        font-size:15px;
+      }
+      .article-card{
+        margin-top:0;
+        padding: 12px 13px 42px;
+      }
+      h1{
+        font-size:24px;
+        line-height:1.02;
+        margin-bottom:14px;
+      }
+      .date{
+        font-size:16px;
+        margin-bottom:22px;
+      }
+      p, .links-list{
+        font-size:16px;
+      }
+      .hero-image{
+        width: calc(100% - 24px);
+        margin: 48px 12px 24px;
+      }
+      .popular{
+        background:transparent;
+        padding: 30px 13px 0;
+      }
+      .popular h2{
+        font-size:15px;
+        margin-bottom:20px;
+      }
+      .post h3{
+        font-size:20px;
+        line-height:1.18;
+      }
+      .post-row{
+        grid-template-columns: 62px 1fr;
+        gap: 12px;
+      }
+      .thumb{
+        width:62px;
+        height:62px;
+      }
+      .excerpt{
+        font-size:15px;
+      }
+      .read-more{
+        font-size:15px;
+      }
+      .tags{
+        gap:10px;
+      }
+      .tag{
+        font-size:14px;
+        padding:6px 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="site-wrap">
+    <header>
+      <p class="brand">Entegral Blog</p>
+      <p class="tagline">Real Estate Technology Simplified!</p>
+    </header>
+
+    <main id="main-content">
+      <article class="article-card">
+        <h1>Real Estate Disruption: Sell at the click of a mouse, buy with a money back guarantee</h1>
+        <p class="date">June 14, 2016</p>
+
+        <p><span class="accent">OpenDoor</span>&nbsp; started its operation in late 2014 by a former PayPal executive. It is a real estate startup that promises a better home buying and selling process: <em>Sell your home at the click of a mouse, and buy with a money back guarantee.</em> Essentially they buy homes at a slightly discounted price, flips them and then resells it through their website. This is how they are trying to disrupt the real estate industry:</p>
+
+        <p><strong>Selling:</strong> Sell your house through the click of a mouse. Provide details on your home and they will send you a cash offer.</p>
+
+        <p><strong>Buying:</strong> OpenDoor offers a 30-day money back guarantee on any homes purchased through OpenDoor. It further takes away most of the risk of buying home by providing an 180-point full inspection of every home it sells, and a 2-year warranty that covers up to 20 items.</p>
+
+        <img src="rick.jpg" alt="Large featured image for the OpenDoor article" class="hero-image">
+
+        <p>OpenDoor currently operates in Phoenix and Dallas, USA.</p>
+
+        <p><span class="accent">Wall Street Journal estimates OpenDoor</span> makes $10,000 to $15,000 profit on every home.</p>
+
+        <p>Is this a sustainable real estate business? Time will tell.</p>
+
+        <div class="links-block">
+          <p><strong>More reading on OpenDoor:</strong></p>
+          <ul class="links-list">
+            <li>- <a href="#">https://www.opendoor.com/</a></li>
+            <li>- <a href="#">http://fortune.com/2016/06/07/opendoor-money-back-guarantee/</a></li>
+            <li>- <a href="#">http://techcrunch.com/2016/06/07/a-startup-that-pays-cash-to-buy-homes-now-offers-money-back-guarantee/</a></li>
+          </ul>
+        </div>
+
+        <div class="tags" aria-label="Article tags">
+          <a href="#" class="tag">real estate disruption</a>
+          <a href="#" class="tag">technology</a>
+        </div>
+
+        <div class="dashed" aria-hidden="true"></div>
+      </article>
+
+      <section class="popular" aria-label="Popular posts from this blog">
+        <h2>Popular posts from this blog</h2>
+
+        <article class="post">
+          <h3><a href="#">Looking for new estate agents or interns to join your estate agency? Here is an effective solution</a></h3>
+          <p class="post-date">February 21, 2020</p>
+          <div class="post-row">
+            <img src="rick.jpg" alt="Thumbnail image for estate agency recruitment article" class="thumb">
+            <div class="excerpt-wrap">
+              <p class="excerpt">Attract fresh new real estate talent with our real estate job board You can now advertise your real estate vacancies on MyProperty's Job Board&nbsp; from only R99 for 3 months of exposure. Our Real Estate Job Board is also integrated with Google's job search, which provides excellent exposure for your office. &nbsp; ...</p>
+              <a href="#" class="read-more">READ MORE</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="post">
+          <h3><a href="#">Easily link Base with external CRM systems</a></h3>
+          <p class="post-date">September 15, 2020</p>
+          <div class="post-row">
+            <img src="rick.jpg" alt="Thumbnail image for Base CRM integration article" class="thumb">
+            <div class="excerpt-wrap">
+              <p class="excerpt">What is the Base Zapier integration? The Entegral Base system was recently improved with a native Zapier app integration . &nbsp; &nbsp; &nbsp; ...</p>
+              <a href="#" class="read-more">READ MORE</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="post">
+          <h3><a href="#">US trends show more buyers come from internet, less from print</a></h3>
+          <p class="post-date">March 30, 2009</p>
+          <div class="post-row">
+            <img src="rick.jpg" alt="Thumbnail image for US buyer trends article" class="thumb">
+            <div class="excerpt-wrap">
+              <p class="excerpt">Where home buyers found the home they purchased- 2001 vs. 2008 &nbsp; Have a look at the very interesting figures published for USA home buyers on: http://rismedia.com/2009-03-29/buyers-becoming-more-successful-finding-homes-through-internet/ &nbsp; The NAR statistics show that&nbsp; 7 years or &nbsp; ...</p>
+              <a href="#" class="read-more">READ MORE</a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer></footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, main, section, article, and footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential headings; added meaningful alt text to all images; ensured descriptive link text; set html lang="en"
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added aria-label to the popular posts section and tags group; ensured no positive tabindex values remain
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only
+-->

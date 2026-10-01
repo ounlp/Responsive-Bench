@@ -1,0 +1,63 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a clear hamburger icon at the top right instead of visible full navigation links.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the hamburger should open and close a mobile navigation panel or drawer containing the site links. The trigger should reflect expanded/collapsed state.",
+      "ambiguities": "The sketch does not show whether the menu opens as a full-screen overlay, side drawer, or dropdown panel."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "Because the mobile sketch includes a hamburger-triggered hidden navigation, opening that navigation implies keyboard focus must move into the revealed menu and return to the trigger when closed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move to the first actionable item or close control; when it closes, focus should return to the hamburger button. If implemented as an overlay/drawer, background interaction should be constrained appropriately.",
+      "ambiguities": "This depends on whether the menu is implemented as an overlay drawer versus an inline expansion."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a contact form with multiple text fields, a larger message area, and a submit button.",
+      "confidence": "HIGH",
+      "behavior_notes": "Submitting should validate required inputs, especially email and message if required, prevent invalid submission, and provide inline or adjacent error feedback plus success/failure handling.",
+      "ambiguities": "Required fields are not explicitly marked in the sketch, so exact validation rules are inferred from the presence of a contact form."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "S1",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "F4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light JavaScript overall: mobile primarily needs responsive navigation behavior via a hamburger-triggered menu, while desktop primarily needs contact-form submission and validation logic. The repeated image blocks in mobile and the hero/gallery/content sections in desktop appear static from the sketches alone, with no explicit evidence of carousels, tabs, accordions, modals, sticky behavior, or infinite loading."
+}

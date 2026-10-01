@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrot clan — Mord Blog</title>
+  <style>
+    :root{
+      --bg:#000000;
+      --text:#9a9a9a;
+      --accent:#ff1f5b;
+      --rule:#555555;
+      --wisdom:#8f8f8f;
+      --focus:#005FCC;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:1rem;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:.5rem .75rem;
+      z-index:1000;
+      text-decoration:none;
+    }
+
+    .skip-link:focus{
+      transform:translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      width:min(980px, calc(100% - 26px));
+      margin:0 auto;
+      padding-top:18px;
+      padding-bottom:18px;
+    }
+
+    header{
+      margin-bottom:28px;
+    }
+
+    h1,h2{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 400;
+      color:var(--accent);
+      line-height:1;
+    }
+
+    h1{
+      font-size:4.1rem;
+      letter-spacing:-0.03em;
+      margin-bottom:10px;
+    }
+
+    .tagline{
+      font-size:1.05rem;
+      line-height:1.15;
+      margin:0 0 2px 0;
+      color:var(--text);
+    }
+
+    .rule{
+      border:0;
+      border-top:5px solid var(--rule);
+      margin:0;
+      width:100%;
+    }
+
+    main{
+      display:block;
+    }
+
+    article{
+      max-width:100%;
+    }
+
+    h2{
+      font-size:3rem;
+      margin-bottom:18px;
+    }
+
+    .content p{
+      margin:0 0 8px 0;
+      font-size:1.18rem;
+      line-height:1.08;
+      font-weight:600;
+      color:var(--text);
+    }
+
+    .wisdom{
+      margin-top:8px;
+      margin-bottom:28px;
+      text-align:right;
+      color:var(--wisdom);
+      font-variant: small-caps;
+      font-size:1.05rem;
+      line-height:1.1;
+      letter-spacing:.01em;
+    }
+
+    .post-nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:1rem;
+      margin-top:8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-size:1.15rem;
+    }
+
+    .post-nav a{
+      color:var(--accent);
+      text-decoration:none;
+      white-space:nowrap;
+    }
+
+    .post-nav a:hover,
+    .post-nav a:focus-visible{
+      text-decoration:underline;
+    }
+
+    .post-nav .next{
+      margin-left:auto;
+      text-align:right;
+    }
+
+    @media (max-width: 900px){
+      .page{
+        width:min(720px, calc(100% - 26px));
+        padding-top:22px;
+      }
+
+      h1{
+        font-size:3.8rem;
+      }
+
+      h2{
+        font-size:2.7rem;
+      }
+
+      .content p{
+        font-size:1.08rem;
+      }
+
+      .wisdom{
+        font-size:.98rem;
+      }
+
+      .post-nav{
+        font-size:1rem;
+      }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        width:calc(100% - 26px);
+        padding-top:14px;
+        padding-bottom:12px;
+      }
+
+      header{
+        margin-bottom:24px;
+      }
+
+      h1{
+        font-size:3.35rem;
+        margin-bottom:12px;
+      }
+
+      .tagline{
+        font-size:.98rem;
+        max-width:320px;
+      }
+
+      .rule{
+        border-top-width:5px;
+      }
+
+      h2{
+        font-size:2.45rem;
+        margin-bottom:18px;
+      }
+
+      .content p{
+        font-size:1rem;
+        line-height:1.08;
+        margin-bottom:8px;
+      }
+
+      .wisdom{
+        text-align:center;
+        font-size:.92rem;
+        margin-top:10px;
+        margin-bottom:18px;
+      }
+
+      .post-nav{
+        font-size:.92rem;
+        flex-wrap:wrap;
+        gap:.35rem 1rem;
+      }
+
+      .post-nav .prev,
+      .post-nav .next{
+        width:100%;
+      }
+
+      .post-nav .next{
+        text-align:right;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <h1>Mord Blog</h1>
+      <p class="tagline">I am Mord. I serve my lord Kord with my greatsword.</p>
+      <hr class="rule">
+    </header>
+
+    <main id="main-content">
+      <article aria-labelledby="post-title">
+        <h2 id="post-title">Carrot clan</h2>
+
+        <div class="content">
+          <p>As we walked, Air and Wander told us fantastic tales of the great dwarven carrot clan. They dig deep for gems and other stuff.</p>
+          <p>All Grins is apparently not from carrots. He from Hardly Grins.</p>
+          <p>For Napkin is getting a little frisky with wolf Low Show. I think For Napkin is a little bored with us.</p>
+          <p>We not have any more drink. And while a wolf is nice and all, not so much a dragon, me thinks.</p>
+          <p>We had to go single file along a path. Then Barrel and Air stopped.</p>
+          <p>Well, guard refused to let Pitter go. Me stay with Pitter to the bitter end.</p>
+          <p>I asked if he wanted to wrestle. He got this glint in his eye.</p>
+          <p>I see our people approach with a rather tallish dwarf. He looks important.</p>
+        </div>
+
+        <p class="wisdom">Mords of Wisdom: People not welcome their enemy's people.</p>
+
+        <nav aria-label="Post navigation" class="post-nav">
+          <a href="#" class="prev">↤ A new day, a new strength</a>
+          <a href="#" class="next">A Brick Cometh ↦</a>
+        </nav>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link; used semantic header, main, article, and footer-equivalent post navigation landmark via nav; ensured exactly one h1; used sequential heading hierarchy with h2 for the post title; added html lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: used unique aria-label on the post navigation nav; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

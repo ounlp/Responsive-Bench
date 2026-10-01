@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a largely static, content-heavy product/detail page with stacked images, headings, text blocks, and footer-like link areas. There are no clearly drawn controls such as hamburger icons, dropdown indicators, tabs, accordions, form fields, search boxes, modal triggers, counters, or load-more affordances. Any JavaScript behavior beyond basic link navigation would be speculative from the sketches alone; the layouts mainly imply responsive reflow rather than explicit interactive widgets."
+}

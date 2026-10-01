@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Flap Fitter Ayton — Dog Flap Fitter</title>
+  <style>
+    :root{
+      --blue:#27aae1;
+      --text:#4a4a4a;
+      --muted:#8a8a8a;
+      --light:#f3f3f3;
+      --border:#d8d8d8;
+      --footer:#000;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:#efefef;
+      line-height:1.6;
+      border-top:3px solid var(--blue);
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:10px;top:10px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .topbar{
+      background:#fff;
+      min-height:112px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      padding:20px 48px;
+      border-bottom:3px solid var(--blue);
+    }
+    .call-text{
+      font-size:26px;
+      font-weight:300;
+      color:#333;
+      text-align:right;
+    }
+    .call-text .phone{
+      color:#2bb4f0;
+      font-weight:300;
+    }
+
+    .nav-toggle { display: none; }
+
+    .main-nav{
+      background:#fff;
+    }
+    .main-nav ul{
+      margin:0;
+      padding:0 0 0 0;
+      list-style:none;
+      display:flex;
+    }
+    .main-nav li a{
+      display:block;
+      padding:16px 22px;
+      font-size:14px;
+      color:#666;
+      text-transform:uppercase;
+      background:#fff;
+    }
+    .main-nav li.active a{
+      background:var(--blue);
+      color:#fff;
+    }
+
+    .hero-band{
+      height:85px;
+      background:var(--blue);
+    }
+
+    .page-wrap{
+      max-width:1200px;
+      margin:20px auto 0;
+      background:#fff;
+      border-bottom:3px solid #c7c7c7;
+      padding:38px 24px 56px;
+    }
+    .content-grid{
+      display:grid;
+      grid-template-columns: 1fr 275px;
+      gap:56px;
+      align-items:start;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:46px;
+      line-height:1.1;
+      font-weight:300;
+      color:#3f3f3f;
+    }
+    h2{
+      margin:22px 0 8px;
+      font-size:28px;
+      line-height:1.2;
+      font-weight:300;
+      color:#3f3f3f;
+    }
+    p{
+      margin:0 0 18px;
+      font-size:17px;
+      color:#8b8b8b;
+      line-height:1.8;
+    }
+    ul.services{
+      margin:0 0 10px 24px;
+      padding:0;
+      color:#8b8b8b;
+      font-size:17px;
+      line-height:1.5;
+    }
+
+    aside h2{
+      margin-top:0;
+      font-size:31px;
+    }
+    .contact-copy{
+      margin-bottom:34px;
+    }
+    .field-group{
+      margin-bottom:16px;
+    }
+    label{
+      display:block;
+      font-size:15px;
+      color:#8b8b8b;
+      margin-bottom:6px;
+      line-height:1.3;
+    }
+    input, textarea{
+      width:100%;
+      border:1px solid #bfbfbf;
+      border-radius:4px;
+      padding:6px 8px;
+      font-size:16px;
+      font-family:inherit;
+      background:#fff;
+      color:#333;
+    }
+    input{height:29px}
+    textarea{
+      min-height:173px;
+      resize:vertical;
+    }
+    .captcha-box{
+      width:150px;
+      height:84px;
+      background:#1400ff;
+      margin-bottom:1px;
+    }
+    .submit-btn{
+      margin-top:6px;
+      padding:6px 13px;
+      font-size:16px;
+      color:#444;
+      border:1px solid #bfbfbf;
+      border-radius:4px;
+      background:linear-gradient(#f8f8f8,#e8e8e8);
+      cursor:pointer;
+    }
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    footer{
+      background:#000;
+      color:#7f7f7f;
+      text-align:center;
+      padding:78px 20px 42px;
+      min-height:136px;
+    }
+    footer p{
+      margin:0;
+      font-size:22px;
+      color:#7f7f7f;
+      line-height:1.4;
+    }
+    footer a{
+      color:#00b7ff;
+    }
+    .footer-square{
+      display:inline-block;
+      width:32px;
+      height:20px;
+      background:#1400ff;
+      vertical-align:middle;
+      margin-left:4px;
+    }
+
+    @media (max-width: 900px){
+      .topbar{
+        min-height:168px;
+        padding:24px 24px;
+        justify-content:flex-end;
+      }
+      .call-text{
+        font-size:28px;
+        max-width:360px;
+      }
+      .content-grid{
+        grid-template-columns: 1fr 220px;
+        gap:34px;
+      }
+      h1{font-size:34px}
+      h2{font-size:26px}
+      p, ul.services{font-size:16px}
+      aside h2{font-size:28px}
+      .page-wrap{
+        padding:40px 24px 60px;
+      }
+      footer p{font-size:14px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .desktop-nav{display:none}
+      .mobile-nav-wrap{
+        background:#fff;
+        border-top:1px solid #d7d7d7;
+        padding:10px 8px 0;
+      }
+      .nav-toggle{
+        margin:0 0 0 0;
+        background:#f5f5f5;
+        border:1px solid #cfcfcf;
+        border-radius:3px;
+        padding:8px 12px;
+        font-size:24px;
+        color:#666;
+      }
+      #mobile-nav{
+        margin-top:8px;
+      }
+      #mobile-nav ul{
+        list-style:none;
+        margin:0;
+        padding:0;
+      }
+      #mobile-nav a{
+        display:block;
+        padding:12px 14px;
+        border-top:1px solid #e2e2e2;
+        background:#fff;
+        color:#666;
+        text-transform:uppercase;
+        font-size:14px;
+      }
+      #mobile-nav .active a{
+        background:var(--blue);
+        color:#fff;
+      }
+      .topbar{
+        min-height:188px;
+        justify-content:center;
+        padding:24px 20px 18px;
+      }
+      .call-text{
+        text-align:center;
+        font-size:24px;
+        max-width:none;
+      }
+      .hero-band{
+        height:67px;
+      }
+      .page-wrap{
+        margin:14px 7px 0;
+        padding:28px 20px 48px;
+      }
+      .content-grid{
+        grid-template-columns:1fr;
+        gap:42px;
+      }
+      h1{
+        font-size:31px;
+      }
+      h2{
+        font-size:24px;
+      }
+      p, ul.services{
+        font-size:15px;
+        line-height:1.8;
+      }
+      aside{
+        max-width:100%;
+      }
+      .captcha-box{
+        width:115px;
+        height:96px;
+      }
+      footer{
+        padding:78px 10px 34px;
+      }
+      footer p{
+        font-size:12px;
+      }
+      .footer-square{
+        width:28px;
+        height:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="topbar">
+      <div class="call-text">Call us on &#128222; <span class="phone">0800 009 4201</span> or <span class="phone">0330 016 5099</span></div>
+    </div>
+
+    <nav class="main-nav desktop-nav" aria-label="Main">
+      <ul>
+        <li><a href="#">HOME</a></li>
+        <li class="active"><a href="#">CAT FLAPS</a></li>
+        <li><a href="#">DOG FLAPS</a></li>
+        <li><a href="#">PET DOORS</a></li>
+      </ul>
+    </nav>
+
+    <div class="mobile-nav-wrap">
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+      <nav id="mobile-nav" aria-label="Main" hidden>
+        <ul>
+          <li><a href="#">HOME</a></li>
+          <li class="active"><a href="#">CAT FLAPS</a></li>
+          <li><a href="#">DOG FLAPS</a></li>
+          <li><a href="#">PET DOORS</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="hero-band"></div>
+  </header>
+
+  <main id="main-content">
+    <div class="page-wrap">
+      <div class="content-grid">
+        <section aria-label="Cat flap fitter information">
+          <h1>Cat Flap Fitter Ayton</h1>
+          <p>The Cat Flap Fitter offers a pet flap fitting service for customers in Ayton. We make sure all our pet flaps are fitted to the highest standard and offer a first class service.</p>
+
+          <p>We have over 20 years experience in the fitting of pet flaps. All our services come with a full guarantee.</p>
+
+          <p>We can install pet flaps into any type of UPVC panel including panels which have ridges and decorative designs. If your panel has a metal skin or has a steel re-inforcement in the panel we are able to install the cat flap for you, we can install cat flaps into any type of metal door.</p>
+
+          <p>We can also install cat flaps in to single glazed units, we would not reccommend cutting a hole into the existing glass, as if this breaks it could injure your pet, we reccommend replacing the glass with a new toughenend glass unit with pre cut hole to ensure the saftey of your pet.</p>
+
+          <h2>Our Services</h2>
+          <ul class="services">
+            <li>Cat Flap Installation Ayton</li>
+            <li>Dog Flap Installation Ayton</li>
+            <li>Pet Flap Installation Ayton</li>
+            <li>Cutting out for a Pet Flap</li>
+          </ul>
+
+          <h2>Why Choose Us</h2>
+          <p>We are experts in the installation of pet flaps and we are fully insured so you know that your in safe hands. We are reccomended installers for Sureflap, the market leader in microchip operated cat flaps, we also use the staywell brand for the other types of pet flaps we fit (in our opinion) they are the best types of flap currently available on the market.</p>
+
+          <h2>Free Pet Flap quotes in Ayton</h2>
+          <p>Please feel free to contact us we are happy to give free quotes for any installation of our pet flaps.</p>
+        </section>
+
+        <aside aria-label="Quick Contact">
+          <h2>Quick Contact</h2>
+          <p class="contact-copy">If you want more information, fill in this form. We will get back to you as soon as possible.</p>
+
+          <form novalidate>
+            <div class="field-group">
+              <label for="name">Name <span aria-hidden="true" style="color:#c44">*</span></label>
+              <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false">
+              <span id="name-error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+
+            <div class="field-group">
+              <label for="phone">Phone number</label>
+              <input type="text" id="phone" name="phone">
+            </div>
+
+            <div class="field-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email">
+            </div>
+
+            <div class="field-group">
+              <label for="request">Describe Your Request</label>
+              <textarea id="request" name="request"></textarea>
+            </div>
+
+            <div class="field-group">
+              <label for="security">Security code <span aria-hidden="true" style="color:#c44">*</span></label>
+              <div class="captcha-box" aria-hidden="true"></div>
+              <input type="text" id="security" name="security" required aria-describedby="security-error" aria-invalid="false">
+              <span id="security-error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+
+            <div aria-live="polite" id="form-status" class="sr-only"></div>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p><a href="#">Dog Flap Fitter</a> © Springfield Developments 2021 <span class="footer-square" aria-hidden="true"></span></p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('form').forEach(form => {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let firstError = null;
+
+        form.querySelectorAll('[required]').forEach(input => {
+          const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+          if (!input.value.trim()) {
+            input.setAttribute('aria-invalid', 'true');
+            errorEl.textContent = `${input.labels[0].textContent.trim()} is required`;
+            errorEl.hidden = false;
+            if (!firstError) firstError = input;
+          } else {
+            input.setAttribute('aria-invalid', 'false');
+            errorEl.hidden = true;
+            errorEl.textContent = '';
+          }
+        });
+
+        if (firstError) {
+          firstError.focus();
+        } else {
+          document.getElementById('form-status').textContent = 'Form submitted successfully.';
+        }
+      });
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, footer landmarks; added skip link and main-content id; ensured one h1 with sequential h2 headings; added labels for all form inputs and textarea; added meaningful button and link text; set html lang="en"; added required attributes to mandatory fields.
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided aria-label on multiple nav regions and aside; ensured no tabindex values greater than 0; added aria-describedby, aria-invalid, live regions for form errors.
+[C] JS patterns added: implemented hamburger menu for mobile; implemented form validation with error announcement; implemented tabindex cleanup and focus indicator support.
+-->

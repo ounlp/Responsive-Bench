@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a feedback-style form with multiple text input fields beneath explanatory copy and no other obvious interactive widgets. The mobile sketch shows three stacked inputs; the desktop sketch shows two side-by-side inputs plus another field below, implying a submit-ready form that needs validation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Inputs should validate on submit at minimum, and likely on blur/input for common checks such as required fields and email formatting. Validation should account for the responsive layout difference between stacked mobile fields and multi-column desktop fields.",
+      "ambiguities": "The sketches do not explicitly mark required fields, show a submit button, or indicate exact validation rules; however, a production form implementation would still require validation behavior."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation"
+    ],
+    "desktop": [
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very low-JS page: primarily a responsive informational form with standard text inputs and no visible navigation, overlays, expandable sections, tabs, search, or dynamic loading. The main cross-viewport difference is layout only—mobile stacks fields vertically while desktop places some fields side by side—so the only clearly necessary JavaScript pattern is form validation with accessible focus/error handling."
+}

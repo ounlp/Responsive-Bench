@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+   @charset "UTF-8";/*!* Bootstrap v5.0.0-beta3 (https://getbootstrap.com/)
+* Copyright 2011-2021 The Bootstrap Authors
+* Copyright 2011-2021 Twitter, Inc.
+* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)*/:root{--bs-blue:#0d6efd;--bs-indigo:#6610f2;--bs-purple:#6f42c1;--bs-pink:#d63384;--bs-red:#dc3545;--bs-orange:#fd7e14;--bs-yellow:#ffc107;--bs-green:#198754;--bs-teal:#20c997;--bs-cyan:#0dcaf0;--bs-white:#fff;--bs-gray:#6c757d;--bs-gray-dark:#343a40;--bs-primary:#0d6efd;--bs-secondary:#6c757d;--bs-success:#198754;--bs-info:#0dcaf0;--bs-warning:#ffc107;--bs-danger:#dc3545;--bs-light:#f8f9fa;--bs-dark:#212529;--bs-font-sans-serif:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--bs-font-monospace:SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--bs-gradient:linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0))}*,::after,::before{box-sizing:border-box}@media(prefers-reduced-motion:no-preference){:root{scroll-behavior:smooth}}body{margin:0;font-family:var(--bs-font-sans-serif);font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}hr{margin:1rem 0;color:inherit;background-color:currentColor;border:0;opacity:.25}hr:not([size]){height:1px}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:.5rem;font-weight:500;line-height:1.2}.h1,h1{font-size:calc(1.375rem + 1.5vw)}@media(min-width:1200px){.h1,h1{font-size:2.5rem}}.h2,h2{font-size:calc(1.325rem + .9vw)}@media(min-width:1200px){.h2,h2{font-size:2rem}}.h3,h3{font-size:calc(1.3rem + .6vw)}@media(min-width:1200px){.h3,h3{font-size:1.75rem}}.h4,h4{font-size:calc(1.275rem + .3vw)}@media(min-width:1200px){.h4,h4{font-size:1.5rem}}.h5,h5{font-size:1.25rem}.h6,h6{font-size:1rem}p{margin-top:0;margin-bottom:1rem}abbr[data-bs-original-title],abbr[title]{-webkit-text-decoration:underline dotted;text-decoration:underline dotted;cursor:help;-webkit-text-decoration-skip-ink:none;text-decoration-skip-ink:none}address{margin-bottom:1rem;font-style:normal;line-height:inherit}ol,ul{padding-left:2rem}dl,ol,ul{margin-top:0;margin-bottom:1rem}ol ol,ol ul,ul ol,ul ul{margin-bottom:0}dt{font-weight:700}dd{margin-bottom:.5rem;margin-left:0}blockquote{margin:0 0 1rem}b,strong{font-weight:bolder}.small,small{font-size:.875em}.mark,mark{padding:.2em;background-color:#fcf8e3}sub,sup{position:relative;font-size:.75em;line-height:0;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}a{color:#0d6efd;text-decoration:underline}a:hover{color:#0a58ca}a:not([href]):not([class]),a:not([href]):not([class]):hover{color:inherit;text-decoration:none}code,kbd,pre,samp{font-family:var(--bs-font-monospace);font-size:1em;direction:ltr;unicode-bidi:bidi-override}pre{display:block;margin-top:0;margin-bottom:1rem;overflow:auto;font-size:.875em}pre code{font-size:inherit;color:inherit;word-break:normal}code{font-size:.875em;color:#d63384;word-wrap:break-word}a>code{color:inherit}kbd{padding:.2rem .4rem;font-size:.875rem;color:#fff;background-color:#212529;border-radius:.2rem}kbd kbd{padding:0;font-size:1em;font-weight:700}figure{margin:0 0 1rem}img,svg{vertical-align:middle}table{caption-side:bottom;border-collapse:collapse}caption{padding-top:.5rem;padding-bottom:.5rem;color:#6c757d;text-align:left}th{text-align:inherit;text-align:-webkit-match-parent}tbody,td,tfoot,th,thead,tr{border-color:inherit;border-style:solid;border-width:0}label{display:inline-block}button{border-radius:0}button:focus:not(:focus-visible){outline:0}button,input,optgroup,select,textarea{margin:0;font-family:inherit;font-size:inherit;line-height:inherit}button,select{text-transform:none}[role=button]{cursor:pointer}select{word-wrap:normal}select:disabled{opacity:1}[list]::-webkit-calendar-picker-indicator{display:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]:not(:disabled),[type=reset]:not(:disabled),[type=submit]:not(:disabled),button:not(:disabled){cursor:pointer}::-moz-focus-inner{padding:0;border-style:none}textarea{resize:vertical}fieldset{min-width:0;padding:0;margin:0;border:0}legend{float:left;width:100%;padding:0;margin-bottom:.5rem;font-size:calc(1.275rem + .3vw);line-height:inherit}@media(min-width:1200px){legend{font-size:1.5rem}}legend+*{clear:left}::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-fields-wrapper,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-text,::-webkit-datetime-edit-year-field{padding:0}::-webkit-inner-spin-button{height:auto}[type=search]{outline-offset:-2px;-webkit-appearance:textfield}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-color-swatch-wrapper{padding:0}::file-selector-button{font:inherit}::-webkit-file-upload-button{font:inherit;-webkit-appearance:button}output{display:inline-block}iframe{border:0}summary{display:list-item;cursor:pointer}progress{vertical-align:baseline}[hidden]{display:none!important}.lead{font-size:1.25rem;font-weight:300}.display-1{font-size:calc(1.625rem + 4.5vw);font-weight:300;line-height:1.2}@media(min-width:1200px){.display-1{font-size:5rem}}.display-2{font-size:calc(1.575rem + 3.9vw);font-weight:300;line-height:1.2}@media(min-width:1200px){.display-2{font-size:4.5rem}}.display-3{font-size:calc(1.525rem + 3.3vw);font-weight:300;line-height:1.2}@media(min-width:1200px){.display-3{font-size:4rem}}.display-4{font-size:calc(1.475rem + 2.7vw);font-weight:300;line-height:1.2}@media(min-width:1200px){.display-4{font-size:3.5rem}}.display-5{font-size:calc(1.425rem + 2.1vw);font-weight:300;line-height:1.2}@media(min-width:1200px){.display-5{font-size:3rem}}.display-6{font-size:calc(1.375rem + 1.5vw);font-weight:300;line-height:1.2}@media(min-width:1200px){.display-6{font-size:2.5rem}}.list-unstyled{padding-left:0;list-style:none}.list-inline{padding-left:0;list-style:none}.list-inline-item{display:inline-block}.list-inline-item:not(:last-child){margin-right:.5rem}.initialism{font-size:.875em;text-transform:uppercase}.blockquote{margin-bottom:1rem;font-size:1.25rem}.blockquote>:last-child{margin-bottom:0}.blockquote-footer{margin-top:-1rem;margin-bottom:1rem;font-size:.875em;color:#6c757d}.blockquote-footer::before{content:"— "}.img-fluid{max-width:100%;height:auto}.img-thumbnail{padding:.25rem;background-color:#fff;border:1px solid #dee2e6;border-radius:.25rem;max-width:100%;height:auto}.figure{display:inline-block}.figure-img{margin-bottom:.5rem;line-height:1}.figure-caption{font-size:.875em;color:#6c757d}.container,.container-fluid,.container-lg,.container-md,.container-sm,.container-xl,.container-xxl{width:100%;padding-right:var(--bs-gutter-x,.75rem);padding-left:var(--bs-gutter-x,.75rem);margin-right:auto;margin-left:auto}@media(min-width:576px){.container,.container-sm{max-width:540px}}@media(min-width:768px){.container,.container-md,.container-sm{max-width:720px}}@media(min-width:992px){.container,.container-lg,.container-md,.container-sm{max-width:960px}}@media(min-width:1200px){.container,.container-lg,.container-md,.container-sm,.container-xl{max-width:1140px}}@media(min-width:1400px){.container,.container-lg,.container-md,.container-sm,.container-xl,.container-xxl{max-width:1320px}}.row{--bs-gutter-x:1.5rem;--bs-gutter-y:0;display:flex;flex-wrap:wrap;margin-top:calc(var(--bs-gutter-y) * -1);margin-right:calc(var(--bs-gutter-x)/-2);margin-left:calc(var(--bs-gutter-x)/-2)}.row>*{flex-shrink:0;width:100%;max-width:100%;padding-right:calc(var(--bs-gutter-x)/2);padding-left:calc(var(--bs-gutter-x)/2);margin-top:var(--bs-gutter-y)}.col{flex:1 0 0%}.row-cols-auto>*{flex:0 0 auto;width:auto}.row-cols-1>*{flex:0 0 auto;width:100%}.row-cols-2>*{flex:0 0 auto;width:50%}.col-auto{flex:0 0 auto;width:auto}.col-3{flex:0 0 auto;width:25%}.col-6{flex:0 0 auto;width:50%}.col-8{flex:0 0 auto;width:66.666667%}.col-9{flex:0 0 auto;width:75%}.col-12{flex:0 0 auto;width:100%}.g-0,.gx-0{--bs-gutter-x:0}.g-0,.gy-0{--bs-gutter-y:0}.g-1,.gx-1{--bs-gutter-x:0.25rem}.g-1,.gy-1{--bs-gutter-y:0.25rem}.g-2,.gx-2{--bs-gutter-x:0.5rem}.g-2,.gy-2{--bs-gutter-y:0.5rem}.g-3,.gx-3{--bs-gutter-x:1rem}.g-3,.gy-3{--bs-gutter-y:1rem}.g-4,.gx-4{--bs-gutter-x:1.5rem}.g-4,.gy-4{--bs-gutter-y:1.5rem}.g-5,.gx-5{--bs-gutter-x:3rem}.g-5,.gy-5{--bs-gutter-y:3rem}@media(min-width:768px){.col-md-3{flex:0 0 auto;width:25%}.col-md-8{flex:0 0 auto;width:66.666667%}}@media(min-width:992px){.col-lg-3{flex:0 0 auto;width:25%}.col-lg-8{flex:0 0 auto;width:66.666667%}}.form-label{margin-bottom:.5rem}.form-text{margin-top:.25rem;font-size:.875em;color:#6c757d}.form-control{display:block;width:100%;padding:.375rem .75rem;font-size:1rem;font-weight:400;line-height:1.5;color:#212529;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;-webkit-appearance:none;-moz-appearance:none;appearance:none;border-radius:.25rem;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out}@media(prefers-reduced-motion:reduce){.form-control{transition:none}}.form-control:focus{color:#212529;background-color:#fff;border-color:#86b7fe;outline:0;box-shadow:0 0 0 .25rem rgba(13,110,253,.25)}.form-control::placeholder{color:#6c757d;opacity:1}.input-group{position:relative;display:flex;flex-wrap:wrap;align-items:stretch;width:100%}.input-group>.form-control{position:relative;flex:1 1 auto;width:1%;min-width:0}.input-group>.form-control:focus{z-index:3}.input-group .btn{position:relative;z-index:2}.input-group .btn:focus{z-index:3}.input-group:not(.has-validation)>:not(:last-child){border-top-right-radius:0;border-bottom-right-radius:0}.input-group>:not(:first-child){margin-left:-1px;border-top-left-radius:0;border-bottom-left-radius:0}.btn{display:inline-block;font-weight:400;line-height:1.5;color:#212529;text-align:center;text-decoration:none;vertical-align:middle;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;user-select:none;background-color:transparent;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;border-radius:.25rem;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out}@media(prefers-reduced-motion:reduce){.btn{transition:none}}.btn:hover{color:#212529}.btn:focus{outline:0;box-shadow:0 0 0 .25rem rgba(13,110,253,.25)}.btn-primary{color:#fff;background-color:#0d6efd;border-color:#0d6efd}.btn-primary:hover{color:#fff;background-color:#0b5ed7;border-color:#0a58ca}.collapse:not(.show){display:none}.nav{display:flex;flex-wrap:wrap;padding-left:0;margin-bottom:0;list-style:none}.nav-link{display:block;padding:.5rem 1rem;text-decoration:none;transition:color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out}@media(prefers-reduced-motion:reduce){.nav-link{transition:none}}.navbar{position:relative;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;padding-top:.5rem;padding-bottom:.5rem}.navbar>.container{display:flex;flex-wrap:inherit;align-items:center;justify-content:space-between}.navbar-brand{padding-top:.3125rem;padding-bottom:.3125rem;margin-right:1rem;font-size:1.25rem;text-decoration:none;white-space:nowrap}.navbar-nav{display:flex;flex-direction:column;padding-left:0;margin-bottom:0;list-style:none}.navbar-nav .nav-link{padding-right:0;padding-left:0}.navbar-collapse{flex-basis:100%;flex-grow:1;align-items:center}@media(min-width:768px){.navbar-expand-md{flex-wrap:nowrap;justify-content:flex-start}.navbar-expand-md .navbar-nav{flex-direction:row}.navbar-expand-md .navbar-collapse{display:flex!important;flex-basis:auto}}.navbar-light .navbar-brand{color:rgba(0,0,0,.9)}.navbar-light .navbar-brand:focus,.navbar-light .navbar-brand:hover{color:rgba(0,0,0,.9)}.navbar-light .navbar-nav .nav-link{color:rgba(0,0,0,.55)}.navbar-light .navbar-nav .nav-link:focus,.navbar-light .navbar-nav .nav-link:hover{color:rgba(0,0,0,.7)}.navbar-light .navbar-nav .nav-link.active{color:rgba(0,0,0,.9)}.fixed-top{position:fixed;top:0;right:0;left:0;z-index:1030}.w-100{width:100%!important}.d-none{display:none!important}.d-block{display:block!important}.d-flex{display:flex!important}.flex-wrap{flex-wrap:wrap!important}.align-items-center{align-items:center!important}.justify-content-between{justify-content:space-between!important}.m-0{margin:0!important}.mb-0{margin-bottom:0!important}.mb-2{margin-bottom:.5rem!important}.mb-3{margin-bottom:1rem!important}.me-2{margin-right:.5rem!important}.ms-auto{margin-left:auto!important}.my-auto{margin-top:auto!important;margin-bottom:auto!important}.p-0{padding:0!important}.text-dark{color:#212529!important}.text-muted{color:#6c757d!important}.text-secondary{color:#6c757d!important}.text-center{text-align:center!important}.text-decoration-none{text-decoration:none!important}.rounded{border-radius:.25rem!important}.visually-hidden,.visually-hidden-focusable:not(:focus):not(:focus-within){position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}@media(min-width:768px){.d-md-none{display:none!important}.d-md-flex{display:flex!important}.d-md-block{display:block!important}}body{background-color:#bef}.jumbo{background-color:#8ed2e8}.btn-primary,.page-item.active .page-link{background-color:#428bca}.btn-primary{border-color:#428bca}.badge{background-color:#ade}.page-link{border-color:#bef!important}.page-link,.page-item.disabled .page-link{border-width:2px;background-color:#ade}@font-face{font-family:icomoon;src:url(fonts/icomoon.eot?4838ia);src:url(fonts/icomoon.eot?4838ia#iefix)format('embedded-opentype'),url(fonts/icomoon.ttf?4838ia)format('truetype'),url(fonts/icomoon.woff?4838ia)format('woff'),url(fonts/icomoon.svg?4838ia#icomoon)format('svg');font-weight:400;font-style:normal;font-display:block}[class^=icon-],[class*=" icon-"]{font-family:icomoon!important;speak:never;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.icon-at:before{content:"\e901"}.icon-tag:before{content:"\1f3f7"}.icon-mobile:before{content:"\1f4f1"}.icon-box-add:before{content:"\1f4e6"}.icon-search:before{content:"\1f50d"}.icon-key:before{content:"\1f511"}.icon-download:before{content:"\1f4e5"}.icon-play:before{content:"\25b6"}.icon-amazon:before{content:"\1f6cd"}.icon-instagram:before{content:"\1f4f7"}.icon-twitter:before{content:"\1f426"}.icon-youtube:before{content:"\1f3a5"}.icon-twitch:before{content:"\1f579"}.icon-onedrive:before{content:"\eaaf"}.icon-github:before{content:"\1f419"}.icon-android:before{content:"\1f916"}.icon-linkedin:before{content:"\1f3e2"}.icon-last-fm:before{content:"\1f4fb"}.icon-paypal:before{content:"\1f4b8"}.icon-envelope:before{content:"\2709"}.icon-tiktok:before{content:"\e902"}.icon-mastodon:before{content:"\e900"}.icon-ubisoft:before{content:"\1f300"}.icon-googleplay:before{content:"\23ef"}.icon-steam:before{content:"\1f3ae"}.icon-gitlab:before{content:"\1f98a"}.icon-chevron-up:before{content:"\2191"}.icon-facebook:before{content:"\1f135"}.icon-stack-overflow:before{content:"\1f95e"}body{padding-top:2.5rem}.blog-header,.blog-post,.blog-pagination,.jumbo{margin-bottom:2rem}.blog-post img{max-width:100%}.projectsandroid-puzzles img{max-width:20%}@media(max-width:1000px){.pagination{flex-wrap:wrap}}.jumbo{margin-top:-1rem}.jumbo .container{display:flex;flex-direction:row;padding-top:1.5rem;padding-bottom:1.5rem}.intro{margin-left:1rem}@media(max-width:350px){.jumbo .container{flex-direction:column}.intro{margin-left:0}}.badge{font-size:.85em;margin:.35em .15em .25em}.blog-post header,.blog-main header{margin-bottom:.5rem}.blog-post-date,.blog-post-tags{display:inline-block;vertical-align:middle;margin-right:1rem}blockquote{border-left:5px solid #ade;padding-left:1rem}aside section{padding-bottom:2rem}aside section ol{margin-bottom:0}#me-elsewhere a{text-decoration:none}.highlight pre{padding:.3rem .5rem;border-radius:.4rem}#bottomnav{padding-top:0}.mynavbar{display:flex;flex-wrap:nowrap;align-items:center;justify-content:flex-start;background-color:#ade;padding-top:0;padding-bottom:0}.mynavbar-main{display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between}.mynavbar .navbar-nav{flex-direction:row;align-items:center}.mynavbar .nav-link{padding:1rem .5rem}.nav-link.active{background-color:#8ed2e8}@media(max-width:350px){.navbar-brand{display:none}}#navbar-togglebox:checked~.collapse{display:block}#navbar-togglebox:checked~.mynavbar-main .toggle-on{display:none}#navbar-togglebox:not(:checked)~.mynavbar-main .toggle-off{display:none}@media(max-width:767px){#searchform{margin-top:.5rem;margin-bottom:.5rem}}@media(min-width:768px){#navbar-togglebtn{display:none}}#searchform{min-width:14em}#searchbox{border:none;background-color:#def7ff}
+   .skip-link{position:absolute;transform:translateY(-100%);left:0;top:0;background:#fff;color:#000;padding:.5rem 1rem;z-index:2000}
+   .skip-link:focus{transform:translateY(0)}
+   :focus-visible{outline:3px solid #005FCC;outline-offset:2px;border-radius:2px}
+   :focus:not(:focus-visible){outline:none}
+  </style>
+  <meta charset="utf-8">
+  <meta content="ie=edge" http-equiv="x-ua-compatible">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <meta content="Locale pulse trackball plugin" property="og:title">
+  <meta content="On the Nexus One, there is a setting under Sound &amp; Display: Pulse notification light. I wanted to set this differently in different environments, using Locale, so I wrote a plugin." property="og:description">
+  <meta content="article" property="og:type">
+  <meta content="" property="og:url">
+  <meta content="summary" name="twitter:card">
+  <meta content="Locale pulse trackball plugin" name="twitter:title">
+  <meta content="On the Nexus One, there is a setting under Sound &amp; Display: Pulse notification light. I wanted to set this differently in different environments, using Locale, so I wrote a plugin." name="twitter:description">
+  <title>Locale pulse trackball plugin — Chris Boyle</title>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="blog-header d-print-none">
+    <nav class="mynavbar fixed-top navbar-expand-md navbar-light" id="topnav" aria-label="Main">
+      <div class="container">
+        <div class="row">
+          <input class="d-none" id="navbar-togglebox" type="checkbox" aria-hidden="true">
+          <div class="col-md-8 mynavbar-main">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="navbar-brand text-decoration-none" href="/">Chris Boyle</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/cv/">CV</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/projects/" aria-current="page">Projects</a>
+              </li>
+            </ul>
+            <button aria-controls="navbarSearch" aria-expanded="false" aria-label="Open search" class="btn btn-primary" id="navbar-togglebtn" type="button">
+              <i aria-hidden="true" class="icon-search toggle-on"></i>
+              <i aria-hidden="true" class="icon-chevron-up toggle-off"></i>
+            </button>
+          </div>
+          <div class="col-md-3 collapse navbar-collapse" id="navbarSearch">
+            <section aria-label="Site search">
+              <form action="/search/" id="searchform" novalidate>
+                <label class="visually-hidden" for="searchbox">Search this site</label>
+                <input name="sitesearch" type="hidden" value="chris.boyle.name">
+                <div class="input-group field-group">
+                  <input class="form-control" id="searchbox" name="q" placeholder="Search" required aria-describedby="search-error" aria-invalid="false" type="text">
+                  <button aria-label="Submit search" class="btn btn-primary" type="submit">
+                    <i aria-hidden="true" class="icon-search"></i>
+                  </button>
+                </div>
+                <span id="search-error" role="alert" aria-live="assertive" hidden></span>
+                <div aria-live="polite" id="form-status" class="visually-hidden"></div>
+              </form>
+            </section>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <div class="row">
+      <div class="col-12 col-lg-8 blog-main">
+        <header aria-label="Article header">
+          <h1 class="blog-post-title text-dark">Locale pulse trackball plugin</h1>
+        </header>
+        <article class="blog-post projectsptlp">
+          <p>
+            <a class="btn btn-primary" href="/downloads/locale-pulse-trackball-plugin.apk"> <i aria-hidden="true" class="icon-box-add"></i> &nbsp;APK</a>
+            <a class="btn btn-primary" href="https://github.com/"> <i aria-hidden="true" class="icon-github"></i> &nbsp;GitHub</a>
+          </p>
+          <p>
+            On the Nexus One, there is a setting under Sound &amp; Display: Pulse notification light. I wanted to set this differently in different environments, using
+            <a href="https://www.twofortyfouram.com/">Locale</a>,
+            so I wrote a plugin.
+          </p>
+          <p>
+            The plugin is a standard Locale action, with a single toggle that will set the Pulse notification light system setting accordingly when the action is fired. The plugin makes no attempt to control detailed behaviour of the light; the hint shown below it is just what I have observed that the system setting does.
+          </p>
+          <p>
+            There is no published Android/Google API for this setting as far as I know. I determined the name of the system setting (
+            <code>notification_light_pulse</code>
+            ) by inspecting my own device, to which I have root access. Accordingly, Google has every right to break this in a future update, but for now, I publish it in the hope that it will be useful.
+          </p>
+        </article>
+      </div>
+
+      <aside class="col-12 col-lg-3 ms-auto blog-sidebar d-print-none" aria-label="Sidebar">
+        <section aria-label="Recent posts">
+          <h2 class="h4">Recent Posts</h2>
+          <ol class="list-unstyled">
+            <li><a href="/blog/controlling-grub-from-the-network/">Controlling GRUB from the network</a></li>
+            <li><a href="/blog/the-puzzle-of-the-cancel-button/">The puzzle of the cancel button</a></li>
+            <li><a href="/blog/hello-hugo/">Hello, Hugo!</a></li>
+            <li><a href="/blog/passwordless-disk-encryption-on-linux/">Passwordless disk encryption on Linux</a></li>
+          </ol>
+        </section>
+        <section aria-label="Tags">
+          <h2 class="h4">Tags</h2>
+          <nav class="taxonomy-tags" aria-label="Tag links">
+            <a class="btn btn-small badge text-secondary" href="/tags/acpi/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;acpi</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/android/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;android</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/boot/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;boot</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/c/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;c</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/c-plus-plus/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;c++</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/debian/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;debian</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/django/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;django</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/flying/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;flying</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/gnupg/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;gnupg</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/go/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;go</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/gplus/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;gplus</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/guitar/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;guitar</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/hack/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;hack</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/identity/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;identity</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/ipv6/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;ipv6</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/java/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;java</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/locale/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;locale</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/meta/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;meta</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/metawatch/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;metawatch</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/nymwars/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;nymwars</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/python/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;python</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/ruby/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;ruby</a>
+            <a class="btn btn-small badge text-secondary" href="/tags/security/"><i aria-hidden="true" class="icon-tag"></i>&nbsp;security</a>
+          </nav>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="blog-footer w-100 d-print-none">
+    <nav class="navbar" id="bottomnav" aria-label="Footer">
+      <div class="container text-muted">
+        <p>
+          &copy; Chris Boyle |
+          <a class="text-muted" href="/credits/">Credits</a>
+        </p>
+      </div>
+    </nav>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    (function () {
+      const toggleBtn = document.getElementById('navbar-togglebtn');
+      const searchPanel = document.getElementById('navbarSearch');
+      const searchInput = document.getElementById('searchbox');
+      const hiddenCheckbox = document.getElementById('navbar-togglebox');
+      const form = document.getElementById('searchform');
+      const errorEl = document.getElementById('search-error');
+      const statusEl = document.getElementById('form-status');
+
+      function isMobile() {
+        return window.matchMedia('(max-width: 767px)').matches;
+      }
+
+      function openSearch() {
+        searchPanel.classList.add('show');
+        if (hiddenCheckbox) hiddenCheckbox.checked = true;
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        toggleBtn.setAttribute('aria-label', 'Close search');
+        if (isMobile()) {
+          searchInput.focus();
+        }
+      }
+
+      function closeSearch(returnFocus = true) {
+        if (isMobile()) {
+          searchPanel.classList.remove('show');
+          if (hiddenCheckbox) hiddenCheckbox.checked = false;
+        }
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.setAttribute('aria-label', 'Open search');
+        if (returnFocus) {
+          toggleBtn.focus();
+        }
+      }
+
+      toggleBtn.addEventListener('click', function () {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          closeSearch(true);
+        } else {
+          openSearch();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && isMobile() && toggleBtn.getAttribute('aria-expanded') === 'true') {
+          closeSearch(true);
+        }
+      });
+
+      window.addEventListener('resize', function () {
+        if (!isMobile()) {
+          searchPanel.classList.remove('show');
+          if (hiddenCheckbox) hiddenCheckbox.checked = false;
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.setAttribute('aria-label', 'Open search');
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        let firstError = null;
+        const requiredInputs = form.querySelectorAll('[required]');
+
+        requiredInputs.forEach(input => {
+          const describedBy = input.getAttribute('aria-describedby');
+          const fieldErrorEl = describedBy ? document.getElementById(describedBy) : null;
+          const labelText = input.labels && input.labels[0]
+            ? input.labels[0].textContent.trim()
+            : 'This field';
+
+          if (!input.value.trim()) {
+            input.setAttribute('aria-invalid', 'true');
+            if (fieldErrorEl) {
+              fieldErrorEl.textContent = labelText + ' is required';
+              fieldErrorEl.hidden = false;
+            }
+            if (!firstError) firstError = input;
+          } else {
+            input.setAttribute('aria-invalid', 'false');
+            if (fieldErrorEl) {
+              fieldErrorEl.hidden = true;
+              fieldErrorEl.textContent = '';
+            }
+          }
+        });
+
+        if (firstError) {
+          firstError.focus();
+        } else {
+          statusEl.textContent = 'Form submitted successfully.';
+          form.submit();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and main id; ensured semantic header/nav/main/footer/aside landmarks; preserved single h1; converted sidebar section headings to h2 for sequential hierarchy; added explicit label for search input; added descriptive hrefs/text for links and buttons; ensured html lang is present.
+[B] ARIA fixes: added unique aria-labels to multiple nav regions; added aria-labels to sidebar sections; removed redundant implicit-role usage by not adding role attributes to native landmarks; added aria-current for active navigation item; ensured no positive tabindex remains via JS; added baseline focus management attributes for search disclosure.
+[C] JS patterns added: implemented C-F1 form validation with inline error announcement and status region; implemented search input disclosure behavior with focus management based on sketch analysis (search_input + focus_management); implemented C-K1/K3 global focus indicator and positive tabindex cleanup; preserved sticky/fixed top navigation already implied by existing layout.
+-->

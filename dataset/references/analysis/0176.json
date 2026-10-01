@@ -1,0 +1,84 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a horizontal header/navigation bar pinned across the very top, visually separated from the page content below and spanning the full width.",
+      "confidence": "HIGH",
+      "behavior_notes": "Navigation should remain fixed while the long page content scrolls beneath it. Active/current section or page state may need to remain visually indicated within the fixed bar.",
+      "ambiguities": "Sketch does not show whether the nav shrinks, changes style, or gains shadow on scroll."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "Desktop sketch shows a row of pill/boxed controls in the top content area, including a larger input-like field consistent with a search/filter control above the grid.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Should accept text input and likely submit or filter the visible project grid. At minimum requires input handling and likely keyboard submission.",
+      "ambiguities": "It is unclear whether this is true search, filtering, or a set of static controls; live results are not explicitly drawn."
+    },
+    {
+      "pattern_id": "tab_panel",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a horizontal row of multiple button-like controls beneath the hero/description area, with one control visually offset as a separate option set, implying section switching such as Projects/Comments/Curators/Activity.",
+      "confidence": "HIGH",
+      "behavior_notes": "Selecting a tab should swap the main content panel without leaving the overall page context. One tab should be marked active, and keyboard navigation between tabs should be supported.",
+      "ambiguities": "The exact number of tabs and whether switching is client-side only or route-backed is not explicit."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a long grid/list of repeated content cards followed by a single wide button centered beneath the grid, strongly implying progressive loading of additional items.",
+      "confidence": "HIGH",
+      "behavior_notes": "Clicking the button should append more cards to the existing grid/list, preserve scroll position, and expose a loading state while fetching more content.",
+      "ambiguities": "Not clear whether content is paginated, appended in batches, or eventually replaced by infinite scroll."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "desktop",
+      "visual_evidence": "Desktop sketch shows several compact boxed controls with circular markers/icons inside them in the toolbar area above the grid, suggesting custom filter chips, segmented selectors, or non-native select-like widgets.",
+      "confidence": "LOW",
+      "behavior_notes": "If these are custom selectors, they need open/select/toggle state management and keyboard interaction beyond plain links.",
+      "ambiguities": "These controls may instead be simple buttons, radio filters, or badges rather than true custom selects."
+    }
+  ],
+  "applicable_criteria": [
+    "S1",
+    "N3",
+    "F2",
+    "D2",
+    "D4",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4",
+    "F4"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F1",
+    "F3",
+    "D1",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "tab_panel",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "tab_panel",
+      "search_input",
+      "load_more",
+      "custom_select"
+    ]
+  },
+  "sketch_notes": "The sketches imply a content-heavy responsive listing page with relatively modest but important JavaScript: a fixed top navigation, section switching via tabs, and progressive loading for a large card grid. Desktop adds a more complex control bar that likely includes search and possibly filter/select widgets, while mobile simplifies the layout into stacked content with the same tabbed section switcher and load-more behavior. No explicit modal, accordion, toast, hamburger, or dropdown behavior is clearly drawn in the sketches themselves."
+}

@@ -1,0 +1,94 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a persistent header/navigation band at the very top spanning the viewport, separated from the page body like a fixed bar.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top navigation should remain available while scrolling, especially because the page is long and content-heavy.",
+      "ambiguities": "Could be merely a static header rather than fixed-on-scroll, but the repeated strong top bar treatment and long-page layout make sticky behavior likely."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch implies a compact top navigation area with reduced horizontal space compared with desktop, suggesting collapsed navigation rather than full inline links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu button should toggle the mobile nav panel open/closed; focus should move into the revealed menu and return to the trigger on close.",
+      "ambiguities": "The sketch is abstract and does not explicitly draw the hamburger icon, so this is inferred from responsive layout conventions rather than explicit depiction."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a prominent search field near the top of the page with an adjacent action area/button, indicating searchable location/content input.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search should accept text input and submit on button press or Enter. Given the directory/listing context, live suggestions or assisted matching are strongly implied.",
+      "ambiguities": "The sketch does not clarify whether results update live, autocomplete appears, or search only submits traditionally."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The search control is a form-like input with a submit action, implying handling of empty, invalid, or incomplete submissions.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "At minimum, validate non-empty or recognizable query input before submission and provide inline feedback if needed.",
+      "ambiguities": "Validation depth is unclear; it may be minimal if free-text search is allowed."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a centered button-like control beneath a content section, visually separated as a call-to-action for revealing more content.",
+      "confidence": "HIGH",
+      "behavior_notes": "Button should fetch or reveal additional items/content below the current section, with loading and completion states.",
+      "ambiguities": "Could theoretically be a generic CTA rather than pagination, but its placement beneath content strongly suggests progressive reveal."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Interactive controls implied across the sketches include search, mobile navigation toggle, and a load-more control; these require managed focus behavior for accessibility and usability.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Ensure logical focus order, visible focus states, focus return after menu close, and preserved focus context after dynamic content insertion.",
+      "ambiguities": "No explicit modal or composite widget is drawn, so focus management needs are mostly tied to inferred navigation and dynamic loading behaviors rather than clearly depicted overlays."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F1",
+    "F2",
+    "D4",
+    "S1",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "form_validation",
+      "sticky_nav",
+      "focus_management"
+    ],
+    "desktop": [
+      "search_input",
+      "load_more",
+      "form_validation",
+      "sticky_nav",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively light-to-moderate JavaScript layer centered on responsive navigation and search, with the desktop version adding a clearer progressive-content action via a load-more button. Neither sketch strongly suggests tabs, accordions, dropdowns, or modal overlays. The mobile viewport likely needs the most JS for navigation collapse/expand behavior, while the desktop viewport emphasizes search submission and incremental content loading within a long scrolling page."
+}

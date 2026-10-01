@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a boxed three-line icon at the top right, a standard hamburger trigger for collapsed navigation.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel. The current page should be indicated within the revealed menu if navigation items are present there.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown below the header, an off-canvas drawer, or a full-screen overlay."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent top header/navigation bar spanning the width of the page, visually separated from content by a horizontal rule, implying a fixed site header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation/header should likely remain fixed while scrolling so branding and navigation stay accessible across the long content page.",
+      "ambiguities": "The sketch does not explicitly show scrolling states, so fixed-on-scroll versus simply top-positioned at page load is inferred."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static informational page with low JavaScript complexity. The only clearly interactive requirement is responsive navigation: mobile uses a collapsed hamburger menu, while both viewports suggest a persistent top navigation/header that may need sticky behavior during scroll. No forms, tabs, accordions, modals, search, pagination, or dynamic loading controls are visually indicated; the rest appears to be straightforward static content and lists."
+}

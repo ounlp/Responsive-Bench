@@ -1,0 +1,92 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a distinct top header/navigation area separated by a horizontal rule above the main article content, suggesting a persistent masthead that remains available while reading a long page.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should likely stay fixed or become fixed on scroll so branding/navigation remains accessible during long-form reading.",
+      "ambiguities": "The sketch does not explicitly show a scrolled state, so stickiness is inferred from the long article layout rather than directly drawn."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a compact header area with small utility-like items near the top, consistent with a blog header that commonly contains search access.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented, search should support focus, text entry, and submit behavior; it may expand from a compact trigger in the header.",
+      "ambiguities": "The sketch marks are abstract and do not clearly label a search field, so this is only weakly implied by the header utility layout and reference structure."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop article layout includes a large featured image block within a blog post; large editorial images commonly imply click-to-open enlarged viewing or sharing/subscription overlays in this kind of design.",
+      "confidence": "LOW",
+      "behavior_notes": "If images or utility actions are interactive, a modal/lightbox overlay would open above the page, trap focus, and close via close button, Escape, or backdrop.",
+      "ambiguities": "The sketch does not explicitly depict an overlay trigger or modal state; this is inferred from the prominent image treatment and common blog behavior."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "desktop",
+      "visual_evidence": "Near the lower portion of the desktop sketch there is a boxed input-like area beneath divider lines, consistent with a comment or subscription form region.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Any comment/subscription form should validate required fields before submission and surface inline errors or submission status.",
+      "ambiguities": "The exact form type and fields are not labeled, so validation requirements are inferred from the presence of an input region rather than explicit controls."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically stacked content areas typical of blog/article feeds or extended comment/content sections, implying progressive disclosure or pagination behavior may be needed to avoid rendering everything at once.",
+      "confidence": "LOW",
+      "behavior_notes": "A load-more trigger could append additional posts, comments, or related items below the visible content while preserving reading position.",
+      "ambiguities": "The sketches do not show a labeled button or spinner, so this is speculative and depends on whether the page is a single post view or a feed."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any interactive overlays, search activation, or form regions implied by the layouts would require managed keyboard focus; the desktop especially suggests header utilities and a lower-page form area, while the mobile long reading layout would need orderly focus progression.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Programmatic focus should move into opened overlays or expanded search, return to the trigger on close, and maintain logical tab order through long-form content.",
+      "ambiguities": "This pattern is dependent on the presence of other interactive components, some of which are only implied rather than explicitly drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "S1",
+    "F1",
+    "F2",
+    "M1",
+    "M2",
+    "D4",
+    "S2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M3",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "focus_management",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "form_validation",
+      "focus_management",
+      "search_input",
+      "modal_dialog",
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-first blog/article experience with relatively light but important JavaScript needs rather than a highly app-like interface. Desktop suggests more utility behavior in the header and lower-page interaction around forms, while mobile appears primarily as a long reading view with minimal explicit controls. Most complexity comes from inferred enhancements common to editorial/blog layouts—sticky header behavior, possible search activation, possible image/modal treatment, and accessible focus handling—rather than clearly drawn widgets like tabs, accordions, or menus."
+}

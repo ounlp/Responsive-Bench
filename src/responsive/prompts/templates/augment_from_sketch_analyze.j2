@@ -1,0 +1,119 @@
+## SYSTEM
+
+You are an expert UI analyst specializing in inferring JavaScript interaction
+requirements from hand-drawn wireframes and sketches.
+
+Your task is to inspect two sketches — one mobile, one desktop — and identify
+every interactive JavaScript pattern that would be needed to implement the
+design faithfully. You reason about what the sketch implies, not just what is
+explicitly labeled.
+
+Output one JSON object. No prose before or after it. No markdown fences.
+
+## USER
+
+INPUTS
+------
+You are given two sketch images in this order:
+  1. Mobile sketch  (Image 1)
+  2. Desktop sketch (Image 2)
+
+Page metadata (from dataset): {{page_type}}
+
+Reference HTML (for context; may be imperfect):
+{{reference_html}}
+
+INFERENCE TASK
+--------------
+For each sketch, identify every UI element that implies JavaScript behavior.
+Use the JS pattern taxonomy below to classify each finding.
+
+JS PATTERN TAXONOMY
+-------------------
+navigation:
+  - hamburger_menu      Mobile nav toggle button that shows/hides a nav panel
+  - dropdown_menu       Hover or click trigger that reveals a submenu
+  - sticky_nav          Navigation that should remain fixed on scroll
+
+forms:
+  - form_validation     Any form with required fields or submit action
+  - custom_select       Non-native dropdown or combobox
+  - search_input        Search field with live results or submit behavior
+
+dynamic_content:
+  - accordion           Expandable/collapsible sections (FAQ, details panels)
+  - tab_panel           Horizontal tabs switching between content panels
+  - live_region         Counter, cart badge, notification count that updates
+  - load_more           Button or scroll trigger that loads additional items
+
+modals_overlays:
+  - modal_dialog        Overlay panel triggered by a button or link
+  - toast_notification  Temporary status message appearing after an action
+
+scroll_layout:
+  - infinite_scroll     Content that loads automatically on scroll
+  - scroll_to_top       Button that appears after scrolling and returns to top
+
+keyboard_focus:
+  - focus_management    Any component that requires programmatic focus control
+                        (modals, menus, disclosure widgets)
+
+SKETCH ANALYSIS INSTRUCTIONS
+-----------------------------
+For each pattern you identify:
+  - Specify which sketch it appears in (mobile | desktop | both)
+  - Describe the specific visual evidence that implies this pattern
+  - Assess confidence: HIGH (explicitly drawn), MEDIUM (strongly implied by
+    layout), LOW (plausible but speculative)
+  - Note any ambiguity about how the pattern should behave
+
+APPLICABLE CRITERIA MAPPING
+----------------------------
+After identifying patterns, map each to the applicable JS criteria IDs from
+this list. Only include criteria that are relevant to patterns you found.
+
+Criteria reference:
+  N1 hamburger_menu opens         → hamburger_menu
+  N2 dropdown_menu opens          → dropdown_menu
+  N3 active nav item marked       → hamburger_menu, dropdown_menu, sticky_nav
+  F1 form validation              → form_validation
+  F2 input focus state            → form_validation, search_input
+  F3 error message announced      → form_validation
+  F4 select/combobox state        → custom_select
+  D1 accordion expand/collapse    → accordion
+  D2 tab panel switching          → tab_panel
+  D3 live region updates          → live_region
+  D4 loading state announced      → load_more, live_region
+  M1 modal opens + focus trap     → modal_dialog
+  M2 modal closes correctly       → modal_dialog
+  M3 toast/notification           → toast_notification
+  S1 sticky nav accessible        → sticky_nav
+  S2 infinite scroll/load more    → infinite_scroll, load_more
+  V1 video player controls        → video_player
+  K1 tab order logical            → all patterns (always applicable at desktop)
+  K2 no keyboard trap             → modal_dialog, accordion, tab_panel
+  K3 visible focus indicator      → all patterns (always applicable at desktop)
+  K4 arrow key in widgets         → tab_panel, custom_select, accordion
+
+OUTPUT SCHEMA
+-------------
+{
+  "patterns_found": [
+    {
+      "pattern_id": "<taxonomy key, e.g. hamburger_menu>",
+      "present_in": "<mobile | desktop | both>",
+      "visual_evidence": "<what in the sketch implies this>",
+      "confidence": "<HIGH | MEDIUM | LOW>",
+      "behavior_notes": "<how it should behave based on sketch>",
+      "ambiguities": "<anything unclear from sketch alone, or null>"
+    }
+  ],
+  "applicable_criteria": ["N1", "F1", ...],
+  "criteria_not_applicable": ["D2", "V1", ...],
+  "implementation_priorities": {
+    "mobile": ["<pattern_id in priority order for mobile viewport>"],
+    "desktop": ["<pattern_id in priority order for desktop viewport>"]
+  },
+  "sketch_notes": "<one paragraph summarizing overall JS complexity implied
+                   by these sketches and any cross-viewport differences>"
+}

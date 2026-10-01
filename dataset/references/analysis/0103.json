@@ -1,0 +1,44 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a long vertically stacked list of content followed by a prominent boxed control/button beneath the list, implying an action to reveal additional items rather than showing everything at once.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Tapping the boxed control should append more list items or reveal another batch of examples below the current list. A loading state is likely needed while new items are fetched or inserted.",
+      "ambiguities": "The box could also be a generic CTA rather than a true pagination/load-more control; the sketch does not label it."
+    }
+  ],
+  "applicable_criteria": [
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "load_more"
+    ],
+    "desktop": []
+  },
+  "sketch_notes": "Across both sketches, the page mostly reads as a static content/index layout: a header area and a list of linked items. The desktop version appears to present the full list directly with no obvious controls beyond standard link navigation, while the mobile version introduces one additional boxed control below the list that strongly suggests progressive disclosure such as load more. No clear evidence appears for menus, tabs, accordions, search, modal overlays, or sticky behavior."
+}

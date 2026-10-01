@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Blinds CF15 — The Blinds Company</title>
+  <style>
+    :root{
+      --blue-bg:#d9edf6;
+      --line:#7f8a8f;
+      --text:#222;
+      --muted:#6f6f6f;
+      --orange:#ff742f;
+      --card-border:#b7b7b7;
+      --white:#fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color:var(--text);
+      background:#fff;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:0;top:0;background:#000;color:#fff;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--blue-bg);
+      border-bottom:1px solid #cfdde4;
+    }
+    .header-inner{
+      max-width:840px;
+      margin:0 auto;
+      padding:14px 20px 10px;
+    }
+    .brand-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:20px;
+      border-bottom:1px solid var(--line);
+      padding-bottom:8px;
+    }
+    .brand{
+      font-family: "Arial Narrow", "Trebuchet MS", Arial, sans-serif;
+      font-weight:300;
+      color:#666;
+      font-size:3rem;
+      line-height:1;
+      letter-spacing:.5px;
+      margin:0;
+    }
+    .location{
+      font-family: "Arial Narrow", "Trebuchet MS", Arial, sans-serif;
+      font-weight:300;
+      color:#666;
+      font-size:4rem;
+      line-height:1;
+      margin:0;
+      padding-top:8px;
+      text-align:right;
+    }
+
+    .top-nav-wrap{
+      background:var(--blue-bg);
+    }
+    .top-nav{
+      max-width:840px;
+      margin:0 auto;
+      padding:6px 20px 4px;
+    }
+    .top-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:1px;
+      flex-wrap:wrap;
+    }
+    .top-nav a{
+      display:block;
+      text-decoration:none;
+      color:#666;
+      border:1px solid #9aa7ad;
+      background:#dcecf4;
+      padding:5px 9px;
+      font-size:.95rem;
+      text-align:center;
+      min-width:79px;
+    }
+
+    .nav-toggle{ display:none; }
+
+    main{
+      max-width:840px;
+      margin:0 auto;
+      padding:8px 20px 22px;
+    }
+    h1{
+      font-size:2rem;
+      color:#666;
+      font-weight:600;
+      margin:0 0 12px;
+    }
+    p{
+      font-size:1rem;
+      line-height:1.15;
+      margin:0 0 16px;
+    }
+    .cta{
+      display:block;
+      text-decoration:none;
+      background:var(--orange);
+      color:#111;
+      text-align:center;
+      padding:10px 12px;
+      font-size:1rem;
+      margin:14px 0 28px;
+    }
+
+    .product-grid{
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:26px 34px;
+      justify-content:center;
+      margin:0 auto 18px;
+      max-width:764px;
+    }
+    .product-card{
+      display:block;
+      text-decoration:none;
+      color:#222;
+      border:1px solid var(--card-border);
+      background:#fafafa;
+      text-align:center;
+      padding:2px;
+    }
+    .product-card img{
+      display:block;
+      width:100%;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      border:1px solid #cfcfcf;
+      background:#1800ff;
+    }
+    .product-card span{
+      display:block;
+      padding:6px 4px 4px;
+      font-size:.95rem;
+      white-space:nowrap;
+    }
+
+    .browse-link{
+      display:block;
+      text-decoration:none;
+      color:#333;
+      text-align:center;
+      background:#e2f0f6;
+      border:1px solid #aeb8bd;
+      padding:9px 10px;
+      margin:10px 0 12px;
+      font-size:.95rem;
+    }
+
+    h2{
+      font-size:1rem;
+      color:#7a7a7a;
+      font-weight:600;
+      margin:10px 0 12px;
+    }
+
+    .site-footer{
+      margin-top:10px;
+    }
+    .footer-top{
+      background:var(--blue-bg);
+      border-top:1px solid #c7d7de;
+      border-bottom:1px solid #c7d7de;
+      text-align:center;
+      color:#6f7a80;
+      padding:10px 12px;
+      font-size:.9rem;
+      line-height:1.15;
+    }
+    .footer-bottom{
+      text-align:center;
+      color:#666;
+      font-size:.85rem;
+      padding:12px 20px 24px;
+      max-width:980px;
+      margin:0 auto;
+    }
+    .footer-bottom a,
+    .footer-top a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    @media (max-width: 900px){
+      .header-inner,.top-nav,main{max-width:none}
+      .brand{font-size:2.8rem}
+      .location{font-size:3.8rem}
+      .product-grid{gap:22px 16px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .top-nav.desktop-nav{display:none}
+      .mobile-nav-wrap{
+        background:var(--blue-bg);
+        padding:0 20px 10px;
+      }
+      .nav-toggle{
+        margin:8px 20px 0 auto;
+        background:#dcecf4;
+        border:1px solid #9aa7ad;
+        padding:6px 10px;
+        font-size:1.25rem;
+        color:#555;
+      }
+      #mobile-nav ul{
+        list-style:none;
+        margin:8px 0 0;
+        padding:0;
+        display:grid;
+        gap:6px;
+      }
+      #mobile-nav a{
+        display:block;
+        text-decoration:none;
+        color:#666;
+        border:1px solid #9aa7ad;
+        background:#dcecf4;
+        padding:8px 10px;
+      }
+      .brand-row{
+        align-items:center;
+      }
+      .brand{font-size:2.2rem}
+      .location{font-size:2.8rem}
+      h1{font-size:1.55rem}
+      .product-grid{
+        grid-template-columns:repeat(5, 1fr);
+        gap:18px 16px;
+      }
+      .product-card span{
+        white-space:normal;
+      }
+    }
+
+    @media (max-width: 480px){
+      .header-inner{
+        padding:12px 10px 8px;
+      }
+      .brand-row{
+        gap:10px;
+        padding-bottom:6px;
+      }
+      .brand{
+        font-size:1.7rem;
+      }
+      .location{
+        font-size:2rem;
+      }
+      main{
+        padding:8px 8px 18px;
+      }
+      h1{
+        font-size:1.05rem;
+        margin-bottom:10px;
+      }
+      p{
+        font-size:.82rem;
+        line-height:1.15;
+        margin-bottom:14px;
+      }
+      .cta{
+        font-size:.72rem;
+        padding:11px 8px;
+        margin:12px 0 16px;
+      }
+      .product-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:26px 42px;
+        max-width:295px;
+      }
+      .product-card{
+        padding:2px;
+      }
+      .product-card span{
+        font-size:.72rem;
+        padding:6px 2px 5px;
+      }
+      .browse-link{
+        font-size:.72rem;
+        padding:10px 8px;
+        margin:14px 0 14px;
+      }
+      h2{
+        font-size:.78rem;
+        margin:8px 0 10px;
+      }
+      .footer-top{
+        font-size:.62rem;
+        padding:8px 8px;
+      }
+      .footer-bottom{
+        font-size:.58rem;
+        padding:10px 8px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-row">
+        <p class="brand">The Blinds Company</p>
+        <p class="location">CF15</p>
+      </div>
+    </div>
+    <nav class="top-nav desktop-nav" aria-label="Main">
+      <ul>
+        <li><a href="#">Venetian Blinds</a></li>
+        <li><a href="#">Vertical Blinds</a></li>
+        <li><a href="#">Roller Blinds</a></li>
+        <li><a href="#">Wooden Blinds</a></li>
+      </ul>
+    </nav>
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+    <div class="mobile-nav-wrap">
+      <nav id="mobile-nav" aria-label="Main" hidden>
+        <ul>
+          <li><a href="#">Venetian Blinds</a></li>
+          <li><a href="#">Vertical Blinds</a></li>
+          <li><a href="#">Roller Blinds</a></li>
+          <li><a href="#">Wooden Blinds</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <h1>Window Blinds CF15</h1>
+
+    <p>Blinds are a quick and easy way to give an old room a new and rejuvenated feel. To guarantee that you get the finest blinds in CF15, our suppliers are committed to maintaining the highest standards of quality.</p>
+
+    <a href="#" class="cta">CLICK TO SAVE UP TO 70% ON MANY PRODUCTS</a>
+
+    <section aria-label="Blind categories">
+      <div class="product-grid">
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Roller Blinds product image">
+          <span>Roller Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Thermal Blinds product image">
+          <span>Thermal Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Wooden Blinds product image">
+          <span>Wooden Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Loft Blinds product image">
+          <span>Loft Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Motorised Blinds product image">
+          <span>Motorised Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Day Night Blinds product image">
+          <span>Day Night Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Venetian Blinds product image">
+          <span>Venetian Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Vertical Blinds product image">
+          <span>Vertical Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Blackout Blinds product image">
+          <span>Blackout Blinds</span>
+        </a>
+        <a href="#" class="product-card">
+          <img src="rick.jpg" alt="Roman Blinds product image">
+          <span>Roman Blinds</span>
+        </a>
+      </div>
+    </section>
+
+    <a href="#" class="browse-link">SELECT A CATEGORY, OR CLICK HERE TO BROWSE</a>
+
+    <p>Your home should be your pride and joy. A place to show off.</p>
+
+    <p>Home upgrades can increase the value of your home and improve its functionality. Making energy-efficient upgrades and other home improvement projects can pay off in the long term - as well as being planet-friendly.</p>
+
+    <p>After moving into his new apartment, Dave realized that the windows had no curtains or blinds. He went online and found a bargain on some chic roller blinds.</p>
+
+    <h2>CF15 Window Blinds</h2>
+
+    <p>So much choice for your home or office in CF15. Click on an image to find out more.</p>
+
+    <p>By installing window blinds, you can give any room a complete transformation – just look at the difference they make in houses in CF15. We keep an eye out for sales throughout the year and will let you know if one is active.</p>
+
+    <h2>Window blinds for sale in CF15</h2>
+
+    <p>Can you imagine your room with brand new blinds? We can!</p>
+
+    <a href="#" class="cta">CLICK TO SAVE UP TO 70% ON MANY PRODUCTS</a>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div>The Blinds Company.</div>
+      <div>Latest news: 2023 is witnessing a resurgence in fitting blinds in bay windows to solve some of the issues with curtains.</div>
+    </div>
+    <div class="footer-bottom">
+      <a href="#">copyright Totally Online Ltd 2011-2023</a> |
+      <a href="#">CF15 shutters</a> |
+      <a href="#">Window Blinds Are a Great Solution</a> |
+      <a href="#">window blinds St Helens</a> |
+      <a href="#">blinds Rockcliffe</a> |
+      <a href="#">blinds Lincoln</a> |
+      <a href="#">window blinds Watchet</a> |
+      <a href="#">window blinds Worthing</a> |
+      <a href="#">blinds for windows The Galleries</a> |
+      <a href="#">blinds Sheffield</a> |
+      <a href="#">blinds St Helier</a> |
+      <a href="#">the best window blinds CF15</a> |
+      <a href="#">legals</a> |
+      <a href="#">privacy policy and terms</a> |
+      <a href="#">blog</a>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured one h1 with sequential h2 headings; added meaningful alt text to all images; ensured interactive elements have descriptive labels; set html lang="en"
+[B] ARIA fixes: used aria-label on navigation regions; avoided redundant role attributes on semantic landmarks; ensured no tabindex values greater than 0 remain
+[C] JS patterns added: implemented hamburger menu for mobile navigation; implemented tab order cleanup for tabindex values greater than 0; included visible focus indicator styles
+-->

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact me — Diana Boanas Artist</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#6f6f6f;
+      --heading:#6a6a6a;
+      --border:#8f8f8f;
+      --button-bg:#efefef;
+      --button-border:#d8d8d8;
+      --focus:#005FCC;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      min-height:100%;
+    }
+
+    body{
+      min-height:100vh;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:8px 12px;
+      z-index:1000;
+      text-decoration:none;
+      border:1px solid #000;
+    }
+
+    .skip-link:focus{
+      transform:translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    header{
+      width:100%;
+      text-align:center;
+      padding-top:34px;
+    }
+
+    .site-title{
+      margin:0;
+      font-size:34px;
+      line-height:1.15;
+      color:var(--heading);
+      font-weight:700;
+      letter-spacing:4px;
+    }
+
+    .site-title a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .nav-toggle{
+      display:none;
+      margin:18px auto 0;
+      background:transparent;
+      border:1px solid #bbb;
+      color:var(--heading);
+      font-size:28px;
+      line-height:1;
+      padding:6px 10px;
+      cursor:pointer;
+    }
+
+    nav[aria-label="Main"]{
+      margin-top:30px;
+    }
+
+    .main-nav-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:0;
+      flex-wrap:wrap;
+    }
+
+    .main-nav-list li{
+      font-size:18px;
+      letter-spacing:3px;
+      color:#555;
+      line-height:1.2;
+    }
+
+    .main-nav-list li + li::before{
+      content:"|";
+      display:inline-block;
+      margin:0 10px 0 8px;
+      color:#666;
+      font-weight:400;
+    }
+
+    .main-nav-list a{
+      color:#555;
+      text-decoration:none;
+    }
+
+    main{
+      width:100%;
+      flex:1;
+      display:flex;
+      justify-content:center;
+    }
+
+    .content-wrap{
+      width:100%;
+      max-width:760px;
+      text-align:center;
+      padding:22px 20px 40px;
+    }
+
+    .page-heading{
+      margin:8px 0 8px;
+      font-size:28px;
+      line-height:1.2;
+      color:var(--heading);
+      font-weight:700;
+      letter-spacing:2px;
+    }
+
+    .intro{
+      margin:0 auto 30px;
+      max-width:620px;
+      font-size:18px;
+      line-height:1.35;
+      letter-spacing:2px;
+      color:var(--text);
+    }
+
+    form{
+      width:100%;
+      max-width:500px;
+      margin:0 auto;
+    }
+
+    .field-row{
+      display:grid;
+      grid-template-columns:110px 1fr;
+      align-items:start;
+      gap:10px;
+      margin-bottom:4px;
+    }
+
+    .field-row label{
+      font-size:17px;
+      line-height:1.4;
+      color:var(--text);
+      text-align:right;
+      padding-top:2px;
+    }
+
+    input,
+    textarea{
+      width:100%;
+      border:1px solid var(--border);
+      background:#fff;
+      color:#444;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:17px;
+      padding:2px 6px;
+    }
+
+    input{
+      height:24px;
+    }
+
+    textarea{
+      min-height:109px;
+      resize:vertical;
+      padding-top:4px;
+    }
+
+    .error{
+      display:block;
+      font-size:14px;
+      color:#8b0000;
+      text-align:left;
+      margin-top:4px;
+      min-height:18px;
+    }
+
+    .submit-row{
+      text-align:left;
+      padding-left:120px;
+      margin-top:8px;
+    }
+
+    button[type="submit"]{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:17px;
+      color:#333;
+      background:var(--button-bg);
+      border:1px solid var(--button-border);
+      padding:7px 16px;
+      min-width:64px;
+      cursor:pointer;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    footer{
+      width:100%;
+      text-align:center;
+      padding:40px 20px 18px;
+    }
+
+    .footer-text{
+      margin:0;
+      font-size:17px;
+      color:var(--text);
+    }
+
+    .footer-text a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+
+      .desktop-nav{
+        display:none;
+      }
+
+      #mobile-nav{
+        margin-top:18px;
+      }
+
+      #mobile-nav .main-nav-list{
+        flex-direction:column;
+        gap:10px;
+      }
+
+      #mobile-nav .main-nav-list li + li::before{
+        content:"";
+        margin:0;
+      }
+
+      header{
+        padding-top:10px;
+      }
+
+      .site-title{
+        font-size:28px;
+        letter-spacing:0;
+      }
+
+      .content-wrap{
+        padding:8px 4px 30px;
+      }
+
+      .page-heading{
+        font-size:28px;
+        margin-top:8px;
+      }
+
+      .intro{
+        font-size:18px;
+        letter-spacing:2px;
+        max-width:360px;
+        margin-bottom:28px;
+      }
+
+      form{
+        max-width:none;
+      }
+
+      .field-row{
+        grid-template-columns:1fr;
+        gap:2px;
+        margin-bottom:6px;
+      }
+
+      .field-row label{
+        text-align:left;
+        font-size:18px;
+        padding-top:0;
+      }
+
+      input{
+        height:22px;
+      }
+
+      textarea{
+        min-height:106px;
+      }
+
+      .submit-row{
+        padding-left:0;
+        margin-top:24px;
+      }
+
+      button[type="submit"]{
+        padding:8px 18px;
+        min-width:64px;
+      }
+
+      footer{
+        padding-top:56px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      #mobile-nav{
+        display:none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <div class="site-branding">
+        <h1 class="site-title"><a href="#">Diana Boanas Artist</a></h1>
+      </div>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <nav class="desktop-nav" aria-label="Main">
+        <ul class="main-nav-list">
+          <li><a href="#">home</a></li>
+          <li><a href="#">galleries</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">news and current exhibitions</a></li>
+        </ul>
+      </nav>
+
+      <nav id="mobile-nav" aria-label="Main" hidden>
+        <ul class="main-nav-list">
+          <li><a href="#">home</a></li>
+          <li><a href="#">galleries</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">news and current exhibitions</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <div class="content-wrap">
+        <h2 class="page-heading">Contact me</h2>
+        <p class="intro">Use this form to contact us. Please remember to check your email details are correct!</p>
+
+        <form novalidate>
+          <div class="field-row">
+            <label for="name">Your name</label>
+            <div>
+              <input type="text" id="name" name="name" required aria-describedby="name-error" aria-invalid="false">
+              <span id="name-error" class="error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="email">Your email</label>
+            <div>
+              <input type="email" id="email" name="email" required aria-describedby="email-error" aria-invalid="false">
+              <span id="email-error" class="error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="subject">Subject</label>
+            <div>
+              <input type="text" id="subject" name="subject" required aria-describedby="subject-error" aria-invalid="false">
+              <span id="subject-error" class="error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <label for="message">Message</label>
+            <div>
+              <textarea id="message" name="message" required aria-describedby="message-error" aria-invalid="false"></textarea>
+              <span id="message-error" class="error" role="alert" aria-live="assertive" hidden></span>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit">Send</button>
+          </div>
+
+          <div aria-live="polite" id="form-status" class="sr-only"></div>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <p class="footer-text">Powered by <a href="#">Clikpic</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let firstError = null;
+
+      form.querySelectorAll('[required]').forEach(input => {
+        const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+        const labelText = input.labels && input.labels[0] ? input.labels[0].textContent.trim() : 'This field';
+
+        if (!input.value.trim()) {
+          input.setAttribute('aria-invalid', 'true');
+          errorEl.textContent = `${labelText} is required`;
+          errorEl.hidden = false;
+          if (!firstError) firstError = input;
+        } else {
+          input.setAttribute('aria-invalid', 'false');
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+      });
+
+      if (firstError) {
+        firstError.focus();
+      } else {
+        document.getElementById('form-status').textContent = 'Form submitted successfully.';
+      }
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, and footer landmarks; added skip link and main-content id; ensured exactly one h1 and sequential heading hierarchy; added explicit labels for all form fields; added required attributes and accessible error messaging; ensured descriptive button and link text; set html lang="en".
+[B] ARIA fixes: avoided redundant landmark roles; provided aria-label on both navigation regions; removed positive tabindex if present via script baseline; added aria-describedby, aria-invalid, aria-live, aria-expanded, and aria-controls where appropriate.
+[C] JS patterns added: implemented hamburger menu for mobile navigation; implemented form validation with error announcement; implemented tabindex cleanup and focus indicator baseline.
+-->

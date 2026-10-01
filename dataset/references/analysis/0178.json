@@ -1,0 +1,44 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a prominent banner/nameplate over the top hero area, positioned like an overlay header separate from the article body below. The reference layout also suggests the banner is absolutely positioned over the hero on larger screens, implying a persistent top branding/navigation element.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If this top banner functions as site navigation or persistent branding, it may remain fixed or sticky as the user scrolls the long article content on desktop. JS may be needed only if sticky behavior is enhanced beyond CSS or if active-state updates occur while scrolling.",
+      "ambiguities": "The sketch does not explicitly show nav links or scrolling states, so it may be only a static banner rather than true sticky navigation."
+    }
+  ],
+  "applicable_criteria": [
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "Both sketches primarily depict a static long-form article page with a hero image, title, metadata, blockquote/code-style callout, paragraphs, and bullet lists. There are no explicit controls such as menus, tabs, accordions, forms, search, modals, or load-more triggers. The only plausible JavaScript implication is a desktop-oriented sticky header/banner treatment due to the overlaid top label on the hero area and the long scrolling layout; otherwise the page appears largely content-driven and implementable without significant JS."
+}

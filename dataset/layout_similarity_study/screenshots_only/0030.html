@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scared By The Waves — codeotaku</title>
+  <style>
+    :root {
+      --bg-header: #ececec;
+      --text: #1f1f1f;
+      --link: #0066cc;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: var(--white);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #000;
+      color: #fff;
+      padding: 0.75rem 1rem;
+      text-decoration: none;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header {
+      background: var(--bg-header);
+      text-align: center;
+      padding: 18px 16px 14px;
+    }
+
+    .site-header h1 {
+      margin: 0;
+      font-size: 2.05rem;
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .breadcrumb-nav {
+      margin-top: 28px;
+    }
+
+    .breadcrumb-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: inline-flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .breadcrumb-list li {
+      display: inline;
+    }
+
+    .breadcrumb-list a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .breadcrumb-list a:hover,
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    .separator {
+      color: var(--text);
+      padding: 0 0.35rem;
+    }
+
+    main {
+      padding: 28px 16px 0;
+    }
+
+    .content {
+      max-width: none;
+      margin: 0;
+    }
+
+    .content p {
+      margin: 0 0 28px 0;
+      font-size: 1rem;
+      line-height: 1.45;
+      max-width: 1180px;
+    }
+
+    .site-footer {
+      text-align: center;
+      padding: 82px 16px 40px;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .footer-links {
+      color: var(--text);
+    }
+
+    .footer-links a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle {
+        display: block;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .site-header {
+        padding: 18px 16px 14px;
+      }
+
+      .site-header h1 {
+        font-size: 2.05rem;
+      }
+
+      .breadcrumb-nav {
+        margin-top: 26px;
+      }
+
+      .breadcrumb-list {
+        justify-content: flex-start;
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .breadcrumb-list::-webkit-scrollbar {
+        display: none;
+      }
+
+      main {
+        padding: 34px 16px 0;
+      }
+
+      .content p {
+        font-size: 0.98rem;
+        line-height: 1.35;
+        margin-bottom: 30px;
+      }
+
+      .site-footer {
+        padding-top: 82px;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .site-header h1 {
+        font-size: 3rem;
+      }
+
+      .site-header {
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .breadcrumb-nav {
+        margin-top: 30px;
+      }
+
+      main {
+        padding-top: 28px;
+      }
+
+      .content p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 28px;
+      }
+
+      .site-footer {
+        padding-top: 86px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .site-header h1 {
+        font-size: 3.05rem;
+      }
+
+      .site-footer {
+        padding-top: 82px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <h1>Scared By The Waves</h1>
+    <nav aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li><a href="#">codeotaku</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li><a href="#">Music</a></li>
+        <li class="separator" aria-hidden="true">/</li>
+        <li><a href="#">The Space Between Here And There</a></li>
+      </ol>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="content" aria-label="Poem">
+      <p>Clarity of the mind; takes time.</p>
+
+      <p>The ebony blackness of the sky draws me in. With experience comes pain and fear.</p>
+
+      <p>In this space; chaos and void coincided with my heart. Both a sense of belonging, and abandonment.</p>
+
+      <p>To move beyond this mindset, we can truly become clear of mind and vision. Life is too short to dwell on those things which are not possible.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="#">Contact Me</a> – <a href="#">About Me</a> – © 2023 [NAME REDACTED].
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, nav, main, section, and footer landmarks; added skip link and id="main-content"; ensured exactly one h1 with sequential heading structure; added lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: used unique aria-label for breadcrumb navigation; avoided redundant role attributes on semantic landmarks; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 baseline tabindex cleanup and visible focus indicator styling.
+-->

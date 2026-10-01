@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snapback — sleepisfamous</title>
+  <style>
+    :root{
+      --text:#2b2b2b;
+      --bg:#ffffff;
+      --footer:#242424;
+      --blue:#1400ff;
+      --border:#3f3f3f;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Arial, Helvetica, sans-serif}
+    body{min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+    .skip-link{position:absolute;left:12px;top:0;transform:translateY(-100%);background:#fff;color:#000;padding:10px 14px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      padding:32px 40px 18px;
+    }
+    .header-row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      font-size:31px;
+      font-weight:700;
+      letter-spacing:-0.5px;
+      line-height:1;
+    }
+    .header-right{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-size:18px;
+      font-weight:700;
+    }
+    .desktop-nav ul,
+    .tablet-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:24px;
+      align-items:center;
+    }
+    .cart-link{
+      white-space:nowrap;
+    }
+
+    .tablet-nav{
+      display:none;
+      justify-content:center;
+      margin-top:34px;
+    }
+
+    .nav-toggle{ display:none; }
+
+    .page{
+      padding:34px 40px 0;
+    }
+    .product-layout{
+      display:grid;
+      grid-template-columns:minmax(320px, 1fr) 560px;
+      gap:60px;
+      align-items:start;
+      margin-bottom:184px;
+    }
+    .breadcrumb{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:42px;
+    }
+    h1{
+      margin:0 0 18px;
+      font-size:29px;
+      line-height:1.15;
+      font-weight:700;
+      letter-spacing:-0.3px;
+    }
+    .description{
+      margin:0 0 18px;
+      font-size:17px;
+      line-height:1.45;
+      max-width:560px;
+    }
+    .price{
+      margin:0 0 18px;
+      font-size:17px;
+      font-style:italic;
+      font-weight:700;
+    }
+    .purchase-row{
+      display:flex;
+      align-items:stretch;
+      gap:16px;
+      margin-bottom:32px;
+    }
+    .qty-wrap{
+      width:49px;
+      flex:0 0 49px;
+    }
+    .qty-label{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+    .qty-input{
+      width:100%;
+      height:56px;
+      border:2px solid var(--border);
+      text-align:center;
+      font-size:18px;
+      color:var(--text);
+      background:#fff;
+      padding:0;
+    }
+    .add-cart{
+      height:56px;
+      min-width:316px;
+      border:2px solid var(--border);
+      background:#fff;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 14px 0 16px;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+    }
+    .add-cart .divider{
+      width:2px;
+      height:24px;
+      background:var(--border);
+      margin:0 16px;
+      flex:0 0 auto;
+    }
+    .share-links{
+      font-size:17px;
+      font-weight:700;
+    }
+    .share-links a{
+      margin-right:0;
+    }
+    .product-image{
+      width:100%;
+      aspect-ratio: 560 / 316;
+      object-fit:cover;
+      background:var(--blue);
+    }
+    .image-frame{
+      background:var(--blue);
+      overflow:hidden;
+    }
+
+    .site-footer{
+      background:var(--footer);
+      color:#fff;
+      padding:38px 40px 36px;
+      margin-top:0;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:24px;
+      font-size:18px;
+      font-weight:700;
+    }
+
+    @media (max-width: 1024px){
+      .site-header{
+        padding:34px 10px 0;
+      }
+      .header-row{
+        align-items:flex-start;
+      }
+      .brand{
+        font-size:29px;
+      }
+      .desktop-nav{
+        display:none;
+      }
+      .header-right{
+        gap:0;
+      }
+      .cart-link{
+        font-size:18px;
+      }
+      .tablet-nav{
+        display:flex;
+      }
+      .tablet-nav ul{
+        gap:40px;
+        font-size:18px;
+        font-weight:700;
+      }
+      .page{
+        padding:18px 10px 0;
+      }
+      .product-layout{
+        grid-template-columns:1fr;
+        gap:42px;
+        margin-bottom:38px;
+      }
+      .breadcrumb{
+        margin-bottom:42px;
+      }
+      .description{
+        max-width:720px;
+      }
+      .image-frame{
+        width:100%;
+      }
+      .product-image{
+        width:100%;
+        aspect-ratio: 748 / 420;
+      }
+      .site-footer{
+        padding:32px 10px 66px;
+      }
+      .footer-inner{
+        flex-direction:column;
+        justify-content:center;
+        text-align:center;
+        gap:52px;
+        font-size:18px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .site-header{
+        padding:36px 10px 0;
+      }
+      .brand{
+        font-size:22px;
+        letter-spacing:-0.4px;
+      }
+      .cart-link{
+        font-size:17px;
+      }
+      .tablet-nav{
+        margin-top:38px;
+      }
+      .tablet-nav ul{
+        gap:28px;
+        font-size:18px;
+      }
+      .page{
+        padding:36px 10px 0;
+      }
+      .breadcrumb{
+        font-size:17px;
+        margin-bottom:42px;
+      }
+      h1{
+        font-size:31px;
+        margin-bottom:16px;
+      }
+      .description{
+        font-size:17px;
+        line-height:1.6;
+        max-width:330px;
+        margin-bottom:14px;
+      }
+      .price{
+        font-size:17px;
+        margin-bottom:16px;
+      }
+      .purchase-row{
+        gap:14px;
+        margin-bottom:34px;
+      }
+      .qty-wrap{
+        width:50px;
+        flex-basis:50px;
+      }
+      .qty-input{
+        height:57px;
+        font-size:18px;
+      }
+      .add-cart{
+        min-width:0;
+        width:234px;
+        height:57px;
+        padding:0 16px;
+        font-size:17px;
+      }
+      .add-cart .divider{
+        margin:0 18px;
+      }
+      .share-links{
+        font-size:17px;
+      }
+      .product-layout{
+        gap:48px;
+        margin-bottom:41px;
+      }
+      .product-image{
+        aspect-ratio: 356 / 199;
+      }
+      .site-footer{
+        padding:44px 10px 68px;
+      }
+      .footer-inner{
+        gap:54px;
+        font-size:17px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-row">
+      <a href="#" class="brand">sleepisfamous</a>
+      <div class="header-right">
+        <nav class="desktop-nav" aria-label="Main">
+          <ul>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Pages</a></li>
+          </ul>
+        </nav>
+        <a href="#" class="cart-link">0 Items : $ 0.00</a>
+      </div>
+    </div>
+    <nav class="tablet-nav" aria-label="Main">
+      <ul>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Pages</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" class="page">
+    <section class="product-layout" aria-label="Product details">
+      <div class="product-copy">
+        <div class="breadcrumb"><a href="#">All products</a></div>
+        <h1>Snapback</h1>
+        <p class="description">Black Sleep snapback with bitchin' white puff embroidery. One size fits most.</p>
+        <p class="price">$ 30.00</p>
+
+        <form novalidate aria-label="Add product to cart">
+          <div class="purchase-row">
+            <div class="qty-wrap">
+              <label for="quantity" class="qty-label">Quantity</label>
+              <input class="qty-input" type="text" id="quantity" name="quantity" value="1">
+            </div>
+            <button type="submit" class="add-cart">
+              <span>Add to Cart</span>
+              <span class="divider" aria-hidden="true"></span>
+              <span>$ 30.00</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="share-links">
+          <a href="#">Tweet</a> |
+          <a href="#">Share</a> |
+          <a href="#">Pin</a>
+        </div>
+      </div>
+
+      <div class="image-frame">
+        <img src="rick.jpg" alt="Product image area for the Snapback hat" class="product-image">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>© 2023 sleepisfamous</div>
+      <div>Powered by Big Cartel</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured one h1 with sequential structure; added meaningful alt text to image; added associated label for quantity input; ensured interactive elements have descriptive text; set html lang="en"
+[B] ARIA fixes: used aria-label on navigation regions; avoided redundant landmark roles; no positive tabindex values retained
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator styling only
+-->

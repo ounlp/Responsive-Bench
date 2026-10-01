@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The toxicity of ammonia to the marine organisms — VTechWorks</title>
+  <style>
+    :root{
+      --maroon:#7b0000;
+      --dark:#333333;
+      --orange:#f36f21;
+      --link:#9a5200;
+      --border:#dddddd;
+      --sidebar:#f5f5f5;
+      --text:#111;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.35;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%; display:block}
+    .skip-link{position:absolute; transform:translateY(-100%); left:0; top:0; background:#fff; color:#000; padding:10px 14px; z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .topbar{
+      background:var(--maroon);
+      color:#fff;
+      min-height:70px;
+    }
+    .topbar-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:16px 24px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      width:88px;
+      height:50px;
+      background:#1400ff;
+      flex:0 0 auto;
+    }
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      color:#fff;
+      margin-left:auto;
+    }
+    .top-actions a{color:#fff; font-weight:700}
+    .nav-toggle{
+      display:none;
+      background:none;
+      border:none;
+      color:#fff;
+      font-size:24px;
+      line-height:1;
+      padding:0;
+      cursor:pointer;
+    }
+
+    .crumbbar{
+      background:var(--dark);
+      color:#fff;
+      border-bottom:4px solid var(--orange);
+    }
+    .crumbbar-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:8px 24px;
+    }
+    .desktop-breadcrumbs{
+      display:block;
+      font-size:15px;
+      color:#fff;
+    }
+    .desktop-breadcrumbs a{color:#fff}
+    .desktop-breadcrumbs .sep{padding:0 8px; color:#d0d0d0}
+    .desktop-breadcrumbs .square{font-size:12px; margin-right:8px}
+    .mobile-crumb{
+      display:none;
+      color:#fff;
+      font-size:16px;
+      font-weight:700;
+      align-items:center;
+      gap:8px;
+    }
+    .mobile-crumb .caret{
+      font-size:12px;
+      position:relative;
+      top:-1px;
+    }
+
+    #mobile-nav{
+      background:var(--dark);
+      padding:10px 16px 16px;
+      border-top:1px solid rgba(255,255,255,.15);
+    }
+    #mobile-nav a{
+      display:block;
+      color:#fff;
+      padding:8px 0;
+      font-size:16px;
+    }
+
+    .page{
+      max-width:1280px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 290px;
+      gap:0;
+    }
+    main{
+      padding:18px 16px 40px 55px;
+    }
+    aside{
+      background:var(--sidebar);
+      padding:20px 14px 30px;
+      border-left:1px solid #eee;
+    }
+
+    h1{
+      font-size:28px;
+      line-height:1.12;
+      margin:0 0 10px;
+      font-weight:700;
+      letter-spacing:-0.4px;
+    }
+    .title-rule{
+      border:none;
+      border-top:1px solid #e3e3e3;
+      margin:0 0 24px;
+    }
+
+    .hero-image{
+      width:100%;
+      height:474px;
+      object-fit:cover;
+      background:#1400ff;
+      margin-bottom:28px;
+    }
+
+    .meta-block{
+      font-size:16px;
+      margin-bottom:30px;
+    }
+    .meta-block h2{
+      font-size:16px;
+      margin:0 0 2px;
+      font-weight:700;
+    }
+    .meta-block p{
+      margin:0;
+    }
+    .download-link{
+      display:inline-block;
+      margin:0 0 0;
+    }
+    .download-link .icon{
+      font-size:12px;
+      margin-right:4px;
+      color:var(--link);
+    }
+
+    .abstract{
+      margin:42px 0 20px;
+      font-size:16px;
+      max-width:860px;
+    }
+    .abstract h2{
+      font-size:16px;
+      margin:0 0 10px;
+      font-weight:700;
+    }
+
+    .sidebar-search{
+      display:flex;
+      margin-bottom:10px;
+    }
+    .sidebar-search label{
+      position:absolute;
+      left:-9999px;
+    }
+    .sidebar-search input{
+      flex:1;
+      padding:8px 12px;
+      border:1px solid #cfcfcf;
+      border-right:none;
+      border-radius:4px 0 0 4px;
+      font-size:14px;
+      min-width:0;
+    }
+    .sidebar-search button{
+      width:36px;
+      border:none;
+      background:var(--maroon);
+      color:#fff;
+      border-radius:0 4px 4px 0;
+      cursor:pointer;
+      font-size:16px;
+    }
+    .radio-group{
+      margin:8px 0 22px;
+      font-size:14px;
+    }
+    .radio-group label{
+      display:block;
+      margin:6px 0;
+      cursor:pointer;
+    }
+
+    .side-heading{
+      font-size:13px;
+      font-weight:700;
+      color:#555;
+      margin:14px 0 6px;
+      text-transform:uppercase;
+    }
+    .side-box{
+      border:1px solid #d8d8d8;
+      border-radius:4px;
+      overflow:hidden;
+      background:#fff;
+      margin-bottom:12px;
+    }
+    .side-box a,
+    .side-box .section-title{
+      display:block;
+      padding:12px 15px;
+      border-top:1px solid #e2e2e2;
+      color:#444;
+      background:#fff;
+    }
+    .side-box > :first-child{border-top:none}
+    .side-box .section-title{
+      background:var(--maroon);
+      color:#fff;
+      font-weight:700;
+    }
+
+    footer{
+      max-width:1280px;
+      margin:0 auto;
+      padding:0 55px 40px;
+    }
+    .footer-inner{
+      border-top:1px solid #e3e3e3;
+      padding-top:18px;
+      font-size:16px;
+    }
+    .footer-links{
+      margin-top:10px;
+    }
+    .footer-links a{
+      color:var(--link);
+    }
+
+    @media (max-width: 900px){
+      .page{
+        grid-template-columns:1fr;
+      }
+      aside{
+        display:none;
+      }
+      main{
+        padding:18px 24px 36px;
+      }
+      footer{
+        padding:0 24px 40px;
+      }
+      .hero-image{
+        height:404px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .desktop-breadcrumbs{display:none}
+      .mobile-crumb{display:flex}
+      .topbar-inner{
+        padding:16px;
+      }
+      .brand{
+        width:88px;
+        height:50px;
+      }
+      .top-actions{
+        gap:16px;
+        align-items:flex-start;
+      }
+      .top-actions a{
+        font-size:16px;
+      }
+      h1{
+        font-size:31px;
+        line-height:1.05;
+        margin-bottom:10px;
+      }
+      .hero-image{
+        height:403px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .topbar{
+        min-height:70px;
+      }
+      .topbar-inner{
+        padding:16px 15px 4px;
+        align-items:flex-start;
+      }
+      .top-actions a{
+        font-size:0;
+        width:14px;
+        height:14px;
+        display:inline-block;
+        position:relative;
+      }
+      .top-actions a::before{
+        content:"□";
+        font-size:14px;
+        color:#fff;
+        position:absolute;
+        inset:0;
+      }
+      .crumbbar-inner{
+        padding:8px 15px;
+      }
+      main{
+        padding:16px 15px 28px;
+      }
+      footer{
+        padding:0 15px 28px;
+      }
+      h1{
+        font-size:28px;
+        line-height:1.12;
+        letter-spacing:-0.4px;
+      }
+      .hero-row{
+        display:grid;
+        grid-template-columns:154px 1fr;
+        gap:16px;
+        align-items:start;
+        margin-bottom:28px;
+      }
+      .hero-image{
+        width:154px;
+        height:86px;
+        margin:0;
+      }
+      .hero-meta{
+        margin:0;
+      }
+      .hero-meta .meta-block{
+        margin-bottom:0;
+      }
+      .abstract{
+        margin-top:0;
+      }
+      .abstract h2{
+        display:block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <img src="rick.jpg" alt="" class="brand">
+        <div class="top-actions">
+          <a href="#">Log in</a>
+          <button
+            id="nav-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+            aria-label="Open navigation menu"
+            class="nav-toggle">
+            <span aria-hidden="true">&#9776;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="crumbbar">
+      <div class="crumbbar-inner">
+        <nav aria-label="Breadcrumb">
+          <div class="desktop-breadcrumbs">
+            <span class="square">□</span>
+            <a href="#">VTechWorks Home</a>
+            <span class="sep">/Â</span>
+            <a href="#">ETDs: Virginia Tech Electronic Theses and Dissertations</a>
+            <span class="sep">/Â</span>
+            <a href="#">Masters Theses</a>
+            <span class="sep">/Â</span>
+            <a href="#">View Item</a>
+          </div>
+          <div class="mobile-crumb">
+            <a href="#" style="color:#fff;">View Item</a>
+            <span class="caret" aria-hidden="true">▼</span>
+          </div>
+        </nav>
+        <nav id="mobile-nav" aria-label="Main" hidden>
+          <a href="#">VTechWorks Home</a>
+          <a href="#">ETDs: Virginia Tech Electronic Theses and Dissertations</a>
+          <a href="#">Masters Theses</a>
+          <a href="#">View Item</a>
+          <a href="#">About</a>
+          <a href="#">Policies</a>
+          <a href="#">Help</a>
+          <a href="#">All of VTechWorks</a>
+          <a href="#">Communities &amp; Collections</a>
+          <a href="#">By Issue Date</a>
+          <a href="#">Authors</a>
+          <a href="#">Titles</a>
+          <a href="#">Subjects</a>
+          <a href="#">This Collection</a>
+          <a href="#">Log in</a>
+          <a href="#">Register</a>
+          <a href="#">View Usage Statistics</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+    <main id="main-content">
+      <h1>The toxicity of ammonia to the marine organisms, sheepshead minnow (Cyprinodon variegatus), mysid (Mysidopsis bahia), and grass shrimp (Palaemonetes pugio)</h1>
+      <hr class="title-rule">
+
+      <div class="hero-row">
+        <img src="rick.jpg" alt="Document preview image for the thesis" class="hero-image">
+        <div class="hero-meta">
+          <section class="meta-block" aria-label="View or open file">
+            <h2>View/ Open</h2>
+            <p><a href="#" class="download-link"><span class="icon">□</span>LD5655.V855_1996.H837.pdf<br>(6.917Mb)</a></p>
+            <p>Downloads: 683</p>
+          </section>
+        </div>
+      </div>
+
+      <section class="meta-block" aria-label="Date information">
+        <h2>Date</h2>
+        <p>1996-07-14</p>
+      </section>
+
+      <section class="meta-block" aria-label="Author information">
+        <h2>Author</h2>
+        <p>Hudgins, Douglas B.</p>
+      </section>
+
+      <section class="meta-block" aria-label="Metadata information">
+        <h2>Metadata</h2>
+        <p><a href="#">Show full item record</a></p>
+      </section>
+
+      <section class="abstract" aria-label="Abstract">
+        <h2>Abstract</h2>
+        <p>The discharge of wastewaters containing ammonia has become a major environmental concern, especially in the Chesapeake Bay watershed. A tentative instream limit of 1-2 mgIL for total ammonia has been proposed in Virginia to protect marine aquatic life.</p>
+      </section>
+
+      <section class="meta-block" aria-label="URI information">
+        <h2>URI</h2>
+        <p><a href="#">http://hdl.handle.net/10919/44827</a></p>
+      </section>
+
+      <section class="meta-block" aria-label="Collections information">
+        <h2>Collections</h2>
+        <p><a href="#">Masters Theses</a> [22213]</p>
+      </section>
+    </main>
+
+    <aside aria-label="Sidebar">
+      <form novalidate aria-label="Search">
+        <div class="sidebar-search">
+          <label for="search">Search</label>
+          <input type="text" id="search" name="search">
+          <button type="submit" aria-label="Submit search">□</button>
+        </div>
+        <div class="radio-group">
+          <label><input type="radio" name="scope" checked> Search VTechWorks</label>
+          <label><input type="radio" name="scope"> This Collection</label>
+        </div>
+      </form>
+
+      <div class="side-heading">VTECHWORKS</div>
+      <div class="side-box">
+        <a href="#">About</a>
+        <a href="#">Policies</a>
+        <a href="#">Help</a>
+      </div>
+
+      <div class="side-heading">BROWSE</div>
+      <div class="side-box">
+        <div class="section-title">All of VTechWorks</div>
+        <a href="#">Communities &amp; Collections</a>
+        <a href="#">By Issue Date</a>
+        <a href="#">Authors</a>
+        <a href="#">Titles</a>
+        <a href="#">Subjects</a>
+        <div class="section-title">This Collection</div>
+        <a href="#">By Issue Date</a>
+        <a href="#">Authors</a>
+        <a href="#">Titles</a>
+        <a href="#">Subjects</a>
+      </div>
+
+      <div class="side-heading">MY ACCOUNT</div>
+      <div class="side-box">
+        <a href="#">Log in</a>
+        <a href="#">Register</a>
+      </div>
+
+      <div class="side-heading">STATISTICS</div>
+      <div class="side-box">
+        <a href="#">View Usage Statistics</a>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <p>If you believe that any material in VTechWorks should be removed, please see our policy and procedure for <a href="#">Requesting that Material be Amended or Removed</a> . All takedown requests will be promptly acknowledged and investigated.</p>
+      <p class="footer-links"><a href="#">Virginia Tech</a> | <a href="#">University Libraries</a> | <a href="#">Contact Us</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, breadcrumb nav, main, aside, and footer landmarks; added skip link and main-content id; ensured exactly one h1 with sequential h2 subheadings; added alt text to content image and decorative alt to logo image; ensured form input has associated label; ensured buttons and links have descriptive labels; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-labels for multiple nav regions; added aria-label to aside landmark; removed any positive tabindex via script baseline.
+[C] JS patterns added: implemented hamburger menu for mobile navigation with aria-expanded, aria-controls, focus movement, and Escape close; implemented tab order cleanup script and focus-visible styling.
+-->

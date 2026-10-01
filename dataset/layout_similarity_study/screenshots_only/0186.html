@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sgt. Rock — Sarah's Sketches</title>
+  <style>
+    :root{
+      --bg-dark:#171717;
+      --bg-footer:#1f1f21;
+      --panel:#f7ebeb;
+      --text:#3f3f43;
+      --muted:#8f8a8d;
+      --link:#ff8f9a;
+      --blue:#1200ff;
+      --rule:#b9aaaa;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, var(--bg-dark) 0, var(--bg-dark) 460px, #232325 460px, #232325 100%);
+      color:var(--text);
+      line-height:1.2;
+    }
+
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.75rem 1rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .site-header{
+      color:#fff;
+      padding:28px 20px 18px;
+      text-align:center;
+    }
+
+    .site-brand{
+      max-width:820px;
+      margin:0 auto;
+      text-align:left;
+    }
+
+    .site-title{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:28px;
+      font-weight:700;
+      color:#fff;
+    }
+
+    .site-title a{color:#fff}
+    .tagline{
+      margin:8px 0 0;
+      color:#cfcfcf;
+      font-size:18px;
+      font-weight:700;
+    }
+
+    main{
+      max-width:870px;
+      margin:18px auto 0;
+      background:var(--panel);
+      padding:28px 38px 44px;
+      min-height:400px;
+    }
+
+    article h1{
+      margin:0 0 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:28px;
+      color:#2f2f33;
+    }
+
+    .post-date{
+      color:var(--muted);
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:26px;
+    }
+
+    .post-image{
+      display:block;
+      width:336px;
+      height:187px;
+      object-fit:cover;
+      margin:0 auto 12px;
+      background:var(--blue);
+    }
+
+    .post-copy{
+      font-size:18px;
+      margin:10px 0 72px;
+      color:#333;
+    }
+
+    hr{
+      border:0;
+      border-top:2px dotted var(--rule);
+      margin:0 0 28px;
+    }
+
+    .comments{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .comment{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:22px;
+      margin:0 0 34px;
+      align-items:start;
+    }
+
+    .avatar{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      background:var(--blue);
+      margin-top:2px;
+      flex:none;
+    }
+
+    .comment-body{
+      font-size:18px;
+      color:#333;
+    }
+
+    .comment-meta{
+      margin:0 0 10px;
+      font-size:18px;
+      color:#555;
+    }
+
+    .comment-author{
+      color:var(--link);
+      font-weight:700;
+    }
+
+    .comment-author.neutral{
+      color:#333;
+      font-weight:400;
+    }
+
+    .comment-text{
+      margin:0 0 10px;
+      white-space:pre-line;
+    }
+
+    .comment-time{
+      color:var(--muted);
+      font-size:17px;
+      font-weight:700;
+    }
+
+    .post-comment-link{
+      display:inline-block;
+      margin-top:8px;
+      font-size:18px;
+    }
+
+    .site-footer{
+      background:var(--bg-footer);
+      color:#fff;
+      text-align:center;
+      padding:30px 20px 34px;
+      font-size:18px;
+      font-weight:700;
+    }
+
+    @media (max-width: 900px){
+      body{
+        background: linear-gradient(to bottom, var(--bg-dark) 0, var(--bg-dark) 360px, #232325 360px, #232325 100%);
+      }
+      main{
+        max-width:none;
+        margin:0;
+        padding:18px 16px 34px;
+      }
+      .site-header{
+        padding:18px 14px 16px;
+      }
+      .site-brand{
+        text-align:center;
+      }
+      .site-title{
+        font-size:26px;
+      }
+      .tagline{
+        font-size:17px;
+      }
+      article h1{
+        font-size:26px;
+      }
+      .post-date,.post-copy,.comment-body,.comment-meta,.post-comment-link{
+        font-size:17px;
+      }
+      .post-image{
+        width:350px;
+        max-width:100%;
+        height:auto;
+        aspect-ratio: 336 / 187;
+      }
+    }
+
+    @media (max-width: 480px){
+      .site-title{
+        font-size:25px;
+      }
+      .tagline{
+        max-width:260px;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .comment{
+        grid-template-columns:38px 1fr;
+        gap:16px;
+        margin-bottom:30px;
+      }
+      .avatar{
+        width:31px;
+        height:31px;
+      }
+      .comment-text{
+        margin-bottom:8px;
+      }
+      .site-footer{
+        padding:28px 16px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="site-brand">
+      <p class="site-title"><a href="#">Sarah's Sketches</a></p>
+      <p class="tagline">Sarah posts recent drawings and paintings here.</p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article aria-labelledby="post-title">
+      <h1 id="post-title">Sgt. Rock</h1>
+      <div class="post-date">September 06, 2006</div>
+
+      <img src="rick.jpg" alt="Artwork for Sgt. Rock shown as a bright blue rectangular image" class="post-image">
+
+      <p class="post-copy">For <a href="#">drawgeeks</a> ...</p>
+
+      <hr>
+
+      <section aria-label="Comments">
+        <h2 style="position:absolute;left:-9999px;">Comments</h2>
+        <ol class="comments">
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">Kevin Cromwell</span> said…</p>
+              <p class="comment-text">Tough character, no Pippi here. Great colors.
+
+:)=</p>
+              <div class="comment-time">9:23 AM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">Kevin Cromwell</span> said…</p>
+              <p class="comment-text">This comment has been removed by a blog administrator.</p>
+              <div class="comment-time">9:24 AM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">pascal</span> said…</p>
+              <p class="comment-text">lol
+It's a nice and different take on such a popular character!
+I like it.
+
+how do you get on drawer geeks by the way?</p>
+              <div class="comment-time">9:28 AM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">sarah</span> said…</p>
+              <p class="comment-text">Hey Pascal! Ha ha, I just got back from bgoz's site answering that question.</p>
+              <div class="comment-time">9:36 AM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">Unknown</span> said…</p>
+              <p class="comment-text">If I was a publisher, I'd fight hardly to have you with me...
+You're inspirational...
+Say "thank you" to your hand for me!
+
+--Ste</p>
+              <div class="comment-time">2:54 PM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">milo</span> said…</p>
+              <p class="comment-text">awesome work...great facial expression!</p>
+              <div class="comment-time">3:09 PM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">mike</span> said…</p>
+              <p class="comment-text">nice one! this was though this week.</p>
+              <div class="comment-time">6:24 AM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">Jessie Greenberg</span> said…</p>
+              <p class="comment-text">I'm guessing ... GI Joes? Dunno what else it'd be ... hmmm ...</p>
+              <div class="comment-time">7:22 AM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author neutral">Anonymous</span> said…</p>
+              <p class="comment-text">Really cool. Your style works for everything!
+He looks kinda ticked.
+This should be a fun week!
+
+JV</p>
+              <div class="comment-time">7:59 AM</div>
+            </div>
+          </li>
+
+          <li class="comment">
+            <img src="rick.jpg" alt="" class="avatar">
+            <div class="comment-body">
+              <p class="comment-meta"><span class="comment-author">sarah</span> said…</p>
+              <p class="comment-text">Thanks everyone! I didn't feel as inspired this week for some reason.</p>
+              <div class="comment-time">4:46 PM</div>
+            </div>
+          </li>
+        </ol>
+
+        <a href="#" class="post-comment-link">Post a Comment</a>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <a href="#" style="color:#fff;">Powered by Blogger</a>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, main, article, section, and footer landmarks; added skip link and main-content id; ensured exactly one h1 with sequential heading structure including hidden comments h2; added alt attributes to all images with decorative avatars marked alt=""; ensured descriptive link text; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added aria-label to comments section; removed any positive tabindex via script baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only, as no other interactive patterns were visible in the screenshots.
+-->

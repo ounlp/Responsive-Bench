@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent-looking header/navigation area at the top, separated from the long scrolling article/feed content below. The desktop sketch especially shows a compact control remaining in the top-right while content continues far down the page, implying the header should stay available during scroll.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top navigation/header should remain accessible while scrolling, likely collapsing or condensing as the page moves down. Ensure fixed positioning does not obscure content and preserves access to primary actions.",
+      "ambiguities": "The sketch does not explicitly show a shrunk-on-scroll state versus a fully fixed full-height header; exact sticky threshold and transformation are unclear."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a distinct boxed control in the top-right that reads as a search field or search trigger, separate from the article content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Search should accept input and submit or reveal a search UI. If initially compact, clicking may expand/focus the field. Keyboard focus should move into the input when activated.",
+      "ambiguities": "It is unclear whether this is always-visible input, an expandable search trigger, or another utility button."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a long vertical stack of repeated content cards/posts with large image placeholders and text excerpts, extending well beyond one viewport. This strongly implies progressive reveal or pagination behavior for additional posts on small screens.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A load-more trigger or equivalent progressive content loading may be needed after the visible set of posts. Loading state should be announced and newly inserted items appended in reading order.",
+      "ambiguities": "The sketch does not explicitly draw a button; this could also be traditional pagination or a fully static long list."
+    }
+  ],
+  "applicable_criteria": [
+    "S1",
+    "S2",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "sticky_nav",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven blog/article layout with relatively light JavaScript needs. The strongest cross-viewport behavior is a header that likely remains accessible during scroll. Desktop adds a probable search control in the header, while mobile’s long stacked feed suggests progressive loading or pagination support for repeated post cards. No clear evidence appears for hamburger navigation, dropdowns, tabs, accordions, or modal-driven interactions in the sketches themselves."
+}

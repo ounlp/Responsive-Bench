@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ben &amp; Jerry's facts for kids — Kiddle encyclopedia</title>
+  <style>
+    :root{
+      --cream:#f8edbf;
+      --blue:#1f49d8;
+      --link:#1f49d8;
+      --text:#2f2f2f;
+      --muted:#666;
+      --border:#d9d9d9;
+      --light:#f3f3f3;
+      --footer:#e9edf3;
+      --accent:#ff6f6f;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.55;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.5rem .75rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:var(--link);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .topbar{
+      background:var(--cream);
+      border-bottom:1px solid #ddd;
+      padding:6px 0 10px;
+    }
+    .topbar-inner{
+      max-width:980px;
+      margin:0 auto;
+      position:relative;
+      min-height:152px;
+      padding:0 18px;
+    }
+    .logo-left,.logo-center{
+      background:#1400ff;
+      display:block;
+      position:absolute;
+    }
+    .logo-left{
+      width:128px;height:154px;left:10px;top:0;
+    }
+    .logo-center{
+      width:128px;height:72px;left:50%;transform:translateX(-50%);top:0;
+    }
+    .search-wrap{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      top:46px;
+      width:min(560px, calc(100% - 120px));
+    }
+    .search-bar{
+      background:#fff;
+      border-radius:28px;
+      box-shadow:0 4px 12px rgba(0,0,0,.25);
+      height:48px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 16px 0 20px;
+    }
+    .search-bar input{
+      border:0;
+      font-size:18px;
+      width:100%;
+      background:transparent;
+      outline:none;
+    }
+    .search-icon{
+      color:#8a8a8a;
+      font-size:22px;
+      margin-left:10px;
+      flex:0 0 auto;
+    }
+    .search-tabs{
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      margin-top:12px;
+      font-size:14px;
+      font-weight:700;
+      color:#b33;
+      position:absolute;
+      top:92px;
+      left:50%;
+      transform:translateX(-50%);
+      white-space:nowrap;
+    }
+    .search-tabs a{color:#b33}
+    .search-tabs .active{
+      background:var(--accent);
+      color:#fff;
+      padding:4px 8px;
+      border-radius:0;
+    }
+
+    .page{
+      max-width:840px;
+      margin:0 auto;
+      padding:18px 16px 0;
+    }
+    h1,h2{
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight:500;
+      color:#2d2d2d;
+      margin:0 0 8px;
+      line-height:1.05;
+    }
+    h1{font-size:46px}
+    h2{font-size:32px;margin-top:26px;margin-bottom:14px}
+    .subtitle{
+      font-family: Georgia, "Times New Roman", serif;
+      font-size:18px;
+      margin-bottom:18px;
+    }
+
+    .intro-grid{
+      display:grid;
+      grid-template-columns: 1fr 290px;
+      gap:28px;
+      align-items:start;
+    }
+    .intro-text{
+      font-size:20px;
+    }
+    .intro-text strong{font-weight:700}
+    .infobox{
+      width:100%;
+      border-collapse:collapse;
+      font-size:16px;
+      background:#fafafa;
+    }
+    .infobox caption{
+      caption-side:top;
+      font-weight:700;
+      font-size:18px;
+      text-align:center;
+      padding:0 0 6px;
+    }
+    .infobox th,.infobox td{
+      border-top:1px solid #e3e3e3;
+      padding:4px 6px;
+      vertical-align:top;
+      line-height:1.25;
+    }
+    .infobox th{
+      text-align:left;
+      width:34%;
+      font-weight:700;
+    }
+
+    .contents-box{
+      width:156px;
+      background:#efefef;
+      border:1px solid #ddd;
+      padding:10px 12px;
+      margin:12px 0 18px;
+    }
+    .contents-box h2{
+      font-size:28px;
+      margin:0 0 8px;
+    }
+    .contents-box ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .contents-box li{
+      margin:10px 0;
+      font-size:18px;
+    }
+
+    p, li{
+      font-size:18px;
+    }
+    .section-text{
+      max-width:100%;
+    }
+
+    .flavors-layout{
+      display:grid;
+      grid-template-columns: 1fr 272px;
+      gap:28px;
+      align-items:start;
+    }
+    .figure{
+      margin:0;
+    }
+    .figure img{
+      width:100%;
+      display:block;
+      border:1px solid #ddd;
+    }
+    .caption{
+      font-size:14px;
+      color:#555;
+      margin-top:4px;
+      line-height:1.3;
+    }
+
+    ol{
+      margin:10px 0 0 28px;
+      padding:0;
+    }
+    ol li{margin:8px 0}
+    ul.bullets{
+      margin:0 0 0 22px;
+      padding:0;
+    }
+    ul.bullets li{margin:8px 0}
+    .rest{
+      margin-top:18px;
+      font-size:18px;
+    }
+
+    .images-grid{
+      display:flex;
+      gap:10px;
+      margin-top:8px;
+      align-items:flex-start;
+    }
+    .thumb{
+      width:138px;
+    }
+    .thumb .frame{
+      border:1px solid #d8d8d8;
+      background:#fafafa;
+      padding:14px;
+      margin-bottom:6px;
+    }
+    .thumb img{
+      width:100%;
+      display:block;
+    }
+
+    .see-also{
+      margin-top:72px;
+    }
+    .see-also-row{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-top:8px;
+    }
+    .small-thumb{
+      width:54px;
+      height:78px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .modified{
+      margin:28px 0 18px;
+      font-size:18px;
+    }
+    .modified .edit{
+      background:#e9e9e9;
+      padding:2px 4px;
+      border:1px solid #d0d0d0;
+    }
+
+    footer{
+      background:var(--footer);
+      border-top:1px solid #d8d8d8;
+      margin-top:0;
+    }
+    .footer-inner{
+      max-width:840px;
+      margin:0 auto;
+      padding:14px 16px 18px;
+    }
+    .footer-brand{
+      font-size:28px;
+      color:#1f49d8;
+      line-height:1.1;
+      margin-bottom:4px;
+    }
+    .footer-text{
+      font-size:14px;
+      line-height:1.35;
+      margin-bottom:4px;
+    }
+    .footer-links{
+      font-size:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+    }
+
+    .nav-toggle{ display: none; }
+
+    @media (max-width: 900px){
+      .page{max-width:760px}
+      h1{font-size:38px}
+      .intro-grid{grid-template-columns:1fr 250px}
+      .flavors-layout{grid-template-columns:1fr 255px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar-inner{
+        min-height:108px;
+        padding:0 10px;
+      }
+      .logo-left{
+        width:117px;height:144px;left:5px;top:5px;
+      }
+      .logo-center{
+        width:121px;height:68px;top:5px;
+      }
+      .search-wrap{
+        width:calc(100% - 40px);
+        top:48px;
+      }
+      .search-bar{height:44px}
+      .search-tabs{
+        top:88px;
+        gap:18px;
+        font-size:12px;
+      }
+      .page{
+        padding:18px 10px 0;
+      }
+      h1{font-size:34px}
+      h2{font-size:28px}
+      .intro-grid,
+      .flavors-layout{
+        grid-template-columns:1fr;
+      }
+      .infobox-wrap{
+        order:-1;
+        max-width:360px;
+      }
+      .contents-box{
+        width:150px;
+      }
+      .images-grid{
+        gap:8px;
+      }
+      .thumb{
+        width:128px;
+      }
+      .footer-inner{
+        padding-left:10px;
+        padding-right:10px;
+      }
+    }
+
+    @media (max-width: 420px){
+      .topbar-inner{
+        min-height:102px;
+      }
+      .logo-left{display:none}
+      .logo-center{
+        width:64px;
+        height:32px;
+        top:6px;
+      }
+      .search-wrap{
+        top:40px;
+        width:calc(100% - 8px);
+      }
+      .search-bar{
+        height:34px;
+        border-radius:18px;
+        padding:0 12px 0 14px;
+      }
+      .search-bar input{
+        font-size:16px;
+      }
+      .search-tabs{
+        top:82px;
+        gap:14px;
+        font-size:10px;
+      }
+      h1{
+        font-size:28px;
+      }
+      h2{
+        font-size:26px;
+      }
+      p, li, .intro-text, .modified{
+        font-size:16px;
+      }
+      .subtitle{
+        font-size:14px;
+      }
+      .infobox{
+        font-size:14px;
+      }
+      .infobox caption{
+        font-size:16px;
+      }
+      .contents-box{
+        width:113px;
+        padding:8px 10px;
+      }
+      .contents-box h2{
+        font-size:24px;
+      }
+      .contents-box li{
+        font-size:14px;
+      }
+      .thumb{
+        width:100px;
+      }
+      .thumb .frame{
+        padding:14px 10px;
+      }
+      .small-thumb{
+        width:40px;
+        height:68px;
+      }
+      .footer-brand{
+        font-size:24px;
+      }
+      .footer-text,.footer-links{
+        font-size:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="logo-left" aria-hidden="true"></div>
+      <div class="logo-center" aria-hidden="true"></div>
+      <div class="search-wrap">
+        <div class="search-bar" aria-label="Search">
+          <label for="site-search" class="sr-only" style="position:absolute;left:-9999px;">Search</label>
+          <input id="site-search" type="text" aria-label="Search">
+          <span class="search-icon" aria-hidden="true">&#128269;</span>
+        </div>
+        <nav aria-label="Search categories" class="search-tabs">
+          <a href="#">Web</a>
+          <a href="#">Images</a>
+          <a href="#">Kimages</a>
+          <a href="#" class="active">Kpedia</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="page">
+    <h1>Ben &amp; Jerry's facts for kids</h1>
+    <div class="subtitle"><a href="#">Kids Encyclopedia Facts</a></div>
+
+    <div class="intro-grid">
+      <div>
+        <p class="intro-text"><strong>Ben and Jerry’s</strong> is an American <a href="#">ice cream</a> company. <a href="#">Burlington, Vermont</a> . In 2000, Ben and Jerry's was sold to <a href="#">Unilever</a> , a British-Dutch company.</p>
+
+        <nav aria-label="Contents" class="contents-box">
+          <h2>Contents</h2>
+          <ul>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Flavors and Sizes</a></li>
+            <li><a href="#">Flavor Graveyard</a></li>
+            <li><a href="#">Locations</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <aside class="infobox-wrap" aria-label="Company information">
+        <table class="infobox">
+          <caption>Ben &amp; Jerry's Homemade Holdings, Inc.</caption>
+          <tbody>
+            <tr>
+              <th><a href="#">Type</a></th>
+              <td>Subsidiary</td>
+            </tr>
+            <tr>
+              <th>Industry</th>
+              <td>Food Processing</td>
+            </tr>
+            <tr>
+              <th>Founded</th>
+              <td><a href="#">Burlington, Vermont</a> (1978)</td>
+            </tr>
+            <tr>
+              <th>Founder</th>
+              <td>Ben Cohen<br>Jerry Greenfield</td>
+            </tr>
+          </tbody>
+        </table>
+      </aside>
+    </div>
+
+    <section aria-label="History section">
+      <h2>History</h2>
+      <p>In 1977, Ben Cohen and Jerry Greenfield completed a course on ice cream making at Pennsylvania State University. On May 5, 1978, they opened a first ice cream shop in a gas station in <a href="#">Burlington, Vermont</a> . <a href="#">Ronald Reagan</a> .</p>
+    </section>
+
+    <section aria-label="Flavors and sizes section">
+      <h2>Flavors and Sizes</h2>
+      <div class="flavors-layout">
+        <div class="section-text">
+          <p>You can get Ben and Jerry's ice cream in pints, pint slices, non-dairy pints, scoop shop flavors, frozen yogurt pints, mini cups and quarts. Top ten flavors:</p>
+          <ol>
+            <li>Half Baked</li>
+            <li>Cherry Garcia</li>
+            <li>Chocolate Chip Cookie Dough</li>
+            <li>Chocolate Fudge Brownie</li>
+          </ol>
+        </div>
+        <figure class="figure">
+          <img src="rick.jpg" alt="Ben &amp; Jerry's display freezer at a local Dominos">
+          <figcaption class="caption">Ben &amp; Jerry's display freezer at a local <a href="#">Dominos</a> .</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-label="Flavor graveyard section">
+      <h2>Flavor Graveyard</h2>
+      <ul class="bullets">
+        <li>Schweedy balls</li>
+        <li>Wavy Gravy</li>
+        <li>Fossil Fuel</li>
+        <li>Turtle Soup</li>
+      </ul>
+      <p class="rest">REST IN PEACE MY FRIENDS :)</p>
+    </section>
+
+    <section aria-label="Locations section">
+      <h2>Locations</h2>
+      <p>Ben &amp; Jerry’s has their shops all over the world, in places like Austria, Australia, Belgium, Canada, Cyprus, Denmark, Finland, France, Germany, Hong Kong, Iceland, Ireland, Israel, Italy, Malta, Mexico, Netherlands, Norway, Portugal, Singapore, Spain, Sweden, Switzerland, Thailand, Turkey, United Kingdom,and the United States.</p>
+    </section>
+
+    <section aria-label="Resources section">
+      <h2>Resources</h2>
+      <p>"Ben &amp; Jerry’s" Ben &amp; Jerry’s. Ben &amp; Jerry’s. &lt; http://www.benjerry.co.uk/ourflavours/ /&gt;. (2010)</p>
+    </section>
+
+    <section aria-label="Images for kids section">
+      <h2>Images for kids</h2>
+      <div class="images-grid">
+        <figure class="thumb">
+          <div class="frame">
+            <img src="rick.jpg" alt="Jerry Greenfield left and Ben Cohen right in 2010">
+          </div>
+          <figcaption>Jerry Greenfield (left) and Ben Cohen (right) in 2010</figcaption>
+        </figure>
+        <figure class="thumb">
+          <div class="frame">
+            <img src="rick.jpg" alt="Woman in cow costume promoting Free Cone Day outside a Ben &amp; Jerry's shop in Stockholm Sweden">
+          </div>
+          <figcaption>Woman in cow costume promoting Free Cone Day outside a Ben &amp; Jerry's shop in <a href="#">Stockholm</a> , Sweden</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="see-also" aria-label="See also section">
+      <h2>See also</h2>
+      <div class="see-also-row">
+        <img src="rick.jpg" alt="" class="small-thumb">
+        <p>In Spanish: <a href="#">Ben &amp; Jerry's para niños</a></p>
+      </div>
+    </section>
+
+    <p class="modified">This page was last modified on 27 October 2023, at 12:11. <a href="#" class="edit">Suggest an edit</a> .</p>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Kiddle encyclopedia</div>
+      <div class="footer-text">
+        Content is available under <a href="#">CC BY-SA 3.0</a> unless otherwise noted. Kiddle encyclopedia articles are based on selected content and facts from <a href="#">Wikipedia</a>, edited or rewritten for children. Powered by <a href="#">MediaWiki</a> .
+      </div>
+      <div class="footer-links">
+        <a href="#">Kiddle</a>
+        <span>•</span>
+        <a href="#">Español</a>
+        <span>•</span>
+        <a href="#">About</a>
+        <span>•</span>
+        <a href="#">Privacy</a>
+        <span>© 2023 Kiddle.co</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, nav, main, aside, footer, and section elements; ensured exactly one h1 with sequential h2 headings; added alt text to all images and empty alt for decorative image; added label for search input; ensured descriptive link text; set html lang="en".
+[B] ARIA fixes: used aria-label on multiple navigation/section-like landmarks where needed; avoided redundant role attributes on semantic landmarks; ensured aside has accessible label; removed need for positive tabindex via cleanup script.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup script only.
+-->

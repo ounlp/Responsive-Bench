@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top bar with a clear hamburger icon at the upper left, implying a hidden navigation panel that must be toggled open and closed on small screens.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the hamburger should reveal the site navigation, likely as an off-canvas or overlay menu, and tapping again or outside should close it.",
+      "ambiguities": "The sketch does not show whether the menu slides from the left, drops down, or opens as a full-screen overlay."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile top bar includes a circular icon at the upper right that strongly suggests a cart/status badge, which typically updates as items are added or removed.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The badge/count should update dynamically without a full page reload when cart state changes.",
+      "ambiguities": "The sketch does not label the circle, so it could be a cart, profile, or generic action icon; the reference HTML makes cart behavior more likely."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place navigation/header elements in persistent edge positions: a fixed top bar on mobile and a fixed left sidebar on desktop, while the rest of the page content extends vertically below/alongside them.",
+      "confidence": "HIGH",
+      "behavior_notes": "Navigation should remain available during scroll; on mobile the top header stays pinned, and on desktop the sidebar remains fixed while content scrolls independently.",
+      "ambiguities": "The sketch does not indicate whether the sticky behavior begins immediately or after scrolling."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch features a large product image area that, in an ecommerce/product-detail layout, strongly implies click-to-enlarge image viewing. The reference HTML also includes fancyBox classes, reinforcing a lightbox/modal image viewer.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Clicking the main product image should open an overlay/lightbox with the larger image and close controls; focus should move into the modal and return to the trigger on close.",
+      "ambiguities": "The sketch itself does not explicitly draw an overlay state, so this is inferred from the product-image prominence and supporting HTML context."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile hamburger-triggered navigation and the inferred desktop image modal both require controlled keyboard focus to behave accessibly.",
+      "confidence": "HIGH",
+      "behavior_notes": "When the mobile menu opens, focus should move into the menu and return to the trigger on close; if an image modal opens on desktop, focus should be trapped within it until dismissed.",
+      "ambiguities": "If the final implementation omits keyboard support for mobile menu or modal interactions, the exact focus behavior could vary, but some programmatic focus handling is still implied by these components."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "S1",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "S2",
+    "V1",
+    "K4",
+    "M3"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "live_region",
+      "focus_management"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively light but important layer of JavaScript centered on responsive navigation and ecommerce state. Mobile clearly needs a hamburger-driven menu plus a persistent header with a likely live cart/status indicator, while desktop relies more on a fixed sidebar and likely image enlargement behavior for the prominent product media. Cross-viewport complexity is moderate: the main differences are navigation disclosure on mobile versus persistent navigation on desktop, with accessibility-focused state and focus handling needed wherever menus or overlays appear."
+}

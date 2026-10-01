@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both sketches depict a very simple static landing layout: headline/text lines, two rectangular button-like blocks, and a large image area. There are no visible navigation controls, menus, tabs, accordions, search fields, form inputs, counters, overlays, or pagination/loading affordances. The two rectangles in the mobile sketch and the larger stacked blocks in the desktop sketch could function as plain links/buttons, but the provided taxonomy does not include generic button/link clicks, so no specific JavaScript interaction pattern can be inferred with confidence from the sketches alone."
+}

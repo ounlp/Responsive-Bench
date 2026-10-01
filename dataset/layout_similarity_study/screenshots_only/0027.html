@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JLaughter — Ficlets</title>
+  <style>
+    :root{
+      --orange:#f26722;
+      --blue:#3aa0f3;
+      --black:#000;
+      --text:#111;
+      --bg:#fff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+    body{
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.12;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:8px;top:8px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .page{
+      max-width:1060px;
+      margin:0 auto;
+      padding:20px 24px 0;
+    }
+
+    .site-header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:42px;
+    }
+    .brand{
+      font-size:34px;
+      font-weight:700;
+      color:var(--orange);
+      line-height:1;
+      margin-top:2px;
+    }
+
+    .nav-toggle { display: none; }
+
+    .top-nav{
+      width:665px;
+      max-width:100%;
+      background:#000;
+      border-radius:2px;
+      margin-top:0;
+    }
+    .top-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+    }
+    .top-nav a{
+      display:block;
+      color:#fff;
+      font-size:18px;
+      font-weight:700;
+      padding:10px 18px 11px;
+      text-align:center;
+    }
+
+    main{
+      max-width:1000px;
+    }
+
+    h1{
+      font-size:36px;
+      line-height:1.05;
+      margin:0 0 18px;
+      font-weight:700;
+    }
+    h2{
+      font-size:31px;
+      line-height:1.05;
+      margin:28px 0 14px;
+      font-weight:700;
+    }
+    p{
+      font-size:22px;
+      margin:0 0 18px;
+    }
+    .italic{font-style:italic}
+    .bold{font-weight:700}
+    .story-list{
+      margin-top:8px;
+    }
+    .story{
+      margin:0 0 28px;
+    }
+    .story-title{
+      color:var(--blue);
+      font-size:22px;
+      font-weight:700;
+      display:inline-block;
+      margin-bottom:4px;
+    }
+    .meta{
+      font-size:17px;
+      margin:0 0 4px;
+    }
+    .meta .label{
+      font-weight:700;
+    }
+    .meta a{
+      color:var(--blue);
+      text-decoration:none;
+    }
+    .published{
+      font-size:17px;
+      margin:0;
+    }
+    .published a{
+      color:#000;
+      text-decoration:underline;
+      text-decoration-style:dotted;
+      text-underline-offset:2px;
+    }
+
+    .site-footer{
+      margin-top:46px;
+      padding:0 0 6px;
+    }
+    .footer-top{
+      display:grid;
+      grid-template-columns:80px 1fr;
+      align-items:start;
+      gap:18px;
+      margin-bottom:12px;
+    }
+    .footer-top .home-link{
+      color:var(--blue);
+      font-size:16px;
+      padding-top:2px;
+    }
+    .license{
+      font-size:16px;
+      text-align:left;
+    }
+    .footer-nav{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      text-align:center;
+      margin-top:8px;
+    }
+    .footer-nav a{
+      color:var(--blue);
+      font-size:16px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .page{
+        padding:22px 20px 0;
+      }
+      .site-header{
+        align-items:flex-start;
+        gap:14px;
+        margin-bottom:48px;
+      }
+      .header-nav-wrap{
+        display:flex;
+        align-items:flex-start;
+        gap:8px;
+        margin-left:auto;
+      }
+      .nav-toggle{
+        background:#000;
+        color:#fff;
+        border:0;
+        border-radius:2px;
+        padding:8px 10px;
+        font-size:20px;
+        line-height:1;
+      }
+      .top-nav{
+        width:auto;
+        min-width:218px;
+      }
+      .top-nav a{
+        font-size:16px;
+        padding:10px 16px;
+      }
+      h1{
+        font-size:34px;
+        margin-bottom:20px;
+      }
+      h2{
+        font-size:30px;
+      }
+      p{
+        font-size:22px;
+      }
+      .story-title{
+        font-size:22px;
+      }
+      .footer-top{
+        grid-template-columns:1fr 5fr;
+        gap:12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page{
+        padding:22px 20px 0;
+      }
+      .site-header{
+        margin-bottom:50px;
+      }
+      .brand{
+        font-size:36px;
+      }
+      .header-nav-wrap{
+        gap:0;
+      }
+      .nav-toggle{
+        display:none;
+      }
+      .top-nav{
+        min-width:218px;
+      }
+      .top-nav a{
+        font-size:15px;
+        padding:9px 14px 10px;
+      }
+      h1{
+        font-size:36px;
+      }
+      h2{
+        font-size:29px;
+      }
+      p{
+        font-size:21px;
+        line-height:1.08;
+      }
+      .meta,.published{
+        font-size:17px;
+      }
+      .footer-top{
+        grid-template-columns:40px 1fr;
+        align-items:start;
+      }
+      .license{
+        font-size:16px;
+      }
+      .footer-nav a,
+      .footer-top .home-link{
+        font-size:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <a href="#" class="brand">Ficlets</a>
+      <div class="header-nav-wrap">
+        <button
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation menu"
+          class="nav-toggle">
+          <span aria-hidden="true">&#9776;</span>
+        </button>
+        <nav class="top-nav" aria-label="Main" id="mobile-nav">
+          <ul>
+            <li><a href="#">Authors</a></li>
+            <li><a href="#">Stories</a></li>
+            <li><a href="#">Tags</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <h1>JLaughter</h1>
+
+      <p>I’ve always been an avid (dare I say: OBSESSED ) reader, and started writing fiction somewhere around 5th or 6th grade. I read approximately 3 or 4 books a month, so new material is always a must!</p>
+
+      <p>I’ve written for a long time now, although the novel I started in high school has never gotten past the first draft stage. Over the last four years, I’ve fallen out of the habit of writing and I’m looking to ramp that up again.</p>
+
+      <p>I’m going to insert a shameless plug for my father. Jim Laughter and Victor J. Bretthauer recently published <span class="bold">Escape to Destiny</span> , and his book (and oncoming series) is available on <span class="bold">tatepublishing.com</span> !</p>
+
+      <p>Music You Should Try:<br>
+      <span class="bold">The Dears</span> , <span class="italic">No Cities Left</span><br>
+      <span class="bold">Sia</span> , lots of albums...great voice.</p>
+
+      <p><span class="italic">Ficlet Series’ in Progress :</span></p>
+
+      <p><span class="bold">Bagman</span> : a Cyberpunk series in the first-person narrative from different points of views. This series is rated <span class="bold italic">Mature</span> for drug-use, language, violence and strong sexual references. <span class="bold">30471</span> (in progress)</p>
+
+      <p><span class="bold">The Gerideon Chronicles</span> : An experiment in writing in a classical style reminiscent of Sir Thomas Malory’s <span class="italic">Le Morte D’Arthur</span>. <span class="bold">30988</span> (in progress)</p>
+
+      <p><span class="italic">Completed Ficlets</span></p>
+
+      <p><span class="bold">The Fog</span> : My response to Ana Cristina’s <span class="italic">Out of Order Challenge</span> . <span class="bold">33175</span></p>
+
+      <p>Also check out my bro’s ficlets! <span class="bold">Browncoatben</span> ! He’s not as good as me, but he wishes he was.</p>
+
+      <h2>Stories (79)</h2>
+
+      <section class="story-list" aria-label="Stories list">
+        <article class="story">
+          <a href="#" class="story-title">Bagman: A Clear Blue Spike</a>
+          <p class="meta"><span class="label">Author:</span> <a href="#">JLaughter</a></p>
+          <p class="published">Published <a href="#">May 14th, 2008</a></p>
+        </article>
+
+        <article class="story">
+          <a href="#" class="story-title">Bagman: Fashionably Late</a>
+          <p class="meta"><span class="label">Author:</span> <a href="#">JLaughter</a></p>
+          <p class="published">Published <a href="#">May 17th, 2008</a></p>
+        </article>
+
+        <article class="story">
+          <a href="#" class="story-title">Bagman: First Rule: Never Ask</a>
+          <p class="meta"><span class="label">Author:</span> <a href="#">JLaughter</a></p>
+          <p class="published">Published <a href="#">May 17th, 2008</a></p>
+        </article>
+
+        <article class="story">
+          <a href="#" class="story-title">Bagman: Shots Fired</a>
+          <p class="meta"><span class="label">Author:</span> <a href="#">JLaughter</a></p>
+          <p class="published">Published <a href="#">May 17th, 2008</a></p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-top">
+        <a href="#" class="home-link">Ficlets</a>
+        <div class="license">All stories are licensed under a Creative Commons Attribution-Share Alike 3.0 License.</div>
+      </div>
+      <nav class="footer-nav" aria-label="Footer">
+        <a href="#">Authors</a>
+        <a href="#">Stories</a>
+        <a href="#">Tags</a>
+      </nav>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    function syncMobileNav() {
+      if (window.innerWidth <= 768) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+      } else {
+        nav.hidden = false;
+      }
+    }
+
+    syncMobileNav();
+    window.addEventListener('resize', syncMobileNav);
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false && window.innerWidth <= 768) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer landmarks; added skip link and main-content id; ensured one h1 with sequential h2; added html lang="en"; ensured descriptive link text throughout.
+[B] ARIA fixes: used unique aria-labels for main and footer navigation; avoided redundant landmark roles; ensured no positive tabindex values remain.
+[C] JS patterns added: implemented hamburger menu behavior for mobile navigation; implemented tabindex cleanup and focus indicator support.
+-->

@@ -1,0 +1,66 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a simple landing-page style layout with a prominent boxed input/button area near the upper-right/top region and supporting text blocks, consistent with an email signup or password-entry form shown in the reference HTML.",
+      "confidence": "HIGH",
+      "behavior_notes": "The form should validate required input before submission, likely email format on the signup field and/or non-empty password on the access field. Submission states, invalid states, and success/error feedback are implied by the presence of a call-to-action form on a sparse page.",
+      "ambiguities": "The sketch lines are abstract and do not label the field purpose, so exact validation rules beyond required-field behavior are inferred from the page context and reference HTML."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The composition matches a password/coming-soon page pattern from the reference HTML, which includes a separate 'Enter using password' action that opens an overlay dialog distinct from the main page content. The small boxed control area in the header/top-right suggests a secondary gated action rather than inline content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A trigger should open a centered overlay for password entry, with background inertness, close control, Escape support, and return focus to the opener when dismissed.",
+      "ambiguities": "The sketches do not explicitly draw an overlay state, so the modal is inferred primarily from the page type and reference structure rather than explicit wireframe annotation."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Because the page implies at least one actionable form and likely a modal password-entry flow, programmatic focus handling is required for opening the dialog, moving focus into the first field, and restoring focus on close.",
+      "confidence": "HIGH",
+      "behavior_notes": "Focus should move logically into the modal when opened, remain trapped while active, and return to the invoking control on close. Form errors should also move or expose focus appropriately.",
+      "ambiguities": "If the password entry were implemented inline instead of as an overlay, focus management would still apply to validation but not full dialog trapping."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4",
+    "F4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation",
+      "modal_dialog",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation",
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very low-JS promotional/password landing page rather than a content-heavy application. Across both mobile and desktop, the main interactive burden is form submission with validation and an owner/password access flow likely handled in a modal. No clear evidence appears for navigation systems, tabs, accordions, sticky behavior, infinite loading, or dynamic content widgets; the cross-viewport difference is mostly layout density, not interaction complexity."
+}

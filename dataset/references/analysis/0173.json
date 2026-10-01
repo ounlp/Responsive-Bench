@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a simple password-entry form structure: text heading/description, one rectangular input field, and a smaller rectangular submit button beneath it. The desktop sketch presents the same elements in a centered stacked layout, while the mobile sketch shows the same form components at larger width.",
+      "confidence": "HIGH",
+      "behavior_notes": "The password field and submit button imply client-side submit handling, required-field checking, focus styling, and likely invalid-password error feedback after submission. Because this is a password gate, JavaScript may also handle asynchronous submission and inline error rendering rather than a full page reload.",
+      "ambiguities": "The sketch does not explicitly show error text, loading state, or whether validation is only presence-checking versus server-returned authentication errors."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation"
+    ],
+    "desktop": [
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very low-JavaScript page whose only clear interactive requirement is a single-field password form. There is no visible evidence of navigation menus, overlays, tabs, accordions, sticky elements, or dynamic loading. Mobile and desktop differ mainly in layout density and width, not in interaction model, so the same validation and submission behavior should apply consistently across both viewports."
+}

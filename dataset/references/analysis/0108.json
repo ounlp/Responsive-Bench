@@ -1,0 +1,74 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent horizontal input-like bar near the top with text on the left and a small control/icon area on the right, indicating a search field or searchable filter control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should accept text input and submit a search/filter action. The right-side control likely triggers submit or clears/opens search. On mobile it may expand or focus prominently; on desktop it appears persistently visible.",
+      "ambiguities": "The sketches do not clarify whether results update live or only on submit, so implement at minimum submit behavior and optionally live filtering if supported."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch is a long vertical feed of repeated post blocks with large image cards and no visible pagination controls in-frame, implying progressive continuation of content in a scrolling list.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A feed like this commonly needs either a manual 'load more' trigger lower in the list or equivalent continuation behavior to reveal additional posts beyond the initially rendered set.",
+      "ambiguities": "The actual trigger is not drawn; this could instead be classic pagination off-screen."
+    },
+    {
+      "pattern_id": "infinite_scroll",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch emphasizes a continuous stacked stream of article cards extending far down the page, with no explicit pager shown, which strongly suggests auto-loading additional content during scroll.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If implemented, additional posts should append as the user nears the bottom, with loading feedback and preserved scroll position.",
+      "ambiguities": "Because no spinner or sentinel is drawn, this may alternatively be a static long page or a hidden pager rather than true infinite scroll."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place the top utility/header area in a way that reads like a persistent page-level control region above a long content feed; on mobile especially, a top search/control bar would typically remain accessible while scrolling.",
+      "confidence": "LOW",
+      "behavior_notes": "If faithful to the implied browsing pattern, the top navigation/search region may condense and remain fixed during scroll so users can search or navigate without returning to the top.",
+      "ambiguities": "The sketches do not explicitly show a pinned state or repeated header, so stickiness is inferred from common blog/feed behavior rather than directly drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "F2",
+    "S2",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "infinite_scroll",
+      "load_more",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "search_input",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple blog/archive feed with repeated post cards and a top search/control bar. Desktop appears mostly static aside from search behavior, while mobile suggests a long continuous reading stream where additional content loading is more likely to matter. No explicit menus, tabs, accordions, or modal triggers are drawn in the sketches themselves, so the main JavaScript complexity centers on search and potentially scroll-driven feed continuation."
+}

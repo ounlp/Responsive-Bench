@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent full-width header/navigation bar at the very top, visually separated from the page content. In the desktop sketch it is a dark horizontal bar spanning the width; in the mobile sketch it is a boxed top bar above the article content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation likely remains visible while scrolling through the long documentation/article page, especially given the content-heavy layout and docs-style structure.",
+      "ambiguities": "The sketch does not explicitly show scrolling states, so fixed-on-scroll behavior is inferred from the docs-page layout rather than directly drawn."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile header is compact and only shows sparse top-bar marks rather than a full expanded navigation list, implying collapsed navigation in the constrained viewport.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile nav toggle would open and close the site navigation panel or drawer from the top bar. It should support dismissal and reflect the current active section.",
+      "ambiguities": "No explicit hamburger icon is drawn; this is inferred from the absence of visible full nav links on mobile and the desktop presence of multiple nav items."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a docs-style layout with a top navigation/header and left sidebar navigation, which strongly implies a documentation search affordance in the header area even if not distinctly labeled in the sketch. The reference structure also supports a docs search field in the nav.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented, the search field would accept text input, focus on interaction, and either submit or show live suggestions/results relevant to documentation pages.",
+      "ambiguities": "The sketch itself does not clearly depict an input box; this is a plausible docs-site inference rather than explicit visual evidence."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F2",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "These sketches imply a relatively low-JS documentation page whose main interactive complexity is in navigation behavior rather than dynamic content widgets. The desktop view suggests a persistent docs layout with top navigation and sidebar, while the mobile view compresses that structure into a simplified header that likely requires a collapsible menu. No clear evidence appears for tabs, accordions, modals, infinite loading, or form workflows; most of the page reads as static article content with standard links."
+}

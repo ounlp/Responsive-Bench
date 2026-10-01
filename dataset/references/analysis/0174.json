@@ -1,0 +1,94 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches center the page around a large hero image and a dense gallery of image thumbnails/cards, which strongly implies clicking/tapping an image opens a larger focused viewing experience rather than navigating only to separate pages. The reference context also includes a 'View Slideshow' control and lightbox/slideshow-related markup, reinforcing that the gallery is intended to open an overlay viewer.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping/clicking a thumbnail or slideshow trigger should open an overlay/lightbox with the selected image enlarged, likely with next/previous navigation and close behavior. Focus should move into the overlay on open and return to the trigger on close.",
+      "ambiguities": "The sketch does not explicitly draw overlay chrome, so it is unclear whether the modal is a simple lightbox, a full slideshow, or a dedicated detail panel."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The implied image lightbox/modal viewer requires managed keyboard focus. If gallery items open an overlay, focus cannot be left to default browser behavior.",
+      "confidence": "HIGH",
+      "behavior_notes": "When the gallery viewer opens, focus should move to the modal container or close button, remain trapped within the overlay while open, and restore to the originating thumbnail or slideshow trigger when dismissed.",
+      "ambiguities": "If implementation uses full-page navigation instead of an overlay, focus management needs would be reduced; however the gallery/slideshow presentation strongly suggests an overlay."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "A compact input-and-button control appears at the bottom of both layouts, visually matching a search field with submit button.",
+      "confidence": "HIGH",
+      "behavior_notes": "The search field should accept text input and submit on button press or Enter. At minimum it needs JS-enhanced submit handling if the design expects dynamic behavior; focus styling and keyboard interaction should be supported.",
+      "ambiguities": "The sketch does not indicate whether results are live-filtered, submitted to a new page, or handled asynchronously."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop layout corresponds to a gallery site with top-level navigation in the reference context, including items that contain nested submenus. Desktop gallery sites commonly expose these as hover/click dropdowns.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level nav items with children should reveal submenus on hover and/or click, support keyboard access, and close when focus leaves or Escape is pressed.",
+      "ambiguities": "The desktop sketch itself is simplified and does not explicitly draw the nav bar or submenu indicators, so this is inferred from the page type and reference structure rather than explicit sketch marks."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch omits visible full navigation while preserving a content-heavy gallery page, which strongly implies collapsed navigation on small screens rather than permanently visible menu links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile menu button should toggle the main navigation open and closed, likely as a drawer or disclosure panel. It should expose current state, allow dismissal, and preserve logical focus order.",
+      "ambiguities": "No hamburger icon is explicitly drawn, so the exact trigger placement and whether the menu is overlay, drawer, or inline expansion is not shown."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The bottom search control includes a text field and action button, implying at least minimal validation such as handling empty submissions.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Submitting an empty or invalid search should be prevented or handled gracefully, with clear feedback if validation rules exist.",
+      "ambiguities": "If the search accepts empty submissions or is purely server-handled, JS validation may be minimal."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "F1",
+    "F2",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N3",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "modal_dialog",
+      "focus_management",
+      "search_input",
+      "form_validation"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "modal_dialog",
+      "focus_management",
+      "search_input",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "These sketches imply a relatively simple but important interaction model centered on a gallery: users browse many thumbnails and likely open larger image views in a modal/lightbox or slideshow. The main cross-viewport difference is navigation: desktop likely supports dropdown navigation from a full nav bar, while mobile likely collapses navigation behind a hamburger toggle because no full menu is shown. The footer search control appears in both views and implies basic input handling and validation, but there is no strong evidence for tabs, accordions, infinite scroll, sticky navigation, or live-updating UI."
+}

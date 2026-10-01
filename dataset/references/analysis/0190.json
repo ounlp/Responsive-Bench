@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a calculator-style input area with multiple fields and a prominent action button/submit control, implying user-entered values must be checked before calculation or navigation proceeds.",
+      "confidence": "HIGH",
+      "behavior_notes": "Validate numeric amount input and year/range selections before processing. Prevent invalid submissions, handle empty or malformed values, and surface inline errors or blocked submission states.",
+      "ambiguities": "The sketch does not show explicit error text, required markers, or whether validation is live-on-input versus on submit."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "both",
+      "visual_evidence": "The form area includes stacked field controls consistent with year pickers/dropdowns rather than plain text-only inputs, matching the calculator layout implied by the reference structure.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If implemented as styled dropdowns/comboboxes, they need open/close state, selected option display, keyboard navigation, and synchronization with calculation results.",
+      "ambiguities": "The sketch boxes are generic and could also be native selects or text inputs; custom JS is only required if they are non-native styled widgets."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch has a small square icon in the upper-left of the header area, strongly suggesting a collapsed mobile navigation trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should reveal and hide the site navigation, likely as an overlay, drawer, or expanded panel. It should reflect open/closed state and close on outside tap or item selection.",
+      "ambiguities": "The sketch does not indicate whether the menu opens from the side, drops down, or covers the screen."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The mobile hamburger-triggered navigation and the interactive form controls imply components that need managed keyboard focus; if the mobile nav opens as an overlay/drawer, focus handling becomes necessary.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Move focus into opened navigation if it behaves like an overlay, return focus to the trigger on close, preserve logical tab order through form controls, and support keyboard interaction for any custom select widgets.",
+      "ambiguities": "Focus management is definitely needed if the nav is overlay-based or selects are custom; less so if everything remains native and inline."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "form_validation",
+      "custom_select",
+      "focus_management"
+    ],
+    "desktop": [
+      "form_validation",
+      "custom_select",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple calculator/information page with modest JavaScript needs centered on form submission and responsive navigation differences. Desktop appears mostly static aside from the calculator controls, while mobile adds a clear collapsed navigation trigger that likely requires show/hide behavior and associated focus handling. No sketch evidence strongly suggests tabs, accordions, modals, infinite loading, sticky behavior, or toast-style feedback."
+}

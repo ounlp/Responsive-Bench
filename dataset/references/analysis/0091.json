@@ -1,0 +1,72 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top header with a small boxed icon containing stacked lines at the top right, a conventional menu trigger in a constrained mobile navbar.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel. Because the rest of the mobile layout is content-heavy and the nav is not otherwise visible, the menu likely overlays or pushes content and should expose site navigation links.",
+      "ambiguities": "The sketch does not show whether the menu opens as a full-screen drawer, dropdown sheet, or side panel."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile header includes a hamburger trigger that implies a hidden navigation panel; opening and closing such a panel requires managed keyboard focus and return focus to the trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the revealed navigation and return to the menu button on close. If implemented as an overlay/drawer, background focus should be constrained appropriately.",
+      "ambiguities": "The sketch does not reveal whether the menu is modal-like or inline-expanded, so the strictness of focus trapping is somewhat unclear."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a small horizontal field-like control in the upper-right header area, consistent with a search box in a wiki-style masthead.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The search control should accept text and submit a search action; depending on implementation it may also support live suggestions, but submit behavior is the minimum implied interaction.",
+      "ambiguities": "The sketch is too abstract to confirm whether live autocomplete is intended versus a plain submit-only search field."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a search-like input/control in the header, which implies a form submission path even if minimal.",
+      "confidence": "LOW",
+      "behavior_notes": "Validation may be lightweight, such as handling empty submissions, sanitizing input, or preventing invalid search submits.",
+      "ambiguities": "A search field often does not require strong validation, so this is inferred from the presence of a form control rather than explicitly drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "S1",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4",
+    "F3",
+    "F4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light JavaScript overall. Mobile primarily requires responsive navigation behavior via a hamburger-triggered hidden menu, with associated focus handling if the menu behaves like an overlay or drawer. Desktop appears more navigation-rich in layout but only clearly implies a search control needing submit behavior; the left sidebar and content blocks look static from the sketch alone, with no explicit evidence of tabs, accordions, dropdowns, sticky behavior, modals, or dynamic loading."
+}

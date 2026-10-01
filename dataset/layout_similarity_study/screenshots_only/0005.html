@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>South Asia Institute Footer Links — College of Liberal Arts</title>
+  <style>
+    :root{
+      --burnt-orange:#c55a00;
+      --dark-slate:#37424b;
+      --white:#ffffff;
+      --blue:#1200ff;
+      --text:#f4f4f4;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      padding:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#fff;
+      color:#111;
+    }
+
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:0;
+      transform:translateY(-100%);
+      background:#fff;
+      color:#000;
+      padding:10px 14px;
+      z-index:1000;
+      text-decoration:none;
+      border:2px solid #000;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--burnt-orange);
+      color:var(--white);
+      min-height:37px;
+      display:flex;
+      align-items:center;
+    }
+
+    .header-inner{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:6px 31px 6px 16px;
+      gap:16px;
+    }
+
+    .brand{
+      color:#fff;
+      text-decoration:none;
+      font-weight:700;
+      font-size:17px;
+      line-height:1.15;
+      display:inline-block;
+    }
+
+    .brand span{
+      font-weight:700;
+    }
+
+    .header-box{
+      width:44px;
+      height:24px;
+      background:var(--blue);
+      flex:0 0 auto;
+    }
+
+    .nav-toggle { display: none; }
+
+    main{
+      min-height:145px;
+      background:#fff;
+      position:relative;
+    }
+
+    .content-spacer{
+      height:145px;
+      position:relative;
+    }
+
+    .thin-mark{
+      position:absolute;
+      left:62px;
+      top:31px;
+      width:1px;
+      height:18px;
+      background:var(--burnt-orange);
+    }
+
+    .site-footer{
+      background:var(--dark-slate);
+      color:var(--text);
+      padding:32px 0 34px;
+    }
+
+    .footer-inner{
+      max-width:1280px;
+      margin:0 auto;
+      padding:0 50px;
+    }
+
+    .footer-logo{
+      width:242px;
+      height:134px;
+      background:var(--blue);
+      display:block;
+      margin:0 0 28px 0;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 1.2fr 1.2fr 0.9fr;
+      gap:48px;
+      align-items:start;
+    }
+
+    .footer-col{
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    .footer-col ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+
+    .footer-col li{
+      margin:0;
+      padding:0;
+    }
+
+    .footer-col a{
+      color:var(--text);
+      text-decoration:none;
+    }
+
+    .footer-col a:hover,
+    .footer-col a:focus-visible{
+      text-decoration:underline;
+    }
+
+    .footer-note{
+      color:var(--text);
+    }
+
+    @media (max-width: 1024px){
+      .header-inner{
+        padding:6px 31px 6px 31px;
+      }
+
+      .brand{
+        font-size:16px;
+      }
+
+      .content-spacer{
+        height:112px;
+      }
+
+      .thin-mark{
+        left:62px;
+        top:14px;
+      }
+
+      .site-footer{
+        padding:33px 0 58px;
+      }
+
+      .footer-inner{
+        padding:0 30px;
+      }
+
+      .footer-logo{
+        width:241px;
+        height:134px;
+        margin-bottom:28px;
+      }
+
+      .footer-grid{
+        grid-template-columns: repeat(4, 1fr);
+        gap:34px;
+      }
+
+      .footer-col{
+        font-size:17px;
+        line-height:1.7;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+    }
+
+    @media (max-width: 480px){
+      .site-header{
+        min-height:36px;
+      }
+
+      .header-inner{
+        padding:2px 18px 2px 15px;
+        align-items:flex-start;
+      }
+
+      .brand{
+        font-size:16px;
+        line-height:1.05;
+        max-width:240px;
+      }
+
+      .header-box{
+        width:28px;
+        height:16px;
+        margin-top:9px;
+      }
+
+      .content-spacer{
+        height:96px;
+      }
+
+      .thin-mark{
+        left:39px;
+        top:15px;
+        height:18px;
+      }
+
+      .site-footer{
+        padding:32px 0 28px;
+      }
+
+      .footer-inner{
+        padding:0 15px;
+      }
+
+      .footer-logo{
+        width:240px;
+        height:135px;
+        margin-bottom:28px;
+      }
+
+      .footer-grid{
+        grid-template-columns: 1fr 1fr;
+        gap:42px 34px;
+      }
+
+      .footer-col{
+        font-size:17px;
+        line-height:1.7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="brand">SOUTH ASIA INSTITUTE | <span>College of Liberal Arts</span></a>
+      <div class="header-box" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <h1 style="position:absolute;left:-9999px;">South Asia Institute</h1>
+    <div class="content-spacer" aria-hidden="true">
+      <div class="thin-mark"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="rick.jpg" alt="" class="footer-logo">
+
+      <nav aria-label="Footer">
+        <div class="footer-grid">
+          <section class="footer-col" aria-label="Student links">
+            <ul>
+              <li><a href="#">Prospective Students</a></li>
+              <li><a href="#">Undergraduate Students</a></li>
+              <li><a href="#">Graduate Studies</a></li>
+              <li><a href="#">Student Inquiries: [PHONE REDACTED]</a></li>
+            </ul>
+          </section>
+
+          <section class="footer-col" aria-label="Administration links">
+            <ul>
+              <li><a href="#">College Administration</a></li>
+              <li><a href="#">Diversity, Equity, and Inclusion</a></li>
+              <li><a href="#">Student Affairs</a></li>
+              <li><a href="#">Research &amp; Graduate Studies</a></li>
+            </ul>
+          </section>
+
+          <section class="footer-col" aria-label="Resources links">
+            <ul>
+              <li><a href="#">LAITS</a></li>
+              <li><a href="#">Resources for Faculty and Staff</a></li>
+              <li><a href="#">Course Descriptions</a></li>
+              <li><a href="#">General Inquiries: [PHONE REDACTED]</a></li>
+            </ul>
+          </section>
+
+          <section class="footer-col" aria-label="Policy links">
+            <ul>
+              <li><a href="#">Web Privacy Policy</a></li>
+              <li><a href="#">Web Accessibility Policy</a></li>
+              <li class="footer-note">© Copyright 2022</li>
+            </ul>
+          </section>
+        </div>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, main, nav, and footer landmarks; added skip link and main-content target; ensured exactly one h1; added alt attributes to image; ensured descriptive link text; set html lang="en"
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-label for footer navigation and labeled repeated sections; removed any tabindex values greater than 0 via JS baseline
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and tabindex cleanup only; no other interactive patterns were visible in the screenshots
+-->

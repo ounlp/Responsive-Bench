@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a prominent horizontal input field near the top/header area, consistent with a site search bar; the desktop sketch also shows a compact control/button adjacent to header items, reinforcing submit/search behavior.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should support text entry and search submission; likely includes enter-to-submit and possibly autocomplete/live suggestions given the search-centric placement in the header.",
+      "ambiguities": "The sketch does not make clear whether results appear live in a dropdown or only after full submit."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The search field is an actionable form control in both sketches, implying at least minimal validation/handling for empty or malformed submissions.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Should validate or gracefully handle empty queries, preserve input state on submit, and provide feedback if submission is invalid or no query is entered.",
+      "ambiguities": "No explicit error state is drawn, so validation may be lightweight rather than visibly prominent."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch compresses header/navigation content into a narrow top area with limited horizontal space, implying a collapsed mobile navigation pattern rather than full inline nav.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A menu toggle should reveal/hide primary navigation links in an overlay, drawer, or expanded panel on small screens.",
+      "ambiguities": "The hamburger icon itself is not explicitly drawn in the sketch, so this is inferred from responsive constraints rather than explicit depiction."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header contains multiple compact nav items and utility controls arranged inline, a common pattern where one or more top-level items expose secondary links via dropdowns.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented, top-level nav items such as search/tools/account-like controls would open submenus on click or keyboard activation.",
+      "ambiguities": "No caret or open panel is explicitly sketched, so submenu behavior is plausible but not certain from the drawing alone."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch includes stacked content blocks and dense term/detail sections that appear suitable for collapsible disclosure groups to manage vertical space on small screens.",
+      "confidence": "LOW",
+      "behavior_notes": "Long metadata/detail sections could expand and collapse individually, especially for grouped information below the main heading.",
+      "ambiguities": "The sketch does not explicitly show chevrons, plus/minus icons, or open/closed states, so this is only a space-management inference."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "D1",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "form_validation",
+      "accordion"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "dropdown_menu"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively light-JS informational site centered on search and responsive navigation rather than heavy app-like interactions. The strongest cross-viewport requirement is search behavior in the header. Mobile likely needs collapsed navigation because the layout cannot sustain full-width nav links, while desktop may expose more navigation inline and possibly through dropdowns. Most lower-page content appears static/cards/textual, with only weak evidence for collapsible detail sections on mobile and little evidence for modals, tabs, infinite loading, or live counters."
+}

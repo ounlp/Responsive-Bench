@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "custom_select",
+      "present_in": "mobile",
+      "visual_evidence": "At the top of the mobile sketch there is a wide horizontal field with a downward chevron on the right, visually indicating a select/dropdown control rather than plain text.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should open a list of navigation options or categories when activated, reflect the currently selected option, and support keyboard interaction if implemented as a custom-styled widget rather than a native select.",
+      "ambiguities": "The sketch suggests a dropdown control, but it is unclear whether it is a true navigation menu, a category filter, or a native select styled to look custom."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a prominent single-line input-like control near the top area; in the desktop reference layout this corresponds to a search box, and the mobile sketch shows a similar top control with a dropdown indicator adjacent to text.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Should accept user text, provide focus behavior, and submit a search query. If the top mobile control combines search and category selection, JS may coordinate the selected scope with the submitted query.",
+      "ambiguities": "The mobile sketch’s top control could be interpreted as only a select field rather than a search field; the desktop sketch does not explicitly label the input."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a compact horizontal header area with multiple small nav-like items grouped across the top, consistent with a desktop navigation bar that may expose deeper options. The reference HTML also strongly aligns with a top navigation containing a submenu under one item.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A top-level navigation item should reveal a submenu on hover or click, maintain an active/current state for the current section, and close when focus leaves or another menu is opened.",
+      "ambiguities": "The sketch itself is sparse and does not explicitly draw the submenu panel; submenu behavior is inferred from the clustered top navigation structure and corroborated by the reference markup."
+    }
+  ],
+  "applicable_criteria": [
+    "N2",
+    "N3",
+    "F2",
+    "F4",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "F1",
+    "F3",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "custom_select",
+      "search_input"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "search_input"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly static content page with light interaction concentrated in the header. Mobile appears to replace a fuller desktop navigation with a single dropdown-style control, while desktop likely uses a conventional top navigation with at least one submenu. No evidence suggests tabs, accordions, modals, infinite loading, sticky behavior, or other richer JS-driven modules; the main implementation focus is accessible navigation state, search/input focus handling, and any custom select behavior on mobile."
+}

@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch is a narrow single-column layout with long stacked content and no visible persistent full navigation; this strongly implies a collapsed mobile navigation control rather than always-visible desktop-style nav.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger trigger should open and close a mobile navigation panel or overlay containing the site links. The trigger state should toggle between expanded/collapsed and likely lock background scroll while open.",
+      "ambiguities": "The sketch does not explicitly draw the hamburger icon or the opened menu state, so the exact presentation (drawer, full-screen overlay, dropdown sheet) is unclear."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically scrollable pages with repeated content blocks and substantial page depth, which commonly implies a return-to-top affordance for usability on long galleries/content pages.",
+      "confidence": "LOW",
+      "behavior_notes": "A back-to-top control would appear after the user scrolls down and smoothly return focus/scroll position to the top when activated.",
+      "ambiguities": "No explicit button is drawn in either sketch, so this is inferred from page length rather than directly shown."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven responsive page with relatively light JavaScript needs. The clearest cross-viewport difference is navigation: desktop appears to have room for persistent navigation or sidebar structure, while mobile likely collapses navigation into a hamburger-controlled panel. Beyond that, the layouts read as largely static content blocks without explicit evidence of tabs, accordions, forms, modals, dropdowns, or dynamic loading. Any scroll-to-top behavior is only weakly inferred from the unusually long page length rather than directly depicted."
+}

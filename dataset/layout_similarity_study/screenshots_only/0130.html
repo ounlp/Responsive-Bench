@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wholesale — Zaida's</title>
+  <style>
+    :root{
+      --bg:#333333;
+      --panel:#e9e9e9;
+      --text:#3a3a3a;
+      --link:#3f8edc;
+      --header:#2f2f2f;
+      --header-border:#1f1f1f;
+      --white:#ffffff;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Georgia, "Times New Roman", serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+
+    .skip-link{
+      position:absolute;
+      transform:translateY(-100%);
+      left:1rem;
+      top:0;
+      background:#fff;
+      color:#000;
+      padding:.75rem 1rem;
+      z-index:1000;
+      text-decoration:none;
+    }
+    .skip-link:focus{transform:translateY(0)}
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{
+      color:var(--link);
+      text-decoration:none;
+    }
+    a:hover{text-decoration:underline}
+
+    .site-header{
+      display:none;
+      background:linear-gradient(#343434,#2d2d2d);
+      border-bottom:1px solid var(--header-border);
+      min-height:52px;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 14px;
+    }
+
+    .brand{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:18px;
+      font-weight:700;
+      color:#9a9a9a;
+      margin:0;
+    }
+
+    .nav-toggle{
+      display:none;
+      background:transparent;
+      border:1px solid #444;
+      color:#d8d8d8;
+      width:44px;
+      height:34px;
+      border-radius:4px;
+      font-size:24px;
+      line-height:1;
+      cursor:pointer;
+    }
+
+    #mobile-nav{
+      background:#2f2f2f;
+      border-bottom:1px solid #1f1f1f;
+      padding:.5rem 1rem 1rem;
+    }
+    #mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    #mobile-nav a{
+      display:block;
+      color:#f0f0f0;
+      padding:.65rem 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page-wrap{
+      min-height:100vh;
+    }
+
+    .desktop-tablet-layout{
+      display:flex;
+      gap:8vw;
+      align-items:flex-start;
+      padding:28px 20px 40px;
+    }
+
+    .hero-block{
+      background:#1200ff;
+      flex:0 0 auto;
+    }
+
+    .content-card{
+      background:var(--panel);
+      border-radius:2px;
+      padding:28px 48px 44px;
+      max-width:658px;
+      width:100%;
+      margin-top:172px;
+    }
+
+    h1{
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight:300;
+      letter-spacing:0;
+      font-size:39px;
+      line-height:1;
+      margin:0 0 10px;
+      color:#3d3d3d;
+    }
+
+    .title-rule{
+      width:67px;
+      height:1px;
+      background:#2f2f2f;
+      margin:0 0 18px;
+    }
+
+    .content-card p{
+      font-size:18px;
+      margin:0 0 10px;
+    }
+
+    .downloads{
+      margin-top:26px;
+      text-align:right;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .downloads a{
+      display:block;
+      color:#111;
+      font-size:16px;
+      margin:18px 0;
+      text-transform:uppercase;
+    }
+
+    .mobile-layout{
+      display:none;
+    }
+
+    @media (min-width: 769px){
+      .hero-block{
+        width:160px;
+        height:640px;
+      }
+    }
+
+    @media (min-width: 1024px){
+      .desktop-tablet-layout{
+        gap:16%;
+        padding-top:28px;
+      }
+      .hero-block{
+        width:160px;
+        height:216px;
+      }
+      .content-card{
+        margin-top:172px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1023px){
+      .desktop-tablet-layout{
+        gap:16%;
+        padding-top:28px;
+      }
+      .hero-block{
+        width:172px;
+        height:995px;
+      }
+      .content-card{
+        max-width:332px;
+        padding:28px 50px 34px;
+        margin-top:172px;
+      }
+      h1{font-size:39px}
+      .content-card p{font-size:18px}
+      .downloads{
+        text-align:center;
+        margin-top:24px;
+      }
+      .downloads a{
+        margin:18px 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-header{
+        display:flex;
+      }
+      .nav-toggle { display: block; }
+
+      .desktop-tablet-layout{
+        display:none;
+      }
+      .mobile-layout{
+        display:block;
+      }
+      .mobile-hero{
+        background:#1200ff;
+        height:1080px;
+        width:100%;
+      }
+      .mobile-card-wrap{
+        padding:51px 14px 20px;
+      }
+      .content-card{
+        margin:0;
+        max-width:none;
+        padding:34px 20px 18px;
+      }
+      h1{
+        font-size:38px;
+      }
+      .content-card p{
+        font-size:17px;
+        margin-bottom:10px;
+      }
+      .downloads{
+        text-align:center;
+        margin-top:26px;
+      }
+      .downloads a{
+        font-size:16px;
+        margin:18px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <p class="brand">Zaida's</p>
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+  </header>
+
+  <nav id="mobile-nav" aria-label="Main" hidden>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Wholesale</a></li>
+    </ul>
+  </nav>
+
+  <main id="main-content" class="page-wrap">
+    <div class="desktop-tablet-layout">
+      <img class="hero-block" src="rick.jpg" alt="Large blue promotional image block">
+      <section class="content-card" aria-label="Wholesale information">
+        <h1>WHOLESALE</h1>
+        <div class="title-rule" aria-hidden="true"></div>
+
+        <p>We deliver daily to your premises around Wellington and can also deliver a number of goods par-baked anywhere in NZ (Subject to courier availability).</p>
+
+        <p>We believe a sound relationship with customers is key to our success in business, and so we welcome suggestions and feedback. We can also offer advice on how best to use and store <a href="#">our products</a> .</p>
+
+        <p>Our full range of products can be viewed online <a href="#">here</a> . If you are interested in becoming a wholesale customer please call us on (04) 802 4111 or email us at <a href="#">[EMAIL REDACTED]</a></p>
+
+        <p>The following documents are available for download in PDF format. You will require Adobe Reader to view these documents.</p>
+
+        <div class="downloads">
+          <a href="#">DOWNLOAD ACCOUNT APPLICATION PDF</a>
+          <a href="#">DOWNLOAD DIRECT DEBIT FORM PDF</a>
+        </div>
+      </section>
+    </div>
+
+    <div class="mobile-layout">
+      <img class="mobile-hero" src="rick.jpg" alt="Large blue promotional image block">
+      <div class="mobile-card-wrap">
+        <section class="content-card" aria-label="Wholesale information mobile">
+          <h1>WHOLESALE</h1>
+          <div class="title-rule" aria-hidden="true"></div>
+
+          <p>We deliver daily to your premises around Wellington and can also deliver a number of goods par-baked anywhere in NZ (Subject to courier availability).</p>
+
+          <p>We believe a sound relationship with customers is key to our success in business, and so we welcome suggestions and feedback. We can also offer advice on how best to use and store <a href="#">our products</a> .</p>
+
+          <p>Our full range of products can be viewed online <a href="#">here</a> . If you are interested in becoming a wholesale customer please call us on (04) 802 4111 or email us at <a href="#">[EMAIL REDACTED]</a></p>
+
+          <p>The following documents are available for download in PDF format. You will require Adobe Reader to view these documents.</p>
+
+          <div class="downloads">
+            <a href="#">DOWNLOAD ACCOUNT APPLICATION PDF</a>
+            <a href="#">DOWNLOAD DIRECT DEBIT FORM PDF</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added header, nav, and main landmarks; added skip link and main-content id; ensured exactly one h1 per visible layout; added meaningful alt text to all images; ensured interactive elements have descriptive labels; set html lang="en"
+[B] ARIA fixes: used aria-label on main navigation; avoided redundant landmark roles; added baseline tabindex cleanup support; labeled content sections with aria-label where repeated
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile; implemented C-K1/K3 tabindex cleanup and focus indicator support
+-->

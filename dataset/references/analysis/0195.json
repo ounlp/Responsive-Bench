@@ -1,0 +1,63 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a top navigation item with a small downward caret/triangle next to the label, which conventionally indicates a submenu trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Click or hover should reveal a submenu of related navigation links. The trigger should expose expanded/collapsed state and allow dismissal when focus leaves or user clicks elsewhere.",
+      "ambiguities": "The sketch does not show the submenu itself, so it is unclear whether activation is hover-only, click-only, or supports both."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch omits visible full navigation and presents a simplified stacked layout with only content and a small top icon area, strongly implying collapsed mobile navigation rather than persistent nav links.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented from the responsive desktop nav pattern, a menu button would toggle the hidden navigation panel or drawer on small screens.",
+      "ambiguities": "No explicit hamburger icon is drawn in the mobile sketch, so this is inferred from responsive adaptation rather than directly depicted."
+    },
+    {
+      "pattern_id": "tab_panel",
+      "present_in": "desktop",
+      "visual_evidence": "Near the top of the desktop sketch, beneath the main nav line, there is a horizontal secondary control area with one boxed item and adjacent label-like items, matching a tab or pill-style section switcher.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Selecting a tab should switch the visible content panel below and mark the active tab. Only one panel should be visible at a time.",
+      "ambiguities": "The control could also be a breadcrumb or single button group rather than true tabs; the sketch does not explicitly show multiple panel states."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "D2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "tab_panel"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static informational page with light navigation behavior rather than heavy application interactivity. Desktop appears to have the richer JS layer: a primary nav item with dropdown behavior and a likely secondary tab/pill switcher near the top of the content area. Mobile appears simplified and largely content-first; any JavaScript there is mainly the probable responsive navigation toggle inherited from the desktop navigation system rather than additional content widgets. No forms, modals, accordions, infinite loading, or notification behaviors are visually suggested."
+}

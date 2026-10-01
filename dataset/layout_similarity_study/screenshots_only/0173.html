@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Protected Store — Dr Detail for Less</title>
+  <style>
+    :root {
+      --text: #2f3742;
+      --muted: #6f6f6f;
+      --border: #c9d4df;
+      --button: #0b8a68;
+      --button-hover: #08785a;
+      --link: #2f9bf0;
+      --bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: 0.75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+      border: 2px solid #005FCC;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 120px 20px 40px;
+    }
+
+    .panel {
+      width: 100%;
+      max-width: 410px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 33px;
+      line-height: 1.15;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: #313943;
+    }
+
+    .intro {
+      margin: 0 0 34px;
+      font-size: 17px;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .field-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 17px;
+      line-height: 1.35;
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 10px 12px;
+      font-size: 16px;
+      color: var(--text);
+      background: #fff;
+    }
+
+    .submit-row {
+      margin-bottom: 42px;
+    }
+
+    button[type="submit"] {
+      appearance: none;
+      border: 0;
+      border-radius: 3px;
+      background: var(--button);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 14px 30px;
+      min-width: 101px;
+      min-height: 51px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    button[type="submit"]:hover {
+      background: var(--button-hover);
+    }
+
+    .owner-text {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+    }
+
+    .error-message {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+      color: #b00020;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 1024px) {
+      main {
+        justify-content: flex-start;
+        padding-top: 278px;
+        padding-left: 179px;
+        padding-right: 24px;
+      }
+
+      .panel {
+        max-width: 410px;
+      }
+
+      h1 {
+        font-size: 31px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      main {
+        padding: 54px 20px 40px;
+        justify-content: flex-start;
+      }
+
+      .panel {
+        max-width: none;
+      }
+
+      h1 {
+        font-size: 31px;
+        margin-bottom: 8px;
+      }
+
+      .intro {
+        margin-bottom: 30px;
+        font-size: 17px;
+      }
+
+      .submit-row {
+        margin-bottom: 44px;
+      }
+
+      button[type="submit"] {
+        min-width: 101px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content">
+    <section class="panel" aria-labelledby="page-title">
+      <h1 id="page-title">Dr Detail for Less</h1>
+      <p class="intro">This store is password protected. Use the password to enter the store.</p>
+
+      <form novalidate>
+        <div class="field-group">
+          <label for="store-password">Enter store password</label>
+          <input
+            type="password"
+            id="store-password"
+            name="store-password"
+            required
+            aria-describedby="store-password-error"
+            aria-invalid="false">
+          <span id="store-password-error" class="error-message" role="alert" aria-live="assertive" hidden></span>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit">Enter</button>
+        </div>
+
+        <div aria-live="polite" id="form-status" class="sr-only"></div>
+      </form>
+
+      <p class="owner-text">Are you the store owner? <a href="#">Log in here</a></p>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let firstError = null;
+
+      form.querySelectorAll('[required]').forEach(input => {
+        const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+        if (!input.value.trim()) {
+          input.setAttribute('aria-invalid', 'true');
+          errorEl.textContent = `${input.labels[0].textContent.trim()} is required`;
+          errorEl.hidden = false;
+          if (!firstError) firstError = input;
+        } else {
+          input.setAttribute('aria-invalid', 'false');
+          errorEl.hidden = true;
+          errorEl.textContent = '';
+        }
+      });
+
+      if (firstError) {
+        firstError.focus();
+      } else {
+        document.getElementById('form-status').textContent = 'Form submitted successfully.';
+      }
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used main landmark; added skip link and id="main-content"; ensured exactly one h1; added associated label for password input; added required attribute and accessible error/status messaging; ensured descriptive button and link text; set html lang="en"
+[B] ARIA fixes: avoided redundant landmark roles; added aria-describedby and aria-invalid for form validation; no positive tabindex values used
+[C] JS patterns added: implemented form validation + error announcement; implemented tab order cleanup for tabindex values greater than 0; included focus-visible indicator styling
+-->

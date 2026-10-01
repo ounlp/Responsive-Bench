@@ -1,0 +1,172 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Responsive Web Generation Run Config",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "provider", "model", "prompt_template"],
+  "patternProperties": {
+    "^\\$": {}
+  },
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Unique identifier for this run; used as folder name under runs/."
+    },
+    "dataset_root": {
+      "type": "string",
+      "description": "Path to dataset root directory containing metadata/, sketches/, and the reference HTML.",
+      "default": "dataset"
+    },
+    "index_path": {
+      "type": "string",
+      "description": "Optional path to a JSONL index file; each line should be an object with an 'id' field."
+    },
+    "ids": {
+      "type": "array",
+      "description": "Optional explicit list of sample IDs to run. If provided, overrides index_path and dataset discovery.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provider": {
+      "type": "string",
+      "description": "Provider backend to use. 'hf' loads the model directly via transformers and runs inference in-process (see HF_* env vars in providers/hf_provider.py). 'modal' targets an OpenAI-compatible endpoint deployed on modal.com (see MODAL_* env vars in providers/modal_provider.py). 'fake' is reserved for local smoke tests.",
+      "enum": ["openai", "gemini", "claude", "vllm", "hf", "modal", "fake"]
+    },
+    "model": {
+      "type": "string",
+      "description": "Provider-specific model identifier (e.g., gpt-4o-mini)."
+    },
+    "prompt_template": {
+      "type": "string",
+      "description": "Prompt template identifier (a .j2 file in src/responsive/prompts/templates), e.g. 'generate_a11y'."
+    },
+    "mode": {
+      "type": "string",
+      "description": "Run mode: 'generate_a11y' (benchmark generation from the paired sketches), 'augment_from_sketch' (two-stage sketch analysis then reference HTML augmentation), 'augment_from_screenshot' (augment the reference HTML from its desktop/tablet/mobile screenshots), 'reconstruct_from_screenshot' (reconstruct HTML from screenshots only). Augmenting modes write to dataset/<dataset_output_dir>/.",
+      "enum": ["generate_a11y", "augment_from_sketch", "augment_from_screenshot", "reconstruct_from_screenshot"],
+      "default": "generate_a11y"
+    },
+    "generation": {
+      "type": "object",
+      "description": "Provider-specific generation parameters.",
+      "additionalProperties": true,
+      "properties": {
+        "temperature": {
+          "type": "number"
+        },
+        "max_tokens": {
+          "type": "integer"
+        }
+      }
+    },
+    "concurrency": {
+      "type": "integer",
+      "description": "Number of samples generated in parallel via a thread pool. Set to 1 to run strictly sequentially (e.g. a single-instance local vLLM server that can't handle concurrent requests).",
+      "minimum": 1,
+      "default": 8
+    },
+    "output": {
+      "type": "object",
+      "description": "Output configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "type": "string",
+          "description": "Root directory for run outputs.",
+          "default": "runs"
+        },
+        "overwrite": {
+          "type": "boolean",
+          "description": "If false, samples with existing output are skipped: output.html for generate_a11y, or dataset/<dataset_output_dir>/<id>.html for augmenting modes.",
+          "default": false
+        }
+      },
+      "default": {
+        "root": "runs",
+        "overwrite": false
+      }
+    },
+    "retry": {
+      "type": "object",
+      "description": "Retry configuration for handling transient errors.",
+      "additionalProperties": false,
+      "properties": {
+        "max_attempts": {
+          "type": "integer",
+          "description": "Maximum number of retry attempts (including initial attempt).",
+          "minimum": 1,
+          "default": 3
+        },
+        "initial_backoff_seconds": {
+          "type": "number",
+          "description": "Initial backoff delay in seconds before first retry.",
+          "minimum": 0,
+          "default": 1.0
+        },
+        "max_backoff_seconds": {
+          "type": "number",
+          "description": "Maximum backoff delay in seconds (caps exponential backoff).",
+          "minimum": 0,
+          "default": 60.0
+        },
+        "backoff_multiplier": {
+          "type": "number",
+          "description": "Multiplier for exponential backoff (e.g., 2.0 means double each retry).",
+          "minimum": 1.0,
+          "default": 2.0
+        }
+      },
+      "default": {
+        "max_attempts": 3,
+        "initial_backoff_seconds": 1.0,
+        "max_backoff_seconds": 60.0,
+        "backoff_multiplier": 2.0
+      }
+    },
+    "seed": {
+      "type": "integer",
+      "description": "Optional integer seed used only for deterministic naming and hashing; not guaranteed to affect provider randomness."
+    },
+    "created_by": {
+      "type": "string",
+      "description": "Optional free-form string for bookkeeping (e.g., username, machine)."
+    },
+    "dataset_output_dir": {
+      "type": "string",
+      "description": "Dataset output subdirectory name for augmenting modes (augment_from_sketch, augment_from_screenshot, reconstruct_from_screenshot). Overrides the mode default. Example: \"augmented_gpt4o\" writes to dataset/augmented_gpt4o/."
+    },
+    "logging": {
+      "type": "object",
+      "description": "Logging configuration.",
+      "additionalProperties": false,
+      "properties": {
+        "level": {
+          "type": "string",
+          "description": "Log level: DEBUG, INFO, WARNING, ERROR.",
+          "enum": ["DEBUG", "INFO", "WARNING", "ERROR"],
+          "default": "INFO"
+        },
+        "console": {
+          "type": "boolean",
+          "description": "Enable console logging.",
+          "default": true
+        },
+        "file": {
+          "type": "boolean",
+          "description": "Enable file logging.",
+          "default": true
+        },
+        "file_path": {
+          "type": ["string", "null"],
+          "description": "Custom log file path (relative to run directory). If null, defaults to run.log."
+        }
+      },
+      "default": {
+        "level": "INFO",
+        "console": true,
+        "file": true
+      }
+    }
+  }
+}

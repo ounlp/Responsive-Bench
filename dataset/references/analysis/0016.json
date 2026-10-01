@@ -1,0 +1,73 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top bar with a boxed three-line icon at the top right, a standard indicator of a collapsible navigation trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel. The trigger should reflect expanded/collapsed state and likely reveal the same top-level destinations visible in desktop navigation.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown, off-canvas drawer, or full-screen overlay."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent header/navigation band at the very top, visually separated from the page content by a horizontal rule, suggesting a fixed site header across viewports.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The header should remain available while scrolling, especially on the long mobile article-like layout. If fixed, scroll offset handling is needed so anchored content is not obscured.",
+      "ambiguities": "A top header alone does not guarantee sticky behavior; it could also be static. The sketch implies persistence but does not explicitly depict scrolling states."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal navigation row with multiple top-level items spread across the header, matching a common desktop nav pattern where some items may expose submenus.",
+      "confidence": "LOW",
+      "behavior_notes": "If any top-level nav item represents grouped destinations, it should reveal a submenu on click or hover and support dismissal on outside interaction and Escape.",
+      "ambiguities": "No caret, chevron, or open submenu is drawn, so submenu behavior is inferred from the multi-item desktop nav and reference context rather than explicit sketch evidence."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch includes a hamburger-triggered navigation control, which implies a disclosure/menu surface that must receive focus appropriately when opened and return focus when closed.",
+      "confidence": "HIGH",
+      "behavior_notes": "Opening the mobile menu should move focus into the revealed navigation or keep focus on the toggle with correct aria-expanded semantics; closing should restore focus to the trigger. If implemented as an overlay/drawer, focus containment may be needed.",
+      "ambiguities": "The exact focus strategy depends on whether the menu is a simple inline collapse or an overlay drawer."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "dropdown_menu"
+    ]
+  },
+  "sketch_notes": "These sketches imply a mostly content-driven page with relatively light JavaScript needs. The strongest interactive requirement is responsive navigation: a hamburger-controlled mobile menu and a likely persistent top header across both viewports. Desktop appears to rely primarily on exposed horizontal navigation, with dropdown behavior only weakly implied. No forms, tabs, accordions, modals, live counters, or loading mechanisms are visually indicated, so the JS complexity is concentrated in navigation state, responsive disclosure behavior, and keyboard-accessible focus handling."
+}

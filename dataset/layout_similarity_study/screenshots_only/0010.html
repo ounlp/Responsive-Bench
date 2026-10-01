@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beginner's Mind — Zen Practice</title>
+  <style>
+    :root {
+      --lavender: #d2bdd7;
+      --coral: #ff7a4f;
+      --text: #000000;
+      --bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Times New Roman", Times, serif;
+      min-height: 100%;
+    }
+
+    .skip-link {
+      position: absolute;
+      transform: translateY(-100%);
+      left: 0;
+      top: 0;
+      background: #fff;
+      color: #000;
+      padding: 0.5rem 0.75rem;
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    header {
+      background: var(--lavender);
+      padding: 0;
+    }
+
+    .top-nav {
+      width: 100%;
+    }
+
+    .top-nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .top-nav a {
+      display: inline-block;
+      color: #000;
+      text-decoration: underline;
+      font-size: 1rem;
+      line-height: 1.2;
+      padding: 2px 0;
+    }
+
+    main {
+      width: 100%;
+      padding-top: 36px;
+    }
+
+    .container {
+      width: min(1066px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      background: var(--coral);
+      text-align: center;
+      padding: 32px 40px 34px;
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: 1.05rem;
+      font-weight: normal;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.15rem;
+      font-style: italic;
+      line-height: 1.1;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .card {
+      background: var(--lavender);
+      text-align: center;
+      min-height: 124px;
+      padding: 32px 28px 26px;
+    }
+
+    .card h2 {
+      margin: 0 0 18px;
+      font-size: 1rem;
+      font-weight: normal;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 1rem;
+      font-style: italic;
+      line-height: 1.15;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        width: min(607px, calc(100% - 32px));
+      }
+
+      .hero {
+        padding: 32px 34px 30px;
+        margin-bottom: 33px;
+      }
+
+      h1 {
+        font-size: 0.98rem;
+        margin-bottom: 16px;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .cards {
+        gap: 33px;
+      }
+
+      .card {
+        min-height: 142px;
+        padding: 31px 24px 24px;
+      }
+
+      .card h2 {
+        font-size: 0.98rem;
+      }
+
+      .card p {
+        font-size: 0.98rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .top-nav ul {
+        gap: 26px;
+        padding-left: 8px;
+      }
+
+      .top-nav a {
+        font-size: 0.95rem;
+      }
+
+      main {
+        padding-top: 36px;
+      }
+
+      .container {
+        width: calc(100% - 44px);
+      }
+
+      .hero {
+        padding: 31px 28px 31px;
+        margin-bottom: 33px;
+      }
+
+      h1 {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+
+      .hero p {
+        font-size: 0.98rem;
+        line-height: 1.05;
+      }
+
+      .cards {
+        gap: 32px;
+      }
+
+      .card {
+        min-height: 196px;
+        padding: 33px 14px 20px;
+      }
+
+      .card h2 {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+
+      .card p {
+        font-size: 0.95rem;
+        line-height: 1.05;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <nav aria-label="Main" class="top-nav">
+      <ul>
+        <li><a href="#">Root</a></li>
+        <li><a href="#">Practice</a></li>
+        <li><a href="#">Wares</a></li>
+        <li><a href="#">Professional Bio</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <section class="hero" aria-labelledby="page-title">
+        <h1 id="page-title">Beginner's Mind</h1>
+        <p>After you have practiced for a while, you will realize that it is not possible to make rapid, extraordinary progress. Even though you try very hard, the progress you make is always little by little.</p>
+      </section>
+
+      <section class="cards" aria-label="Meditation reflections">
+        <article class="card">
+          <h2>Breathing</h2>
+          <p>If you say, "I breathe.", the "I" is extra.</p>
+        </article>
+
+        <article class="card">
+          <h2>Sleeping</h2>
+          <p>Sleeping is the best meditation.</p>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, and main landmarks; added skip link and main-content id; ensured exactly one h1 with sequential h2 headings; set html lang="en"; ensured interactive links have descriptive text.
+[B] ARIA fixes: used nav with aria-label="Main"; avoided redundant landmark roles; no positive tabindex values retained.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and visible focus indicator only.
+-->

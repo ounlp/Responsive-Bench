@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easy M&Ms Easter Individual Parfaits — Life Currents</title>
+  <style>
+    :root{
+      --text:#333;
+      --muted:#666;
+      --border:#cfcfcf;
+      --dark:#555;
+      --bg:#ffffff;
+      --panel:#fff;
+      --blue:#0a00ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.45;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:12px;top:0;background:#fff;color:#000;padding:8px 12px;z-index:1000;border:1px solid #000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px 16px 0;
+    }
+
+    header{
+      text-align:center;
+      margin-bottom: 18px;
+    }
+
+    .top-actions{
+      display:flex;
+      justify-content:center;
+      gap:22px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-block;
+      border:1px solid #777;
+      background:#fff;
+      color:#333;
+      padding:10px 22px;
+      font-size:18px;
+      line-height:1;
+      border-radius:3px;
+      text-decoration:none;
+      cursor:pointer;
+    }
+    .btn.dark{
+      background:#555;
+      color:#fff;
+      border-color:#555;
+      font-weight:700;
+    }
+
+    .controls{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+      margin-bottom:26px;
+    }
+
+    .checks{
+      display:flex;
+      gap:22px;
+      flex-wrap:wrap;
+      justify-content:center;
+      font-size:18px;
+    }
+    .checks label{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      cursor:pointer;
+    }
+    .checks input{
+      width:22px;
+      height:22px;
+      accent-color:#555;
+    }
+
+    .serving-row{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .stepper{
+      display:inline-flex;
+      align-items:center;
+      gap:3px;
+    }
+    .stepper button{
+      width:28px;
+      height:31px;
+      border:1px solid #555;
+      background:#555;
+      color:#fff;
+      font-size:24px;
+      line-height:1;
+      cursor:pointer;
+      padding:0;
+      border-radius:2px;
+    }
+    .stepper input{
+      width:42px;
+      height:31px;
+      border:1px solid #777;
+      text-align:center;
+      font-size:20px;
+      padding:0;
+    }
+    .servings-label{
+      font-size:18px;
+    }
+
+    .font-size-controls{
+      display:inline-flex;
+      gap:4px;
+      align-items:center;
+    }
+    .font-size-controls button{
+      border:1px solid #777;
+      background:#fff;
+      color:#333;
+      padding:6px 12px;
+      font-size:16px;
+      line-height:1;
+      border-radius:2px;
+      cursor:pointer;
+    }
+    .font-size-controls button.active{
+      background:#555;
+      color:#fff;
+      border-color:#555;
+      font-weight:700;
+    }
+
+    main{
+      max-width: 655px;
+      margin: 0 auto;
+      background:#fff;
+      border-top:1px solid var(--border);
+      padding:10px 10px 0;
+    }
+
+    .recipe-card{
+      font-size:16px;
+    }
+
+    .intro-grid{
+      display:grid;
+      grid-template-columns: 1fr 155px;
+      gap:18px 30px;
+      align-items:start;
+    }
+
+    h1{
+      margin:0 0 6px;
+      font-size:29px;
+      line-height:1.1;
+      font-weight:700;
+      color:#111;
+    }
+
+    .subtitle{
+      margin:0 0 10px;
+      font-size:17px;
+      color:#444;
+    }
+
+    .recipe-image-wrap{
+      text-align:center;
+      padding-top:0;
+    }
+    .recipe-image-wrap img{
+      width:150px;
+      height:150px;
+      object-fit:cover;
+      display:block;
+      background:var(--blue);
+      margin:0 auto 6px;
+    }
+    .rating{
+      font-size:14px;
+      color:#333;
+    }
+
+    .meta{
+      display:grid;
+      grid-template-columns: 120px 1fr;
+      gap:2px 14px;
+      margin:8px 0 18px;
+      font-size:17px;
+    }
+    .meta dt{
+      font-weight:700;
+    }
+    .meta dd{
+      margin:0;
+    }
+    .meta small{
+      font-size:.8em;
+    }
+
+    h2{
+      font-size:20px;
+      line-height:1.2;
+      margin:18px 0 10px;
+      color:#111;
+    }
+
+    .ingredients p{
+      margin:0 0 2px;
+      font-weight:700;
+      font-size:17px;
+    }
+    ul{
+      margin:0 0 10px 32px;
+      padding:0;
+      font-size:17px;
+    }
+    ol{
+      margin:0 0 10px 32px;
+      padding:0;
+      font-size:17px;
+    }
+    li{
+      margin:2px 0;
+    }
+
+    .nutrition{
+      font-size:17px;
+      color:#666;
+      margin-bottom:10px;
+    }
+
+    footer{
+      text-align:center;
+      font-size:15px;
+      color:#444;
+      padding:18px 10px 10px;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .page{
+        padding:20px 0 0;
+      }
+      .top-actions{
+        gap:24px;
+      }
+      main{
+        max-width:none;
+        margin:0;
+        padding:10px 10px 0;
+      }
+      .intro-grid{
+        grid-template-columns: 1fr 150px;
+      }
+      h1{
+        font-size:28px;
+      }
+    }
+
+    @media (max-width: 480px){
+      .page{
+        padding-top:20px;
+      }
+      .top-actions{
+        margin-bottom:20px;
+      }
+      .controls{
+        gap:18px;
+        margin-bottom:18px;
+      }
+      main{
+        border-top:1px solid #bdbdbd;
+        padding-top:10px;
+      }
+      .intro-grid{
+        grid-template-columns: 1fr;
+      }
+      .recipe-image-wrap{
+        order:-1;
+        margin-bottom:6px;
+      }
+      .recipe-image-wrap img{
+        width:150px;
+        height:150px;
+      }
+      h1{
+        font-size:28px;
+        margin-top:4px;
+      }
+      .subtitle,
+      .meta,
+      ul,
+      ol,
+      .ingredients p,
+      .nutrition{
+        font-size:16px;
+      }
+      .meta{
+        grid-template-columns: auto 1fr;
+      }
+      footer{
+        border-top:1px solid #eee;
+        padding-top:14px;
+        line-height:1.2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="page">
+      <div class="top-actions">
+        <a href="#" class="btn">Go Back</a>
+        <button type="button" class="btn dark">Print</button>
+      </div>
+
+      <div class="controls">
+        <div class="checks" aria-label="Recipe display options">
+          <label for="toggle-image">
+            <input type="checkbox" id="toggle-image" checked />
+            <span>Recipe Image</span>
+          </label>
+          <label for="toggle-nutrition">
+            <input type="checkbox" id="toggle-nutrition" checked />
+            <span>Nutrition Label</span>
+          </label>
+        </div>
+
+        <div class="serving-row">
+          <div class="stepper" aria-label="Adjust servings">
+            <button type="button" id="decrease-servings" aria-label="Decrease servings">−</button>
+            <label for="servings" class="sr-only">Servings</label>
+            <input type="text" id="servings" value="4" inputmode="numeric" aria-live="polite" />
+            <button type="button" id="increase-servings" aria-label="Increase servings">+</button>
+          </div>
+          <div class="servings-label">servings</div>
+
+          <div class="font-size-controls" aria-label="Text size controls">
+            <button type="button" data-size="small">Smaller</button>
+            <button type="button" data-size="normal" class="active">Normal</button>
+            <button type="button" data-size="large">Larger</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article class="recipe-card">
+      <div class="intro-grid">
+        <div>
+          <h1>Easy M&amp;Ms Easter Individual Parfaits</h1>
+          <p class="subtitle">A delicious and easy to make Easter dessert</p>
+
+          <dl class="meta">
+            <dt>Course</dt><dd>Dessert</dd>
+            <dt>Cuisine</dt><dd>American</dd>
+            <dt>Keyword</dt><dd>Easter, parfait</dd>
+
+            <dt style="margin-top:8px;">Prep Time</dt><dd style="margin-top:8px;">10 <small>minutes</small></dd>
+            <dt>Cook Time</dt><dd>0 <small>minutes</small></dd>
+            <dt>Total Time</dt><dd>10 <small>minutes</small></dd>
+
+            <dt style="margin-top:8px;">Servings</dt><dd style="margin-top:8px;">4 <small>servings</small></dd>
+            <dt>Calories</dt><dd>280 <small>kcal</small></dd>
+            <dt>Author</dt><dd>Debi</dd>
+          </dl>
+        </div>
+
+        <div class="recipe-image-wrap" id="recipe-image-block">
+          <img src="rick.jpg" alt="Recipe image for Easy M&amp;Ms Easter Individual Parfaits" />
+          <div class="rating">5 from 1 vote</div>
+        </div>
+      </div>
+
+      <section class="ingredients" aria-label="Ingredients">
+        <h2>Ingredients</h2>
+
+        <p>Whipped Chocolate Ganache layer:</p>
+        <ul>
+          <li>½ cup chocolate chips</li>
+          <li>¼ cup heavy whipping cream</li>
+        </ul>
+
+        <p>Whipped cream layer:</p>
+        <ul>
+          <li>½ cup heavy whipping cream</li>
+          <li>2 tablespoons powdered sugar</li>
+        </ul>
+
+        <p>Layers:</p>
+        <ul>
+          <li>Graham Cracker Crumbs</li>
+          <li>M&amp;M's Speckled Eggs</li>
+        </ul>
+      </section>
+
+      <section aria-label="Instructions">
+        <h2>Instructions</h2>
+        <ol>
+          <li>In a large microwave proof bowl, heat the chocolate chips and the ¼ cup cream in 30-second increments in the microwave, stirring well after each cooking time, until the chocolate is melted and smooth. Set aside to allow to cool to room temperature, you can place the chocolate mixture in the fridge, but don't allow it to get so cold that it hardens.</li>
+          <li>In a large bowl or the bowl of a stand mixer, add ½ cup whipping cream and the powdered sugar. Whip using a hand held mixer or the stand mixer until stiff peaks form.</li>
+          <li>Again, using the hand held mixer or the stand mixer, whip the chocolate ganache until soft peaks form.</li>
+          <li>Now, the layering happens!</li>
+        </ol>
+      </section>
+
+      <section id="nutrition-section" aria-label="Nutrition">
+        <h2>Nutrition</h2>
+        <div class="nutrition">
+          Calories: 280 kcal | Carbohydrates: 21 g | Protein: 2 g | Fat: 21 g | Saturated Fat: 14 g | Polyunsaturated Fat: 1 g | Monounsaturated Fat: 4 g | Trans Fat: 0.04 g | Cholesterol: 54 mg | Sodium: 27 mg | Potassium: 42 mg | Fiber: 1 g | Sugar: 19 g | Vitamin A: 706 IU | Vitamin C: 0.4 mg | Calcium: 56 mg | Iron: 0.3 mg
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    Find this and other delicious recipes at Life Currents https://lifecurrentsblog.com
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    const servingsInput = document.getElementById('servings');
+    const decreaseBtn = document.getElementById('decrease-servings');
+    const increaseBtn = document.getElementById('increase-servings');
+    const imageToggle = document.getElementById('toggle-image');
+    const nutritionToggle = document.getElementById('toggle-nutrition');
+    const imageBlock = document.getElementById('recipe-image-block');
+    const nutritionSection = document.getElementById('nutrition-section');
+    const sizeButtons = document.querySelectorAll('.font-size-controls button');
+    const recipeCard = document.querySelector('.recipe-card');
+
+    function sanitizeServings() {
+      let value = parseInt(servingsInput.value, 10);
+      if (isNaN(value) || value < 1) value = 1;
+      servingsInput.value = value;
+    }
+
+    decreaseBtn.addEventListener('click', () => {
+      sanitizeServings();
+      let value = parseInt(servingsInput.value, 10);
+      servingsInput.value = Math.max(1, value - 1);
+    });
+
+    increaseBtn.addEventListener('click', () => {
+      sanitizeServings();
+      let value = parseInt(servingsInput.value, 10);
+      servingsInput.value = value + 1;
+    });
+
+    servingsInput.addEventListener('change', sanitizeServings);
+    servingsInput.addEventListener('input', () => {
+      servingsInput.value = servingsInput.value.replace(/[^\d]/g, '');
+    });
+
+    imageToggle.addEventListener('change', () => {
+      imageBlock.hidden = !imageToggle.checked;
+    });
+
+    nutritionToggle.addEventListener('change', () => {
+      nutritionSection.hidden = !nutritionToggle.checked;
+    });
+
+    sizeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        sizeButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        const size = button.getAttribute('data-size');
+        if (size === 'small') {
+          recipeCard.style.fontSize = '15px';
+        } else if (size === 'large') {
+          recipeCard.style.fontSize = '18px';
+        } else {
+          recipeCard.style.fontSize = '16px';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, main, footer, article, and section elements; ensured exactly one h1 with sequential h2 headings; added meaningful alt text to image; added labels for checkbox and servings input; added descriptive button text and aria-labels; set html lang="en"
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; added aria-labels to labeled sections where helpful; ensured no positive tabindex values remain
+[C] JS patterns added: implemented visible recipe controls for servings stepper, recipe image toggle, nutrition label toggle, and text size buttons; implemented required tabindex cleanup and focus indicator support
+-->

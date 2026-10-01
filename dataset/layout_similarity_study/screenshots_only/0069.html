@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snowy Peaks Rv Park Holding Co., Llc — BIZSET</title>
+  <style>
+    :root{
+      --bg:#f3f3f3;
+      --card:#ffffff;
+      --border:#dddddd;
+      --border-soft:#e9e9e9;
+      --text:#3d3d3d;
+      --muted:#6f6f6f;
+      --nav:#22313f;
+      --accent:#ff9800;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:12px;top:12px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    header{
+      background:var(--nav);
+      color:#fff;
+      height:56px;
+      display:flex;
+      align-items:center;
+    }
+    .header-inner{
+      width:100%;
+      max-width:1240px;
+      margin:0 auto;
+      padding:0 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .brand-left{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+    .logo{
+      font-size:35px;
+      font-weight:700;
+      letter-spacing:.5px;
+      line-height:1;
+      display:flex;
+      align-items:flex-end;
+      gap:4px;
+    }
+    .logo .biz{color:var(--accent)}
+    .logo .set{color:#d8d8d8;font-weight:400}
+    .top-link{
+      color:#d8d8d8;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+
+    .nav-toggle{
+      display:none;
+      background:var(--accent);
+      color:#fff;
+      border:0;
+      width:32px;
+      height:32px;
+      border-radius:3px;
+      font-size:18px;
+      cursor:pointer;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+    }
+
+    .page{
+      max-width:1240px;
+      margin:38px auto 0;
+      padding:0 14px 0;
+      display:grid;
+      grid-template-columns:274px 1fr;
+      gap:28px;
+      align-items:start;
+    }
+
+    aside{
+      width:100%;
+    }
+    .side-nav{
+      background:#fff;
+      border:1px solid var(--border);
+    }
+    .side-nav a{
+      display:block;
+      padding:14px 18px;
+      border-bottom:1px solid var(--border-soft);
+      color:#4a4a4a;
+      font-size:16px;
+    }
+    .side-nav a:last-child{border-bottom:0}
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      margin-bottom:34px;
+    }
+    .card-header{
+      padding:14px 19px;
+      border-bottom:1px solid var(--border);
+      background:#fafafa;
+      font-size:17px;
+      font-weight:700;
+      color:#3f3f3f;
+    }
+    .card-body{
+      padding:18px 19px 22px;
+    }
+
+    .breadcrumbs{
+      color:var(--accent);
+      font-size:14px;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+    .breadcrumbs a{color:var(--accent)}
+    h1{
+      margin:0 0 22px;
+      font-size:33px;
+      line-height:1.15;
+      color:#2f2f2f;
+      font-weight:700;
+    }
+    .info-grid{
+      border-top:1px solid var(--border-soft);
+      padding-top:14px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0 28px;
+    }
+    .info-col .row{
+      display:grid;
+      grid-template-columns:28px 1fr 1.6fr;
+      gap:12px;
+      padding:12px 0;
+      border-bottom:1px solid var(--border-soft);
+      align-items:start;
+    }
+    .info-col .row:last-child{border-bottom:0}
+    .sq{
+      width:20px;height:20px;border:3px solid var(--accent);margin-top:2px;
+    }
+    .label{
+      font-weight:700;
+      color:#444;
+      font-size:16px;
+    }
+    .value{
+      color:#4a4a4a;
+      font-size:16px;
+    }
+    .updated{
+      text-align:right;
+      color:#555;
+      font-size:12px;
+      margin-top:14px;
+    }
+
+    .description{
+      font-size:16px;
+      color:#444;
+      line-height:1.55;
+    }
+    .description a,
+    .nearby-list a{
+      color:var(--accent);
+    }
+
+    .map-box{
+      height:264px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#444;
+      font-size:16px;
+      background:#fff;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:16px;
+    }
+    thead th{
+      text-align:left;
+      padding:12px 20px;
+      border-top:1px solid var(--border-soft);
+      border-bottom:1px solid var(--border);
+      color:#444;
+      font-weight:700;
+      white-space:nowrap;
+    }
+    tbody td{
+      padding:16px 20px;
+      border-bottom:1px solid var(--border-soft);
+      vertical-align:top;
+      color:#4a4a4a;
+    }
+    .tiny-box{
+      font-size:12px;
+      margin-right:8px;
+      vertical-align:middle;
+      color:#222;
+    }
+
+    .nearby-list{
+      list-style:none;
+      margin:10px 0 0;
+      padding:0;
+      max-width:430px;
+    }
+    .nearby-list li{
+      border-bottom:1px solid var(--border-soft);
+      padding:10px 0;
+      font-size:17px;
+    }
+    .nearby-list li:last-child{border-bottom:0}
+
+    footer{
+      margin-top:52px;
+      background:var(--nav);
+      color:#9ea9b5;
+    }
+    .footer-inner{
+      max-width:1240px;
+      margin:0 auto;
+      padding:88px 28px 42px;
+    }
+    .contact{
+      font-size:16px;
+      margin-bottom:42px;
+    }
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,.28);
+      padding-top:34px;
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:24px;
+      align-items:start;
+      text-align:center;
+      font-size:16px;
+      line-height:1.5;
+    }
+    .footer-bottom a{
+      color:var(--accent);
+      font-weight:700;
+    }
+    .cookie a.inline{
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    #mobile-nav{
+      display:none;
+      background:#fff;
+      border-bottom:1px solid var(--border);
+    }
+    #mobile-nav[hidden]{display:none !important}
+    .mobile-nav-inner{
+      padding:10px 14px 16px;
+    }
+    .mobile-nav-inner a{
+      display:block;
+      padding:12px 0;
+      border-bottom:1px solid var(--border-soft);
+      color:#444;
+    }
+
+    @media (max-width: 900px){
+      .page{
+        grid-template-columns:122px 1fr;
+        gap:24px;
+        max-width:760px;
+      }
+      .side-nav a{
+        padding:12px 16px;
+        font-size:15px;
+      }
+      h1{font-size:28px}
+      .info-col .row{
+        grid-template-columns:22px 1fr 1.3fr;
+        gap:10px;
+      }
+      .label,.value,table,.description{font-size:15px}
+      .footer-inner{padding:38px 20px 34px}
+      .footer-bottom{font-size:15px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: inline-flex; }
+      .top-link{display:none}
+      .brand-left{gap:0}
+      .header-inner{
+        justify-content:space-between;
+      }
+      .logo{
+        font-size:22px;
+        margin:0 auto;
+      }
+      .page{
+        grid-template-columns:1fr;
+        gap:0;
+        margin-top:16px;
+        padding:0 10px;
+      }
+      aside{display:none}
+      #mobile-nav{display:block}
+      .card{margin-bottom:22px}
+      .card-header{
+        padding:13px 14px;
+        font-size:16px;
+      }
+      .card-body{
+        padding:14px 14px 16px;
+      }
+      h1{
+        font-size:24px;
+        margin-bottom:18px;
+      }
+      .breadcrumbs{
+        font-size:13px;
+        margin-bottom:10px;
+      }
+      .info-grid{
+        grid-template-columns:1fr;
+        gap:0;
+      }
+      .info-col .row{
+        grid-template-columns:22px auto 1fr;
+        gap:10px;
+        padding:11px 0;
+      }
+      .label,.value{
+        font-size:14px;
+      }
+      .description{
+        font-size:14px;
+        line-height:1.5;
+      }
+      .map-box{
+        height:184px;
+        font-size:14px;
+      }
+      table{
+        font-size:14px;
+      }
+      thead th, tbody td{
+        padding:10px 14px;
+      }
+      .hide-mobile{
+        display:none;
+      }
+      .nearby-list{
+        max-width:none;
+      }
+      .nearby-list li{
+        font-size:14px;
+        padding:9px 0;
+      }
+      footer{
+        margin-top:34px;
+      }
+      .footer-inner{
+        padding:28px 8px 22px;
+      }
+      .contact{
+        padding:0 12px 18px;
+        margin-bottom:10px;
+        font-size:14px;
+      }
+      .footer-bottom{
+        grid-template-columns:1fr;
+        gap:0;
+        padding-top:0;
+        border-top:1px solid rgba(255,255,255,.28);
+      }
+      .footer-bottom > div{
+        padding:16px 12px;
+        border-bottom:1px solid rgba(255,255,255,.28);
+        font-size:14px;
+      }
+      .footer-bottom > div:last-child{
+        border-bottom:0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="header-inner">
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <div class="brand-left">
+        <a href="#" class="logo" aria-label="BIZSET home">
+          <span class="biz">BIZ</span><span class="set">SET</span>
+        </a>
+        <a href="#" class="top-link">COLORADO A-Z</a>
+      </div>
+
+      <div style="width:32px" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <nav id="mobile-nav" aria-label="Main" hidden>
+    <div class="mobile-nav-inner">
+      <a href="#">General Information</a>
+      <a href="#">Description</a>
+      <a href="#">Map</a>
+      <a href="#">Transactions</a>
+    </div>
+  </nav>
+
+  <div class="page">
+    <aside aria-label="Section navigation">
+      <nav class="side-nav" aria-label="Page sections">
+        <a href="#">General Information</a>
+        <a href="#">Description</a>
+        <a href="#">Map</a>
+        <a href="#">Transactions</a>
+      </nav>
+    </aside>
+
+    <main id="main-content">
+      <section class="card" aria-labelledby="general-information-heading">
+        <div class="card-header" id="general-information-heading">General Information</div>
+        <div class="card-body">
+          <div class="breadcrumbs">
+            <a href="#">companies</a> &nbsp;/&nbsp; <a href="#">S</a> &nbsp;/
+          </div>
+
+          <h1>Snowy Peaks Rv Park Holding Co., Llc</h1>
+
+          <div class="info-grid">
+            <div class="info-col">
+              <div class="row">
+                <div class="sq" aria-hidden="true"></div>
+                <div class="label">Address</div>
+                <div class="value">30430 US Hwy. 24<br>Buena Vista<br>CO, 81211</div>
+              </div>
+              <div class="row">
+                <div class="sq" aria-hidden="true"></div>
+                <div class="label">Form date</div>
+                <div class="value">February 12, 2013</div>
+              </div>
+              <div class="row">
+                <div class="sq" aria-hidden="true"></div>
+                <div class="label">Type</div>
+                <div class="value">Limited Liability Company</div>
+              </div>
+            </div>
+
+            <div class="info-col">
+              <div class="row">
+                <div class="sq" aria-hidden="true"></div>
+                <div class="label">ID</div>
+                <div class="value">20131095556</div>
+              </div>
+              <div class="row">
+                <div class="sq" aria-hidden="true"></div>
+                <div class="label">Status</div>
+                <div class="value">Good Standing</div>
+              </div>
+              <div class="row">
+                <div></div>
+                <div class="label">Agent name</div>
+                <div class="value">Greg Powell</div>
+              </div>
+              <div class="row">
+                <div class="sq" aria-hidden="true"></div>
+                <div class="label">Agent address</div>
+                <div class="value">417 W. 1st Street<br>Salida<br>CO, 81201</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="updated">last updated: 17 Oct 2017</div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="description-heading">
+        <div class="card-header" id="description-heading">Description</div>
+        <div class="card-body">
+          <div class="description">
+            We established that Snowy Peaks Rv Park Holding Co., Llc, per the Secretary of State database, is a limited liability company situated in the city of Buena Vista. Its full address is as follows: 30430 Us Hwy. 24, Buena Vista, 81211 (coordinates: 38.8605322, -[PHONE REDACTED]). Snowy Peaks Rv Park Holding Co., Llc has been under the Colorado Secretary of State jurisdiction since 02/12/2013, when it was incorporated with identification number 20131095556. Greg Powell, the registered agent, can be reached at 417 W. 1St Street, 81201, Salida, CO. The initial document submitted to the SoS was "Form a Limited Liability Company (LLC)" obtained on 2013-02-12. Other filings include: "File Report" obtained on 2014-02-20, "File Report" (2015-04-06), "File Report" (2016-02-23) and more - noted below. Other businesses in the proximity are:
+            <a href="#">Chaffe County Enterprises, Inc.</a>,
+            <a href="#">Kingdom Assets Llc</a>,
+            <a href="#">Buffalo Investments Llc</a>,
+            <a href="#">Whitewater Kettle Corn Inc</a>,
+            <a href="#">Weeks Total Fitness Llc</a>.
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="map-heading">
+        <div class="card-body map-box" id="map-heading">Loading...</div>
+      </section>
+
+      <section class="card" aria-labelledby="transactions-heading">
+        <div class="card-header" id="transactions-heading">Company transactions</div>
+        <div class="card-body" style="padding:0 0 8px;">
+          <table>
+            <thead>
+              <tr>
+                <th><span class="tiny-box">&#9633;</span>Received date</th>
+                <th><span class="tiny-box">&#9633;</span>Transaction ID</th>
+                <th><span class="tiny-box">&#9633;</span>Description</th>
+                <th class="hide-mobile"><span class="tiny-box">&#9633;</span>Comment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2013-02-12</td>
+                <td>20131095556</td>
+                <td>Form a Limited Liability Company (LLC)</td>
+                <td class="hide-mobile"></td>
+              </tr>
+              <tr>
+                <td>2014-02-20</td>
+                <td>20141108834</td>
+                <td>File Report</td>
+                <td class="hide-mobile"></td>
+              </tr>
+              <tr>
+                <td>2015-04-06</td>
+                <td>20151240770</td>
+                <td>File Report</td>
+                <td class="hide-mobile"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="nearby-heading">
+        <div class="card-header" id="nearby-heading">Companies nearby</div>
+        <div class="card-body">
+          <ul class="nearby-list">
+            <li><a href="#">Chaffe County Enterprises, Inc.</a></li>
+            <li><a href="#">Kingdom Assets Llc</a></li>
+            <li><a href="#">Buffalo Investments Llc</a></li>
+            <li><a href="#">Whitewater Kettle Corn Inc</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="contact">Contact us at [EMAIL REDACTED]</div>
+      <div class="footer-bottom">
+        <div class="cookie">This website <a href="#" class="inline">uses cookies</a> to ensure you get the best experience on our website.</div>
+        <div>Copyright © 2023 bizset.com All rights reserved</div>
+        <div><a href="#">Terms of use and privacy policy</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, nav, main, aside, footer, and section elements; ensured exactly one h1; added descriptive labels to navigation links and button; set html lang="en"
+[B] ARIA fixes: used unique aria-labels for multiple nav regions; added aria-label to aside landmark; avoided redundant role attributes; ensured no tabindex values greater than 0 remain
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, aria-controls, focus handling, and Escape close; implemented tabindex cleanup script; added focus-visible styling
+-->

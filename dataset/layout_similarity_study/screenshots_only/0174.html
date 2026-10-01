@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Projects : Entrada — WideRange Galleries</title>
+  <style>
+    :root{
+      --bg:#f3efea;
+      --text:#2f2f2f;
+      --teal:#0aa7ad;
+      --blue:#1200ff;
+      --shadow:0 6px 18px rgba(0,0,0,.14);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.35;
+    }
+    .skip-link{position:absolute;transform:translateY(-100%);left:1rem;top:0;background:#fff;color:#000;padding:.5rem .75rem;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .page{
+      width:min(100%, 1180px);
+      margin:0 auto;
+      padding:0 18px 18px;
+    }
+
+    header{
+      padding-top:0;
+    }
+    .hero{
+      width:100%;
+      height:535px;
+      background:var(--blue);
+      position:relative;
+    }
+    .desktop-nav{
+      position:absolute;
+      right:12px;
+      bottom:14px;
+    }
+    .desktop-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:34px;
+    }
+    .desktop-nav a,
+    .mobile-nav a{
+      color:var(--teal);
+      font-size:14px;
+    }
+
+    .nav-toggle { display: none; }
+
+    main{
+      text-align:center;
+      padding-top:24px;
+    }
+    h1{
+      margin:0 0 10px;
+      font-size:34px;
+      font-weight:400;
+      letter-spacing:.2px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-variant: small-caps;
+    }
+    .intro{
+      max-width:760px;
+      margin:0 auto;
+      font-size:18px;
+      text-align:left;
+    }
+    .slideshow-link{
+      display:inline-block;
+      margin:14px 0 38px;
+      color:var(--teal);
+      font-size:18px;
+      font-weight:600;
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:42px 54px;
+      align-items:start;
+      justify-items:center;
+      margin:0 auto 90px;
+      padding:0 10px;
+    }
+    .card{
+      width:100%;
+      max-width:230px;
+      text-align:center;
+    }
+    .thumb{
+      display:block;
+      width:100%;
+      background:#fff;
+      padding:8px;
+      box-shadow:var(--shadow);
+      margin:0 auto 10px;
+    }
+    .thumb img{
+      display:block;
+      width:100%;
+      height:106px;
+      object-fit:cover;
+      background:var(--blue);
+    }
+    .caption{
+      font-size:17px;
+      line-height:1.35;
+    }
+
+    footer{
+      text-align:center;
+      padding:0 0 8px;
+    }
+    .search-form{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+      margin-bottom:6px;
+    }
+    .search-form label{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+    .search-form input{
+      width:150px;
+      height:24px;
+      border:1px solid #9f9f9f;
+      background:#fff;
+      padding:2px 6px;
+      font-size:12px;
+    }
+    .search-form button{
+      height:24px;
+      border:1px solid #8f8f8f;
+      background:#efefef;
+      padding:0 8px;
+      font-size:12px;
+      cursor:pointer;
+    }
+    .copyright{
+      font-size:12px;
+      color:#222;
+    }
+
+    @media (max-width: 1024px){
+      .hero{height:355px}
+      .desktop-nav{
+        position:static;
+        margin-top:18px;
+      }
+      .desktop-nav ul{
+        justify-content:center;
+        gap:30px;
+      }
+      .gallery-grid{
+        grid-template-columns:repeat(3, 1fr);
+        gap:46px 42px;
+      }
+      .card{max-width:180px}
+      .thumb img{height:88px}
+      h1{font-size:22px}
+      .intro{max-width:100%;font-size:17px}
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; margin:10px auto 0; background:none; border:1px solid transparent; font-size:28px; color:var(--teal); cursor:pointer; }
+      .desktop-nav{display:none}
+      .mobile-nav{
+        text-align:center;
+        margin-top:8px;
+      }
+      .mobile-nav ul{
+        list-style:none;
+        margin:0;
+        padding:0;
+        display:flex;
+        justify-content:center;
+        gap:18px;
+        flex-wrap:wrap;
+      }
+      .hero{
+        height:70px;
+        width:126px;
+        margin:0 auto;
+      }
+      main{
+        padding-top:14px;
+      }
+      h1{
+        font-size:14px;
+        margin-bottom:8px;
+      }
+      .intro{
+        font-size:10px;
+        max-width:310px;
+      }
+      .slideshow-link{
+        font-size:10px;
+        margin:10px 0 18px;
+      }
+      .gallery-grid{
+        grid-template-columns:1fr;
+        gap:18px;
+        margin-bottom:42px;
+        padding:0;
+      }
+      .card{
+        max-width:84px;
+      }
+      .thumb{
+        padding:6px;
+        margin-bottom:6px;
+      }
+      .thumb img{
+        height:50px;
+      }
+      .caption{
+        font-size:8px;
+      }
+      .mobile-nav a{
+        font-size:7px;
+      }
+      .search-form input{
+        width:92px;
+        height:16px;
+        font-size:8px;
+        padding:1px 4px;
+      }
+      .search-form button{
+        height:16px;
+        font-size:8px;
+        padding:0 6px;
+      }
+      .copyright{
+        font-size:8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header>
+      <div class="hero" aria-hidden="true"></div>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <nav class="desktop-nav" aria-label="Main">
+        <ul>
+          <li><a href="#">galleries</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">workshops</a></li>
+          <li><a href="#">services</a></li>
+        </ul>
+      </nav>
+
+      <nav id="mobile-nav" class="mobile-nav" aria-label="Main" hidden>
+        <ul>
+          <li><a href="#">galleries</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#">workshops</a></li>
+          <li><a href="#">services</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <h1>Personal Projects : Entrada</h1>
+      <p class="intro">Entrada is a collaboration with my poet friend David Lee. David's collection of 14 poems entitled Entrada served as the beginning of this project.</p>
+      <a class="slideshow-link" href="#">View Slideshow</a>
+
+      <section aria-label="Entrada gallery works">
+        <div class="gallery-grid">
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Aubade Paean artwork thumbnail"></a>
+            <div class="caption">Aubade Paean</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="January - Wind Sand Moon Arch artwork thumbnail"></a>
+            <div class="caption">January - Wind Sand Moon Arch</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Matins in the Cathedral of Wind - Layout artwork thumbnail"></a>
+            <div class="caption">Matins in the Cathedral of Wind - Layout</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Matins i artwork thumbnail"></a>
+            <div class="caption">Matins i</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Matins ii artwork thumbnail"></a>
+            <div class="caption">Matins ii</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Matins iii artwork thumbnail"></a>
+            <div class="caption">Matins iii</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Matins iv artwork thumbnail"></a>
+            <div class="caption">Matins iv</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Equinox Siesta artwork thumbnail"></a>
+            <div class="caption">Equinox Siesta</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Spring Storm Alone artwork thumbnail"></a>
+            <div class="caption">Spring Storm Alone</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Wind Psalm artwork thumbnail"></a>
+            <div class="caption">Wind Psalm</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Solstice: Sky Sun Bird artwork thumbnail"></a>
+            <div class="caption">Solstice: Sky Sun Bird</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Moonrise Sandstone Waterseep artwork thumbnail"></a>
+            <div class="caption">Moonrise Sandstone Waterseep</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Century Plant: Wind Moon Owl artwork thumbnail"></a>
+            <div class="caption">Century Plant: Wind Moon Owl</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Equinox Novena artwork thumbnail"></a>
+            <div class="caption">Equinox Novena</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Tumbleweed: an Autumn Portrait artwork thumbnail"></a>
+            <div class="caption">Tumbleweed: an Autumn Portrait</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Cold Snap artwork thumbnail"></a>
+            <div class="caption">Cold Snap</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Winter Solstice (two panels) artwork thumbnail"></a>
+            <div class="caption">Winter Solstice (two panels)</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Winter Solstice (left panel) artwork thumbnail"></a>
+            <div class="caption">Winter Solstice (left panel)</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Winter Solstice (right panel) artwork thumbnail"></a>
+            <div class="caption">Winter Solstice (right panel)</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Nocturne Sliver Moon Datura artwork thumbnail"></a>
+            <div class="caption">Nocturne Sliver Moon Datura</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Introductory Exhibit Text artwork thumbnail"></a>
+            <div class="caption">Introductory Exhibit Text</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="David Lee artwork thumbnail"></a>
+            <div class="caption">David Lee</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Moab Library Exhibit 1 artwork thumbnail"></a>
+            <div class="caption">Moab Library Exhibit 1</div>
+          </article>
+
+          <article class="card">
+            <a class="thumb" href="#"><img src="rick.jpg" alt="Moab Library Exhibit 2 artwork thumbnail"></a>
+            <div class="caption">Moab Library Exhibit 2</div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <form class="search-form" novalidate>
+        <label for="search">Search site</label>
+        <input type="search" id="search" name="search" placeholder="Enter search term(s)">
+        <button type="submit">Search</button>
+      </form>
+      <div class="copyright">All material © 2023 by Bruce Hucko. WideRange Galleries .</div>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          nav.querySelector('a, button').focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added semantic header, nav, main, footer; added skip link and main-content id; ensured exactly one h1 with sequential structure; added meaningful alt text to all images; added associated label for search input; ensured descriptive link and button text; set html lang="en"
+[B] ARIA fixes: used aria-label on navigation regions; avoided redundant role attributes on semantic landmarks; ensured no positive tabindex values remain
+[C] JS patterns added: implemented hamburger menu for mobile navigation; implemented tab order cleanup for positive tabindex removal; included visible focus indicator styles
+-->

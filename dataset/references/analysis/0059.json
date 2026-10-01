@@ -1,0 +1,46 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict a long list/article feed followed by an isolated single-line element near the lower portion of the content area that reads like a standalone pagination control or 'More Posts' action rather than another full content block.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Implement as a button or link that fetches and appends additional posts/items, or advances pagination. If it loads content asynchronously, it should expose loading state and preserve reading position.",
+      "ambiguities": "The sketch does not clarify whether this is classic pagination navigation, a single 'load more' button, or just another text link in the footer."
+    }
+  ],
+  "applicable_criteria": [
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "load_more"
+    ],
+    "desktop": [
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply a very low-JavaScript content page: primarily static article/post content with header navigation and footer links that appear conventional rather than interactive widgets. No clear evidence suggests hamburger navigation, dropdowns, sticky behavior, tabs, accordions, forms, overlays, or infinite scroll. The only plausible JS-enhanced behavior is a bottom pagination/load-more control present in both mobile and desktop layouts, though even that may be implemented as plain navigation if desired."
+}

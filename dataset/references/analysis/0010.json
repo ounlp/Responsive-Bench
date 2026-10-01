@@ -1,0 +1,32 @@
+{
+  "patterns_found": [],
+  "applicable_criteria": [],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": []
+  },
+  "sketch_notes": "Both mobile and desktop sketches depict a static content layout: a simple horizontal text navigation/header area, one large featured content card, and two smaller content cards below. There are no visible cues for menus, disclosure controls, tabs, forms, search, overlays, counters, loading triggers, or scroll-dependent UI. The reference HTML also suggests straightforward link-based navigation and static content blocks rather than JavaScript-driven components. Any interactive behavior beyond standard link navigation would be speculative from these sketches alone."
+}

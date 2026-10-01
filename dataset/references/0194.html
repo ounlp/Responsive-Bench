@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Everything about HP Calculators" name="description">
+  <title>Algebraic Entry Mode (ALG) — Educalc.net</title>
+  <meta content="#da532c" name="msapplication-TileColor">
+  <meta content="#ffffff" name="theme-color">
+  <style>
+   html {
+  overflow-y: scroll
+}
+:root {
+  --bgcolor: white;
+  --fontcolor: #444;
+  --linkcolor: #00e;
+  --visitedcolor: #551a8b;
+  --precolor: #fff;
+  --prebgcolor: #000;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+     --bgcolor: black;
+     --fontcolor: white;
+     --linkcolor: rgb(63, 137, 187);
+     --visitedcolor: #ae5ee0;
+     --precolor: #fff;
+     --prebgcolor: #383838;
+  }
+}
+body {
+  color: var(--fontcolor);
+  background: var(--bgcolor);
+}
+a {
+  text-decoration: underline;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:link {
+  color: var(--linkcolor);
+}
+a:visited {
+  color: var(--visitedcolor);
+}
+a:active {
+  color: var(--visitedcolor);
+}
+h1,h2,h3 {
+  line-height: 1.2;
+}
+p > code {
+  color: var(--precolor);
+  background: var(--prebgcolor);
+  padding: 2px;
+}
+pre {
+  color: var(--precolor);
+  background: var(--prebgcolor);
+  padding: 24px;
+  overflow-x: auto;
+}
+article {
+  padding: 5px 0;
+}
+.center  {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+figcaption {
+  color: #888;
+  font: 12px/1.5 monospace;
+  text-align: center;
+}
+figure {
+  margin: auto;
+}
+
+hr {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 0.6px;
+  color: rgb(192, 192, 192);
+}
+
+
+@font-face {
+  font-family: 'Iosevka';
+  src: local('Iosevka'),
+    url('/fonts/iosevka-regular.woff2') format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Iosevka';
+  src: local('Iosevka'),
+    url('/fonts/iosevka-bold.woff2') format("woff2");
+  font-weight: bold;
+  font-style: bold;
+}
+@font-face {
+  font-family: 'Iosevka';
+  src: local('Iosevka'),
+    url('/fonts/iosevka-oblique.woff2') format("woff2");
+  font-weight: italic;
+  font-style: italic;
+}
+
+
+
+body {
+  font-family: Iosevka, monospace;
+  max-width: 750px;
+  margin: 0 auto;
+  padding: 10px;
+}
+#brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+#brand a {
+  color: var(--visitedcolor);
+  text-decoration: none;
+}
+#brand h1, #brand h3 {
+  margin: 0;
+}
+#brand h1 {
+  font-size: 30px;
+}
+#brand h3 {
+  font-size: 20px;
+  font-weight: normal;
+}
+#brand .icon {
+  height: 46px;
+}
+footer {
+  margin-top: 30px;
+}
+header nav {
+  margin: 15px 0;
+  text-align: center;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  body {
+    margin-top: 25px;
+  }
+  #brand {
+
+    text-align: unset;
+  }
+  #brand .text {
+    margin-left: 10px;
+  }
+  #brand h1 {
+    font-size: 45px;
+  }
+  #brand h3 {
+    font-size: 25px;
+  }
+}
+#postsByDate  {
+  list-style: none;
+}
+#postsByDate .date {
+  width: 60px;
+}
+#postsByDate div, #postsInOneGroup div {
+  display: inline-block;
+}
+#terms {
+  list-style: none;
+}
+#terms .term {
+  background-color: #ddd;
+  border-radius: 10px;
+  display: inline-block;
+  margin: 2px;
+  padding: 8px;
+}
+.skip-link {
+  position: absolute;
+  transform: translateY(-100%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+:focus-visible {
+  outline: 3px solid #005FCC;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div id="brand">
+      <a class="icon-link" href="/" aria-label="Educalc.net home">
+        <img class="icon" src="rick.jpg" alt="Educalc.net logo">
+      </a>
+    </div>
+    <nav aria-label="Main">
+      <a href="/"><b>Educalc.net</b></a>
+      |
+      <a href="/categories/"><b>Category</b></a>
+      |
+      <a href="/tags/"><b>Tag</b></a>
+      |
+      <a href="/search/"><b>Search</b></a>
+      |
+      <a href="/find/"><b>Find</b></a>
+      |
+      <a href="/about/"><b>About</b></a>
+    </nav>
+    <hr>
+  </header>
+
+  <main id="main-content">
+    <article>
+      <h1>Algebraic Entry Mode (ALG)</h1>
+      <p>
+        On most HP calculators model that has dual mode, the algebraic annunciators and keys are labeled as ALG.
+      </p>
+      <p>
+        This is the name of the mathematic notation used on all non-RPN calculators where you enter a mathematic equation like this: <code>1+3*(3+(2-5)/3)</code>. In algebraic mode, parentheses and order of operations are extremely important.
+      </p>
+      <h2>The algebraic order of operations</h2>
+      <p>
+        The algebraic mode of operation uses the following hierarchy:
+      </p>
+      <ol>
+        <li>Parentheses</li>
+        <li>Exponents</li>
+        <li>Multiplication and Division</li>
+        <li>Addition and Subtraction</li>
+      </ol>
+    </article>
+  </main>
+
+  <footer>
+    <hr>
+    <p class="copyright" style="text-align:center;">
+      <small>
+        Copyright &copy; 2022
+        Educalc.net.
+        This work is licensed under the
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>
+        license.
+      </small>
+    </p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added skip link and main-content target; ensured descriptive page-specific title; added exactly one h1; converted content wrapper to semantic main/article structure; improved heading hierarchy with h2; added alt text to image; added descriptive href/text to all links; ensured html lang="en" remained present.
+[B] ARIA fixes: added aria-label="Main" to navigation landmark; avoided redundant landmark roles; ensured no positive tabindex remains via JS baseline.
+[C] JS patterns added: implemented C-K1/K3 focus indicator styles and JS removal of positive tabindex values only.
+-->

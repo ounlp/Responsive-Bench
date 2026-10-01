@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surgical and Cytology Specimens — TestDirectory</title>
+  <style>
+    :root{
+      --bg:#f3f3f3;
+      --text:#3f474b;
+      --muted:#8f8f8f;
+      --border:#d9d9d9;
+      --red:#c52b1f;
+      --dark-red:#a71919;
+      --teal:#165f74;
+      --white:#ffffff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.35;
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:10px;top:10px;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .page{
+      max-width:940px;
+      margin:0 auto;
+      position:relative;
+    }
+
+    header.site-header{
+      position:relative;
+      min-height:118px;
+    }
+    .brand-block{
+      position:absolute;
+      left:0;
+      top:0;
+      width:240px;
+      height:118px;
+      background:var(--dark-red);
+    }
+    .topbar{
+      margin-left:260px;
+      background:var(--red);
+      height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 20px;
+      color:#fff;
+      font-size:11px;
+    }
+    .topbar nav ul{
+      list-style:none;
+      display:flex;
+      gap:16px;
+      margin:0;
+      padding:0;
+    }
+    .topbar .search-text{
+      color:#7a1f16;
+      opacity:.95;
+    }
+
+    .content-wrap{
+      display:grid;
+      grid-template-columns: 690px 220px;
+      gap:20px;
+      align-items:start;
+    }
+
+    .breadcrumb{
+      display:inline-flex;
+      background:#fff;
+      border:1px solid var(--border);
+      margin:0 0 10px 0;
+      font-size:12px;
+    }
+    .breadcrumb a,
+    .breadcrumb span{
+      padding:7px 12px;
+      display:block;
+    }
+    .breadcrumb .current{
+      color:#ef2d23;
+      text-decoration:underline;
+    }
+
+    main{
+      padding-bottom:30px;
+    }
+    h1{
+      margin:0 0 24px 0;
+      color:var(--teal);
+      font-size:36px;
+      line-height:1.1;
+      font-weight:700;
+      letter-spacing:-0.5px;
+    }
+
+    .card{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:22px 20px;
+      margin-bottom:15px;
+      font-size:15px;
+    }
+    .card p{margin:0 0 16px 0}
+    .card ol{
+      margin:0 0 10px 24px;
+      padding-left:20px;
+    }
+    .card li{
+      margin:2px 0;
+      font-weight:700;
+    }
+    .section-title{
+      font-size:17px;
+      font-weight:700;
+      margin:0 0 4px 0;
+      text-transform:uppercase;
+    }
+    .red-link{
+      color:#ef2d23;
+      text-decoration:underline;
+      font-weight:700;
+      display:inline-block;
+      margin:0 0 18px 30px;
+    }
+    .strong{font-weight:700}
+    .alert{
+      color:#ef2d23;
+      font-weight:700;
+    }
+
+    aside{
+      padding-top:58px;
+    }
+    .aside-kicker{
+      color:#ffffff;
+      opacity:.8;
+      font-size:13px;
+      margin:0 0 46px 34px;
+    }
+    .aside-title{
+      color:#ffffff;
+      font-size:20px;
+      font-weight:700;
+      margin:0 0 28px 10px;
+    }
+    .aside-panel{
+      border-top:1px solid #e33a31;
+      padding-top:14px;
+      margin-left:0;
+    }
+    .aside-panel h2{
+      margin:0 0 4px 10px;
+      font-size:18px;
+      line-height:1.2;
+      color:#3f474b;
+    }
+    .aside-panel ul{
+      margin:0;
+      padding-left:24px;
+      font-size:14px;
+    }
+    .aside-panel li{
+      margin:7px 0;
+      padding-left:10px;
+    }
+    .aside-panel a{
+      color:var(--teal);
+    }
+    .aside-panel .active{
+      color:#ef2d23;
+      text-decoration:underline;
+    }
+
+    footer{
+      border-top:1px solid #cfcfcf;
+      margin-top:30px;
+      padding:32px 0 34px;
+      font-size:12px;
+      color:#9a9a9a;
+    }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .nav-toggle{ display:none; }
+
+    @media (max-width: 900px){
+      .page{max-width:none;padding:0 10px}
+      .topbar{margin-left:260px}
+      .content-wrap{
+        grid-template-columns: 1fr 150px;
+        gap:20px;
+      }
+      h1{font-size:34px}
+      .card{font-size:14px}
+      .aside-title{
+        font-size:18px;
+        margin-left:0;
+      }
+      .aside-kicker{
+        margin-left:14px;
+      }
+      .aside-panel h2{
+        margin-left:0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar{
+        justify-content:flex-start;
+        gap:12px;
+      }
+      .topbar nav.desktop-nav{
+        display:none;
+      }
+      .topbar .search-text{
+        display:none;
+      }
+      #mobile-nav{
+        position:absolute;
+        top:42px;
+        right:10px;
+        background:var(--red);
+        padding:10px 14px;
+        min-width:180px;
+        z-index:20;
+      }
+      #mobile-nav ul{
+        list-style:none;
+        margin:0;
+        padding:0;
+      }
+      #mobile-nav li{
+        margin:8px 0;
+      }
+      #mobile-nav a{
+        color:#fff;
+        font-size:12px;
+      }
+      .content-wrap{
+        grid-template-columns: 1fr;
+      }
+      aside{
+        display:none;
+      }
+      h1{
+        font-size:34px;
+        white-space:nowrap;
+      }
+      .card{
+        overflow:hidden;
+      }
+    }
+
+    @media (max-width: 420px){
+      .page{padding:0 10px}
+      .brand-block{
+        width:240px;
+        height:118px;
+      }
+      .topbar{
+        margin-left:260px;
+        padding:0 10px;
+        min-width:105px;
+      }
+      h1{
+        font-size:34px;
+      }
+      .card{
+        padding:18px 20px;
+      }
+      .footer-links{
+        gap:12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <header class="site-header">
+      <div class="brand-block" aria-hidden="true"></div>
+      <div class="topbar">
+        <button
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation menu"
+          class="nav-toggle">
+          <span aria-hidden="true">&#9776;</span>
+        </button>
+
+        <nav class="desktop-nav" aria-label="Main">
+          <ul>
+            <li><a href="#">Billing</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Test Directory</a></li>
+          </ul>
+        </nav>
+
+        <nav id="mobile-nav" aria-label="Main" hidden>
+          <ul>
+            <li><a href="#">Billing</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Test Directory</a></li>
+          </ul>
+        </nav>
+
+        <div class="search-text">Keyword Search</div>
+      </div>
+    </header>
+
+    <div class="content-wrap">
+      <main id="main-content">
+        <nav aria-label="Breadcrumb">
+          <div class="breadcrumb">
+            <a href="#">Home</a>
+            <span class="current">Surgical and Cytology Specimens</span>
+          </div>
+        </nav>
+
+        <h1>Surgical and Cytology Specimens</h1>
+
+        <section class="card" aria-label="Specimen requirements">
+          <p>Specimens submitted for cytological or pathological examination must be accompanied with a completed requisition form indicating the following:</p>
+          <ol>
+            <li>Patient's name and date of birth</li>
+            <li>Date and time of specimen collection</li>
+            <li>Specimen source</li>
+            <li>Submitting physician's name</li>
+          </ol>
+        </section>
+
+        <section class="card" aria-label="Specimen handling">
+          <h2 class="section-title">SPECIMEN HANDLING</h2>
+          <a href="#" class="red-link">Pathology Specimen Quick Reference Sheet</a>
+
+          <p>This file will provide an easy to view and printable AP Specimen Handling Reference sheet.</p>
+
+          <p><span class="strong">Tissue for Frozen Sections - STAT Delivery</span><br>
+          Please Deliver tissue for frozen sections immediately to the gross room in the laboratory.<br>
+          <span class="alert">DO NOT USE FIXATIVE! - DO NOT FREEZE!</span></p>
+
+          <p><span class="strong">Kidney Biopsies</span><br>
+          Can only be collected Monday - Thursday (Use sterile container with Phosphate Buffer or Saline)<br>
+          <span class="alert">STAT Courier to Tulsa within 2 hours of Collection!</span></p>
+        </section>
+      </main>
+
+      <aside aria-label="Test directory sidebar">
+        <p class="aside-kicker">Specialized Testing</p>
+        <p class="aside-title">TestDirectory</p>
+        <div class="aside-panel">
+          <h2>Surgical and Cytology Specimens</h2>
+          <ul>
+            <li><a href="#" class="active">Surgical and Cytology Specimens</a></li>
+            <li><a href="#">Gynecologic Specimens</a></li>
+            <li><a href="#">Non-Gynecological Cytology</a></li>
+            <li><a href="#">Dermatology/Surgical Pathology</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">Privacy Statement</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Notice of Nondiscrimination</a>
+        <a href="#">Combatting Modern Slavery &amp; Human Trafficking Statement</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, and footer landmarks; added skip link and id="main-content"; ensured one h1 with sequential h2 headings; added html lang="en"; ensured all links have descriptive text; no unlabeled form controls present.
+[B] ARIA fixes: used unique aria-labels for Main, Breadcrumb, and Test directory sidebar landmarks; avoided redundant role attributes on semantic elements; ensured no tabindex values greater than 0 remain.
+[C] JS patterns added: implemented C-N1 hamburger menu for mobile navigation; implemented C-K1/K3 tabindex cleanup and focus indicator support.
+-->

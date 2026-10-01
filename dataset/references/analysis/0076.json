@@ -1,0 +1,112 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a compact header/title area at the top that reads like persistent page chrome above long article content, implying the top navigation/header should remain available while scrolling through the post.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should likely pin after initial scroll, preserving access to navigation/search/back controls while reading long-form content.",
+      "ambiguities": "The sketch does not explicitly show the sticky state transition or whether only part of the header sticks."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows two small marks/icons at the very top before the article title area, consistent with compact top-bar controls in a narrow viewport where navigation would collapse behind a menu trigger.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A tap target should open and close a hidden navigation panel or drawer containing site navigation and possibly profile/labels/sidebar content.",
+      "ambiguities": "The icon is abstract in the sketch, so it could also represent back/search controls rather than a menu; however mobile blog layouts strongly imply a collapsed nav."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "The top utility area in both sketches implies header controls beyond the article title, and the reference layout strongly suggests a search affordance in the header even though the sketch is minimal.",
+      "confidence": "LOW",
+      "behavior_notes": "Search should open/focus an input from the header and support submit behavior; on mobile it may expand inline or overlay the header.",
+      "ambiguities": "No explicit search field is drawn in the sketch, so this is inferred from the page type and likely header utility pattern rather than direct visual evidence."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a small cluster of short lines offset to the upper left of the main content, visually suggesting a compact secondary navigation or utility menu that could reveal additional options.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented, desktop navigation items may expose submenu content on click or hover.",
+      "ambiguities": "Those marks may instead represent metadata or sidebar text rather than a true menu; submenu behavior is not explicit."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The page appears to include share/email/comment-related actions around the article and cards; these commonly open overlays or dialogs in blog/article layouts, especially for share or subscribe flows implied by the overall structure.",
+      "confidence": "LOW",
+      "behavior_notes": "Any share, subscribe, or comment-entry overlay should open above the page, trap focus, and close via close button, Escape, or outside click as appropriate.",
+      "ambiguities": "No overlay is explicitly drawn in the sketches; this is inferred from likely article actions rather than visible modal chrome."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop composition suggests auxiliary content outside the main article flow, and blog side sections such as labels/archive commonly appear as expandable blocks; the sketch leaves room for such collapsible sidebar sections.",
+      "confidence": "LOW",
+      "behavior_notes": "Sidebar sections should expand/collapse to reveal additional lists without navigating away.",
+      "ambiguities": "The sketch does not explicitly depict disclosure arrows or stacked panels, so this remains speculative."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "desktop",
+      "visual_evidence": "Two large boxed content cards appear below the main article on desktop, implying a list of related or popular posts that may continue beyond the initially shown items.",
+      "confidence": "LOW",
+      "behavior_notes": "A load-more control could append additional cards/posts below the visible set while preserving reading context.",
+      "ambiguities": "The sketch shows only two cards and no explicit button, so pagination could also be static."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive header controls and possible overlays/disclosures across both sketches require managed focus to support keyboard and assistive technology use.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Focus should move into opened menus/search/modal surfaces, return to the trigger on close, and maintain logical order through sticky header and article actions.",
+      "ambiguities": "This is a supporting requirement implied by other interactions rather than a standalone visible widget."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "D1",
+    "D4",
+    "M1",
+    "M2",
+    "S1",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "M3",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "search_input",
+      "focus_management",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "focus_management",
+      "dropdown_menu",
+      "accordion",
+      "load_more",
+      "search_input",
+      "modal_dialog"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively light but important interaction layer centered on article reading: persistent header behavior across long scroll, collapsed mobile navigation, and likely utility actions such as search and share. Desktop appears to expose more secondary structure around the article and post listings, while mobile prioritizes compact top-bar controls and uninterrupted reading flow. Because the drawings are highly abstract, several behaviors are inferred from common blog/article patterns rather than explicitly depicted controls, so navigation and sticky-header behaviors are the strongest requirements and overlays/disclosures are more tentative."
+}

@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches prominently feature a large single-line input field near the top of the page, positioned as the primary interactive control in the header area, which strongly implies site search behavior.",
+      "confidence": "HIGH",
+      "behavior_notes": "Should accept a query and either submit to a results page or update results dynamically. It should support focus styling, keyboard submission, and likely clearing/editing of the query.",
+      "ambiguities": "The sketch does not show whether results appear live below the field or only after submit/navigation."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The only explicit form-like control in both sketches is the large text input, which implies some submit handling and at minimum empty-state/query validation when the user attempts to search.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Should validate the search interaction enough to prevent invalid/empty submissions or handle them gracefully, with feedback if needed.",
+      "ambiguities": "No button, error text, or required marker is drawn, so the extent of validation is unclear and may be minimal."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch simplifies the header into a compact top area with branding and no visible full navigation links, which strongly implies collapsed navigation behind a menu trigger on small screens.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile menu button would open and close a navigation panel or overlay containing header links not shown inline in the sketch.",
+      "ambiguities": "The hamburger icon itself is not explicitly drawn in the sketch; this is inferred from the reduced mobile header layout and common responsive behavior."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The search field in both views requires keyboard focus handling, and the inferred mobile hamburger menu would require programmatic focus movement when opened and closed.",
+      "confidence": "HIGH",
+      "behavior_notes": "Search input should receive visible focus and logical tab order. If the mobile menu opens as an overlay/drawer, focus should move into it and return to the trigger on close.",
+      "ambiguities": "Focus management is explicit for the search field but only conditionally needed for the inferred mobile menu depending on implementation."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "search_input",
+      "hamburger_menu",
+      "focus_management",
+      "form_validation"
+    ],
+    "desktop": [
+      "search_input",
+      "focus_management",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple support/search landing page with low overall JavaScript complexity. The dominant interactive requirement in both viewports is the large search field, which likely drives either search submission or live search behavior. The main cross-viewport difference is navigation: desktop appears to have room for inline header actions, while mobile likely collapses them into a hamburger-controlled menu even though the icon is not explicitly drawn. No tabs, accordions, modals, load-more controls, or sticky behaviors are visually indicated."
+}

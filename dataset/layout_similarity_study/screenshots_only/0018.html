@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>16th Century Renaissance Walnut Table — AnticStore</title>
+  <style>
+    :root{
+      --dark:#373733;
+      --teal:#1b95a5;
+      --light:#f7f7f5;
+      --mid:#e6e6e2;
+      --text:#333;
+      --muted:#8a8a8a;
+      --button:#5a5754;
+      --link:#b59b5d;
+      --blue:#1010ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      color:var(--text);
+      background:#fff;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .skip-link{position:absolute;transform:translateY(-100%);left:0;top:0;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) { outline: none; }
+
+    .topbar{
+      background:var(--dark);
+      color:#fff;
+      padding:0 18px;
+    }
+    .topbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      min-height:60px;
+      gap:16px;
+    }
+    .brand-strip{
+      width:112px;
+      height:12px;
+      background:var(--blue);
+      margin-bottom:10px;
+    }
+    .primary-links{
+      display:flex;
+      align-items:flex-end;
+      gap:48px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:28px;
+      letter-spacing:.2px;
+    }
+    .primary-links a:first-child{color:var(--teal)}
+    .top-right{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:12px;
+    }
+    .currency, .connect{
+      background:#4a4a4a;
+      padding:8px 12px;
+      color:#ddd;
+    }
+    .connect{
+      background:#0f6f7f;
+      color:#fff;
+    }
+
+    .nav-toggle { display: none; background:none;border:0;color:#fff;font-size:28px;padding:8px; }
+    .subnav{
+      border-bottom:1px solid #d8d8d8;
+      box-shadow:0 2px 6px rgba(0,0,0,.15);
+      background:#fff;
+    }
+    .subnav-inner{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:auto auto auto 1fr 50px;
+      align-items:center;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:14px;
+    }
+    .subnav-inner a, .subnav-inner span{
+      padding:14px 26px;
+      border-right:1px solid #ddd;
+      display:block;
+      white-space:nowrap;
+    }
+    .subnav-inner .search{
+      padding:0;
+      border-right:1px solid #ddd;
+    }
+    .subnav-inner input{
+      width:100%;
+      border:0;
+      padding:14px 12px;
+      font-family:Georgia, serif;
+      color:#777;
+    }
+    .subnav-inner .user{
+      text-align:center;
+      font-size:28px;
+      font-family:Georgia, serif;
+      padding:8px 0;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 26px;
+    }
+    .breadcrumb{
+      font-size:11px;
+      color:#8f8f8f;
+      margin:10px 0 18px;
+      font-family:Georgia, serif;
+    }
+    h1{
+      font-size:24px;
+      font-weight:normal;
+      margin:0 0 4px;
+    }
+    .offered{
+      color:#8f8f8f;
+      font-size:14px;
+      margin-bottom:12px;
+    }
+    .offered a{color:var(--link)}
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.2fr .65fr .34fr;
+      gap:0;
+      border-top:1px solid #ddd;
+      border-bottom:1px solid #ddd;
+      margin-bottom:0;
+    }
+    .hero .main-image,
+    .hero .side-image{
+      background:var(--blue);
+      min-height:230px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero .main-image img,
+    .hero .side-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:0;
+    }
+    .hero .details{
+      padding:14px 8px 14px 8px;
+      position:relative;
+      background:#fff;
+    }
+    .plus-btn{
+      position:absolute;
+      right:10px;
+      top:8px;
+      width:28px;
+      height:28px;
+      border:0;
+      background:#5a5754;
+      color:#fff;
+      font-size:24px;
+      line-height:1;
+      border-radius:2px;
+      cursor:pointer;
+    }
+    .ref{
+      color:#9a9a9a;
+      font-size:14px;
+      margin-bottom:28px;
+      font-family:Arial, Helvetica, sans-serif;
+    }
+    .sold{
+      font-size:28px;
+      margin-bottom:22px;
+    }
+    .meta{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:13px;
+      line-height:1.8;
+      color:#666;
+    }
+    .meta strong{
+      color:#000;
+      font-weight:normal;
+      display:inline-block;
+      min-width:90px;
+    }
+    .request-btn, .section-btn{
+      display:inline-block;
+      background:var(--button);
+      color:#fff;
+      padding:6px 14px;
+      margin-top:22px;
+      font-size:12px;
+      letter-spacing:.2px;
+      font-family:Georgia, serif;
+    }
+
+    .dealer-product{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:40px;
+      padding:20px 0 34px;
+      border-bottom:1px dotted #999;
+    }
+    .dealer-card{
+      display:grid;
+      grid-template-columns:58px 1fr;
+      gap:12px;
+      align-items:start;
+    }
+    .avatar{
+      width:58px;height:58px;border-radius:50%;background:var(--blue);
+    }
+    .dealer-name{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:16px;
+      margin-top:4px;
+    }
+    .dealer-sub{
+      color:#9a9a9a;
+      font-size:10px;
+      font-family:Arial, Helvetica, sans-serif;
+      margin:2px 0 8px;
+    }
+    .follow{
+      display:inline-block;
+      background:var(--teal);
+      color:#fff;
+      padding:4px 18px;
+      border-radius:4px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:12px;
+      min-width:120px;
+      text-align:center;
+      margin-bottom:12px;
+    }
+    .dealer-phone{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:12px;
+      margin:10px 0;
+    }
+    .dealer-links{
+      font-size:14px;
+      color:#4d4d4d;
+      letter-spacing:.2px;
+    }
+    .product-copy h2{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:16px;
+      margin:0 0 12px;
+    }
+    .product-copy p{
+      margin:0 0 14px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:13px;
+      line-height:1.45;
+      color:#222;
+      max-width:560px;
+    }
+    .tags{
+      color:#9a9a9a;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:12px;
+      margin-top:24px;
+    }
+
+    .section{
+      padding:24px 0 34px;
+      border-bottom:1px dotted #999;
+    }
+    .section:last-of-type{border-bottom:none}
+    .section h2{
+      text-align:center;
+      font-weight:normal;
+      font-size:22px;
+      margin:0 0 18px;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:34px 42px;
+      align-items:start;
+    }
+    .card{
+      text-align:center;
+    }
+    .period{
+      color:#9a9a9a;
+      font-size:11px;
+      margin-bottom:8px;
+    }
+    .thumb{
+      background:var(--blue);
+      width:100%;
+      aspect-ratio:1/1;
+      margin:0 auto 12px;
+      overflow:hidden;
+    }
+    .thumb.landscape{aspect-ratio:1.35/1}
+    .thumb.portrait{aspect-ratio:.82/1}
+    .thumb img{width:100%;height:100%;object-fit:cover;opacity:0}
+    .card-title{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:16px;
+      color:#666;
+      line-height:1.2;
+      min-height:42px;
+    }
+    .price{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:14px;
+      font-weight:bold;
+      margin-top:6px;
+    }
+    .section-cta{
+      text-align:center;
+      margin-top:28px;
+    }
+    .section-btn{
+      font-size:16px;
+      padding:6px 18px;
+    }
+
+    footer{
+      margin-top:0;
+    }
+    .footer-top{
+      background:var(--dark);
+      color:#fff;
+      padding:20px 0 26px;
+    }
+    .footer-grid{
+      max-width:1200px;
+      margin:0 auto;
+      padding:0 42px;
+      display:grid;
+      grid-template-columns:1.2fr 1fr 1fr 1fr;
+      gap:34px;
+      align-items:start;
+    }
+    .footer-col h3{
+      margin:0 0 10px;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:12px;
+      font-weight:normal;
+      text-transform:uppercase;
+    }
+    .footer-col a, .footer-col div{
+      display:block;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:10px;
+      color:#cfcfcf;
+      margin:0 0 8px;
+    }
+    .dealer-login{
+      display:inline-block;
+      background:var(--teal);
+      color:#fff !important;
+      padding:5px 18px;
+      border-radius:4px;
+      font-size:16px !important;
+      margin-bottom:10px !important;
+    }
+    .footer-brand{
+      justify-self:end;
+      text-align:left;
+      min-width:120px;
+    }
+    .footer-brand .brand-strip{
+      width:120px;
+      height:10px;
+      margin:0 0 12px;
+    }
+    .xyw4{
+      font-size:18px !important;
+      letter-spacing:8px;
+      color:#d8d8d8 !important;
+      margin-top:18px !important;
+      font-family:Georgia, serif !important;
+    }
+    .footer-bottom{
+      background:#efefef;
+      color:#555;
+      text-align:center;
+      font-family:Arial, Helvetica, sans-serif;
+      font-size:10px;
+      padding:8px 12px;
+    }
+    .footer-bottom a{color:#555}
+    .footer-bottom .copy{
+      color:#1b95a5;
+      margin-top:2px;
+    }
+
+    .sr-only{
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar-inner{
+        min-height:44px;
+        padding:4px 0;
+      }
+      .primary-links{
+        gap:18px;
+        font-size:12px;
+        align-items:center;
+      }
+      .brand-strip{width:64px;height:8px;margin-bottom:6px}
+      .top-right{
+        font-size:9px;
+        gap:4px;
+      }
+      .currency,.connect{padding:5px 7px}
+      .subnav-inner{
+        grid-template-columns:1fr 34px;
+      }
+      .subnav-inner a:nth-child(-n+3),
+      .subnav-inner .search{
+        display:none;
+      }
+      .subnav-inner span{
+        padding:8px 10px;
+      }
+      .subnav-inner .user{
+        font-size:18px;
+      }
+      .container{padding:0 8px}
+      .breadcrumb{
+        font-size:8px;
+        margin:6px 0 10px;
+      }
+      h1{
+        font-size:14px;
+        line-height:1.15;
+        max-width:220px;
+      }
+      .offered{font-size:9px;margin-bottom:8px}
+      .hero{
+        grid-template-columns:1fr 80px;
+      }
+      .hero .main-image{min-height:120px}
+      .hero .details{
+        grid-column:1 / -1;
+        padding:10px 8px 10px;
+      }
+      .plus-btn{
+        top:6px;
+        right:8px;
+        width:22px;
+        height:22px;
+        font-size:18px;
+      }
+      .ref{font-size:8px;margin-bottom:12px}
+      .sold{font-size:14px;margin-bottom:10px}
+      .meta{font-size:8px;line-height:1.7}
+      .meta strong{min-width:54px}
+      .request-btn{font-size:9px;padding:4px 8px;margin-top:10px}
+      .dealer-product{
+        grid-template-columns:1fr;
+        gap:18px;
+        padding:14px 0 18px;
+      }
+      .dealer-card{
+        grid-template-columns:46px 1fr;
+        gap:8px;
+      }
+      .avatar{width:46px;height:46px}
+      .dealer-name{font-size:11px}
+      .dealer-sub{font-size:7px}
+      .follow{font-size:9px;min-width:88px;padding:3px 10px}
+      .dealer-phone{font-size:8px}
+      .dealer-links{font-size:9px}
+      .product-copy h2{font-size:12px}
+      .product-copy p{font-size:10px;max-width:none}
+      .tags{font-size:8px;margin-top:12px}
+      .section{
+        padding:18px 0 22px;
+      }
+      .section h2{
+        font-size:14px;
+        margin-bottom:14px;
+      }
+      .cards{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+      .card{
+        max-width:120px;
+        margin:0 auto;
+      }
+      .period{font-size:7px}
+      .card-title{
+        font-size:8px;
+        min-height:auto;
+      }
+      .price{font-size:8px}
+      .section-btn{
+        font-size:10px;
+        padding:4px 10px;
+      }
+      .footer-grid{
+        grid-template-columns:1fr 1fr 1fr;
+        padding:0 8px;
+        gap:12px;
+      }
+      .footer-brand{
+        grid-column:1 / -1;
+        justify-self:center;
+        text-align:center;
+      }
+      .footer-col h3{font-size:9px}
+      .footer-col a,.footer-col div{font-size:7px}
+      .dealer-login{font-size:10px !important;padding:4px 10px}
+      .xyw4{font-size:12px !important;letter-spacing:6px}
+      .footer-bottom{font-size:6px}
+    }
+
+    @media (min-width: 769px) and (max-width: 1100px){
+      .primary-links{font-size:18px;gap:28px}
+      .subnav-inner{grid-template-columns:auto auto auto 1fr 40px}
+      .hero{
+        grid-template-columns:1fr 1fr;
+      }
+      .hero .details{
+        grid-column:1 / -1;
+      }
+      .dealer-product{
+        grid-template-columns:260px 1fr;
+      }
+      .cards{
+        grid-template-columns:repeat(2,1fr);
+      }
+      .footer-grid{
+        grid-template-columns:1fr 1fr 1fr 1fr;
+        padding:0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div style="display:flex;align-items:flex-end;gap:36px;">
+          <div>
+            <div class="brand-strip" aria-hidden="true"></div>
+          </div>
+          <nav aria-label="Main" class="primary-links">
+            <a href="#">CATALOGUE</a>
+            <a href="#">GALLERIES</a>
+          </nav>
+        </div>
+        <button
+          id="nav-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="Open navigation menu"
+          class="nav-toggle">
+          <span aria-hidden="true">&#9776;</span>
+        </button>
+        <div class="top-right">
+          <span class="currency">€ EUR&nbsp;&nbsp; 2</span>
+          <span>FR&nbsp;&nbsp; EN&nbsp;&nbsp; 中文</span>
+          <a href="#" class="connect">CONNECTION</a>
+        </div>
+      </div>
+    </div>
+
+    <nav id="mobile-nav" aria-label="Main" hidden class="container" style="padding-top:8px;padding-bottom:8px;background:#fff;border-bottom:1px solid #ddd;">
+      <a href="#" style="display:block;padding:8px 0;font-family:Arial, Helvetica, sans-serif;">CATALOGUE</a>
+      <a href="#" style="display:block;padding:8px 0;font-family:Arial, Helvetica, sans-serif;">GALLERIES</a>
+      <a href="#" style="display:block;padding:8px 0;font-family:Arial, Helvetica, sans-serif;">New Arrivals</a>
+      <a href="#" style="display:block;padding:8px 0;font-family:Arial, Helvetica, sans-serif;">Categories 2</a>
+      <a href="#" style="display:block;padding:8px 0;font-family:Arial, Helvetica, sans-serif;">Styles 2</a>
+      <a href="#" style="display:block;padding:8px 0;font-family:Arial, Helvetica, sans-serif;">CONNECTION</a>
+    </nav>
+
+    <nav aria-label="Secondary" class="subnav">
+      <div class="subnav-inner">
+        <a href="#">New Arrivals</a>
+        <a href="#">Categories&nbsp;&nbsp;2</a>
+        <a href="#">Styles&nbsp;&nbsp;2</a>
+        <div class="search">
+          <label for="site-search" class="sr-only">Search</label>
+          <input id="site-search" type="search" placeholder="Search ..." aria-label="Search">
+        </div>
+        <span class="user">U</span>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <div class="container">
+      <nav aria-label="Breadcrumb" class="breadcrumb">
+        <a href="#">AnticStore</a> &gt; <a href="#">Catalogue</a> &gt; <a href="#">Furniture</a> &gt; <a href="#">Table &amp; Gueridon</a> &gt; <a href="#">Renaissance</a> &gt; <a href="#">&lt;= 16th century</a> &gt; 16th Century Renaissance Walnut Table
+      </nav>
+
+      <h1>16th Century Renaissance Walnut Table</h1>
+      <div class="offered">Offered by <a href="#">Galerie Nicolas Lenté</a></div>
+
+      <section class="hero" aria-label="Product images and details">
+        <div class="main-image">
+          <img src="rick.jpg" alt="Main view of the 16th Century Renaissance Walnut Table">
+        </div>
+        <div class="details">
+          <button class="plus-btn" aria-label="Expand product image">+</button>
+          <div class="ref">Ref : 66533</div>
+          <div class="sold">SOLD</div>
+          <div class="meta">
+            <div><strong>Period :</strong> &lt;= 16th century</div>
+            <div><strong>Medium :</strong> Walnut</div>
+            <div><strong>Dimensions :</strong> l. 52.36 inch&nbsp;&nbsp; x&nbsp; H. 32.28 inch&nbsp;&nbsp; x&nbsp; P. 28.74 inch</div>
+          </div>
+          <a href="#" class="request-btn">REQUEST INFORMATION</a>
+        </div>
+        <div class="side-image">
+          <img src="rick.jpg" alt="Secondary view of the walnut table">
+        </div>
+      </section>
+
+      <section class="dealer-product" aria-label="Dealer and product description">
+        <aside aria-label="Dealer information">
+          <div class="dealer-card">
+            <div class="avatar" aria-hidden="true"></div>
+            <div>
+              <div class="dealer-name">Galerie Nicolas Lenté</div>
+              <div class="dealer-sub">16th to 18th century furniture, paintings and works of art</div>
+              <a href="#" class="follow">FOLLOW</a>
+              <div class="dealer-phone">C&nbsp;&nbsp;+33 (0)6 64 42 84 66</div>
+              <div class="dealer-links"><a href="#">GALLERY</a> | <a href="#">COLLECTION</a></div>
+            </div>
+          </div>
+        </aside>
+
+        <section aria-label="Product description">
+          <div class="product-copy">
+            <h2>16th Century Renaissance Walnut Table</h2>
+            <p>Table with extensions, with base in cross of Lorraine.<br>
+            Our table is designed according to a structure called Italian, with two side zippers.<br>
+            Dimensions: H. 82 cm, L. 133 cm, P. 73 cm.<br>
+            Very good state of conservation.</p>
+            <div class="tags">Tag&nbsp;&nbsp; | &nbsp;&nbsp;&lt;= 16th century &nbsp;&nbsp;|</div>
+          </div>
+        </section>
+      </section>
+
+      <section class="section" aria-label="Galerie Nicolas Lenté related items">
+        <h2>Galerie Nicolas Lenté</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="period">17 th century</div>
+            <div class="thumb"><img src="rick.jpg" alt="The prodigal son among courtesans - attributed to Hieronymus Francken II"></div>
+            <div class="card-title">The prodigal son among courtesans - attributed to Hieronymus Francken II</div>
+            <div class="price">19 500 €</div>
+          </article>
+          <article class="card">
+            <div class="period">17 th century</div>
+            <div class="thumb"><img src="rick.jpg" alt="The Triumph of the Infant Bacchus, workshop of H. Van Balen, Antwerp,"></div>
+            <div class="card-title">The Triumph of the Infant Bacchus, workshop of H. Van Balen, Antwerp,</div>
+            <div class="price">16 800 €</div>
+          </article>
+          <article class="card">
+            <div class="period">&lt;&nbsp;&nbsp;16 th century</div>
+            <div class="thumb portrait"><img src="rick.jpg" alt="Virgin & Child with St John & angels - Circle of Joos Van Cleve"></div>
+            <div class="card-title">Virgin &amp; Child with St John &amp; angels - Circle of Joos Van Cleve</div>
+            <div class="price">18 000 €</div>
+          </article>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="section-btn">CATALOGUE &nbsp;&gt;</a>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Table and Gueridon Renaissance items">
+        <h2>Table &amp; Gueridon Renaissance</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="period">&lt;&nbsp;&nbsp;16 th century</div>
+            <div class="thumb portrait"><img src="rick.jpg" alt="Small tuscany table from the Renaissance period"></div>
+            <div class="card-title">Small tuscany table from the Renaissance period</div>
+            <div class="price">2 500 €</div>
+          </article>
+          <article class="card">
+            <div class="period">17 th century</div>
+            <div class="thumb landscape"><img src="rick.jpg" alt="Italian 17th century table &quot;a lira&quot; - North of Italy"></div>
+            <div class="card-title">Italian 17th century table &quot;a lira&quot; - North of Italy</div>
+            <div class="price">12 000 €</div>
+          </article>
+          <article class="card">
+            <div class="period">&lt;&nbsp;&nbsp;16 th century</div>
+            <div class="thumb landscape"><img src="rick.jpg" alt="Important italian Renaissance palace table"></div>
+            <div class="card-title">Important italian Renaissance palace table</div>
+            <div class="price">55 000 €</div>
+          </article>
+          <article class="card">
+            <div class="period">&lt;&nbsp;&nbsp;16 th century</div>
+            <div class="thumb"><img src="rick.jpg" alt="French Renaissance table said ‘a l’italienne’"></div>
+            <div class="card-title">French Renaissance table said ‘a l’italienne’</div>
+            <div class="price">25 000 €</div>
+          </article>
+          <article class="card">
+            <div class="period">&lt;&nbsp;&nbsp;16 th century</div>
+            <div class="thumb"><img src="rick.jpg" alt="Renaissance ceremonial table from hugues sambin school with a fan-"></div>
+            <div class="card-title">Renaissance ceremonial table from hugues sambin school with a fan-</div>
+            <div class="price">75 000 €</div>
+          </article>
+          <article class="card">
+            <div class="period">&lt;&nbsp;&nbsp;16 th century</div>
+            <div class="thumb landscape"><img src="rick.jpg" alt="Second Renaissance &quot;portico&quot; table, after Jacques Androuet du Cerceau"></div>
+            <div class="card-title">Second Renaissance &quot;portico&quot; table, after Jacques Androuet du Cerceau</div>
+            <div class="price">22 000 €</div>
+          </article>
+        </div>
+        <div class="section-cta">
+          <a href="#" class="section-btn">TABLE &amp; GUERIDON RENAISSANCE &nbsp;&gt;</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>DEALER ACCOUNT</h3>
+          <a href="#" class="dealer-login">DEALER LOGIN</a>
+          <a href="#">&gt; Application form</a>
+        </div>
+        <div class="footer-col">
+          <h3>CATALOGUE</h3>
+          <a href="#">Categories</a>
+          <a href="#">Styles</a>
+          <a href="#">Periods</a>
+        </div>
+        <div class="footer-col">
+          <h3>GALLERIES</h3>
+          <a href="#">Dealers</a>
+        </div>
+        <div class="footer-brand">
+          <div class="brand-strip" aria-hidden="true"></div>
+          <div class="footer-col">
+            <a href="#">Home</a>
+            <a href="#">Contact</a>
+            <div class="xyw4">X Y W 4</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <a href="#">Terms of Use</a> &nbsp; | &nbsp; <a href="#">General Terms and Conditions of Sale</a>
+      <div class="copy">© 2023 AnticStore</div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+        nav.hidden = expanded;
+        if (!expanded) {
+          const firstFocusable = nav.querySelector('a, button');
+          if (firstFocusable) firstFocusable.focus();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.hidden === false) {
+          nav.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+          toggle.setAttribute('aria-label', 'Open navigation menu');
+          toggle.focus();
+        }
+      });
+    }
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, footer, aside, and section landmarks; added skip link and main-content id; ensured exactly one h1 with sequential subheadings; added alt text to all images; added label for search input; ensured descriptive text for links and button aria-labels; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on native landmarks; added unique aria-labels for multiple nav regions and aside/sections where needed; ensured no tabindex values greater than 0 remain.
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, aria-controls, focus handling, and Escape close; implemented tab order cleanup for tabindex values and focus-visible styling.
+-->

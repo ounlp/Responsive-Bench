@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a grid of product/image cards followed by a prominent full-width horizontal callout/button-like bar beneath the gallery, implying an action to reveal or browse additional items/categories rather than a static separator.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Treat the wide bar below the product grid as an interactive control that loads more gallery items or expands browsing options. It should provide loading feedback and preserve the user’s place in the list after new content appears.",
+      "ambiguities": "The bar could also be a simple CTA link to another page rather than in-place loading; the sketch does not explicitly label whether content appends inline or navigates away."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "In the mobile sketch, the top area has branding/text lines and a small compact control area at the upper right, while no full horizontal nav is shown. In contrast, the desktop sketch clearly shows a horizontal nav row, implying the mobile version collapses navigation behind a toggle.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile nav toggle should open and close the primary navigation panel. The expanded menu would likely contain the same category links visible in desktop. Focus should move into the opened menu and return to the trigger on close.",
+      "ambiguities": "The sketch does not explicitly draw the classic three-line icon, so the exact trigger styling and whether the menu opens as dropdown, drawer, or overlay is unclear."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The implied mobile collapsed navigation requires opening and closing a hidden panel or disclosure state, which in turn requires programmatic focus handling for keyboard and assistive technology users.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move to the first actionable item or menu container; Escape/close should restore focus to the toggle. If implemented as an overlay/drawer, focus containment may be needed while open.",
+      "ambiguities": "If the mobile menu is only an inline disclosure and not an overlay, focus handling can be lighter; the sketch alone does not determine the exact menu architecture."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "D4",
+    "S2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "load_more"
+    ],
+    "desktop": [
+      "load_more"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-and-navigation driven page with low overall JavaScript complexity. Desktop appears to use visible top navigation and a static product grid, while mobile likely collapses that navigation into a toggleable menu. The strongest shared interactive implication is the prominent post-gallery callout that behaves like a CTA for additional browsing or loading more content. No forms, tabs, accordions, modals, search, or sticky behaviors are clearly indicated by the drawings."
+}

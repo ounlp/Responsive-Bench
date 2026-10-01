@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small menu/list icon in the top-right, which strongly implies a tappable navigation toggle rather than always-visible navigation links.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close a navigation panel or full-screen menu overlay containing site links. The trigger should reflect open/closed state.",
+      "ambiguities": "The sketch does not show whether the menu opens as a drawer, dropdown, or full-screen overlay, nor whether it includes secondary actions like search or cart."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a distinct header bar at the top, visually separated from the content area below, suggesting persistent top navigation across scrolling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The header should remain available while scrolling, especially on mobile where the top bar is compact and likely intended as persistent access to navigation.",
+      "ambiguities": "The sketches do not explicitly depict scrolling states, so fixed vs static positioning is inferred from common layout treatment."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile menu icon implies an off-canvas or overlay navigation component, which requires managed keyboard focus when opened and restored when closed.",
+      "confidence": "HIGH",
+      "behavior_notes": "When the menu opens, focus should move into the opened navigation container; keyboard users should be able to navigate within it and return to the trigger on close.",
+      "ambiguities": "If the menu is implemented as a simple inline expansion rather than an overlay, focus handling may be lighter, but some programmatic focus control is still likely needed."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly simple storefront/gallery-style page with limited JavaScript needs. The main interactive requirement is mobile navigation via a hamburger trigger, likely opening an overlay or drawer that introduces focus-management concerns. Desktop appears largely static, with no clear evidence of dropdowns, tabs, accordions, search, pagination, or load-more behavior in the sketch itself. The top header treatment across both viewports suggests persistent navigation, but that is somewhat inferred rather than explicitly demonstrated."
+}

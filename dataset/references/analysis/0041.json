@@ -1,0 +1,92 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top header with a small square icon/button at the upper left and no visible full navigation list, implying a collapsed navigation trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel or menu for small screens. The current section should remain identifiable when the menu is opened.",
+      "ambiguities": "The sketch does not show whether the menu opens as a drawer, dropdown, or full-screen overlay."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "The implied mobile nav toggle introduces a disclosure-style interactive region that appears and disappears from a compact header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the revealed navigation and return to the trigger when closed; keyboard users should be able to traverse the menu logically.",
+      "ambiguities": "If the menu is only an inline expand/collapse and not an overlay, focus handling may be lighter-weight than a drawer-style implementation."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a prominent large rectangular field near the top that reads as a search or query input area; on desktop it is paired with surrounding content in a way typical of a search/detail page.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept text input and submit a search or filtering action. It may also support focus styling and possibly trigger results updates or navigation on submit.",
+      "ambiguities": "The sketch does not clarify whether results update live while typing or only after explicit submission."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show compact grouped text controls in the header/footer-like navigation areas and a small square control adjacent to text blocks, suggesting expandable secondary actions or contextual menus rather than only static links.",
+      "confidence": "LOW",
+      "behavior_notes": "If implemented, clicking or tapping the trigger would reveal a submenu or contextual action list, then dismiss on outside click or escape.",
+      "ambiguities": "These grouped controls may instead be plain links or labels; the sketch does not explicitly draw a caret or open panel."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch includes a large bordered panel near the bottom that appears visually separated from the main flow, suggesting an overlay, expanded detail panel, or pop-up content region triggered from above.",
+      "confidence": "LOW",
+      "behavior_notes": "If this panel is an overlay, it should open above page content, trap focus while active, and close via explicit dismiss action or outside/escape behavior as appropriate.",
+      "ambiguities": "The panel could also be an inline card or embedded content block rather than a true modal."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch has a strong horizontal header/navigation bar spanning the top with logo and nav items separated from the content below, a common pattern for persistent top navigation.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation may remain fixed or become fixed on scroll to preserve access to primary sections and utilities.",
+      "ambiguities": "The sketch alone does not prove sticky behavior; it may simply be a static header."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "F2",
+    "K1",
+    "K3",
+    "M1",
+    "M2",
+    "S1"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "search_input",
+      "modal_dialog",
+      "dropdown_menu"
+    ],
+    "desktop": [
+      "search_input",
+      "sticky_nav",
+      "dropdown_menu"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light-to-moderate JavaScript, centered on responsive navigation and search behavior rather than complex in-page widgets. Mobile appears to rely on a collapsed header control and possibly an expanded overlay/panel pattern, while desktop exposes more navigation directly and may use a persistent top bar. Most other visible structures read as static content blocks rather than accordions, tabs, infinite feeds, or explicit load-more interactions."
+}

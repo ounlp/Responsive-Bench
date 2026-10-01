@@ -1,0 +1,53 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a boxed three-line icon in the top-left, a conventional collapsed navigation trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation menu. The current section should be indicated within the revealed menu.",
+      "ambiguities": "The sketch does not show whether the menu opens as an overlay, drawer, dropdown, or inline expansion."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "Because the mobile sketch includes a hamburger-triggered collapsed navigation control, keyboard and assistive-tech focus must move predictably when the menu opens and closes.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Focus should move to the opened navigation container or first menu item, and return to the hamburger button when closed. Expanded/collapsed state should be programmatically exposed.",
+      "ambiguities": "Exact focus target depends on whether the menu is implemented as a drawer, disclosure, or overlay."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "S1",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management"
+    ],
+    "desktop": []
+  },
+  "sketch_notes": "These sketches imply a mostly content-driven page with very limited JavaScript needs. The only clear interactive behavior is the mobile-only collapsed navigation represented by the hamburger icon; the desktop sketch instead shows navigation already exposed across the top and a static two-column content layout. No forms, tabs, accordions, modals, pagination triggers, or dynamic loading controls are visibly suggested by either sketch."
+}

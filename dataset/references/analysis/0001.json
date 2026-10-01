@@ -1,0 +1,132 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a stacked-line menu icon at the top left, indicating a collapsed navigation that must open on tap.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the hamburger should reveal and hide the primary navigation panel or list. The trigger should reflect expanded/collapsed state and likely push down or overlay content.",
+      "ambiguities": "The sketch does not clarify whether the menu opens as a dropdown below the header, a slide-in drawer, or a full-screen overlay."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal set of small nav items/buttons in the upper right, consistent with top-level navigation that may expose deeper options, especially given the product/category context.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level navigation items should reveal submenus on hover and/or click if categories are nested. Active/open state should be visually indicated.",
+      "ambiguities": "The sketch does not explicitly draw submenu panels, so dropdown behavior is inferred from common ecommerce/category navigation patterns rather than directly shown."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a prominent input field in the header area, implying a search control.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept text and submit search queries. It may also support focus styling, keyboard submission, and possibly live suggestions if implemented.",
+      "ambiguities": "The sketch does not indicate whether results are live/autocomplete or only submitted on Enter/button press."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include at least one text input paired with a button in the footer/newsletter area, and the desktop sketch also shows a header input. These imply submittable forms requiring input handling.",
+      "confidence": "HIGH",
+      "behavior_notes": "Email/newsletter and search forms should validate required input, prevent empty or malformed submissions where appropriate, and provide success/error feedback.",
+      "ambiguities": "The sketch does not specify validation rules beyond the likely need for basic email and empty-field checks."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "both",
+      "visual_evidence": "Near the product details area, both sketches show a row of small boxed controls/buttons adjacent to the main product content, implying selectable product options such as size/variant rather than plain text.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If these controls represent product variants or option selectors, selecting one should update the chosen state and potentially affect purchasable configuration.",
+      "ambiguities": "The sketch boxes could also be simple metadata chips or links rather than a true select/combobox; the exact control type is not explicit."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile header includes a separate small rectangular control at the top right consistent with a cart/account badge area, which in ecommerce commonly updates after add-to-cart actions.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Cart count or status should update dynamically after relevant actions such as adding a product. Screen readers should be informed of count/status changes.",
+      "ambiguities": "The sketch does not label the top-right box, so it may be cart, account, or another utility action."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop header includes utility text/icons in the top-right area separate from the search field, consistent with cart/account indicators that may change dynamically.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "If this area includes cart quantity or login/cart status, it should update without full page reload after commerce actions and announce meaningful changes.",
+      "ambiguities": "The sketch does not explicitly show a numeric badge, so the dynamic-update requirement is inferred from the ecommerce layout."
+    },
+    {
+      "pattern_id": "toast_notification",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a product detail area with a prominent action button and utility/cart regions elsewhere on the page, implying feedback is needed after actions like add-to-cart or newsletter subscribe.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "After add-to-cart or form submission, a temporary confirmation message or status notification would help confirm success without forcing navigation away from the page.",
+      "ambiguities": "No toast is explicitly drawn; inline confirmation could also satisfy the sketch depending on implementation."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The large hero product image in both sketches strongly suggests an image enlargement interaction common on product pages, especially when the image is visually dominant.",
+      "confidence": "LOW",
+      "behavior_notes": "Clicking/tapping the main product image could open a larger image view in an overlay with close behavior and focus management.",
+      "ambiguities": "The sketch does not explicitly indicate zoom, lightbox, or gallery controls, so this is plausible but speculative."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "The inferred interactive components include mobile menu disclosure, possible dropdown navigation, possible modal image view, and selectable product controls, all of which require managed keyboard focus.",
+      "confidence": "HIGH",
+      "behavior_notes": "Focus should move predictably into opened overlays/menus, return to triggers on close, and remain usable across disclosure widgets and form controls.",
+      "ambiguities": "Exact focus flows depend on whether the menu is a drawer, dropdown, or overlay and whether image enlargement is implemented."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N3",
+    "D1",
+    "D2",
+    "S1",
+    "S2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "form_validation",
+      "custom_select",
+      "live_region",
+      "toast_notification",
+      "focus_management",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "search_input",
+      "form_validation",
+      "custom_select",
+      "live_region",
+      "focus_management",
+      "toast_notification",
+      "modal_dialog"
+    ]
+  },
+  "sketch_notes": "These sketches imply a moderately interactive ecommerce product page rather than a static marketing page. The strongest JS needs are responsive navigation differences between mobile and desktop, working search and newsletter/product forms, and product-option/cart-related state updates. Mobile complexity is higher because the collapsed navigation requires explicit toggle behavior, while desktop complexity centers more on top navigation behavior and keyboard accessibility. Some richer behaviors such as image lightbox and toast confirmations are not explicitly drawn but are strongly compatible with the product-page composition shown."
+}

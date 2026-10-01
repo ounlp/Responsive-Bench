@@ -1,0 +1,414 @@
+## SYSTEM
+
+You are an expert front-end developer specializing in accessible, responsive
+web interfaces. You write semantic HTML, WCAG 2.2 AA compliant code, and
+vanilla JavaScript following WAI-ARIA Authoring Practices Guide (APG) patterns.
+
+You will receive:
+  1. A reference HTML file that may have accessibility issues and missing JS
+  2. A sketch analysis JSON identifying which JS patterns the design requires
+  3. The original mobile and desktop sketches for reference
+
+Your job is to output a single corrected HTML file that:
+  - Fixes all accessibility issues in the reference HTML
+  - Adds JavaScript for every pattern identified in the sketch analysis
+  - Preserves the visual layout and responsive design of the original
+  - Does not add any functionality not implied by the sketches
+
+Output one complete HTML file. No prose before or after it. No explanation.
+
+## USER
+
+INPUTS
+------
+Reference HTML:
+{{reference_html}}
+
+Sketch analysis (from previous step):
+{{sketch_analysis_json}}
+
+Images attached in order:
+  Mobile sketch:  (Image 1)
+  Desktop sketch: (Image 2)
+
+TASK
+----
+Produce a single corrected HTML file following all instructions below.
+Work through them in order: fix structure first, then ARIA, then JS.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART A — STRUCTURAL ACCESSIBILITY FIXES (apply unconditionally)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A1. Page title
+    - Ensure <title> is descriptive and page-specific
+    - Format: "Page Purpose — Site Name"
+    - Never leave as "index.html", "Document", or empty
+
+A2. Landmark regions
+    - Replace <div class="header"> → <header>
+    - Replace <div class="nav">    → <nav aria-label="Main">
+    - Replace <div class="main">   → <main>
+    - Replace <div class="footer"> → <footer>
+    - Replace <div class="aside">  → <aside aria-label="[descriptive label]">
+    - Do not add landmarks that the page does not actually have
+
+A3. Skip navigation
+    - Add as the very first child of <body>:
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+    - Add id="main-content" to the <main> element
+    - Add CSS: .skip-link { position:absolute; transform:translateY(-100%); }
+               .skip-link:focus { transform:translateY(0); }
+
+A4. Heading hierarchy
+    - Ensure exactly one <h1> that describes the page
+    - Subheadings must follow sequential order (h1→h2→h3)
+    - Replace any <div class="heading"> with the correct <hN> element
+    - Heading text must be descriptive, not generic
+
+A5. Image alternatives
+    - Every <img> must have an alt attribute
+    - Meaningful images: alt describes function or content ("Submit payment")
+    - Decorative images: alt=""
+    - Never use filename, "image", or empty string for meaningful images
+
+A6. Form labels
+    - Every <input>, <select>, <textarea> must have an associated <label>
+    - Use for/id pairing or wrap input in <label>
+    - Add required attribute to mandatory fields
+    - Never use placeholder as the only label
+
+A7. Interactive element labels
+    - Every <button> must have descriptive text content or aria-label
+    - Every <a> must have descriptive text (never "click here", "read more")
+    - Icon-only buttons: add aria-label="[action description]"
+
+A8. Language attribute
+    - Ensure <html lang="en"> (or appropriate language code) is present
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART B — ARIA ATTRIBUTE FIXES (apply unconditionally)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+B1. Remove redundant ARIA
+    - Remove role="navigation" from <nav> (implicit)
+    - Remove role="main" from <main> (implicit)
+    - Remove role="banner" from <header> (implicit)
+    - Remove role="contentinfo" from <footer> (implicit)
+    - Rule: never add role= to an element that already has that implicit role
+
+B2. Multiple navigation regions
+    - If more than one <nav> exists, each must have a unique aria-label
+    - Example: <nav aria-label="Main">, <nav aria-label="Breadcrumb">
+
+B3. Multiple landmarks of same type
+    - If more than one <aside> or <section> exists, each needs aria-label
+    - If more than one <header> or <footer> inside sections, add aria-label
+
+B4. Focus management baseline
+    - Remove any tabindex values greater than 0 from all elements
+    - tabindex="0" is acceptable on custom interactive elements
+    - tabindex="-1" is acceptable for programmatic focus targets
+    - tabindex="1" or higher: remove entirely
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART C — JS IMPLEMENTATION
+(only implement patterns listed in applicable_criteria from sketch analysis)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For each applicable pattern, follow the exact implementation spec below.
+Do not implement patterns not present in the sketch analysis JSON.
+Place all JavaScript in a single <script> block before </body>.
+
+──────────────────────────────────────────────────────────────────────────────
+C-N1: Hamburger menu  (implement if N1 in applicable_criteria)
+──────────────────────────────────────────────────────────────────────────────
+HTML structure required:
+  <button
+    id="nav-toggle"
+    aria-expanded="false"
+    aria-controls="mobile-nav"
+    aria-label="Open navigation menu"
+    class="nav-toggle">
+    <span aria-hidden="true">&#9776;</span>
+  </button>
+  <nav id="mobile-nav" aria-label="Main" hidden>
+    ...nav items...
+  </nav>
+
+JS behavior:
+  const toggle = document.getElementById('nav-toggle');
+  const nav    = document.getElementById('mobile-nav');
+
+  toggle.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    toggle.setAttribute('aria-label', expanded ? 'Open navigation menu'
+                                               : 'Close navigation menu');
+    nav.hidden = expanded;
+    if (!expanded) {
+      nav.querySelector('a, button').focus();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && nav.hidden === false) {
+      nav.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open navigation menu');
+      toggle.focus();
+    }
+  });
+
+CSS required:
+  .nav-toggle { display: none; }
+  @media (max-width: 768px) { .nav-toggle { display: block; } }
+
+──────────────────────────────────────────────────────────────────────────────
+C-N2: Dropdown menu  (implement if N2 in applicable_criteria)
+──────────────────────────────────────────────────────────────────────────────
+HTML structure required:
+  <li class="has-dropdown">
+    <button
+      aria-expanded="false"
+      aria-haspopup="true"
+      aria-controls="dropdown-[id]">
+      [Label] <span aria-hidden="true">&#9660;</span>
+    </button>
+    <ul id="dropdown-[id]" role="list" hidden>
+      <li><a href="...">Item</a></li>
+    </ul>
+  </li>
+
+JS behavior:
+  - Click button: toggle aria-expanded + hidden on menu
+  - Escape: close menu, return focus to button
+  - Click outside: close all open dropdowns
+  - ArrowDown from button: move focus to first menu item
+  - ArrowDown/Up within menu: cycle through items
+  - Tab from last item: close menu naturally
+
+──────────────────────────────────────────────────────────────────────────────
+C-D1: Accordion  (implement if D1 in applicable_criteria)
+──────────────────────────────────────────────────────────────────────────────
+HTML structure required:
+  <div class="accordion">
+    <h3>
+      <button
+        aria-expanded="false"
+        aria-controls="panel-[id]"
+        id="accordion-[id]">
+        [Question or section title]
+      </button>
+    </h3>
+    <div
+      id="panel-[id]"
+      role="region"
+      aria-labelledby="accordion-[id]"
+      hidden>
+      [Panel content]
+    </div>
+  </div>
+
+JS behavior:
+  document.querySelectorAll('.accordion button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const panel    = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', String(!expanded));
+      panel.hidden = expanded;
+    });
+  });
+
+──────────────────────────────────────────────────────────────────────────────
+C-D2: Tab panel  (implement if D2 in applicable_criteria)
+──────────────────────────────────────────────────────────────────────────────
+HTML structure required:
+  <div role="tablist" aria-label="[Section label]">
+    <button role="tab" aria-selected="true"  aria-controls="panel-1" id="tab-1" tabindex="0">Tab 1</button>
+    <button role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2" tabindex="-1">Tab 2</button>
+  </div>
+  <div role="tabpanel" id="panel-1" aria-labelledby="tab-1">...</div>
+  <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>...</div>
+
+JS behavior:
+  - Click tab: set aria-selected=true on clicked, false on others,
+               show associated panel, hide others,
+               set tabindex=0 on active tab, -1 on all others
+  - ArrowRight/Left: move focus between tabs (roving tabindex pattern)
+  - Home/End: jump to first/last tab
+
+──────────────────────────────────────────────────────────────────────────────
+C-F1/F3: Form validation + error announcement
+(implement if F1 or F3 in applicable_criteria)
+──────────────────────────────────────────────────────────────────────────────
+HTML structure required:
+  <form novalidate>
+    <div class="field-group">
+      <label for="email">Email address <span aria-hidden="true">*</span></label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        aria-describedby="email-error"
+        aria-invalid="false">
+      <span id="email-error" role="alert" aria-live="assertive" hidden></span>
+    </div>
+    <div aria-live="polite" id="form-status" class="sr-only"></div>
+    <button type="submit">Submit</button>
+  </form>
+
+JS behavior:
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let firstError = null;
+
+    form.querySelectorAll('[required]').forEach(input => {
+      const errorEl = document.getElementById(input.getAttribute('aria-describedby'));
+      if (!input.value.trim()) {
+        input.setAttribute('aria-invalid', 'true');
+        errorEl.textContent = `${input.labels[0].textContent.trim()} is required`;
+        errorEl.hidden = false;
+        if (!firstError) firstError = input;
+      } else {
+        input.setAttribute('aria-invalid', 'false');
+        errorEl.hidden = true;
+        errorEl.textContent = '';
+      }
+    });
+
+    if (firstError) {
+      firstError.focus();
+    } else {
+      document.getElementById('form-status').textContent = 'Form submitted successfully.';
+    }
+  });
+
+──────────────────────────────────────────────────────────────────────────────
+C-M1/M2: Modal dialog + focus trap + close
+(implement if M1 or M2 in applicable_criteria)
+──────────────────────────────────────────────────────────────────────────────
+HTML structure required:
+  <button id="modal-trigger" aria-haspopup="dialog">Open [purpose]</button>
+
+  <div
+    id="modal-[id]"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title-[id]"
+    hidden>
+    <h2 id="modal-title-[id]">[Modal purpose]</h2>
+    [modal content]
+    <button id="modal-close-[id]" aria-label="Close [modal purpose]">&#x2715;</button>
+  </div>
+  <div id="modal-backdrop" hidden aria-hidden="true"></div>
+
+JS behavior (full focus trap):
+  function openModal(modal, trigger) {
+    modal.hidden = false;
+    document.getElementById('modal-backdrop').hidden = false;
+    document.body.setAttribute('aria-hidden', 'true');  // hide background
+    modal.removeAttribute('aria-hidden');
+    const focusable = modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    focusable[0].focus();
+
+    modal._trap = (e) => {
+      if (e.key !== 'Tab') return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    };
+    modal._esc = (e) => { if (e.key === 'Escape') closeModal(modal, trigger); };
+    modal.addEventListener('keydown', modal._trap);
+    document.addEventListener('keydown', modal._esc);
+    modal._trigger = trigger;
+  }
+
+  function closeModal(modal, trigger) {
+    modal.hidden = true;
+    document.getElementById('modal-backdrop').hidden = true;
+    document.body.removeAttribute('aria-hidden');
+    modal.removeEventListener('keydown', modal._trap);
+    document.removeEventListener('keydown', modal._esc);
+    (modal._trigger || trigger).focus();
+  }
+
+──────────────────────────────────────────────────────────────────────────────
+C-M3: Toast notification  (implement if M3 in applicable_criteria)
+──────────────────────────────────────────────────────────────────────────────
+HTML structure required:
+  <div
+    id="toast-region"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    class="toast-region">
+  </div>
+
+JS behavior:
+  function showToast(message, duration = 5000) {
+    const region = document.getElementById('toast-region');
+    region.textContent = message;
+    region.hidden = false;
+    setTimeout(() => {
+      region.textContent = '';
+      region.hidden = true;
+    }, duration);
+  }
+
+──────────────────────────────────────────────────────────────────────────────
+C-K1/K3: Tab order + focus indicator
+(always apply at desktop — include unconditionally)
+──────────────────────────────────────────────────────────────────────────────
+CSS required (add to <style>):
+  /* Remove all positive tabindex in JS */
+  /* Focus indicator — apply globally */
+  :focus-visible {
+    outline: 3px solid #005FCC;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  /* Suppress focus ring for mouse users only */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+JS required:
+  /* Remove any positive tabindex values left in the DOM */
+  document.querySelectorAll('[tabindex]').forEach(el => {
+    const val = parseInt(el.getAttribute('tabindex'), 10);
+    if (val > 0) el.removeAttribute('tabindex');
+  });
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PART D — OUTPUT REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+D1. Output exactly one complete HTML file starting with <!DOCTYPE html>
+
+D2. Preserve all existing CSS classes and IDs unless they conflict with the
+    required ARIA structure above. Do not rename classes used in existing CSS.
+
+D3. Do not add any visual styles beyond what is required for JS patterns
+    (hamburger show/hide, accordion transitions, focus rings, skip link).
+
+D4. Place all new JavaScript in a single <script> block immediately before
+    </body>. Do not use external libraries. No jQuery. Vanilla JS only.
+
+D5. Do not implement any pattern not present in the sketch analysis JSON.
+    If a sketch shows something ambiguous, implement the conservative version
+    (e.g. if unsure whether a panel is a tab or accordion, implement accordion).
+
+D6. After the closing </html>, append a short comment block listing every
+    change made:
+    <!--
+    CHANGES MADE:
+    [A] Structural fixes: list each A-rule applied
+    [B] ARIA fixes: list each B-rule applied
+    [C] JS patterns added: list each C-pattern implemented
+    -->

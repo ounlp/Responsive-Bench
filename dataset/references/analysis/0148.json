@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a horizontal top navigation/header bar spanning the width of the page with navigation items aligned across the top, visually separated from the content by a horizontal rule, suggesting a persistent site header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should likely remain available while scrolling, especially on a long content page. If implemented as sticky, it should preserve access to primary navigation without obscuring content.",
+      "ambiguities": "The sketch does not explicitly show scroll state, so fixed-on-scroll behavior is inferred from the prominent persistent header treatment rather than directly depicted."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch appears to condense the top area into small boxed controls/cards rather than a full horizontal nav, implying a collapsed mobile navigation pattern instead of exposing all desktop nav items inline.",
+      "confidence": "LOW",
+      "behavior_notes": "A mobile nav toggle would open and close the primary navigation panel or drawer, likely replacing the desktop horizontal nav. Active section indication should still be preserved inside the opened menu.",
+      "ambiguities": "The mobile sketch is highly abstract and does not explicitly draw a hamburger icon; this is inferred from the desktop presence of multi-item top navigation and the lack of room for it on mobile."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes multiple compact nav labels/items across the top bar, matching a desktop information architecture that commonly groups sections under expandable nav items; the reference layout also strongly suggests top-level items with submenus.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Top-level navigation items may reveal submenus on click or hover/focus. Menus should open adjacent to the trigger, close on outside interaction/Escape, and expose active/current section state.",
+      "ambiguities": "The sketch itself does not depict open submenu panels, so the exact trigger mode (hover vs click) is not visually explicit."
+    },
+    {
+      "pattern_id": "tab_panel",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a chart-focused page structure with compact grouped controls near the top/content area and a large primary visualization region, implying switching between alternate data views such as chart modes or sections rather than a single static graphic.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Tabs or segmented controls would switch visible content panels such as different metrics/views while keeping one panel active at a time. On mobile this may appear as stacked or compressed controls; on desktop it may appear inline above the chart.",
+      "ambiguities": "The sketch does not label the controls, so this could also be a button toggle rather than formal ARIA tabs; however the mutually exclusive view-switching behavior is strongly implied."
+    },
+    {
+      "pattern_id": "live_region",
+      "present_in": "both",
+      "visual_evidence": "The dominant feature in both sketches is a large chart/graph area with supporting summary lines and changing metric displays, implying dynamically updated analytical content when the user changes view, metric, or timeframe.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the selected metric/view changes, summary text/status and chart-associated values should update dynamically. Important status changes such as 'loading', 'no data', or current metric selection should be announced accessibly.",
+      "ambiguities": "The sketch does not explicitly show counters or badges; the live-update inference comes from the analytics/chart nature of the page rather than a dedicated notification element."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "D2",
+    "D3",
+    "D4",
+    "S1",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "tab_panel",
+      "live_region"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "dropdown_menu",
+      "tab_panel",
+      "live_region"
+    ]
+  },
+  "sketch_notes": "Overall JS complexity appears moderate and centered on navigation and analytics-view switching rather than heavy form workflows. The desktop sketch strongly implies a persistent top navigation system with possible dropdowns and a large interactive chart area, while the mobile sketch suggests that navigation must collapse into a compact menu and that chart/view controls need a mobile-friendly toggle or tab treatment. No clear evidence of forms, modals, accordions, or infinite loading is present; the main cross-viewport difference is navigation presentation and control density."
+}

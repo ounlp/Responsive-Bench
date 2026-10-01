@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[NAME REDACTED] — Personal Site</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --bg-alt: #f2f2f0;
+      --text: #3f3f3f;
+      --muted: #6a6a6a;
+      --shadow: #bdbdbd;
+      --link: #3f3f3f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body {
+      min-height: 100vh;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: 0;
+      transform: translateY(-100%);
+      background: #fff;
+      color: #000;
+      padding: .75rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    a {
+      color: var(--link);
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1280px;
+      margin: 0 auto;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      min-height: calc(100vh - 40px);
+    }
+
+    .left-column {
+      padding: 170px 24px 80px;
+      text-align: right;
+      background: #fbfbfa;
+    }
+
+    .right-column {
+      padding: 150px 46px 80px 28px;
+      background: var(--bg-alt);
+      min-height: calc(100vh - 40px);
+    }
+
+    .intro {
+      max-width: 560px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 4.2rem;
+      line-height: .9;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #3d3d3d;
+      text-shadow: 4px 4px 0 var(--shadow);
+    }
+
+    .social {
+      margin: 0 0 18px;
+      font-size: 1.15rem;
+      font-style: italic;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 #d0d0d0;
+    }
+
+    .social a {
+      text-decoration: none;
+    }
+
+    .bio {
+      max-width: 470px;
+      font-size: 1rem;
+      line-height: 1.05;
+      text-align: justify;
+      margin: 0;
+    }
+
+    .section {
+      margin: 0 0 42px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+      line-height: 1.1;
+      font-style: italic;
+      font-weight: 700;
+      color: #3d3d3d;
+    }
+
+    .section h2.large {
+      font-size: 1.55rem;
+    }
+
+    .item {
+      margin: 0 0 24px;
+    }
+
+    .item-title {
+      display: inline-block;
+      font-size: 1rem;
+      line-height: 1.15;
+    }
+
+    .meta,
+    .desc {
+      margin: 0;
+      font-size: .78rem;
+      line-height: 1.15;
+      color: #444;
+    }
+
+    .desc {
+      font-size: .82rem;
+    }
+
+    footer {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      pointer-events: none;
+    }
+
+    .credit {
+      margin: 0;
+      padding: 0 10px 4px 0;
+      text-align: right;
+      font-size: .55rem;
+      color: #8a8a8a;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .left-column {
+        padding-top: 145px;
+      }
+
+      .right-column {
+        padding-top: 135px;
+      }
+
+      h1 {
+        font-size: 3.8rem;
+      }
+
+      .social {
+        font-size: 1rem;
+      }
+
+      .section h2.large {
+        font-size: 1.45rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .right-column {
+        order: -1;
+        min-height: auto;
+        padding: 42px 28px 34px;
+        text-align: right;
+      }
+
+      .left-column {
+        padding: 54px 28px 80px;
+        text-align: right;
+        background: #fbfbfa;
+      }
+
+      .intro,
+      .bio {
+        margin-left: auto;
+      }
+
+      h1 {
+        font-size: 3.55rem;
+        line-height: .9;
+      }
+
+      .social {
+        font-size: .95rem;
+        margin-bottom: 0;
+      }
+
+      .bio {
+        display: none;
+      }
+
+      .section {
+        margin-bottom: 44px;
+      }
+
+      .section h2.large {
+        font-size: 1.7rem;
+        margin-bottom: 10px;
+      }
+
+      .item-title {
+        font-size: .98rem;
+      }
+
+      .meta,
+      .desc {
+        font-size: .78rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .right-column {
+        padding: 40px 28px 30px;
+      }
+
+      .left-column {
+        padding: 56px 28px 72px;
+      }
+
+      h1 {
+        font-size: 3.35rem;
+      }
+
+      .social {
+        font-size: .9rem;
+      }
+
+      .section h2.large {
+        font-size: 1.55rem;
+      }
+
+      .item {
+        margin-bottom: 28px;
+      }
+
+      .credit {
+        font-size: .5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div class="page">
+    <div class="layout">
+      <main id="main-content" class="left-column">
+        <section class="section" aria-label="Monthly Podcasts">
+          <h2 class="large">Monthly Podcasts</h2>
+          <div class="item">
+            <a href="#" class="item-title">BartJS Podcast: Host for monthly podcast</a>
+            <p class="meta">(Norwegian) BartJS • 2015-</p>
+          </div>
+        </section>
+
+        <section class="section" aria-label="Weekly Video Series">
+          <h2 class="large">Weekly Video Series</h2>
+          <div class="item">
+            <a href="#" class="item-title">Kodesnutt.io: YouTube Channel</a>
+            <p class="meta">(Norwegian) kodesnutt.io • 2016-</p>
+          </div>
+        </section>
+
+        <section class="section" aria-label="Video Presentations">
+          <h2 class="large">Video Presentations</h2>
+          <div class="item">
+            <a href="#" class="item-title">Breaking the Fourth Wall With JavaScript</a>
+            <p class="meta">Video – Trondheim Developer Conference • 2016</p>
+            <p class="meta">Video – Web Rebels • 2016</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Frontend Anno 2016: Exploration and Iteration</a>
+            <p class="meta">(Norwegian) JavaZone • 2016</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Frontend Anno 2016: Exploration and Iteration</a>
+            <p class="meta">(Norwegian) BEKK Open Fagdag • 2016</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Functional UIs and Unidirectional Dataflow</a>
+            <p class="meta">JSConf Budapest • 2015</p>
+          </div>
+        </section>
+
+        <section class="section" aria-label="Open Source Projects">
+          <h2 class="large">Open Source Projects</h2>
+
+          <div class="item">
+            <a href="#" class="item-title">Omniscient.js</a>
+            <p class="desc">Functional library for React</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Immstruct</a>
+            <p class="desc">Cursor based immutable data structures with history</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">node-notifier</a>
+            <p class="desc">Sending native notifications, cross platform.</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">proxy-fun</a>
+            <p class="desc">Collection of learning resources for JavaScript Proxy.</p>
+          </div>
+        </section>
+
+        <section class="section" aria-label="Publications">
+          <h2 class="large">Publications</h2>
+
+          <div class="item">
+            <a href="#" class="item-title">Functional UI and Components as Higher Order Functions</a>
+            <p class="meta">RisingStack • 2015</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">ES2015 (ES6) Features Commonly Used with Functional Style React</a>
+            <p class="meta">open.bekk.no • 2015</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Scaling Frontend Build Steps By Necessity</a>
+            <p class="meta">open.bekk.no • 2015</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Easier UI Reasoning with Unidirectional Dataflow and Immutable Data</a>
+            <p class="meta">open.bekk.no • 2014</p>
+          </div>
+        </section>
+
+        <section class="section" aria-label="Slide Presentation">
+          <h2 class="large">Slide Presentation</h2>
+
+          <div class="item">
+            <a href="#" class="item-title">Skalere frontendbygg etter behov</a>
+            <p class="meta">(Norwegian) BEKK Fagdag • 2015</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Functional UIs</a>
+            <p class="meta">BEKK Fagdag • 2015</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">Making a clapper using Web Audio API</a>
+            <p class="meta">NTNU • 2015</p>
+          </div>
+
+          <div class="item">
+            <a href="#" class="item-title">ECMAScript 6: Destructuring</a>
+            <p class="meta">BartJS • 2014</p>
+          </div>
+        </section>
+      </main>
+
+      <header class="right-column">
+        <div class="intro">
+          <h1>[NAME REDACTED]</h1>
+          <nav aria-label="Main">
+            <p class="social">
+              <a href="#">Blog</a> •
+              <a href="#">Twitter</a> •
+              <a href="#">Github</a> •
+              <a href="#">E-mail</a>
+            </p>
+          </nav>
+          <p class="bio">Open Source developer, aspiring technical speaker, programming enthusiast and avid internet surfer. Maintainer of Omniscient.js/immstruct, organizer of meetup and Norwegian Podcast host.</p>
+        </div>
+      </header>
+    </div>
+
+    <footer>
+      <p class="credit">Header image by Paul Cross</p>
+    </footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; added skip link and id="main-content"; used semantic header, nav, main, footer, and section structure; ensured exactly one h1; used sequential heading hierarchy with h2 section headings; ensured all interactive elements have descriptive text; set html lang="en".
+[B] ARIA fixes: used aria-label on main navigation; used aria-label on sections for landmark clarity where repeated content regions appear; avoided redundant role attributes; removed positive tabindex via script baseline.
+[C] JS patterns added: implemented C-K1/K3 tabindex cleanup and focus indicator support only.
+-->

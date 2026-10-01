@@ -1,0 +1,73 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top header with a small brand mark at left and no visible full navigation links, implying collapsed navigation behind a menu control in the header.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A mobile nav toggle should open and close a navigation panel or drawer containing the primary links that are visible inline on desktop. The open state should be dismissible and reflect current page state.",
+      "ambiguities": "The hamburger icon itself is not explicitly drawn in the sketch, so the exact trigger placement and whether the menu is a full-screen drawer, dropdown sheet, or slide-out panel is inferred from the reduced mobile header."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "mobile",
+      "visual_evidence": "Because the mobile header likely collapses navigation into a hidden panel, opening that panel would require keyboard and focus handling beyond static layout.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "When the mobile menu opens, focus should move into the menu, remain usable within it, and return to the trigger on close. Escape and outside-dismiss behavior are likely needed if implemented as an overlay or drawer.",
+      "ambiguities": "Depends on whether the mobile menu is implemented as an overlay/drawer versus an inline expansion."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "Both sketches center a prominent title near the top and include a distinct standalone call-to-action link/button lower in the content area, consistent with the referenced 'OPEN SAMPLER' action that likely opens content rather than navigating within the page.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The primary CTA should trigger an overlay/modal experience for the sampler content, likely obscuring the page and requiring explicit close behavior. Focus should move into the dialog and return to the trigger when closed.",
+      "ambiguities": "The sketch does not explicitly show an overlay state, so this could alternatively be a normal navigation to another page or downloadable asset rather than a modal."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "If the prominent sampler CTA opens an overlay/dialog as implied, programmatic focus handling is required for accessibility.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "On open, focus should land on the dialog container or first actionable element; on close, focus should return to the CTA. Tabbing should remain within the dialog while open.",
+      "ambiguities": "Only applicable if the CTA opens an in-page overlay rather than a separate page/document."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "M1",
+    "M2",
+    "K1",
+    "K2",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "focus_management",
+      "modal_dialog"
+    ],
+    "desktop": [
+      "modal_dialog",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static informational page with low overall JavaScript complexity. Desktop appears to expose primary navigation inline with little need for interaction beyond the main sampler CTA, while mobile likely collapses navigation into a menu control that requires open/close behavior and focus handling. The main uncertainty is whether the sampler CTA opens an in-page modal or simply links away; if implemented as an overlay, modal and focus-management behavior become the primary shared JS requirement across both viewports."
+}

@@ -1,0 +1,83 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact top navigation bar with a small menu icon/button at the far right, implying a collapsed navigation that must open and close on tap.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should reveal and hide the mobile navigation panel/list. The button should reflect expanded/collapsed state and likely swap icon state when open.",
+      "ambiguities": "The sketch does not show whether the menu opens as a dropdown below the header, an overlay, or a slide-out panel."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a horizontal navigation row beneath the large hero/header area with multiple top-level items, which strongly implies at least one expandable submenu in desktop navigation. The reference layout also supports category-style nested navigation.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A top-level nav item may reveal a submenu on hover or click. If implemented, submenu visibility and active state should be synchronized for mouse and keyboard users.",
+      "ambiguities": "The sketch itself does not explicitly draw the submenu open state, so the exact trigger model (hover vs click) is not certain."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a rectangular search field in the sidebar/lower content area, indicating a searchable site section with user text entry and submission behavior.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept input and submit a search query, likely via Enter key or adjacent submit control. JS may enhance focus handling, clear state, or live submission behavior.",
+      "ambiguities": "The sketch does not indicate whether results are live/autocomplete or only submitted traditionally."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "both",
+      "visual_evidence": "The sidebar sections, especially the category-like stacked lists with headings and nested items, imply expandable/collapsible groups rather than permanently open content. This is especially likely on mobile where vertical space is constrained.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Section headers or toggle controls should expand/collapse nested lists or content blocks. State should be conveyed visually and via ARIA-expanded semantics.",
+      "ambiguities": "It is unclear whether all sidebar boxes are collapsible or only hierarchical category groups."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a long vertical sequence of repeated product/image cards continuing down the page, suggesting progressive disclosure or additional content retrieval as users browse deeper.",
+      "confidence": "LOW",
+      "behavior_notes": "A load-more trigger could append more product cards after the initial set, especially on mobile to reduce initial payload. If used, loading state should be announced and focus/order preserved.",
+      "ambiguities": "The sketch could also represent a fully server-rendered long list with no JS loading at all; no explicit button is drawn."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "F2",
+    "D1",
+    "D4",
+    "S2",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N3",
+    "F1",
+    "F3",
+    "F4",
+    "D2",
+    "D3",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "accordion",
+      "load_more"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "search_input",
+      "accordion"
+    ]
+  },
+  "sketch_notes": "The sketches imply relatively light-to-moderate JavaScript overall: mobile needs the clearest explicit interaction via a hamburger-controlled navigation, while both viewports likely need search behavior and some collapsible sidebar/category treatment. Desktop appears more navigation-heavy with a probable dropdown in the horizontal nav, whereas mobile emphasizes stacked browsing through repeated cards and may benefit from progressive loading, though that part is speculative from the sketch alone."
+}

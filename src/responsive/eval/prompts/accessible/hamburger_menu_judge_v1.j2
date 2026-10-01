@@ -1,0 +1,75 @@
+You are an expert web accessibility evaluator.
+
+Task:
+You will be given:
+1) The full HTML source of a webpage
+2) The Playwright accessibility tree (aria_snapshot of <body>) BEFORE clicking the hamburger menu toggle (closed state)
+3) The Playwright accessibility tree (aria_snapshot of <body>) AFTER clicking the hamburger menu toggle (open state)
+
+Both trees were captured at a mobile viewport (375px wide).
+
+Evaluate the accessibility of the hamburger menu interaction using these criteria:
+
+1. Toggle button semantics
+   - Does the button have an accessible name (not just an icon with no label)?
+   - Does it use aria-expanded to communicate the open/closed state?
+   - Does aria-expanded change correctly from false (closed) to true (open) after the click?
+
+2. Navigation exposure after opening
+   - Does a navigation landmark appear in the accessibility tree after the click?
+   - Does that navigation contain keyboard-reachable links?
+
+3. Navigation hidden when closed
+   - Is the navigation content absent from the closed-state accessibility tree?
+     (Absent means not present at all, not present as a ghost via visibility:hidden.)
+
+4. aria-controls linkage
+   - Does the button reference the controlled element via aria-controls?
+
+Scoring rubric (1–5):
+- 5: aria-expanded present and toggles correctly, button has accessible name, navigation landmark
+     appears after click with links, navigation is absent from the closed tree.
+- 4: Nearly correct — one minor gap (e.g., no aria-controls, or label is icon-only but role and
+     state are correct, or navigation appears slightly delayed but correctly).
+- 3: Partial implementation — navigation appears after click but aria-expanded is missing or does
+     not toggle, or the button label is absent.
+- 2: Significant issues — navigation present in closed tree as a ghost (visibility:hidden), or
+     navigation never appears in open tree, or button has no accessible name and no aria-expanded.
+- 1: Non-functional for accessibility — clicking does nothing in the accessibility tree, or the
+     button is unreachable by keyboard, or there is no discernible navigation after interaction.
+
+Output requirements:
+- Respond with exactly one JSON object.
+- "score" must be an integer from 1 to 5.
+- "rationale" must reference specific evidence from the two accessibility trees (role names,
+  aria-expanded values, presence or absence of navigation nodes, link counts, etc.).
+
+Output JSON schema:
+{
+  "score": 1-5,
+  "rationale": "...",
+  "observations": {
+    "button_has_accessible_name": true or false,
+    "button_has_aria_expanded": true or false,
+    "aria_expanded_before": "value seen in closed tree, or null if absent",
+    "aria_expanded_after": "value seen in open tree, or null if absent",
+    "nav_in_closed_tree": true or false,
+    "nav_in_open_tree": true or false,
+    "nav_has_links": true or false
+  }
+}
+
+HTML source:
+```html
+{{ html_source }}
+```
+
+Accessibility tree BEFORE clicking the hamburger (closed state):
+```yaml
+{{ tree_closed }}
+```
+
+Accessibility tree AFTER clicking the hamburger (open state):
+```yaml
+{{ tree_open }}
+```

@@ -1,0 +1,85 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a three-line hamburger icon in the top-right area of the header, implying a collapsible navigation panel or menu trigger.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping/clicking the icon should open and close a navigation drawer or overlay menu. On mobile this is likely the primary site navigation; on desktop it may expose secondary navigation or an alternate menu state.",
+      "ambiguities": "The sketches do not show the opened menu state, so it is unclear whether the menu appears as a full-screen overlay, side drawer, or dropdown panel, especially on desktop where inline nav also appears."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a full-width header/navigation bar at the very top with logo, nav affordances, and controls separated from the content below, suggesting a persistent top bar.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The header should remain available while scrolling, especially because it contains global navigation, menu access, and utility controls.",
+      "ambiguities": "The sketch does not explicitly depict scrolling states, so persistence on scroll is inferred from common documentation-site layout patterns."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Each sketch includes a long rectangular input-like field near the top content area, visually distinct from surrounding text and aligned like a search/filter control.",
+      "confidence": "HIGH",
+      "behavior_notes": "The field should accept text input and either submit a search or filter documentation/page content. It may support focus styling and keyboard submission.",
+      "ambiguities": "The sketch does not clarify whether results update live, navigate to a results page, or filter only the current page."
+    },
+    {
+      "pattern_id": "custom_select",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a small boxed control with a downward chevron near the upper left content area, which reads as a styled dropdown/select rather than plain text.",
+      "confidence": "HIGH",
+      "behavior_notes": "Clicking should open a list of options, likely for version switching, category selection, or view mode. Keyboard navigation and selected-state updates are implied.",
+      "ambiguities": "The option list is not shown, so it is unclear whether this is a native select, custom combobox, or compact menu button."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "A checkbox-like square with a check mark appears near the top-right content area in both sketches, indicating a form control that can be toggled and potentially submitted with other inputs.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The checkbox state should be captured and may affect filtering or settings. If part of a form submission flow, its state may need validation or state handling before submit.",
+      "ambiguities": "The sketch does not show labels, errors, or a submit button, so validation needs are inferred weakly from the presence of form-like controls."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "F1",
+    "F2",
+    "F4",
+    "K1",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F3",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "sticky_nav",
+      "form_validation"
+    ],
+    "desktop": [
+      "custom_select",
+      "search_input",
+      "hamburger_menu",
+      "sticky_nav",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "The sketches imply a documentation- or content-heavy page with relatively light but important JavaScript: global navigation toggling, persistent header behavior, search interaction, and a selectable control on desktop. Mobile appears to rely more heavily on the hamburger as the primary navigation mechanism, while desktop adds a likely custom dropdown/select and also shows inline top navigation text. No clear evidence appears for tabs, accordions, modals, infinite loading, or toast-style feedback."
+}

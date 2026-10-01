@@ -1,0 +1,64 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "In the mobile sketch, a small boxed three-line icon appears at the right side of the horizontal bar directly beneath the large hero image, indicating a collapsed navigation control.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close the primary navigation panel for mobile. The menu likely overlays or expands below the bar. The trigger should reflect expanded/collapsed state.",
+      "ambiguities": "The sketch does not show whether the opened menu slides in, drops down, or covers the page, nor whether nested items exist in mobile."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a navigation/header bar immediately under the top hero image, and the desktop reference context also suggests a persistent nav region. This placement strongly implies the nav remains available while reading long article content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Navigation should remain fixed or become fixed after scroll so users can access site sections while moving through the long article. If sticky, it should preserve layout and not obscure content.",
+      "ambiguities": "The sketch does not explicitly show a stuck state during scroll, so this is inferred from the long-form page layout rather than directly drawn."
+    },
+    {
+      "pattern_id": "dropdown_menu",
+      "present_in": "desktop",
+      "visual_evidence": "In the desktop sketch, the horizontal navigation bar contains multiple segmented items, a common visual treatment for top-level nav entries that may reveal submenus.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Desktop nav items may open submenus on hover or click, especially for sections with child pages. Active/open state should be visually indicated and dismiss on pointer exit, outside click, or Escape.",
+      "ambiguities": "No submenu is drawn, so child navigation is implied by the segmented top nav pattern and reference HTML rather than explicit in the sketch."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N2",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "dropdown_menu",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly static article/detail page with limited but important navigation behavior. Mobile clearly requires a collapsible hamburger navigation, while desktop suggests a horizontal nav that may expose dropdowns. Across both viewports, the long scrolling article layout makes sticky navigation a strong inferred enhancement so users can navigate without returning to the top. No clear evidence appears for forms, tabs, accordions, modals, load-more behavior, or other dynamic widgets."
+}

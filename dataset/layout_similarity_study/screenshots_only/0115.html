@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A simpler Arbitrary for the Diamond kata — ploeh blog</title>
+  <style>
+    :root{
+      --bg:#efefef;
+      --panel:#ffffff;
+      --border:#dddddd;
+      --text:#333333;
+      --muted:#999999;
+      --nav:#222222;
+      --link:#2a7bd8;
+      --tag-bg:#eeeeee;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .skip-link{position:absolute;transform:translateY(-100%);left:0;top:0;background:#fff;color:#000;padding:8px 12px;z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .site-header{
+      background:var(--nav);
+      color:#aaa;
+      border-bottom:1px solid #1a1a1a;
+    }
+    .nav-inner{
+      max-width:1280px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0 14px;
+      min-height:51px;
+    }
+    .brand{
+      font-size:18px;
+      color:#a9a9a9;
+      display:inline-block;
+      padding:12px 0;
+      white-space:nowrap;
+    }
+    .brand strong{font-weight:700;color:#bdbdbd}
+    .desktop-nav ul,
+    .mobile-nav ul{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:flex;
+      gap:0;
+    }
+    .desktop-nav a,
+    .mobile-nav a{
+      color:#a9a9a9;
+      display:block;
+      padding:14px 16px;
+      font-size:14px;
+    }
+    .desktop-nav a:hover,
+    .mobile-nav a:hover{
+      color:#fff;
+      text-decoration:none;
+    }
+
+    .nav-toggle{
+      display:none;
+      background:#2b2b2b;
+      color:#cfcfcf;
+      border:1px solid #3a3a3a;
+      border-radius:4px;
+      padding:8px 12px;
+      font-size:24px;
+      line-height:1;
+      cursor:pointer;
+    }
+
+    .page-wrap{
+      max-width:1180px;
+      margin:0 auto;
+      background:var(--panel);
+      border-left:1px solid #ddd;
+      border-right:1px solid #ddd;
+      border-bottom:1px solid #ccc;
+      border-radius:0 0 8px 8px;
+      box-shadow:0 1px 2px rgba(0,0,0,.08);
+    }
+
+    .hero{
+      padding:28px 20px 18px;
+      border-bottom:1px solid #e5e5e5;
+      background:#fafafa;
+    }
+    h1{
+      margin:0;
+      font-size:58px;
+      line-height:1.08;
+      font-weight:700;
+      letter-spacing:-1px;
+      color:#3a3a3a;
+    }
+    .byline-inline{
+      font-size:.72em;
+      font-weight:400;
+      color:#9b9b9b;
+      letter-spacing:-0.5px;
+    }
+
+    .content-grid{
+      display:grid;
+      grid-template-columns:minmax(0, 2fr) 360px;
+      gap:28px;
+      padding:18px 20px 20px;
+    }
+
+    .post p{
+      margin:0 0 14px;
+      font-size:17px;
+    }
+    .post .intro{
+      font-style:italic;
+      margin-bottom:10px;
+    }
+    .code-block{
+      margin:10px 0 10px;
+      background:#f5f5f5;
+      border:1px solid #cfcfcf;
+      border-radius:4px;
+      padding:12px 14px;
+      overflow:auto;
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      font-size:15px;
+      line-height:1.25;
+      color:#444;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+    }
+    .kw{color:#0000ff;font-weight:700}
+    .type{color:#1f8dd6}
+    .fn{color:#0000ff}
+    .str{color:#c0392b}
+    .code-inline{
+      font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+      background:#f1f1f1;
+      border-radius:4px;
+      padding:1px 5px;
+      font-size:.95em;
+    }
+    hr.sep{
+      border:0;
+      border-top:1px solid #e5e5e5;
+      margin:18px 0 40px;
+    }
+
+    .pager{
+      display:inline-flex;
+      border:1px solid #d4d4d4;
+      border-radius:4px;
+      overflow:hidden;
+      margin:0 0 44px;
+      background:#fff;
+    }
+    .pager a{
+      padding:10px 16px;
+      border-right:1px solid #d4d4d4;
+      font-size:16px;
+      background:#fff;
+    }
+    .pager a:last-child{border-right:0}
+
+    h2{
+      font-size:28px;
+      margin:0 0 8px;
+      color:#333;
+      letter-spacing:-0.3px;
+    }
+
+    .sidebar h2,
+    .sidebar h3{
+      font-size:18px;
+      margin:0 0 8px;
+      color:#333;
+    }
+    .sidebar section{
+      margin-bottom:22px;
+    }
+    .meta-date{
+      color:#999;
+      font-size:16px;
+      line-height:1.5;
+    }
+    .tags{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .tag{
+      display:inline-block;
+      background:var(--tag-bg);
+      color:#0b6f8f;
+      padding:2px 8px;
+      border-radius:3px;
+      font-size:16px;
+      line-height:1.1;
+    }
+    .tag sup{
+      font-size:12px;
+      vertical-align:super;
+      margin-left:3px;
+      color:#4f6f7f;
+    }
+    .support-box{
+      border-top:1px solid #e5e5e5;
+      padding-top:20px;
+    }
+    .support-image{
+      width:100%;
+      height:203px;
+      object-fit:cover;
+      display:block;
+      background:#1400ff;
+      margin:0 0 0;
+    }
+    .support-links{
+      margin-top:0;
+      font-size:16px;
+      line-height:1.45;
+    }
+    .support-links a{
+      display:block;
+    }
+    .quote{
+      margin-top:14px;
+      font-size:16px;
+      color:#444;
+      font-style:italic;
+    }
+    .quote-link{
+      display:block;
+      margin-top:2px;
+      font-size:16px;
+      font-style:normal;
+    }
+
+    .site-footer{
+      text-align:center;
+      color:#333;
+      font-size:16px;
+      padding:18px 12px 28px;
+    }
+
+    .mobile-nav{
+      background:#222;
+      border-top:1px solid #333;
+    }
+    .mobile-nav ul{
+      flex-direction:column;
+    }
+    .mobile-nav a{
+      border-top:1px solid #333;
+      padding:12px 16px;
+    }
+
+    @media (max-width: 991px){
+      h1{
+        font-size:42px;
+      }
+      .content-grid{
+        grid-template-columns:1fr;
+        gap:10px;
+      }
+      .sidebar{
+        padding-top:0;
+      }
+      .support-image{
+        height:406px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .desktop-nav{display:none}
+      .page-wrap{
+        border-left:1px solid #ddd;
+        border-right:1px solid #ddd;
+        border-radius:0 0 8px 8px;
+      }
+      .hero{
+        padding:34px 14px 18px;
+      }
+      h1{
+        font-size:34px;
+        line-height:1.08;
+      }
+      .byline-inline{
+        display:inline;
+        font-size:.7em;
+      }
+      .content-grid{
+        padding:18px 14px 18px;
+      }
+      .post p,
+      .meta-date,
+      .support-links,
+      .quote,
+      .quote-link,
+      .tag,
+      .pager a{
+        font-size:15px;
+      }
+      .code-block{
+        font-size:14px;
+      }
+      .support-image{
+        height:162px;
+      }
+      .site-footer{
+        padding:18px 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="#" class="brand">ploeh <strong>blog</strong></a>
+
+      <button
+        id="nav-toggle"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+        class="nav-toggle">
+        <span aria-hidden="true">&#9776;</span>
+      </button>
+
+      <nav aria-label="Main" class="desktop-nav">
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Archive</a></li>
+          <li><a href="#">Hire Me</a></li>
+          <li><a href="#">Pages</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <nav id="mobile-nav" aria-label="Main mobile" class="mobile-nav" hidden>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Archive</a></li>
+        <li><a href="#">Hire Me</a></li>
+        <li><a href="#">Pages</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="page-wrap">
+    <section class="hero" aria-label="Article header">
+      <h1>A simpler Arbitrary for the Diamond kata <span class="byline-inline">by Mark Seemann</span></h1>
+    </section>
+
+    <main id="main-content">
+      <div class="content-grid">
+        <article class="post">
+          <p class="intro">There's a simple way to make FsCheck generate letters in a particular range.</p>
+
+          <p>In my <a href="#">post about the Diamond kata with FsCheck</a> , I changed the way <a href="#">FsCheck</a> generates char values, using this custom Arbitrary (essentially a random value generator):</p>
+
+          <pre class="code-block"><span class="kw">type</span> <span class="type">Letters</span> =
+    <span class="kw">static member</span> Char() =
+        <span class="type">Arb</span>.Default.Char()
+        |&gt; <span class="type">Arb</span>.filter (<span class="fn">fun</span> c -&gt; <span class="str">'A'</span> &lt;= c &amp;&amp; c &lt;= <span class="str">'Z'</span>)</pre>
+
+          <p>This uses the default, built-in Arbitrary for char values, but filters its values so that most of them are thrown away, and only the letters 'A'-'Z' are left. This works, but isn't particularly efficient.</p>
+
+          <p>It's also possible to instruct FsCheck to generate values from a particular set of valid values, which seems like an appropriate action to take here:</p>
+
+          <pre class="code-block"><span class="kw">type</span> <span class="type">Letters</span> =
+    <span class="kw">static member</span> Char() = <span class="type">Gen</span>.elements [<span class="str">'A'</span> .. <span class="str">'Z'</span>] |&gt; <span class="type">Arb</span>.fromGen</pre>
+
+          <p>Instead of using <span class="code-inline">Arb.Default.Char()</span> and filtering the values generated by it, this implementation uses <span class="code-inline">Gen.elements</span> to create a Generator of the values 'A'-'Z', and then an Arbitrary from that Generator.</p>
+
+          <p>Much simpler, but now it's also clear that this custom Arbitrary will be used to generate 100 test cases (for each property) from a set of 26 values; that <a href="#">doesn't seem right...</a></p>
+
+          <hr class="sep">
+
+          <div class="pager" aria-label="Post pagination">
+            <a href="#">&larr; Previous</a>
+            <a href="#">Archive</a>
+            <a href="#">Next &rarr;</a>
+          </div>
+
+          <hr class="sep">
+
+          <section aria-label="Comments information">
+            <h2>Wish to comment?</h2>
+            <p>You can add a comment to this post by <a href="#">sending me a pull request</a> .</p>
+          </section>
+        </article>
+
+        <aside class="sidebar" aria-label="Article sidebar">
+          <section aria-label="Published date">
+            <h3>Published</h3>
+            <div class="meta-date">Monday, 23 February 2015 19:50:00 UTC</div>
+          </section>
+
+          <section aria-label="Tags">
+            <h3>Tags</h3>
+            <div class="tags">
+              <span class="tag">Unit Testing<sup>174</sup></span>
+              <span class="tag">F#<sup>101</sup></span>
+              <span class="tag">FsCheck<sup>15</sup></span>
+            </div>
+          </section>
+
+          <section class="support-box" aria-label="Support links">
+            <img src="rick.jpg" alt="" class="support-image">
+            <div class="support-links">
+              <a href="#">Support the blog</a>
+              <a href="#">Buy my book <em>Code That Fits in Your Head</em></a>
+              <a href="#">Buy my book about <em>Dependency Injection</em></a>
+              <a href="#">Watch my Pluralsight courses</a>
+              <a href="#">Watch my Clean Coders videos</a>
+              <a href="#">Public speaking schedule</a>
+              <a href="#">Tweet</a>
+            </div>
+            <div class="quote">"Our team wholeheartedly endorses Mark. His expert service provides tremendous value."</div>
+            <a href="#" class="quote-link">Hire me!</a>
+          </section>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    &copy; Mark Seemann 2015 with help from <a href="#">Jekyll Bootstrap</a> and <a href="#">Twitter Bootstrap</a>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used semantic header, nav, main, aside, footer landmarks; added skip link and main-content target; ensured one h1 with sequential heading hierarchy; added alt attributes to image; ensured interactive elements have descriptive labels; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-labels for multiple navigation regions; labeled aside/sections where appropriate; removed tabindex values greater than 0 via JS baseline.
+[C] JS patterns added: implemented hamburger menu for mobile with aria-expanded, aria-controls, focus management, and Escape-to-close; implemented tab order cleanup and focus indicator support.
+-->

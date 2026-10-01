@@ -1,0 +1,2312 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+<head>
+  <style>
+   /* ==== INCLUDE: /css/resp-base.css ==== */
+
+/*
+	HTML5 Reset :: style.css
+	----------------------------------------------------------
+	We have learned much from/been inspired by/taken code where offered from:
+	Eric Meyer					:: http://meyerweb.com
+	HTML5 Doctor				:: http://html5doctor.com
+	and the HTML5 Boilerplate	:: http://html5boilerplate.com
+-------------------------------------------------------------------------------*/
+
+/* Let's default this puppy out
+-------------------------------------------------------------------------------*/
+
+html, body, body div, span, object, iframe, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 11pt;
+	font-weight: normal;
+	font-family: sans-serif;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+article, aside, figure, footer, header, nav, section, details, summary, main {display: block;}
+
+/* Handle box-sizing while better addressing child elements:
+   http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+html {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+/* Responsive images and other embedded objects */
+img,
+object,
+embed {max-width: 100%; height: auto;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+blockquote, q {quotes: none;}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {content: ''; content: none;}
+
+a {margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+del {text-decoration: line-through;}
+
+abbr[title], dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+table {border-collapse: collapse; border-spacing: 0;}
+th {font-weight: bold; vertical-align: bottom;}
+td {font-weight: normal; vertical-align: top;}
+
+hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+input, select {vertical-align: middle;}
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    white-space: pre-line;
+    word-wrap: break-word;
+}
+
+input[type="radio"] {vertical-align: text-bottom;}
+input[type="checkbox"] {vertical-align: bottom;}
+select, input, textarea {font: 99% sans-serif;}
+table {font-size: inherit; font: 100%;}
+small {font-size: 85%;}
+strong {font-weight: bold;}
+td, td img {vertical-align: top;}
+sub, sup {font-size: 75%; line-height: 0; position: relative;}
+sup {top: -0.5em;}
+sub {bottom: -0.25em;}
+pre, code, kbd, samp {font-family: monospace, sans-serif;}
+
+.clickable,
+label,
+input[type=button],
+input[type=submit],
+input[type=file],
+button {cursor: pointer;}
+
+button, input, select, textarea {margin: 0;}
+
+button,
+input[type=button] {width: auto; overflow: visible;}
+
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+.provider-attribution {
+}
+
+.mrp-crea-attribution {
+	margin: 0 20px;
+	padding: 10px 0 20px 0;
+	font-size: 10px;
+	font-family: verdana;
+	text-align: left;
+}
+
+.mrp-crea-attribution.region-DDF {
+	text-align: center;
+}
+
+.mrp-crea-attribution * {
+	font-size: 0.8rem;
+}
+
+.mrp-crea-attribution {
+	max-width: 800px;
+    margin: 0 auto;
+}
+
+.mrp-crea-attribution hr {
+	display: none;
+}
+
+.page-footer-copyright {
+	text-align: center;
+	padding: 20px 0;
+	font-size: 11px;
+}
+
+.page-footer-copyright a {
+	font-weight: bold;
+}
+
+.quick-message {
+	padding: 20px 30px;
+	background-color: black;
+	opacity: 0.8;
+	border-radius: 10px;
+	color: white;
+	font-weight: bold;
+	font-family: sans-serif;
+	text-align: center;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+}
+
+.quick-message.fade {
+	opacity: 0;
+	transition: opacity 1s;
+}
+
+body > .html-layout{
+	transition: transform 500ms ease-in-out;
+}
+
+html.mrp-idx-on .mrp-sidebar-tab {
+	display: none;
+}
+
+@media (max-width: 650px) {
+	body #content-well {
+		width: 100%;
+	}
+	
+	.mrp-sidebar.mrp-sidebar-left {
+		position: absolute;
+		position: fixed;
+		left: 0px;
+		top: 0;
+		transform: translate(-110%,0);
+	}
+	
+	.mrp-sidebar.mrp-sidebar-right {
+		position: absolute;
+		position: fixed;
+		right: 0px;
+		top: 0;
+		transform: translate(110%,0);
+	}
+	
+	.mrp-sidebar.right.on {
+		transform: translate(0,0);
+	}
+	
+	.mrp-sidebar-tab {
+		position: fixed;
+		top: 50%;
+		background-color: black;
+		color: white;
+		padding: 10px 7px;
+		border: 1px solid black;
+		box-shadow: 0 0 5px #333;
+		box-sizing: border-box;
+		cursor: pointer;
+		z-index: 100;
+		font-size: 20px;
+		opacity: 0.7;
+		transform: translate(0,-50%);
+	}
+	.mrp-sidebar-tab.right {
+		right: 0;
+	}
+	
+	.mrp-sidebar-tab.left {
+		left: 0;
+	}
+}
+
+.mrp-weblet-menu {
+	position: relative;
+	z-index: 100;
+}
+
+.mrp-menu-resp-wrapper li {
+	cursor: pointer;
+}
+.mrp-menu-resp-wrapper > ul {
+	display: table;
+}
+.mrp-menu-resp-wrapper > ul > li {
+	display: table-cell;
+}
+			
+.mrp-menu-resp-wrapper {
+	box-sizing: border-box;
+}
+
+.mrp-menu-resp-wrapper * {
+	box-sizing: border-box;
+}
+
+.mrp-menu-resp-wrapper ul,
+.mrp-menu-resp-wrapper ul li {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	position: relative;
+}
+
+.mrp-menu-resp-wrapper li.has-sub {
+	padding-right: 31px;
+	cursor: pointer;
+}
+
+.mrp-menu-resp-wrapper span.chevron {
+	position: absolute;
+	display: block;
+	right: 0px;
+	top: 0px;
+	height: 100%;
+	width: 25px;
+	background-color: #efefef;
+	cursor: pointer;
+}
+
+.mrp-menu-resp-wrapper > ul {	
+	width: 100%;
+}
+
+.mrp-menu-resp-wrapper > ul > li {
+	padding: 3px 6px;
+	border: 1px solid gray;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.mrp-menu-resp-wrapper > ul ul {
+	display: none;
+}
+
+.mrp-menu-resp-wrapper ul ul > li {
+	display: none;
+	min-width: 100px;
+	border-bottom: 1px solid gray;
+	padding: 3px 6px;
+}
+
+.mrp-menu-resp-wrapper ul ul > li:last-child {
+	border-bottom: 0;
+}
+
+.mrp-menu-resp-wrapper li.on > ul > li {
+	display: block;
+}
+
+.mrp-menu-resp-wrapper li.on > ul {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	display: block;
+	border: 1px solid gray;
+	background-color: white;
+	z-index: 1;
+	box-shadow: 5px 5px 10px rgba(127,127,127,0.5);
+}
+
+.mrp-menu-resp-wrapper > ul > li.on.left > ul {
+	left: auto;
+	right: 0;	
+}
+
+.mrp-menu-resp-wrapper > ul ul > li.on > ul {
+	left: calc(100% - 5px);
+	top: 5px;
+}
+
+.mrp-menu-resp-wrapper > ul ul > li.on.left > ul {
+	right: calc(100% - 10px);
+	left: auto;
+	top: 5px;
+}
+			
+.mrp-menu-resp-wrapper > ul.top > li > a {		
+	white-space: nowrap;
+}
+
+.mrp-menu-resp-wrapper a {
+	text-decoration: none;
+	display: block;
+}
+
+.mrp-menu-resp-wrapper li.has-sub a {
+	display: inline-block;
+}
+
+.mrp-menu-resp-wrapper ul.on > li {
+	opacity: 0.7;
+}
+
+.mrp-menu-resp-wrapper ul.on > li.on {
+	opacity: 1.0;
+}
+
+@media (min-width: 400px) {
+	.mrp-menu-resp-wrapper > ul {
+		display: flex;
+		flex-direction: row;
+		flex-flow: wrap;
+		align-content: stretch;
+	}
+	
+	.mrp-menu-resp-wrapper > ul > li {
+		flex-grow: 1;
+	}
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper > ul {
+	display: block;
+}
+	
+.mrp-sidebar .mrp-menu-resp-wrapper ul > li  {
+	display: block;
+	border: 0;
+	border-bottom: 1px solid gray;
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper ul > li:first-child {
+	border-top: 1px solid gray;
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper li.on.has-sub {
+	padding-right: 6px;
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper ul.on > li.on {
+	display: block;
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper li.on > ul {
+	position: relative;
+	left: auto;
+	top: auto;
+	box-shadow: none;
+	margin-right: 30px;
+	border: 0;
+	border-left: 1px solid gray;
+	border-right: 1px solid gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper ul ul > li:last-child {
+	border-bottom: 1px solid gray;
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper > ul ul > li.on > ul,
+.mrp-sidebar .mrp-menu-resp-wrapper > ul ul > li.on.left > ul {
+	left: auto;
+	right: auto;
+	top: auto;
+}
+
+.mrp-sidebar .mrp-menu-resp-wrapper li.on > a {
+	display: block;
+	padding: 10px 6px;
+}
+
+@media (max-width: 400px) {
+	.mrp-menu-resp-wrapper {
+		overflow: hidden;
+	}
+	
+	.mrp-menu-resp-wrapper .top-handle {
+		clear: both;
+		float: left;
+		display: block;
+		margin: 10px 5px;
+		padding: 10px;
+		box-shadow: 0 0 10px rgba( 128,128,128,0.5 );
+		cursor: pointer;
+	}
+	
+	.mrp-menu-resp-wrapper > ul {
+		display: none;
+	}
+	
+	.mrp-menu-resp-wrapper .top-handle.on ~ ul {
+		display: block;
+	}
+	
+	.mrp-menu-resp-wrapper > ul {
+		clear: both;
+	}
+		
+	.mrp-menu-resp-wrapper ul > li {
+		display: block;
+		border: 0;
+		border-bottom: 1px solid gray;
+	}
+	
+	.mrp-menu-resp-wrapper ul > li:first-child {
+		border-top: 1px solid gray;
+	}
+	
+	.mrp-menu-resp-wrapper li.on.has-sub {
+		padding-right: 6px;
+	}
+	
+	.mrp-menu-resp-wrapper ul.on > li.on {
+		display: block;
+	}
+	
+	.mrp-menu-resp-wrapper li.on > ul {
+		position: relative;
+		left: auto;
+		top: auto;
+		box-shadow: none;
+		margin-right: 30px;
+		border: 0;
+		border-left: 1px solid gray;
+		border-right: 1px solid gray;
+		margin-top: 5px;
+		margin-bottom: 5px;
+	}
+	
+	.mrp-menu-resp-wrapper ul ul > li:last-child {
+		border-bottom: 1px solid gray;
+	}
+	
+	.mrp-menu-resp-wrapper > ul ul > li.on > ul,
+	.mrp-menu-resp-wrapper > ul ul > li.on.left > ul {
+		left: auto;
+		right: auto;
+		top: auto;
+	}
+	
+	.mrp-menu-resp-wrapper li.on > a {
+		display: block;
+		padding: 10px 6px;
+	}	
+}
+
+.weblet_blog-navigation, 
+.weblet_blog-navigation-sa {
+	margin: 0;
+	padding: 5px;
+	z-index: 100;
+	text-align: left;
+	position: relative;
+}
+
+.weblet_blog-no-entries {
+	text-align: center;
+	padding: 50px 0;
+}
+
+.weblet_blog-navigation {
+	width: 150px; 
+	border: 1px dotted gray;
+}
+
+.weblet_blog-page-prev {
+	float: left;	
+}
+
+.weblet_blog-navigation-heading, 
+.weblet_blog-navigation-sa-heading {
+	margin: 0px;
+	margin-bottom: 3px;
+	margin-top: 15px;
+	padding-left: 18px;
+	font-weight: bold;
+}
+
+.weblet_blog-navigation-divider, 
+.weblet_blog-navigation-sa-divider {
+	margin-top: 11px;
+	margin-bottom: 10px;
+	height: 1px;
+	border-bottom: 1px dotted gray;
+}
+.weblet_blog-page-nav {
+	text-align: right;
+	padding: 20px 0;
+}
+
+.weblet_blog-entry-heading {
+	margin: 0px;
+	padding: 0px;
+	font-weight: bold;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	text-decoration: none;
+	text-align: left;
+}
+
+.weblet_blog-main-image-link {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+h3.weblet_blog-entry-heading {
+	border: 0;	
+}
+
+.weblet_blog-date-friendly {
+	font-weight: bold;
+}
+
+.weblet_blog-entry-text {
+	margin-top: 10px;
+}
+
+.weblet_blog-syndication-section {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: right;
+}
+
+.weblet_blog-syndication-section a {
+	text-decoration: none;
+}
+
+.weblet_blog-entry-image-container {
+	max-width: 100%;
+	position: relative;
+}
+
+.blog-001 .weblet_blog-entry-image-container.missing-photo {
+    display: none;
+}
+
+.blog-entry-list .weblet_blog-entry-image-container.missing-photo:before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:24px;height:24px' viewBox='0 0 24 24'%3E%3Cpath fill='%23999999' d='M13.73,15L9.83,21.76C10.53,21.91 11.25,22 12,22C14.4,22 16.6,21.15 18.32,19.75L14.66,13.4M2.46,15C3.38,17.92 5.61,20.26 8.45,21.34L12.12,15M8.54,12L4.64,5.25C3,7 2,9.39 2,12C2,12.68 2.07,13.35 2.2,14H9.69M21.8,10H14.31L14.6,10.5L19.36,18.75C21,16.97 22,14.6 22,12C22,11.31 21.93,10.64 21.8,10M21.54,9C20.62,6.07 18.39,3.74 15.55,2.66L11.88,9M9.4,10.5L14.17,2.24C13.47,2.09 12.75,2 12,2C9.6,2 7.4,2.84 5.68,4.25L9.34,10.6L9.4,10.5Z' /%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 80px 80px;
+	color: #999;
+}
+
+.weblet_blog-entry-image-container > img.weblet_blog-entry-image {
+	max-width: 100%;
+}
+
+.weblet_blog-entry-text {
+	overflow: hidden;
+	position: relative;
+}
+
+.weblet_blog-entry-text img, 
+.weblet_blog-entry-text object, 
+.weblet_blog-entry-text embed {
+	max-width: 100%;
+	height: auto;
+}
+
+.weblet_blog-entry-author-photo img {
+	border: 0;
+	width: 50px;
+}
+
+h2.weblet_blog-entry-heading a span {
+	font-size: 120%;
+}
+
+h2.weblet_blog-entry-heading a {
+	text-decoration: none;
+}
+
+.weblet_blog-entry-author-section span {
+	opacity: 0.8;
+	font-size: smaller;
+}
+
+.weblet_blog-entry-labels-section * {
+	opacity: 0.8;
+	font-size: smaller;
+}
+
+.weblet_blog-entry-share-section {
+	opacity: 0.8;
+	padding: 10px 0 5px 0;
+}
+
+.weblet_blog-entry-share-section a,
+.weblet_blog-entry-share-section button {
+	color: inherit;
+	display: inline-block;
+}
+
+.weblet_blog-entry-share-section .fa {
+	font-size: 150%;
+	display: inline-block;
+}
+
+.weblet_blog-entry-text > [data-type]:not([data-type=""]),
+.weblet_blog-entry-text > p.block-p {
+    margin: 32px 0;
+}
+
+[data-type="columns"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 24px;
+}
+
+[data-type="columns"][data-flip="true"] > *:first-child {
+    order: 2;
+}
+
+[data-type="columns"][data-ratio="ratio30_70"] {
+    grid-template-columns: 3fr 7fr;
+}
+
+[data-type="columns"][data-ratio="ratio70_30"] {
+    grid-template-columns: 7fr 3fr;
+}
+
+@media (max-width: 640px) {
+    [data-type="columns"],
+    [data-type="columns"][data-ratio="ratio70_30"],
+    [data-type="columns"][data-ratio="ratio30_70"] {
+        grid-template-columns: 1fr;
+        grid-gap: 0px;
+    }
+}
+
+[data-type="block-image"] {
+    width: 100%;
+    height: inherit;
+}
+
+[data-type="block-image"][data-block="true"] img {
+    width: 100%;
+}
+
+[data-content="image-column"] {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    align-items: start;
+}
+
+[data-type="columns"] [data-content="image-column"] [data-type="block-image"][data-block="true"] img {
+    height: 100%;
+    object-fit: cover;
+}
+
+[data-img-v-align="center"] [data-content="image-column"] {
+    align-items: center;
+}
+
+[data-img-v-align="bottom"] [data-content="image-column"] {
+    align-items: end;
+}
+
+[data-type="gallery"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+}
+
+@media (max-width: 640px) {
+    [data-type="gallery"] {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 8px;
+    }
+}
+
+[data-type="gallery"] > img {
+    aspect-ratio: 1;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+[data-type="download-link"] {
+    display: flex;
+    flex-direction: column;
+    padding: 48px 0;
+    align-content: center;
+    align-items: center;
+}
+
+[data-type="button"] a {
+    display: inline-flex;
+    padding: 16px 24px;
+    background-color: #ddd;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+[data-type="download-link"] > a {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    padding: 24px 32px;
+    background-color: #ddd;
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+[data-type="embed"] table {
+    border-collapse: collapse;
+    border: unset;
+    max-width: 100%;
+}
+
+[data-type="embed"] table th,
+[data-type="embed"] table td {
+    border: unset;
+    padding: unset;
+    line-height: normal;
+}
+
+[data-type="embed"][data-aspect-ratio="16x9"] > iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+[data-type="embed"][data-aspect-ratio="4x3"] > iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+}
+
+.weblet_blog-navigation-sa-divider {
+    display: none;
+}
+
+.weblet_blog-entry-image-container-parallax {
+    position: absolute;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    height: 120%;
+    background-image: var(--img1200);
+    background-position: center center;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (max-width: 640px) {
+    .weblet_blog-entry-image-container-parallax {
+        background-image: var(--img800);
+    }
+}
+
+.weblet_blog-entry-text [data-type="download-link"].align-left {
+    align-items: flex-start;
+}
+
+.weblet_blog-entry-text [data-type="download-link"].align-right {
+    align-items: flex-end;
+}
+
+html .weblet_blog-entry-text hr {
+    height: 1px;
+    border: none;
+    background: var(--blog-hr-color, var(--text-color, black));
+}
+
+html .weblet_blog-entry-text hr.margin-hide {
+    background: transparent;
+}
+
+html .weblet_blog-entry-text hr {
+    margin-top: calc(1.2em + var(--spacing-1, 0.25em) * var(--margin-top, 0));
+    margin-bottom: calc(1.2em + var(--spacing-1, 0.25em) * var(--margin-bottom, 0));
+}
+
+html [data-type="gallery"] {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+}
+
+html [data-type="gallery"] > img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+@media (max-width: 640px) {
+    html [data-type="columns"],
+    html [data-type="columns"][data-ratio="ratio70_30"],
+    html [data-type="columns"][data-ratio="ratio30_70"] {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+    }
+}
+
+.mrp-dynamic-form .control-error,
+.mrp-dynamic-form .form-error {
+	color: red;
+}
+
+.mrp-dynamic-form .form-group.required > label::after {
+	content: "*";
+	color: red;
+}
+
+.mrp-dynamic-form .form-inner > h3 {
+	text-align: left;
+	margin-left: calc( 35% + 10px );
+}
+
+.mrp-dynamic-form .control-error {
+	display: block;
+    margin-left: 35%;
+    text-align: left;
+    padding: 20px 0 0 10px;
+}
+
+.form-group {
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+}
+
+.form-group > label {
+	display: table-cell;
+	width: 35%;
+	padding: 5px 10px;
+	text-align: right;
+	vertical-align: middle;
+}
+
+.form-group > .control-wrapper {
+	display: table-cell;
+	width: 65%;
+	padding: 5px 10px;
+	text-align: left;
+}
+
+.form-group > .control-wrapper > input.form-control,
+.form-group > .control-wrapper > textarea.form-control {
+	width: 100%;
+}
+
+.form-group > .control-wrapper > textarea.form-control {
+	min-height: 100px;
+}
+
+.dynamic-form-separator {
+	padding: 5px 10px;
+	border-bottom: 1px dotted gray;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+.form-buttons {
+	display: table;
+	width: 100%;
+}
+
+.form-buttons .buttons-left {
+	display: table-cell;
+	width: 35%;
+	padding: 10px 10px;
+}
+
+.form-buttons .buttons-right {
+	display: table-cell;
+	width: 65%;
+	padding: 10px 10px;
+	text-align: left;
+}
+
+.form-buttons button {
+	padding: 10px 20px;
+	font-size: 120%;
+}
+
+.stacked .form-group > label,
+.stacked .form-group > .control-wrapper {
+	display: block;
+	width: 100%;
+	text-align: left;
+}
+
+.stacked.placeholders .form-group > label {
+	display: none;
+}
+
+.stacked.placeholders .form-group.form-group-select > label,
+.stacked.placeholders .form-group.form-group-radio > label,
+.stacked.placeholders .form-group.form-group-link > label,
+.stacked.placeholders .form-group.form-group-checkbox > label {
+	display: inherit;
+}
+
+.stacked .buttons-right {
+	text-align: right;
+}
+
+.stacked .control-error {
+	margin-left: 0;
+}
+
+.form-group .form-control-comment {
+	font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 400px) {
+	.form-group > label,
+	.form-group > .control-wrapper {
+		display: block;
+		width: 100%;
+		text-align: left;
+	}
+	
+	.form-group > label {
+		font-weight: bold;
+	}
+	
+	.form-group > .control-wrapper {
+		padding-top: 0px;
+		padding-bottom: 15px;
+	}
+	
+	.form-group > .control-wrapper input,
+	.form-group > .control-wrapper textarea,
+	.form-group > .control-wrapper select {
+		width: 100%;
+	}
+	
+	.buttons-right {
+		text-align: right;
+	}
+	
+	.mrp-dynamic-form .form-inner > h3 {
+		text-align: left;
+		margin-left: 10px;
+	}
+}
+
+html, body, body div, object, iframe, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, sub, sup, var, b, i, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, figure, footer, header, menu, nav, section, time, mark, audio, video, details, summary {
+    font-family: 'Raleway', sans-serif;
+    font-size:16px;
+    font-weight:300;
+}
+
+#page-layout {
+        width: 100% !important;
+}
+
+span {
+    font-size:inherit;
+    font-family:inherit;
+    font-weight: inherit;
+}
+
+#pagewrap__p {
+        color: #373737;
+}
+
+a {
+        color: #002d56;
+        transition: all 1s ease;
+        text-decoration: none;
+}
+a:hover {
+        color: #595959;
+}
+
+.clearfix::after {
+        clear: both;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+        color: #002d56;
+}
+h1 {
+        font-size: 50px;
+        font-weight: 300;
+}
+
+a.cta-btn {
+        margin-top: 15px;
+        border-radius: 10px;
+	display: inline-block;
+	padding: 15px 30px;
+	background-color: #002d56;
+	color: #FFFFFF;
+        font-weight: 600;
+	text-transform: uppercase;
+        font-size: 14px;
+}
+a.cta-btn:hover {
+        background-color: #373737;
+}
+
+#top-navigation-wrapper {
+        display: flex;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px;
+}    
+
+#custom-idx-branding {
+	position: fixed;
+	top: 30px;
+	left: 0;
+	right: 0;
+        z-index: 100;
+	background: rgba(255, 255, 255, 0);
+	box-shadow: 0px 5px 21px 0px rgba(0,0,0,0);
+	transition: all 1s ease;
+}
+#custom-idx-branding.main-nav-scrolled {
+        top: 0;
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 0px 5px 21px 0px rgba(0,0,0,0.25);
+}
+
+@media (min-width: 921px) {
+#mrp-container1 {
+        width: calc(100% - 600px);
+}
+#mrp-container1 img {
+        max-width: 250px;
+}
+#mrp-container2 {
+        width: 600px;
+}
+}
+
+.mrp-menu-resp-wrapper {
+	max-width: 1200px;
+	margin: auto;
+}
+.mrp-menu-resp-wrapper > ul > li {
+	display: block;
+	border: none;
+	padding: 0px;
+}
+.mrp-weblet-menu a,
+.mrp-weblet-menu button.menu-button {
+	padding: 15px 10px 15px 10px;
+	width: 100%;
+	font-size: 17px;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+.mrp-weblet-menu li:hover > a,
+.mrp-weblet-menu li:hover > button.menu-button {
+	color: #002d56 !important;
+}
+.mrp-menu-resp-wrapper li.on > ul {
+	background-color: #fff;
+	border: 0px solid #f1f1f1;
+	border-top: 3px solid #000;
+	margin-top: -1px;
+}
+.mrp-menu-resp-wrapper span.chevron {
+	width: 100%;
+	background-color: transparent;
+}
+.mrp-menu-resp-wrapper li > span.chevron::after {
+	display: none;
+}
+.mrp-menu-resp-wrapper ul ul > li {
+	border-bottom: 1px solid #f1f1f1;
+	padding: 0px;
+}
+.mrp-menu-resp-wrapper ul ul > li > a:hover {
+	color: #606060;
+}
+.mrp-menu-resp-wrapper ul li:hover, .mrp-menu-resp-wrapper ul li a:hover {
+	background-color: transparent;
+}
+.mrp-menu-resp-wrapper ul li.has-sub.on:hover {
+	background-color: transparent;
+}
+.mrp-menu-resp-wrapper li.has-sub {
+	padding: 0px;
+}
+.mrp-weblet-menu .sub {
+	width: 235px;
+}
+.mrp-menu-resp-wrapper li .sub li a {
+	color: #000;
+        font-size: 15px;
+}
+
+.menu-button {
+	background: transparent;
+	border: 0;
+	text-align: left;
+	color: #002d56;
+}
+.menu-button span[aria-hidden="true"] {
+	margin-left: 0.35em;
+}
+
+@media (max-width: 920px) {
+#mrp-container1 {
+        width: calc(100% - 75px);
+}
+#mrp-container2 {
+        width: 75px;
+}
+
+html.mrp-menu-on #page-template-layout::before, html.mrp-menu-on #template-layout::before {
+    background-color: #fff;
+    content: "";
+    height: 100%;
+    left: -2px;
+    opacity: 0.6;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.mrp-menu-resp-wrapper > ul {
+	overflow-y: scroll;
+}
+.mrp-menu-resp-wrapper span.chevron {
+	width: 30px;
+	height: 100%;
+	background-color: transparent;
+	display: block;
+	color: #000;
+}
+.mrp-menu-resp-wrapper li.has-sub.on span.chevron {
+	width: 30px;
+	height: 30px;
+}
+.mrp-menu-resp-wrapper li>span.chevron::after {
+	display: block;
+}
+.mrp-weblet-menu .sub {
+	width: 100%;
+}
+.mrp-weblet-menu {
+	height: 100%;
+	background-color: transparent;
+}
+.mrp-weblet-menu a,
+.mrp-weblet-menu button.menu-button {
+	color: #303030 !important;
+	padding: 30px 10px 30px 10px;
+}
+.mrp-menu-resp-wrapper {
+	overflow: hidden;
+	height: 100%;
+}
+.mrp-menu-resp-wrapper .top-handle {
+	clear: both;
+	display: block;
+	margin: 0px;
+	padding: 28px 28px 28px 28px;
+	box-shadow: none;
+	cursor: pointer;
+	background: rgba(255, 255, 255, 0.7);
+	float: left;
+	color: #002d56;
+	font-size: 18px;
+}
+.mrp-menu-resp-wrapper .top-handle:hover {
+	color: #000000;
+}
+.mrp-menu-resp-wrapper .top-handle.on ~ ul {
+	display: block;
+}
+.mrp-menu-resp-wrapper > ul {
+	clear: both;
+}
+.mrp-menu-resp-wrapper ul > li {
+	display: block;
+	border: 0;
+	border-bottom: 1px solid gray;
+}
+.mrp-menu-resp-wrapper ul > li:first-child {
+	border-top: 1px solid gray;
+}
+.mrp-menu-resp-wrapper ul li > a:hover,  .mrp-menu-resp-wrapper ul li > span:hover, .mrp-menu-resp-wrapper ul li > button:hover {
+	border-left: 4px solid #002d56;
+	text-indent: -4px;
+}
+.mrp-menu-resp-wrapper li.on.has-sub {
+	padding-right: 0px;
+}
+.mrp-menu-resp-wrapper ul.on > li.on {
+	display: block;
+}
+.mrp-menu-resp-wrapper li.on > ul {
+	position: relative;
+	left: auto;
+	top: auto;
+	box-shadow: none;
+	margin-right: 30px;
+	border: 0;
+	border-right: 1px solid gray;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.mrp-menu-resp-wrapper ul ul > li:last-child {
+	border-bottom: 1px solid gray;
+}
+.mrp-menu-resp-wrapper > ul ul > li.on > ul,
+.mrp-menu-resp-wrapper > ul ul > li.on.left > ul {
+	left: auto;
+	right: auto;
+	top: auto;
+}
+.mrp-menu-resp-wrapper li.on > a,
+.mrp-menu-resp-wrapper li.on > button.menu-button {
+	display: block;
+	padding: 12px 10px 12px 10px;
+}
+.mrp-menu-resp-wrapper li.on > a:hover,
+.mrp-menu-resp-wrapper li.on > button.menu-button:hover {
+	border-left: 0px solid #fff;
+	text-indent: 0px;
+}
+.mrp-menu-resp-wrapper .top-handle ~ ul {
+	display: none;
+}
+.mrp-menu-resp-wrapper > ul {
+	width: 100%;
+	width: calc(100% - 70px);
+	background-color: #ffffff;
+	height: 100%;
+	left: 68px;
+	top: 0px;
+	border-left: 4px solid #42403c;
+}
+.index .mrp-menu-resp-wrapper > ul {
+	border-left: 0px solid #000;
+}
+#mrp-container2 {
+	height: 100%;
+	z-index: 5000;
+	background-color: transparent;
+	top: 0px;
+	right: 0px;
+}
+html.mrp-menu-on #mrp-container2 {
+	position: fixed;
+	right: 0px;
+	width: 320px;
+}
+.mrp-weblet-menu li:hover > a,
+.mrp-weblet-menu li:hover > button.menu-button {
+	color: #47c7de !important;
+}
+html.mrp-menu-on .mrp-menu-resp-wrapper .top-handle {
+	position: absolute;
+	top: 20px;
+        background: rgba(0, 45, 86, 0.8);
+        color: #FFFFFF;
+}
+.mrp-menu-resp-wrapper > ul.top > li > a {
+	white-space: normal;
+}
+.mrp-menu-resp-wrapper ul > li:first-child,  .mrp-menu-resp-wrapper ul > li {
+	border-bottom: 1px solid #dfdfdf;
+}
+.mrp-menu-resp-wrapper li.on ul.sub {
+	margin: 0px;
+	border: 0px;
+}
+.mrp-menu-resp-wrapper ul ul li {
+	border: 0px !important;
+}
+.mrp-menu-resp-wrapper li a,
+.mrp-menu-resp-wrapper li button.menu-button {
+	text-align: left;
+}
+.mrp-menu-resp-wrapper li.on ul.sub li a {
+	padding: 6px 6px 6px 34px;
+}
+.mrp-menu-resp-wrapper li.on ul.sub li a:hover {
+	border-left: 0px solid #000;
+	text-indent: 2px;
+}
+.mrp-menu-resp-wrapper > ul > li:hover {
+	border-bottom: 1px solid #dfdfdf;
+}
+.mrp-idx-on .mrp-menu-resp-wrapper > ul {
+	overflow: scroll !important;
+}
+html.mrp-fullscreen #custom-idx-branding {
+	overflow: hidden;
+}
+.mrp-menu-resp-wrapper > ul {
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+.mrp-menu-on #mrp-container1 {
+        opacity: 0.3;
+}
+}
+
+#header-wrapper {
+	position: relative;
+}
+
+#mrp-header {
+	min-height: 200px;	
+        padding-top: 150px;
+}
+
+#mrp-header video {
+        width: 100%;
+}
+
+#content-wrapper {
+        padding: 25px 10px 50px 10px;        
+}
+#content-well {
+        max-width: 1250px;
+        margin: 0 auto;
+}
+#mrp-sidebar {
+        display: none;
+}
+
+#content-well .mrp-weblet-contact-form .mrp-resp-form-wrapper {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+#content-well .mrp-weblet-contact-form .form-buttons .buttons-left {
+        display: none;
+}
+#content-well .mrp-weblet-contact-form .form-buttons .buttons-right {
+        widtH: 100%;
+}
+
+#content-well .mrp-weblet-contact-form .form-buttons .submit-button {
+        widtH: 100%;
+        text-align: center;
+        background-color: #002d56;
+        color: #FFFFFF;
+        border-radius: 10px;
+        border: 0;
+        padding: 20px;
+}
+
+#content-well .mrp-weblet-contact-form .contact-form-info, 
+#content-well .mrp-weblet-contact-form .mrp-social-media-links {
+        max-width: 460px;
+        margin: 0 auto;
+}
+#content-well .mrp-weblet-contact-form .mrp-social-media-links {
+        padding-top: 15px;
+        padding-bottom: 20px;
+        text-align: center;
+}
+
+#content-well .mrp-weblet-contact-form .mrp-contact-numbers .contact-point > label {
+        padding-right: 10px;
+}
+#content-well .mrp-weblet-contact-form .mrp-dynamic-form .form-inner > h3 {
+        margin-left: 0;
+        text-align: center;
+        font-size: 30px;
+        font-weight: 600;
+}
+
+.mrp-weblet-contact-form .mrp-contact-numbers .heading, .mrp-weblet-contact-form .mrp-address .heading {
+        font-weight: 500;
+        color: #002d56;
+}
+
+.mrp-style-area a {
+  color: #002d56 !important;
+}
+.mrp-style-area a:hover,
+.mrp-style-area a:focus {
+  color: #595959 !important;
+}
+
+#listing-results-view.mrp-style-area .mrp-listing-details-link a {
+        background-color: #002d56 !important;
+        color: #FFFFFF !important;
+}
+#listing-results-view.mrp-style-area .summary-property-type {
+        background-color: #002d56 !important;
+}
+#listing-details-view.mrp-style-area .mrp-listing-details-tabs li.active {
+    border-bottom: 3px solid #002d56 !important;
+}
+#listing-details-view.mrp-style-area .mrp-listing-quick-actions > span, 
+#listing-details-view.mrp-style-area .mrp-listing-links-section > ul li {
+        background-color: #002d56 !important;
+}
+#listing-details-view.mrp-style-area .mrp-listing-links-section > ul li a {
+        color: #FFFFFF !important;
+}
+#listing-details-view.mrp-style-area .mrp-i-unit, #listing-details-view.mrp-style-area .mrp-m-unit {
+    color: #002d56 !important;
+    border-bottom: 2px solid #002d56 !important;
+}
+.mrp-style-area .btn-primary {
+        background-image: none !important;
+        border: 0 !important;
+        background-color: #002d56 !important;
+}
+.mrp-style-area .btn-primary:hover {
+        background-image: none !important;
+        border: 0 !important;
+        background-color: #595959 !important;
+}
+
+#listing-details-view.mrp-style-area .mrp-area-stats .mrp-area-stats-heading, 
+#listing-details-view.mrp-style-area .mrp-area-stats dd, 
+#listing-details-view.mrp-style-area .mrp-ll-sidebar .mrp-ll-heading {
+        color: #002d56 !important;
+}
+#listing-details-view.mrp-style-area .mrp-area-stats, 
+#listing-details-view.mrp-style-area .mrp-ll-sidebar {
+    border: 1px solid #002d56 !important;
+}
+#listing-details-view.mrp-style-area .mrp-ll-sidebar .mrp-ll-footer {
+    background-color: #002d56 !important;
+}
+.listing-details-view .market-container .market-button a {
+        color: #FFFFFF !important;
+}
+
+.mrp-idx-inpage #custom-idx-branding {
+    top: 0;
+}
+.mrp-idx-branding {
+        height: 110px !important;
+}
+
+@media (min-width: 768px) {
+.mrp-idx-form-container {
+    top: 110px !important;
+    height: calc(100% - 110px) !important;
+    min-height: calc(100% - 110px) !important;
+}
+}
+@media (max-width: 767px) {
+.mrp-idx-form-container {
+    top: 65px !important;
+    height: calc(100% - 110px) !important;
+    min-height: calc(100% - 110px) !important;
+}
+}
+
+@media (max-width: 841px) {
+#content-well .mrp-weblet-rich-text img {
+        float: none;
+        display: block;
+        margin: 0 auto;
+}
+}
+
+#footer-wrapper {
+		background-color: #f7f7f7;
+		padding: 25px 0;	
+}
+
+#footer-flex-wrap {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	padding-bottom: 20px;
+}
+#mrp-container5 {
+	width: 30%;
+	min-height: 25px;
+        padding-right: 15px;
+}
+#mrp-footer {
+	width: 40%;	
+	min-height: 25px;
+        padding: 0 15px;
+}
+#mrp-container6 {
+	width: 30%;	
+	min-height: 25px;
+        padding-left: 30px;
+}
+
+#mrp-container5 img {
+        max-width: 150px;
+}
+
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(1) {
+        display: inline-block;
+        width: 49%;
+}
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(2) {
+        display: inline-block;
+        width: 50%;
+}
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(3) {
+        display: inline-block;
+        width: 49%;
+}
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(4) {
+        display: inline-block;
+        width: 50%;
+}
+
+#mrp-footer .form-group-select label {
+        display: none;
+}
+#mrp-footer .form-group-select select {
+        width: 100%;
+        padding: 5px;
+        font-size: 14px;
+        color: #7a7a7a;
+        border: 2px solid #e6e6e6;
+        text-transform: uppercase;
+}
+#mrp-footer .form-group > .control-wrapper {
+        padding: 5px;
+}
+#mrp-footer .form-group > .control-wrapper > input.form-control, 
+#mrp-footer .form-group > .control-wrapper > textarea.form-control {
+        padding: 5px;
+        font-size: 14px;
+        border: 2px solid #e6e6e6;
+}
+
+#mrp-footer .submit-button {
+        padding: 15px 20px;
+        background-color: #002d56;
+        color: #FFFFFF;
+        font-size: 16px;
+        font-weight: 400;
+        border:0;
+}
+
+@media (max-width: 650px) {
+#footer-flex-wrap {
+        flex-wrap: wrap;
+        align-items: center;
+}
+#mrp-container5 {
+	width: 50%;
+	min-height: 25px;
+        padding: 10px;
+        order: 1;
+}
+#mrp-footer {
+	width: 100%;	
+	min-height: 25px;
+        padding: 10px;
+        order: 3;
+}
+#mrp-container6 {
+	width: 50%;	
+	min-height: 25px;
+        padding: 10px;
+        order: 2;
+}
+
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(1),
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(2),
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(3),
+#mrp-footer .mrp-weblet-custom-form .form-inner .form-group:nth-of-type(4) {
+        display: block;
+        width: 100%;
+}
+}
+
+.mrp-weblet-omnibox-v2 .location-search-button {
+    background-color: #002d56;
+	transition: all 0.5s ease;
+}
+.mrp-weblet-omnibox-v2 .location-search-button:hover {
+    background-color: #222222;
+}
+
+.mrp-weblet-omnibox-v2 .selectize-control.multi .selectize-input [data-value] {
+    background-color: #002d56 !important;
+    border: 1px solid #00478a !important;
+}
+.selectize-control.plugin-remove_button [data-value] .remove {
+    border-left: 1px solid #00478a !important;
+}
+.mrp-basic-filter-form .bottom a.save-search {
+    background-color: #002d56 !important;
+        color: #FFFFFF !important;
+}
+
+.page-footer-copyright a {
+    background: url(../custom/myrealpage-logo.png) center center no-repeat;
+    display: block;
+    height: 28px;
+    margin: auto;
+    text-indent: -9999px;
+    width: 135px
+}
+
+@font-face {
+  font-family: 'Kalam';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/kalam/v16/YA9dr0Wd4kDdMthROCI.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCIPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvoorCIPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVsEpbCIPrQ.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/raleway/v29/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrQ.ttf) format('truetype');
+}
+
+#listing-results-view.mrp-style-area .mrp-listing-attribution-container {
+    max-width:300px;
+}
+
+/* Required accessibility and JS pattern styles */
+.skip-link {
+  position: absolute;
+  transform: translateY(-100%);
+  left: 0;
+  top: 0;
+  background: #fff;
+  color: #000;
+  padding: 0.75rem 1rem;
+  z-index: 10000;
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+:focus-visible {
+  outline: 3px solid #005FCC;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+.nav-toggle { display: none; }
+@media (max-width: 768px) { .nav-toggle { display: block; } }
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+.weblet_blog-entry-share-section button {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+  </style>
+  <base href="/">
+  <meta content="SwMTWVtUPHrj9ou5RV37pbYmMjd1GwqC7be7RUUY00o" name="google-site-verification">
+  <title>I have sold a property at 402 29TH ST E in North Vancouver — Mr &amp; Mrs Price : Real Estate Specialists</title>
+  <meta content="I have sold a property at 402 29TH ST E in North Vancouver. See details here This beautiful 3000 SF home is set on a generous 13140 SF lot &amp;amp; fronts onto the cul-de-sac of St Andrews Ave. A bright, impressive living space on the main floor with origi..." name="description">
+  <meta content="blog" name="medium">
+  <meta content="Mr &amp; Mrs Price : Real Estate Specialists" name="author">
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="" property="og:image">
+  <meta content="" property="article:publisher">
+  <meta content="" property="article:author">
+  <meta content="2015-02-15T09:02:45+00:00" property="article:modified_time">
+  <meta content="2015-02-15T09:02:45+00:00" property="article:published_time">
+  <meta content="136159756405499" property="fb:app_id">
+  <meta content="" property="og:url">
+  <meta content="Mr &amp; Mrs Price : Real Estate Specialists" property="og:site_name">
+  <meta content="I have sold a property at 402 29TH ST E in North Vancouver. See details here This beautiful 3000 SF home is set on a generous 13140 SF lot &amp;amp; fronts onto the cul-de-sac of St Andrews Ave. A bright, impressive living space on the main floor with origi..." property="og:description">
+  <meta content="I have sold a property at 402 29TH ST E in North Vancouver" property="og:title">
+  <meta content="article" property="og:type">
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0 maximum-scale=1.0, user-scalable=no" name="viewport">
+  <meta content="AymqwRC7u88Y4JPvfIF2F37QKylC04248hLCdJAsh8xgOfe/dVJPV3XS3wLFca1ZMVOtnBfVjaCMTVudWM//5g4AAAB7eyJvcmlnaW4iOiJodHRwczovL3d3dy5nb29nbGV0YWdtYW5hZ2VyLmNvbTo0NDMiLCJmZWF0dXJlIjoiUHJpdmFjeVNhbmRib3hBZHNBUElzIiwiZXhwaXJ5IjoxNjk1MTY3OTk5LCJpc1RoaXJkUGFydHkiOnRydWV9" http-equiv="origin-trial">
+</head>
+<body class="themeBlank blog-post-full blog" id="pagewrap__p">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="html-layout" id="page-template-layout" rel="mrp-layout">
+    <div class="outer-container">
+      <header class="override-framed-idx-branding mrp-idx-branding" id="custom-idx-branding">
+        <div id="top-navigation-wrapper">
+          <div id="mrp-container1">
+            <div class="mrp-weblet mrp-weblet-rich-text" data-name="rich-text" id="rich-text-1800725630391928853-t">
+              <div class="weblet-inner">
+                <a href="/" aria-label="Mr and Mrs Price home">
+                  <img alt="Mr and Mrs Price logo" src="rick.jpg">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div id="mrp-container2">
+            <div class="mrp-weblet mrp-weblet-menu" data-name="menu" id="menu-8093468113336198883-t">
+              <div class="weblet-inner mrp-menu-resp-wrapper">
+                <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu" class="nav-toggle top-handle" type="button">
+                  <span aria-hidden="true">&#9776;</span>
+                </button>
+                <nav id="mobile-nav" aria-label="Main">
+                  <ul class="top" id="menu-8093468113336198883-t_menu_resp">
+                    <li class="has-sub has-dropdown">
+                      <button class="menu-button" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-who">
+                        Who? <span aria-hidden="true">&#9660;</span>
+                      </button>
+                      <ul class="sub" id="dropdown-who" role="list" hidden>
+                        <li><a href="/about-us">About Us</a></li>
+                        <li><a href="/about-stilhavn">About Stilhavn</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                      </ul>
+                    </li>
+                    <li class="has-sub has-dropdown">
+                      <button class="menu-button" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-what">
+                        What? <span aria-hidden="true">&#9660;</span>
+                      </button>
+                      <ul class="sub" id="dropdown-what" role="list" hidden>
+                        <li><a href="/our-listings">Our Listings</a></li>
+                        <li><a href="/mls-search">MLS Search</a></li>
+                        <li><a href="/thinking-of-buying">Thinking of Buying?</a></li>
+                        <li><a href="/thinking-of-selling">Thinking of Selling?</a></li>
+                      </ul>
+                    </li>
+                    <li class="has-sub has-dropdown">
+                      <button class="menu-button" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-where">
+                        Where? <span aria-hidden="true">&#9660;</span>
+                      </button>
+                      <ul class="sub" id="dropdown-where" role="list" hidden>
+                        <li><a href="/search-all-mls">Search all MLS</a></li>
+                        <li><a href="/search-north-vancouver">Search North Vancouver</a></li>
+                        <li><a href="/search-west-vancouver">Search West Vancouver</a></li>
+                        <li><a href="/search-east-vancouver">Search East Vancouver</a></li>
+                      </ul>
+                    </li>
+                    <li class="has-sub has-dropdown">
+                      <button class="menu-button" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dropdown-when">
+                        When? <span aria-hidden="true">&#9660;</span>
+                      </button>
+                      <ul class="sub" id="dropdown-when" role="list" hidden>
+                        <li><a href="/magic-8-ball">Magic 8 Ball</a></li>
+                        <li><a href="/market-insight">Market Insight</a></li>
+                        <li><a href="/snap-stats-reports">Snap Stats Reports</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div id="header-wrapper">
+        <header id="mrp-header" aria-label="Page header"></header>
+      </div>
+
+      <div class="clearfix" id="content-wrapper">
+        <aside class="mrp-sidebar mrp-sidebar-right" data-sidebar="auto" id="mrp-sidebar" aria-label="Sidebar"></aside>
+        <main id="main-content">
+          <div id="content-well">
+            <table border="0" cellpadding="0" cellspacing="0" class="layout" id="page-layout" rel="mrp-layout" style="margin: 0px 0px 0px 0px;" width="100%">
+              <colgroup id="page-layout-colgroup">
+                <col id="page-layout-col1" width="100%">
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td align="left" height="200" valign="top" width="100%">
+                    <div class="mrp-weblet mrp-weblet-blog" data-name="blog" id="blog-3368057367467600896-p">
+                      <div class="weblet-inner blog-entry">
+                        <article class="weblet_blog-blog-entry clearfix sold-listing" data-id="3624983" itemscope itemtype="https://schema.org/Article">
+                          <div class="weblet_blog-syndication-section">
+                            <a href="/blog/rss" aria-label="Subscribe to RSS feed">
+                              <span aria-hidden="true">RSS</span>
+                              <span>RSS</span>
+                            </a>
+                          </div>
+                          <h1 class="weblet_blog-entry-heading" itemprop="headline">
+                            I have sold a property at 402 29TH ST E in North Vancouver
+                          </h1>
+                          <div class="weblet_blog-entry-info">
+                            <div class="weblet_blog-entry-author-section">
+                              <span class="weblet_blog-posted-on-literal">Posted on</span>
+                              <time class="weblet_blog-posted-date" datetime="2015-02-15T09:02:45+00:00" itemprop="datePublished">
+                                February 15, 2015
+                              </time>
+                              <span class="weblet_blog-posted-by-literal">by</span>
+                              <span class="weblet_blog-entry-author-name" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                                <span itemprop="name">Gavin Price</span>
+                              </span>
+                            </div>
+                            <div class="weblet_blog-entry-labels-section" itemprop="articleSection">
+                              <span class="weblet_blog-posted-in-literal">Posted in</span>
+                              <a class="weblet_blog-category-item" href="/category/upper-lonsdale-north-vancouver-real-estate">
+                                Upper Lonsdale, North Vancouver Real Estate
+                              </a>
+                            </div>
+                            <div class="weblet_blog-entry-share-section" aria-label="Share this article">
+                              <button type="button" data-url="" data-platform="twitter" aria-label="Share this article on Twitter">
+                                <span aria-hidden="true">Twitter</span>
+                              </button>
+                              <button type="button" data-url="" data-platform="facebook" aria-label="Share this article on Facebook">
+                                <span aria-hidden="true">Facebook</span>
+                              </button>
+                            </div>
+                          </div>
+                          <div class="weblet_blog-entry-image-container missing-photo" aria-hidden="true">
+                            <span></span>
+                          </div>
+                          <div class="weblet_blog-entry-text" itemprop="articleBody">
+                            <div class="photoplaceholder" style="float: left; margin-right: 10px; margin-bottom: 5px; position: relative;">
+                              <a href="/property/402-29th-st-e-north-vancouver" aria-label="View property details for 402 29TH ST E in North Vancouver">
+                                <img alt="Front exterior photo of 402 29TH ST E in North Vancouver" itemprop="image" src="rick.jpg" style="border: 1px solid gray">
+                                <img alt="" src="rick.jpg" style="position: absolute; top: 0; left: 0;">
+                              </a>
+                            </div>
+                            <div>
+                              I have sold a property at 402 29TH ST E in North Vancouver.
+                              <div style="margin: 10px 0px 10px 0px">
+                                <a href="/property/402-29th-st-e-north-vancouver">
+                                  View property details for 402 29TH ST E in North Vancouver
+                                </a>
+                              </div>
+                            </div>
+                            <div>
+                              <div style="margin-top: 10px">
+                                This beautiful 3000 SF home is set on a generous 13140 SF lot &amp; fronts onto the cul-de-sac of St Andrews Ave. A bright, impressive living space on the main floor with original H/W floors, 3 beds, 1 bath, kitchen &amp; family room with afabulous deck overlooking the mature garden. Partially finished basement has 1 bed, 1 bath &amp; rec room (suite potential).
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+
+      <footer class="clearfix" id="footer-wrapper">
+        <div id="footer-flex-wrap">
+          <div id="mrp-container5">
+            <div class="mrp-weblet mrp-weblet-rich-text" data-name="rich-text" id="rich-text-5879342413413220241-t">
+              <div class="weblet-inner">
+                <p style="text-align: center;">
+                  <img alt="Real estate association logo" src="rick.jpg">
+                </p>
+                <p><br></p>
+                <p style="text-align: center;">
+                  <img alt="Brokerage logo" src="rick.jpg">
+                </p>
+                <p><br></p>
+                <p style="text-align: center;">
+                  <img alt="Professional certification logo" src="rick.jpg">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="mrp-footer">
+            <div class="mrp-weblet mrp-weblet-custom-form" data-name="custom-form" id="custom-form-5293252322735903423-t">
+              <div class="weblet-inner">
+                <div class="mrp-resp-form-wrapper">
+                  <form class="mrp-dynamic-form" id="custom-form-5293252322735903423-t-form" method="POST" novalidate>
+                    <input name="__rt" type="hidden" value="custom-form-5293252322735903423-t">
+                    <div class="form-inner stacked placeholders">
+                      <h2>Contact Us</h2>
+
+                      <div class="form-group required form-group-text">
+                        <label for="first-name">FIRST NAME:</label>
+                        <div class="control-wrapper">
+                          <input class="form-control dynamic-form-text" id="first-name" name="custom-form-5293252322735903423-t_FIRST NAME" placeholder="FIRST NAME" required type="text" value="" aria-describedby="first-name-error" aria-invalid="false">
+                          <span id="first-name-error" class="control-error" role="alert" aria-live="assertive" hidden></span>
+                        </div>
+                      </div>
+
+                      <div class="form-group required form-group-text">
+                        <label for="last-name">LAST NAME:</label>
+                        <div class="control-wrapper">
+                          <input class="form-control dynamic-form-text" id="last-name" name="custom-form-5293252322735903423-t_LAST NAME" placeholder="LAST NAME" required type="text" value="" aria-describedby="last-name-error" aria-invalid="false">
+                          <span id="last-name-error" class="control-error" role="alert" aria-live="assertive" hidden></span>
+                        </div>
+                      </div>
+
+                      <div class="form-group required form-group-text">
+                        <label for="email-address">EMAIL ADDRESS:</label>
+                        <div class="control-wrapper">
+                          <input class="form-control dynamic-form-text" id="email-address" name="custom-form-5293252322735903423-t_EMAIL ADDRESS" placeholder="EMAIL ADDRESS" required type="email" value="" aria-describedby="email-address-error" aria-invalid="false">
+                          <span id="email-address-error" class="control-error" role="alert" aria-live="assertive" hidden></span>
+                        </div>
+                      </div>
+
+                      <div class="form-group form-group-text">
+                        <label for="phone-number">PHONE NUMBER:</label>
+                        <div class="control-wrapper">
+                          <input class="form-control dynamic-form-text" id="phone-number" name="custom-form-5293252322735903423-t_PHONE NUMBER" placeholder="PHONE NUMBER" type="tel" value="">
+                        </div>
+                      </div>
+
+                      <div class="form-group form-group-select">
+                        <label for="selling-buying">Selling/Buying:</label>
+                        <div class="control-wrapper">
+                          <select class="form-control dynamic-form-select" id="selling-buying" name="custom-form-5293252322735903423-t_Selling/Buying" aria-label="Selling or buying interest">
+                            <option value="">Select an option</option>
+                            <option selected value="I’m interested in selling a home">I’m interested in selling a home</option>
+                            <option value="I’m interested in buying a home">I’m interested in buying a home</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group form-group-long-text">
+                        <label for="your-message">YOUR MESSAGE:</label>
+                        <div class="control-wrapper">
+                          <textarea class="form-control dynamic-form-long-text" id="your-message" name="custom-form-5293252322735903423-t_YOUR MESSAGE" placeholder="YOUR MESSAGE"></textarea>
+                        </div>
+                      </div>
+
+                      <div aria-live="polite" id="form-status" class="sr-only"></div>
+
+                      <div class="form-buttons">
+                        <div class="buttons-left"></div>
+                        <div class="buttons-right">
+                          <button class="btn submit-button" type="submit">
+                            Contact Us Now
+                          </button>
+                          <span class="sending-feedback" style="display: none">
+                            Sending...
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <input name="__src_url" type="hidden" value="">
+                    <input name="__sh" type="hidden" value="ec3ce60746390057deabf6eafdc6c1ba546a792f-*-ahx42sd8kw83-[PHONE REDACTED]">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="mrp-container6">
+            <div class="mrp-weblet mrp-weblet-rich-text" data-name="rich-text" id="rich-text-894955042097339411-t">
+              <div class="weblet-inner">
+                <h2>Gavin Price</h2>
+                <p>(M) 604 365 9120</p>
+                <p><a href="mailto:info@example.com">Email Gavin Price</a></p>
+                <h2>Veronica Price</h2>
+                <p>(M) 604 417 9914</p>
+                <p><a href="mailto:info@example.com">Email Veronica Price</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <footer class="provider-attribution">
+    <div class="page-footer-copyright">
+      Powered by
+      <a href="https://www.myrealpage.com/" target="mrp" rel="noopener noreferrer">
+        myRealPage.com
+      </a>
+    </div>
+  </footer>
+
+  <div class="mrp-crea-attribution region-GV">
+    <img alt="MLS logo" src="rick.jpg" style="float: right; margin-left: 10px">
+    The data relating to real estate on this website comes in part from the MLS&reg; Reciprocity program of either the Real Estate Board of Greater Vancouver (REBGV), the Fraser Valley Real Estate Board (FVREB) or the Chilliwack and District Real Estate Board (CADREB).
+  </div>
+
+  <button class="mrp-sidebar-tab right" type="button" aria-label="Open sidebar" hidden></button>
+
+  <script>
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+
+    (function () {
+      const branding = document.getElementById('custom-idx-branding');
+      function updateStickyNav() {
+        if (!branding) return;
+        if (window.scrollY > 20) {
+          branding.classList.add('main-nav-scrolled');
+        } else {
+          branding.classList.remove('main-nav-scrolled');
+        }
+      }
+      updateStickyNav();
+      window.addEventListener('scroll', updateStickyNav, { passive: true });
+    })();
+
+    (function () {
+      const toggle = document.getElementById('nav-toggle');
+      const nav = document.getElementById('mobile-nav');
+
+      if (toggle && nav) {
+        function syncMobileNav() {
+          if (window.innerWidth <= 768) {
+            nav.hidden = toggle.getAttribute('aria-expanded') !== 'true';
+          } else {
+            nav.hidden = false;
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open navigation menu');
+            document.documentElement.classList.remove('mrp-menu-on');
+          }
+        }
+
+        toggle.addEventListener('click', () => {
+          const expanded = toggle.getAttribute('aria-expanded') === 'true';
+          toggle.setAttribute('aria-expanded', String(!expanded));
+          toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+          nav.hidden = expanded;
+          document.documentElement.classList.toggle('mrp-menu-on', !expanded);
+          toggle.classList.toggle('on', !expanded);
+          if (!expanded) {
+            const firstFocusable = nav.querySelector('a, button');
+            if (firstFocusable) firstFocusable.focus();
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && nav.hidden === false && window.innerWidth <= 768) {
+            nav.hidden = true;
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open navigation menu');
+            document.documentElement.classList.remove('mrp-menu-on');
+            toggle.classList.remove('on');
+            toggle.focus();
+          }
+        });
+
+        window.addEventListener('resize', syncMobileNav);
+        syncMobileNav();
+      }
+    })();
+
+    (function () {
+      const dropdownButtons = document.querySelectorAll('.has-dropdown > button[aria-controls]');
+
+      function closeAllDropdowns(exceptButton) {
+        dropdownButtons.forEach(button => {
+          if (button === exceptButton) return;
+          const menu = document.getElementById(button.getAttribute('aria-controls'));
+          button.setAttribute('aria-expanded', 'false');
+          if (menu) {
+            menu.hidden = true;
+          }
+          const li = button.closest('li');
+          if (li) li.classList.remove('on');
+        });
+      }
+
+      dropdownButtons.forEach(button => {
+        const menu = document.getElementById(button.getAttribute('aria-controls'));
+        if (!menu) return;
+
+        const getItems = () => Array.from(menu.querySelectorAll('a[href]'));
+
+        button.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const expanded = button.getAttribute('aria-expanded') === 'true';
+          closeAllDropdowns(button);
+          button.setAttribute('aria-expanded', String(!expanded));
+          menu.hidden = expanded;
+          const li = button.closest('li');
+          if (li) li.classList.toggle('on', !expanded);
+        });
+
+        button.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            closeAllDropdowns(button);
+            button.setAttribute('aria-expanded', 'true');
+            menu.hidden = false;
+            const li = button.closest('li');
+            if (li) li.classList.add('on');
+            const items = getItems();
+            if (items.length) items[0].focus();
+          } else if (e.key === 'Escape') {
+            button.setAttribute('aria-expanded', 'false');
+            menu.hidden = true;
+            const li = button.closest('li');
+            if (li) li.classList.remove('on');
+            button.focus();
+          }
+        });
+
+        menu.addEventListener('keydown', (e) => {
+          const items = getItems();
+          const currentIndex = items.indexOf(document.activeElement);
+
+          if (e.key === 'Escape') {
+            button.setAttribute('aria-expanded', 'false');
+            menu.hidden = true;
+            const li = button.closest('li');
+            if (li) li.classList.remove('on');
+            button.focus();
+          } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (!items.length) return;
+            const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % items.length : 0;
+            items[nextIndex].focus();
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (!items.length) return;
+            const prevIndex = currentIndex >= 0 ? (currentIndex - 1 + items.length) % items.length : items.length - 1;
+            items[prevIndex].focus();
+          }
+        });
+
+        const items = getItems();
+        if (items.length) {
+          items[items.length - 1].addEventListener('keydown', (e) => {
+            if (e.key === 'Tab' && !e.shiftKey) {
+              button.setAttribute('aria-expanded', 'false');
+              menu.hidden = true;
+              const li = button.closest('li');
+              if (li) li.classList.remove('on');
+            }
+          });
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('.has-dropdown')) {
+          closeAllDropdowns();
+        }
+      });
+    })();
+
+    (function () {
+      const form = document.getElementById('custom-form-5293252322735903423-t-form');
+      if (!form) return;
+
+      const status = document.getElementById('form-status');
+
+      function validateField(input) {
+        const errorElId = input.getAttribute('aria-describedby');
+        const errorEl = errorElId ? document.getElementById(errorElId) : null;
+        let message = '';
+
+        if (input.hasAttribute('required') && !input.value.trim()) {
+          message = `${input.labels[0].textContent.trim()} is required`;
+        } else if (input.type === 'email' && input.value.trim()) {
+          const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
+          if (!emailValid) {
+            message = 'EMAIL ADDRESS: must be a valid email address';
+          }
+        }
+
+        if (errorEl) {
+          if (message) {
+            input.setAttribute('aria-invalid', 'true');
+            errorEl.textContent = message;
+            errorEl.hidden = false;
+          } else {
+            input.setAttribute('aria-invalid', 'false');
+            errorEl.hidden = true;
+            errorEl.textContent = '';
+          }
+        }
+
+        return !message;
+      }
+
+      form.querySelectorAll('[required], input[type="email"]').forEach(input => {
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => {
+          if (input.getAttribute('aria-invalid') === 'true') {
+            validateField(input);
+          }
+        });
+      });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let firstError = null;
+
+        form.querySelectorAll('[required], input[type="email"]').forEach(input => {
+          const valid = validateField(input);
+          if (!valid && !firstError) firstError = input;
+        });
+
+        if (firstError) {
+          if (status) status.textContent = 'Please correct the errors in the form.';
+          firstError.focus();
+        } else {
+          if (status) status.textContent = 'Form submitted successfully.';
+        }
+      });
+    })();
+
+    (function () {
+      document.querySelectorAll('.weblet_blog-entry-share-section button[data-platform]').forEach(button => {
+        button.addEventListener('click', () => {
+          const url = button.getAttribute('data-url') || window.location.href;
+          const platform = button.getAttribute('data-platform');
+          let shareUrl = '';
+
+          if (platform === 'twitter') {
+            shareUrl = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(url);
+          } else if (platform === 'facebook') {
+            shareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url);
+          }
+
+          if (shareUrl) {
+            window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=500');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added lang attribute; updated title to page-specific format; added skip link and main-content target; converted top branding area to header; added nav landmark for main navigation; converted content area to main; converted sidebar to aside with label; converted footer wrapper and provider attribution to footer landmarks; ensured one descriptive h1; adjusted footer contact names to h2 for heading hierarchy; added descriptive alt text to all images; added descriptive href/text to links; added explicit labels/ids for all form controls; added required attributes and proper input types.
+[B] ARIA fixes: avoided redundant landmark roles; labeled navigation and aside landmarks; removed invalid/redundant attributes and fixed schema URLs; added aria-expanded/aria-controls/aria-haspopup for menu buttons; added aria-live error/status regions for form validation; ensured no positive tabindex remains via JS.
+[C] JS patterns added: sticky navigation on scroll; hamburger menu toggle with aria-expanded, hidden state, focus management, and Escape close; accessible dropdown menus with click, outside click, Escape, ArrowDown/ArrowUp keyboard support; form validation with inline errors, aria-invalid, live announcements, and submit status; global focus-visible styling and positive tabindex cleanup.
+-->

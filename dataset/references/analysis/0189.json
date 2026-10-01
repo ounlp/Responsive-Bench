@@ -1,0 +1,73 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a distinct top header/navigation bar separated from the page content; in the mobile sketch it occupies the full top width with a control on the right, and in the desktop sketch it appears as a persistent horizontal bar above the content.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should likely remain fixed or persistently visible while the page scrolls, especially since the content extends below it and the top bar is visually isolated as a global control area.",
+      "ambiguities": "The sketch does not explicitly show scrolling states, so the bar could also be static at page top; stickiness is inferred from the strong header separation and common responsive pattern."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact rectangular control at the top-right of the header area, which reads as a collapsed navigation trigger rather than inline navigation links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Tapping the top-right control should open and close a mobile navigation panel or menu. The menu would likely overlay or push content below the header.",
+      "ambiguities": "The icon is loosely drawn and could represent another utility control, but in this layout position it most strongly suggests a mobile menu toggle."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch includes a small centered rectangular field in the top header area, visually distinct from the content blocks and consistent with a search box.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The field should accept text input and trigger a search on Enter or via an associated submit action. At minimum it needs interactive input handling and likely navigation to results.",
+      "ambiguities": "No explicit search icon or button is drawn, so it is unclear whether behavior is simple submit-only or includes live suggestions."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "desktop",
+      "visual_evidence": "The small centered header field on desktop appears to be an input control intended for user entry, implying submission handling and validation of empty or invalid input.",
+      "confidence": "LOW",
+      "behavior_notes": "If the header field is a search or lookup form, JavaScript should validate that input is present before submission and provide feedback for invalid states.",
+      "ambiguities": "This depends on the top control truly being a form field rather than a decorative label or logo container."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "F1",
+    "F2",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav"
+    ],
+    "desktop": [
+      "search_input",
+      "form_validation",
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "The sketches imply a fairly light JavaScript layer centered on global header behavior rather than rich in-page widgets. Mobile appears to prioritize a collapsed top-right navigation control, while desktop replaces that with a compact header input that likely functions as search. The content cards themselves do not clearly indicate tabs, accordions, modals, pagination, or dynamic loading, so the main cross-viewport JS concerns are responsive header interaction, possible sticky behavior, and basic input handling."
+}

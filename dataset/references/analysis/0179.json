@@ -1,0 +1,75 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a boxed three-line menu icon at the top right, while the desktop sketch replaces this with inline top navigation links.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the hamburger should open and close the primary navigation panel for mobile. Because the desktop version exposes navigation directly, this is a viewport-specific navigation disclosure pattern.",
+      "ambiguities": "The sketch does not show whether the mobile menu opens as a full-screen drawer, dropdown panel, or slide-in off-canvas menu."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent header/navigation band at the very top separated by a horizontal rule, and the reference layout strongly suggests a fixed site header across viewports.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "The top navigation/header should remain available while scrolling, especially on the long content-heavy page shown in both sketches.",
+      "ambiguities": "The sketch itself does not explicitly depict scrolling states, so fixed-on-scroll behavior is inferred from the persistent top bar treatment and long page length."
+    },
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches include a footer-area form with a text input and adjacent button, visually indicating a search or simple submit field. The desktop header also appears to reserve utility-nav space where search commonly lives, consistent with the reference HTML.",
+      "confidence": "HIGH",
+      "behavior_notes": "The input requires submit behavior at minimum; if implemented like the reference, desktop may also support a header search reveal/submit interaction. The visible footer field should accept text, focus correctly, and submit queries.",
+      "ambiguities": "The sketch does not label the field, so it could be newsletter signup or site search; however the single input plus button pattern most strongly implies search/submit behavior."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The footer form in both sketches includes a text field and a submit button, implying user-entered data that must be checked before submission.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Validate required input presence and possibly format depending on whether the field is search, email signup, or contact capture. Errors should be surfaced near the field and submission state handled clearly.",
+      "ambiguities": "Because the field is unlabeled in the sketch, the exact validation rules are unclear."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "search_input",
+      "form_validation"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input",
+      "form_validation"
+    ]
+  },
+  "sketch_notes": "These sketches imply a relatively low-JS, content-first page whose main interactive complexity is concentrated in global chrome rather than the body content. The mobile viewport clearly requires a hamburger-driven navigation pattern, while desktop exposes navigation directly and therefore removes that disclosure need. Across both viewports, the long scrolling layout suggests a persistent/sticky header is desirable, and the footer input-plus-button control implies at least submit handling and validation. No tabs, accordions, modals, dropdown submenus, or dynamic loading behaviors are visually indicated in the sketches themselves."
+}

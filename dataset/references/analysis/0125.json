@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch shows a compact header with a small square icon containing horizontal lines in the top-right, a conventional hamburger/menu trigger, while full navigation links are not visible inline.",
+      "confidence": "HIGH",
+      "behavior_notes": "Tapping the icon should open and close a navigation panel or overlay containing the site links. The trigger should reflect open/closed state and likely hide body scroll while the menu is open.",
+      "ambiguities": "The sketch does not show whether the menu opens as a full-screen overlay, slide-in drawer, or dropdown panel."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place branding/navigation at the very top in a persistent header-like band, while the rest of the page is long-form content below; this strongly implies the header remains available during scrolling.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header/navigation should remain fixed or become fixed on scroll so branding and navigation stay accessible while reading the page content.",
+      "ambiguities": "The sketch does not explicitly indicate whether the header is always fixed or only becomes sticky after scrolling."
+    },
+    {
+      "pattern_id": "scroll_to_top",
+      "present_in": "both",
+      "visual_evidence": "The page composition in both sketches is content-heavy and vertically scrollable, especially the mobile sketch with a very long article-like body, which commonly implies a return-to-top affordance even if not explicitly drawn.",
+      "confidence": "LOW",
+      "behavior_notes": "A back-to-top control would typically appear after the user scrolls down and smoothly return focus/scroll position to the top when activated.",
+      "ambiguities": "No explicit button is drawn in either sketch, so this is inferred from the long-scroll layout rather than directly depicted."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "scroll_to_top"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "scroll_to_top"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple informational page with limited JavaScript needs: the main cross-viewport behavior is a persistent top navigation/header, while the clearest mobile-specific interaction is a hamburger-triggered navigation menu. No forms, tabs, accordions, modals, dropdown submenus, or dynamic loading controls are visibly suggested by the drawings. The only additional inferred enhancement is a scroll-to-top affordance due to the unusually long reading layout, but that remains speculative because it is not explicitly sketched."
+}

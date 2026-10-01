@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Everything Studio — Scratch</title>
+  <style>
+    :root{
+      --bg:#eef4ff;
+      --purple:#855cd6;
+      --purple-dark:#6f49c8;
+      --text:#575f78;
+      --heading:#59627d;
+      --line:#cfd7e6;
+      --card:#ffffff;
+      --pill:#fff;
+      --pill-border:#d8d2c6;
+      --olive:#9a9878;
+      --footer-bg:#f7f7f7;
+      --link:#7b5ce0;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{display:block; max-width:100%}
+    .skip-link{position:absolute; transform:translateY(-100%); left:8px; top:8px; background:#fff; color:#000; padding:8px 12px; z-index:1000}
+    .skip-link:focus{transform:translateY(0)}
+    :focus-visible {
+      outline: 3px solid #005FCC;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    :focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    .topbar{
+      background:var(--purple);
+      color:#fff;
+      min-height:35px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+    .topbar-inner{
+      width:min(1180px,100%);
+      padding:0 18px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:28px;
+      font-size:11px;
+      font-weight:600;
+    }
+    .topbar a{color:#fff}
+    .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:22px;padding:4px 8px;position:absolute;left:10px;top:4px}
+    #mobile-nav{
+      background:var(--purple);
+      padding:10px 16px 14px;
+    }
+    #mobile-nav a{
+      color:#fff;
+      display:block;
+      padding:8px 0;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    .page{
+      width:min(1180px,100%);
+      margin:0 auto;
+      padding:18px 26px 0;
+    }
+    .layout{
+      display:grid;
+      grid-template-columns:205px 1fr;
+      gap:26px;
+      align-items:start;
+    }
+    h1{
+      margin:0 0 14px;
+      color:var(--heading);
+      font-size:22px;
+      line-height:1.2;
+      font-weight:700;
+    }
+    h2{
+      margin:0 0 18px;
+      color:var(--heading);
+      font-size:22px;
+      line-height:1.2;
+      font-weight:700;
+    }
+
+    .studio-image{
+      width:100%;
+      height:130px;
+      border-radius:4px;
+      overflow:hidden;
+      background:#1a14ff;
+      box-shadow:0 0 0 1px rgba(0,0,0,.06);
+    }
+    .studio-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .studio-card{
+      margin-top:16px;
+      background:#dfeaff;
+      border-radius:4px;
+      padding:20px 16px;
+      text-align:center;
+      font-size:13px;
+      line-height:1.4;
+      min-height:260px;
+    }
+    .studio-card p{margin:0 0 12px}
+    .studio-meta{
+      margin-top:16px;
+      font-size:12px;
+      line-height:1.35;
+      color:#5f6880;
+    }
+    .meta-item{
+      display:flex;
+      align-items:flex-start;
+      gap:6px;
+      margin-bottom:2px;
+    }
+    .meta-icon{
+      width:16px;
+      height:12px;
+      background:#1a14ff;
+      border-radius:1px;
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+
+    .tabs{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:2px 0 8px;
+    }
+    .tab-pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px 8px 10px;
+      border-radius:18px;
+      border:1px solid var(--pill-border);
+      background:var(--pill);
+      color:var(--heading);
+      font-size:12px;
+      font-weight:600;
+      box-shadow:0 1px 0 rgba(0,0,0,.03);
+    }
+    .tab-pill.active{
+      background:var(--purple);
+      border-color:var(--purple);
+      color:#fff;
+    }
+    .tab-icon{
+      width:14px;
+      height:14px;
+      border-radius:1px;
+      background:var(--olive);
+      flex:0 0 auto;
+    }
+    .tab-pill.active .tab-icon{background:#2b1cff}
+    .divider{
+      border:0;
+      border-top:1px solid var(--line);
+      margin:8px 0 18px;
+    }
+
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+    .project-card{
+      background:var(--card);
+      border:1px solid #ddd;
+      border-radius:6px;
+      overflow:hidden;
+      box-shadow:0 1px 0 rgba(0,0,0,.03);
+    }
+    .project-thumb{
+      height:138px;
+      background:#1a14ff;
+    }
+    .project-thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .project-info{
+      display:grid;
+      grid-template-columns:28px 1fr;
+      gap:8px;
+      padding:7px 8px 6px;
+      align-items:start;
+      min-height:40px;
+    }
+    .avatar{
+      width:28px;
+      height:28px;
+      border-radius:2px;
+      overflow:hidden;
+      background:#1a14ff;
+    }
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .project-title{
+      display:block;
+      font-size:12px;
+      font-weight:700;
+      line-height:1.15;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      margin-top:1px;
+    }
+    .project-author{
+      display:block;
+      font-size:10px;
+      color:#5f6880;
+      font-weight:600;
+      margin-top:2px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    .load-more{
+      margin:18px 0 50px;
+      width:100%;
+      border:0;
+      background:var(--purple);
+      color:#fff;
+      font-size:11px;
+      font-weight:700;
+      border-radius:5px;
+      padding:8px 12px;
+      cursor:pointer;
+    }
+
+    footer{
+      background:var(--footer-bg);
+      margin-top:0;
+      padding:18px 0 14px;
+      border-top:1px solid #ececec;
+    }
+    .footer-inner{
+      width:min(1180px,100%);
+      margin:0 auto;
+      padding:0 26px;
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns:repeat(5, 1fr);
+      gap:28px;
+      align-items:start;
+    }
+    .footer-col h2{
+      font-size:12px;
+      margin:0 0 8px;
+      color:#5d647a;
+      font-weight:700;
+    }
+    .footer-col ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+    .footer-col li{
+      margin:0 0 6px;
+      font-size:12px;
+    }
+    .footer-col a{color:var(--link)}
+    .language-wrap{
+      display:flex;
+      justify-content:center;
+      margin-top:18px;
+    }
+    .language-wrap label{
+      position:absolute;
+      left:-9999px;
+    }
+    .language-wrap select{
+      width:150px;
+      padding:7px 10px;
+      border:1px solid #e1e1e1;
+      border-radius:4px;
+      background:#fff;
+      color:#666;
+      font-size:12px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-toggle { display: block; }
+      .topbar-inner.desktop-nav{display:none}
+      .page{padding:18px 14px 0}
+      .layout{
+        grid-template-columns:1fr;
+        gap:18px;
+      }
+      .sidebar{
+        order:1;
+      }
+      .content{
+        order:2;
+      }
+      .projects-grid{
+        grid-template-columns:repeat(2, 1fr);
+        gap:12px;
+      }
+      .project-thumb{height:90px}
+      .project-info{
+        grid-template-columns:24px 1fr;
+        gap:6px;
+        padding:6px;
+      }
+      .avatar{width:24px;height:24px}
+      .project-title{font-size:10px}
+      .project-author{font-size:9px}
+      .footer-grid{
+        grid-template-columns:repeat(5, 1fr);
+        gap:10px;
+      }
+      .footer-col h2{font-size:10px}
+      .footer-col li{font-size:10px}
+    }
+
+    @media (min-width: 769px) and (max-width: 980px){
+      .page{padding:18px 12px 0}
+      .layout{
+        grid-template-columns:190px 1fr;
+        gap:24px;
+      }
+      .projects-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+      .footer-grid{
+        grid-template-columns:repeat(5, 1fr);
+        gap:18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="topbar">
+    <button
+      id="nav-toggle"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+      aria-label="Open navigation menu"
+      class="nav-toggle">
+      <span aria-hidden="true">&#9776;</span>
+    </button>
+    <nav aria-label="Main" class="topbar-inner desktop-nav">
+      <a href="#">Create</a>
+      <a href="#">Explore</a>
+      <a href="#">Ideas</a>
+    </nav>
+  </header>
+
+  <nav id="mobile-nav" aria-label="Main" hidden>
+    <a href="#">Create</a>
+    <a href="#">Explore</a>
+    <a href="#">Ideas</a>
+  </nav>
+
+  <main id="main-content">
+    <div class="page">
+      <div class="layout">
+        <aside class="sidebar" aria-label="Studio information">
+          <h1>Add Everything Studio</h1>
+          <div class="studio-image">
+            <img src="rick.jpg" alt="Studio cover image">
+          </div>
+
+          <div class="studio-card">
+            <p>This is the official Add Everything Studios studio!</p>
+            <p>"I find it funny that this is an AE studio" quoted by</p>
+            <p><a href="#">@DudmasterUltra</a></p>
+            <p>hey BROS! add cool projects!</p>
+          </div>
+
+          <div class="studio-meta">
+            <div class="meta-item"><span class="meta-icon" aria-hidden="true"></span><span>Updated Jun 1, 2016</span></div>
+            <div class="meta-item"><span class="meta-icon" aria-hidden="true"></span><span>102 followers</span></div>
+          </div>
+        </aside>
+
+        <section class="content" aria-label="Studio projects">
+          <div role="tablist" aria-label="Studio sections" class="tabs">
+            <button role="tab" aria-selected="true" aria-controls="panel-projects" id="tab-projects" tabindex="0" class="tab-pill active"><span class="tab-icon" aria-hidden="true"></span>Projects (100+)</button>
+            <button role="tab" aria-selected="false" aria-controls="panel-comments" id="tab-comments" tabindex="-1" class="tab-pill"><span class="tab-icon" aria-hidden="true"></span>Comments (100+)</button>
+            <button role="tab" aria-selected="false" aria-controls="panel-curators" id="tab-curators" tabindex="-1" class="tab-pill"><span class="tab-icon" aria-hidden="true"></span>Curators</button>
+            <button role="tab" aria-selected="false" aria-controls="panel-activity" id="tab-activity" tabindex="-1" class="tab-pill"><span class="tab-icon" aria-hidden="true"></span>Activity</button>
+          </div>
+          <hr class="divider">
+
+          <div role="tabpanel" id="panel-projects" aria-labelledby="tab-projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Lego Skating"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Lego Skating</a><span class="project-author">macncheese0</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Pancake Flip!"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Pancake Flip!</a><span class="project-author">macncheese0</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for draggable custom block cr..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">draggable custom block cr...</a><span class="project-author">macncheese0</span></div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Make Your Own 3D World!"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Make Your Own 3D World!</a><span class="project-author">Awesomator8859</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for TYPE THE TEXT new 2016 ..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">TYPE THE TEXT new 2016 ...</a><span class="project-author">macncheese0</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Super Mario Maker Scratch..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Super Mario Maker Scratch...</a><span class="project-author">taco360</span></div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Light Project - The Sun"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Light Project - The Sun</a><span class="project-author">HusainA17</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Light Project - Reflection"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Light Project - Reflection</a><span class="project-author">HusainA17</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Light Project - Travel Throu..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Light Project - Travel Throu...</a><span class="project-author">HusainA17</span></div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Light Project - Light to Eart..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Light Project - Light to Eart...</a><span class="project-author">HusainA17</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Light Project - Light to Earth"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Light Project - Light to Earth</a><span class="project-author">HusainA17</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Light Project - Photosynthe..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Light Project - Photosynthe...</a><span class="project-author">HusainA17</span></div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Godzilla: Open World"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Godzilla: Open World</a><span class="project-author">Dreamcast</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for ●Circle in Scratch"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">●Circle in Scratch</a><span class="project-author">DudmasterUltra</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Save the city!"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Save the city!</a><span class="project-author">macncheese0</span></div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for christmas "zoom" scroller ..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">christmas "zoom" scroller ...</a><span class="project-author">macncheese0</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Slime Survival (revamped)"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Slime Survival (revamped)</a><span class="project-author">Thetekkiters8</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Music Vids: #1 TURN DOW..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Music Vids: #1 TURN DOW...</a><span class="project-author">Madpiggy123</span></div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Bullies (please read notes)-..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Bullies (please read notes)-...</a><span class="project-author">marscapone</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Snape vs. Bieber"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Snape vs. Bieber</a><span class="project-author">Dreamcast</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for kelth Rpg Demo"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">kelth Rpg Demo</a><span class="project-author">GoldSamurai</span></div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Dreamcast Advent Calenda..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Dreamcast Advent Calenda...</a><span class="project-author">Dreamcast</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for Scratch Jetpack Joyride"></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">Scratch Jetpack Joyride</a><span class="project-author">mightyguy11</span></div>
+                </div>
+              </article>
+              <article class="project-card">
+                <div class="project-thumb"><img src="rick.jpg" alt="Thumbnail for The adventures of Charles t..."></div>
+                <div class="project-info">
+                  <div class="avatar"><img src="rick.jpg" alt=""></div>
+                  <div><a href="#" class="project-title">The adventures of Charles t...</a><span class="project-author">FertileMoss18</span></div>
+                </div>
+              </article>
+            </div>
+            <button class="load-more" type="button">Load More</button>
+          </div>
+
+          <div role="tabpanel" id="panel-comments" aria-labelledby="tab-comments" hidden></div>
+          <div role="tabpanel" id="panel-curators" aria-labelledby="tab-curators" hidden></div>
+          <div role="tabpanel" id="panel-activity" aria-labelledby="tab-activity" hidden></div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <section class="footer-col" aria-label="About links">
+          <h2>About</h2>
+          <ul>
+            <li><a href="#">About Scratch</a></li>
+            <li><a href="#">For Parents</a></li>
+            <li><a href="#">For Educators</a></li>
+            <li><a href="#">For Developers</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Donors</a></li>
+            <li><a href="#">Jobs</a></li>
+            <li><a href="#">Donate</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-col" aria-label="Community links">
+          <h2>Community</h2>
+          <ul>
+            <li><a href="#">Community Guidelines</a></li>
+            <li><a href="#">Discussion Forums</a></li>
+            <li><a href="#">Scratch Wiki</a></li>
+            <li><a href="#">Statistics</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-col" aria-label="Resources links">
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="#">Ideas</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Download</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-col" aria-label="Legal links">
+          <h2>Legal</h2>
+          <ul>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookies</a></li>
+            <li><a href="#">DMCA</a></li>
+          </ul>
+        </section>
+
+        <section class="footer-col" aria-label="Scratch Family links">
+          <h2>Scratch Family</h2>
+          <ul>
+            <li><a href="#">ScratchEd</a></li>
+            <li><a href="#">ScratchJr</a></li>
+            <li><a href="#">Scratch Day</a></li>
+            <li><a href="#">Scratch Conference</a></li>
+            <li><a href="#">Scratch Foundation</a></li>
+            <li><a href="#">Scratch Store</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div class="language-wrap">
+        <label for="language">Language</label>
+        <select id="language" name="language">
+          <option selected>Аҧсшәа</option>
+        </select>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mobile-nav');
+
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      toggle.setAttribute('aria-label', expanded ? 'Open navigation menu' : 'Close navigation menu');
+      nav.hidden = expanded;
+      if (!expanded) {
+        nav.querySelector('a, button').focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.hidden === false) {
+        nav.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open navigation menu');
+        toggle.focus();
+      }
+    });
+
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+    function activateTab(tab) {
+      tabs.forEach(t => {
+        const selected = t === tab;
+        t.setAttribute('aria-selected', String(selected));
+        t.setAttribute('tabindex', selected ? '0' : '-1');
+        t.classList.toggle('active', selected);
+      });
+
+      panels.forEach(panel => {
+        panel.hidden = panel.id !== tab.getAttribute('aria-controls');
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+
+      tab.addEventListener('keydown', (e) => {
+        let newIndex = index;
+
+        if (e.key === 'ArrowRight') {
+          newIndex = (index + 1) % tabs.length;
+          tabs[newIndex].focus();
+          e.preventDefault();
+        } else if (e.key === 'ArrowLeft') {
+          newIndex = (index - 1 + tabs.length) % tabs.length;
+          tabs[newIndex].focus();
+          e.preventDefault();
+        } else if (e.key === 'Home') {
+          tabs[0].focus();
+          e.preventDefault();
+        } else if (e.key === 'End') {
+          tabs[tabs.length - 1].focus();
+          e.preventDefault();
+        } else if (e.key === 'Enter' || e.key === ' ') {
+          activateTab(tab);
+          e.preventDefault();
+        }
+      });
+    });
+
+    document.querySelectorAll('[tabindex]').forEach(el => {
+      const val = parseInt(el.getAttribute('tabindex'), 10);
+      if (val > 0) el.removeAttribute('tabindex');
+    });
+  </script>
+</body>
+</html>
+<!--
+CHANGES MADE:
+[A] Structural fixes: added descriptive page title; used header, nav, main, aside, section, and footer landmarks; added skip link and main-content id; ensured one h1 with sequential heading hierarchy; added meaningful alt text to all images and decorative alt to avatar images; added label for language select; ensured descriptive text for buttons and links; set html lang="en".
+[B] ARIA fixes: avoided redundant role attributes on semantic landmarks; provided unique aria-labels for multiple nav/section/aside-style regions; used valid tabindex values only; added accessible tablist/tab/tabpanel relationships.
+[C] JS patterns added: implemented hamburger menu for mobile; implemented tab panel behavior for Projects/Comments/Curators/Activity; included tabindex cleanup and focus-visible support.
+-->

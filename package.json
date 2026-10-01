@@ -1,0 +1,9 @@
+{
+  "name": "responsivebench",
+  "private": true,
+  "version": "0.0.1",
+  "description": "ResponsiveBench: axe-core for the accessibility metric",
+  "dependencies": {
+    "axe-core": "^4.11.3"
+  }
+}

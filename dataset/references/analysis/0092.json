@@ -1,0 +1,65 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a persistent header/navigation area at the top of the page; on desktop it is a clearly bounded top bar spanning the layout, and on mobile the page structure implies a top header that remains available while long article content scrolls beneath it.",
+      "confidence": "HIGH",
+      "behavior_notes": "Header/navigation should remain fixed or sticky during scroll so primary navigation stays accessible across the long article layout.",
+      "ambiguities": "The sketch does not clarify whether only the top bar sticks or whether secondary article controls/progress also remain pinned."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch suggests a compact top area with limited horizontal space and no room for full navigation labels, implying a collapsed mobile navigation trigger rather than always-visible nav links.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger button should open and close an off-canvas or overlay navigation panel for site sections on small screens.",
+      "ambiguities": "The icon itself is not explicitly drawn in the sketch, so this is inferred from the constrained mobile header pattern rather than directly depicted."
+    },
+    {
+      "pattern_id": "tab_panel",
+      "present_in": "both",
+      "visual_evidence": "Near the lower portion of the mobile sketch there is a row/grid of small boxed items followed by a larger bordered content area, strongly implying selectable tabs or category chips that swap the content shown below. The desktop sketch also ends with a large bordered panel split into sections, suggesting switchable footer/article metadata content.",
+      "confidence": "HIGH",
+      "behavior_notes": "Selecting a tab should reveal the associated content panel and hide the others, with one tab active by default. Keyboard navigation between tabs should be supported.",
+      "ambiguities": "It is unclear whether the controls are horizontal tabs, pill filters, or radio-style segmented controls; the interaction outcome still implies panel switching."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "N3",
+    "S1",
+    "D2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "sticky_nav",
+      "tab_panel"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "tab_panel"
+    ]
+  },
+  "sketch_notes": "The sketches imply a mostly content-driven article page with relatively light but important JavaScript behavior: persistent top navigation across both viewports, a likely collapsed mobile nav pattern on small screens, and tabbed content areas near the lower page sections. Mobile appears to require more JS than desktop because navigation must be condensed into a toggleable menu, while desktop mainly needs sticky header behavior and tab switching for supplemental content."
+}

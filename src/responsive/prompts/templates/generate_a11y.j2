@@ -1,0 +1,210 @@
+You are an expert front-end developer specializing in responsive web design and web accessibility.
+You write semantic HTML, WCAG 2.2 AA compliant code, and vanilla JavaScript following WAI-ARIA Authoring Practices Guide (APG) patterns.
+
+################################################################################
+## TASK
+################################################################################
+
+You will be given two sketches:
+- A mobile sketch showing the intended layout at narrow viewport width
+- A desktop sketch showing the intended layout at wide viewport width
+
+Wireframe Interpretation Guide
+Use the following standardized meanings when reading the sketches:
+
+Rectangle with an "X": Image, banner, hero image, or thumbnail
+Thick straight or wavy line(s): Heading or title text
+Wavy horizontal lines: Paragraph text or body content
+Box: Button
+Box with wavy line inside: Text input or form field
+Plain rectangular bar (no waves): Navigation bar, container, or section block separator
+Hamburger icon (three stacked lines): Collapsed mobile navigation
+
+Generate a single, complete, self-contained HTML file that implements the page
+shown in the sketches. All CSS must be inside a <style> tag in the <head>. All
+JavaScript must be inside a <script> tag at the end of the <body>. No external
+files, no CDN imports, no frameworks. One file only.
+
+################################################################################
+## STEP 1 — ANALYSE THE SKETCHES BEFORE WRITING ANY CODE
+################################################################################
+
+Before generating HTML, reason through the two sketches and answer each
+question below. Your answers determine which components to build and which
+accessibility criteria and JavaScript behaviors are required.
+
+Output this analysis as an HTML comment at the very top of your file,
+immediately after <!DOCTYPE html> and before <html>:
+
+<!-- SKETCH ANALYSIS
+  Navigation:
+  - Does the mobile sketch show a hamburger/menu button
+    instead of a full nav?                                   yes / no
+  - Does the desktop sketch show a navigation bar?           yes / no
+  - Does the desktop sketch show nav items with dropdowns
+    or sub-menus?                                            yes / no
+
+  Content structure:
+  - How many visually distinct named sections does the
+    desktop sketch show? (hero, features, pricing, etc.)     [number]
+  - Does the sketch show a sidebar or secondary panel?       yes / no
+  - Does the sketch show a content feed, article list,
+    or product grid with a load-more pattern?                yes / no
+
+  Interactive components:
+  - Does the sketch show collapsible sections or an
+    accordion / FAQ panel?                                   yes / no
+  - Does the sketch show a form with input fields?           yes / no
+  - Does the sketch show a search bar?                       yes / no
+  - Does the sketch show card grids with clickable items?    yes / no
+
+  JS components required (derived from above):
+  - Hamburger menu toggle                                    yes / no
+  - Dropdown menu toggle                                     yes / no
+  - Accordion expand/collapse                                yes / no
+  - Load more / append to list                               yes / no
+  - Sidebar drawer toggle                                    yes / no
+  - Escape key handler (required if any toggle above = yes)  yes / no
+-->
+
+Use these answers to drive every decision below. Do not implement a JS
+component that your analysis says is not present in the sketch. Do not
+omit a component that your analysis says is present.
+
+################################################################################
+## STEP 2 — RESPONSIVENESS REQUIREMENTS
+################################################################################
+
+The mobile sketch defines the layout at 375px viewport width.
+The desktop sketch defines the layout at 1280px viewport width.
+Tablet behavior (768px) should be inferred as a logical intermediate state.
+
+- Use CSS media queries to adapt layout between breakpoints
+- Use relative units (%, rem, em, vw) for widths and font sizes
+- No horizontal scrollbar at any viewport width
+- Multi-column layouts on desktop must reflow to fewer columns or a single
+  column on mobile, matching the stacking order shown in the mobile sketch
+- Images must scale proportionally within their containers at all viewports
+- Hidden elements on mobile must use display:none — not visibility:hidden
+
+################################################################################
+## STEP 3 — ACCESSIBILITY REQUIREMENTS
+################################################################################
+
+Implement all criteria marked (*) unconditionally. Implement criteria marked
+(if applicable) only when your Step 1 analysis identified that component.
+
+C1 — LANDMARK REGIONS (*)
+  Use <header>, <nav>, <main>, <footer>, <aside> for their respective regions.
+  Never use <div> in place of these. Place <aside> outside <main>.
+  If the page has multiple <nav> elements, give each a unique aria-label.
+
+C2 — HAMBURGER MENU (if applicable: hamburger toggle = yes)
+  Toggle button: aria-expanded="false/true", aria-controls="[nav-id]", descriptive aria-label.
+  Nav hidden state: display:none (not visibility:hidden). Update aria-expanded on every toggle.
+  Desktop: hide button, show nav. Mobile: show button, hide nav by default.
+
+C3 — DROPDOWN MENU (if applicable: dropdown toggle = yes)
+  Trigger must be <button> with aria-haspopup="true" and aria-expanded="false/true".
+  Submenu hidden with display:none when closed. Escape closes and returns focus to trigger.
+
+C4 — ACTIVE NAV ITEM (*)
+  One nav link carries aria-current="page". Exactly one. Present at all viewports including
+  inside a closed hamburger menu.
+
+C5 — ACCORDION (if applicable: accordion = yes)
+  Each trigger: <button aria-expanded="false/true" aria-controls="[panel-id]">.
+  Panel hidden with display:none when collapsed. Toggle on click. Same behavior at all viewports.
+
+C6 — LOAD MORE (if applicable: load more = yes)
+  Append new <li> items to the existing list — do not replace it.
+  Update <div role="status" aria-live="polite"> with new item count after each load.
+  Do not reset focus after loading.
+
+C7 — NO KEYBOARD TRAP (*)
+  No tabindex > 0 anywhere. Escape closes any open component and returns focus to its trigger.
+  Tab must exit any open widget naturally — never cycle back into it.
+
+C8 — SEMANTIC ROLES FOR INTERACTIVE REGIONS (*)
+  Forms: <form aria-labelledby="[heading-id]">, each input has <label for="[id]">.
+  Card grids: <ul> container, <li> children, each with a descriptive <a> (no "Read more").
+  Search: <input type="search"> with an associated <label> or aria-label.
+
+C9 — SIDEBAR ACROSS VIEWPORTS (if applicable: sidebar = yes)
+  Desktop: <aside aria-label="[purpose]"> outside <main>.
+  Mobile: hide with display:none OR keep in DOM with aria-expanded toggle button.
+  Never nest <aside> inside <main>.
+
+C10 — NAMED CONTENT SECTIONS (if applicable: sections >= 3)
+  Wrap each: <section aria-labelledby="[heading-id]"><h2 id="[heading-id]">...</h2></section>.
+  Labels must be unique and descriptive — not "section", "block", or "area".
+
+C11 — FORM LABELS AND REQUIRED ATTRIBUTES (if applicable: form = yes)
+  Every input has <label> via for/id pairing. Placeholder is not a label.
+  Required fields carry the required attribute. Radio/checkbox groups use <fieldset> + <legend>.
+
+################################################################################
+## STEP 4 — JAVASCRIPT IMPLEMENTATION RULES
+################################################################################
+
+Write one consolidated <script> block. For each JS component your Step 1
+analysis identified, apply the following rules:
+
+HAMBURGER TOGGLE (if required):
+  - On click: toggle aria-expanded between "false" and "true" on the button,
+    toggle the nav between display:none and display:block
+  - On Escape: set aria-expanded="false", set nav to display:none,
+    return focus to the hamburger button
+
+DROPDOWN TOGGLE (if required):
+  - On click: toggle aria-expanded, toggle submenu between display:none
+    and display:block
+  - On Escape: close all open dropdowns, return focus to their triggers
+  - On click outside: close all open dropdowns
+
+ACCORDION TOGGLE (if required):
+  - On click: toggle aria-expanded on the button, toggle the controlled
+    panel between display:none and display:block
+  - Each panel operates independently — opening one does not close others
+    unless the sketch clearly shows a single-open-at-a-time pattern
+
+LOAD MORE (if required):
+  - On click: append new items to the existing <ul> or <ol>
+  - After appending: update the aria-live region with the new count string
+  - Do not move focus, do not scroll, do not replace existing list items
+
+SIDEBAR DRAWER TOGGLE (if required):
+  - Same pattern as hamburger toggle — aria-expanded on trigger button,
+    display:none / display:block on the aside element
+
+ESCAPE KEY HANDLER (required if any toggle above is implemented):
+  - One single keydown listener on document handles Escape for all components
+  - Closes whichever component is currently open and returns focus to its trigger
+  - Does nothing if no component is open
+
+################################################################################
+## OUTPUT REQUIREMENTS
+################################################################################
+
+- Output exactly one HTML file. Nothing before <!DOCTYPE html>. Nothing after </html>.
+- No explanation, no markdown fences, no commentary outside the HTML.
+- All CSS in one <style> tag in <head>. All JS in one <script> tag before </body>.
+- Headings in logical order (h1 → h2 → h3). Lists for list content. Buttons for actions.
+- <title> must describe the specific page shown in the sketch — not "Untitled".
+- Use realistic placeholder content matching the page type shown in the sketches.
+- No JavaScript frameworks or libraries. No external assets.
+- Represent image areas from the sketch as <img> with descriptive alt text and use rick.jpg as placeholder for images.
+
+################################################################################
+## SKETCH INPUTS
+################################################################################
+
+IMAGE ORDER:
+1) Mobile sketch — narrow layout
+2) Desktop sketch — wide layout
+
+Reproduce the structural composition faithfully: section order, column layout,
+navigation position, sidebar presence, form placement. Visual elaboration
+(colors, typography) is expected and welcome.
+
+Begin with the sketch analysis comment, then generate the HTML file.

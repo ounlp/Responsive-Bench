@@ -1,0 +1,44 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch shows a narrow left-side vertical menu separated from the main content column, suggesting persistent section navigation alongside a long scrolling page of stacked content cards.",
+      "confidence": "HIGH",
+      "behavior_notes": "The side navigation should remain visible while the user scrolls through the long content sections and should likely indicate the currently viewed section.",
+      "ambiguities": "The sketch does not explicitly show whether the nav is fully fixed for the whole scroll range or only becomes fixed after reaching a threshold."
+    }
+  ],
+  "applicable_criteria": [
+    "N3",
+    "S1",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [],
+    "desktop": [
+      "sticky_nav"
+    ]
+  },
+  "sketch_notes": "Both sketches depict a largely static informational page with stacked content sections, a map-like block, tabular/list content, and footer text, but they do not visibly indicate explicit interactive widgets such as tabs, accordions, dropdowns, modals, search, or load-more controls. The main JavaScript implication comes from the desktop-only left rail, which strongly suggests sticky in-page section navigation for a long scrolling layout; the mobile sketch lacks an equivalent explicit interactive control."
+}

@@ -1,0 +1,55 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a clear form flow: a text input field, a grouped set of circular single-choice options, a checked consent checkbox, and a final submit button. This implies client-side handling for required fields and submit-state feedback.",
+      "confidence": "HIGH",
+      "behavior_notes": "Validate the text input before submission, ensure radio/checkbox requirements are enforced if required by the form, prevent invalid submission, and provide inline or summary error feedback. The submit button likely triggers validation and possibly async submission.",
+      "ambiguities": "The sketch does not explicitly mark which fields are required or whether submission is synchronous or AJAX-based."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "desktop",
+      "visual_evidence": "The desktop sketch contains multiple interactive controls in sequence within a single card-like form area: text input, radio group, checkbox, image/link area, and submit button. Keyboard users will need predictable movement and focus handling across grouped widgets and any validation feedback.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Maintain logical tab order, move focus to the first invalid field on failed submit if validation runs, and ensure grouped controls like radio buttons and checkbox are keyboard reachable with visible focus. If errors appear dynamically, focus may need to shift to an error summary or invalid control.",
+      "ambiguities": "No modal/menu/disclosure is shown, so focus management is limited to form interactions rather than complex composite widgets."
+    }
+  ],
+  "applicable_criteria": [
+    "F1",
+    "F2",
+    "F3",
+    "K1",
+    "K3"
+  ],
+  "criteria_not_applicable": [
+    "N1",
+    "N2",
+    "N3",
+    "F4",
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "M1",
+    "M2",
+    "M3",
+    "S1",
+    "S2",
+    "V1",
+    "K2",
+    "K4"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "form_validation"
+    ],
+    "desktop": [
+      "form_validation",
+      "focus_management"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple subscription-style form rather than a navigation-heavy or app-like interface. Across both viewports, the main JavaScript need is robust form validation around the input, selection controls, consent checkbox, and submit action. The desktop version additionally raises stronger keyboard and focus expectations because the full form card and grouped controls are more explicitly laid out, but there is no evidence of menus, tabs, accordions, modals, sticky navigation, or dynamic loading behaviors."
+}

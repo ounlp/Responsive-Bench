@@ -1,0 +1,114 @@
+{
+  "patterns_found": [
+    {
+      "pattern_id": "search_input",
+      "present_in": "both",
+      "visual_evidence": "Both sketches show a header area with compact text/navigation treatment and the reference layout includes a dedicated search control in the top bar; this implies a searchable blog/page header rather than static text only.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Search trigger should reveal/focus the input, allow text entry, and submit a query. On mobile it likely expands from an icon or compact header area; on desktop it may remain inline or expand within the header.",
+      "ambiguities": "The sketches do not explicitly draw a search icon or field state, so exact expansion behavior and whether results are live vs submit-only is unclear."
+    },
+    {
+      "pattern_id": "sticky_nav",
+      "present_in": "both",
+      "visual_evidence": "Both sketches place a compact header/title region above long scrollable content lists, strongly implying the top header/navigation should persist or condense during scrolling to preserve context.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Header should become fixed or condensed after scroll, preserving key controls such as title/back/search. Needs accessible state changes and no content jump.",
+      "ambiguities": "The sketch does not explicitly show the scrolled state, so stickiness is inferred from the long article/list layout rather than directly drawn."
+    },
+    {
+      "pattern_id": "hamburger_menu",
+      "present_in": "mobile",
+      "visual_evidence": "The mobile sketch has a narrow single-column layout with only header/title treatment and no visible full navigation links, implying hidden navigation accessed through a menu toggle.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "A hamburger button should open and close an off-canvas or overlay navigation panel for secondary sections/profile/archive links on small screens.",
+      "ambiguities": "The button itself is not explicitly drawn in the sketch; this is inferred from the absence of visible nav in a mobile header and the desktop/mobile difference."
+    },
+    {
+      "pattern_id": "modal_dialog",
+      "present_in": "both",
+      "visual_evidence": "The page appears to be a blog/article detail with comments and likely secondary actions; the reference structure includes newsletter signup and comment actions that commonly open overlays. The sketch’s simplified wireframe does not allocate inline space for all secondary interactions, implying overlay treatment for at least some actions.",
+      "confidence": "LOW",
+      "behavior_notes": "Potential modal use for newsletter signup, comment posting, or share/link-copy flows. If implemented, it must trap focus, restore focus on close, and support overlay dismissal.",
+      "ambiguities": "No explicit modal box is drawn in either sketch, so this is speculative and should only be implemented if matching the intended product behavior."
+    },
+    {
+      "pattern_id": "form_validation",
+      "present_in": "both",
+      "visual_evidence": "The page context and reference indicate interactive forms such as search, newsletter signup, and comment posting; these require validation even though the sketches abstract them away.",
+      "confidence": "MEDIUM",
+      "behavior_notes": "Validate required fields, email format for newsletter, and any comment form inputs; provide inline errors and submission feedback.",
+      "ambiguities": "The sketches do not visibly show the form fields except implied header search and footer/comment actions, so exact validation scope depends on final feature set."
+    },
+    {
+      "pattern_id": "accordion",
+      "present_in": "both",
+      "visual_evidence": "The long content structure with secondary sidebar/archive/profile content in the reference and compressed mobile layout suggests collapsible sections are needed to manage dense auxiliary content, especially on mobile.",
+      "confidence": "LOW",
+      "behavior_notes": "Use expandable sections for archive/profile/sidebar groups or similar secondary content. Sections should toggle open/closed with clear state indication.",
+      "ambiguities": "No chevrons or explicit disclosure markers are drawn in the sketches, so this is inferred from likely responsive adaptation rather than explicit wireframe evidence."
+    },
+    {
+      "pattern_id": "load_more",
+      "present_in": "both",
+      "visual_evidence": "Both sketches depict long vertically stacked content blocks/comments/posts extending well beyond the initial viewport, which can imply progressive disclosure or additional content loading rather than rendering everything at once.",
+      "confidence": "LOW",
+      "behavior_notes": "Could support loading more comments/posts or revealing additional archive items via button-triggered expansion/loading, with loading feedback.",
+      "ambiguities": "The sketches may simply represent a fully rendered long page; no explicit button or pagination marker is drawn."
+    },
+    {
+      "pattern_id": "focus_management",
+      "present_in": "both",
+      "visual_evidence": "Any inferred overlay, mobile menu, accordion, or expanding search in these sketches would require programmatic focus handling to remain usable, especially in the compact mobile header and long desktop content layout.",
+      "confidence": "HIGH",
+      "behavior_notes": "Move focus into opened menus/modals/search, restore focus on close, maintain logical tab order, and manage disclosure focus states.",
+      "ambiguities": "This is a supporting requirement derived from the interactive components rather than a separately drawn widget."
+    }
+  ],
+  "applicable_criteria": [
+    "N1",
+    "F1",
+    "F2",
+    "F3",
+    "D1",
+    "D4",
+    "M1",
+    "M2",
+    "S1",
+    "S2",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "criteria_not_applicable": [
+    "N2",
+    "N3",
+    "D2",
+    "D3",
+    "M3",
+    "V1"
+  ],
+  "implementation_priorities": {
+    "mobile": [
+      "hamburger_menu",
+      "search_input",
+      "sticky_nav",
+      "focus_management",
+      "form_validation",
+      "accordion",
+      "modal_dialog",
+      "load_more"
+    ],
+    "desktop": [
+      "sticky_nav",
+      "search_input",
+      "focus_management",
+      "form_validation",
+      "accordion",
+      "load_more",
+      "modal_dialog"
+    ]
+  },
+  "sketch_notes": "The sketches imply a relatively simple content-first blog/article page with long scrolling content, but responsive behavior adds meaningful JS needs: mobile likely hides navigation behind a menu and may compress search/header controls, while desktop emphasizes persistent header context over a long reading surface. Most explicit interaction is only weakly drawn, so the strongest cross-viewport requirements are search behavior, sticky header handling, and accessibility-focused focus management for any expanding or overlay UI introduced in implementation."
+}

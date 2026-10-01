@@ -1,0 +1,2556 @@
+{
+  "generated_at": "2026-09-30T23:23:49.418104+00:00",
+  "annotators": [
+    "annotator_A",
+    "annotator_B",
+    "annotator_C"
+  ],
+  "dimensions": [
+    {
+      "key": "fluid_layout_and_container_adaptation",
+      "label": "Fluid Layout & Container Adaptation",
+      "annotator_averages": {
+        "annotator_A": 3.4643,
+        "annotator_B": 3.5357,
+        "annotator_C": 3.8214
+      },
+      "samples": [
+        {
+          "sample_id": "0001",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0002",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0003",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0004",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0005",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0006",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0007",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0008",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0009",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0010",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0011",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0012",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0013",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0014",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0015",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0016",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0017",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0018",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0019",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0020",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0021",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0022",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0023",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0024",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0025",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0026",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0027",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0028",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0029",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0030",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "05",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 2.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1332",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1352",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1379",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1438",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1519",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1527",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1799",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1800",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "188",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "19",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "309",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "69",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "721",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 2.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "723",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 2.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "74",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "87",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "example_horizontal_scroll",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "font_sizes",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "heading_order",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "line_spacing_violations",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "none_responsive",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "relative_units",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "rotation_friendly",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "text_cutoff_overlap",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 2.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "text_enlargement",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "flexible_grid_reflow",
+      "label": "Flexible Grid Reflow",
+      "annotator_averages": {
+        "annotator_A": 3.9643,
+        "annotator_B": 3.8393,
+        "annotator_C": 3.875
+      },
+      "samples": [
+        {
+          "sample_id": "0001",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0002",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0003",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0004",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0005",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0006",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0007",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0008",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0009",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0010",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0011",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0012",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0013",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0014",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0015",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0016",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0017",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0018",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0019",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0020",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0021",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0022",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0023",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0024",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0025",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0026",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0027",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0028",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0029",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0030",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "05",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1332",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1352",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1379",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "1438",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1519",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "1527",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1799",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1800",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "188",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "19",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "309",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "69",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "721",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "723",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "74",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "87",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "example_horizontal_scroll",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "font_sizes",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "heading_order",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "line_spacing_violations",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "none_responsive",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 5.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "relative_units",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "rotation_friendly",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "text_cutoff_overlap",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "text_enlargement",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "responsive_media",
+      "label": "Responsive Media",
+      "annotator_averages": {
+        "annotator_A": 4.1786,
+        "annotator_B": 4.1429,
+        "annotator_C": 4.2679
+      },
+      "samples": [
+        {
+          "sample_id": "0001",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0002",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0003",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0004",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0005",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0006",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0007",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0008",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0009",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0010",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0011",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0012",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0013",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0014",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0015",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0016",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0017",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0018",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0019",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0020",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0021",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0022",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0023",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0024",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0025",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0026",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0027",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0028",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0029",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0030",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "05",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "1332",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1352",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "1379",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "1438",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1519",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1527",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1799",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1800",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "188",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "19",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "309",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "69",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 1.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "721",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "723",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "74",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "87",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "example_horizontal_scroll",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "font_sizes",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "heading_order",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "line_spacing_violations",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "none_responsive",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "relative_units",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "rotation_friendly",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "text_cutoff_overlap",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "text_enlargement",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "intentional_content_visibility",
+      "label": "Intentional Content Visibility",
+      "annotator_averages": {
+        "annotator_A": 3.8214,
+        "annotator_B": 3.625,
+        "annotator_C": 4.0893
+      },
+      "samples": [
+        {
+          "sample_id": "0001",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0002",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0003",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0004",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0005",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0006",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0007",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0008",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0009",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0010",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0011",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0012",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0013",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0014",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0015",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0016",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0017",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0018",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0019",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0020",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0021",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0022",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0023",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0024",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0025",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0026",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0027",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0028",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0029",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0030",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "05",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "1332",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1352",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 1.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "1379",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 1.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "1438",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1519",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 1.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "1527",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1799",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1800",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "188",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "19",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 1.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "309",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "69",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "721",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "723",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "74",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 1.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "87",
+          "scores": {
+            "annotator_A": 1.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "example_horizontal_scroll",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "font_sizes",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "heading_order",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "line_spacing_violations",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "none_responsive",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 1.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "relative_units",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "rotation_friendly",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "text_cutoff_overlap",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "text_enlargement",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "proper_alignment_and_spacing",
+      "label": "Proper Alignment & Spacing",
+      "annotator_averages": {
+        "annotator_A": 3.9107,
+        "annotator_B": 4.1607,
+        "annotator_C": 3.4464
+      },
+      "samples": [
+        {
+          "sample_id": "0001",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0002",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0003",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0004",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0005",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0006",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0007",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0008",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0009",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0010",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0011",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0012",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0013",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0014",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0015",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0016",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0017",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0018",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0019",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0020",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0021",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0022",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0023",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0024",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0025",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0026",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0027",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0028",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0029",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0030",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "05",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "1332",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "1352",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 4.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1379",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "1438",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 4.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1519",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 3.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "1527",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "1799",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 3.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "1800",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "188",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 3.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "19",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 2.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "309",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "69",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "721",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "723",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "74",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 3.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "87",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 2.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "example_horizontal_scroll",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 3.0,
+            "annotator_C": 1.0
+          }
+        },
+        {
+          "sample_id": "font_sizes",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "heading_order",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "line_spacing_violations",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "none_responsive",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 2.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "relative_units",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 2.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "rotation_friendly",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "text_cutoff_overlap",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 2.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "text_enlargement",
+          "scores": {
+            "annotator_A": 2.0,
+            "annotator_B": 5.0,
+            "annotator_C": 3.0
+          }
+        }
+      ]
+    },
+    {
+      "key": "sketch_fidelity",
+      "label": "Sketch Fidelity",
+      "annotator_averages": {
+        "annotator_A": 4.1,
+        "annotator_B": 3.1333,
+        "annotator_C": 3.8
+      },
+      "samples": [
+        {
+          "sample_id": "0001",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 2.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0002",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0003",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0004",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 2.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0005",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0006",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0007",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 1.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0008",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0009",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0010",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 1.0,
+            "annotator_C": 2.0
+          }
+        },
+        {
+          "sample_id": "0011",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0012",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 2.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0013",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 1.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0014",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 5.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0015",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 2.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0016",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0017",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0018",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 2.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0019",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0020",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0021",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0022",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0023",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0024",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 3.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0025",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0026",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 4.0,
+            "annotator_C": 3.0
+          }
+        },
+        {
+          "sample_id": "0027",
+          "scores": {
+            "annotator_A": 5.0,
+            "annotator_B": 3.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0028",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 4.0,
+            "annotator_C": 5.0
+          }
+        },
+        {
+          "sample_id": "0029",
+          "scores": {
+            "annotator_A": 4.0,
+            "annotator_B": 2.0,
+            "annotator_C": 4.0
+          }
+        },
+        {
+          "sample_id": "0030",
+          "scores": {
+            "annotator_A": 3.0,
+            "annotator_B": 3.0,
+            "annotator_C": 4.0
+          }
+        }
+      ]
+    }
+  ]
+}

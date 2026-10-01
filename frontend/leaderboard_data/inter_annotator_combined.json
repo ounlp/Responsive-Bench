@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-09-30T23:23:40.273112+00:00",
+  "label": "Combined",
+  "annotator_ids": [
+    "annotator_A",
+    "annotator_B",
+    "annotator_C"
+  ],
+  "annotator_pairs": [
+    [
+      "annotator_A",
+      "annotator_B"
+    ],
+    [
+      "annotator_A",
+      "annotator_C"
+    ],
+    [
+      "annotator_B",
+      "annotator_C"
+    ]
+  ],
+  "n_webpages": 56,
+  "dimensions": [
+    {
+      "key": "fluid_layout_and_container_adaptation",
+      "label": "Fluid Layout & Container Adaptation",
+      "n": 56,
+      "mse": 0.4643,
+      "mae": 0.4167,
+      "acc": 0.6072,
+      "acc1": 0.9762,
+      "pearson": 0.9485,
+      "spearman": 0.8681,
+      "kendall": 0.8002,
+      "pearson_ci_low": 0.9199,
+      "pearson_ci_high": 0.9717,
+      "spearman_ci_low": 0.7602,
+      "spearman_ci_high": 0.9333
+    },
+    {
+      "key": "flexible_grid_reflow",
+      "label": "Flexible Grid Reflow",
+      "n": 56,
+      "mse": 0.5,
+      "mae": 0.3214,
+      "acc": 0.75,
+      "acc1": 0.9405,
+      "pearson": 0.9119,
+      "spearman": 0.7389,
+      "kendall": 0.6793,
+      "pearson_ci_low": 0.8276,
+      "pearson_ci_high": 0.9621,
+      "spearman_ci_low": 0.5536,
+      "spearman_ci_high": 0.8628
+    },
+    {
+      "key": "responsive_media",
+      "label": "Responsive Media",
+      "n": 56,
+      "mse": 0.3929,
+      "mae": 0.2262,
+      "acc": 0.8214,
+      "acc1": 0.9762,
+      "pearson": 0.9266,
+      "spearman": 0.8422,
+      "kendall": 0.8039,
+      "pearson_ci_low": 0.8233,
+      "pearson_ci_high": 0.9797,
+      "spearman_ci_low": 0.6621,
+      "spearman_ci_high": 0.9402
+    },
+    {
+      "key": "intentional_content_visibility",
+      "label": "Intentional Content Visibility",
+      "n": 56,
+      "mse": 1.1428,
+      "mae": 0.6071,
+      "acc": 0.6131,
+      "acc1": 0.8274,
+      "pearson": 0.812,
+      "spearman": 0.781,
+      "kendall": 0.709,
+      "pearson_ci_low": 0.7073,
+      "pearson_ci_high": 0.8832,
+      "spearman_ci_low": 0.635,
+      "spearman_ci_high": 0.8813
+    },
+    {
+      "key": "proper_alignment_and_spacing",
+      "label": "Proper Alignment & Spacing",
+      "n": 56,
+      "mse": 0.9881,
+      "mae": 0.7024,
+      "acc": 0.4226,
+      "acc1": 0.8929,
+      "pearson": 0.6995,
+      "spearman": 0.7054,
+      "kendall": 0.6125,
+      "pearson_ci_low": 0.5891,
+      "pearson_ci_high": 0.7997,
+      "spearman_ci_low": 0.5777,
+      "spearman_ci_high": 0.8016
+    },
+    {
+      "key": "sketch_fidelity",
+      "label": "Sketch Fidelity",
+      "n": 30,
+      "mse": 1.7333,
+      "mae": 1.0,
+      "acc": 0.3111,
+      "acc1": 0.7444,
+      "pearson": 0.1781,
+      "spearman": 0.1593,
+      "kendall": 0.1388,
+      "pearson_ci_low": -0.0151,
+      "pearson_ci_high": 0.3508,
+      "spearman_ci_low": -0.0468,
+      "spearman_ci_high": 0.3483
+    }
+  ],
+  "overall": {
+    "label": "Overall",
+    "n": 310,
+    "mse": 0.7979,
+    "mae": 0.5075,
+    "acc": 0.6108,
+    "acc1": 0.9054,
+    "pearson": 0.8292,
+    "spearman": 0.7673,
+    "kendall": 0.6948,
+    "pearson_ci_low": 0.7803,
+    "pearson_ci_high": 0.8621,
+    "spearman_ci_low": 0.666,
+    "spearman_ci_high": 0.8328
+  }
+}

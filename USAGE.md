@@ -256,6 +256,14 @@ leaderboard, human-alignment, and score-distribution pages are included, so
 cd frontend && VITE_LEADERBOARD_ONLY=1 npm run build
 ```
 
+The hosted leaderboard is built this way: `vercel.json` copies
+`frontend/leaderboard_data/*.json` (the paper's runs plus the human-alignment
+tables) into `public/data/` and runs the leaderboard-only build on every push.
+To refresh it, regenerate the JSON files with `build_runs_data.py` and
+`export_human_alignment.py`, then copy `runs.json`, `annotator_scores.json`,
+`human_alignment.json`, `alignment_*.json`, and `inter_annotator_*.json` into
+`frontend/leaderboard_data/`.
+
 ## Providers
 
 Set credentials in `.env` (see `.env.example`).
